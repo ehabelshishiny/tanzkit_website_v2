@@ -29,10 +29,12 @@ export function EnterprisesHeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            {/* H1: Sora SemiBold 48px/56px (responsive: 32px/40px on mobile) */}
+            <h1 className="text-white mb-6">
               {t('title')}
             </h1>
-            <p className="text-xl md:text-2xl text-white mb-8 leading-relaxed">
+            {/* Subheading: Space Grotesk Medium 18px/24px */}
+            <p className="subheading text-white mb-8 opacity-90">
               {t('subtitle')}
             </p>
             <GradientButton
@@ -40,7 +42,7 @@ export function EnterprisesHeroSection() {
               size="lg"
               icon={<ArrowRight className="w-5 h-5" />}
               iconPosition="right"
-              className="bg-[#0F2E63] hover:bg-[#1F6FB2] text-white font-semibold transition-colors duration-300"
+              className="bg-[#0F2E63] hover:bg-[#1F6FB2] text-white button-text transition-colors duration-300"
             >
               {t('cta')}
             </GradientButton>

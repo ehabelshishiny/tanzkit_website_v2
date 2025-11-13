@@ -23,10 +23,12 @@ export function EnterprisesCtaSection() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          {/* H2: Sora SemiBold 36px/42px */}
+          <h2 className="text-white mb-6">
             {t('title')}
           </h2>
-          <p className="text-xl md:text-2xl text-white mb-10 max-w-3xl mx-auto">
+          {/* Subheading: Space Grotesk Medium 18px/24px */}
+          <p className="subheading text-white mb-10 max-w-3xl mx-auto opacity-90">
             {t('subtitle')}
           </p>
           <GradientButton
@@ -34,7 +36,7 @@ export function EnterprisesCtaSection() {
             size="lg"
             icon={<ArrowRight className="w-5 h-5" />}
             iconPosition="right"
-            className="bg-white hover:bg-[#F1F5F9] text-[#0F2E63] font-semibold transition-colors duration-300"
+            className="bg-white hover:bg-[#F1F5F9] text-[#0F2E63] button-text transition-colors duration-300"
           >
             {t('button')}
           </GradientButton>

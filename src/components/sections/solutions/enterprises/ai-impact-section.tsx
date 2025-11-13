@@ -2,9 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import { SectionContainer } from '@/components/ui/section-container';
-import { SectionHeader } from '@/components/ui/section-header';
-import { MetricCard } from '@/components/ui/metric-card';
-import { Brain } from 'lucide-react';
+import { ImpactTile } from './impact-tile';
+import { Brain, TrendingDown, Clock, Heart, Route } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function EnterprisesAiImpactSection() {
@@ -32,54 +31,81 @@ export function EnterprisesAiImpactSection() {
             </motion.div>
           </div>
           <div className="flex-[2]">
-            <SectionHeader
-              title={t('aiAdvantage.title')}
-              alignment="left"
-              titleSize="lg"
-              className="text-white"
-            />
-            <p className="text-lg md:text-xl text-slate-300 leading-relaxed mt-6">
+            {/* H2: Sora SemiBold 36px/42px */}
+            <div className="text-left mb-6">
+              <h2 className="text-white">{t('aiAdvantage.title')}</h2>
+            </div>
+            {/* Body text: Inter Regular 16px/24px */}
+            <p className="body-text text-slate-300 mt-6">
               {t('aiAdvantage.description')}
             </p>
           </div>
         </div>
       </SectionContainer>
 
-      {/* Impact Metrics Section */}
-      <SectionContainer
-        background="light"
-        padding="xl"
-        maxWidth="2xl"
+      {/* Impact Metrics Section - Bold Impact Tiles */}
+      <section
+        className="relative py-20 md:py-28 overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #0F2E63 0%, #1F6FB2 100%)' }}
       >
-        <SectionHeader
-          title={t('impact.title')}
-          alignment="center"
-          titleSize="lg"
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-          <MetricCard
-            value={25}
-            suffix="%"
-            label={t('impact.metrics.0.label')}
-            animateOnScroll
-          />
-          <MetricCard
-            value={t('impact.metrics.1.value')}
-            label={t('impact.metrics.1.label')}
-            animateOnScroll={false}
-          />
-          <MetricCard
-            value={t('impact.metrics.2.value')}
-            label={t('impact.metrics.2.label')}
-            animateOnScroll={false}
-          />
-          <MetricCard
-            value={t('impact.metrics.3.value')}
-            label={t('impact.metrics.3.label')}
-            animateOnScroll={false}
-          />
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+            backgroundSize: '32px 32px'
+          }} />
         </div>
-      </SectionContainer>
+
+        <div className="relative z-10 container mx-auto px-4 max-w-7xl">
+          {/* Section Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-white">{t('impact.title')}</h2>
+          </motion.div>
+
+          {/* Impact Tiles Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <ImpactTile
+              value={25}
+              suffix="%"
+              label={t('impact.metrics.0.label')}
+              icon={TrendingDown}
+              backgroundColor="#0F2E63"
+              animateOnScroll
+              delay={0}
+            />
+            <ImpactTile
+              value={t('impact.metrics.1.value')}
+              label={t('impact.metrics.1.label')}
+              icon={Clock}
+              backgroundColor="#1F6FB2"
+              animateOnScroll={false}
+              delay={0.1}
+            />
+            <ImpactTile
+              value={t('impact.metrics.2.value')}
+              label={t('impact.metrics.2.label')}
+              icon={Heart}
+              backgroundColor="#27B889"
+              animateOnScroll={false}
+              delay={0.2}
+            />
+            <ImpactTile
+              value={t('impact.metrics.3.value')}
+              label={t('impact.metrics.3.label')}
+              icon={Route}
+              backgroundColor="#7ED977"
+              animateOnScroll={false}
+              delay={0.3}
+            />
+          </div>
+        </div>
+      </section>
     </>
   );
 }
