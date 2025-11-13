@@ -1,0 +1,263 @@
+{
+  "nav": {
+    "home": "Home",
+    "solutions": "Solutions",
+    "resources": "Resources",
+    "apps": "Apps",
+    "contact": "Contact",
+    "pricing": "Pricing",
+    "about": "About Us"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "bookDemo": "Book a Demo",
+    "startFreeTrial": "Start Free Trial",
+    "contactUs": "Contact Us",
+    "readMore": "Read More",
+    "viewAll": "View All"
+  },
+  "home": {
+    "hero": {
+      "title": "The Enterprise OS",
+      "titleHighlight": "For Workforce Mobility",
+      "subtitle": "The all-in-one platform for operators, enterprises, supervisors, drivers, and passengers",
+      "cta": "Start Your Free Trial"
+    }
+  },
+  "solutions": {
+    "main": {
+      "hero": {
+        "title": "Smart Mobility, Practical Results",
+        "subtitle": "Tranzkit turns complex transport into dependable, efficient movement. Our AI-powered platform connects operators, drivers, enterprises, and passengers so every trip runs smoother, cheaper, and safer.",
+        "cta": "Explore Solutions"
+      },
+      "intro": {
+        "text": "One platform for operations, drivers, companies, and riders. Use Tranzkit to reduce costs, improve on-time performance, and get clear insights into every trip."
+      },
+      "howWeHelp": {
+        "title": "How We Help",
+        "benefits": [
+          "Reliable route planning and real-time tracking",
+          "Automated billing and transparent cost control",
+          "Centralized operations and supplier management",
+          "Passenger safety, verification, and feedback tools"
+        ]
+      },
+      "audienceCards": {
+        "operators": {
+          "title": "For Operators & Drivers",
+          "headline": "Manage fleets with precision. Run better days.",
+          "description": "Operators gain intelligent routing, live monitoring, and automated workflows. Drivers get a simple app for assignments, earnings tracking, and fast communication.",
+          "benefits": [
+            "Dynamic routing and scheduling",
+            "Live dashboards and alerts",
+            "Automated dispatch and verification",
+            "Driver-friendly mobile experience"
+          ],
+          "cta": "Optimize Your Fleet"
+        },
+        "enterprises": {
+          "title": "For Enterprises & Passengers",
+          "headline": "Control costs and keep people moving.",
+          "description": "Enterprises get centralized control of employee transport, clear invoices, and analytics. Passengers enjoy punctual, secure, and trackable rides.",
+          "benefits": [
+            "Centralized company dashboard and reporting",
+            "Automated supplier and invoice management",
+            "Real-time ride visibility and passenger notifications",
+            "Secure booking and driver verification"
+          ],
+          "cta": "Request a Demo"
+        }
+      },
+      "technology": {
+        "title": "Technology Snapshot",
+        "highlights": [
+          "AI routing and load balancing",
+          "Real-time analytics and alerts",
+          "Secure multi-tenant design",
+          "Arabic-first UX for MENA markets"
+        ]
+      },
+      "whyTranzkit": {
+        "title": "Why Tranzkit",
+        "reasons": [
+          "Cut operational costs",
+          "Improve on-time performance",
+          "Full transparency from booking to billing"
+        ]
+      },
+      "cta": {
+        "title": "Get Started",
+        "subtitle": "Transform your transport operations today",
+        "button": "Get Started"
+      }
+    },
+    "operatorsDrivers": {
+      "hero": {
+        "title": "Tools for Operators. Ease for Drivers.",
+        "subtitle": "Tranzkit streamlines every aspect of fleet and driver management. Real-time insights, intelligent routing, and simple apps empower operators and drivers to perform at their best.",
+        "cta": "Optimize Your Fleet"
+      },
+      "overview": {
+        "text": "Operators and drivers face daily challenges: tight schedules, unpredictable traffic, and complex fleet coordination. Tranzkit solves these with AI-powered planning, live monitoring, and automated workflows so you can focus on delivering safe, efficient, and profitable transport."
+      },
+      "features": {
+        "title": "Features",
+        "items": [
+          {
+            "title": "Smart Fleet Management",
+            "description": "Optimize your fleet operations with intelligent tools",
+            "points": [
+              "Plan and optimize routes in real time",
+              "Reduce empty trips and waiting times",
+              "Track driver performance and fleet utilization"
+            ]
+          },
+          {
+            "title": "Automated Scheduling & Dispatch",
+            "description": "Streamline operations with automation",
+            "points": [
+              "Assign trips instantly",
+              "Automate repetitive tasks",
+              "Ensure smooth communication between operators and drivers"
+            ]
+          },
+          {
+            "title": "Real-Time Insights",
+            "description": "Make data-driven decisions with live analytics",
+            "points": [
+              "Live dashboards for trip and fleet monitoring",
+              "Alerts for delays, incidents, or non-compliance",
+              "Analytics to improve daily operations"
+            ]
+          },
+          {
+            "title": "Driver-Focused Tools",
+            "description": "Empower drivers with easy-to-use tools",
+            "points": [
+              "Simple mobile app for trip acceptance and navigation",
+              "Earnings tracking and automated verification",
+              "Instant notifications and clear communication"
+            ]
+          }
+        ]
+      },
+      "aiAdvantage": {
+        "title": "AI Advantage",
+        "description": "Tranzkit's AI predicts traffic, optimizes routes dynamically, and allocates trips based on driver availability and efficiency. This reduces operational costs, increases fleet utilization, and ensures passengers always get reliable service."
+      },
+      "impact": {
+        "title": "Impact",
+        "metrics": [
+          {
+            "value": "30",
+            "suffix": "%",
+            "label": "reduction in fleet operating costs"
+          },
+          {
+            "value": "2",
+            "suffix": "x",
+            "label": "faster dispatch and assignment processes"
+          },
+          {
+            "value": "Real-time",
+            "label": "visibility for operators and management"
+          },
+          {
+            "value": "Safer",
+            "label": "punctual rides for passengers"
+          }
+        ]
+      },
+      "cta": {
+        "title": "Manage Your Fleet Smarter Today.",
+        "subtitle": "See how Tranzkit can transform your operations.",
+        "button": "Request a Demo"
+      }
+    },
+    "enterprisesPassengers": {
+      "hero": {
+        "title": "Reliable Transport. Total Visibility.",
+        "subtitle": "Tranzkit gives enterprises control over employee mobility and offers passengers a seamless, stress-free travel experience.",
+        "cta": "Book a Demo"
+      },
+      "overview": {
+        "text": "Companies need to transport employees safely, efficiently, and cost-effectively. Passengers want timely, safe rides without uncertainty. Tranzkit meets both needs in a single platform — delivering insights, automation, and real-time updates for everyone."
+      },
+      "features": {
+        "title": "Features",
+        "items": [
+          {
+            "title": "Centralized Management for Enterprises",
+            "description": "Complete control over employee transport",
+            "points": [
+              "One dashboard for all trips, suppliers, and budgets",
+              "Automated cost tracking and approvals",
+              "SLA monitoring and reporting"
+            ]
+          },
+          {
+            "title": "Seamless Booking & Ride Experience for Passengers",
+            "description": "Stress-free travel for your team",
+            "points": [
+              "Easy mobile booking and trip tracking",
+              "Verified drivers and safety checks",
+              "Instant notifications and support"
+            ]
+          },
+          {
+            "title": "Analytics and Decision-Making Tools",
+            "description": "Data-driven transport optimization",
+            "points": [
+              "Insights to reduce transport costs",
+              "Data-driven decisions for route and supplier optimization",
+              "Performance dashboards and actionable reports"
+            ]
+          },
+          {
+            "title": "Integration & Compliance",
+            "description": "Seamless integration with your systems",
+            "points": [
+              "Connect with HR, payroll, or finance systems",
+              "Secure, role-based access",
+              "Multilingual support (Arabic & English)"
+            ]
+          }
+        ]
+      },
+      "aiAdvantage": {
+        "title": "AI Advantage",
+        "description": "Tranzkit uses AI to forecast transport demand, allocate vehicles efficiently, and provide predictive analytics for cost optimization. Enterprises can see real-time performance metrics while passengers experience reliable and consistent service."
+      },
+      "impact": {
+        "title": "Impact",
+        "metrics": [
+          {
+            "value": "25",
+            "suffix": "%",
+            "label": "reduction in transport costs"
+          },
+          {
+            "value": "Increased",
+            "label": "employee satisfaction and punctuality"
+          },
+          {
+            "value": "Transparent",
+            "label": "tracking of all trips and invoices"
+          },
+          {
+            "value": "Safer",
+            "label": "and more predictable passenger journeys"
+          }
+        ]
+      },
+      "cta": {
+        "title": "Enhance Your Transport Experience.",
+        "subtitle": "Gain control and reliability for your team today.",
+        "button": "Book Your Demo"
+      }
+    }
+  }
+}
+

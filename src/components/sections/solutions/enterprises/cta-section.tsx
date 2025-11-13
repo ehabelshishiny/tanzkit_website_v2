@@ -1,0 +1,46 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+import { SectionContainer } from '@/components/ui/section-container';
+import { GradientButton } from '@/components/ui/gradient-button';
+import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+export function EnterprisesCtaSection() {
+  const t = useTranslations('solutions.enterprisesPassengers.cta');
+
+  return (
+    <div style={{ background: 'linear-gradient(215deg, #0F2E63 0%, #1F6FB2 35%, #27B889 68%, #7ED977 100%)' }}>
+      <SectionContainer
+        background="transparent"
+        padding="xl"
+        maxWidth="2xl"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            {t('title')}
+          </h2>
+          <p className="text-xl md:text-2xl text-white mb-10 max-w-3xl mx-auto">
+            {t('subtitle')}
+          </p>
+          <GradientButton
+            href="/contact"
+            size="lg"
+            icon={<ArrowRight className="w-5 h-5" />}
+            iconPosition="right"
+            className="bg-white hover:bg-[#F1F5F9] text-[#0F2E63] font-semibold transition-colors duration-300"
+          >
+            {t('button')}
+          </GradientButton>
+        </motion.div>
+      </SectionContainer>
+    </div>
+  );
+}
+
