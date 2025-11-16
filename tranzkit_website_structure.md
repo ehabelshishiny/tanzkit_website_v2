@@ -26,12 +26,11 @@ What’s needed: Subheader, 2–3 short paragraphs, 3–5 bullets, CTA (EN/AR).
 Hero Section
 Headline, subheadline, CTA (EN/AR).
 Overview Section
-Intro paragraph, 3 clickable cards (For Drivers & Passengers, For Enterprises, For Transport Operators).
-What’s needed: 1 paragraph, 3 card titles + 1–2 lines each (EN/AR).
+Intro paragraph, 2 clickable cards (For Enterprises & Passengers, For Enterprises & Drivers).
+What’s needed: 1 paragraph, 2 card titles + 1–2 lines each (EN/AR).
 Detailed Sections (each card leads to a section/page):
 For Drivers & Passengers: Subheader, 2–3 paragraphs, 3–5 feature bullets, CTA.
-For Enterprises: Subheader, 2–3 paragraphs, 3–5 feature bullets, CTA.
-For Transport Operators: Subheader, 2–3 paragraphs, 3–5 feature bullets, CTA.
+For Enterprises & Passengers: Subheader, 2–3 paragraphs, 3–5 feature bullets, CTA.
 What’s needed: For each, subheader, 2–3 short paragraphs, 3–5 bullets, CTA (EN/AR).
 Call-to-Action
 Unified CTA to engage/book demo (EN/AR).
@@ -121,10 +120,3 @@ Whitepaper/eBook (dynamic)
 Video/Webinar (dynamic)
 App Guide (dynamic per app)
 Career Listing & Detail (dynamic)
-
-Instructions for Writers:
-Each bullet is a required section or dynamic template.
-For each section: prepare subheader, 2–3 paragraphs, 3–5 feature bullets, and a CTA (all bilingual).
-Dynamic nodes mean you’ll need templates for repeated content (e.g., blog posts, FAQs).
-
-For full details and references, see the .

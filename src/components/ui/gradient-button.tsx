@@ -26,9 +26,9 @@ const sizeVariants = {
 };
 
 const variantStyles = {
-  primary: 'bg-gradient-to-r from-blue-600 to-teal-500 text-white shadow-lg hover:shadow-xl',
-  secondary: 'bg-gradient-to-r from-slate-700 to-slate-600 text-white shadow-md hover:shadow-lg',
-  outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950',
+  primary: 'bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg hover:shadow-xl',
+  secondary: 'bg-gradient-to-r from-secondary to-muted text-secondary-foreground shadow-md hover:shadow-lg',
+  outline: 'border-2 border-primary text-primary hover:bg-primary/10',
 };
 
 export function GradientButton({

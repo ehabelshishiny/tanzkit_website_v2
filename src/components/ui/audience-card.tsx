@@ -35,7 +35,7 @@ export function AudienceCard({
   ctaText,
   ctaLink,
   icon,
-  gradient = 'from-blue-500/10 to-teal-500/10',
+  gradient = 'from-primary/10 to-accent/10',
   className,
 }: AudienceCardProps) {
   return (
@@ -51,11 +51,11 @@ export function AudienceCard({
         href={ctaLink}
         className={cn(
           'block h-full bg-gradient-to-br rounded-3xl p-8 md:p-10',
-          'border border-slate-200 dark:border-slate-700',
+          'border border-border',
           'shadow-lg hover:shadow-2xl transition-all duration-300',
-          'group'
+          'group',
+          gradient
         )}
-        style={{ backgroundImage: `linear-gradient(to bottom right, ${gradient})` }}
       >
         {icon && (
           <div className="w-16 h-16 mb-6 flex items-center justify-center rounded-2xl bg-white/80 dark:bg-slate-800/80">

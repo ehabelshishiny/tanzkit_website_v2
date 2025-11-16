@@ -10,9 +10,9 @@ interface SectionContainerProps {
 }
 
 const backgroundVariants = {
-  light: 'bg-white',
-  dark: 'bg-slate-900',
-  gradient: 'bg-gradient-to-b from-slate-50 to-white',
+  light: 'bg-background',
+  dark: 'bg-card',
+  gradient: 'bg-gradient-to-b from-muted/30 to-background',
   transparent: 'bg-transparent',
 };
 

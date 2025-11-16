@@ -37,6 +37,13 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-ocean: var(--brand-ocean);
+  --color-brand-emerald: var(--brand-emerald);
+  --color-brand-lime: var(--brand-lime);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -51,29 +58,44 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+
+  /* Tranzkit Brand Colors - Light Mode */
+  --brand-navy: oklch(0.28 0.08 250);        /* #0F2E63 - Deep Navy */
+  --brand-ocean: oklch(0.52 0.12 240);       /* #1F6FB2 - Ocean Blue */
+  --brand-emerald: oklch(0.65 0.12 165);     /* #27B889 - Emerald */
+  --brand-lime: oklch(0.78 0.14 130);        /* #7ED977 - Lime Mint */
+
+  /* Semantic Colors mapped to brand colors */
+  --primary: oklch(0.52 0.12 240);           /* Ocean Blue */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.28 0.08 250);         /* Deep Navy */
+  --secondary-foreground: oklch(1 0 0);
+  --accent: oklch(0.65 0.12 165);            /* Emerald */
+  --accent-foreground: oklch(0.145 0 0);
+  --success: oklch(0.65 0.12 165);           /* Emerald */
+  --warning: oklch(0.75 0.15 85);            /* Amber */
+  --info: oklch(0.52 0.12 240);              /* Ocean Blue */
+
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --ring: oklch(0.52 0.12 240);              /* Ocean Blue */
+
+  /* Chart colors using brand palette */
+  --chart-1: oklch(0.52 0.12 240);           /* Ocean Blue */
+  --chart-2: oklch(0.65 0.12 165);           /* Emerald */
+  --chart-3: oklch(0.28 0.08 250);           /* Deep Navy */
+  --chart-4: oklch(0.78 0.14 130);           /* Lime Mint */
+  --chart-5: oklch(0.75 0.15 85);            /* Amber */
+
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.52 0.12 240);
+  --sidebar-primary-foreground: oklch(1 0 0);
   --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-accent-foreground: oklch(0.145 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
@@ -85,26 +107,41 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
+
+  /* Tranzkit Brand Colors - Dark Mode (slightly adjusted for better contrast) */
+  --brand-navy: oklch(0.35 0.10 250);        /* Lighter Deep Navy for dark mode */
+  --brand-ocean: oklch(0.60 0.14 240);       /* Brighter Ocean Blue */
+  --brand-emerald: oklch(0.70 0.14 165);     /* Brighter Emerald */
+  --brand-lime: oklch(0.82 0.16 130);        /* Brighter Lime Mint */
+
+  /* Semantic Colors mapped to brand colors - optimized for dark mode */
+  --primary: oklch(0.60 0.14 240);           /* Brighter Ocean Blue */
+  --primary-foreground: oklch(0.145 0 0);
+  --secondary: oklch(0.35 0.10 250);         /* Lighter Deep Navy */
   --secondary-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.70 0.14 165);            /* Brighter Emerald */
+  --accent-foreground: oklch(0.145 0 0);
+  --success: oklch(0.70 0.14 165);           /* Brighter Emerald */
+  --warning: oklch(0.78 0.16 85);            /* Brighter Amber */
+  --info: oklch(0.60 0.14 240);              /* Brighter Ocean Blue */
+
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
+  --ring: oklch(0.60 0.14 240);              /* Brighter Ocean Blue */
+
+  /* Chart colors using brand palette - optimized for dark mode */
+  --chart-1: oklch(0.60 0.14 240);           /* Brighter Ocean Blue */
+  --chart-2: oklch(0.70 0.14 165);           /* Brighter Emerald */
+  --chart-3: oklch(0.35 0.10 250);           /* Lighter Deep Navy */
+  --chart-4: oklch(0.82 0.16 130);           /* Brighter Lime Mint */
+  --chart-5: oklch(0.78 0.16 85);            /* Brighter Amber */
+
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary: oklch(0.60 0.14 240);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);

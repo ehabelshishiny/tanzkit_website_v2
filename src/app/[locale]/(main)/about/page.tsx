@@ -1,16 +1,18 @@
-import { HeroSection } from '@/components/sections/hero-section';
-import { OverviewSection } from '@/components/sections/overview-section';
+import { AboutHero } from '@/components/sections/about/about-hero';
+import { StorySection } from '@/components/sections/about/story-section';
+import { Timeline } from '@/components/sections/about/timeline';
+import { TeamGrid } from '@/components/sections/about/team-grid';
+import { CareersList } from '@/components/sections/about/careers-list';
 import { CTASection } from '@/components/sections/cta-section';
 
 export default function AboutPage() {
   return (
     <>
-      <HeroSection 
-        title="About Tranzkit"
-        subtitle="Our story, mission, and vision for transforming transportation"
-      />
-      <OverviewSection />
-      {/* Add Our Story, Mission & Vision, Team sections here */}
+      <AboutHero />
+      <StorySection />
+      <Timeline />
+      <TeamGrid />
+      <CareersList />
       <CTASection />
     </>
   );

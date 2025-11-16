@@ -9,7 +9,7 @@ export function OperatorsHeroSection() {
   const t = useTranslations('solutions.operatorsDrivers.hero');
 
   return (
-    <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900">
+    <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-primary via-primary/90 to-secondary">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -26,20 +26,18 @@ export function OperatorsHeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
               {t('title')}
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 leading-relaxed">
               {t('subtitle')}
             </p>
             <GradientButton
               href="/contact"
               size="lg"
-              gradient="#ffffff, #f8fafc"
-              hoverGradient="#f8fafc, #e2e8f0"
               icon={<ArrowRight className="w-5 h-5" />}
               iconPosition="right"
-              className="text-blue-900 font-semibold"
+              className="bg-background hover:bg-muted text-foreground font-semibold"
             >
               {t('cta')}
             </GradientButton>

@@ -12,22 +12,22 @@ export function TechnologySection() {
   const features = [
     {
       icon: <Brain className="w-8 h-8" />,
-      iconColor: '#3b82f6',
+      iconColor: 'hsl(var(--chart-1))',
       title: t('highlights.0')
     },
     {
       icon: <BarChart3 className="w-8 h-8" />,
-      iconColor: '#8b5cf6',
+      iconColor: 'hsl(var(--chart-4))',
       title: t('highlights.1')
     },
     {
       icon: <Shield className="w-8 h-8" />,
-      iconColor: '#10b981',
+      iconColor: 'hsl(var(--chart-2))',
       title: t('highlights.2')
     },
     {
       icon: <Globe className="w-8 h-8" />,
-      iconColor: '#f59e0b',
+      iconColor: 'hsl(var(--chart-5))',
       title: t('highlights.3')
     }
   ];

@@ -178,13 +178,13 @@ export function HeroSectionSolutions() {
         ctx.fill();
 
         // Node circle
-        ctx.fillStyle = node.type === 'hub' ? '#3b82f6' : '#60a5fa';
+        ctx.fillStyle = node.type === 'hub' ? 'hsl(var(--chart-1))' : 'hsl(var(--primary))';
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.type === 'hub' ? 20 : 15, 0, Math.PI * 2);
         ctx.fill();
 
         // Pulse ring
-        ctx.strokeStyle = 'rgba(59, 130, 246, 0.5)';
+        ctx.strokeStyle = 'hsl(var(--chart-1) / 0.5)';
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.arc(node.x, node.y, (node.type === 'hub' ? 20 : 15) + pulseSize, 0, Math.PI * 2);
@@ -192,7 +192,7 @@ export function HeroSectionSolutions() {
 
         // Label
         if (node.label) {
-          ctx.fillStyle = '#1e293b';
+          ctx.fillStyle = 'hsl(var(--foreground))';
           ctx.font = '14px Inter, sans-serif';
           ctx.textAlign = 'center';
           ctx.fillText(node.label, node.x, node.y + 40);
@@ -210,7 +210,7 @@ export function HeroSectionSolutions() {
             const y = fromNode.y + (toNode.y - fromNode.y) * packet.progress;
 
             // Draw packet
-            ctx.fillStyle = '#3b82f6';
+            ctx.fillStyle = 'hsl(var(--chart-1))';
             ctx.beginPath();
             ctx.arc(x, y, 4, 0, Math.PI * 2);
             ctx.fill();
@@ -260,18 +260,16 @@ export function HeroSectionSolutions() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span style={{ color: '#7CE3D8' }}>Smart</span>{' '}
-              <span style={{ color: '#5090F6' }}>Mobility</span>
-              <span className="text-slate-900">, Practical Results</span>
+              <span className="text-accent">Smart</span>{' '}
+              <span className="text-primary">Mobility</span>
+              <span className="text-foreground">, Practical Results</span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-600 mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
               {t('subtitle')}
             </p>
             <GradientButton
               href="#explore"
               size="lg"
-              gradient="linear-gradient(to right, #3b82f6, #2563eb)"
-              hoverGradient="linear-gradient(to right, #2563eb, #1d4ed8)"
               icon={<ArrowRight className="w-5 h-5" />}
               iconPosition="right"
             >

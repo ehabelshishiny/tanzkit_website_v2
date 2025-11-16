@@ -1,16 +1,16 @@
-import { HeroSection } from '@/components/sections/hero-section';
-import { OverviewSection } from '@/components/sections/overview-section';
+import { AppHero } from '@/components/sections/apps/app-hero';
+import { ScreenCarousel } from '@/components/sections/apps/screen-carousel';
+import { StepSection } from '@/components/sections/apps/step-section';
+import { DownloadButtons } from '@/components/sections/apps/download-buttons';
 import { CTASection } from '@/components/sections/cta-section';
 
 export default function AppsPage() {
   return (
     <>
-      <HeroSection 
-        title="Our Mobile Applications"
-        subtitle="Powerful apps for every user type in your transportation ecosystem"
-      />
-      <OverviewSection />
-      {/* Add app showcase sections here */}
+      <AppHero />
+      <ScreenCarousel />
+      <StepSection />
+      <DownloadButtons />
       <CTASection />
     </>
   );

@@ -36,7 +36,7 @@ export function AudienceCardsSection() {
           benefits={operatorsBenefits}
           ctaText={t('operators.cta')}
           ctaLink={`/${locale}/solutions/operators-drivers`}
-          gradient="linear-gradient(135deg, #3b82f6, #2563eb)"
+          gradient="from-primary/10 to-chart-1/10"
         />
 
         {/* Enterprises & Passengers Card */}
@@ -46,7 +46,7 @@ export function AudienceCardsSection() {
           benefits={enterprisesBenefits}
           ctaText={t('enterprises.cta')}
           ctaLink={`/${locale}/solutions/enterprises-passengers`}
-          gradient="linear-gradient(135deg, #8b5cf6, #7c3aed)"
+          gradient="from-chart-4/10 to-accent/10"
         />
       </div>
     </SectionContainer>

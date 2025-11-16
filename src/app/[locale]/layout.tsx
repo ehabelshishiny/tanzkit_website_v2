@@ -3,6 +3,9 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { locales } from '@/i18n';
+import { LenisProvider } from '@/components/providers/lenis-provider';
+import { ThemeProvider } from '@/components/providers/theme-provider';
+import { PageTransitionLayout } from '@/components/providers/page-transition-layout';
 import '../globals.css';
 
 const geistSans = Geist({
@@ -34,13 +37,28 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <html
+      lang={locale}
+      dir={locale === 'ar' ? 'rtl' : 'ltr'}
+      suppressHydrationWarning
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <LenisProvider>
+            <NextIntlClientProvider messages={messages}>
+              <PageTransitionLayout>
+                {children}
+              </PageTransitionLayout>
+            </NextIntlClientProvider>
+          </LenisProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,0 +1,227 @@
+{
+  "project": "Tranzkit Website",
+  "framework": "Next.js + TypeScript + App Router",
+  "style": "Tailwind + CSS variables + shadcn/ui",
+  "design_system": {
+    "base_components": "shadcn/ui",
+    "extended_components": [
+      "Supercharged Shadcn Components",
+      "Dice UI"
+    ],
+    "component_registry": "components.json"
+  },
+  "dependencies": {
+    "required": [
+      "next",
+      "react",
+      "react-dom",
+      "tailwindcss",
+      "class-variance-authority",
+      "lucide-react",
+      "shadcn-ui",
+      "motion",
+      "lenis"
+    ],
+    "optional": [
+      "gsap",
+      "@react-three/fiber",
+      "three",
+      "r3dy-ui",
+      "contentlayer",
+      "mdx"
+    ]
+  },
+  "providers": {
+    "global": [
+      "LenisProvider",
+      "ThemeProvider",
+      "PageTransitionLayout (AnimatePresence + Motion)"
+    ]
+  },
+  "folder_structure": {
+    "app": [
+      "layout.tsx",
+      "page.tsx",
+      "[locale]/layout.tsx"
+    ],
+    "components": [
+      "ui/* (shadcn)",
+      "layout/*",
+      "animations/*",
+      "navigation/*",
+      "3d/*",
+      "sections/*",
+      "providers/*"
+    ]
+  },
+  "global_elements": {
+    "nav": {
+      "component": "NavigationMenu",
+      "animation": "motion + layout transitions",
+      "responsive": "Sheet (shadcn)"
+    },
+    "footer": {
+      "component": "Custom footer layout",
+      "animation": "fade-up on scroll"
+    }
+  },
+  "pages": {
+    "home": {
+      "components": [
+        "HeroSection (motion reveal, stagger)",
+        "FeatureCards (grid + hover motion)",
+        "Tabs (shadcn)",
+        "Carousel (motion)",
+        "TestimonialCards",
+        "CTASection"
+      ],
+      "animations": [
+        "scroll-based reveal",
+        "hover micro-interactions",
+        "optional R3F device model"
+      ]
+    },
+    "solutions": {
+      "components": [
+        "Hero",
+        "Tabs or Accordion",
+        "FeatureGrid",
+        "CTA"
+      ],
+      "subpages": {
+        "for-enterprises-passengers": {
+          "components": [
+            "HeroSection (motion reveal)",
+            "AudienceSwitcherTabs (Enterprise <-> Passenger)",
+            "FeatureShowcaseBentoGrid",
+            "WorkflowStepper (Passenger journey and enterprise dashboard flow)",
+            "AppScreensCarousel",
+            "TestimonialStrip",
+            "CallToActionBanner"
+          ],
+          "animations": [
+            "staggered text reveal",
+            "tab layout transitions with Motion",
+            "hover micro-animations on cards",
+            "scroll-trigger reveal with whileInView",
+            "drag gestures on carousel",
+            "smooth scrolling via Lenis"
+          ],
+          "libraries": {
+            "required": [
+              "shadcn/ui",
+              "motion",
+              "lenis"
+            ],
+            "optional": [
+              "r3dy-ui (for 3D UI mockups if needed)",
+              "GSAP (for timeline animation, if complexity increases)"
+            ]
+          }
+        },
+        "for-operators-drivers": {
+          "components": [
+            "HeroSection",
+            "RoleSwitcherTabs (Operators <-> Drivers)",
+            "OperationsTimeline (horizontal scroll or step-by-step)",
+            "DashboardPreviewCarousel",
+            "MobileAppUIGrid",
+            "FAQAccordion",
+            "CTASection"
+          ],
+          "animations": [
+            "scroll-sync animated timeline",
+            "component reveal on view",
+            "accordion expand animations using Motion",
+            "hover tilt or parallax on cards",
+            "drag + swipe for carousels",
+            "optional: GSAP ScrollTrigger for timeline syncing"
+          ],
+          "libraries": {
+            "required": [
+              "shadcn/ui",
+              "motion",
+              "lenis"
+            ],
+            "optional": [
+              "GSAP + ScrollTrigger",
+              "React Three Fiber / r3dy-ui for interactive map or fleet visualization"
+            ]
+          }
+        }
+      }
+    },
+    "apps": {
+      "shared_components": [
+        "AppHero",
+        "ScreenCarousel",
+        "StepSection",
+        "DownloadButtons"
+      ],
+      "optional": [
+        "3D device preview",
+        "animated scroll-sync"
+      ]
+    },
+    "resources": {
+      "list_components": [
+        "CardList",
+        "FilterTabs"
+      ],
+      "detail_components": [
+        "MDX Content",
+        "Animated Headers"
+      ],
+      "dynamic_templates": [
+        "blog/[slug]",
+        "whitepapers/[slug]",
+        "case-studies/[slug]",
+        "faq"
+      ]
+    },
+    "pricing": {
+      "components": [
+        "PricingCards (grid)",
+        "ComparisonTable",
+        "CTA"
+      ],
+      "animations": [
+        "stagger reveal",
+        "hover highlight"
+      ]
+    },
+    "about": {
+      "components": [
+        "StorySection",
+        "Timeline (motion)",
+        "TeamGrid (Avatar + Card)",
+        "CareersList"
+      ],
+      "animations": [
+        "fade + scale",
+        "stagger children"
+      ]
+    },
+    "contact": {
+      "components": [
+        "Form (shadcn Form + RHF)",
+        "Map or Graphic (animated)",
+        "SocialLinks"
+      ],
+      "animations": [
+        "form reveal",
+        "hover states",
+        "submit success animation"
+      ]
+    }
+  },
+  "library_links": {
+    "shadcn": "https://ui.shadcn.com",
+    "supercharged_shadcn": "https://allshadcn.com/components/supercharged/",
+    "dice_ui": "https://www.diceui.com/docs",
+    "motion": "https://motion.dev/docs/react",
+    "lenis": "https://github.com/darkroomengineering/lenis",
+    "gsap-lenis-provider": "https://www.randomui.dev/docs/utilities/gsap-lenis-provider",
+    "r3dy_ui": "https://www.r3dyui.com/docs"
+  }
+}

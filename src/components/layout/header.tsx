@@ -6,8 +6,9 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from './language-switcher';
-import { NavDropdown } from './nav-dropdown';
+import { NavDropdown } from '../navigation/nav-dropdown';
 import { Logo } from './logo';
+import { ThemeToggle } from './theme-toggle';
 
 export function Header() {
   const t = useTranslations('nav');
@@ -79,8 +80,9 @@ export function Header() {
           ))}
         </div>
 
-        {/* Right Side - Language Switcher & CTA */}
+        {/* Right Side - Theme Toggle, Language Switcher & CTA */}
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <LanguageSwitcher />
           <Button className="hidden md:inline-flex">
             {t('contact')}

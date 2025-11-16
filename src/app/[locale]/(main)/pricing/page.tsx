@@ -1,14 +1,14 @@
-import { HeroSection } from '@/components/sections/hero-section';
+import { PricingHero } from '@/components/sections/pricing/pricing-hero';
+import { PricingCards } from '@/components/sections/pricing/pricing-cards';
+import { ComparisonTable } from '@/components/sections/pricing/comparison-table';
 import { CTASection } from '@/components/sections/cta-section';
 
 export default function PricingPage() {
   return (
     <>
-      <HeroSection 
-        title="Flexible Pricing Plans"
-        subtitle="Choose the perfect plan for your business needs"
-      />
-      {/* Add pricing cards here */}
+      <PricingHero />
+      <PricingCards />
+      <ComparisonTable />
       <CTASection />
     </>
   );
