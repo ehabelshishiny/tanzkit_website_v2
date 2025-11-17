@@ -255,7 +255,7 @@ All content is sourced from `documentation/solutions_page.md`, which provides:
 - **CTA**: "Book a Demo"
 
 #### Overview
-"Companies need to transport employees safely, efficiently, and cost-effectively. Passengers want timely, safe rides without uncertainty. Tranzkit meets both needs in a single platform — delivering insights, automation, and real-time updates for everyone."
+"Companies need to transport employees safely, efficiently, and cost-effectively. Passengers want timely, safe rides without uncertainty. Tranzkit meets both needs in a single platform - delivering insights, automation, and real-time updates for everyone."
 
 #### Features (4 Key Features)
 

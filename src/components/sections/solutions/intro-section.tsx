@@ -41,7 +41,7 @@ export function IntroSection() {
     >
       {/* Intro Text */}
       <div className="text-center mb-16">
-        <p className="text-xl md:text-2xl text-slate-700 leading-relaxed max-w-4xl mx-auto">
+        <p className="text-xl md:text-2xl text-slate-700 dark:text-gray-100 leading-relaxed max-w-4xl mx-auto">
           {t('intro.text')}
         </p>
       </div>

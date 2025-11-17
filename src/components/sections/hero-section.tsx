@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { useTheme } from 'next-themes';
 
 interface Vehicle {
   id: number;
@@ -45,6 +46,7 @@ interface HeroSectionProps {
 export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
   const t = useTranslations('home.hero');
   const tCommon = useTranslations('common');
+  const { theme } = useTheme();
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -57,10 +59,18 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [canvasSize, setCanvasSize] = useState({ width: 1200, height: 800 });
+  const [mounted, setMounted] = useState(false);
   const animationRef = useRef<number | null>(null);
   const mousePositionRef = useRef({ x: 0, y: 0 });
   const carImageRef = useRef<HTMLImageElement | null>(null);
   const carImageRedRef = useRef<HTMLImageElement | null>(null);
+
+  // Track mounted state for theme detection
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && theme === 'dark';
 
   // Load car SVGs
   useEffect(() => {
@@ -318,8 +328,8 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     ctx.scale(dpr, dpr);
 
     const animate = () => {
-      // Clear canvas with light background
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+      // Clear canvas with theme-adaptive background
+      ctx.fillStyle = isDark ? 'rgba(20, 20, 30, 0.95)' : 'rgba(255, 255, 255, 0.95)';
       ctx.fillRect(0, 0, canvasSize.width, canvasSize.height);
 
       // Draw background pattern (road network)
@@ -337,7 +347,9 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
           const pulse = Math.sin(conn.progress) * 0.3 + 0.7; // 0.4 to 1.0
 
-          ctx.strokeStyle = `rgba(94, 234, 212, ${0.1 * pulse})`; // teal-300 with varying opacity
+          ctx.strokeStyle = isDark
+            ? `rgba(45, 212, 191, ${0.15 * pulse})`
+            : `rgba(94, 234, 212, ${0.1 * pulse})`; // teal with varying opacity
           ctx.lineWidth = 1;
           ctx.setLineDash([2, 4]);
           ctx.beginPath();
@@ -357,15 +369,17 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
         const floatY = Math.cos(node.floatPhase * 0.7) * 2;
         const pulseSize = node.size * (0.8 + Math.sin(node.pulsePhase) * 0.2);
 
-        ctx.fillStyle = `rgba(94, 234, 212, ${0.3 + Math.sin(node.pulsePhase) * 0.2})`; // teal-300
-        ctx.shadowColor = 'rgb(94, 234, 212)';
+        ctx.fillStyle = isDark
+          ? `rgba(45, 212, 191, ${0.4 + Math.sin(node.pulsePhase) * 0.2})`
+          : `rgba(94, 234, 212, ${0.3 + Math.sin(node.pulsePhase) * 0.2})`; // teal
+        ctx.shadowColor = isDark ? 'rgb(45, 212, 191)' : 'rgb(94, 234, 212)';
         ctx.shadowBlur = 8;
         ctx.beginPath();
         ctx.arc(node.x + floatX, node.y + floatY, pulseSize, 0, Math.PI * 2);
         ctx.fill();
 
         // Inner dot
-        ctx.fillStyle = `rgba(255, 255, 255, 0.8)`;
+        ctx.fillStyle = isDark ? `rgba(200, 200, 220, 0.8)` : `rgba(255, 255, 255, 0.8)`;
         ctx.shadowBlur = 0;
         ctx.beginPath();
         ctx.arc(node.x + floatX, node.y + floatY, pulseSize * 0.3, 0, Math.PI * 2);
@@ -387,12 +401,12 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
         drawn.add(pathId);
 
         ctx.save();
-        ctx.strokeStyle = 'rgba(148, 163, 184, 0.25)';
+        ctx.strokeStyle = isDark ? 'rgba(100, 116, 139, 0.4)' : 'rgba(148, 163, 184, 0.25)';
         ctx.lineWidth = 4;
         ctx.lineCap = 'round';
         ctx.setLineDash([16, 12]);
         ctx.lineWidth = 3;
-        ctx.strokeStyle = 'rgba(148,163,184,0.3)';
+        ctx.strokeStyle = isDark ? 'rgba(100, 116, 139, 0.5)' : 'rgba(148,163,184,0.3)';
         ctx.beginPath();
         ctx.moveTo(path[0].x, path[0].y);
         for (let i = 1; i < path.length; i++) {
@@ -474,7 +488,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [vehicles, networkNodes, canvasSize, backgroundPattern]);
+  }, [vehicles, networkNodes, canvasSize, backgroundPattern, isDark]);
 
   // Scroll handler
   useEffect(() => {
@@ -517,7 +531,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
           <div className="mb-8">
             <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
               <span
-                className={`inline-block transition-all duration-1000 ease-out text-black ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                className={`inline-block transition-all duration-1000 ease-out text-foreground ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
                 style={{ transitionDelay: '0.3s' }}
               >
                 {title || t('title')}
@@ -533,7 +547,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
               <br />
             </h1>
             <h2
-              className={`text-xl md:text-2xl text-gray-500 mt-6 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+              className={`text-xl md:text-2xl text-muted-foreground mt-6 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
               style={{ transitionDelay: '1.2s' }}
             >
               {subtitle || t('subtitle')}
@@ -545,12 +559,12 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
             className={`flex flex-col sm:flex-row gap-6 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             style={{ transitionDelay: '1.8s' }}
           >
-            <button className="group relative px-8 py-4 bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-teal-500/50 whitespace-nowrap animate-pulse hover:animate-none cursor-pointer">
+            <button className="group relative px-8 py-4 bg-gradient-to-r from-accent to-primary text-primary-foreground font-semibold rounded-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-accent/50 whitespace-nowrap animate-pulse hover:animate-none cursor-pointer">
               <span className="relative z-10 transition-all duration-300">{cta || t('cta')}</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-accent/80 to-primary/80 opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
             </button>
 
-            <button className="group relative px-8 py-4 border-2 border-teal-400 text-teal-400 font-semibold rounded-lg transition-all duration-500 hover:bg-gradient-to-r hover:from-teal-400 hover:to-blue-500 hover:text-slate-900 hover:scale-105 hover:shadow-lg hover:shadow-teal-400/30 whitespace-nowrap overflow-hidden cursor-pointer">
+            <button className="group relative px-8 py-4 border-2 border-accent text-accent font-semibold rounded-lg transition-all duration-500 hover:bg-gradient-to-r hover:from-accent hover:to-primary hover:text-primary-foreground hover:scale-105 hover:shadow-lg hover:shadow-accent/30 whitespace-nowrap overflow-hidden cursor-pointer">
               <span className="flex items-center gap-2 relative z-10 transition-all duration-300">
                 {tCommon('learnMore')}
               </span>

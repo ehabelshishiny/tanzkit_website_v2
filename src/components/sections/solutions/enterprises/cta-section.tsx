@@ -10,7 +10,7 @@ export function EnterprisesCtaSection() {
   const t = useTranslations('solutions.enterprisesPassengers.cta');
 
   return (
-    <div style={{ background: 'linear-gradient(215deg, #0F2E63 0%, #1F6FB2 35%, #27B889 68%, #7ED977 100%)' }}>
+    <div className="bg-background dark:bg-card">
       <SectionContainer
         background="transparent"
         padding="xl"
@@ -24,11 +24,11 @@ export function EnterprisesCtaSection() {
           className="text-center"
         >
           {/* H2: Sora SemiBold 36px/42px */}
-          <h2 className="text-white mb-6">
+          <h2 className="text-foreground mb-6">
             {t('title')}
           </h2>
           {/* Subheading: Space Grotesk Medium 18px/24px */}
-          <p className="subheading text-white mb-10 max-w-3xl mx-auto opacity-90">
+          <p className="subheading text-muted-foreground mb-10 max-w-3xl mx-auto">
             {t('subtitle')}
           </p>
           <GradientButton
@@ -36,7 +36,7 @@ export function EnterprisesCtaSection() {
             size="lg"
             icon={<ArrowRight className="w-5 h-5" />}
             iconPosition="right"
-            className="bg-white hover:bg-[#F1F5F9] text-[#0F2E63] button-text transition-colors duration-300"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground button-text transition-colors duration-300"
           >
             {t('button')}
           </GradientButton>

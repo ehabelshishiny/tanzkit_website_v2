@@ -10,10 +10,17 @@ interface ImpactTileProps {
   prefix?: string;
   label: string;
   icon: LucideIcon;
-  backgroundColor: string;
+  variant?: 'primary' | 'secondary' | 'accent' | 'success';
   animateOnScroll?: boolean;
   delay?: number;
 }
+
+const variantClasses = {
+  primary: 'bg-primary',
+  secondary: 'bg-secondary',
+  accent: 'bg-accent',
+  success: 'bg-success',
+};
 
 export function ImpactTile({
   value,
@@ -21,7 +28,7 @@ export function ImpactTile({
   prefix = '',
   label,
   icon: Icon,
-  backgroundColor,
+  variant = 'primary',
   animateOnScroll = true,
   delay = 0,
 }: ImpactTileProps) {
@@ -56,11 +63,10 @@ export function ImpactTile({
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6, delay }}
       whileHover={{ scale: 1.05 }}
-      className="relative rounded-2xl p-8 md:p-10 text-center overflow-hidden group cursor-default"
-      style={{ backgroundColor }}
+      className={`relative rounded-2xl p-8 md:p-10 text-center overflow-hidden group cursor-default ${variantClasses[variant]}`}
     >
       {/* Dot pattern overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-5"
         style={{
           backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
@@ -78,11 +84,11 @@ export function ImpactTile({
           transition={{ duration: 0.5, delay: delay + 0.2, type: 'spring', bounce: 0.5 }}
           className="mb-6"
         >
-          <Icon className="w-8 h-8 md:w-10 md:h-10 text-white mx-auto" />
+          <Icon className="w-8 h-8 md:w-10 md:h-10 text-primary-foreground mx-auto" />
         </motion.div>
 
         {/* Metric Value */}
-        <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4">
+        <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary-foreground mb-4">
           {prefix}
           {typeof value === 'number' && animateOnScroll ? (
             <span ref={displayValue}>0</span>
@@ -93,7 +99,7 @@ export function ImpactTile({
         </div>
 
         {/* Label */}
-        <p className="text-white text-lg md:text-xl font-medium opacity-90">
+        <p className="text-primary-foreground text-lg md:text-xl font-medium opacity-90">
           {label}
         </p>
       </div>

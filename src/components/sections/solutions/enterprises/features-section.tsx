@@ -15,7 +15,7 @@ export function EnterprisesFeaturesSection() {
       maxWidth="2xl"
     >
       <div className="text-center mb-16">
-        <p className="subheading text-[#334155] max-w-4xl mx-auto">
+        <p className="subheading text-[#334155] dark:text-gray-100 max-w-4xl mx-auto">
           {t('overview.text')}
         </p>
       </div>

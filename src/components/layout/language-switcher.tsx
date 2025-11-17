@@ -21,7 +21,7 @@ export function LanguageSwitcher() {
       variant="ghost"
       size="sm"
       onClick={switchLocale}
-      className="gap-2"
+      className="gap-2 hover:bg-transparent dark:hover:bg-transparent hover:text-primary transition-colors"
     >
       <Globe className="h-4 w-4" />
       {locale === 'en' ? 'العربية' : 'English'}

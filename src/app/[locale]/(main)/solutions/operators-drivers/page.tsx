@@ -17,9 +17,9 @@ export default function OperatorsDriversPage() {
       <DashboardPreviewCarousel />
       <MobileAppUIGrid />
       <OperatorsFeaturesSection />
-      <FAQAccordion />
       <OperatorsAiImpactSection />
       <OperatorsCtaSection />
+      <FAQAccordion />
     </main>
   );
 }

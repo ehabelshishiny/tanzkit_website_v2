@@ -50,7 +50,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="container flex h-16 items-center px-6 md:px-8">
+      <nav className="container flex h-16 items-center px-6 md:px-8" dir="ltr">
         {/* Logo - Left Side */}
         <div className="flex items-center">
           <Link href={`/${locale}`} className="flex items-center">
@@ -74,7 +74,7 @@ export function Header() {
                 href={item.href}
                 className="text-sm font-medium transition-colors hover:text-primary"
               >
-                {item.name}
+                <span dir="rtl">{item.name}</span>
               </Link>
             )
           ))}
@@ -109,7 +109,7 @@ export function Header() {
                   className="block py-2 text-sm font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {item.name}
+                  <span dir="rtl">{item.name}</span>
                 </Link>
                 {/* Mobile Subpages */}
                 {item.subPages.length > 0 && (

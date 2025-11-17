@@ -26,10 +26,10 @@ export function OperatorsHeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground dark:text-white mb-6 leading-tight">
               {t('title')}
             </h1>
-            <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-primary-foreground/90 dark:text-white/90 mb-8 leading-relaxed">
               {t('subtitle')}
             </p>
             <GradientButton

@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import { useTheme } from 'next-themes';
 import { GradientButton } from '@/components/ui/gradient-button';
 import { ArrowRight } from 'lucide-react';
 
@@ -28,12 +29,22 @@ interface DataPacket {
 
 export function HeroSectionSolutions() {
   const t = useTranslations('solutions.main.hero');
+  const locale = useLocale();
+  const { theme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [networkNodes, setNetworkNodes] = useState<NetworkNode[]>([]);
   const [dataPackets, setDataPackets] = useState<DataPacket[]>([]);
   const [canvasSize, setCanvasSize] = useState({ width: 1200, height: 800 });
+  const [mounted, setMounted] = useState(false);
   const animationRef = useRef<number | null>(null);
+
+  // Track mounted state for theme detection
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && theme === 'dark';
 
   // Initialize canvas size
   useEffect(() => {
@@ -55,7 +66,8 @@ export function HeroSectionSolutions() {
   // Initialize network visualization
   useEffect(() => {
     const { width, height } = canvasSize;
-    const centerX = width * 0.75;
+    // RTL Support: Position network on left for Arabic, right for English
+    const centerX = locale === 'ar' ? width * 0.25 : width * 0.75;
     const centerY = height * 0.45;
     
     const newNodes: NetworkNode[] = [
@@ -154,7 +166,7 @@ export function HeroSectionSolutions() {
         node.connections.forEach(targetId => {
           const target = networkNodes.find(n => n.id === targetId);
           if (target) {
-            ctx.strokeStyle = 'rgba(59, 130, 246, 0.2)';
+            ctx.strokeStyle = isDark ? 'rgba(96, 165, 250, 0.3)' : 'rgba(59, 130, 246, 0.2)';
             ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.moveTo(node.x, node.y);
@@ -170,8 +182,10 @@ export function HeroSectionSolutions() {
 
         // Outer glow
         const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 40);
-        gradient.addColorStop(0, node.type === 'hub' ? 'rgba(59, 130, 246, 0.3)' : 'rgba(59, 130, 246, 0.15)');
-        gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+        gradient.addColorStop(0, node.type === 'hub'
+          ? (isDark ? 'rgba(96, 165, 250, 0.4)' : 'rgba(59, 130, 246, 0.3)')
+          : (isDark ? 'rgba(96, 165, 250, 0.25)' : 'rgba(59, 130, 246, 0.15)'));
+        gradient.addColorStop(1, isDark ? 'rgba(96, 165, 250, 0)' : 'rgba(59, 130, 246, 0)');
         ctx.fillStyle = gradient;
         ctx.beginPath();
         ctx.arc(node.x, node.y, 40, 0, Math.PI * 2);
@@ -237,11 +251,25 @@ export function HeroSectionSolutions() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [networkNodes, canvasSize]);
+  }, [networkNodes, canvasSize, isDark]);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
-      {/* Canvas Background */}
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Animated Gradient Background with Brand Colors */}
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-[oklch(0.95_0.02_250)] via-[oklch(0.92_0.04_240)] to-[oklch(0.90_0.03_165)] dark:from-[oklch(0.15_0.04_250)] dark:via-[oklch(0.20_0.06_240)] dark:to-[oklch(0.18_0.04_165)] animate-gradient-shift"
+        style={{ backgroundSize: '200% 200%' }}
+      />
+
+      {/* Floating Orbs - Brand Color Accents */}
+      <div className="absolute inset-0 opacity-30 dark:opacity-20 pointer-events-none">
+        {/* Ocean Blue Orb */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[oklch(0.52_0.12_240)]/40 dark:bg-[oklch(0.60_0.14_240)]/50 rounded-full blur-3xl animate-float-slow" />
+        {/* Emerald Orb */}
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[oklch(0.65_0.12_165)]/40 dark:bg-[oklch(0.70_0.14_165)]/50 rounded-full blur-3xl animate-float-slower" />
+      </div>
+
+      {/* Canvas Background - Network Visualization */}
       <div ref={containerRef} className="absolute inset-0">
         <canvas
           ref={canvasRef}
@@ -252,7 +280,7 @@ export function HeroSectionSolutions() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-20">
+      <div className="relative z-10 container mx-auto px-6 md:px-8 lg:px-12 py-20">
         <div className="max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -279,8 +307,8 @@ export function HeroSectionSolutions() {
         </div>
       </div>
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/40 to-transparent pointer-events-none" />
+      {/* Gradient Overlay - Adjusted for Better Contrast */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/30 to-transparent dark:from-slate-950/40 dark:via-slate-950/20 dark:to-transparent pointer-events-none" />
     </section>
   );
 }

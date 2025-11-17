@@ -9,9 +9,8 @@ export function Footer() {
 
   const footerLinks = {
     solutions: [
-      { name: 'For Drivers & Passengers', href: `/${locale}/solutions#drivers` },
-      { name: 'For Enterprises', href: `/${locale}/solutions#enterprises` },
-      { name: 'For Transport Operators', href: `/${locale}/solutions#operators` },
+      { name: 'Enterprises & Passengers', href: `/${locale}/solutions/enterprises-passengers` },
+      { name: 'Operators & Drivers', href: `/${locale}/solutions/operators-drivers` },
     ],
     resources: [
       { name: 'Help Center', href: `/${locale}/resources/help-center` },

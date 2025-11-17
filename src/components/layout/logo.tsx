@@ -6,36 +6,42 @@ interface LogoProps {
 
 export function Logo({ className = '' }: LogoProps) {
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
-      {/* Tranzkit Icon */}
-      <Image
-        src="/assets/icon/Tranzkit_icon_svg.svg"
-        alt="Tranzkit Icon"
-        width={32}
-        height={32}
-        className="w-8 h-8"
-        priority
-      />
+    <div className={`flex items-center justify-start gap-3 ${className}`}>
+      {/* Tranzkit Icon - Increased size for better visibility and balance */}
+      <div className="flex items-center justify-center h-20">
+        <Image
+          src="/assets/icon/Tranzkit_icon_svg.svg"
+          alt="Tranzkit Icon"
+          width={44}
+          height={44}
+          className="w-8 h-8"
+          priority
+        />
+      </div>
 
-      {/* Tranzkit Wordmark - Light Mode */}
-      <Image
-        src="/assets/logo/color_transparent.svg"
-        alt="Tranzkit"
-        width={120}
-        height={32}
-        className="h-6 w-auto dark:hidden"
-        priority
-      />
+      {/* Tranzkit Wordmark - Light Mode - Increased size for prominence */}
+      <div className="flex items-center justify-center h-20">
+        <Image
+          src="/assets/logo/color_transparent.svg"
+          alt="Tranzkit"
+          width={210}
+          height={56}
+          className="h-24 w-auto dark:hidden"
+          priority
+        />
+      </div>
 
-      {/* Tranzkit Wordmark - Dark Mode */}
-      <Image
-        src="/assets/logo/white_transparent.svg"
-        alt="Tranzkit"
-        width={120}
-        height={32}
-        className="h-6 w-auto hidden dark:block"
-        priority
-      />
+      {/* Tranzkit Wordmark - Dark Mode - Increased size for prominence */}
+      <div className="flex items-center justify-center h-20">
+        <Image
+          src="/assets/logo/white_transparent.svg"
+          alt="Tranzkit"
+          width={210}
+          height={56}
+          className="h-24 w-auto hidden dark:block"
+          priority
+        />
+      </div>
     </div>
   );
 }

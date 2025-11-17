@@ -12,6 +12,9 @@ export function EnterprisesHeroSection() {
     <section
       className="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-[oklch(var(--brand-navy))] via-[oklch(var(--brand-ocean))] via-[oklch(var(--brand-emerald))] to-[oklch(var(--brand-lime))]"
     >
+      {/* Dark overlay to ensure text visibility in both themes */}
+      <div className="absolute inset-0 bg-black/40 dark:bg-slate-800/60" />
+
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -29,11 +32,11 @@ export function EnterprisesHeroSection() {
             transition={{ duration: 0.8 }}
           >
             {/* H1: Sora SemiBold 48px/56px (responsive: 32px/40px on mobile) */}
-            <h1 className="text-primary-foreground mb-6">
+            <h1 className="text-white mb-6 drop-shadow-lg">
               {t('title')}
             </h1>
             {/* Subheading: Space Grotesk Medium 18px/24px */}
-            <p className="subheading text-primary-foreground mb-8 opacity-90">
+            <p className="subheading text-white/95 mb-8 drop-shadow-lg">
               {t('subtitle')}
             </p>
             <GradientButton
@@ -41,7 +44,7 @@ export function EnterprisesHeroSection() {
               size="lg"
               icon={<ArrowRight className="w-5 h-5" />}
               iconPosition="right"
-              className="bg-secondary hover:bg-primary text-secondary-foreground button-text transition-colors duration-300"
+              className="bg-white hover:bg-white/90 text-secondary button-text transition-colors duration-300"
             >
               {t('cta')}
             </GradientButton>

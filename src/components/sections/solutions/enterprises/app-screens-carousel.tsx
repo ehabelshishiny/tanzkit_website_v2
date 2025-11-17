@@ -77,21 +77,21 @@ export function AppScreensCarousel() {
               <Card className="overflow-hidden h-full">
                 <div className="aspect-[9/16] bg-gradient-to-br from-primary/20 via-primary/10 to-background flex items-center justify-center relative group">
                   <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-                  <div className="text-center z-10 p-6">
-                    <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-background/80 backdrop-blur-sm flex items-center justify-center shadow-lg">
-                      <Smartphone className="w-10 h-10 text-primary" />
+                  <div className="text-center z-10 p-4">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-background/80 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                      <Smartphone className="w-8 h-8 text-primary" />
                     </div>
-                    <div className="inline-block px-4 py-2 bg-primary/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
+                    <div className="inline-block px-3 py-1.5 bg-primary/20 backdrop-blur-sm rounded-full text-xs font-medium mb-3">
                       {screen.category}
                     </div>
-                    <div className="text-6xl font-bold text-primary/20">
+                    <div className="text-5xl font-bold text-primary/20">
                       {screen.id}
                     </div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">{screen.title}</h3>
-                  <p className="text-sm text-muted-foreground">
+                <div className="p-4">
+                  <h3 className="font-semibold text-base mb-1.5">{screen.title}</h3>
+                  <p className="text-xs text-muted-foreground">
                     {screen.description}
                   </p>
                 </div>

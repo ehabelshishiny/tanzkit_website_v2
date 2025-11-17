@@ -16,7 +16,7 @@ const features = [
     icon: Shield,
     title: 'Enterprise Security',
     description: 'Bank-level encryption and compliance certifications',
-    size: 'medium'
+    size: 'large'
   },
   {
     icon: Zap,
@@ -40,7 +40,7 @@ const features = [
     icon: Clock,
     title: '24/7 Operations',
     description: 'Round-the-clock support and monitoring',
-    size: 'large'
+    size: 'full'
   }
 ];
 
@@ -58,46 +58,132 @@ export function FeatureShowcaseBentoGrid() {
         </div>
       </ScrollReveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature, index) => (
-          <ScrollReveal
-            key={index}
-            delay={index * 0.1}
-            className={
-              feature.size === 'large'
-                ? 'md:col-span-2 lg:col-span-2'
-                : 'md:col-span-1'
-            }
-          >
+      <div className="flex flex-col gap-6">
+        {/* Row 1: 65% / 35% */}
+        <div className="flex flex-col md:flex-row md:items-stretch gap-6">
+          <ScrollReveal delay={0} className="flex-[60] min-w-0">
             <HoverTilt>
               <Card className="p-8 h-full bg-gradient-to-br from-background to-muted/20 border-2 hover:border-primary/50 transition-colors">
                 <div className="flex flex-col h-full">
                   <div className="p-4 bg-primary/10 rounded-lg w-fit mb-4">
-                    <feature.icon className="w-8 h-8 text-primary" />
+                    <BarChart3 className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
+                  <h3 className="text-2xl font-bold mb-3">{features[0].title}</h3>
                   <p className="text-muted-foreground flex-grow">
-                    {feature.description}
+                    {features[0].description}
                   </p>
-                  {feature.size === 'large' && (
-                    <div className="mt-6 pt-6 border-t">
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-green-500" />
-                          <span>Active</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-blue-500" />
-                          <span>Enterprise Ready</span>
-                        </div>
+                  <div className="mt-6 pt-6 border-t">
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-success" />
+                        <span>Active</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-primary" />
+                        <span>Enterprise Ready</span>
                       </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               </Card>
             </HoverTilt>
           </ScrollReveal>
-        ))}
+          <ScrollReveal delay={0.1} className="flex-[40] min-w-0">
+            <HoverTilt>
+              <Card className="p-8 h-full bg-gradient-to-br from-background to-muted/20 border-2 hover:border-primary/50 transition-colors">
+                <div className="flex flex-col h-full">
+                  <div className="p-4 bg-primary/10 rounded-lg w-fit mb-4">
+                    <Shield className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">{features[1].title}</h3>
+                  <p className="text-muted-foreground flex-grow">
+                    {features[1].description}
+                  </p>
+                  <div className="mt-6 pt-6 border-t">
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-success" />
+                        <span>Active</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-primary" />
+                        <span>Enterprise Ready</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </HoverTilt>
+          </ScrollReveal>
+        </div>
+
+        {/* Row 2: 45% / 55% */}
+        <div className="flex flex-col md:flex-row gap-6">
+          <ScrollReveal delay={0.2} className="flex-[45] min-w-0">
+            <HoverTilt>
+              <Card className="p-8 h-full bg-gradient-to-br from-background to-muted/20 border-2 hover:border-primary/50 transition-colors">
+                <div className="flex flex-col h-full">
+                  <div className="p-4 bg-primary/10 rounded-lg w-fit mb-4">
+                    <Zap className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">{features[2].title}</h3>
+                  <p className="text-muted-foreground flex-grow">
+                    {features[2].description}
+                  </p>
+                </div>
+              </Card>
+            </HoverTilt>
+          </ScrollReveal>
+          <ScrollReveal delay={0.3} className="flex-[55] min-w-0">
+            <HoverTilt>
+              <Card className="p-8 h-full bg-gradient-to-br from-background to-muted/20 border-2 hover:border-primary/50 transition-colors">
+                <div className="flex flex-col h-full">
+                  <div className="p-4 bg-primary/10 rounded-lg w-fit mb-4">
+                    <Users className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">{features[3].title}</h3>
+                  <p className="text-muted-foreground flex-grow">
+                    {features[3].description}
+                  </p>
+                </div>
+              </Card>
+            </HoverTilt>
+          </ScrollReveal>
+        </div>
+
+        {/* Row 3: 60% / 40% */}
+        <div className="flex flex-col md:flex-row gap-6">
+          <ScrollReveal delay={0.4} className="flex-[60] min-w-0">
+            <HoverTilt>
+              <Card className="p-8 h-full bg-gradient-to-br from-background to-muted/20 border-2 hover:border-primary/50 transition-colors">
+                <div className="flex flex-col h-full">
+                  <div className="p-4 bg-primary/10 rounded-lg w-fit mb-4">
+                    <Globe className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">{features[4].title}</h3>
+                  <p className="text-muted-foreground flex-grow">
+                    {features[4].description}
+                  </p>
+                </div>
+              </Card>
+            </HoverTilt>
+          </ScrollReveal>
+          <ScrollReveal delay={0.5} className="flex-[40] min-w-0">
+            <HoverTilt>
+              <Card className="p-8 h-full bg-gradient-to-br from-background to-muted/20 border-2 hover:border-primary/50 transition-colors">
+                <div className="flex flex-col h-full">
+                  <div className="p-4 bg-primary/10 rounded-lg w-fit mb-4">
+                    <Clock className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">{features[5].title}</h3>
+                  <p className="text-muted-foreground flex-grow">
+                    {features[5].description}
+                  </p>
+                </div>
+              </Card>
+            </HoverTilt>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   );

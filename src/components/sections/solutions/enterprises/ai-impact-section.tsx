@@ -2,7 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import { SectionContainer } from '@/components/ui/section-container';
-import { ImpactTile } from './impact-tile';
+import { SectionHeader } from '@/components/ui/section-header';
+import { FramerMetricCard } from '../operators/framer-metric-card';
 import { Brain, TrendingDown, Clock, Heart, Route } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -24,30 +25,27 @@ export function EnterprisesAiImpactSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="w-32 h-32 mx-auto md:mx-0 rounded-full flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg, #0F2E63 0%, #1F6FB2 50%, #27B889 100%)' }}
+              className="w-32 h-32 mx-auto md:mx-0 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center"
             >
-              <Brain className="w-16 h-16 text-white" />
+              <Brain className="w-16 h-16 text-white dark:text-primary-foreground" />
             </motion.div>
           </div>
           <div className="flex-[2]">
-            {/* H2: Sora SemiBold 36px/42px */}
-            <div className="text-left mb-6">
-              <h2 className="text-white">{t('aiAdvantage.title')}</h2>
-            </div>
-            {/* Body text: Inter Regular 16px/24px */}
-            <p className="body-text text-slate-300 mt-6">
+            <SectionHeader
+              title={t('aiAdvantage.title')}
+              alignment="left"
+              titleSize="lg"
+              className="text-foreground"
+            />
+            <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mt-6">
               {t('aiAdvantage.description')}
             </p>
           </div>
         </div>
       </SectionContainer>
 
-      {/* Impact Metrics Section - Bold Impact Tiles */}
-      <section
-        className="relative py-20 md:py-28 overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #0F2E63 0%, #1F6FB2 100%)' }}
-      >
+      {/* Impact Metrics Section - Advanced Framer Motion */}
+      <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-accent via-primary to-secondary">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -65,43 +63,39 @@ export function EnterprisesAiImpactSection() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-white">{t('impact.title')}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight text-primary-foreground dark:text-gray-100">{t('impact.title')}</h2>
           </motion.div>
 
-          {/* Impact Tiles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <ImpactTile
+          {/* Impact Cards Grid - 2x2 Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <FramerMetricCard
               value={25}
               suffix="%"
               label={t('impact.metrics.0.label')}
               icon={TrendingDown}
-              backgroundColor="#0F2E63"
-              animateOnScroll
+              variant="secondary"
               delay={0}
             />
-            <ImpactTile
+            <FramerMetricCard
               value={t('impact.metrics.1.value')}
               label={t('impact.metrics.1.label')}
               icon={Clock}
-              backgroundColor="#1F6FB2"
-              animateOnScroll={false}
-              delay={0.1}
+              variant="primary"
+              delay={0.15}
             />
-            <ImpactTile
+            <FramerMetricCard
               value={t('impact.metrics.2.value')}
               label={t('impact.metrics.2.label')}
               icon={Heart}
-              backgroundColor="#27B889"
-              animateOnScroll={false}
-              delay={0.2}
+              variant="accent"
+              delay={0.3}
             />
-            <ImpactTile
+            <FramerMetricCard
               value={t('impact.metrics.3.value')}
               label={t('impact.metrics.3.label')}
               icon={Route}
-              backgroundColor="#7ED977"
-              animateOnScroll={false}
-              delay={0.3}
+              variant="success"
+              delay={0.45}
             />
           </div>
         </div>
