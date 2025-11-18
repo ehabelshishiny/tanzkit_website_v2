@@ -15,7 +15,9 @@
     "startFreeTrial": "Start Free Trial",
     "contactUs": "Contact Us",
     "readMore": "Read More",
-    "viewAll": "View All"
+    "viewAll": "View All",
+    "redirecting": "Redirecting to Application...",
+    "preparingTrial": "Please wait while we prepare your trial experience"
   },
   "home": {
     "hero": {

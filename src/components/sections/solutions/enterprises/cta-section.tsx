@@ -2,9 +2,9 @@
 
 import { useTranslations } from 'next-intl';
 import { SectionContainer } from '@/components/ui/section-container';
-import { GradientButton } from '@/components/ui/gradient-button';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 
 export function EnterprisesCtaSection() {
   const t = useTranslations('solutions.enterprisesPassengers.cta');
@@ -31,15 +31,13 @@ export function EnterprisesCtaSection() {
           <p className="subheading text-muted-foreground mb-10 max-w-3xl mx-auto">
             {t('subtitle')}
           </p>
-          <GradientButton
-            href="/contact"
+          <TrialCTAButton
+            variant="secondary"
             size="lg"
             icon={<ArrowRight className="w-5 h-5" />}
             iconPosition="right"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground button-text transition-colors duration-300"
-          >
-            {t('button')}
-          </GradientButton>
+            className="bg-primary hover:bg-primary/90 text-primary-foreground"
+          />
         </motion.div>
       </SectionContainer>
     </div>

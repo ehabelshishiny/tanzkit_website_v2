@@ -6,6 +6,7 @@ import { locales } from '@/i18n';
 import { LenisProvider } from '@/components/providers/lenis-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { PageTransitionLayout } from '@/components/providers/page-transition-layout';
+import { Toaster } from 'sonner';
 import '../globals.css';
 
 const geistSans = Geist({
@@ -58,6 +59,7 @@ export default async function LocaleLayout({
               </PageTransitionLayout>
             </NextIntlClientProvider>
           </LenisProvider>
+          <Toaster position="top-right" richColors />
         </ThemeProvider>
       </body>
     </html>

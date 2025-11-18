@@ -9,6 +9,7 @@ import { LanguageSwitcher } from './language-switcher';
 import { NavDropdown } from '../navigation/nav-dropdown';
 import { Logo } from './logo';
 import { ThemeToggle } from './theme-toggle';
+import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 
 export function Header() {
   const t = useTranslations('nav');
@@ -59,7 +60,7 @@ export function Header() {
         </div>
 
         {/* Desktop Navigation - Centered */}
-        <div className="hidden md:flex md:gap-6 flex-1 justify-center">
+        <div className={`hidden md:flex md:gap-6 flex-1 justify-center ${locale === 'ar' ? 'flex-row-reverse' : ''}`}>
           {navigation.map((item) => (
             item.subPages.length > 0 ? (
               <NavDropdown
@@ -74,7 +75,7 @@ export function Header() {
                 href={item.href}
                 className="text-sm font-medium transition-colors hover:text-primary"
               >
-                <span dir="rtl">{item.name}</span>
+                {item.name}
               </Link>
             )
           ))}
@@ -84,9 +85,9 @@ export function Header() {
         <div className="flex items-center gap-4">
           <ThemeToggle />
           <LanguageSwitcher />
-          <Button className="hidden md:inline-flex">
-            {t('contact')}
-          </Button>
+          <div className="hidden md:inline-flex">
+            <TrialCTAButton variant="primary" size="lg" />
+          </div>
 
           {/* Mobile menu button */}
           <button
@@ -101,7 +102,7 @@ export function Header() {
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t">
-          <div className="container py-4 space-y-3 px-6">
+          <div className={`container py-4 px-6 ${locale === 'ar' ? 'flex flex-col-reverse space-y-reverse space-y-3' : 'space-y-3'}`}>
             {navigation.map((item) => (
               <div key={item.name}>
                 <Link
@@ -109,11 +110,11 @@ export function Header() {
                   className="block py-2 text-sm font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <span dir="rtl">{item.name}</span>
+                  {item.name}
                 </Link>
                 {/* Mobile Subpages */}
                 {item.subPages.length > 0 && (
-                  <div className="ml-4 mt-2 space-y-2">
+                  <div className={`mt-2 space-y-2 ${locale === 'ar' ? 'mr-4' : 'ml-4'}`}>
                     {item.subPages.map((subPage) => (
                       <Link
                         key={subPage.href}

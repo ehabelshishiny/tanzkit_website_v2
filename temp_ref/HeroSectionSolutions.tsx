@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import logoImage from './assets/tranzkit.png';
 
 interface NetworkNode {
   id: number;
@@ -36,7 +35,6 @@ export default function HeroSection() {
   // Load logo image
   useEffect(() => {
     const img = new Image();
-    img.src = logoImage;
     img.onload = () => {
       logoImageRef.current = img;
       console.log('✅ Logo loaded successfully!');

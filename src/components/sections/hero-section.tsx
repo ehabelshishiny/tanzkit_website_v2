@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
+import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 
 interface Vehicle {
   id: number;
@@ -559,10 +560,13 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
             className={`flex flex-col sm:flex-row gap-6 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             style={{ transitionDelay: '1.8s' }}
           >
-            <button className="group relative px-8 py-4 bg-gradient-to-r from-accent to-primary text-primary-foreground font-semibold rounded-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-accent/50 whitespace-nowrap animate-pulse hover:animate-none cursor-pointer">
-              <span className="relative z-10 transition-all duration-300">{cta || t('cta')}</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-accent/80 to-primary/80 opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
-            </button>
+            <div className="animate-pulse hover:animate-none">
+              <TrialCTAButton
+                variant="primary"
+                size="lg"
+                className="shadow-2xl shadow-accent/50 !h-[56px]"
+              />
+            </div>
 
             <button className="group relative px-8 py-4 border-2 border-accent text-accent font-semibold rounded-lg transition-all duration-500 hover:bg-gradient-to-r hover:from-accent hover:to-primary hover:text-primary-foreground hover:scale-105 hover:shadow-lg hover:shadow-accent/30 whitespace-nowrap overflow-hidden cursor-pointer">
               <span className="flex items-center gap-2 relative z-10 transition-all duration-300">

@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { StaggerChildren, StaggerItem } from '@/components/animations/stagger-children';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { Check } from 'lucide-react';
+import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 
 const pricingPlans = [
   {
@@ -103,12 +104,20 @@ export function PricingCards() {
                 ))}
               </ul>
 
-              <Button 
-                className="w-full" 
-                variant={plan.badge === 'Most Popular' ? 'default' : 'outline'}
-              >
-                {plan.name === 'Enterprise' ? 'Contact Sales' : 'Get Started'}
-              </Button>
+              {plan.name === 'Enterprise' ? (
+                <Button
+                  className="w-full"
+                  variant="outline"
+                >
+                  Contact Sales
+                </Button>
+              ) : (
+                <TrialCTAButton
+                  variant={plan.badge === 'Most Popular' ? 'primary' : 'secondary'}
+                  size="lg"
+                  fullWidth
+                />
+              )}
             </Card>
           </StaggerItem>
         ))}

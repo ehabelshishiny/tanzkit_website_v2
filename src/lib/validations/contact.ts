@@ -8,9 +8,17 @@ import * as z from 'zod';
 export const contactFormSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
-  company: z.string().optional(),
-  phone: z.string().optional(),
+  company: z.string().min(2, 'Company name is required'),
+  phone: z.string().regex(/^[\d\s\-\+\(\)]+$/, 'Invalid phone number format').min(1, 'Phone number is required'),
+  userType: z.enum(['enterprise', 'operator'], {
+    message: 'Please select a user type',
+  }),
   message: z.string().min(10, 'Message must be at least 10 characters'),
+  // CAPTCHA fields
+  honeypot: z.string().max(0, 'Invalid submission'), // Should be empty (catches bots)
+  notRobot: z.boolean().refine((val) => val === true, {
+    message: 'Please confirm you are not a robot',
+  }),
 });
 
 export const demoRequestSchema = z.object({

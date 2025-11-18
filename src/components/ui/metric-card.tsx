@@ -84,9 +84,9 @@ export function MetricCard({
       </div>
       
       <h3 className="text-lg md:text-xl font-semibold mb-2">{label}</h3>
-
+      
       {description && (
-        <p className="text-sm md:text-base text-muted-foreground">
+        <p className="text-sm md:text-base text-slate-600 dark:text-slate-300">
           {description}
         </p>
       )}

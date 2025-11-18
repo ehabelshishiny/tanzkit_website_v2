@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/animations/fade-in';
+import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 
 export function CTASection() {
   const t = useTranslations('common');
@@ -19,9 +20,7 @@ export function CTASection() {
               Join thousands of businesses already using Tranzkit to optimize their operations
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
-              <Button size="lg">
-                {t('startFreeTrial')}
-              </Button>
+              <TrialCTAButton variant="secondary" size="lg" />
               <Button size="lg" variant="outline">
                 {t('bookDemo')}
               </Button>

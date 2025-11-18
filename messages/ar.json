@@ -15,7 +15,9 @@
     "startFreeTrial": "ابدأ النسخة التجريبية المجانية",
     "contactUs": "اتصل بنا",
     "readMore": "اقرأ المزيد",
-    "viewAll": "عرض الكل"
+    "viewAll": "عرض الكل",
+    "redirecting": "جاري التوجيه إلى التطبيق...",
+    "preparingTrial": "يرجى الانتظار بينما نجهز تجربتك"
   },
   "home": {
     "hero": {

@@ -2,9 +2,9 @@
 
 import { useTranslations } from 'next-intl';
 import { SectionContainer } from '@/components/ui/section-container';
-import { GradientButton } from '@/components/ui/gradient-button';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 
 export function OperatorsCtaSection() {
   const t = useTranslations('solutions.operatorsDrivers.cta');
@@ -29,15 +29,13 @@ export function OperatorsCtaSection() {
         <p className="text-xl md:text-2xl text-primary-foreground/90 mb-10 max-w-3xl mx-auto">
           {t('subtitle')}
         </p>
-        <GradientButton
-          href="/contact"
+        <TrialCTAButton
+          variant="secondary"
           size="lg"
           icon={<ArrowRight className="w-5 h-5" />}
           iconPosition="right"
           className="bg-background hover:bg-muted text-foreground font-semibold"
-        >
-          {t('button')}
-        </GradientButton>
+        />
       </motion.div>
     </SectionContainer>
   );
