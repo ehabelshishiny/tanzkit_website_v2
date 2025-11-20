@@ -119,31 +119,36 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     return { x, y };
   };
 
-  // Generate an S-shaped path from (sx,sy) to (ex,ey) forming an S while traveling diagonally
-  const generateSPath = (sx: number, sy: number, ex: number, ey: number, samplesPerSegment = 300) => {
+  // Generate smooth worm/snake-like undulating path
+  const generateSPath = (sx: number, sy: number, ex: number, ey: number, samples = 500) => {
     const path: { x: number; y: number }[] = [];
     const spanX = ex - sx;
     const spanY = ey - sy;
-
-    // First cubic: start -> mid (curve one way)
-    const p0 = { x: sx, y: sy };
-    const p1 = { x: sx + spanX * 0.12, y: sy + spanY * 0.15 };
-    const p2 = { x: sx + spanX * 0.42, y: sy + spanY * 0.55 };
-    const p3 = { x: sx + spanX * 0.52, y: sy + spanY * 0.52 };
-
-    // Second cubic: mid -> end (curve opposite way)
-    const q0 = p3;
-    const q1 = { x: sx + spanX * 0.68, y: sy + spanY * 0.48 };
-    const q2 = { x: sx + spanX * 0.88, y: sy + spanY * 0.82 };
-    const q3 = { x: ex, y: ey };
-
-    for (let i = 0; i <= samplesPerSegment; i++) {
-      const t = i / samplesPerSegment;
-      path.push(cubicBezierPoint(t, p0, p1, p2, p3));
-    }
-    for (let i = 1; i <= samplesPerSegment; i++) {
-      const t = i / samplesPerSegment;
-      path.push(cubicBezierPoint(t, q0, q1, q2, q3));
+    
+    // Create smooth wave motion like a worm's body
+    const waveCount = 3; // Number of wave cycles
+    const waveAmplitude = Math.min(Math.abs(spanX), Math.abs(spanY)) * 0.15; // Wave height
+    
+    for (let i = 0; i <= samples; i++) {
+      const t = i / samples; // Progress from 0 to 1
+      
+      // Base diagonal progression from start to end
+      const baseX = sx + spanX * t;
+      const baseY = sy + spanY * t;
+      
+      // Add smooth sine wave perpendicular to the diagonal direction
+      // This creates the worm-like undulation
+      const angle = Math.atan2(spanY, spanX); // Direction of travel
+      const perpAngle = angle + Math.PI / 2; // Perpendicular angle
+      
+      // Sine wave offset (creates the worm wiggle)
+      const waveOffset = Math.sin(t * Math.PI * waveCount) * waveAmplitude;
+      
+      // Apply the wave offset perpendicular to travel direction
+      const x = baseX + Math.cos(perpAngle) * waveOffset;
+      const y = baseY + Math.sin(perpAngle) * waveOffset;
+      
+      path.push({ x, y });
     }
 
     return path;

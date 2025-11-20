@@ -28,7 +28,7 @@ export function AppsGridSection() {
   return (
     <SectionContainer
       id="apps-showcase"
-      background="default"
+      background="light"
       padding="xl"
       maxWidth="2xl"
     >
