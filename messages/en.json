@@ -6,7 +6,35 @@
     "apps": "Apps",
     "contact": "Contact",
     "pricing": "Pricing",
-    "about": "About Us"
+    "about": "About Us",
+    "company": "Company",
+    "submenus": {
+      "solutions": {
+        "enterprisesPassengers": {
+          "name": "Enterprises & Passengers",
+          "description": "Transform enterprise transport operations"
+        },
+        "operatorsDrivers": {
+          "name": "Operators & Drivers",
+          "description": "Empower your transport operations"
+        }
+      },
+      "resources": {
+        "helpCenter": "Help Center",
+        "blog": "Blog",
+        "caseStudies": "Case Studies",
+        "faq": "FAQ",
+        "webinars": "Webinars",
+        "whitepapers": "Whitepapers"
+      },
+      "apps": {
+        "supervisor": "Supervisor App",
+        "driver": "Driver App",
+        "rider": "Rider App",
+        "operatorDashboard": "Operator Dashboard",
+        "enterpriseDashboard": "Enterprise Dashboard"
+      }
+    }
   },
   "common": {
     "learnMore": "Learn More",
@@ -259,6 +287,206 @@
         "subtitle": "Gain control and reliability for your team today.",
         "button": "Book Your Demo"
       }
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Get in Touch",
+      "subtitle": "Have questions? We're here to help. Reach out to our team.",
+      "emailUs": "Email Us",
+      "callUs": "Call Us",
+      "visitUs": "Visit Us"
+    },
+    "form": {
+      "labels": {
+        "name": "Full Name",
+        "email": "Email",
+        "company": "Company Name",
+        "phone": "Phone Number",
+        "userType": "I am a/an",
+        "message": "Message"
+      },
+      "placeholders": {
+        "name": "John Doe",
+        "email": "john@company.com",
+        "company": "Your company name",
+        "phone": "+1 (555) 123-4567",
+        "userType": "Select user type",
+        "message": "Tell us about your needs..."
+      },
+      "userTypes": {
+        "enterprise": {
+          "label": "Enterprise",
+          "description": "I need transportation for my employees"
+        },
+        "operator": {
+          "label": "Operator",
+          "description": "I have vehicles to offer"
+        }
+      },
+      "captcha": "I'm not a robot",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": {
+        "title": "Thank You!",
+        "message": "Thank you for your message. We have received your inquiry and will get back to you soon.",
+        "note": "If you need to send another message, please refresh the page.",
+        "refresh": "Refresh Page"
+      },
+      "errors": {
+        "nameMin": "Name must be at least 2 characters",
+        "emailInvalid": "Invalid email address",
+        "companyMin": "Company name is required",
+        "phoneInvalid": "Invalid phone number format",
+        "phoneRequired": "Phone number is required",
+        "userTypeRequired": "Please select a user type",
+        "messageMin": "Message must be at least 10 characters",
+        "captchaRequired": "Please confirm you are not a robot"
+      }
+    },
+    "social": {
+      "title": "Follow Us",
+      "subtitle": "Stay connected with us on social media"
+    }
+  },
+  "footer": {
+    "brand": {
+      "tagline": "Transform your transportation business with our comprehensive platform."
+    },
+    "solutions": {
+      "enterprisesPassengers": "Enterprises & Passengers",
+      "operatorsDrivers": "Operators & Drivers"
+    },
+    "resources": {
+      "helpCenter": "Help Center",
+      "blog": "Blog",
+      "caseStudies": "Case Studies",
+      "faq": "FAQ"
+    },
+    "company": {
+      "careers": "Careers"
+    },
+    "copyright": "All rights reserved."
+  },
+  "apps": {
+    "main": {
+      "hero": {
+        "title": "Powerful Apps for Every User",
+        "subtitle": "Download our suite of mobile and web applications designed for supervisors, drivers, riders, operators, and enterprises. Experience seamless transportation management at your fingertips.",
+        "cta": "Explore Our Apps"
+      },
+      "showcase": {
+        "title": "Choose Your App",
+        "subtitle": "Select the app that matches your role in the transportation ecosystem"
+      }
+    },
+    "supervisor": {
+      "hero": {
+        "title": "Supervisor App",
+        "subtitle": "Manage operations with precision. Real-time fleet monitoring and operational control for transport supervisors.",
+        "cta": "Download Now"
+      },
+      "description": "The Supervisor App gives you complete visibility and control over your fleet operations. Monitor vehicles in real-time, manage driver assignments, track performance metrics, and respond to incidents instantly—all from your mobile device.",
+      "features": {
+        "realTimeTracking": "Real-Time Tracking",
+        "realTimeTrackingDesc": "Monitor all vehicles and drivers with live GPS tracking and instant location updates",
+        "analytics": "Performance Analytics",
+        "analyticsDesc": "Access comprehensive dashboards with key metrics, trends, and operational insights",
+        "alerts": "Smart Alerts",
+        "alertsDesc": "Receive instant notifications for delays, incidents, route deviations, and critical events",
+        "teamManagement": "Team Management",
+        "teamManagementDesc": "Assign tasks, manage schedules, and communicate with your driver team efficiently"
+      },
+      "downloadCta": "Get the Supervisor App"
+    },
+    "driver": {
+      "hero": {
+        "title": "Driver App",
+        "subtitle": "Navigate smarter, earn more. Optimized routes and seamless trip management for professional drivers.",
+        "cta": "Download Now"
+      },
+      "description": "The Driver App is your essential companion on the road. Get optimized routes, manage your schedule, track earnings, and provide excellent service to passengers—all with an intuitive, easy-to-use interface designed for drivers.",
+      "features": {
+        "smartRouting": "Smart Routing",
+        "smartRoutingDesc": "AI-powered navigation with real-time traffic updates and optimal route suggestions",
+        "scheduleManagement": "Schedule Management",
+        "scheduleManagementDesc": "View your shifts, manage availability, and accept trip assignments seamlessly",
+        "earnings": "Earnings Tracking",
+        "earningsDesc": "Monitor your income in real-time with detailed breakdowns and payment history",
+        "safety": "Safety Features",
+        "safetyDesc": "Emergency assistance, trip verification, and safety protocols built into every ride"
+      },
+      "downloadCta": "Get the Driver App"
+    },
+    "rider": {
+      "hero": {
+        "title": "Rider App",
+        "subtitle": "Book rides in seconds. Fast, safe, and reliable transportation whenever you need it.",
+        "cta": "Download Now"
+      },
+      "description": "The Rider App makes booking transportation effortless. Request rides instantly, track your driver in real-time, pay securely, and rate your experience—all in a beautifully designed app that puts you in control.",
+      "features": {
+        "quickBooking": "Quick Booking",
+        "quickBookingDesc": "Book rides in seconds with smart address suggestions and saved locations",
+        "liveTracking": "Live Tracking",
+        "liveTrackingDesc": "Track your driver's location in real-time with accurate ETAs and route visibility",
+        "payments": "Flexible Payments",
+        "paymentsDesc": "Multiple payment options including cards, digital wallets, and corporate accounts",
+        "support": "24/7 Support",
+        "supportDesc": "Get help anytime with in-app chat support and comprehensive help resources"
+      },
+      "downloadCta": "Get the Rider App"
+    },
+    "operatorDashboard": {
+      "hero": {
+        "title": "Operator Dashboard",
+        "subtitle": "Complete fleet control. Comprehensive platform for transport operators to manage and optimize operations.",
+        "cta": "Get Started"
+      },
+      "description": "The Operator Dashboard provides transport operators with powerful tools to manage fleets, drivers, routes, and finances. Make data-driven decisions with comprehensive analytics, automate operations, and scale your business efficiently.",
+      "features": {
+        "businessIntelligence": "Business Intelligence",
+        "businessIntelligenceDesc": "Advanced analytics and reporting tools for strategic decision-making and growth",
+        "fleetManagement": "Fleet Management",
+        "fleetManagementDesc": "Complete vehicle lifecycle management, maintenance tracking, and utilization optimization",
+        "revenueOptimization": "Revenue Optimization",
+        "revenueOptimizationDesc": "Dynamic pricing, demand forecasting, and revenue management tools",
+        "compliance": "Compliance & Safety",
+        "complianceDesc": "Automated compliance tracking, safety protocols, and regulatory reporting"
+      },
+      "downloadCta": "Access Dashboard"
+    },
+    "enterpriseDashboard": {
+      "hero": {
+        "title": "Enterprise Dashboard",
+        "subtitle": "Corporate mobility management. Streamline employee transportation and logistics for your organization.",
+        "cta": "Get Started"
+      },
+      "description": "The Enterprise Dashboard empowers organizations to manage employee transportation efficiently. Control costs, ensure policy compliance, track usage, and provide seamless mobility solutions for your workforce with enterprise-grade security and reporting.",
+      "features": {
+        "employeeManagement": "Employee Management",
+        "employeeManagementDesc": "Centralized employee profiles, ride approvals, and department-level access control",
+        "costControl": "Cost Control",
+        "costControlDesc": "Budget management, spending limits, cost allocation, and detailed expense tracking",
+        "reporting": "Advanced Reporting",
+        "reportingDesc": "Customizable reports, usage analytics, and executive dashboards for informed decisions",
+        "security": "Enterprise Security",
+        "securityDesc": "SSO integration, role-based access, data encryption, and compliance with corporate policies"
+      },
+      "downloadCta": "Access Dashboard"
+    },
+    "common": {
+      "downloadOn": "Download on the",
+      "appStore": "App Store",
+      "playStore": "Google Play",
+      "getItOn": "Get it on",
+      "availableOn": "Available on",
+      "requirements": "Requirements",
+      "version": "Version",
+      "screenshots": "Screenshots",
+      "keyFeatures": "Key Features",
+      "learnMore": "Learn More",
+      "backToApps": "Back to All Apps"
     }
   }
 }

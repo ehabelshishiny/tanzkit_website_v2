@@ -4,16 +4,39 @@ import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Globe } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 
 export function LanguageSwitcher() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const scrollPositionRef = useRef<number>(0);
+  const isNavigatingRef = useRef<boolean>(false);
+
+  // Restore scroll position after language switch
+  useEffect(() => {
+    if (isNavigatingRef.current) {
+      // Use requestAnimationFrame to ensure DOM is ready
+      requestAnimationFrame(() => {
+        window.scrollTo({
+          top: scrollPositionRef.current,
+          behavior: 'instant' as ScrollBehavior,
+        });
+        isNavigatingRef.current = false;
+      });
+    }
+  }, [pathname]);
 
   const switchLocale = () => {
+    // Save current scroll position
+    scrollPositionRef.current = window.scrollY;
+    isNavigatingRef.current = true;
+
     const newLocale = locale === 'en' ? 'ar' : 'en';
     const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
-    router.push(newPath);
+
+    // Push with scroll: false to prevent automatic scroll to top
+    router.push(newPath, { scroll: false });
   };
 
   return (

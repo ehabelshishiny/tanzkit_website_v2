@@ -5,41 +5,46 @@ import { useTranslations, useLocale } from 'next-intl';
 
 export function Footer() {
   const t = useTranslations('nav');
+  const tFooter = useTranslations('footer');
   const locale = useLocale();
+  const isRTL = locale === 'ar';
 
   const footerLinks = {
     solutions: [
-      { name: 'Enterprises & Passengers', href: `/${locale}/solutions/enterprises-passengers` },
-      { name: 'Operators & Drivers', href: `/${locale}/solutions/operators-drivers` },
+      { name: tFooter('solutions.enterprisesPassengers'), href: `/${locale}/solutions/enterprises-passengers` },
+      { name: tFooter('solutions.operatorsDrivers'), href: `/${locale}/solutions/operators-drivers` },
     ],
     resources: [
-      { name: 'Help Center', href: `/${locale}/resources/help-center` },
-      { name: 'Blog', href: `/${locale}/resources/blog` },
-      { name: 'Case Studies', href: `/${locale}/resources/case-studies` },
-      { name: 'FAQ', href: `/${locale}/resources/faq` },
+      { name: tFooter('resources.helpCenter'), href: `/${locale}/resources/help-center` },
+      { name: tFooter('resources.blog'), href: `/${locale}/resources/blog` },
+      { name: tFooter('resources.caseStudies'), href: `/${locale}/resources/case-studies` },
+      { name: tFooter('resources.faq'), href: `/${locale}/resources/faq` },
     ],
     company: [
+      { name: t('apps'), href: `/${locale}/apps` },
       { name: t('about'), href: `/${locale}/about` },
-      { name: 'Careers', href: `/${locale}/about/careers` },
+      { name: tFooter('company.careers'), href: `/${locale}/about/careers` },
       { name: t('contact'), href: `/${locale}/contact` },
     ],
   };
 
   return (
     <footer className="border-t bg-muted/50">
-      <div className="container py-12 md:py-16 px-6 md:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4 text-center md:text-left">
+      <div className="container pt-12 md:pt-16 pb-4 md:pb-6 px-6 md:px-8">
+        <div className={`grid grid-cols-1 gap-8 md:grid-cols-4 text-center ${isRTL ? 'md:text-right' : 'md:text-left'}`}>
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold">Tranzkit</h3>
+            <h3 className="text-2xl font-bold">{isRTL ? 'ترانزكِت' : 'Tranzkit'}</h3>
             <p className="text-sm text-muted-foreground">
-              Transform your transportation business with our comprehensive platform.
+              {tFooter('brand.tagline')}
             </p>
           </div>
 
           {/* Solutions */}
           <div className="space-y-4">
-            <h4 className="font-semibold">{t('solutions')}</h4>
+            <Link href={`/${locale}/solutions`} className="block">
+              <h4 className="font-semibold hover:text-foreground transition-colors cursor-pointer m-0">{t('solutions')}</h4>
+            </Link>
             <ul className="space-y-3">
               {footerLinks.solutions.map((link) => (
                 <li key={link.name}>
@@ -56,7 +61,9 @@ export function Footer() {
 
           {/* Resources */}
           <div className="space-y-4">
-            <h4 className="font-semibold">{t('resources')}</h4>
+            <Link href={`/${locale}/resources`} className="block">
+              <h4 className="font-semibold hover:text-foreground transition-colors cursor-pointer m-0">{t('resources')}</h4>
+            </Link>
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
@@ -73,7 +80,9 @@ export function Footer() {
 
           {/* Company */}
           <div className="space-y-4">
-            <h4 className="font-semibold">Company</h4>
+            <span className="block">
+              <h4 className="font-semibold m-0">{t('company')}</h4>
+            </span>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -89,8 +98,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Tranzkit. All rights reserved.</p>
+        <div className="mt-8 border-t pt-2 pb-2 text-center text-sm text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} {isRTL ? 'ترانزكِت' : 'Tranzkit'}. {tFooter('copyright')}</p>
         </div>
       </div>
     </footer>

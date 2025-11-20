@@ -12,8 +12,10 @@ import { FadeIn } from '@/components/animations/fade-in';
 import { contactFormSchema, type ContactFormData } from '@/lib/validations/contact';
 import { toast } from 'sonner';
 import { Mail, User, Building, Phone, MessageSquare, Users2 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export function ContactForm() {
+  const t = useTranslations('contact.form');
   const searchParams = useSearchParams();
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -66,7 +68,7 @@ export function ContactForm() {
       setHasSubmitted(true);
 
       // Success
-      toast.success('Message sent successfully! We\'ll get back to you soon.');
+      toast.success(t('success.message'));
 
       console.log('✅ Form submission complete');
     } catch (error) {
@@ -81,19 +83,19 @@ export function ContactForm() {
       <FadeIn>
         <div className="mx-auto max-w-2xl p-8 border rounded-lg bg-muted/30 text-center space-y-4">
           <div className="text-5xl">✅</div>
-          <h3 className="text-2xl font-semibold">Thank You!</h3>
+          <h3 className="text-2xl font-semibold">{t('success.title')}</h3>
           <p className="text-muted-foreground">
-            Thank you for your message. We have received your inquiry and will get back to you soon.
+            {t('success.message')}
           </p>
           <p className="text-sm text-muted-foreground">
-            If you need to send another message, please refresh the page.
+            {t('success.note')}
           </p>
           <Button
             onClick={() => window.location.reload()}
             variant="outline"
             className="mt-4"
           >
-            Refresh Page
+            {t('success.refresh')}
           </Button>
         </div>
       </FadeIn>
@@ -118,12 +120,12 @@ export function ContactForm() {
         <div>
           <label htmlFor="name" className="block text-sm font-medium mb-2 flex items-center gap-2">
             <User className="w-4 h-4" />
-            Full Name *
+            {t('labels.name')} *
           </label>
           <Input
             id="name"
             {...register('name')}
-            placeholder="John Doe"
+            placeholder={t('placeholders.name')}
             disabled={isSubmitting}
           />
           {errors.name && (
@@ -135,13 +137,13 @@ export function ContactForm() {
         <div>
           <label htmlFor="email" className="block text-sm font-medium mb-2 flex items-center gap-2">
             <Mail className="w-4 h-4" />
-            Email *
+            {t('labels.email')} *
           </label>
           <Input
             id="email"
             type="email"
             {...register('email')}
-            placeholder="john@company.com"
+            placeholder={t('placeholders.email')}
             disabled={isSubmitting}
           />
           {errors.email && (
@@ -153,12 +155,12 @@ export function ContactForm() {
         <div>
           <label htmlFor="company" className="block text-sm font-medium mb-2 flex items-center gap-2">
             <Building className="w-4 h-4" />
-            Company Name *
+            {t('labels.company')} *
           </label>
           <Input
             id="company"
             {...register('company')}
-            placeholder="Your company name"
+            placeholder={t('placeholders.company')}
             disabled={isSubmitting}
           />
           {errors.company && (
@@ -170,13 +172,13 @@ export function ContactForm() {
         <div>
           <label htmlFor="phone" className="block text-sm font-medium mb-2 flex items-center gap-2">
             <Phone className="w-4 h-4" />
-            Phone Number *
+            {t('labels.phone')} *
           </label>
           <Input
             id="phone"
             type="tel"
             {...register('phone')}
-            placeholder="+1 (555) 123-4567"
+            placeholder={t('placeholders.phone')}
             disabled={isSubmitting}
           />
           {errors.phone && (
@@ -188,7 +190,7 @@ export function ContactForm() {
         <div>
           <label htmlFor="userType" className="block text-sm font-medium mb-2 flex items-center gap-2">
             <Users2 className="w-4 h-4" />
-            I am a/an *
+            {t('labels.userType')} *
           </label>
           <Controller
             name="userType"
@@ -200,19 +202,19 @@ export function ContactForm() {
                 disabled={isSubmitting}
               >
                 <SelectTrigger id="userType">
-                  <SelectValue placeholder="Select user type" />
+                  <SelectValue placeholder={t('placeholders.userType')} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="enterprise">
                     <div className="flex flex-col items-start">
-                      <span className="font-medium">Enterprise</span>
-                      <span className="text-xs text-slate-600 dark:text-slate-300">I need transportation for my employees</span>
+                      <span className="font-medium">{t('userTypes.enterprise.label')}</span>
+                      <span className="text-xs text-slate-600 dark:text-slate-100">{t('userTypes.enterprise.description')}</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="operator">
                     <div className="flex flex-col items-start">
-                      <span className="font-medium">Operator</span>
-                      <span className="text-xs text-slate-600 dark:text-slate-300">I have vehicles to offer</span>
+                      <span className="font-medium">{t('userTypes.operator.label')}</span>
+                      <span className="text-xs text-slate-600 dark:text-slate-100">{t('userTypes.operator.description')}</span>
                     </div>
                   </SelectItem>
                 </SelectContent>
@@ -228,12 +230,12 @@ export function ContactForm() {
         <div>
           <label htmlFor="message" className="block text-sm font-medium mb-2 flex items-center gap-2">
             <MessageSquare className="w-4 h-4" />
-            Message *
+            {t('labels.message')} *
           </label>
           <Textarea
             id="message"
             {...register('message')}
-            placeholder="Tell us about your needs..."
+            placeholder={t('placeholders.message')}
             rows={5}
             disabled={isSubmitting}
           />
@@ -253,7 +255,7 @@ export function ContactForm() {
               className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
             />
             <label htmlFor="notRobot" className="text-sm font-medium cursor-pointer">
-              ☑️ I'm not a robot *
+              ☑️ {t('captcha')} *
             </label>
           </div>
           {errors.notRobot && (
@@ -262,7 +264,7 @@ export function ContactForm() {
         </div>
 
         <Button type="submit" size="lg" disabled={isSubmitting} className="w-full">
-          {isSubmitting ? 'Sending...' : 'Send Message'}
+          {isSubmitting ? t('submitting') : t('submit')}
         </Button>
           </form>
         </div>

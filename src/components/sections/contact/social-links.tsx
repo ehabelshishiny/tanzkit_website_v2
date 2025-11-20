@@ -4,6 +4,7 @@ import { Card } from '@/components/ui/card';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { ScaleOnHover } from '@/components/animations/scale-on-hover';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const socialLinks = [
   { icon: Facebook, name: 'Facebook', url: '#' },
@@ -13,13 +14,15 @@ const socialLinks = [
 ];
 
 export function SocialLinks() {
+  const t = useTranslations('contact.social');
+
   return (
     <section className="w-full max-w-4xl mx-auto px-4 py-16">
       <ScrollReveal>
         <Card className="p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4">Follow Us</h2>
+          <h2 className="text-2xl font-bold mb-4">{t('title')}</h2>
           <p className="text-muted-foreground mb-8">
-            Stay connected with us on social media
+            {t('subtitle')}
           </p>
           <div className="flex justify-center gap-4">
             {socialLinks.map((social, index) => (

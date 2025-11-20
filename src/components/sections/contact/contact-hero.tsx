@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export function ContactHero() {
+  const t = useTranslations('contact.hero');
+
   return (
     <section className="w-full bg-gradient-to-b from-primary/5 to-background py-20">
       <div className="max-w-6xl mx-auto px-4">
@@ -14,10 +17,10 @@ export function ContactHero() {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Get in Touch
+            {t('title')}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Have questions? We're here to help. Reach out to our team.
+            {t('subtitle')}
           </p>
         </motion.div>
 
@@ -31,21 +34,21 @@ export function ContactHero() {
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
               <Mail className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="font-semibold mb-2">Email Us</h3>
+            <h3 className="font-semibold mb-2">{t('emailUs')}</h3>
             <p className="text-muted-foreground">support@tranzkit.com</p>
           </div>
           <div className="text-center">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
               <Phone className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="font-semibold mb-2">Call Us</h3>
+            <h3 className="font-semibold mb-2">{t('callUs')}</h3>
             <p className="text-muted-foreground">+1 (555) 123-4567</p>
           </div>
           <div className="text-center">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
               <MapPin className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="font-semibold mb-2">Visit Us</h3>
+            <h3 className="font-semibold mb-2">{t('visitUs')}</h3>
             <p className="text-muted-foreground">Dubai, UAE</p>
           </div>
         </motion.div>

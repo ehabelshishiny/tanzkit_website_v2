@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocale } from 'next-intl';
 
 interface SubPage {
   name: string;
@@ -19,6 +20,8 @@ interface NavDropdownProps {
 
 export function NavDropdown({ label, href, subPages }: NavDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
 
   return (
     <div
@@ -39,7 +42,7 @@ export function NavDropdown({ label, href, subPages }: NavDropdownProps) {
         />
       </Link>
 
-      {/* Dropdown Menu */}
+      {/* Dropdown Menu with RTL Support */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -47,14 +50,19 @@ export function NavDropdown({ label, href, subPages }: NavDropdownProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 mt-2 w-64 bg-background border rounded-lg shadow-lg overflow-hidden z-50"
+            className={`absolute top-full mt-2 w-64 bg-background border rounded-lg shadow-lg overflow-hidden z-50 ${
+              isRTL ? 'right-0' : 'left-0'
+            }`}
+            dir={isRTL ? 'rtl' : 'ltr'}
           >
             <div className="py-2">
               {subPages.map((subPage) => (
                 <Link
                   key={subPage.href}
                   href={subPage.href}
-                  className="block px-4 py-3 text-sm hover:bg-muted transition-colors"
+                  className={`block px-4 py-3 text-sm hover:bg-muted transition-colors ${
+                    isRTL ? 'text-right' : 'text-left'
+                  }`}
                 >
                   <div className="font-medium">{subPage.name}</div>
                   {subPage.description && (
