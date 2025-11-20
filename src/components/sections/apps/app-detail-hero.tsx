@@ -1,14 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { type LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { fadeInUp } from '@/lib/animation-variants';
+import { getIconComponent } from '@/lib/icon-mapper';
+import type { IconName } from '@/config/apps';
 
 interface AppDetailHeroProps {
   title: string;
   subtitle: string;
-  icon: LucideIcon;
+  iconName: IconName;
   gradient: string;
   accentColor: string;
 }
@@ -16,10 +17,11 @@ interface AppDetailHeroProps {
 export function AppDetailHero({
   title,
   subtitle,
-  icon: Icon,
+  iconName,
   gradient,
   accentColor,
 }: AppDetailHeroProps) {
+  const Icon = getIconComponent(iconName);
   return (
     <section
       className={cn(

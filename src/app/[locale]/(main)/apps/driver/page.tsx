@@ -1,7 +1,6 @@
-import { AppDetailTemplate } from '@/components/sections/apps/app-detail-template';
-import { appsConfig } from '@/config/apps';
+import { AppDetailOriginalTemplate } from '@/components/sections/apps/app-detail-original-template';
 
 export default function DriverAppPage() {
-  return <AppDetailTemplate app={appsConfig.driver} />;
+  return <AppDetailOriginalTemplate />;
 }
 

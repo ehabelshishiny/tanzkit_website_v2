@@ -1,12 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { type LucideIcon } from 'lucide-react';
 import { SectionContainer } from '@/components/ui/section-container';
 import { fadeInUp } from '@/lib/animation-variants';
+import { getIconComponent } from '@/lib/icon-mapper';
+import type { IconName } from '@/config/apps';
 
 interface Feature {
-  icon: LucideIcon;
+  iconName: IconName;
   title: string;
   description: string;
 }
@@ -61,30 +62,33 @@ export function AppFeaturesSection({
         variants={containerVariants}
         className="grid grid-cols-1 md:grid-cols-2 gap-8"
       >
-        {features.map((feature, index) => (
-          <motion.div
-            key={index}
-            variants={fadeInUp}
-            whileHover={{ scale: 1.02, y: -4 }}
-            className="bg-card rounded-2xl p-8 border border-border shadow-md hover:shadow-xl transition-all duration-300"
-          >
-            {/* Icon */}
-            <div
-              className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-muted/50"
-              style={{ color: accentColor }}
+        {features.map((feature, index) => {
+          const FeatureIcon = getIconComponent(feature.iconName);
+          return (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              whileHover={{ scale: 1.02, y: -4 }}
+              className="bg-card rounded-2xl p-8 border border-border shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <feature.icon className="w-7 h-7" />
-            </div>
+              {/* Icon */}
+              <div
+                className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-muted/50"
+                style={{ color: accentColor }}
+              >
+                <FeatureIcon className="w-7 h-7" />
+              </div>
 
-            {/* Content */}
-            <h3 className="text-xl font-bold mb-3 text-foreground">
-              {feature.title}
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
-              {feature.description}
-            </p>
-          </motion.div>
-        ))}
+              {/* Content */}
+              <h3 className="text-xl font-bold mb-3 text-foreground">
+                {feature.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {feature.description}
+              </p>
+            </motion.div>
+          );
+        })}
       </motion.div>
     </SectionContainer>
   );

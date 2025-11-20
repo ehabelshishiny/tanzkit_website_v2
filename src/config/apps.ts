@@ -1,25 +1,24 @@
-import { 
-  Users, 
-  Car, 
-  UserCircle, 
-  LayoutDashboard, 
-  Building2,
-  MapPin,
-  Clock,
-  Shield,
-  BarChart3,
-  Route,
-  Bell,
-  CreditCard,
-  MessageSquare,
-  CheckCircle,
-  Zap,
-  TrendingUp,
-  type LucideIcon
-} from 'lucide-react';
+// Icon name type for serialization
+export type IconName =
+  | 'Users'
+  | 'Car'
+  | 'UserCircle'
+  | 'LayoutDashboard'
+  | 'Building2'
+  | 'MapPin'
+  | 'Clock'
+  | 'Shield'
+  | 'BarChart3'
+  | 'Route'
+  | 'Bell'
+  | 'CreditCard'
+  | 'MessageSquare'
+  | 'CheckCircle'
+  | 'Zap'
+  | 'TrendingUp';
 
 export interface AppFeature {
-  icon: LucideIcon;
+  icon: IconName;
   title: string;
   description: string;
 }
@@ -36,11 +35,13 @@ export interface AppConfig {
   name: string;
   tagline: string;
   description: string;
-  icon: LucideIcon;
+  icon: IconName;
+  image?: string; // Optional placeholder image URL
+  appType: 'mobile' | 'desktop'; // Categorize apps for layout purposes
   gradient: string;
   accentColor: string;
   features: {
-    icon: LucideIcon;
+    icon: IconName;
     titleKey: string;
     descriptionKey: string;
   }[];
@@ -51,7 +52,8 @@ export interface AppConfig {
     ios: string;
     android: string;
   };
-  use3DCard?: boolean;
+  use3DVariant?: boolean; // Use the 3D variant card (AppCard3DVariant)
+  use3DCard?: boolean; // Use the alternative 3D card layout (image at top, icon badge)
 }
 
 export const appsConfig: Record<string, AppConfig> = {
@@ -60,15 +62,17 @@ export const appsConfig: Record<string, AppConfig> = {
     name: 'Supervisor App',
     tagline: 'Manage operations with precision',
     description: 'Real-time fleet monitoring and operational control',
-    icon: Users,
+    icon: 'Users',
+    image: '/testimage.jpg',
+    appType: 'mobile',
     gradient: 'from-blue-500/10 via-cyan-500/10 to-blue-600/10',
     accentColor: '#3B82F6',
-    use3DCard: true,
+    use3DVariant: true,
     features: [
-      { icon: MapPin, titleKey: 'realTimeTracking', descriptionKey: 'realTimeTrackingDesc' },
-      { icon: BarChart3, titleKey: 'analytics', descriptionKey: 'analyticsDesc' },
-      { icon: Bell, titleKey: 'alerts', descriptionKey: 'alertsDesc' },
-      { icon: Users, titleKey: 'teamManagement', descriptionKey: 'teamManagementDesc' },
+      { icon: 'MapPin', titleKey: 'realTimeTracking', descriptionKey: 'realTimeTrackingDesc' },
+      { icon: 'BarChart3', titleKey: 'analytics', descriptionKey: 'analyticsDesc' },
+      { icon: 'Bell', titleKey: 'alerts', descriptionKey: 'alertsDesc' },
+      { icon: 'Users', titleKey: 'teamManagement', descriptionKey: 'teamManagementDesc' },
     ],
     screenshots: [
       { id: '1', title: 'Dashboard Overview', description: 'Monitor your entire fleet at a glance', category: 'Management' },
@@ -88,15 +92,17 @@ export const appsConfig: Record<string, AppConfig> = {
     name: 'Driver App',
     tagline: 'Navigate smarter, earn more',
     description: 'Optimized routes and seamless trip management',
-    icon: Car,
+    icon: 'Car',
+    image: '/testimage.jpg',
+    appType: 'mobile',
     gradient: 'from-green-500/10 via-emerald-500/10 to-green-600/10',
     accentColor: '#10B981',
-    use3DCard: true,
+    use3DVariant: true,
     features: [
-      { icon: Route, titleKey: 'smartRouting', descriptionKey: 'smartRoutingDesc' },
-      { icon: Clock, titleKey: 'scheduleManagement', descriptionKey: 'scheduleManagementDesc' },
-      { icon: CreditCard, titleKey: 'earnings', descriptionKey: 'earningsDesc' },
-      { icon: Shield, titleKey: 'safety', descriptionKey: 'safetyDesc' },
+      { icon: 'Route', titleKey: 'smartRouting', descriptionKey: 'smartRoutingDesc' },
+      { icon: 'Clock', titleKey: 'scheduleManagement', descriptionKey: 'scheduleManagementDesc' },
+      { icon: 'CreditCard', titleKey: 'earnings', descriptionKey: 'earningsDesc' },
+      { icon: 'Shield', titleKey: 'safety', descriptionKey: 'safetyDesc' },
     ],
     screenshots: [
       { id: '1', title: 'Active Trip', description: 'Navigate with turn-by-turn directions', category: 'Navigation' },
@@ -116,14 +122,17 @@ export const appsConfig: Record<string, AppConfig> = {
     name: 'Rider App',
     tagline: 'Book rides in seconds',
     description: 'Fast, safe, and reliable transportation',
-    icon: UserCircle,
+    icon: 'UserCircle',
+    image: '/testimage.jpg',
+    appType: 'mobile',
     gradient: 'from-purple-500/10 via-pink-500/10 to-purple-600/10',
     accentColor: '#A855F7',
+    use3DVariant: true,
     features: [
-      { icon: Zap, titleKey: 'quickBooking', descriptionKey: 'quickBookingDesc' },
-      { icon: MapPin, titleKey: 'liveTracking', descriptionKey: 'liveTrackingDesc' },
-      { icon: CreditCard, titleKey: 'payments', descriptionKey: 'paymentsDesc' },
-      { icon: MessageSquare, titleKey: 'support', descriptionKey: 'supportDesc' },
+      { icon: 'Zap', titleKey: 'quickBooking', descriptionKey: 'quickBookingDesc' },
+      { icon: 'MapPin', titleKey: 'liveTracking', descriptionKey: 'liveTrackingDesc' },
+      { icon: 'CreditCard', titleKey: 'payments', descriptionKey: 'paymentsDesc' },
+      { icon: 'MessageSquare', titleKey: 'support', descriptionKey: 'supportDesc' },
     ],
     screenshots: [
       { id: '1', title: 'Book a Ride', description: 'Simple and intuitive booking interface', category: 'Booking' },
@@ -143,14 +152,17 @@ export const appsConfig: Record<string, AppConfig> = {
     name: 'Operator Dashboard',
     tagline: 'Complete fleet control',
     description: 'Comprehensive platform for transport operators',
-    icon: LayoutDashboard,
+    icon: 'LayoutDashboard',
+    image: '/testimage.jpg',
+    appType: 'desktop',
     gradient: 'from-orange-500/10 via-amber-500/10 to-orange-600/10',
     accentColor: '#F97316',
+    use3DVariant: true,
     features: [
-      { icon: BarChart3, titleKey: 'businessIntelligence', descriptionKey: 'businessIntelligenceDesc' },
-      { icon: Users, titleKey: 'fleetManagement', descriptionKey: 'fleetManagementDesc' },
-      { icon: TrendingUp, titleKey: 'revenueOptimization', descriptionKey: 'revenueOptimizationDesc' },
-      { icon: CheckCircle, titleKey: 'compliance', descriptionKey: 'complianceDesc' },
+      { icon: 'BarChart3', titleKey: 'businessIntelligence', descriptionKey: 'businessIntelligenceDesc' },
+      { icon: 'Users', titleKey: 'fleetManagement', descriptionKey: 'fleetManagementDesc' },
+      { icon: 'TrendingUp', titleKey: 'revenueOptimization', descriptionKey: 'revenueOptimizationDesc' },
+      { icon: 'CheckCircle', titleKey: 'compliance', descriptionKey: 'complianceDesc' },
     ],
     screenshots: [
       { id: '1', title: 'Operations Dashboard', description: 'Complete overview of your operations', category: 'Dashboard' },
@@ -170,14 +182,17 @@ export const appsConfig: Record<string, AppConfig> = {
     name: 'Enterprise Dashboard',
     tagline: 'Corporate mobility management',
     description: 'Streamline employee transportation and logistics',
-    icon: Building2,
+    icon: 'Building2',
+    image: '/testimage.jpg',
+    appType: 'desktop',
     gradient: 'from-indigo-500/10 via-violet-500/10 to-indigo-600/10',
     accentColor: '#6366F1',
+    use3DVariant: true,
     features: [
-      { icon: Users, titleKey: 'employeeManagement', descriptionKey: 'employeeManagementDesc' },
-      { icon: CreditCard, titleKey: 'costControl', descriptionKey: 'costControlDesc' },
-      { icon: BarChart3, titleKey: 'reporting', descriptionKey: 'reportingDesc' },
-      { icon: Shield, titleKey: 'security', descriptionKey: 'securityDesc' },
+      { icon: 'Users', titleKey: 'employeeManagement', descriptionKey: 'employeeManagementDesc' },
+      { icon: 'CreditCard', titleKey: 'costControl', descriptionKey: 'costControlDesc' },
+      { icon: 'BarChart3', titleKey: 'reporting', descriptionKey: 'reportingDesc' },
+      { icon: 'Shield', titleKey: 'security', descriptionKey: 'securityDesc' },
     ],
     screenshots: [
       { id: '1', title: 'Enterprise Dashboard', description: 'Centralized control for corporate transport', category: 'Dashboard' },

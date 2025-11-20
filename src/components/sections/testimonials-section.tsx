@@ -1,7 +1,7 @@
 'use client';
 
 import { FadeIn } from '@/components/animations/fade-in';
-import { Card, CardContent } from '@/components/ui/card';
+import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
 import { Quote } from 'lucide-react';
 
 export function TestimonialsSection() {
@@ -40,16 +40,30 @@ export function TestimonialsSection() {
         <div className="grid gap-6 md:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <FadeIn key={testimonial.author} delay={0.1 * (index + 1)}>
-              <Card>
-                <CardContent className="pt-6">
-                  <Quote className="h-8 w-8 text-primary mb-4" />
-                  <p className="mb-4 text-muted-foreground">{testimonial.quote}</p>
-                  <div>
-                    <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                  </div>
-                </CardContent>
-              </Card>
+              {/* Apply 3D card effect to all testimonial cards */}
+              <CardContainer containerClassName="w-full h-full">
+                <CardBody className="relative group/card w-full h-full">
+                  <CardItem
+                    translateZ="50"
+                    className="w-full h-full rounded-2xl overflow-hidden bg-card border border-border shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                  >
+                    <div className="px-6 py-6">
+                      <CardItem translateZ="60">
+                        <Quote className="h-8 w-8 text-primary mb-4" />
+                      </CardItem>
+                      <CardItem translateZ="70" as="p" className="mb-4 text-muted-foreground">
+                        {testimonial.quote}
+                      </CardItem>
+                      <CardItem translateZ="60">
+                        <div>
+                          <p className="font-semibold">{testimonial.author}</p>
+                          <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                        </div>
+                      </CardItem>
+                    </div>
+                  </CardItem>
+                </CardBody>
+              </CardContainer>
             </FadeIn>
           ))}
         </div>

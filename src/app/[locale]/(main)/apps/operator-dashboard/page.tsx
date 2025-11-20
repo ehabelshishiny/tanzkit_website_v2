@@ -1,7 +1,6 @@
-import { AppDetailTemplate } from '@/components/sections/apps/app-detail-template';
-import { appsConfig } from '@/config/apps';
+import { AppDetailOriginalTemplate } from '@/components/sections/apps/app-detail-original-template';
 
 export default function OperatorDashboardPage() {
-  return <AppDetailTemplate app={appsConfig.operatorDashboard} />;
+  return <AppDetailOriginalTemplate />;
 }
 

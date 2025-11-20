@@ -18,7 +18,7 @@ export function AppDetailTemplate({ app }: AppDetailTemplateProps) {
 
   // Map features with translations
   const features = app.features.map((feature) => ({
-    icon: feature.icon,
+    iconName: feature.icon,
     title: t(`features.${feature.titleKey}`),
     description: t(`features.${feature.descriptionKey}`),
   }));
@@ -29,7 +29,7 @@ export function AppDetailTemplate({ app }: AppDetailTemplateProps) {
       <AppDetailHero
         title={t('hero.title')}
         subtitle={t('hero.subtitle')}
-        icon={app.icon}
+        iconName={app.icon}
         gradient={app.gradient}
         accentColor={app.accentColor}
       />
