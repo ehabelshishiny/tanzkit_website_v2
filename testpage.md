@@ -1,5 +1,3 @@
-Read from https://reactflow.dev/examples/edges/animating-edges so I can ask questions about it.
-
 import { useEffect, useMemo } from 'react';
 import {
   BaseEdge,
