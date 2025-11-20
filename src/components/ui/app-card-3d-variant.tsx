@@ -44,9 +44,13 @@ export function AppCard3DVariant({
   const imageMaxWidth = appType === 'desktop' ? 'max-w-full' : 'max-w-sm mx-auto';
   const cardWidth = 'w-full';
   const cardHeight = 'h-auto';
+  
+  // Card scaling controls - adjust these values to change card sizes independently
+  const desktopScale = 'scale-[0.86]';  // Desktop card scale (0.85 = 15% smaller)
+  const mobileScale = 'scale-[0.9]';   // Mobile card scale (0.85 = 15% smaller)
 
   return (
-    <CardContainer className="inter-var" containerClassName="py-2 w-full">
+    <CardContainer className={`inter-var ${appType === 'desktop' ? desktopScale : mobileScale}`} containerClassName="py-2 w-full">
       <CardBody className={`bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] ${cardWidth} ${cardHeight} rounded-xl p-4 border`}>
         <Link href={href} className="block">
           {/* Title */}
@@ -117,4 +121,3 @@ export function AppCard3DVariant({
     </CardContainer>
   );
 }
-
