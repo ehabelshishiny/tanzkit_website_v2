@@ -2,6 +2,7 @@
 
 import { FadeIn } from '@/components/animations/fade-in';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { SectionContainer } from '@/components/layout/SectionContainer';
 
 export function OverviewSection() {
   const features = [
@@ -21,7 +22,7 @@ export function OverviewSection() {
 
   return (
     <section className="py-16 md:py-24">
-      <div className="container">
+      <SectionContainer>
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -47,7 +48,7 @@ export function OverviewSection() {
             </FadeIn>
           ))}
         </div>
-      </div>
+      </SectionContainer>
     </section>
   );
 }

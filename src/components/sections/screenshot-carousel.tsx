@@ -67,13 +67,13 @@ export function ScreenshotCarousel() {
           align: 'start',
           loop: true,
         }}
-        className="w-full"
+        className="w-full ltr:pl-4 rtl:pr-4"
       >
-        <CarouselContent className="-ml-4">
+        <CarouselContent className="ltr:ml-0 ltr:pl-4 rtl:mr-0 rtl:pr-4">
           {screenshots.map((screenshot) => (
-            <CarouselItem key={screenshot.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-              <ScaleOnHover>
-                <Card className="overflow-hidden">
+            <CarouselItem key={screenshot.id} className="ltr:pl-4 rtl:pr-4 md:basis-1/2 lg:basis-1/3 p-4">
+              <ScaleOnHover className="h-full">
+                <Card className="overflow-hidden h-[380px] flex flex-col">
                   <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center relative group">
                     <div className="absolute inset-0 bg-grid-pattern opacity-10" />
                     <div className="text-center z-10 p-6">
@@ -87,9 +87,9 @@ export function ScreenshotCarousel() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-4">
+                  <div className="p-4 flex flex-col flex-1">
                     <h3 className="font-semibold mb-2">{screenshot.title}</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground line-clamp-2">
                       {screenshot.description}
                     </p>
                   </div>
@@ -104,4 +104,3 @@ export function ScreenshotCarousel() {
     </ScrollReveal>
   );
 }
-

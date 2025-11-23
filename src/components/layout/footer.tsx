@@ -30,8 +30,8 @@ export function Footer() {
 
   return (
     <footer className="border-t bg-muted/50">
-      <div className="container pt-12 md:pt-16 pb-4 md:pb-6 px-6 md:px-8">
-        <div className={`grid grid-cols-1 gap-8 md:grid-cols-4 text-center ${isRTL ? 'md:text-right' : 'md:text-left'}`}>
+      <div className="container mx-auto pt-12 md:pt-16 pb-4 md:pb-6 px-6 md:px-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4 justify-items-center">
           {/* Brand */}
           <div className="space-y-4">
             <h3 className="text-2xl font-bold">{isRTL ? 'ترانزكِت' : 'Tranzkit'}</h3>

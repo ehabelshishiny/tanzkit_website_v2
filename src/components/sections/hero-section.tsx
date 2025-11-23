@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { TrialCTAButton } from '@/components/ui/trial-cta-button';
+import { SectionContainer } from '@/components/layout/SectionContainer';
 
 interface Vehicle {
   id: number;

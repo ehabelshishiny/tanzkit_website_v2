@@ -3,6 +3,7 @@
 import { FadeIn } from '@/components/animations/fade-in';
 import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
 import { Quote } from 'lucide-react';
+import { SectionContainer } from '@/components/layout/SectionContainer';
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -25,7 +26,7 @@ export function TestimonialsSection() {
 
   return (
     <section className="py-16 md:py-24 bg-muted/50">
-      <div className="container">
+      <SectionContainer>
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -67,7 +68,7 @@ export function TestimonialsSection() {
             </FadeIn>
           ))}
         </div>
-      </div>
+      </SectionContainer>
     </section>
   );
 }
