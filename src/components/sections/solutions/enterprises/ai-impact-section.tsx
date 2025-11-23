@@ -12,34 +12,105 @@ export function EnterprisesAiImpactSection() {
 
   return (
     <>
-      {/* AI Advantage Section */}
+      {/* AI Advantage Section - Redesigned */}
       <SectionContainer
         background="dark"
         padding="xl"
         maxWidth="2xl"
       >
-        <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="w-32 h-32 mx-auto md:mx-0 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center"
-            >
-              <Brain className="w-16 h-16 text-white dark:text-primary-foreground" />
-            </motion.div>
-          </div>
-          <div className="flex-[2]">
-            <SectionHeader
-              title={t('aiAdvantage.title')}
-              alignment="left"
-              titleSize="lg"
-              className="text-foreground"
+        <div className="relative">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.02] pointer-events-none">
+            <div 
+              className="absolute inset-0" 
+              style={{
+                backgroundImage: `
+                  linear-gradient(to right, currentColor 1px, transparent 1px),
+                  linear-gradient(to bottom, currentColor 1px, transparent 1px)
+                `,
+                backgroundSize: '40px 40px',
+                maskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)'
+              }} 
             />
-            <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mt-6">
-              {t('aiAdvantage.description')}
-            </p>
+          </div>
+
+          {/* Subtle background decoration */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 0.03 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2 }}
+            className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-3xl pointer-events-none"
+          />
+          
+          <div className="flex flex-col items-center text-center gap-8 relative z-10">
+            {/* Icon with enhanced animations */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="relative"
+            >
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                className="w-24 h-24 bg-gradient-to-br from-primary via-accent to-primary rounded-2xl flex items-center justify-center shadow-xl shadow-primary/20"
+              >
+                <Brain className="w-12 h-12 text-white dark:text-primary-foreground" strokeWidth={1.5} />
+              </motion.div>
+              
+              {/* Subtle pulse animation */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ 
+                  opacity: [0.4, 0.6, 0.4],
+                  scale: [1, 1.1, 1]
+                }}
+                transition={{ 
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-2xl -z-10 blur-xl"
+              />
+            </motion.div>
+
+            {/* Title with staggered animation */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="max-w-3xl"
+            >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-foreground via-foreground/90 to-foreground/80 bg-clip-text">
+                {t('aiAdvantage.title')}
+              </h2>
+              
+              {/* Description with emphasis */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="text-base md:text-lg lg:text-xl text-foreground/70 leading-relaxed font-light"
+              >
+                {t('aiAdvantage.description')}
+              </motion.p>
+            </motion.div>
+
+            {/* Decorative line element */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary/50 to-transparent"
+            />
           </div>
         </div>
       </SectionContainer>

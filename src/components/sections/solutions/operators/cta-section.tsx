@@ -14,7 +14,7 @@ export function OperatorsCtaSection() {
       background="transparent"
       padding="xl"
       maxWidth="2xl"
-      className="bg-gradient-to-br from-chart-4 via-chart-4/90 to-accent"
+      className="bg-muted"
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -23,10 +23,10 @@ export function OperatorsCtaSection() {
         transition={{ duration: 0.8 }}
         className="text-center"
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+        <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
           {t('title')}
         </h2>
-        <p className="text-xl md:text-2xl text-primary-foreground/90 mb-10 max-w-3xl mx-auto">
+        <p className="text-xl md:text-2xl text-foreground/80 mb-10 max-w-3xl mx-auto">
           {t('subtitle')}
         </p>
         <TrialCTAButton
@@ -34,10 +34,9 @@ export function OperatorsCtaSection() {
           size="lg"
           icon={<ArrowRight className="w-5 h-5" />}
           iconPosition="right"
-          className="bg-background hover:bg-muted text-foreground font-semibold"
+          className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
         />
       </motion.div>
     </SectionContainer>
   );
 }
-

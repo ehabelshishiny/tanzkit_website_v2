@@ -1,5 +1,7 @@
 'use client';
 
+import { useLocale } from 'next-intl';
+import type { CarouselApi } from '@/components/ui/carousel';
 import {
   Carousel,
   CarouselContent,
@@ -10,6 +12,7 @@ import {
 import { Card } from '@/components/ui/card';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { ScaleOnHover } from '@/components/animations/scale-on-hover';
+import { useEffect, useState } from 'react';
 
 const screenshots = [
   {
@@ -51,6 +54,30 @@ const screenshots = [
 ];
 
 export function ScreenshotCarousel() {
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+  const [api, setApi] = useState<CarouselApi>();
+
+  const handlePrevClick = () => {
+    if (api) {
+      if (isRTL) {
+        api.scrollNext(); // In RTL, left arrow should scroll right (next)
+      } else {
+        api.scrollPrev(); // In LTR, left arrow scrolls left (prev)
+      }
+    }
+  };
+
+  const handleNextClick = () => {
+    if (api) {
+      if (isRTL) {
+        api.scrollPrev(); // In RTL, right arrow should scroll left (prev)
+      } else {
+        api.scrollNext(); // In LTR, right arrow scrolls right (next)
+      }
+    }
+  };
+
   return (
     <ScrollReveal className="w-full max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-12">
@@ -63,13 +90,15 @@ export function ScreenshotCarousel() {
       </div>
 
       <Carousel
+        setApi={setApi}
         opts={{
           align: 'start',
           loop: true,
+          direction: isRTL ? 'rtl' : 'ltr',
         }}
         className="w-full ltr:pl-4 rtl:pr-4"
       >
-        <CarouselContent className="ltr:ml-0 ltr:pl-4 rtl:mr-0 rtl:pr-4">
+        <CarouselContent className="ltr:ml-0 ltr:pl-3 rtl:mr-0 rtl:pr-4">
           {screenshots.map((screenshot) => (
             <CarouselItem key={screenshot.id} className="ltr:pl-4 rtl:pr-4 md:basis-1/2 lg:basis-1/3 p-4">
               <ScaleOnHover className="h-full">
@@ -98,8 +127,8 @@ export function ScreenshotCarousel() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="hidden md:flex" />
-        <CarouselNext className="hidden md:flex" />
+        <CarouselPrevious className="hidden md:flex" onClick={handlePrevClick} />
+        <CarouselNext className="hidden md:flex" onClick={handleNextClick} />
       </Carousel>
     </ScrollReveal>
   );

@@ -61,7 +61,7 @@ export function TeamGrid() {
       <StaggerChildren className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {team.map((member, index) => (
           <StaggerItem key={index}>
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+            <Card className="p-6 text-center hover:shadow-lg transition-shadow h-[340px] flex flex-col">
               <Avatar className="w-24 h-24 mx-auto mb-4">
                 <AvatarFallback className="bg-primary/10 text-primary text-2xl font-semibold">
                   {member.initials}
@@ -77,4 +77,3 @@ export function TeamGrid() {
     </section>
   );
 }
-
