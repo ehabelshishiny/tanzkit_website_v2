@@ -37,7 +37,7 @@ export function AppFeaturesSection({
   accentColor,
 }: AppFeaturesSectionProps) {
   return (
-    <SectionContainer background="muted" padding="xl" maxWidth="2xl">
+    <SectionContainer background="light" padding="xl" maxWidth="2xl">
       {/* Section Header */}
       <motion.div
         initial="hidden"
