@@ -26,7 +26,7 @@ export function AppScreenshotsCarousel({
   accentColor,
 }: AppScreenshotsCarouselProps) {
   return (
-    <SectionContainer background="default" padding="xl" maxWidth="2xl">
+    <SectionContainer background="light" padding="xl" maxWidth="2xl">
       {/* Section Header */}
       <motion.div
         initial="hidden"
