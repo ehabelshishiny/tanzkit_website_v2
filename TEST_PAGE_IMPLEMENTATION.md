@@ -92,7 +92,7 @@ export default function TestPage() {
       </div>
       
       {/* Your test components here */}
-      <div className="relative z-20 container mx-auto px-6 py-20">
+      <div className="relative z-20 w-full px-6 py-20">
         <YourTestComponent />
       </div>
     </div>

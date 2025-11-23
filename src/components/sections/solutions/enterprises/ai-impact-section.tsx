@@ -54,7 +54,7 @@ export function EnterprisesAiImpactSection() {
           }} />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 max-w-7xl">
+        <div className="relative z-10 w-full px-4 max-w-7xl">
           {/* Section Title */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -129,14 +129,14 @@ Cars: Blue and Teal (vibrant)
 // Remove the centered message
 // Add your component
 
-<div className="relative z-20 container mx-auto px-6 py-20">
+<div className="relative z-20 w-full px-6 py-20">
   <YourNewComponent />
 </div>
 ```
 
 ### Scenario 2: Testing Multiple Components
 ```tsx
-<div className="relative z-20 container mx-auto px-6 py-20 space-y-12">
+<div className="relative z-20 w-full px-6 py-20 space-y-12">
   <ComponentA />
   <ComponentB />
   <ComponentC />

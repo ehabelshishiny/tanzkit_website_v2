@@ -18,7 +18,7 @@ export function AppsHeroSection() {
 
   return (
     <AnimatedGradientBackground variant="vibrant" className="min-h-[70vh] flex items-center">
-      <div className="container mx-auto px-4 py-20">
+      <div className="w-full px-4 py-20">
         <div className="max-w-4xl mx-auto text-center">
           {/* Animated Headline */}
           <motion.div

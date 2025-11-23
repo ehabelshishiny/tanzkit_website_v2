@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from './language-switcher';
 import { NavDropdown } from '../navigation/nav-dropdown';
 import { Logo } from './logo';
@@ -59,66 +58,64 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="container flex h-16 items-center px-6 md:px-8" dir="ltr">
-        {/* Logo - Left Side - Natural Width */}
-        <div className="flex items-center shrink-0">
-          <Link href={`/${locale}`} className="flex items-center">
-            <Logo />
-          </Link>
-        </div>
-
-        {/* Desktop Navigation - Centered */}
-        <div className={`hidden md:flex md:gap-6 flex-1 justify-center ${locale === 'ar' ? 'flex-row-reverse' : ''}`}>
-          {navigation.map((item) => (
-            item.subPages.length > 0 ? (
-              <NavDropdown
-                key={item.name}
-                label={item.name}
-                href={item.href}
-                subPages={item.subPages}
-              />
-            ) : (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-sm font-medium transition-colors hover:text-primary"
-              >
-                {item.name}
-              </Link>
-            )
-          ))}
-        </div>
-
-        {/* Right Side - Theme Toggle, Language Switcher, Test Button & CTA - Min Width */}
-        <div className="flex items-center gap-4 min-w-[280px] md:min-w-[380px] justify-end">
-          <ThemeToggle />
-          <LanguageSwitcher />
-
-          {/* Test Button - Temporary for development */}
-          <Link href={`/${locale}/test`} className="hidden md:inline-flex">
-            <Button variant="outline" size="sm">
-              Test
-            </Button>
-          </Link>
-
-          <div className="hidden md:inline-flex">
-            <TrialCTAButton variant="primary" size="lg" />
+<nav className="w-full px-6 md:px-8" dir="ltr">
+  <div className="grid grid-cols-[auto_1fr_auto] md:grid-cols-3 items-center h-16 gap-4">
+          {/* Left: Logo */}
+          <div className="flex items-center justify-start">
+            <Link href={`/${locale}`} className="flex items-center">
+              <Logo />
+            </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X /> : <Menu />}
-          </button>
+          {/* Center: Desktop Navigation */}
+          <div className="hidden md:flex items-center justify-center">
+            <div className={`flex gap-6 ${locale === 'ar' ? 'flex-row-reverse' : ''}`}>
+              {navigation.map((item) => (
+                item.subPages.length > 0 ? (
+                  <NavDropdown
+                    key={item.name}
+                    label={item.name}
+                    href={item.href}
+                    subPages={item.subPages}
+                  />
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap"
+                  >
+                    {item.name}
+                  </Link>
+                )
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Action Buttons */}
+          <div className="flex items-center justify-end gap-3">
+            {/* Desktop: Theme Toggle, Language Switcher, Trial Button */}
+            <div className="hidden md:flex items-center gap-3">
+              <ThemeToggle />
+              <LanguageSwitcher />
+              <TrialCTAButton variant="primary" size="lg" />
+            </div>
+
+            {/* Mobile: Menu Button */}
+            <button
+              className="md:hidden p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </nav>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t">
-          <div className={`container py-4 px-6 ${locale === 'ar' ? 'flex flex-col-reverse space-y-reverse space-y-3' : 'space-y-3'}`}>
+          <div className={`w-full py-4 px-6 ${locale === 'ar' ? 'flex flex-col-reverse space-y-reverse space-y-3' : 'space-y-3'}`}>
             {navigation.map((item) => (
               <div key={item.name}>
                 <Link
@@ -146,15 +143,13 @@ export function Header() {
               </div>
             ))}
 
-            {/* Test Button in Mobile Menu */}
-            <div className="pt-3 border-t">
-              <Link
-                href={`/${locale}/test`}
-                className="block py-2 text-sm font-medium text-muted-foreground"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Test (Dev)
-              </Link>
+            {/* Mobile: Action Buttons */}
+            <div className="pt-4 border-t space-y-3">
+              <div className="flex items-center gap-3">
+                <ThemeToggle />
+                <LanguageSwitcher />
+              </div>
+              <TrialCTAButton variant="primary" size="lg" className="w-full" />
             </div>
           </div>
         </div>
@@ -162,4 +157,5 @@ export function Header() {
     </header>
   );
 }
+
 

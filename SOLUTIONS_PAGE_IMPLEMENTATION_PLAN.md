@@ -1378,7 +1378,7 @@ const containerSizes = {
 };
 
 // Usage
-<div className="container mx-auto max-w-screen-xl px-6">
+<div className="w-full max-w-screen-xl px-6">
   {/* Content constrained to 1280px with horizontal padding */}
 </div>
 ```
