@@ -27,7 +27,7 @@ export function AppDownloadSection({
   const t = useTranslations('apps.common');
 
   return (
-    <SectionContainer background="muted" padding="xl" maxWidth="lg">
+    <SectionContainer background="light" padding="xl" maxWidth="lg">
       <motion.div
         initial="hidden"
         whileInView="visible"
