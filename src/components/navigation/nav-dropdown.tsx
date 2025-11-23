@@ -10,6 +10,7 @@ interface SubPage {
   name: string;
   href: string;
   description?: string;
+  isParent?: boolean;
 }
 
 interface NavDropdownProps {
@@ -56,12 +57,14 @@ export function NavDropdown({ label, href, subPages }: NavDropdownProps) {
             dir={isRTL ? 'rtl' : 'ltr'}
           >
             <div className="py-2">
-              {subPages.map((subPage) => (
+              {subPages.map((subPage, index) => (
                 <Link
                   key={subPage.href}
                   href={subPage.href}
                   className={`block px-4 py-3 text-sm hover:bg-muted transition-colors ${
                     isRTL ? 'text-right' : 'text-left'
+                  } ${
+                    subPage.isParent ? 'bg-primary/5 border-b font-semibold text-primary' : ''
                   }`}
                 >
                   <div className="font-medium">{subPage.name}</div>
@@ -79,4 +82,3 @@ export function NavDropdown({ label, href, subPages }: NavDropdownProps) {
     </div>
   );
 }
-

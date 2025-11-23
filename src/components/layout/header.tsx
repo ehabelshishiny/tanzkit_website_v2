@@ -18,6 +18,12 @@ export function Header() {
   // Navigation items with subpages
   const solutionsSubPages = [
     {
+      name: t('solutions'),
+      href: `/${locale}/solutions`,
+      description: 'View all solutions',
+      isParent: true
+    },
+    {
       name: t('submenus.solutions.enterprisesPassengers.name'),
       href: `/${locale}/solutions/enterprises-passengers`,
       description: t('submenus.solutions.enterprisesPassengers.description')
@@ -30,6 +36,12 @@ export function Header() {
   ];
 
   const resourcesSubPages = [
+    {
+      name: t('resources'),
+      href: `/${locale}/resources`,
+      description: 'View all resources',
+      isParent: true
+    },
     { name: t('submenus.resources.helpCenter'), href: `/${locale}/resources/help-center` },
     { name: t('submenus.resources.blog'), href: `/${locale}/resources/blog` },
     { name: t('submenus.resources.caseStudies'), href: `/${locale}/resources/case-studies` },
@@ -39,6 +51,12 @@ export function Header() {
   ];
 
   const appsSubPages = [
+    {
+      name: t('apps'),
+      href: `/${locale}/apps`,
+      description: 'View all apps',
+      isParent: true
+    },
     { name: t('submenus.apps.supervisor'), href: `/${locale}/apps/supervisor` },
     { name: t('submenus.apps.driver'), href: `/${locale}/apps/driver` },
     { name: t('submenus.apps.rider'), href: `/${locale}/apps/rider` },
@@ -157,5 +175,3 @@ export function Header() {
     </header>
   );
 }
-
-
