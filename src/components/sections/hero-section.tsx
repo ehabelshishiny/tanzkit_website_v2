@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 
@@ -48,6 +48,8 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
   const t = useTranslations('home.hero');
   const tCommon = useTranslations('common');
   const { theme } = useTheme();
+  const locale = useLocale(); // Add this line
+  const isRTL = locale === 'ar'; // Check if Arabic
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -119,8 +121,8 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     return { x, y };
   };
 
-  // Generate smooth worm/snake-like undulating path
-  const generateSPath = (sx: number, sy: number, ex: number, ey: number, samples = 500) => {
+  // Generate smooth worm/snake-like undulating path with RTL support
+  const generateSPath = (sx: number, sy: number, ex: number, ey: number, samples = 500, flipHorizontal = false) => {
     const path: { x: number; y: number }[] = [];
     const spanX = ex - sx;
     const spanY = ey - sy;
@@ -142,7 +144,8 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       const perpAngle = angle + Math.PI / 2; // Perpendicular angle
       
       // Sine wave offset (creates the worm wiggle)
-      const waveOffset = Math.sin(t * Math.PI * waveCount) * waveAmplitude;
+      // Flip the wave direction for RTL by negating the wave offset
+      const waveOffset = Math.sin(t * Math.PI * waveCount) * waveAmplitude * (flipHorizontal ? -1 : 1);
       
       // Apply the wave offset perpendicular to travel direction
       const x = baseX + Math.cos(perpAngle) * waveOffset;
@@ -153,6 +156,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
     return path;
   };
+
 
   // Initialize background pattern
   const initializeBackgroundPattern = (width: number, height: number) => {
@@ -230,30 +234,30 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
   }, []);
 
   // Initialize vehicles, network nodes, and background pattern
-  useEffect(() => {
+   useEffect(() => {
     const { width, height } = canvasSize;
 
-    // Build two S-shaped routes on the right side of the screen (avoid left text area)
-    const marginLeft = Math.max(width * 0.58, 300); // keep routes to the right of text
-    // Build two diagonal S-shaped routes that span the full canvas
+    // Build two diagonal worm-shaped routes that span the full canvas
+    // Routes flip horizontally in RTL mode (Arabic)
     const route1 = generateSPath(
-      // start near top-right
-      width - 0,
+      // start near top-right (or top-left in RTL)
+      isRTL ? 0 : width - 0,
       Math.max(20, height * 0.06) + 50,
-      // end near bottom-left
-      Math.min(width * 0.08, 60),
+      // end near bottom-left (or bottom-right in RTL)
+      isRTL ? width - Math.min(width * 0.08, 60) : Math.min(width * 0.08, 60),
       Math.min(height * 0.94, height - 100) + 50,
-      420
+      420,
+      isRTL // Flip wave direction for RTL
     );
 
     const route2 = generateSPath(
-      width - 0,
+      isRTL ? 0 : width - 0,
       Math.max(40, height * 0.12) + 50,
-      Math.min(width * 0.12, 100),
+      isRTL ? width - Math.min(width * 0.12, 100) : Math.min(width * 0.12, 100),
       Math.min(height * 0.9, height - 40) + 50,
-      420
+      420,
+      isRTL // Flip wave direction for RTL
     );
-
 
     // Create exactly two vehicles, one per route, moving in opposite directions
     const newVehicles: Vehicle[] = [];
@@ -282,12 +286,23 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     });
 
     // Place a few network nodes away from text area on the right
+        // Place a few network nodes away from text area on the right (or left in RTL)
     const newNodes: NetworkNode[] = [];
-    const nodePositions = [
+    const marginLeft = Math.max(width * 0.58, 300); // Keep nodes away from text area
+    
+    // Position nodes based on language direction
+    const nodePositions = isRTL ? [
+      // RTL: nodes on the left side
+      { x: width - (marginLeft + (width - marginLeft) * 0.35), y: height * 0.2 },
+      { x: width - (marginLeft + (width - marginLeft) * 0.75), y: height * 0.5 },
+      { x: width - (marginLeft + (width - marginLeft) * 0.45), y: height * 0.78 }
+    ] : [
+      // LTR: nodes on the right side
       { x: marginLeft + (width - marginLeft) * 0.35, y: height * 0.2 },
       { x: marginLeft + (width - marginLeft) * 0.75, y: height * 0.5 },
       { x: marginLeft + (width - marginLeft) * 0.45, y: height * 0.78 }
     ];
+
 
     nodePositions.forEach((pos, i) => {
       newNodes.push({
@@ -315,7 +330,8 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     setNetworkNodes(newNodes);
     initializeBackgroundPattern(width, height);
     setIsVisible(true);
-  }, [canvasSize]);
+  }, [canvasSize, isRTL]); // Add isRTL to dependencies
+
 
   // Animation loop
   useEffect(() => {
@@ -445,8 +461,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
           // Flip the direction if the vehicle moves "backward" (negative speed)
           if (vehicle.speed < 0) angle += Math.PI;
-
-          // === VEHICLE (CAR SVG FOR BOTH VEHICLES) ===
+           // === VEHICLE (CAR SVG FOR BOTH VEHICLES) ===
           ctx.save();
 
           // Determine which car image to use based on vehicle color
@@ -457,10 +472,21 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
             ctx.translate(vehicle.x, vehicle.y);
             ctx.rotate(angle + Math.PI); // Adjust rotation for car orientation
 
-            // If this is the red car, flip it vertically (mirror on horizontal axis)
-            // We apply scale(1, -1) so only the red car is flipped; blue car remains normal.
-            if (vehicle.color === '#EF4444') {
+            // Handle vehicle flipping based on RTL mode and vehicle type
+            const isTealCar = vehicle.color === '#EF4444';
+            
+            if (isRTL) {
+              // RTL mode: flip all vehicles vertically to be above the path
               ctx.scale(1, -1);
+              // Teal car also needs horizontal flip to face forward in RTL
+              if (isTealCar) {
+                ctx.scale(-1, -1); // This becomes scale(-1, -1) combined with above
+              }
+            } else {
+              // LTR mode: teal car flipped vertically to be above path
+              if (isTealCar) {
+                ctx.scale(-1, -1);
+              }
             }
 
             ctx.drawImage(
@@ -481,6 +507,8 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
           }
 
           ctx.restore();
+
+
         }
       });
 
