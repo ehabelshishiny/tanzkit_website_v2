@@ -49,8 +49,8 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
   const t = useTranslations('home.hero');
   const tCommon = useTranslations('common');
   const { theme } = useTheme();
-  const locale = useLocale(); // Add this line
-  const isRTL = locale === 'ar'; // Check if Arabic
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -64,6 +64,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [canvasSize, setCanvasSize] = useState({ width: 1200, height: 800 });
   const [mounted, setMounted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false); // NEW: Track if desktop
   const animationRef = useRef<number | null>(null);
   const mousePositionRef = useRef({ x: 0, y: 0 });
   const carImageRef = useRef<HTMLImageElement | null>(null);
@@ -76,14 +77,25 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
   const isDark = mounted && theme === 'dark';
 
+  // NEW: Detect screen size for desktop-only canvas
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 1024); // lg breakpoint
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
   // Load car SVGs
   useEffect(() => {
-    // Blue car SVG
+    if (!isDesktop) return; // Only load images on desktop
+
     const carSVGBlue = `
           <svg fill="#5090F6" viewBox="0 -39.69 122.88 122.88" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="enable-background:new 0 0 122.88 43.49" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;}</style> <g> <path class="st0" d="M103.94,23.97c5.39,0,9.76,4.37,9.76,9.76c0,5.39-4.37,9.76-9.76,9.76c-5.39,0-9.76-4.37-9.76-9.76 C94.18,28.34,98.55,23.97,103.94,23.97L103.94,23.97z M23,29.07v3.51h3.51C26.09,30.86,24.73,29.49,23,29.07L23,29.07z M26.52,34.87H23v3.51C24.73,37.97,26.09,36.6,26.52,34.87L26.52,34.87z M20.71,38.39v-3.51H17.2 C17.62,36.6,18.99,37.96,20.71,38.39L20.71,38.39z M17.2,32.59h3.51v-3.51C18.99,29.49,17.62,30.86,17.2,32.59L17.2,32.59z M105.09,29.07v3.51h3.51C108.18,30.86,106.82,29.49,105.09,29.07L105.09,29.07z M108.6,34.87h-3.51v3.51 C106.82,37.97,108.18,36.6,108.6,34.87L108.6,34.87z M102.8,38.39v-3.51h-3.51C99.71,36.6,101.07,37.96,102.8,38.39L102.8,38.39z M99.28,32.59h3.51v-3.51C101.07,29.49,99.71,30.86,99.28,32.59L99.28,32.59z M49.29,12.79c-1.54-0.35-3.07-0.35-4.61-0.28 C56.73,6.18,61.46,2.07,75.57,2.9l-1.94,12.87L50.4,16.65c0.21-0.61,0.33-0.94,0.37-1.55C50.88,13.36,50.86,13.15,49.29,12.79 L49.29,12.79z M79.12,3.13L76.6,15.6l24.13-0.98c2.48-0.1,2.91-1.19,1.41-3.28c-0.68-0.95-1.44-1.89-2.31-2.82 C93.59,1.86,87.38,3.24,79.12,3.13L79.12,3.13z M0.46,27.28H1.2c0.46-2.04,1.37-3.88,2.71-5.53c2.94-3.66,4.28-3.2,8.65-3.99 l24.46-4.61c5.43-3.86,11.98-7.3,19.97-10.2C64.4,0.25,69.63-0.01,77.56,0c4.54,0.01,9.14,0.28,13.81,0.84 c2.37,0.15,4.69,0.47,6.97,0.93c2.73,0.55,5.41,1.31,8.04,2.21l9.8,5.66c2.89,1.67,3.51,3.62,3.88,6.81l1.38,11.78h1.43v6.51 c-0.2,2.19-1.06,2.52-2.88,2.52h-2.37c0.92-20.59-28.05-24.11-27.42,1.63H34.76c3.73-17.75-14.17-23.91-22.96-13.76 c-2.67,3.09-3.6,7.31-3.36,12.3H2.03c-0.51-0.24-0.91-0.57-1.21-0.98c-1.05-1.43-0.82-5.74-0.74-8.23 C0.09,27.55-0.12,27.28,0.46,27.28L0.46,27.28z M21.86,23.97c5.39,0,9.76,4.37,9.76,9.76c0,5.39-4.37,9.76-9.76,9.76 c-5.39,0-9.76-4.37-9.76-9.76C12.1,28.34,16.47,23.97,21.86,23.97L21.86,23.97z"></path> </g> </g></svg>
     `;
 
-    // Red car SVG
     const carSVGRed = `
           <svg fill="#7CE3D8" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 552.506 552.506" xml:space="preserve" stroke="#7CE3D8">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -107,7 +119,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       carImageRedRef.current = imgRed;
     };
     imgRed.src = 'data:image/svg+xml;base64,' + btoa(carSVGRed);
-  }, []);
+  }, [isDesktop]);
 
   // Helper: evaluate a cubic Bezier at t (0..1)
   const cubicBezierPoint = (t: number, p0: { x: number; y: number }, p1: { x: number; y: number }, p2: { x: number; y: number }, p3: { x: number; y: number }) => {
@@ -128,27 +140,20 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     const spanX = ex - sx;
     const spanY = ey - sy;
     
-    // Create smooth wave motion like a worm's body
-    const waveCount = 3; // Number of wave cycles
-    const waveAmplitude = Math.min(Math.abs(spanX), Math.abs(spanY)) * 0.15; // Wave height
+    const waveCount = 3;
+    const waveAmplitude = Math.min(Math.abs(spanX), Math.abs(spanY)) * 0.15;
     
     for (let i = 0; i <= samples; i++) {
-      const t = i / samples; // Progress from 0 to 1
+      const t = i / samples;
       
-      // Base diagonal progression from start to end
       const baseX = sx + spanX * t;
       const baseY = sy + spanY * t;
       
-      // Add smooth sine wave perpendicular to the diagonal direction
-      // This creates the worm-like undulation
-      const angle = Math.atan2(spanY, spanX); // Direction of travel
-      const perpAngle = angle + Math.PI / 2; // Perpendicular angle
+      const angle = Math.atan2(spanY, spanX);
+      const perpAngle = angle + Math.PI / 2;
       
-      // Sine wave offset (creates the worm wiggle)
-      // Flip the wave direction for RTL by negating the wave offset
       const waveOffset = Math.sin(t * Math.PI * waveCount) * waveAmplitude * (flipHorizontal ? -1 : 1);
       
-      // Apply the wave offset perpendicular to travel direction
       const x = baseX + Math.cos(perpAngle) * waveOffset;
       const y = baseY + Math.sin(perpAngle) * waveOffset;
       
@@ -158,20 +163,17 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     return path;
   };
 
-
   // Initialize background pattern
   const initializeBackgroundPattern = (width: number, height: number) => {
     const nodes: BackgroundNode[] = [];
     const connections: { from: number; to: number; progress: number }[] = [];
 
-    // Create a grid of nodes - more dense on larger screens
     const columns = Math.max(6, Math.floor(width / 150));
     const rows = Math.max(4, Math.floor(height / 150));
 
     const horizontalSpacing = width / columns;
     const verticalSpacing = height / rows;
 
-    // Add some random offset to make it less rigid
     const randomOffset = Math.min(horizontalSpacing, verticalSpacing) * 0.3;
 
     for (let row = 0; row <= rows; row++) {
@@ -179,7 +181,6 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
         const baseX = col * horizontalSpacing + (Math.random() - 0.5) * randomOffset;
         const baseY = row * verticalSpacing + (Math.random() - 0.5) * randomOffset;
 
-        // Keep nodes away from the left text area (approx 60% of screen)
         if (baseX > width * 0.4) {
           nodes.push({
             x: baseX,
@@ -195,7 +196,6 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       }
     }
 
-    // Create connections between nearby nodes (road network simulation)
     nodes.forEach((node, i) => {
       nodes.forEach((otherNode, j) => {
         if (i !== j && node.connections.length < 3) {
@@ -219,6 +219,8 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
   // Initialize canvas size
   useEffect(() => {
+    if (!isDesktop) return; // Only initialize on desktop
+
     const updateCanvasSize = () => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
@@ -232,23 +234,21 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     updateCanvasSize();
     window.addEventListener('resize', updateCanvasSize);
     return () => window.removeEventListener('resize', updateCanvasSize);
-  }, []);
+  }, [isDesktop]);
 
   // Initialize vehicles, network nodes, and background pattern
-   useEffect(() => {
+  useEffect(() => {
+    if (!isDesktop) return; // Only initialize on desktop
+
     const { width, height } = canvasSize;
 
-    // Build two diagonal worm-shaped routes that span the full canvas
-    // Routes flip horizontally in RTL mode (Arabic)
     const route1 = generateSPath(
-      // start near top-right (or top-left in RTL)
       isRTL ? 0 : width - 0,
       Math.max(20, height * 0.06) + 50,
-      // end near bottom-left (or bottom-right in RTL)
       isRTL ? width - Math.min(width * 0.08, 60) : Math.min(width * 0.08, 60),
       Math.min(height * 0.94, height - 100) + 50,
       420,
-      isRTL // Flip wave direction for RTL
+      isRTL
     );
 
     const route2 = generateSPath(
@@ -257,10 +257,9 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       isRTL ? width - Math.min(width * 0.12, 100) : Math.min(width * 0.12, 100),
       Math.min(height * 0.9, height - 40) + 50,
       420,
-      isRTL // Flip wave direction for RTL
+      isRTL
     );
 
-    // Create exactly two vehicles, one per route, moving in opposite directions
     const newVehicles: Vehicle[] = [];
     newVehicles.push({
       id: 0,
@@ -269,7 +268,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       y: route1[0].y,
       progress: 0.1,
       path: route1,
-      speed: 0.00015, // positive: top -> bottom
+      speed: 0.00015,
       color: '#3B82F6',
       size: 14
     });
@@ -281,29 +280,23 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       y: route2[route2.length - 1].y,
       progress: 0.9,
       path: route2,
-      speed: -0.00015, // negative: bottom -> top (opposite direction)
+      speed: -0.00015,
       color: '#EF4444',
       size: 16
     });
 
-    // Place a few network nodes away from text area on the right
-        // Place a few network nodes away from text area on the right (or left in RTL)
     const newNodes: NetworkNode[] = [];
-    const marginLeft = Math.max(width * 0.58, 300); // Keep nodes away from text area
+    const marginLeft = Math.max(width * 0.58, 300);
     
-    // Position nodes based on language direction
     const nodePositions = isRTL ? [
-      // RTL: nodes on the left side
       { x: width - (marginLeft + (width - marginLeft) * 0.35), y: height * 0.2 },
       { x: width - (marginLeft + (width - marginLeft) * 0.75), y: height * 0.5 },
       { x: width - (marginLeft + (width - marginLeft) * 0.45), y: height * 0.78 }
     ] : [
-      // LTR: nodes on the right side
       { x: marginLeft + (width - marginLeft) * 0.35, y: height * 0.2 },
       { x: marginLeft + (width - marginLeft) * 0.75, y: height * 0.5 },
       { x: marginLeft + (width - marginLeft) * 0.45, y: height * 0.78 }
     ];
-
 
     nodePositions.forEach((pos, i) => {
       newNodes.push({
@@ -317,7 +310,6 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       });
     });
 
-    // Link nearby nodes
     newNodes.forEach((node, i) => {
       newNodes.forEach((otherNode, j) => {
         if (i !== j && node.connections.length < 2) {
@@ -331,18 +323,18 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     setNetworkNodes(newNodes);
     initializeBackgroundPattern(width, height);
     setIsVisible(true);
-  }, [canvasSize, isRTL]); // Add isRTL to dependencies
-
+  }, [canvasSize, isRTL, isDesktop]);
 
   // Animation loop
   useEffect(() => {
+    if (!isDesktop) return; // Only animate on desktop
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size properly
     const dpr = window.devicePixelRatio || 1;
     canvas.width = canvasSize.width * dpr;
     canvas.height = canvasSize.height * dpr;
@@ -351,28 +343,24 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     ctx.scale(dpr, dpr);
 
     const animate = () => {
-      // Clear canvas with theme-adaptive background
       ctx.fillStyle = isDark ? 'rgba(20, 20, 30, 0.95)' : 'rgba(255, 255, 255, 0.95)';
       ctx.fillRect(0, 0, canvasSize.width, canvasSize.height);
 
-      // Draw background pattern (road network)
       ctx.save();
 
-      // Draw connection lines (road network)
       backgroundPattern.connections.forEach(conn => {
         const fromNode = backgroundPattern.nodes[conn.from];
         const toNode = backgroundPattern.nodes[conn.to];
 
         if (fromNode && toNode) {
-          // Animate the connection progress
           conn.progress += 0.02;
           if (conn.progress > Math.PI * 2) conn.progress = 0;
 
-          const pulse = Math.sin(conn.progress) * 0.3 + 0.7; // 0.4 to 1.0
+          const pulse = Math.sin(conn.progress) * 0.3 + 0.7;
 
           ctx.strokeStyle = isDark
             ? `rgba(45, 212, 191, ${0.15 * pulse})`
-            : `rgba(94, 234, 212, ${0.1 * pulse})`; // teal with varying opacity
+            : `rgba(94, 234, 212, ${0.1 * pulse})`;
           ctx.lineWidth = 1;
           ctx.setLineDash([2, 4]);
           ctx.beginPath();
@@ -382,9 +370,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
         }
       });
 
-      // Draw floating nodes (waypoints/intersections)
       backgroundPattern.nodes.forEach(node => {
-        // Gentle floating animation
         node.pulsePhase += 0.01;
         node.floatPhase += 0.005;
 
@@ -394,14 +380,13 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
         ctx.fillStyle = isDark
           ? `rgba(45, 212, 191, ${0.4 + Math.sin(node.pulsePhase) * 0.2})`
-          : `rgba(94, 234, 212, ${0.3 + Math.sin(node.pulsePhase) * 0.2})`; // teal
+          : `rgba(94, 234, 212, ${0.3 + Math.sin(node.pulsePhase) * 0.2})`;
         ctx.shadowColor = isDark ? 'rgb(45, 212, 191)' : 'rgb(94, 234, 212)';
         ctx.shadowBlur = 8;
         ctx.beginPath();
         ctx.arc(node.x + floatX, node.y + floatY, pulseSize, 0, Math.PI * 2);
         ctx.fill();
 
-        // Inner dot
         ctx.fillStyle = isDark ? `rgba(200, 200, 220, 0.8)` : `rgba(255, 255, 255, 0.8)`;
         ctx.shadowBlur = 0;
         ctx.beginPath();
@@ -412,14 +397,12 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       ctx.restore();
       ctx.setLineDash([]);
 
-      // Draw dashed S-shaped routes (one per vehicle path) — static dashes (no animation)
       const drawn = new Set<number>();
       vehicles.forEach((vehicle, vi) => {
         const path = vehicle.path;
         if (!path || path.length < 2) return;
 
-        // Avoid drawing duplicate paths if same reference used
-        const pathId = vi; // each vehicle has its own path in our setup
+        const pathId = vi;
         if (drawn.has(pathId)) return;
         drawn.add(pathId);
 
@@ -439,7 +422,6 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
         ctx.restore();
       });
 
-      // Update and draw vehicles
       vehicles.forEach(vehicle => {
         vehicle.progress += vehicle.speed;
         if (vehicle.progress >= 1) vehicle.progress = 0;
@@ -453,38 +435,29 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
         const nextPos = vehicle.path[nextIndex];
 
         if (currentPos && nextPos) {
-          // Interpolate position
           vehicle.x = currentPos.x + (nextPos.x - currentPos.x) * localProgress;
           vehicle.y = currentPos.y + (nextPos.y - currentPos.y) * localProgress;
 
-          // Calculate the movement direction
           let angle = Math.atan2(nextPos.y - currentPos.y, nextPos.x - currentPos.x);
 
-          // Flip the direction if the vehicle moves "backward" (negative speed)
           if (vehicle.speed < 0) angle += Math.PI;
-           // === VEHICLE (CAR SVG FOR BOTH VEHICLES) ===
+
           ctx.save();
 
-          // Determine which car image to use based on vehicle color
           const carImage = vehicle.color === '#3B82F6' ? carImageRef.current : carImageRedRef.current;
 
           if (carImage) {
-            // Draw car SVG for both vehicles
             ctx.translate(vehicle.x, vehicle.y);
-            ctx.rotate(angle + Math.PI); // Adjust rotation for car orientation
+            ctx.rotate(angle + Math.PI);
 
-            // Handle vehicle flipping based on RTL mode and vehicle type
             const isTealCar = vehicle.color === '#EF4444';
             
             if (isRTL) {
-              // RTL mode: flip all vehicles vertically to be above the path
               ctx.scale(1, -1);
-              // Teal car also needs horizontal flip to face forward in RTL
               if (isTealCar) {
-                ctx.scale(-1, -1); // This becomes scale(-1, -1) combined with above
+                ctx.scale(-1, -1);
               }
             } else {
-              // LTR mode: teal car flipped vertically to be above path
               if (isTealCar) {
                 ctx.scale(-1, -1);
               }
@@ -498,7 +471,6 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
               vehicle.size * 2
             );
           } else {
-            // Fallback: Draw glowing circle if image not loaded
             ctx.fillStyle = vehicle.color;
             ctx.shadowColor = vehicle.color;
             ctx.shadowBlur = 12;
@@ -508,8 +480,6 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
           }
 
           ctx.restore();
-
-
         }
       });
 
@@ -523,7 +493,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [vehicles, networkNodes, canvasSize, backgroundPattern, isDark]);
+  }, [vehicles, networkNodes, canvasSize, backgroundPattern, isDark, isDesktop]);
 
   // Scroll handler
   useEffect(() => {
@@ -532,7 +502,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Mouse movement handler - using ref instead of state to prevent re-renders
+  // Mouse movement handler
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
     mousePositionRef.current = {
@@ -547,24 +517,31 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden"
       onMouseMove={handleMouseMove}
     >
-      {/* Animated Background Canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-        style={{
-          transform: `translateY(${scrollY * 0.2}px)`,
-        }}
-      />
+      {/* Animated Background Canvas - Desktop Only */}
+      {isDesktop && (
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full hidden lg:block"
+          style={{
+            transform: `translateY(${scrollY * 0.2}px)`,
+          }}
+        />
+      )}
+
+      {/* Mobile/Tablet Gradient Background */}
+      {!isDesktop && (
+        <div className="absolute inset-0 bg-gradient-to-br from-teal-900/20 via-blue-900/20 to-slate-900 lg:hidden" />
+      )}
 
       {/* Hero Content */}
       <div
-        className="relative z-10 w-full px-6 py-20 flex items-center min-h-screen"
+        className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-20 flex items-center min-h-screen"
         style={{ transform: `translateY(${scrollY * -0.05}px)` }}
       >
-        <div className="max-w-4xl w-full">
+        <div className="max-w-4xl w-full mx-auto lg:mx-0">
           {/* Animated Headline */}
-          <div className="mb-8">
-            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+          <div className="mb-6 sm:mb-8">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
               <span
                 className={`inline-block transition-all duration-1000 ease-out text-foreground ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
                 style={{ transitionDelay: '0.3s' }}
@@ -582,7 +559,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
               <br />
             </h1>
             <h2
-              className={`text-xl md:text-2xl text-muted-foreground mt-6 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+              className={`text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mt-4 sm:mt-6 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
               style={{ transitionDelay: '1.2s' }}
             >
               {subtitle || t('subtitle')}
@@ -591,19 +568,19 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
           {/* CTA Buttons */}
           <div
-            className={`flex flex-col sm:flex-row gap-6 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+            className={`flex flex-col sm:flex-row gap-4 sm:gap-6 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             style={{ transitionDelay: '1.8s' }}
           >
             <div className="animate-pulse hover:animate-none">
               <TrialCTAButton
                 variant="primary"
                 size="lg"
-                className="shadow-2xl shadow-accent/50 !h-[56px]"
+                className="shadow-2xl shadow-accent/50 !h-[48px] sm:!h-[56px] w-full sm:w-auto"
               />
             </div>
 
-            <button className="group relative px-8 py-4 border-2 border-accent text-accent font-semibold rounded-lg transition-all duration-500 hover:bg-gradient-to-r hover:from-accent hover:to-primary hover:text-primary-foreground hover:scale-105 hover:shadow-lg hover:shadow-accent/30 whitespace-nowrap overflow-hidden cursor-pointer">
-              <span className="flex items-center gap-2 relative z-10 transition-all duration-300">
+            <button className="group relative px-6 sm:px-8 py-3 sm:py-4 border-2 border-accent text-accent font-semibold rounded-lg transition-all duration-500 hover:bg-gradient-to-r hover:from-accent hover:to-primary hover:text-primary-foreground hover:scale-105 hover:shadow-lg hover:shadow-accent/30 whitespace-nowrap overflow-hidden cursor-pointer w-full sm:w-auto">
+              <span className="flex items-center justify-center gap-2 relative z-10 transition-all duration-300">
                 {tCommon('learnMore')}
               </span>
             </button>
@@ -611,7 +588,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
           {/* Stats */}
           <div
-            className={`grid grid-cols-3 gap-8 mt-16 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+            className={`grid grid-cols-3 gap-4 sm:gap-8 mt-12 sm:mt-16 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             style={{ transitionDelay: '2.1s' }}
           >
           </div>
@@ -620,11 +597,11 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
       {/* Scroll Indicator */}
       <div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
         style={{ transform: `translateX(-50%) translateY(${scrollY * -0.1}px)` }}
       >
         <svg
-          className="w-6 h-6 text-teal-400 hover:text-teal-300 transition-colors duration-300"
+          className="w-5 h-5 sm:w-6 sm:h-6 text-teal-400 hover:text-teal-300 transition-colors duration-300"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -638,4 +615,3 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     </section>
   );
 }
-

@@ -56,7 +56,7 @@ export function NavDropdown({ label, href, subPages }: NavDropdownProps) {
             }`}
             dir={isRTL ? 'rtl' : 'ltr'}
           >
-            <div className="py-2">
+            <div className="pb-2">
               {subPages.map((subPage, index) => (
                 <Link
                   key={subPage.href}
