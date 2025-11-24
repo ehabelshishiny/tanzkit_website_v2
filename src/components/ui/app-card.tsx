@@ -6,9 +6,6 @@ import Image from 'next/image';
 import { useLocale } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
-import { CardContainer, CardBody, CardItem } from './3d-card';
-import { getIconComponent } from '@/lib/icon-mapper';
-import { AppCard3DVariant } from './app-card-3d-variant';
 import type { IconName } from '@/config/apps';
 
 interface AppCardProps {
@@ -22,7 +19,7 @@ interface AppCardProps {
   gradient: string;
   accentColor: string;
   use3D?: boolean;
-  use3DVariant?: boolean; // New variant for Rider, Operator Dashboard, Enterprise Dashboard
+  use3DVariant?: boolean;
 }
 
 const cardVariants = {
@@ -37,107 +34,29 @@ const cardVariants = {
   },
 };
 
+// Light gradient backgrounds for each card based on app ID
+const cardGradients: Record<string, string> = {
+  'rider-app': 'bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50',
+  'driver-app': 'bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50',
+  'operator-dashboard': 'bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50',
+  'enterprise-dashboard': 'bg-gradient-to-br from-violet-50 via-purple-50 to-fuchsia-50',
+  'rider-web': 'bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50',
+};
+
 export function AppCard({
   id,
   name,
   tagline,
   description,
-  iconName,
   image,
   appType = 'mobile',
-  gradient,
-  accentColor,
-  use3D = false,
-  use3DVariant = false,
 }: AppCardProps) {
   const locale = useLocale();
   const href = `/${locale}/apps/${id}`;
-  const Icon = getIconComponent(iconName);
+  
+  // Get the gradient for this specific card, fallback to a default
+  const cardGradient = cardGradients[id] || 'bg-gradient-to-br from-slate-50 via-gray-50 to-zinc-50';
 
-  // Use the new 3D variant for specific apps
-  if (use3DVariant) {
-    return (
-      <AppCard3DVariant
-        id={id}
-        name={name}
-        tagline={tagline}
-        description={description}
-        iconName={iconName}
-        image={image}
-        appType={appType}
-        gradient={gradient}
-        accentColor={accentColor}
-      />
-    );
-  }
-
-  if (use3D) {
-    return (
-      <CardContainer containerClassName="w-full h-full">
-        <CardBody className="relative group/card w-full h-full">
-          <Link href={href} className="block h-full">
-            <CardItem
-              translateZ="50"
-              className={cn(
-                'w-full h-full rounded-2xl overflow-hidden',
-                'bg-gradient-to-br border border-border',
-                'shadow-lg hover:shadow-2xl transition-shadow duration-300',
-                gradient
-              )}
-            >
-              {/* Image Section */}
-              {image ? (
-                <CardItem translateZ="70" className="relative w-full h-48 mb-6">
-                  <Image
-                    src={image}
-                    alt={name}
-                    fill
-                    className="object-cover"
-                  />
-                </CardItem>
-              ) : (
-                <CardItem translateZ="70" className="relative w-full h-48 mb-6 bg-muted/30 flex items-center justify-center">
-                  <Icon className="w-16 h-16 opacity-20" style={{ color: accentColor }} />
-                </CardItem>
-              )}
-
-              {/* Content */}
-              <div className="px-8 pb-8">
-                {/* Icon */}
-                <CardItem translateZ="80" className="mb-6">
-                  <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center bg-card/80 backdrop-blur-sm shadow-lg"
-                    style={{ color: accentColor }}
-                  >
-                    <Icon className="w-8 h-8" />
-                  </div>
-                </CardItem>
-
-                {/* Title & Tagline */}
-                <CardItem translateZ="60" className="mb-4">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">{name}</h3>
-                  <p className="text-sm font-medium text-muted-foreground mb-4">{tagline}</p>
-                </CardItem>
-
-                {/* Description */}
-                <CardItem translateZ="40" className="mb-6">
-                  <p className="text-muted-foreground leading-relaxed">{description}</p>
-                </CardItem>
-
-                {/* CTA */}
-                <CardItem translateZ="50" className="flex items-center gap-2 text-sm font-medium group-hover/card:gap-3 transition-all">
-                  <span style={{ color: accentColor }}>Learn More</span>
-                  <ArrowRight className="w-4 h-4" style={{ color: accentColor }} />
-                </CardItem>
-              </div>
-            </CardItem>
-          </Link>
-        </CardBody>
-      </CardContainer>
-    );
-  }
-
-  // Standard card (non-3D)
   return (
     <motion.div
       variants={cardVariants}
@@ -147,59 +66,57 @@ export function AppCard({
       whileHover={{ scale: 1.02, y: -4 }}
       className="h-full"
     >
-      <Link
+           <Link
         href={href}
         className={cn(
           'block h-full rounded-2xl overflow-hidden',
-          'bg-gradient-to-br border border-border',
-          'shadow-lg hover:shadow-2xl transition-all duration-300',
-          'group',
-          gradient
+          'border border-gray-200/80',
+          'shadow-lg hover:shadow-xl hover:border-gray-300',
+          'transition-all duration-300 group',
+          cardGradient
         )}
       >
-        {/* Image Section */}
-        {image ? (
-          <div className="relative w-full h-48">
-            <Image
-              src={image}
-              alt={name}
-              fill
-              className="object-cover"
-            />
-          </div>
-        ) : (
-          <div className="relative w-full h-48 bg-muted/30 flex items-center justify-center">
-            <Icon className="w-16 h-16 opacity-20" style={{ color: accentColor }} />
+        {/* Image Section - With 3px padding */}
+        {image && (
+          <div className="p-[6px] pt-[7px]">
+            <div className="relative w-full h-80 overflow-hidden rounded-xl">
+              <Image
+                src={image}
+                alt={name}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              {/* Subtle gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            </div>
           </div>
         )}
 
-        {/* Content */}
-        <div className="p-8">
-          {/* Icon */}
-          <div
-            className="w-16 h-16 rounded-2xl flex items-center justify-center bg-card/80 backdrop-blur-sm shadow-lg mb-6"
-            style={{ color: accentColor }}
-          >
-            <Icon className="w-8 h-8" />
-          </div>
+        {/* Content - Light theme optimized */}
+        <div className="relative p-6">
 
-          {/* Title & Tagline */}
-          <div className="mb-4">
-            <h3 className="text-2xl font-bold text-foreground mb-2">{name}</h3>
-            <p className="text-sm font-medium text-muted-foreground mb-4">{tagline}</p>
-          </div>
+          {/* Title */}
+          <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
+            {name}
+          </h3>
+
+          {/* Tagline */}
+          <p className="text-sm font-medium text-gray-600 mb-4">
+            {tagline}
+          </p>
 
           {/* Description */}
-          <p className="text-muted-foreground leading-relaxed mb-6">{description}</p>
+          <p className="text-gray-700 leading-relaxed mb-6 line-clamp-3">
+            {description}
+          </p>
 
-          {/* CTA */}
-          <div className="flex items-center gap-2 text-sm font-medium group-hover:gap-3 transition-all">
-            <span style={{ color: accentColor }}>Learn More</span>
-            <ArrowRight className="w-4 h-4" style={{ color: accentColor }} />
+          {/* CTA Button */}
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gray-900 hover:bg-gray-800 text-white font-medium text-sm transition-all group-hover:gap-3">
+            <span>Learn More</span>
+            <ArrowRight className="w-4 h-4" />
           </div>
         </div>
       </Link>
     </motion.div>
   );
 }
-

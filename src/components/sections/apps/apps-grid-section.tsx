@@ -60,7 +60,7 @@ export function AppsGridSection() {
         </p>
       </motion.div>
 
-      {/* Bento Grid Layout - Option D */}
+            {/* Bento Grid Layout - Glassmorphism Style */}
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -69,14 +69,14 @@ export function AppsGridSection() {
         className="space-y-6"
       >
         {/* Desktop View: Bento Grid */}
-        <div className="hidden lg:grid lg:grid-cols-5 gap-6 auto-rows-min">
+        <div className="hidden lg:grid lg:grid-cols-5 gap-x-8 gap-y-8 auto-rows-min mx-">
           {/* Row 1: Desktop 1 (60%) + Mobile 1 (20%) + Mobile 2 (20%) */}
           {desktopApps[0] && (
             <motion.div
               variants={cardVariants}
-              className="col-span-3 row-start-1"
+              className="col-span-3 col-start-1 row-start-1"
             >
-              <div className="aspect-[16/9]">
+              <div className="h-[570px]">
                 <AppCard
                   id={desktopApps[0].id}
                   name={desktopApps[0].name}
@@ -99,7 +99,7 @@ export function AppsGridSection() {
               variants={cardVariants}
               className="col-span-1 row-start-1"
             >
-              <div className="aspect-[9/16]">
+              <div className="h-[570px]">
                 <AppCard
                   id={mobileApps[0].id}
                   name={mobileApps[0].name}
@@ -122,7 +122,7 @@ export function AppsGridSection() {
               variants={cardVariants}
               className="col-span-1 row-start-1"
             >
-              <div className="aspect-[9/16]">
+              <div className="h-[570px]">
                 <AppCard
                   id={mobileApps[1].id}
                   name={mobileApps[1].name}
@@ -144,9 +144,9 @@ export function AppsGridSection() {
           {desktopApps[1] && (
             <motion.div
               variants={cardVariants}
-              className="col-span-4 row-start-2"
+              className="col-span-4 col-start-1 row-start-2"
             >
-              <div className="aspect-[16/9]">
+              <div className="h-[570px]">
                 <AppCard
                   id={desktopApps[1].id}
                   name={desktopApps[1].name}
@@ -169,7 +169,7 @@ export function AppsGridSection() {
               variants={cardVariants}
               className="col-span-1 row-start-2"
             >
-              <div className="aspect-[9/16]">
+              <div className="h-[570px]">
                 <AppCard
                   id={mobileApps[2].id}
                   name={mobileApps[2].name}
@@ -187,6 +187,7 @@ export function AppsGridSection() {
             </motion.div>
           )}
         </div>
+
 
         {/* Tablet View (768px - 1023px): Desktop full width, 3 mobile apps in one row */}
         <div className="hidden md:block lg:hidden space-y-4">
