@@ -75,7 +75,7 @@ export function FeatureTabs() {
 
       <Tabs defaultValue="realtime" className="w-full">
         {/* Fixed TabsList with proper mobile alignment */}
-        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 mb-6 sm:mb-8 h-auto p-2 bg-muted/50">
+        <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 mb-6 sm:mb-8 h-auto p-2 bg-muted/50">
           {features.map((feature) => (
             <TabsTrigger 
               key={feature.id} 

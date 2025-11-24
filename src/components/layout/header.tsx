@@ -76,8 +76,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-<nav className="w-full px-6 md:px-8" dir="ltr">
-  <div className="grid grid-cols-[auto_1fr_auto] md:grid-cols-3 items-center h-16 gap-4">
+      <nav className="w-full px-6 xl:px-8" dir="ltr">
+        <div className="grid grid-cols-[auto_1fr_auto] xl:grid-cols-3 items-center h-16 gap-4">
           {/* Left: Logo */}
           <div className="flex items-center justify-start">
             <Link href={`/${locale}`} className="flex items-center">
@@ -85,8 +85,8 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Center: Desktop Navigation */}
-          <div className="hidden md:flex items-center justify-center">
+          {/* Center: Desktop Navigation - Only show at xl (1280px) and above */}
+          <div className="hidden xl:flex items-center justify-center">
             <div className={`flex gap-6 ${locale === 'ar' ? 'flex-row-reverse' : ''}`}>
               {navigation.map((item) => (
                 item.subPages.length > 0 ? (
@@ -111,28 +111,32 @@ export function Header() {
 
           {/* Right: Action Buttons */}
           <div className="flex items-center justify-end gap-3">
-            {/* Desktop: Theme Toggle, Language Switcher, Trial Button */}
-            <div className="hidden md:flex items-center gap-3">
+            {/* Desktop (xl and above): Theme Toggle, Language Switcher, Trial Button */}
+            <div className="hidden xl:flex items-center gap-3">
               <ThemeToggle />
               <LanguageSwitcher />
               <TrialCTAButton variant="primary" size="lg" />
             </div>
 
-            {/* Mobile: Menu Button */}
-            <button
-              className="md:hidden p-2"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+            {/* Mobile/Tablet (below xl): Theme Toggle, Language Switcher, Menu Button */}
+            <div className="flex xl:hidden items-center gap-2">
+              <ThemeToggle />
+              <LanguageSwitcher />
+              <button
+                className="p-2"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Navigation Menu */}
+      {/* Mobile Navigation Menu - Show below xl breakpoint */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t">
+        <div className="xl:hidden border-t fixed left-0 right-0 bg-background z-40 max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className={`w-full py-4 px-6 ${locale === 'ar' ? 'flex flex-col-reverse space-y-reverse space-y-3' : 'space-y-3'}`}>
             {navigation.map((item) => (
               <div key={item.name}>
@@ -161,12 +165,8 @@ export function Header() {
               </div>
             ))}
 
-            {/* Mobile: Action Buttons */}
-            <div className="pt-4 border-t space-y-3">
-              <div className="flex items-center gap-3">
-                <ThemeToggle />
-                <LanguageSwitcher />
-              </div>
+            {/* Mobile: Trial Button */}
+            <div className="pt-4 border-t">
               <TrialCTAButton variant="primary" size="lg" className="w-full" />
             </div>
           </div>
