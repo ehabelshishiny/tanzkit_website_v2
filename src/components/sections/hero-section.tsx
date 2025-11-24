@@ -530,19 +530,19 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
       {/* Hero Content */}
       <div
-        className="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:py-12 xl:sm:py-16 xl:md:py-20 xl:lg:py-20 flex items-start xl:items-center xl:min-h-screen"
+        className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-19 xl:py-12 xl:sm:py-16 xl:md:py-20 xl:lg:py-20 flex items-start xl:items-center xl:min-h-screen"
         style={{ transform: `translateY(${scrollY * -0.05}px)` }}
       >
         <div className="max-w-4xl w-full mx-auto lg:mx-0">
           {/* Animated Headline */}
           <div className="mb-4 xl:mb-6 xl:sm:mb-8">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight xl:text-6xl xl:sm:text-7xl">
-              <span
-                className={`inline-block transition-all duration-1000 ease-out text-foreground ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-                style={{ transitionDelay: '0.3s' }}
-              >
-                {title || t('title')}
-              </span>{' '}
+<span
+  className={`inline-block transition-all duration-1000 ease-out text-foreground text-5xl sm:text-6xl md:text-7xl xl:text-6xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+  style={{ transitionDelay: '0.3s' }}
+>
+  {title || t('title')}
+</span>
               <span
                 className={`inline-block transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
                 style={{ transitionDelay: '0.6s' }}
