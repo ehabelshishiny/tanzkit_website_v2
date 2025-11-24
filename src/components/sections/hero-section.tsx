@@ -530,12 +530,12 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
       {/* Hero Content */}
       <div
-        className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-0 sm:py-0 md:py-0 xl:py-12 xl:sm:py-16 xl:md:py-20 xl:lg:py-20 flex items-center min-h-screen"
+        className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-2 sm:py-2 md:py-2 xl:py-12 xl:sm:py-16 xl:md:py-20 xl:lg:py-20 flex items-center min-h-screen"
         style={{ transform: `translateY(${scrollY * -0.05}px)` }}
       >
         <div className="max-w-4xl w-full mx-auto lg:mx-0">
           {/* Animated Headline */}
-          <div className="mb-0 sm:mb-0 xl:mb-6 xl:sm:mb-8">
+          <div className="mb-4 xl:mb-6 xl:sm:mb-8">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight xl:text-6xl xl:sm:text-7xl">
               <span
                 className={`inline-block transition-all duration-1000 ease-out text-foreground ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
@@ -548,7 +548,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
                 style={{ transitionDelay: '0.6s' }}
               >
                 <span 
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 animate-pulse drop-shadow-2xl text-6xl sm:text-7xl md:text-8xl xl:text-7xl"
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 animate-pulse drop-shadow-2xl text-7xl sm:text-8xl md:text-9xl xl:text-7xl"
                   style={{ lineHeight: 1.1 }}
                 >
                   {t('titleHighlight')}
@@ -557,7 +557,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
               <br />
             </h1>
             <h2
-              className={`text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mt-0 sm:mt-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+              className={`text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mt-4 xl:mt-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
               style={{ transitionDelay: '1.2s' }}
             >
               {subtitle || t('subtitle')}
@@ -566,7 +566,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
           {/* CTA Buttons */}
           <div
-            className={`flex flex-col sm:flex-row gap-4 sm:gap-6 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+            className={`flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 xl:mt-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             style={{ transitionDelay: '1.8s' }}
           >
             <div className="animate-pulse hover:animate-none">
