@@ -512,9 +512,9 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
   };
 
   return (
-    <section
+   <section
       ref={containerRef}
-      className="relative min-h-screen bg-gray-100 dark:bg-slate-900 xl:bg-gradient-to-br xl:from-slate-900 xl:via-slate-800 xl:to-slate-900 overflow-hidden"
+      className="relative bg-gray-100 dark:bg-slate-900 xl:bg-gradient-to-br xl:from-slate-900 xl:via-slate-800 xl:to-slate-900 overflow-hidden xl:min-h-screen"
       onMouseMove={handleMouseMove}
     >
       {/* Animated Background Canvas - Desktop Only (xl and above) */}
@@ -530,7 +530,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
       {/* Hero Content */}
       <div
-        className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-2 sm:py-2 md:py-2 xl:py-12 xl:sm:py-16 xl:md:py-20 xl:lg:py-20 flex items-center min-h-screen"
+        className="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:py-12 xl:sm:py-16 xl:md:py-20 xl:lg:py-20 flex items-start xl:items-center xl:min-h-screen"
         style={{ transform: `translateY(${scrollY * -0.05}px)` }}
       >
         <div className="max-w-4xl w-full mx-auto lg:mx-0">
@@ -584,12 +584,13 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
             </button>
           </div>
 
-          {/* Stats */}
+              {/* Stats - Desktop only to avoid extra vertical space on mobile/tablet */}
           <div
-            className={`grid grid-cols-3 gap-4 sm:gap-8 mt-12 sm:mt-16 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+            className={`hidden xl:grid grid-cols-3 gap-8 xl:mt-12 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             style={{ transitionDelay: '2.1s' }}
           >
           </div>
+
         </div>
       </div>
 
