@@ -12,8 +12,20 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.1,
       delayChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1] as const,
     },
   },
 };
@@ -48,24 +60,23 @@ export function AppsGridSection() {
         </p>
       </motion.div>
 
-      {/* Apps Grid - Desktop/Mobile Layout */}
+      {/* Bento Grid Layout - Option D */}
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-100px' }}
         variants={containerVariants}
-        className="space-y-4"
+        className="space-y-6"
       >
-        {/* Top Row: Desktop Apps (2 cards side-by-side) */}
-        {/* Compact layout with reduced margins and gaps */}
-        <motion.div
-          variants={fadeInUp}
-          className="w-full"
-        >
-          <div className="hidden lg:flex w-full gap-4">
-            {/* First desktop app: 50% */}
-            {desktopApps[0] && (
-              <motion.div variants={fadeInUp} className="w-1/2">
+        {/* Desktop View: Bento Grid */}
+        <div className="hidden lg:grid lg:grid-cols-5 gap-6 auto-rows-min">
+          {/* Row 1: Desktop 1 (60%) + Mobile 1 (20%) + Mobile 2 (20%) */}
+          {desktopApps[0] && (
+            <motion.div
+              variants={cardVariants}
+              className="col-span-3 row-start-1"
+            >
+              <div className="aspect-[16/9]">
                 <AppCard
                   id={desktopApps[0].id}
                   name={desktopApps[0].name}
@@ -79,12 +90,63 @@ export function AppsGridSection() {
                   use3DVariant={desktopApps[0].use3DVariant}
                   use3D={desktopApps[0].use3DCard}
                 />
-              </motion.div>
-            )}
+              </div>
+            </motion.div>
+          )}
 
-            {/* Second desktop app: 50% */}
-            {desktopApps[1] && (
-              <motion.div variants={fadeInUp} className="w-1/2">
+          {mobileApps[0] && (
+            <motion.div
+              variants={cardVariants}
+              className="col-span-1 row-start-1"
+            >
+              <div className="aspect-[9/16]">
+                <AppCard
+                  id={mobileApps[0].id}
+                  name={mobileApps[0].name}
+                  tagline={mobileApps[0].tagline}
+                  description={mobileApps[0].description}
+                  iconName={mobileApps[0].icon}
+                  image={mobileApps[0].image}
+                  appType={mobileApps[0].appType}
+                  gradient={mobileApps[0].gradient}
+                  accentColor={mobileApps[0].accentColor}
+                  use3DVariant={mobileApps[0].use3DVariant}
+                  use3D={mobileApps[0].use3DCard}
+                />
+              </div>
+            </motion.div>
+          )}
+
+          {mobileApps[1] && (
+            <motion.div
+              variants={cardVariants}
+              className="col-span-1 row-start-1"
+            >
+              <div className="aspect-[9/16]">
+                <AppCard
+                  id={mobileApps[1].id}
+                  name={mobileApps[1].name}
+                  tagline={mobileApps[1].tagline}
+                  description={mobileApps[1].description}
+                  iconName={mobileApps[1].icon}
+                  image={mobileApps[1].image}
+                  appType={mobileApps[1].appType}
+                  gradient={mobileApps[1].gradient}
+                  accentColor={mobileApps[1].accentColor}
+                  use3DVariant={mobileApps[1].use3DVariant}
+                  use3D={mobileApps[1].use3DCard}
+                />
+              </div>
+            </motion.div>
+          )}
+
+          {/* Row 2: Desktop 2 (80%) + Mobile 3 (20%) */}
+          {desktopApps[1] && (
+            <motion.div
+              variants={cardVariants}
+              className="col-span-4 row-start-2"
+            >
+              <div className="aspect-[16/9]">
                 <AppCard
                   id={desktopApps[1].id}
                   name={desktopApps[1].name}
@@ -98,14 +160,40 @@ export function AppsGridSection() {
                   use3DVariant={desktopApps[1].use3DVariant}
                   use3D={desktopApps[1].use3DCard}
                 />
-              </motion.div>
-            )}
-          </div>
+              </div>
+            </motion.div>
+          )}
 
-          {/* Mobile/Tablet: Stack vertically */}
-          <div className="lg:hidden space-y-4">
-            {desktopApps.map((app) => (
-              <motion.div key={app.id} variants={fadeInUp}>
+          {mobileApps[2] && (
+            <motion.div
+              variants={cardVariants}
+              className="col-span-1 row-start-2"
+            >
+              <div className="aspect-[9/16]">
+                <AppCard
+                  id={mobileApps[2].id}
+                  name={mobileApps[2].name}
+                  tagline={mobileApps[2].tagline}
+                  description={mobileApps[2].description}
+                  iconName={mobileApps[2].icon}
+                  image={mobileApps[2].image}
+                  appType={mobileApps[2].appType}
+                  gradient={mobileApps[2].gradient}
+                  accentColor={mobileApps[2].accentColor}
+                  use3DVariant={mobileApps[2].use3DVariant}
+                  use3D={mobileApps[2].use3DCard}
+                />
+              </div>
+            </motion.div>
+          )}
+        </div>
+
+        {/* Tablet View (768px - 1023px): Desktop full width, 3 mobile apps in one row */}
+        <div className="hidden md:block lg:hidden space-y-4">
+          {/* Desktop apps */}
+          {desktopApps.map((app) => (
+            <motion.div key={app.id} variants={cardVariants}>
+              <div className="aspect-[16/9]">
                 <AppCard
                   id={app.id}
                   name={app.name}
@@ -119,36 +207,79 @@ export function AppsGridSection() {
                   use3DVariant={app.use3DVariant}
                   use3D={app.use3DCard}
                 />
+              </div>
+            </motion.div>
+          ))}
+
+          {/* Mobile apps in one row */}
+          <div className="grid grid-cols-3 gap-4">
+            {mobileApps.map((app) => (
+              <motion.div key={app.id} variants={cardVariants}>
+                <div className="aspect-[9/16]">
+                  <AppCard
+                    id={app.id}
+                    name={app.name}
+                    tagline={app.tagline}
+                    description={app.description}
+                    iconName={app.icon}
+                    image={app.image}
+                    appType={app.appType}
+                    gradient={app.gradient}
+                    accentColor={app.accentColor}
+                    use3DVariant={app.use3DVariant}
+                    use3D={app.use3DCard}
+                  />
+                </div>
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Bottom Row: Mobile Apps (3 cards in a row) */}
-        <motion.div
-          variants={fadeInUp}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full"
-        >
-          {mobileApps.map((app) => (
-            <motion.div key={app.id} variants={fadeInUp} className="w-full flex justify-center">
-              <AppCard
-                id={app.id}
-                name={app.name}
-                tagline={app.tagline}
-                description={app.description}
-                iconName={app.icon}
-                image={app.image}
-                appType={app.appType}
-                gradient={app.gradient}
-                accentColor={app.accentColor}
-                use3DVariant={app.use3DVariant}
-                use3D={app.use3DCard}
-              />
+        {/* Mobile View (<768px): All cards stack vertically */}
+        <div className="md:hidden space-y-4">
+          {/* Desktop apps first */}
+          {desktopApps.map((app) => (
+            <motion.div key={app.id} variants={cardVariants}>
+              <div className="aspect-[16/9]">
+                <AppCard
+                  id={app.id}
+                  name={app.name}
+                  tagline={app.tagline}
+                  description={app.description}
+                  iconName={app.icon}
+                  image={app.image}
+                  appType={app.appType}
+                  gradient={app.gradient}
+                  accentColor={app.accentColor}
+                  use3DVariant={app.use3DVariant}
+                  use3D={app.use3DCard}
+                />
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+
+          {/* Then mobile apps */}
+          {mobileApps.map((app) => (
+            <motion.div key={app.id} variants={cardVariants}>
+              <div className="aspect-[9/16] max-w-sm mx-auto">
+                <AppCard
+                  id={app.id}
+                  name={app.name}
+                  tagline={app.tagline}
+                  description={app.description}
+                  iconName={app.icon}
+                  image={app.image}
+                  appType={app.appType}
+                  gradient={app.gradient}
+                  accentColor={app.accentColor}
+                  use3DVariant={app.use3DVariant}
+                  use3D={app.use3DCard}
+                />
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
     </SectionContainer>
   );
 }
-
