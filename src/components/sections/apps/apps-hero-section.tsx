@@ -121,7 +121,7 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={getThemeImage(theme, 'mobile_1.png')}
         alt="Driver App Screenshot"
-        start={-250}
+        start={-240}
         end={200}
         className="w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl"
         aspectRatio="portrait"
@@ -132,9 +132,9 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={getThemeImage(theme, 'desktop_2.png')}
         alt="Enterprise Dashboard Screenshot"
-        start={-300}
+        start={-400}
         end={300}
-        className="mx-auto w-full md:w-2/3 lg:w-5/7 rounded-lg shadow-2xl"
+        className="mx-auto w-full md:w-2/3 lg:w-6/9 rounded-lg shadow-2xl"
         aspectRatio="landscape"
         opacityRange={[0.75, 1]}
       />
@@ -143,7 +143,7 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={getThemeImage(theme, 'mobile_2.png')}
         alt="Supervisor App Screenshot"
-        start={-300}
+        start={-500}
         end={250}
         className="ml-auto w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl"
         aspectRatio="portrait"
@@ -154,7 +154,7 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={getThemeImage(theme, 'mobile_3.png')}
         alt="Rider App Screenshot"
-        start={-700}
+        start={-900}
         end={200}
         className="ml-0 sm:ml-24 w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl mb-32"
         aspectRatio="portrait"
