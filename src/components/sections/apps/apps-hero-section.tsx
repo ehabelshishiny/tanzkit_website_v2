@@ -14,7 +14,7 @@ const SECTION_HEIGHT = 1500;
 
 export function AppsHeroSection() {
   return (
-    <div className="bg-background">
+    <div className="bg-gray-100 dark:bg-gray-900">
       <ReactLenis
         root
         options={{
@@ -147,7 +147,7 @@ const ParallaxImages = () => {
         end={250}
         className="ml-auto w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl"
         aspectRatio="portrait"
-        opacityRange={[0.8, 1]}
+        opacityRange={[0, 1]}
       />
 
       {/* Image 4: Mobile 3 - Rider app (portrait) - Fades out WITH centered rectangle */}
@@ -158,7 +158,7 @@ const ParallaxImages = () => {
         end={200}
         className="ml-0 sm:ml-24 w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl mb-32"
         aspectRatio="portrait"
-        opacityRange={[0.85, 1]}
+        opacityRange={[0, 1]}
       />
     </div>
   );
