@@ -1,11 +1,10 @@
 'use client';
 import { useState } from 'react';
+import { useTheme } from 'next-themes';
 
-interface AppsShowcaseProps {
-  isDarkTheme: boolean;
-}
-
-export default function AppsShowcase({ isDarkTheme }: AppsShowcaseProps) {
+export default function AppsShowcase() {
+  const { theme } = useTheme();
+  const isDarkTheme = theme === 'dark';
   const [activeSegment, setActiveSegment] = useState<'operators' | 'enterprise'>('operators');
 
   const segments = {
@@ -534,38 +533,7 @@ export default function AppsShowcase({ isDarkTheme }: AppsShowcaseProps) {
               </>
             )}
           </div>
-        </div>
-
-        {/* Integration Visual */}
-        <div className="mt-20 max-w-4xl mx-auto">
-          <div className={`relative ${themeClasses.integrationBg} backdrop-blur-sm border ${themeClasses.integrationBorder} rounded-3xl p-12`}>
-            <div className="text-center mb-8">
-              <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${colors.primary} mb-4`}>
-                <i className="ri-links-line text-white text-3xl"></i>
-              </div>
-              <h3 className={`text-2xl font-bold ${themeClasses.textPrimary} mb-2`}>Seamless Integration</h3>
-              <p className={themeClasses.textSecondary}>All applications connected through our AI orchestration layer</p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {['Real-time Sync', 'Unified Data', 'Smart Routing', 'Auto Updates'].map((feature, idx) => (
-                <div key={idx} className={`text-center p-4 rounded-xl ${themeClasses.featureBg}`}>
-                  <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${colors.light} flex items-center justify-center mx-auto mb-2`}>
-                    <i className={`ri-check-line ${colors.text} text-sm`}></i>
-                  </div>
-                  <span className={`${themeClasses.textTertiary} text-xs font-medium`}>{feature}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <button className={`px-10 py-4 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-semibold hover:shadow-2xl ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer`}>
-            Request Platform Demo
-          </button>
-        </div>
+        </div>       
       </div>
 
       <style jsx>{`
