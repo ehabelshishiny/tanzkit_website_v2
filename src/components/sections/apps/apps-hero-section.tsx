@@ -30,7 +30,7 @@ export function AppsHeroSection() {
 const Hero = () => {
   return (
     <div
-      style={{ height: `1500vh)` }}
+      style={{ height: `150vh)` }}
       className="relative w-full"
     >
       <CenterImage />
@@ -107,54 +107,58 @@ const ParallaxImages = () => {
     return (
       <div className="mx-auto max-w-7xl px-4 pt-[200px]">
         {/* Render empty placeholders during SSR */}
-        <div className="w-full sm:w-1/2 md:w-1/3 rounded-lg shadow-2xl aspect-[9/16] bg-muted" />
-        <div className="ml-auto w-full sm:w-1/2 md:w-1/3 rounded-lg shadow-2xl aspect-[9/16] bg-muted" />
-        <div className="ml-0 sm:ml-24 w-full sm:w-5/12 md:w-1/3 rounded-lg shadow-2xl aspect-[9/16] bg-muted" />
-        <div className="mx-auto w-full md:w-2/3 lg:w-3/4 rounded-lg shadow-2xl mb-32 aspect-[16/9] bg-muted" />
+        <div className="w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl aspect-[9/16] bg-muted" />
+        <div className="mx-auto w-full md:w-2/3 lg:w-3/4 rounded-lg shadow-2xl aspect-[16/9] bg-muted" />
+        <div className="ml-auto w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl aspect-[9/16] bg-muted" />
+        <div className="ml-0 sm:ml-24 w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl mb-32 aspect-[9/16] bg-muted" />
       </div>
     );
   }
 
   return (
     <div className="mx-auto max-w-7xl px-4 pt-[200px]">
-      {/* First Row: Portrait mobile app on left - Mobile 1 (Driver) */}
+      {/* Image 1: Mobile 1 - Driver app (portrait) */}
       <ParallaxImg
         src={getThemeImage(theme, 'mobile_1.png')}
         alt="Driver App Screenshot"
-        start={-200}
+        start={-250}
         end={200}
-        className="w-full sm:w-1/2 md:w-1/3 rounded-lg shadow-2xl"
+        className="w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl"
         aspectRatio="portrait"
+        opacityRange={[0.7, 1]}
       />
 
-      {/* Second Row: Portrait mobile app on right - Mobile 2 (Supervisor) */}
-      <ParallaxImg
-        src={getThemeImage(theme, 'mobile_2.png')}
-        alt="Supervisor App Screenshot"
-        start={-200}
-        end={200}
-        className="ml-auto w-full sm:w-1/2 md:w-1/3 rounded-lg shadow-2xl"
-        aspectRatio="portrait"
-      />
-
-      {/* Third Row: Portrait mobile app on left (offset) - Mobile 3 (Rider) */}
-      <ParallaxImg
-        src={getThemeImage(theme, 'mobile_3.png')}
-        alt="Rider App Screenshot"
-        start={0}
-        end={-500}
-        className="ml-0 sm:ml-24 w-full sm:w-5/12 md:w-1/3 rounded-lg shadow-2xl"
-        aspectRatio="portrait"
-      />
-
-      {/* Fourth Row: Landscape dashboard - Desktop 2 (Enterprise) */}
+      {/* Image 2: Desktop 2 - Enterprise dashboard (landscape) */}
       <ParallaxImg
         src={getThemeImage(theme, 'desktop_2.png')}
         alt="Enterprise Dashboard Screenshot"
-        start={-150}
-        end={150}
-        className="mx-auto w-full md:w-2/3 lg:w-3/4 rounded-lg shadow-2xl mb-32"
+        start={-300}
+        end={300}
+        className="mx-auto w-full md:w-2/3 lg:w-5/7 rounded-lg shadow-2xl"
         aspectRatio="landscape"
+        opacityRange={[0.75, 1]}
+      />
+
+      {/* Image 3: Mobile 2 - Supervisor app (portrait) */}
+      <ParallaxImg
+        src={getThemeImage(theme, 'mobile_2.png')}
+        alt="Supervisor App Screenshot"
+        start={-300}
+        end={250}
+        className="ml-auto w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl"
+        aspectRatio="portrait"
+        opacityRange={[0.8, 1]}
+      />
+
+      {/* Image 4: Mobile 3 - Rider app (portrait) - Fades out WITH centered rectangle */}
+      <ParallaxImg
+        src={getThemeImage(theme, 'mobile_3.png')}
+        alt="Rider App Screenshot"
+        start={-700}
+        end={200}
+        className="ml-0 sm:ml-24 w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl mb-32"
+        aspectRatio="portrait"
+        opacityRange={[0.85, 1]}
       />
     </div>
   );
@@ -167,6 +171,7 @@ const ParallaxImg = ({
   start,
   end,
   aspectRatio,
+  opacityRange = [0.75, 1],
 }: {
   className?: string;
   alt: string;
@@ -174,6 +179,7 @@ const ParallaxImg = ({
   start: number;
   end: number;
   aspectRatio: 'portrait' | 'landscape';
+  opacityRange?: [number, number];
 }) => {
   const ref = useRef(null);
 
@@ -182,7 +188,7 @@ const ParallaxImg = ({
     offset: [`${start}px end`, `end ${end * -1}px`],
   });
 
-  const opacity = useTransform(scrollYProgress, [0.75, 1], [1, 0]);
+  const opacity = useTransform(scrollYProgress, opacityRange, [1, 0]);
   const scale = useTransform(scrollYProgress, [0.75, 1], [1, 0.85]);
 
   const y = useTransform(scrollYProgress, [0, 1], [start, end]);
