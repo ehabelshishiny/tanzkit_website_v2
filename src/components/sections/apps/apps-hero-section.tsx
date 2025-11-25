@@ -7,14 +7,12 @@ import {
   useScroll,
   useTransform,
 } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 
 const SECTION_HEIGHT = 1500;
 
 export function AppsHeroSection() {
-  const t = useTranslations('apps.main.hero');
-
   return (
     <div className="bg-background">
       <ReactLenis
@@ -23,27 +21,41 @@ export function AppsHeroSection() {
           lerp: 0.05,
         }}
       >
-        <Hero t={t} />
+        <Hero />
       </ReactLenis>
     </div>
   );
 }
 
-const Hero = ({ t }: { t: any }) => {
+const Hero = () => {
   return (
     <div
-      style={{ height: `calc(${SECTION_HEIGHT}px + 100vh)` }}
+      style={{ height: `1500vh)` }}
       className="relative w-full"
     >
-      <CenterImage t={t} />
+      <CenterImage />
       <ParallaxImages />
       <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-b from-background/0 to-background" />
     </div>
   );
 };
 
-const CenterImage = ({ t }: { t: any }) => {
+// Helper function to get theme-aware image path
+const getThemeImage = (theme: string | undefined, imageName: string): string => {
+  const themeFolder = theme === 'dark' ? 'dark_theme' : 'light_theme';
+  const prefix = theme === 'dark' ? 'dark' : 'light';
+  return `/app_hero_section/${themeFolder}/${prefix}_${imageName}`;
+};
+
+const CenterImage = () => {
   const { scrollY } = useScroll();
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const clip1 = useTransform(scrollY, [0, 1500], [25, 0]);
   const clip2 = useTransform(scrollY, [0, 1500], [75, 100]);
@@ -61,51 +73,53 @@ const CenterImage = ({ t }: { t: any }) => {
     [1, 0]
   );
 
+  // Use placeholder during SSR to avoid hydration mismatch
+  const backgroundImage = mounted
+    ? `url('${getThemeImage(theme, 'desktop_1.png')}')`
+    : "url('/images/apps/hero-main-placeholder.jpg')";
+
   return (
     <motion.div
-      className="sticky top-0 h-screen w-full flex items-center justify-center"
+      className="sticky top-0 h-screen w-full"
       style={{
         clipPath,
         backgroundSize,
         opacity,
-        // PLACEHOLDER: Replace with your main hero image (landscape - operator or enterprise dashboard)
-        backgroundImage:
-          "url('/images/apps/hero-main-placeholder.jpg')",
+        backgroundImage,
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}
-    >
-      {/* Text Overlay */}
-      <div className="absolute inset-0 bg-black/40 dark:bg-black/60 flex items-center justify-center">
-        <div className="text-center px-4 max-w-4xl">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white"
-          >
-            {t('title')}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed"
-          >
-            {t('subtitle')}
-          </motion.p>
-        </div>
-      </div>
-    </motion.div>
+    />
   );
 };
 
 const ParallaxImages = () => {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Show placeholder during initial render to avoid hydration issues
+  if (!mounted) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 pt-[200px]">
+        {/* Render empty placeholders during SSR */}
+        <div className="w-full sm:w-1/2 md:w-1/3 rounded-lg shadow-2xl aspect-[9/16] bg-muted" />
+        <div className="ml-auto w-full sm:w-1/2 md:w-1/3 rounded-lg shadow-2xl aspect-[9/16] bg-muted" />
+        <div className="ml-0 sm:ml-24 w-full sm:w-5/12 md:w-1/3 rounded-lg shadow-2xl aspect-[9/16] bg-muted" />
+        <div className="mx-auto w-full md:w-2/3 lg:w-3/4 rounded-lg shadow-2xl mb-32 aspect-[16/9] bg-muted" />
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-7xl px-4 pt-[200px]">
-      {/* First Row: Portrait mobile app on left */}
+      {/* First Row: Portrait mobile app on left - Mobile 1 (Driver) */}
       <ParallaxImg
-        src="/images/apps/driver-app-placeholder.jpg" // PLACEHOLDER: Driver App (portrait)
+        src={getThemeImage(theme, 'mobile_1.png')}
         alt="Driver App Screenshot"
         start={-200}
         end={200}
@@ -113,19 +127,9 @@ const ParallaxImages = () => {
         aspectRatio="portrait"
       />
 
-      {/* Second Row: Landscape dashboard (centered, larger) */}
+      {/* Second Row: Portrait mobile app on right - Mobile 2 (Supervisor) */}
       <ParallaxImg
-        src="/images/apps/operator-dashboard-placeholder.jpg" // PLACEHOLDER: Operator Dashboard (landscape)
-        alt="Operator Dashboard Screenshot"
-        start={200}
-        end={-250}
-        className="mx-auto w-full md:w-2/3 lg:w-3/4 rounded-lg shadow-2xl"
-        aspectRatio="landscape"
-      />
-
-      {/* Third Row: Portrait mobile app on right */}
-      <ParallaxImg
-        src="/images/apps/supervisor-app-placeholder.jpg" // PLACEHOLDER: Supervisor App (portrait)
+        src={getThemeImage(theme, 'mobile_2.png')}
         alt="Supervisor App Screenshot"
         start={-200}
         end={200}
@@ -133,9 +137,9 @@ const ParallaxImages = () => {
         aspectRatio="portrait"
       />
 
-      {/* Fourth Row: Portrait mobile app on left (offset) */}
+      {/* Third Row: Portrait mobile app on left (offset) - Mobile 3 (Rider) */}
       <ParallaxImg
-        src="/images/apps/rider-app-placeholder.jpg" // PLACEHOLDER: Rider App (portrait)
+        src={getThemeImage(theme, 'mobile_3.png')}
         alt="Rider App Screenshot"
         start={0}
         end={-500}
@@ -143,9 +147,9 @@ const ParallaxImages = () => {
         aspectRatio="portrait"
       />
 
-      {/* Fifth Row: Landscape dashboard */}
+      {/* Fourth Row: Landscape dashboard - Desktop 2 (Enterprise) */}
       <ParallaxImg
-        src="/images/apps/enterprise-dashboard-placeholder.jpg" // PLACEHOLDER: Enterprise Dashboard (landscape)
+        src={getThemeImage(theme, 'desktop_2.png')}
         alt="Enterprise Dashboard Screenshot"
         start={-150}
         end={150}
