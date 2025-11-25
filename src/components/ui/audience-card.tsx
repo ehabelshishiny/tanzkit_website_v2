@@ -50,26 +50,36 @@ export function AudienceCard({
       <Link
         href={ctaLink}
         className={cn(
-          'block h-full bg-gradient-to-br rounded-3xl p-8 md:p-10',
+          'block h-full rounded-3xl p-8 md:p-10',
           'border border-border',
           'shadow-lg hover:shadow-2xl transition-all duration-300',
           'group',
-          gradient
+          '[background:var(--card-gradient-light)] dark:[background:var(--card-gradient-dark)]',
+          'relative overflow-hidden'
         )}
       >
+        {/* Overlay gradient for accent color */}
+        <div 
+          className={cn(
+            'absolute inset-0 bg-gradient-to-br opacity-10 -z-10',
+            gradient
+          )}
+          aria-hidden="true"
+        />
+        
         {icon && (
-          <div className="w-16 h-16 mb-6 flex items-center justify-center rounded-2xl bg-white/80 dark:bg-slate-800/80">
+          <div className="w-16 h-16 mb-6 flex items-center justify-center rounded-2xl bg-white/80 dark:bg-slate-800/80 relative z-10">
             {icon}
           </div>
         )}
         
-        <h3 className="text-2xl md:text-3xl font-bold mb-4">{title}</h3>
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 relative z-10">{title}</h3>
         
-        <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
+        <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed relative z-10">
           {description}
         </p>
         
-        <ul className="space-y-3 mb-8">
+        <ul className="space-y-3 mb-8 relative z-10">
           {benefits.map((benefit, index) => (
             <li key={index} className="flex items-start gap-3">
               <span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mt-0.5">
@@ -94,7 +104,7 @@ export function AudienceCard({
           ))}
         </ul>
         
-        <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-4 transition-all">
+        <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-4 transition-all relative z-10">
           <span>{ctaText}</span>
           <ArrowRight className="w-5 h-5" />
         </div>
@@ -102,4 +112,3 @@ export function AudienceCard({
     </motion.div>
   );
 }
-
