@@ -28,15 +28,14 @@ interface NetworkNode {
   connections: number[];
 }
 
-interface BackgroundNode {
+// Rain drop interface
+interface RainDrop {
   x: number;
   y: number;
-  baseX: number;
-  baseY: number;
-  size: number;
-  pulsePhase: number;
-  floatPhase: number;
-  connections: number[];
+  speed: number;
+  length: number;
+  baseOpacity: number;
+  width: number;
 }
 
 interface HeroSectionProps {
@@ -56,10 +55,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [networkNodes, setNetworkNodes] = useState<NetworkNode[]>([]);
-  const [backgroundPattern, setBackgroundPattern] = useState<{
-    nodes: BackgroundNode[];
-    connections: { from: number; to: number; progress: number }[];
-  }>({ nodes: [], connections: [] });
+  const [rainDrops, setRainDrops] = useState<RainDrop[]>([]);
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [canvasSize, setCanvasSize] = useState({ width: 1200, height: 800 });
@@ -77,7 +73,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
   const isDark = mounted && theme === 'dark';
 
-  // Detect screen size for desktop-only canvas
+  // Detect screen size for desktop-only canvas (vehicles only show on desktop)
   useEffect(() => {
     const checkScreenSize = () => {
       setIsDesktop(window.innerWidth >= 1280); // xl breakpoint
@@ -121,19 +117,6 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     imgRed.src = 'data:image/svg+xml;base64,' + btoa(carSVGRed);
   }, [isDesktop]);
 
-  // Helper: evaluate a cubic Bezier at t (0..1)
-  const cubicBezierPoint = (t: number, p0: { x: number; y: number }, p1: { x: number; y: number }, p2: { x: number; y: number }, p3: { x: number; y: number }) => {
-    const u = 1 - t;
-    const tt = t * t;
-    const uu = u * u;
-    const uuu = uu * u;
-    const ttt = tt * t;
-
-    const x = uuu * p0.x + 3 * uu * t * p1.x + 3 * u * tt * p2.x + ttt * p3.x;
-    const y = uuu * p0.y + 3 * uu * t * p1.y + 3 * u * tt * p2.y + ttt * p3.y;
-    return { x, y };
-  };
-
   // Generate smooth worm/snake-like undulating path with RTL support
   const generateSPath = (sx: number, sy: number, ex: number, ey: number, samples = 500, flipHorizontal = false) => {
     const path: { x: number; y: number }[] = [];
@@ -163,64 +146,27 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     return path;
   };
 
-  // Initialize background pattern
-  const initializeBackgroundPattern = (width: number, height: number) => {
-    const nodes: BackgroundNode[] = [];
-    const connections: { from: number; to: number; progress: number }[] = [];
-
-    const columns = Math.max(6, Math.floor(width / 150));
-    const rows = Math.max(4, Math.floor(height / 150));
-
-    const horizontalSpacing = width / columns;
-    const verticalSpacing = height / rows;
-
-    const randomOffset = Math.min(horizontalSpacing, verticalSpacing) * 0.3;
-
-    for (let row = 0; row <= rows; row++) {
-      for (let col = 0; col <= columns; col++) {
-        const baseX = col * horizontalSpacing + (Math.random() - 0.5) * randomOffset;
-        const baseY = row * verticalSpacing + (Math.random() - 0.5) * randomOffset;
-
-        if (baseX > width * 0.4) {
-          nodes.push({
-            x: baseX,
-            y: baseY,
-            baseX,
-            baseY,
-            size: 2 + Math.random() * 3,
-            pulsePhase: Math.random() * Math.PI * 2,
-            floatPhase: Math.random() * Math.PI * 2,
-            connections: []
-          });
-        }
-      }
-    }
-
-    nodes.forEach((node, i) => {
-      nodes.forEach((otherNode, j) => {
-        if (i !== j && node.connections.length < 3) {
-          const distance = Math.hypot(node.x - otherNode.x, node.y - otherNode.y);
-          const maxConnectionDistance = Math.min(width, height) * 0.2;
-
-          if (distance < maxConnectionDistance && Math.random() > 0.7) {
-            node.connections.push(j);
-            connections.push({
-              from: i,
-              to: j,
-              progress: Math.random() * Math.PI * 2
-            });
-          }
-        }
+  // Initialize rain drops - now spans entire width
+  const initializeRainDrops = (width: number, height: number) => {
+    const drops: RainDrop[] = [];
+    const dropCount = 80;
+    
+    for (let i = 0; i < dropCount; i++) {
+      drops.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        speed: (2 + Math.random() * 4) * 0.4, // Your updated speed
+        length: 40 + Math.random() * 80,
+        baseOpacity: 0.1 + Math.random() * 0.3,
+        width: 2 + Math.random() * 2
       });
-    });
-
-    setBackgroundPattern({ nodes, connections });
+    }
+    
+    setRainDrops(drops);
   };
 
-  // Initialize canvas size
+  // Initialize canvas size - NOW WORKS ON ALL SCREENS
   useEffect(() => {
-    if (!isDesktop) return;
-
     const updateCanvasSize = () => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
@@ -234,101 +180,102 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     updateCanvasSize();
     window.addEventListener('resize', updateCanvasSize);
     return () => window.removeEventListener('resize', updateCanvasSize);
-  }, [isDesktop]);
+  }, []); // Removed isDesktop dependency
 
-  // Initialize vehicles, network nodes, and background pattern
+  // Initialize vehicles, network nodes, and rain drops
   useEffect(() => {
-    if (!isDesktop) return;
-
     const { width, height } = canvasSize;
 
-    const route1 = generateSPath(
-      isRTL ? 0 : width - 0,
-      Math.max(20, height * 0.06) + 50,
-      isRTL ? width - Math.min(width * 0.08, 60) : Math.min(width * 0.08, 60),
-      Math.min(height * 0.94, height - 100) + 50,
-      420,
-      isRTL
-    );
+    // Only initialize vehicles on desktop
+    if (isDesktop) {
+      const route1 = generateSPath(
+        isRTL ? 0 : width - 0,
+        Math.max(20, height * 0.06) + 50,
+        isRTL ? width - Math.min(width * 0.08, 60) : Math.min(width * 0.08, 60),
+        Math.min(height * 0.94, height - 100) + 50,
+        420,
+        isRTL
+      );
 
-    const route2 = generateSPath(
-      isRTL ? 0 : width - 0,
-      Math.max(40, height * 0.12) + 50,
-      isRTL ? width - Math.min(width * 0.12, 100) : Math.min(width * 0.12, 100),
-      Math.min(height * 0.9, height - 40) + 50,
-      420,
-      isRTL
-    );
+      const route2 = generateSPath(
+        isRTL ? 0 : width - 0,
+        Math.max(40, height * 0.12) + 50,
+        isRTL ? width - Math.min(width * 0.12, 100) : Math.min(width * 0.12, 100),
+        Math.min(height * 0.9, height - 40) + 50,
+        420,
+        isRTL
+      );
 
-    const newVehicles: Vehicle[] = [];
-    newVehicles.push({
-      id: 0,
-      type: 'bus',
-      x: route1[0].x,
-      y: route1[0].y,
-      progress: 0.1,
-      path: route1,
-      speed: 0.00015,
-      color: '#3B82F6',
-      size: 14
-    });
-
-    newVehicles.push({
-      id: 1,
-      type: 'van',
-      x: route2[route2.length - 1].x,
-      y: route2[route2.length - 1].y,
-      progress: 0.9,
-      path: route2,
-      speed: -0.00015,
-      color: '#EF4444',
-      size: 16
-    });
-
-    const newNodes: NetworkNode[] = [];
-    const marginLeft = Math.max(width * 0.58, 300);
-    
-    const nodePositions = isRTL ? [
-      { x: width - (marginLeft + (width - marginLeft) * 0.35), y: height * 0.2 },
-      { x: width - (marginLeft + (width - marginLeft) * 0.75), y: height * 0.5 },
-      { x: width - (marginLeft + (width - marginLeft) * 0.45), y: height * 0.78 }
-    ] : [
-      { x: marginLeft + (width - marginLeft) * 0.35, y: height * 0.2 },
-      { x: marginLeft + (width - marginLeft) * 0.75, y: height * 0.5 },
-      { x: marginLeft + (width - marginLeft) * 0.45, y: height * 0.78 }
-    ];
-
-    nodePositions.forEach((pos, i) => {
-      newNodes.push({
-        id: i,
-        x: pos.x,
-        y: pos.y,
-        baseX: pos.x,
-        baseY: pos.y,
-        pulsePhase: Math.random() * Math.PI * 2,
-        connections: []
+      const newVehicles: Vehicle[] = [];
+      newVehicles.push({
+        id: 0,
+        type: 'bus',
+        x: route1[0].x,
+        y: route1[0].y,
+        progress: 0.1,
+        path: route1,
+        speed: 0.00015,
+        color: '#3B82F6',
+        size: 14
       });
-    });
 
-    newNodes.forEach((node, i) => {
-      newNodes.forEach((otherNode, j) => {
-        if (i !== j && node.connections.length < 2) {
-          const distance = Math.hypot(node.x - otherNode.x, node.y - otherNode.y);
-          if (distance < Math.max(width, height) * 0.6) node.connections.push(j);
-        }
+      newVehicles.push({
+        id: 1,
+        type: 'van',
+        x: route2[route2.length - 1].x,
+        y: route2[route2.length - 1].y,
+        progress: 0.9,
+        path: route2,
+        speed: -0.00015,
+        color: '#EF4444',
+        size: 16
       });
-    });
 
-    setVehicles(newVehicles);
-    setNetworkNodes(newNodes);
-    initializeBackgroundPattern(width, height);
+      const newNodes: NetworkNode[] = [];
+      const marginLeft = Math.max(width * 0.58, 300);
+      
+      const nodePositions = isRTL ? [
+        { x: width - (marginLeft + (width - marginLeft) * 0.35), y: height * 0.2 },
+        { x: width - (marginLeft + (width - marginLeft) * 0.75), y: height * 0.5 },
+        { x: width - (marginLeft + (width - marginLeft) * 0.45), y: height * 0.78 }
+      ] : [
+        { x: marginLeft + (width - marginLeft) * 0.35, y: height * 0.2 },
+        { x: marginLeft + (width - marginLeft) * 0.75, y: height * 0.5 },
+        { x: marginLeft + (width - marginLeft) * 0.45, y: height * 0.78 }
+      ];
+
+      nodePositions.forEach((pos, i) => {
+        newNodes.push({
+          id: i,
+          x: pos.x,
+          y: pos.y,
+          baseX: pos.x,
+          baseY: pos.y,
+          pulsePhase: Math.random() * Math.PI * 2,
+          connections: []
+        });
+      });
+
+      newNodes.forEach((node, i) => {
+        newNodes.forEach((otherNode, j) => {
+          if (i !== j && node.connections.length < 2) {
+            const distance = Math.hypot(node.x - otherNode.x, node.y - otherNode.y);
+            if (distance < Math.max(width, height) * 0.6) node.connections.push(j);
+          }
+        });
+      });
+
+      setVehicles(newVehicles);
+      setNetworkNodes(newNodes);
+    }
+
+    // Initialize rain drops on ALL screen sizes
+    initializeRainDrops(width, height);
     setIsVisible(true);
   }, [canvasSize, isRTL, isDesktop]);
 
-  // Animation loop
+  // Animation loop - NOW WORKS ON ALL SCREENS
   useEffect(() => {
-    if (!isDesktop) return;
-
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -346,142 +293,128 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       ctx.fillStyle = isDark ? 'rgba(20, 20, 30, 0.95)' : 'rgba(255, 255, 255, 0.95)';
       ctx.fillRect(0, 0, canvasSize.width, canvasSize.height);
 
+      // Draw rain drops FIRST (behind everything) - ALWAYS VISIBLE
       ctx.save();
-
-      backgroundPattern.connections.forEach(conn => {
-        const fromNode = backgroundPattern.nodes[conn.from];
-        const toNode = backgroundPattern.nodes[conn.to];
-
-        if (fromNode && toNode) {
-          conn.progress += 0.02;
-          if (conn.progress > Math.PI * 2) conn.progress = 0;
-
-          const pulse = Math.sin(conn.progress) * 0.3 + 0.7;
-
-          ctx.strokeStyle = isDark
-            ? `rgba(45, 212, 191, ${0.15 * pulse})`
-            : `rgba(94, 234, 212, ${0.1 * pulse})`;
-          ctx.lineWidth = 1;
-          ctx.setLineDash([2, 4]);
-          ctx.beginPath();
-          ctx.moveTo(fromNode.x, fromNode.y);
-          ctx.lineTo(toNode.x, toNode.y);
-          ctx.stroke();
+      
+      const opacityMultiplier = isDark ? 0.4 : 0.8; // Your updated values
+      
+      rainDrops.forEach(drop => {
+        drop.y += drop.speed;
+        
+        if (drop.y > canvasSize.height + drop.length) {
+          drop.y = -drop.length;
+          drop.x = Math.random() * canvasSize.width;
         }
-      });
-
-      backgroundPattern.nodes.forEach(node => {
-        node.pulsePhase += 0.01;
-        node.floatPhase += 0.005;
-
-        const floatX = Math.sin(node.floatPhase) * 2;
-        const floatY = Math.cos(node.floatPhase * 0.7) * 2;
-        const pulseSize = node.size * (0.8 + Math.sin(node.pulsePhase) * 0.2);
-
-        ctx.fillStyle = isDark
-          ? `rgba(45, 212, 191, ${0.4 + Math.sin(node.pulsePhase) * 0.2})`
-          : `rgba(94, 234, 212, ${0.3 + Math.sin(node.pulsePhase) * 0.2})`;
-        ctx.shadowColor = isDark ? 'rgb(45, 212, 191)' : 'rgb(94, 234, 212)';
-        ctx.shadowBlur = 8;
-        ctx.beginPath();
-        ctx.arc(node.x + floatX, node.y + floatY, pulseSize, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = isDark ? `rgba(200, 200, 220, 0.8)` : `rgba(255, 255, 255, 0.8)`;
-        ctx.shadowBlur = 0;
-        ctx.beginPath();
-        ctx.arc(node.x + floatX, node.y + floatY, pulseSize * 0.3, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      ctx.restore();
-      ctx.setLineDash([]);
-
-      const drawn = new Set<number>();
-      vehicles.forEach((vehicle, vi) => {
-        const path = vehicle.path;
-        if (!path || path.length < 2) return;
-
-        const pathId = vi;
-        if (drawn.has(pathId)) return;
-        drawn.add(pathId);
-
-        ctx.save();
-        ctx.strokeStyle = isDark ? 'rgba(100, 116, 139, 0.4)' : 'rgba(148, 163, 184, 0.25)';
-        ctx.lineWidth = 4;
+        
+        const finalOpacity = drop.baseOpacity * opacityMultiplier;
+        
+        const gradient = ctx.createLinearGradient(drop.x, drop.y, drop.x, drop.y + drop.length);
+        
+        const baseColor = isDark ? '45, 212, 191' : '94, 234, 212';
+        gradient.addColorStop(0, `rgba(${baseColor}, 0)`);
+        gradient.addColorStop(0.5, `rgba(${baseColor}, ${finalOpacity})`);
+        gradient.addColorStop(1, `rgba(${baseColor}, 0)`);
+        
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = drop.width;
         ctx.lineCap = 'round';
-        ctx.setLineDash([16, 12]);
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = isDark ? 'rgba(100, 116, 139, 0.5)' : 'rgba(148,163,184,0.3)';
+        
         ctx.beginPath();
-        ctx.moveTo(path[0].x, path[0].y);
-        for (let i = 1; i < path.length; i++) {
-          ctx.lineTo(path[i].x, path[i].y);
-        }
+        ctx.moveTo(drop.x, drop.y);
+        ctx.lineTo(drop.x, drop.y + drop.length);
         ctx.stroke();
-        ctx.restore();
       });
+      
+      ctx.restore();
 
-      vehicles.forEach(vehicle => {
-        vehicle.progress += vehicle.speed;
-        if (vehicle.progress >= 1) vehicle.progress = 0;
-        if (vehicle.progress < 0) vehicle.progress = 1;
+      // Draw vehicle paths and vehicles ONLY ON DESKTOP
+      if (isDesktop) {
+        const drawn = new Set<number>();
+        vehicles.forEach((vehicle, vi) => {
+          const path = vehicle.path;
+          if (!path || path.length < 2) return;
 
-        const pathIndex = Math.floor(vehicle.progress * (vehicle.path.length - 1));
-        const nextIndex = Math.min(pathIndex + 1, vehicle.path.length - 1);
-        const localProgress = (vehicle.progress * (vehicle.path.length - 1)) - pathIndex;
-
-        const currentPos = vehicle.path[pathIndex];
-        const nextPos = vehicle.path[nextIndex];
-
-        if (currentPos && nextPos) {
-          vehicle.x = currentPos.x + (nextPos.x - currentPos.x) * localProgress;
-          vehicle.y = currentPos.y + (nextPos.y - currentPos.y) * localProgress;
-
-          let angle = Math.atan2(nextPos.y - currentPos.y, nextPos.x - currentPos.x);
-
-          if (vehicle.speed < 0) angle += Math.PI;
+          const pathId = vi;
+          if (drawn.has(pathId)) return;
+          drawn.add(pathId);
 
           ctx.save();
+          ctx.strokeStyle = isDark ? 'rgba(100, 116, 139, 0.4)' : 'rgba(148, 163, 184, 0.25)';
+          ctx.lineWidth = 4;
+          ctx.lineCap = 'round';
+          ctx.setLineDash([16, 12]);
+          ctx.lineWidth = 3;
+          ctx.strokeStyle = isDark ? 'rgba(100, 116, 139, 0.5)' : 'rgba(148,163,184,0.3)';
+          ctx.beginPath();
+          ctx.moveTo(path[0].x, path[0].y);
+          for (let i = 1; i < path.length; i++) {
+            ctx.lineTo(path[i].x, path[i].y);
+          }
+          ctx.stroke();
+          ctx.restore();
+        });
 
-          const carImage = vehicle.color === '#3B82F6' ? carImageRef.current : carImageRedRef.current;
+        vehicles.forEach(vehicle => {
+          vehicle.progress += vehicle.speed;
+          if (vehicle.progress >= 1) vehicle.progress = 0;
+          if (vehicle.progress < 0) vehicle.progress = 1;
 
-          if (carImage) {
-            ctx.translate(vehicle.x, vehicle.y);
-            ctx.rotate(angle + Math.PI);
+          const pathIndex = Math.floor(vehicle.progress * (vehicle.path.length - 1));
+          const nextIndex = Math.min(pathIndex + 1, vehicle.path.length - 1);
+          const localProgress = (vehicle.progress * (vehicle.path.length - 1)) - pathIndex;
 
-            const isTealCar = vehicle.color === '#EF4444';
-            
-            if (isRTL) {
-              ctx.scale(1, -1);
-              if (isTealCar) {
-                ctx.scale(-1, -1);
+          const currentPos = vehicle.path[pathIndex];
+          const nextPos = vehicle.path[nextIndex];
+
+          if (currentPos && nextPos) {
+            vehicle.x = currentPos.x + (nextPos.x - currentPos.x) * localProgress;
+            vehicle.y = currentPos.y + (nextPos.y - currentPos.y) * localProgress;
+
+            let angle = Math.atan2(nextPos.y - currentPos.y, nextPos.x - currentPos.x);
+
+            if (vehicle.speed < 0) angle += Math.PI;
+
+            ctx.save();
+
+            const carImage = vehicle.color === '#3B82F6' ? carImageRef.current : carImageRedRef.current;
+
+            if (carImage) {
+              ctx.translate(vehicle.x, vehicle.y);
+              ctx.rotate(angle + Math.PI);
+
+              const isTealCar = vehicle.color === '#EF4444';
+              
+              if (isRTL) {
+                ctx.scale(1, -1);
+                if (isTealCar) {
+                  ctx.scale(-1, -1);
+                }
+              } else {
+                if (isTealCar) {
+                  ctx.scale(-1, -1);
+                }
               }
+
+              ctx.drawImage(
+                carImage,
+                -vehicle.size * 1.5,
+                -vehicle.size * 1.5,
+                vehicle.size * 2,
+                vehicle.size * 2
+              );
             } else {
-              if (isTealCar) {
-                ctx.scale(-1, -1);
-              }
+              ctx.fillStyle = vehicle.color;
+              ctx.shadowColor = vehicle.color;
+              ctx.shadowBlur = 12;
+              ctx.beginPath();
+              ctx.arc(vehicle.x, vehicle.y, vehicle.size * 0.6, 0, Math.PI * 2);
+              ctx.fill();
             }
 
-            ctx.drawImage(
-              carImage,
-              -vehicle.size * 1.5,
-              -vehicle.size * 1.5,
-              vehicle.size * 2,
-              vehicle.size * 2
-            );
-          } else {
-            ctx.fillStyle = vehicle.color;
-            ctx.shadowColor = vehicle.color;
-            ctx.shadowBlur = 12;
-            ctx.beginPath();
-            ctx.arc(vehicle.x, vehicle.y, vehicle.size * 0.6, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.restore();
           }
-
-          ctx.restore();
-        }
-      });
+        });
+      }
 
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -493,7 +426,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [vehicles, networkNodes, canvasSize, backgroundPattern, isDark, isDesktop]);
+  }, [vehicles, networkNodes, canvasSize, rainDrops, isDark, isDesktop, isRTL]); // Removed isDesktop from dependency
 
   // Scroll handler
   useEffect(() => {
@@ -517,16 +450,14 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       className="relative bg-gray-100 dark:bg-slate-900 xl:bg-gradient-to-br xl:from-slate-900 xl:via-slate-800 xl:to-slate-900 overflow-hidden xl:min-h-screen"
       onMouseMove={handleMouseMove}
     >
-      {/* Animated Background Canvas - Desktop Only (xl and above) */}
-      {isDesktop && (
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 w-full h-full"
-          style={{
-            transform: `translateY(${scrollY * 0.2}px)`,
-          }}
-        />
-      )}
+      {/* Animated Background Canvas - NOW ALWAYS VISIBLE */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+        style={{
+          transform: `translateY(${scrollY * 0.2}px)`,
+        }}
+      />
 
       {/* Hero Content */}
       <div

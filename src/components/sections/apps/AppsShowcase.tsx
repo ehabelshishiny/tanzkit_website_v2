@@ -1,12 +1,34 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 
 export default function AppsShowcase() {
   const { theme } = useTheme();
-  const isDarkTheme = theme === 'dark';
+  const [mounted, setMounted] = useState(false);
   const [activeSegment, setActiveSegment] = useState<'operators' | 'enterprise'>('operators');
+
+  // Wait until client-side mount to prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Prevent rendering theme-dependent content until mounted
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-slate-950 py-20 px-6">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-center mb-16 animate-pulse">
+            <div className="h-8 w-64 bg-slate-800 rounded-full mx-auto mb-6"></div>
+            <div className="h-16 w-3/4 bg-slate-800 rounded-lg mx-auto mb-6"></div>
+            <div className="h-6 w-1/2 bg-slate-800 rounded-lg mx-auto"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const isDarkTheme = theme === 'dark';
 
   const segments = {
     operators: {
@@ -183,7 +205,7 @@ export default function AppsShowcase() {
   };
 
   return (
-    <div className={`min-h-screen ${themeClasses.bg} py-20 px-6`} suppressHydrationWarning>
+    <div className={`min-h-screen ${themeClasses.bg} py-20 px-6`}>
       <div className="max-w-[1400px] mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
