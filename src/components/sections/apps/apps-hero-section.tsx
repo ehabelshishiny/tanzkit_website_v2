@@ -65,7 +65,7 @@ const CenterImage = () => {
   const backgroundSize = useTransform(
     scrollY,
     [0, SECTION_HEIGHT + 500],
-    ['170%', '100%']
+    ['75%', '100%']
   );
   const opacity = useTransform(
     scrollY,
@@ -135,6 +135,7 @@ const ParallaxImages = () => {
         end={-250}
         className="mx-auto w-full md:w-2/3 lg:w-5/9 rounded-lg"
         aspectRatio="landscape"
+        contain
       />
 
       {/* Image 3: Mobile 2 - Supervisor app (portrait) */}
@@ -167,6 +168,7 @@ const ParallaxImg = ({
   start,
   end,
   aspectRatio,
+  contain = false,
 }: {
   className?: string;
   alt: string;
@@ -174,6 +176,7 @@ const ParallaxImg = ({
   start: number;
   end: number;
   aspectRatio: 'portrait' | 'landscape';
+  contain?: boolean;
 }) => {
   const ref = useRef(null);
 
@@ -194,7 +197,7 @@ const ParallaxImg = ({
       alt={alt}
       className={`${className} ${
         aspectRatio === 'portrait' ? 'aspect-[9/16]' : 'aspect-[16/9]'
-      } object-cover`}
+      } ${contain ? 'object-contain' : 'object-cover'}`}
       ref={ref}
       style={{ transform, opacity }}
     />
