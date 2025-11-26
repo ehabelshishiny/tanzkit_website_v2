@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useTheme } from 'next-themes';
+import Image from 'next/image';
 
 export default function AppsShowcase() {
   const { theme } = useTheme();
@@ -273,31 +274,29 @@ export default function AppsShowcase() {
                 >
                   <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-10 ${themeClasses.cardHoverBorder} transition-all duration-500`}>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                      {/* Landscape Device Mockup */}
+                      {/* Landscape Device Mockup - OPERATORS DASHBOARD */}
                       <div>
                         <div className={`relative rounded-2xl ${themeClasses.mockupBg} border ${themeClasses.mockupBorder} p-5 aspect-[16/10] overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
                           <div className={`absolute inset-0 bg-gradient-to-br ${colors.light}`}></div>
-                          <div className={`relative h-full rounded-xl ${themeClasses.mockupInnerBg} border ${themeClasses.mockupInnerBorder} p-5`}>
-                            <div className="flex items-center gap-2 mb-5">
+                          <div className={`relative h-full rounded-xl ${themeClasses.mockupInnerBg} border ${themeClasses.mockupInnerBorder} overflow-hidden`}>
+                            {/* Browser Chrome */}
+                            <div className={`flex items-center gap-2 px-4 py-3 border-b ${themeClasses.mockupInnerBorder}`}>
                               <div className="w-3 h-3 rounded-full bg-red-500/60"></div>
                               <div className="w-3 h-3 rounded-full bg-yellow-500/60"></div>
                               <div className="w-3 h-3 rounded-full bg-green-500/60"></div>
                             </div>
-                            <div className="space-y-4">
-                              <div className={`h-3 bg-gradient-to-r ${colors.mockupGradient} rounded w-3/4`}></div>
-                              <div className={`h-3 bg-gradient-to-r ${colors.mockupGradient2} rounded w-1/2`}></div>
-                              <div className="grid grid-cols-3 gap-3 mt-6">
-                                <div className={`h-20 ${themeClasses.mockupElement} rounded-lg`}></div>
-                                <div className={`h-20 ${themeClasses.mockupElement} rounded-lg`}></div>
-                                <div className={`h-20 ${themeClasses.mockupElement} rounded-lg`}></div>
-                              </div>
-                              <div className="grid grid-cols-2 gap-3 mt-4">
-                                <div className={`h-16 ${themeClasses.mockupElementLight} rounded-lg`}></div>
-                                <div className={`h-16 ${themeClasses.mockupElementLight} rounded-lg`}></div>
-                              </div>
+                            {/* ✅ CHANGED: Image Content - Full Space */}
+                            <div className="relative w-full h-[calc(100%-44px)]">
+                              <Image
+                                src={isDarkTheme ? '/AppShowcase_section/dark_theme/dark_desktop_1.png' : '/AppShowcase_section/light_theme/light_desktop_1.png'}
+                                alt="Operators Dashboard Screenshot"
+                                fill
+                                className="object-cover"
+                                priority
+                              />
                             </div>
                           </div>
-                          <div className={`absolute top-8 right-8 px-4 py-2 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm`}>
+                          <div className={`absolute top-8 right-8 px-4 py-2 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
                             <span className={`${colors.text} text-xs font-medium`}>AI-Powered</span>
                           </div>
                         </div>
@@ -344,26 +343,26 @@ export default function AppsShowcase() {
                       }}
                     >
                       <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
-                        {/* Portrait Device Mockup */}
+                        {/* Portrait Device Mockup - SUPERVISOR (index 0) / DRIVER (index 1) */}
                         <div className={`relative mb-8 mx-auto w-52 aspect-[9/16] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
                           <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-28 h-8 ${themeClasses.phoneNotch} rounded-b-3xl z-10`}></div>
-                          <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} p-6 pt-12`}>
-                            <div className="space-y-4">
-                              <div className={`h-2 bg-gradient-to-r ${colors.mockupGradient} rounded w-3/4`}></div>
-                              <div className={`h-2 bg-gradient-to-r ${colors.mockupGradient2} rounded w-1/2`}></div>
-                              <div className="mt-10 space-y-4">
-                                <div className={`h-20 ${themeClasses.phoneElement} rounded-2xl`}></div>
-                                <div className={`h-20 ${themeClasses.phoneElement} rounded-2xl`}></div>
-                                <div className={`h-20 ${themeClasses.phoneElement} rounded-2xl`}></div>
-                              </div>
-                              <div className="mt-6 grid grid-cols-2 gap-3">
-                                <div className={`h-12 ${themeClasses.phoneElementLight} rounded-xl`}></div>
-                                <div className={`h-12 ${themeClasses.phoneElementLight} rounded-xl`}></div>
-                              </div>
+                          <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} overflow-hidden`}>
+                            {/* ✅ CHANGED: Image Content - Full Space */}
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={
+                                  index === 0
+                                    ? (isDarkTheme ? '/AppShowcase_section/dark_theme/dark_mobile_1.png' : '/AppShowcase_section/light_theme/light_mobile_1.png')
+                                    : (isDarkTheme ? '/AppShowcase_section/dark_theme/dark_mobile_2.png' : '/AppShowcase_section/light_theme/light_mobile_2.png')
+                                }
+                                alt={`${app.name} Screenshot`}
+                                fill
+                                className="object-cover"
+                              />
                             </div>
                           </div>
-                          <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 w-24 h-1.5 ${themeClasses.phoneIndicator} rounded-full`}></div>
-                          <div className={`absolute top-14 right-5 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm`}>
+                          <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 w-24 h-1.5 ${themeClasses.phoneIndicator} rounded-full z-10`}></div>
+                          <div className={`absolute top-14 right-5 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
                             <span className={`${colors.text} text-[11px] font-medium`}>Real-time</span>
                           </div>
                         </div>
@@ -411,30 +410,27 @@ export default function AppsShowcase() {
                     }}
                   >
                     <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
-                      {/* Landscape Device Mockup */}
+                      {/* Landscape Device Mockup - ENTERPRISE DASHBOARD */}
                       <div className={`relative mb-8 rounded-2xl ${themeClasses.mockupBg} border ${themeClasses.mockupBorder} p-4 aspect-[16/10] overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
                         <div className={`absolute inset-0 bg-gradient-to-br ${colors.light}`}></div>
-                        <div className={`relative h-full rounded-xl ${themeClasses.mockupInnerBg} border ${themeClasses.mockupInnerBorder} p-4`}>
-                          <div className="flex items-center gap-2 mb-4">
+                        <div className={`relative h-full rounded-xl ${themeClasses.mockupInnerBg} border ${themeClasses.mockupInnerBorder} overflow-hidden`}>
+                          {/* Browser Chrome */}
+                          <div className={`flex items-center gap-2 px-4 py-2 border-b ${themeClasses.mockupInnerBorder}`}>
                             <div className="w-3 h-3 rounded-full bg-red-500/60"></div>
                             <div className="w-3 h-3 rounded-full bg-yellow-500/60"></div>
                             <div className="w-3 h-3 rounded-full bg-green-500/60"></div>
                           </div>
-                          <div className="space-y-3">
-                            <div className={`h-2 bg-gradient-to-r ${colors.mockupGradient} rounded w-3/4`}></div>
-                            <div className={`h-2 bg-gradient-to-r ${colors.mockupGradient2} rounded w-1/2`}></div>
-                            <div className="grid grid-cols-3 gap-2 mt-4">
-                              <div className={`h-16 ${themeClasses.mockupElement} rounded-lg`}></div>
-                              <div className={`h-16 ${themeClasses.mockupElement} rounded-lg`}></div>
-                              <div className={`h-16 ${themeClasses.mockupElement} rounded-lg`}></div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-2 mt-3">
-                              <div className={`h-12 ${themeClasses.mockupElementLight} rounded-lg`}></div>
-                              <div className={`h-12 ${themeClasses.mockupElementLight} rounded-lg`}></div>
-                            </div>
+                          {/* ✅ CHANGED: Image Content - Full Space */}
+                          <div className="relative w-full h-[calc(100%-38px)]">
+                            <Image
+                              src={isDarkTheme ? '/AppShowcase_section/dark_theme/dark_desktop_2.png' : '/AppShowcase_section/light_theme/light_desktop_2.png'}
+                              alt="Enterprise Dashboard Screenshot"
+                              fill
+                              className="object-cover"
+                            />
                           </div>
                         </div>
-                        <div className={`absolute top-6 right-6 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm`}>
+                        <div className={`absolute top-6 right-6 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
                           <span className={`${colors.text} text-xs font-medium`}>Real-time</span>
                         </div>
                       </div>
@@ -476,26 +472,22 @@ export default function AppsShowcase() {
                     }}
                   >
                     <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
-                      {/* Portrait Device Mockup */}
+                      {/* Portrait Device Mockup - RIDER APP */}
                       <div className={`relative mb-8 mx-auto w-52 aspect-[9/16] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
                         <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-28 h-8 ${themeClasses.phoneNotch} rounded-b-3xl z-10`}></div>
-                        <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} p-6 pt-12`}>
-                          <div className="space-y-4">
-                            <div className={`h-2 bg-gradient-to-r ${colors.mockupGradient} rounded w-3/4`}></div>
-                            <div className={`h-2 bg-gradient-to-r ${colors.mockupGradient2} rounded w-1/2`}></div>
-                            <div className="mt-10 space-y-4">
-                              <div className={`h-20 ${themeClasses.phoneElement} rounded-2xl`}></div>
-                              <div className={`h-20 ${themeClasses.phoneElement} rounded-2xl`}></div>
-                              <div className={`h-20 ${themeClasses.phoneElement} rounded-2xl`}></div>
-                            </div>
-                            <div className="mt-6 grid grid-cols-2 gap-3">
-                              <div className={`h-12 ${themeClasses.phoneElementLight} rounded-xl`}></div>
-                              <div className={`h-12 ${themeClasses.phoneElementLight} rounded-xl`}></div>
-                            </div>
+                        <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} overflow-hidden`}>
+                          {/* ✅ CHANGED: Image Content - Full Space */}
+                          <div className="relative w-full h-full">
+                            <Image
+                              src={isDarkTheme ? '/AppShowcase_section/dark_theme/dark_mobile_3.png' : '/AppShowcase_section/light_theme/light_mobile_3.png'}
+                              alt="Rider App Screenshot"
+                              fill
+                              className="object-cover"
+                            />
                           </div>
                         </div>
-                        <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 w-24 h-1.5 ${themeClasses.phoneIndicator} rounded-full`}></div>
-                        <div className={`absolute top-14 right-5 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm`}>
+                        <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 w-24 h-1.5 ${themeClasses.phoneIndicator} rounded-full z-10`}></div>
+                        <div className={`absolute top-14 right-5 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
                           <span className={`${colors.text} text-[11px] font-medium`}>AI-Powered</span>
                         </div>
                       </div>
