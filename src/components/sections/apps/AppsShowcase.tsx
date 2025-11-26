@@ -183,7 +183,7 @@ export default function AppsShowcase() {
   };
 
   return (
-    <div className={`min-h-screen ${themeClasses.bg} py-20 px-6`}>
+    <div className={`min-h-screen ${themeClasses.bg} py-20 px-6`} suppressHydrationWarning>
       <div className="max-w-[1400px] mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -285,7 +285,7 @@ export default function AppsShowcase() {
                               <div className="w-3 h-3 rounded-full bg-yellow-500/60"></div>
                               <div className="w-3 h-3 rounded-full bg-green-500/60"></div>
                             </div>
-                            {/* ✅ CHANGED: Image Content - Full Space */}
+                            {/* Image Content */}
                             <div className="relative w-full h-[calc(100%-44px)]">
                               <Image
                                 src={isDarkTheme ? '/AppShowcase_section/dark_theme/dark_desktop_1.png' : '/AppShowcase_section/light_theme/light_desktop_1.png'}
@@ -347,7 +347,7 @@ export default function AppsShowcase() {
                         <div className={`relative mb-8 mx-auto w-52 aspect-[9/16] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
                           <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-28 h-8 ${themeClasses.phoneNotch} rounded-b-3xl z-10`}></div>
                           <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} overflow-hidden`}>
-                            {/* ✅ CHANGED: Image Content - Full Space */}
+                            {/* Image Content */}
                             <div className="relative w-full h-full">
                               <Image
                                 src={
@@ -420,7 +420,7 @@ export default function AppsShowcase() {
                             <div className="w-3 h-3 rounded-full bg-yellow-500/60"></div>
                             <div className="w-3 h-3 rounded-full bg-green-500/60"></div>
                           </div>
-                          {/* ✅ CHANGED: Image Content - Full Space */}
+                          {/* Image Content */}
                           <div className="relative w-full h-[calc(100%-38px)]">
                             <Image
                               src={isDarkTheme ? '/AppShowcase_section/dark_theme/dark_desktop_2.png' : '/AppShowcase_section/light_theme/light_desktop_2.png'}
@@ -476,7 +476,7 @@ export default function AppsShowcase() {
                       <div className={`relative mb-8 mx-auto w-52 aspect-[9/16] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
                         <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-28 h-8 ${themeClasses.phoneNotch} rounded-b-3xl z-10`}></div>
                         <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} overflow-hidden`}>
-                          {/* ✅ CHANGED: Image Content - Full Space */}
+                          {/* Image Content */}
                           <div className="relative w-full h-full">
                             <Image
                               src={isDarkTheme ? '/AppShowcase_section/dark_theme/dark_mobile_3.png' : '/AppShowcase_section/light_theme/light_mobile_3.png'}
