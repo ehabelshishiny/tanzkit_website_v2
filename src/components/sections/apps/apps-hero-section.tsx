@@ -14,7 +14,7 @@ const SECTION_HEIGHT = 1500;
 
 export function AppsHeroSection() {
   return (
-    <div className="bg-gray-100 dark:bg-gray-900">
+    <div className="bg-gray-100 dark:bg-muted/50">
       <ReactLenis
         root
         options={{
@@ -30,7 +30,7 @@ export function AppsHeroSection() {
 const Hero = () => {
   return (
     <div
-      style={{ height: `150vh)` }}
+      style={{ height: `calc(${SECTION_HEIGHT}px + 100vh)` }}
       className="relative w-full"
     >
       <CenterImage />
@@ -121,44 +121,40 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={getThemeImage(theme, 'mobile_1.png')}
         alt="Driver App Screenshot"
-        start={-240}
+        start={-200}
         end={200}
-        className="w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl"
+        className="w-full sm:w-[35%] md:w-1/6 rounded-lg"
         aspectRatio="portrait"
-        opacityRange={[0.7, 1]}
       />
 
       {/* Image 2: Desktop 2 - Enterprise dashboard (landscape) */}
       <ParallaxImg
         src={getThemeImage(theme, 'desktop_2.png')}
         alt="Enterprise Dashboard Screenshot"
-        start={-400}
-        end={300}
-        className="mx-auto w-full md:w-2/3 lg:w-6/9 rounded-lg shadow-2xl"
+        start={-300}
+        end={-250}
+        className="mx-auto w-full md:w-2/3 lg:w-5/9 rounded-lg"
         aspectRatio="landscape"
-        opacityRange={[0.75, 1]}
       />
 
       {/* Image 3: Mobile 2 - Supervisor app (portrait) */}
       <ParallaxImg
         src={getThemeImage(theme, 'mobile_2.png')}
         alt="Supervisor App Screenshot"
-        start={-500}
-        end={250}
-        className="ml-auto w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl"
+        start={-400}
+        end={0}
+        className="ml-auto w-full sm:w-[35%] md:w-1/6 rounded-lg"
         aspectRatio="portrait"
-        opacityRange={[0, 1]}
       />
 
       {/* Image 4: Mobile 3 - Rider app (portrait) - Fades out WITH centered rectangle */}
       <ParallaxImg
         src={getThemeImage(theme, 'mobile_3.png')}
         alt="Rider App Screenshot"
-        start={-900}
-        end={200}
-        className="ml-0 sm:ml-24 w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl mb-32"
+        start={-150}
+        end={-500}
+        className="ml-0 sm:ml-24 w-full sm:w-[35%] md:w-1/6 rounded-lg mb-32"
         aspectRatio="portrait"
-        opacityRange={[0, 1]}
       />
     </div>
   );
@@ -171,7 +167,6 @@ const ParallaxImg = ({
   start,
   end,
   aspectRatio,
-  opacityRange = [0.75, 1],
 }: {
   className?: string;
   alt: string;
@@ -179,7 +174,6 @@ const ParallaxImg = ({
   start: number;
   end: number;
   aspectRatio: 'portrait' | 'landscape';
-  opacityRange?: [number, number];
 }) => {
   const ref = useRef(null);
 
@@ -188,7 +182,7 @@ const ParallaxImg = ({
     offset: [`${start}px end`, `end ${end * -1}px`],
   });
 
-  const opacity = useTransform(scrollYProgress, opacityRange, [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0.75, 1], [1, 0]);
   const scale = useTransform(scrollYProgress, [0.75, 1], [1, 0.85]);
 
   const y = useTransform(scrollYProgress, [0, 1], [start, end]);
