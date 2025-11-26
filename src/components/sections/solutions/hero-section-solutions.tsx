@@ -55,6 +55,7 @@ export function HeroSectionSolutions() {
   const [iconLoaded, setIconLoaded] = useState(false);
   const animationRef = useRef<number | null>(null);
   const lastParticleBurst = useRef<number>(0);
+  const isNetworkInitialized = useRef(false); // ✅ NEW: Track if network is ready
 
   // Track mounted state for theme detection
   useEffect(() => {
@@ -227,6 +228,11 @@ export function HeroSectionSolutions() {
       });
     }
     pulseDots.current = newPulseDots;
+    
+    // ✅ NEW: Mark network as initialized after a short delay
+    setTimeout(() => {
+      isNetworkInitialized.current = true;
+    }, 100);
   }, [canvasSize, locale]);
 
   // Create particle burst from hub
@@ -267,9 +273,9 @@ export function HeroSectionSolutions() {
       ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
       const currentTime = Date.now();
 
-      // Create particle burst every 2 seconds
+      // ✅ FIXED: Only create particle burst after network is fully initialized
       const hubNode = networkNodes.find(n => n.type === 'hub');
-      if (hubNode && currentTime - lastParticleBurst.current > 2000) {
+      if (isNetworkInitialized.current && hubNode && currentTime - lastParticleBurst.current > 2000) {
         createParticleBurst(hubNode);
         lastParticleBurst.current = currentTime;
       }
@@ -405,7 +411,7 @@ export function HeroSectionSolutions() {
 
           // 4. ANIMATED GRADIENT RING BORDER
           const time = Date.now() * 0.001;
-          const rotationAngle = time * 0.5; // Rotate gradient slowly
+          const rotationAngle = time * 0.7; // Rotate gradient slowly
           
           // Calculate gradient positions with rotation
           const gradStartX = node.x + Math.cos(rotationAngle) * 35;
