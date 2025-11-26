@@ -14,7 +14,7 @@ const SECTION_HEIGHT = 1500;
 
 export function AppsHeroSection() {
   return (
-    <div className="bg-gray-100 dark:bg-muted/50">
+    <div className="hidden lg:block bg-gray-100 dark:bg-muted/50">
       <ReactLenis
         root
         options={{

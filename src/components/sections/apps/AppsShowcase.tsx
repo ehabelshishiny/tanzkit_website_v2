@@ -274,7 +274,7 @@ export default function AppsShowcase() {
                   <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-10 ${themeClasses.cardHoverBorder} transition-all duration-500`}>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                       {/* Landscape Device Mockup */}
-                      <div className="order-2 lg:order-1">
+                      <div>
                         <div className={`relative rounded-2xl ${themeClasses.mockupBg} border ${themeClasses.mockupBorder} p-5 aspect-[16/10] overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
                           <div className={`absolute inset-0 bg-gradient-to-br ${colors.light}`}></div>
                           <div className={`relative h-full rounded-xl ${themeClasses.mockupInnerBg} border ${themeClasses.mockupInnerBorder} p-5`}>
@@ -304,7 +304,7 @@ export default function AppsShowcase() {
                       </div>
 
                       {/* Content */}
-                      <div className="order-1 lg:order-2 space-y-5">
+                      <div className="space-y-5">
                         <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
                           <i className={`ri-computer-line ${themeClasses.badgeIcon} text-sm`}></i>
                           <span className={`${themeClasses.badgeText} text-sm font-medium`}>{currentSegment.dashboard.platform}</span>

@@ -538,7 +538,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
           <div className="mb-4 xl:mb-6 xl:sm:mb-8">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight xl:text-6xl xl:sm:text-7xl">
 <span
-  className={`inline-block transition-all duration-1000 ease-out text-foreground text-5xl sm:text-6xl md:text-7xl xl:text-6xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+  className={`inline-block transition-all duration-1000 ease-out text-foreground text-4xl sm:text-6xl md:text-7xl xl:text-6xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
   style={{ transitionDelay: '0.3s' }}
 >
   {title || t('title')}
@@ -548,7 +548,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
                 style={{ transitionDelay: '0.6s' }}
               >
                 <span 
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 animate-pulse drop-shadow-2xl text-7xl sm:text-8xl md:text-9xl xl:text-7xl"
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 animate-pulse drop-shadow-2xl text-5xl sm:text-7xl md:text-8xl xl:text-7xl"
                   style={{ lineHeight: 1.1 }}
                 >
                   {t('titleHighlight')}
