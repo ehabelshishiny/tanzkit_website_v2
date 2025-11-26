@@ -27,6 +27,19 @@ interface PulseDot {
   returning: boolean;
 }
 
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  angle: number;
+  speed: number;
+  distance: number;
+  maxDistance: number;
+  color: string;
+  size: number;
+  alpha: number;
+}
+
 export function HeroSectionSolutions() {
   const t = useTranslations('solutions.main.hero');
   const locale = useLocale();
@@ -36,10 +49,12 @@ export function HeroSectionSolutions() {
   const iconImageRef = useRef<HTMLImageElement | null>(null);
   const [networkNodes, setNetworkNodes] = useState<NetworkNode[]>([]);
   const pulseDots = useRef<PulseDot[]>([]);
+  const particles = useRef<Particle[]>([]);
   const [canvasSize, setCanvasSize] = useState({ width: 1200, height: 800 });
   const [mounted, setMounted] = useState(false);
   const [iconLoaded, setIconLoaded] = useState(false);
   const animationRef = useRef<number | null>(null);
+  const lastParticleBurst = useRef<number>(0);
 
   // Track mounted state for theme detection
   useEffect(() => {
@@ -50,7 +65,6 @@ export function HeroSectionSolutions() {
 
   // Brand colors - Ocean Blue to Emerald gradient for circles/shapes
   const getNodeColor = (index: number, isDark: boolean, alpha: number = 1) => {
-    // Create gradient spectrum from ocean blue to emerald
     const colors = isDark
       ? [
           `rgba(96, 165, 250, ${alpha})`,    // Ocean Blue
@@ -71,22 +85,22 @@ export function HeroSectionSolutions() {
     return colors[index % colors.length];
   };
 
-  // Pulse dot colors - Each dot gets unique vibrant color (non-brand colors)
+  // Pulse dot colors
   const getDotColor = (dotId: number, isDark: boolean, alpha: number = 1) => {
     const dotColors = isDark
       ? [
-          `rgba(255, 107, 107, ${alpha})`,   // Coral Red - Dot 1
-          `rgba(255, 184, 77, ${alpha})`,    // Orange - Dot 2
-          `rgba(255, 234, 167, ${alpha})`,   // Yellow - Dot 3
-          `rgba(185, 127, 255, ${alpha})`,   // Purple - Dot 4
-          `rgba(255, 121, 198, ${alpha})`,   // Pink - Dot 5
+          `rgba(255, 107, 107, ${alpha})`,
+          `rgba(255, 184, 77, ${alpha})`,
+          `rgba(255, 234, 167, ${alpha})`,
+          `rgba(185, 127, 255, ${alpha})`,
+          `rgba(255, 121, 198, ${alpha})`,
         ]
       : [
-          `rgba(239, 68, 68, ${alpha})`,     // Red - Dot 1
-          `rgba(249, 115, 22, ${alpha})`,    // Orange - Dot 2
-          `rgba(234, 179, 8, ${alpha})`,     // Gold - Dot 3
-          `rgba(147, 51, 234, ${alpha})`,    // Purple - Dot 4
-          `rgba(236, 72, 153, ${alpha})`,    // Pink - Dot 5
+          `rgba(239, 68, 68, ${alpha})`,
+          `rgba(249, 115, 22, ${alpha})`,
+          `rgba(234, 179, 8, ${alpha})`,
+          `rgba(147, 51, 234, ${alpha})`,
+          `rgba(236, 72, 153, ${alpha})`,
         ];
     return dotColors[(dotId - 1) % dotColors.length];
   };
@@ -121,21 +135,17 @@ export function HeroSectionSolutions() {
     return () => window.removeEventListener('resize', updateCanvasSize);
   }, []);
 
-  // Initialize network visualization with 5 nodes in pentagon formation
+  // Initialize network visualization
   useEffect(() => {
     const { width, height } = canvasSize;
-    // RTL Support: Position network on left for Arabic, right for English
     const centerX = locale === 'ar' ? width * 0.25 : width * 0.75;
     const centerY = height * 0.45;
-    const radius = 180; // Distance from center to outer nodes
+    const radius = 180;
     
-    // Pentagon formation: 5 points evenly distributed
-    // Starting from top and going clockwise
-    const angleOffset = -Math.PI / 2; // Start from top
+    const angleOffset = -Math.PI / 2;
     const angleStep = (Math.PI * 2) / 5;
     
     const newNodes: NetworkNode[] = [
-      // Central Hub with Tranzkit icon
       {
         id: 0,
         x: centerX,
@@ -146,7 +156,6 @@ export function HeroSectionSolutions() {
         connections: [1, 2, 3, 4, 5],
         type: 'hub'
       },
-      // Node 1: Operator (Top)
       {
         id: 1,
         x: centerX + radius * Math.cos(angleOffset),
@@ -158,7 +167,6 @@ export function HeroSectionSolutions() {
         type: 'operator',
         label: 'Operator'
       },
-      // Node 2: Enterprise (Top Right)
       {
         id: 2,
         x: centerX + radius * Math.cos(angleOffset + angleStep),
@@ -170,7 +178,6 @@ export function HeroSectionSolutions() {
         type: 'enterprise',
         label: 'Enterprise'
       },
-      // Node 3: Supervisor (Bottom Right)
       {
         id: 3,
         x: centerX + radius * Math.cos(angleOffset + angleStep * 2),
@@ -182,7 +189,6 @@ export function HeroSectionSolutions() {
         type: 'supervisor',
         label: 'Supervisor'
       },
-      // Node 4: Driver (Bottom Left)
       {
         id: 4,
         x: centerX + radius * Math.cos(angleOffset + angleStep * 3),
@@ -194,7 +200,6 @@ export function HeroSectionSolutions() {
         type: 'driver',
         label: 'Driver'
       },
-      // Node 5: Rider (Top Left)
       {
         id: 5,
         x: centerX + radius * Math.cos(angleOffset + angleStep * 4),
@@ -210,19 +215,45 @@ export function HeroSectionSolutions() {
 
     setNetworkNodes(newNodes);
 
-    // Initialize pulse dots - one for each outer node (50% slower speed)
+    // Initialize pulse dots
     const newPulseDots: PulseDot[] = [];
     for (let i = 1; i <= 5; i++) {
       newPulseDots.push({
         id: i,
         fromNode: i,
-        progress: Math.random(), // Random starting position
-        speed: 0.002, // 50% slower than before (was 0.008)
+        progress: Math.random(),
+        speed: 0.002,
         returning: false
       });
     }
     pulseDots.current = newPulseDots;
   }, [canvasSize, locale]);
+
+  // Create particle burst from hub
+  const createParticleBurst = (hubNode: NetworkNode) => {
+    const particleCount = 12; // Number of particles per burst
+    const newParticles: Particle[] = [];
+    
+    for (let i = 0; i < particleCount; i++) {
+      const angle = (Math.PI * 2 / particleCount) * i + Math.random() * 0.3;
+      const colorIndex = Math.floor(Math.random() * 6);
+      
+      newParticles.push({
+        id: Date.now() + i,
+        x: hubNode.x,
+        y: hubNode.y,
+        angle: angle,
+        speed: 0.8 + Math.random() * 0.6, // 0.8 to 1.4
+        distance: 0,
+        maxDistance: 60 + Math.random() * 40, // 60 to 100
+        color: getNodeColor(colorIndex, isDark, 1),
+        size: 3 + Math.random() * 2, // 3 to 5
+        alpha: 1
+      });
+    }
+    
+    particles.current = [...particles.current, ...newParticles];
+  };
 
   // Animation loop
   useEffect(() => {
@@ -234,13 +265,21 @@ export function HeroSectionSolutions() {
 
     const animate = () => {
       ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
+      const currentTime = Date.now();
 
-      // LAYER 1: Draw connections (lines) - bottom layer
+      // Create particle burst every 2 seconds
+      const hubNode = networkNodes.find(n => n.type === 'hub');
+      if (hubNode && currentTime - lastParticleBurst.current > 2000) {
+        createParticleBurst(hubNode);
+        lastParticleBurst.current = currentTime;
+      }
+
+      // LAYER 1: Draw connections (lines)
       networkNodes.forEach(node => {
         node.connections.forEach(targetId => {
           const target = networkNodes.find(n => n.id === targetId);
           if (target) {
-            ctx.strokeStyle = getNodeColor(2, isDark, 0.25); // Cyan with transparency
+            ctx.strokeStyle = getNodeColor(2, isDark, 0.25);
             ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.moveTo(node.x, node.y);
@@ -250,17 +289,15 @@ export function HeroSectionSolutions() {
         });
       });
 
-      // LAYER 2: Draw pulse dots - middle layer (under circles)
+      // LAYER 2: Draw pulse dots
       pulseDots.current = pulseDots.current.map(dot => {
         const fromNode = networkNodes.find(n => n.id === (dot.returning ? 0 : dot.fromNode));
         const toNode = networkNodes.find(n => n.id === (dot.returning ? dot.fromNode : 0));
 
         if (fromNode && toNode) {
-          // Calculate position along the line
           const x = fromNode.x + (toNode.x - fromNode.x) * dot.progress;
           const y = fromNode.y + (toNode.y - fromNode.y) * dot.progress;
 
-          // Draw glow effect first (behind the dot) - each dot has unique color
           const glowGradient = ctx.createRadialGradient(x, y, 0, x, y, 12);
           glowGradient.addColorStop(0, getDotColor(dot.id, isDark, 0.8));
           glowGradient.addColorStop(1, getDotColor(dot.id, isDark, 0));
@@ -269,17 +306,14 @@ export function HeroSectionSolutions() {
           ctx.arc(x, y, 12, 0, Math.PI * 2);
           ctx.fill();
 
-          // Draw filled pulse dot on top - each dot has unique color
           ctx.fillStyle = getDotColor(dot.id, isDark, 1);
           ctx.beginPath();
           ctx.arc(x, y, 5, 0, Math.PI * 2);
           ctx.fill();
 
-          // Update progress
           let newProgress = dot.progress + dot.speed;
           let newReturning = dot.returning;
 
-          // When reaching the end, reverse direction
           if (newProgress >= 1) {
             newProgress = 0;
             newReturning = !dot.returning;
@@ -290,41 +324,123 @@ export function HeroSectionSolutions() {
         return dot;
       });
 
-      // LAYER 3: Draw nodes (circles and hub) - top layer
-      networkNodes.forEach((node, index) => {
-        const pulseSize = 5 + Math.sin(Date.now() * 0.002 + node.pulsePhase) * 3;
-
-        // Outer glow
-        const glowGradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 40);
-        if (node.type === 'hub') {
-          // Hub gets gradient glow from ocean blue to emerald
-          glowGradient.addColorStop(0, getNodeColor(0, isDark, 0.5));
-          glowGradient.addColorStop(0.5, getNodeColor(3, isDark, 0.3));
-          glowGradient.addColorStop(1, getNodeColor(5, isDark, 0));
-        } else {
-          glowGradient.addColorStop(0, getNodeColor(index, isDark, 0.3));
-          glowGradient.addColorStop(1, getNodeColor(index, isDark, 0));
-        }
-        ctx.fillStyle = glowGradient;
+      // LAYER 2.5: Draw and update particles
+      particles.current = particles.current.filter(particle => {
+        particle.distance += particle.speed;
+        const progress = particle.distance / particle.maxDistance;
+        
+        if (progress >= 1) return false; // Remove particle
+        
+        particle.alpha = 1 - progress; // Fade out as it travels
+        
+        const x = particle.x + Math.cos(particle.angle) * particle.distance;
+        const y = particle.y + Math.sin(particle.angle) * particle.distance;
+        
+        // Draw particle glow
+        const particleGlow = ctx.createRadialGradient(x, y, 0, x, y, particle.size * 3);
+        const glowColor = particle.color.replace(/[\d.]+\)$/g, `${particle.alpha * 0.4})`);
+        particleGlow.addColorStop(0, particle.color.replace(/[\d.]+\)$/g, `${particle.alpha * 0.8})`));
+        particleGlow.addColorStop(1, glowColor.replace(/[\d.]+\)$/g, '0)'));
+        ctx.fillStyle = particleGlow;
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 40, 0, Math.PI * 2);
+        ctx.arc(x, y, particle.size * 3, 0, Math.PI * 2);
         ctx.fill();
+        
+        // Draw particle core
+        ctx.fillStyle = particle.color.replace(/[\d.]+\)$/g, `${particle.alpha})`);
+        ctx.beginPath();
+        ctx.arc(x, y, particle.size, 0, Math.PI * 2);
+        ctx.fill();
+        
+        return true;
+      });
 
-        // Node circle - perfectly round with 100% opacity
+      // LAYER 3: Draw nodes
+      networkNodes.forEach((node, index) => {
         if (node.type === 'hub') {
-          // Hub node with gradient background (ocean blue to emerald) - 100% opacity
-          const hubGradient = ctx.createRadialGradient(
-            node.x - 15, node.y - 15, 0,
-            node.x + 15, node.y + 15, 50
-          );
-          hubGradient.addColorStop(0, getNodeColor(0, isDark, 1.0)); // 100% opacity
-          hubGradient.addColorStop(1, getNodeColor(5, isDark, 1.0)); // 100% opacity
-          ctx.fillStyle = hubGradient;
+          // === HUB WITH GRADIENT RING BORDER & LAYERED SHADOWS ===
+          
+          // 1. LAYERED SHADOW DEPTH (Multiple shadow layers)
+          const shadowLayers = [
+            { offsetX: 0, offsetY: 12, blur: 24, alpha: 0.15 },  // Deepest shadow
+            { offsetX: 0, offsetY: 8, blur: 16, alpha: 0.12 },   // Medium shadow
+            { offsetX: 0, offsetY: 4, blur: 8, alpha: 0.08 },    // Close shadow
+            { offsetX: 0, offsetY: 2, blur: 4, alpha: 0.05 }     // Subtle shadow
+          ];
+          
+          shadowLayers.forEach(shadow => {
+            ctx.shadowColor = isDark 
+              ? `rgba(0, 0, 0, ${shadow.alpha * 1.5})` 
+              : `rgba(0, 0, 0, ${shadow.alpha})`;
+            ctx.shadowBlur = shadow.blur;
+            ctx.shadowOffsetX = shadow.offsetX;
+            ctx.shadowOffsetY = shadow.offsetY;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.01)';
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
+            ctx.fill();
+          });
+          
+          // Reset shadows
+          ctx.shadowColor = 'transparent';
+          ctx.shadowBlur = 0;
+          ctx.shadowOffsetX = 0;
+          ctx.shadowOffsetY = 0;
+
+          // 2. Outer glow
+          const outerGlow = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 50);
+          outerGlow.addColorStop(0, getNodeColor(0, isDark, 0.4));
+          outerGlow.addColorStop(0.5, getNodeColor(3, isDark, 0.2));
+          outerGlow.addColorStop(1, getNodeColor(5, isDark, 0));
+          ctx.fillStyle = outerGlow;
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, 50, 0, Math.PI * 2);
+          ctx.fill();
+
+          // 3. White background circle
+          ctx.fillStyle = 'rgba(255, 255, 255, 1.0)';
           ctx.beginPath();
           ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
           ctx.fill();
 
-          // Draw Tranzkit icon in the center of hub
+          // 4. ANIMATED GRADIENT RING BORDER
+          const time = Date.now() * 0.001;
+          const rotationAngle = time * 0.5; // Rotate gradient slowly
+          
+          // Calculate gradient positions with rotation
+          const gradStartX = node.x + Math.cos(rotationAngle) * 35;
+          const gradStartY = node.y + Math.sin(rotationAngle) * 35;
+          const gradEndX = node.x + Math.cos(rotationAngle + Math.PI) * 35;
+          const gradEndY = node.y + Math.sin(rotationAngle + Math.PI) * 35;
+          
+          const borderGradient = ctx.createLinearGradient(
+            gradStartX, gradStartY,
+            gradEndX, gradEndY
+          );
+          borderGradient.addColorStop(0, getNodeColor(0, isDark, 0.9));    // Ocean Blue
+          borderGradient.addColorStop(0.33, getNodeColor(2, isDark, 0.9)); // Cyan
+          borderGradient.addColorStop(0.66, getNodeColor(4, isDark, 0.9)); // Teal
+          borderGradient.addColorStop(1, getNodeColor(5, isDark, 0.9));    // Emerald
+          
+          ctx.strokeStyle = borderGradient;
+          ctx.lineWidth = 4;
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // 5. Inner highlight for depth
+          const innerHighlight = ctx.createRadialGradient(
+            node.x - 10, node.y - 10, 0,
+            node.x, node.y, 25
+          );
+          innerHighlight.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
+          innerHighlight.addColorStop(1, 'rgba(255, 255, 255, 0)');
+          ctx.fillStyle = innerHighlight;
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
+          ctx.fill();
+
+          // 6. Draw Tranzkit icon
           if (iconLoaded && iconImageRef.current) {
             const iconSize = 50;
             ctx.drawImage(
@@ -335,20 +451,71 @@ export function HeroSectionSolutions() {
               iconSize
             );
           }
+
         } else {
-          // Outer nodes - each with different gradient color - 100% opacity
-          ctx.fillStyle = getNodeColor(index, isDark, 1.0); // 100% opacity
+          // === OUTER NODES WITH LAYERED SHADOWS ===
+          
+          // 1. Layered shadows for depth
+          const nodeShadows = [
+            { offsetX: 0, offsetY: 6, blur: 12, alpha: 0.12 },
+            { offsetX: 0, offsetY: 3, blur: 6, alpha: 0.08 },
+            { offsetX: 0, offsetY: 1, blur: 3, alpha: 0.04 }
+          ];
+          
+          nodeShadows.forEach(shadow => {
+            ctx.shadowColor = isDark 
+              ? `rgba(0, 0, 0, ${shadow.alpha * 1.5})` 
+              : `rgba(0, 0, 0, ${shadow.alpha})`;
+            ctx.shadowBlur = shadow.blur;
+            ctx.shadowOffsetX = shadow.offsetX;
+            ctx.shadowOffsetY = shadow.offsetY;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.01)';
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, 18, 0, Math.PI * 2);
+            ctx.fill();
+          });
+          
+          ctx.shadowColor = 'transparent';
+          ctx.shadowBlur = 0;
+          ctx.shadowOffsetX = 0;
+          ctx.shadowOffsetY = 0;
+
+          // 2. Outer glow
+          const glowGradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 35);
+          glowGradient.addColorStop(0, getNodeColor(index, isDark, 0.3));
+          glowGradient.addColorStop(1, getNodeColor(index, isDark, 0));
+          ctx.fillStyle = glowGradient;
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
+          ctx.fill();
+
+          // 3. Node circle with gradient
+          const nodeGradient = ctx.createRadialGradient(
+            node.x - 5, node.y - 5, 0,
+            node.x + 5, node.y + 5, 20
+          );
+          nodeGradient.addColorStop(0, getNodeColor(index, isDark, 1.0));
+          nodeGradient.addColorStop(1, getNodeColor(index, isDark, 0.8));
+          ctx.fillStyle = nodeGradient;
           ctx.beginPath();
           ctx.arc(node.x, node.y, 18, 0, Math.PI * 2);
           ctx.fill();
-        }
 
-        // Pulse ring - perfectly circular with gradient colors
-        ctx.strokeStyle = getNodeColor(node.type === 'hub' ? 3 : index, isDark, 0.6);
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, (node.type === 'hub' ? 35 : 18) + pulseSize, 0, Math.PI * 2);
-        ctx.stroke();
+          // 4. Border
+          ctx.strokeStyle = getNodeColor(index, isDark, 0.4);
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, 18, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // 5. Simple pulse ring
+          const pulseSize = 4 + Math.sin(Date.now() * 0.002 + node.pulsePhase) * 3;
+          ctx.strokeStyle = getNodeColor(index, isDark, 0.5);
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, 18 + pulseSize, 0, Math.PI * 2);
+          ctx.stroke();
+        }
 
         // Label
         if (node.label) {
