@@ -494,8 +494,8 @@ export function HeroSectionSolutions() {
             node.x - 5, node.y - 5, 0,
             node.x + 5, node.y + 5, 20
           );
-          nodeGradient.addColorStop(0, getNodeColor(index, isDark, 1.0));
-          nodeGradient.addColorStop(1, getNodeColor(index, isDark, 0.8));
+          nodeGradient.addColorStop(1, getNodeColor(index, isDark, 1.0));
+          nodeGradient.addColorStop(1, getNodeColor(index, isDark, 1.0));
           ctx.fillStyle = nodeGradient;
           ctx.beginPath();
           ctx.arc(node.x, node.y, 18, 0, Math.PI * 2);
@@ -555,7 +555,10 @@ export function HeroSectionSolutions() {
       </div>
 
       {/* Canvas Background - Network Visualization */}
-      <div ref={containerRef} className="absolute inset-0">
+      <div 
+        ref={containerRef} 
+        className="absolute inset-0 hidden xl:block"
+      >
         <canvas
           ref={canvasRef}
           width={canvasSize.width}
@@ -593,7 +596,13 @@ export function HeroSectionSolutions() {
       </div>
 
       {/* Gradient Overlay - Adjusted for Better Contrast */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/30 to-transparent dark:from-slate-950/40 dark:via-slate-950/20 dark:to-transparent pointer-events-none" />
+      <div 
+        className={`absolute inset-0 bg-gradient-to-r pointer-events-none ${
+          locale === 'ar' 
+            ? 'from-white/0 via-white/0 to-transparent dark:from-slate-950/0 dark:via-slate-950/0 dark:to-transparent' 
+            : 'from-white/60 via-white/30 to-transparent dark:from-slate-950/40 dark:via-slate-950/20 dark:to-transparent'
+        }`}
+      />
     </section>
   );
 }

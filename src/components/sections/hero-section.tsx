@@ -504,7 +504,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
               <TrialCTAButton
                 variant="primary"
                 size="lg"
-                className="shadow-2xl shadow-accent/50 !h-[48px] sm:!h-[56px] w-full sm:w-auto"
+                className="shadow-2xl shadow-accent/50 !h-[48px] sm:!h-[60px] w-full sm:w-auto"
               />
             </div>
 
