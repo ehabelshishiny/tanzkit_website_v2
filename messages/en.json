@@ -8,6 +8,11 @@
     "pricing": "Pricing",
     "about": "About Us",
     "company": "Company",
+    "viewAll": {
+      "solutions": "View all solutions",
+      "resources": "View all resources",
+      "apps": "View all apps"
+    },
     "submenus": {
       "solutions": {
         "enterprisesPassengers": {

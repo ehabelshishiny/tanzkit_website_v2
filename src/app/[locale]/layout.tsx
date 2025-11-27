@@ -1,7 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
 import { locales } from '@/i18n';
 import { LenisProvider } from '@/components/providers/lenis-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
@@ -12,11 +12,20 @@ import '../globals.css';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
+  display: 'swap',
 });
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+  display: 'swap',
+});
+
+const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
+  variable: '--font-ibm-plex-arabic',
+  subsets: ['arabic'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
 });
 
 export default async function LocaleLayout({
@@ -44,7 +53,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${ibmPlexSansArabic.variable} antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider
@@ -66,4 +75,3 @@ export default async function LocaleLayout({
     </html>
   );
 }
-

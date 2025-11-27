@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { GradientButton } from '@/components/ui/gradient-button';
-import { ArrowRight } from 'lucide-react';
+import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 
 interface NetworkNode {
   id: number;
@@ -560,7 +560,7 @@ export function HeroSectionSolutions() {
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[oklch(0.65_0.12_165)]/40 dark:bg-[oklch(0.70_0.14_165)]/50 rounded-full blur-3xl animate-float-slower" />
       </div>
 
-      {/* Canvas Background - Network Visualization */}
+     {/* Canvas Background - Network Visualization */}
       <div 
         ref={containerRef} 
         className="absolute inset-0 hidden xl:block"
@@ -592,7 +592,7 @@ export function HeroSectionSolutions() {
             <GradientButton
               href="#explore"
               size="lg"
-              icon={<ArrowRight className="w-5 h-5" />}
+              icon={<RTLAwareArrow className="w-5 h-5" />}
               iconPosition="right"
             >
               {t('cta')}

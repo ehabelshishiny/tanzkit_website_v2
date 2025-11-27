@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { GradientButton } from '@/components/ui/gradient-button';
-import { ArrowRight } from 'lucide-react';
+import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 
 export function EnterprisesHeroSection() {
   const t = useTranslations('solutions.enterprisesPassengers.hero');
@@ -42,7 +42,7 @@ export function EnterprisesHeroSection() {
             <GradientButton
               href="/contact"
               size="lg"
-              icon={<ArrowRight className="w-5 h-5" />}
+              icon={<RTLAwareArrow className="w-5 h-5" />}
               iconPosition="right"
               className="bg-white hover:bg-white/90 text-secondary button-text transition-colors duration-300"
             >
@@ -54,4 +54,3 @@ export function EnterprisesHeroSection() {
     </section>
   );
 }
-

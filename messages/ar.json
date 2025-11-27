@@ -1,5 +1,5 @@
 {
-  "nav": {
+ "nav": {
     "home": "الرئيسية",
     "solutions": "الحلول",
     "resources": "الموارد",
@@ -8,6 +8,11 @@
     "pricing": "الأسعار",
     "about": "من نحن",
     "company": "الشركة",
+    "viewAll": {
+      "solutions": "عرض جميع الحلول",
+      "resources": "عرض جميع الموارد",
+      "apps": "عرض جميع التطبيقات"
+    },
     "submenus": {
       "solutions": {
         "enterprisesPassengers": {

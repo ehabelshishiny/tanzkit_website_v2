@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { useLocale } from 'next-intl';
+import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 
 interface AudienceCardProps {
   title: string;
@@ -38,6 +39,9 @@ export function AudienceCard({
   gradient = 'from-primary/10 to-accent/10',
   className,
 }: AudienceCardProps) {
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+
   return (
     <motion.div
       variants={cardVariants}
@@ -94,9 +98,12 @@ export function AudienceCard({
           ))}
         </ul>
         
-        <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-4 transition-all">
+        <div className={cn(
+          "flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-4 transition-all",
+          isRTL && "flex-row-reverse"
+        )}>
           <span>{ctaText}</span>
-          <ArrowRight className="w-5 h-5" />
+          <RTLAwareArrow className="w-5 h-5" />
         </div>
       </Link>
     </motion.div>

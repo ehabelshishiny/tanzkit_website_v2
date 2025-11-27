@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { GradientButton } from '@/components/ui/gradient-button';
-import { ArrowRight } from 'lucide-react';
+import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 
 export function OperatorsHeroSection() {
   const t = useTranslations('solutions.operatorsDrivers.hero');
@@ -35,7 +35,7 @@ export function OperatorsHeroSection() {
             <GradientButton
               href="/contact"
               size="lg"
-              icon={<ArrowRight className="w-5 h-5" />}
+              icon={<RTLAwareArrow className="w-5 h-5" />}
               iconPosition="right"
               className="bg-background hover:bg-muted text-foreground font-semibold"
             >
@@ -47,4 +47,3 @@ export function OperatorsHeroSection() {
     </section>
   );
 }
-

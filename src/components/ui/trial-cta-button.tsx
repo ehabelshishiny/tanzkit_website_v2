@@ -44,6 +44,7 @@ export function TrialCTAButton({
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations('common');
+  const isRTL = locale === 'ar';
 
   const handleClick = () => {
     if (!disabled) {
@@ -64,9 +65,13 @@ export function TrialCTAButton({
 
   const buttonContent = (
     <>
-      {icon && iconPosition === 'left' && <span className="mr-2">{icon}</span>}
+      {icon && iconPosition === 'left' && (
+        <span className={isRTL ? 'ml-2' : 'mr-2'}>{icon}</span>
+      )}
       <span className="relative z-10 transition-all duration-300">{buttonText}</span>
-      {icon && iconPosition === 'right' && <span className="ml-2">{icon}</span>}
+      {icon && iconPosition === 'right' && (
+        <span className={isRTL ? 'mr-2' : 'ml-2'}>{icon}</span>
+      )}
     </>
   );
 
@@ -103,4 +108,3 @@ export function TrialCTAButton({
     </motion.button>
   );
 }
-

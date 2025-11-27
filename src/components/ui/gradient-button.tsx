@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
+import { useLocale } from 'next-intl';
 
 interface GradientButtonProps {
   children: React.ReactNode;
@@ -44,11 +45,18 @@ export function GradientButton({
   className,
   disabled = false,
 }: GradientButtonProps) {
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+
   const buttonContent = (
     <>
-      {icon && iconPosition === 'left' && <span className="mr-2">{icon}</span>}
+      {icon && iconPosition === 'left' && (
+        <span className={isRTL ? 'ml-2' : 'mr-2'}>{icon}</span>
+      )}
       <span>{children}</span>
-      {icon && iconPosition === 'right' && <span className="ml-2">{icon}</span>}
+      {icon && iconPosition === 'right' && (
+        <span className={isRTL ? 'mr-2' : 'ml-2'}>{icon}</span>
+      )}
     </>
   );
 
@@ -110,4 +118,3 @@ export function GradientButton({
     </motion.button>
   );
 }
-

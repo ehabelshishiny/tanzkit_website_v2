@@ -20,7 +20,7 @@ export function Header() {
     {
       name: t('solutions'),
       href: `/${locale}/solutions`,
-      description: 'View all solutions',
+      description: t('viewAll.solutions'),
       isParent: true
     },
     {
@@ -39,7 +39,7 @@ export function Header() {
     {
       name: t('resources'),
       href: `/${locale}/resources`,
-      description: 'View all resources',
+      description: t('viewAll.resources'),
       isParent: true
     },
     { name: t('submenus.resources.helpCenter'), href: `/${locale}/resources/help-center` },
@@ -54,7 +54,7 @@ export function Header() {
     {
       name: t('apps'),
       href: `/${locale}/apps`,
-      description: 'View all apps',
+      description: t('viewAll.apps'),
       isParent: true
     },
     { name: t('submenus.apps.supervisor'), href: `/${locale}/apps/supervisor` },

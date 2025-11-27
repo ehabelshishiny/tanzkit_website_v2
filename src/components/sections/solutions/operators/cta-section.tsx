@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { SectionContainer } from '@/components/ui/section-container';
-import { ArrowRight } from 'lucide-react';
+import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 import { motion } from 'framer-motion';
 import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 
@@ -32,7 +32,7 @@ export function OperatorsCtaSection() {
         <TrialCTAButton
           variant="secondary"
           size="lg"
-          icon={<ArrowRight className="w-5 h-5" />}
+          icon={<RTLAwareArrow className="w-5 h-5" />}
           iconPosition="right"
           className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
         />

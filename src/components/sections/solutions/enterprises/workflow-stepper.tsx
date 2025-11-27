@@ -3,7 +3,9 @@
 import { Card } from '@/components/ui/card';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { StaggerChildren, StaggerItem } from '@/components/animations/stagger-children';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
+import { useLocale } from 'next-intl';
+import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 
 const passengerJourney = [
   {
@@ -66,6 +68,8 @@ interface WorkflowStepperProps {
 }
 
 export function WorkflowStepper({ type = 'passenger' }: WorkflowStepperProps) {
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
   const steps = type === 'passenger' ? passengerJourney : enterpriseDashboard;
   const title = type === 'passenger' ? 'Your Journey with Tranzkit' : 'Enterprise Dashboard Flow';
   const subtitle = type === 'passenger' 
@@ -98,7 +102,7 @@ export function WorkflowStepper({ type = 'passenger' }: WorkflowStepperProps) {
                   <p className="text-muted-foreground">{step.description}</p>
                 </div>
                 {index < steps.length - 1 ? (
-                  <ArrowRight className="w-6 h-6 text-muted-foreground hidden md:block" />
+                  <RTLAwareArrow className="w-6 h-6 text-muted-foreground hidden md:block" />
                 ) : (
                   <CheckCircle2 className="w-6 h-6 text-green-500 hidden md:block" />
                 )}
@@ -110,4 +114,3 @@ export function WorkflowStepper({ type = 'passenger' }: WorkflowStepperProps) {
     </section>
   );
 }
-

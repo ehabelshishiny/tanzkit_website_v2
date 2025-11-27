@@ -214,3 +214,19 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+/* === Arabic Font Configuration === */
+html[lang="ar"] body {
+  font-family: var(--font-ibm-plex-arabic), var(--font-geist-sans), sans-serif;
+}
+
+html[lang="ar"] .font-sans {
+  font-family: var(--font-ibm-plex-arabic), sans-serif;
+}
+
+/* Keep monospace font (code blocks) unchanged for both locales */
+html[lang="ar"] .font-mono,
+html[lang="ar"] code,
+html[lang="ar"] pre {
+  font-family: var(--font-geist-mono), monospace;
+}

@@ -57,16 +57,13 @@ const CenterImage = () => {
     setMounted(true);
   }, []);
 
-  const clip1 = useTransform(scrollY, [0, 1500], [25, 0]);
-  const clip2 = useTransform(scrollY, [0, 1500], [75, 100]);
-
-  const clipPath = useMotionTemplate`polygon(${clip1}% ${clip1}%, ${clip2}% ${clip1}%, ${clip2}% ${clip2}%, ${clip1}% ${clip2}%)`;
-
-  const backgroundSize = useTransform(
+  // Subtle zoom effect on scroll
+  const scale = useTransform(
     scrollY,
-    [0, SECTION_HEIGHT + 500],
-    ['75%', '100%']
+    [0, SECTION_HEIGHT],
+    [1, 1.1]
   );
+
   const opacity = useTransform(
     scrollY,
     [SECTION_HEIGHT, SECTION_HEIGHT + 500],
@@ -82,12 +79,12 @@ const CenterImage = () => {
     <motion.div
       className="sticky top-0 h-screen w-full"
       style={{
-        clipPath,
-        backgroundSize,
+        scale,
         opacity,
         backgroundImage,
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
+        backgroundSize: '72%',
       }}
     />
   );
