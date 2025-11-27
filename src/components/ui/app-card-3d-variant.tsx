@@ -51,8 +51,7 @@ export function AppCard3DVariant({
 
   return (
     <CardContainer className={`inter-var ${appType === 'desktop' ? desktopScale : mobileScale}`} containerClassName="py-2 w-full">
-     <CardBody className={`relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:border-white/[0.2] border-black/[0.1] [background:var(--card-gradient-light)] dark:[background:var(--card-gradient-dark)] ${cardWidth} ${cardHeight} rounded-xl p-4 border`}>
-
+      <CardBody className={`bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] ${cardWidth} ${cardHeight} rounded-xl p-4 border`}>
         <Link href={href} className="block">
           {/* Title */}
           <CardItem

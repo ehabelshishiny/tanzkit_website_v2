@@ -216,12 +216,21 @@
 }
 
 /* === Arabic Font Configuration === */
+/* IBM Plex Sans Arabic for body text and general content */
 html[lang="ar"] body {
   font-family: var(--font-ibm-plex-arabic), var(--font-geist-sans), sans-serif;
 }
 
 html[lang="ar"] .font-sans {
   font-family: var(--font-ibm-plex-arabic), sans-serif;
+}
+
+/* Cairo for headers, titles, and headings */
+html[lang="ar"] h1,
+html[lang="ar"] .heading,
+html[lang="ar"] .title {
+  font-family: var(--font-cairo), var(--font-ibm-plex-arabic), sans-serif;
+  font-weight: 700;
 }
 
 /* Keep monospace font (code blocks) unchanged for both locales */

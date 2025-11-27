@@ -393,21 +393,31 @@ export function HeroSectionSolutions() {
           ctx.shadowOffsetX = 0;
           ctx.shadowOffsetY = 0;
 
-          // 2. Outer glow
-          const outerGlow = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 50);
-          outerGlow.addColorStop(0, getNodeColor(0, isDark, 0.4));
-          outerGlow.addColorStop(0.5, getNodeColor(3, isDark, 0.2));
-          outerGlow.addColorStop(1, getNodeColor(5, isDark, 0));
-          ctx.fillStyle = outerGlow;
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, 50, 0, Math.PI * 2);
-          ctx.fill();
 
-          // 3. White background circle
-          ctx.fillStyle = 'rgba(255, 255, 255, 1.0)';
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
-          ctx.fill();
+// 3. Background circle matching hero gradient
+// Sample the exact gradient at hub position to create transparent illusion
+const hubGradient = ctx.createLinearGradient(
+  0, 0, 
+  canvasSize.width, canvasSize.height
+);
+
+if (isDark) {
+  // Dark mode gradient (matching hero section)
+  hubGradient.addColorStop(0, 'oklch(0.15 0.04 250)');    // from
+  hubGradient.addColorStop(0.5, 'oklch(0.20 0.06 240)');  // via
+  hubGradient.addColorStop(1, 'oklch(0.18 0.04 165)');    // to
+} else {
+  // Light mode gradient (matching hero section)
+  hubGradient.addColorStop(0, 'oklch(0.95 0.02 250)');    // from
+  hubGradient.addColorStop(0.5, 'oklch(0.92 0.04 240)');  // via
+  hubGradient.addColorStop(1, 'oklch(0.90 0.03 165)');    // to
+}
+
+ctx.fillStyle = hubGradient;
+ctx.beginPath();
+ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
+ctx.fill();
+
 
           // 4. ANIMATED GRADIENT RING BORDER
           const time = Date.now() * 0.001;
@@ -446,17 +456,55 @@ export function HeroSectionSolutions() {
           ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
           ctx.fill();
 
-          // 6. Draw Tranzkit icon
-          if (iconLoaded && iconImageRef.current) {
-            const iconSize = 50;
-            ctx.drawImage(
-              iconImageRef.current,
-              node.x - iconSize / 2,
-              node.y - iconSize / 2,
-              iconSize,
-              iconSize
-            );
-          }
+// 6. Draw Tranzkit icon with dynamic color matching "operator" node
+if (iconLoaded && iconImageRef.current) {
+  const iconSize = 40;
+  const iconX = node.x - iconSize / 2;
+  const iconY = node.y - iconSize / 2;
+
+  // Get the "operator" node color (index 1)
+  const operatorColor = getNodeColor(1, isDark, 1.0);
+
+  // Create an off-screen canvas for color manipulation
+  const tempCanvas = document.createElement('canvas');
+  tempCanvas.width = iconSize;
+  tempCanvas.height = iconSize;
+  const tempCtx = tempCanvas.getContext('2d');
+
+  if (tempCtx) {
+    // Draw the original SVG
+    tempCtx.drawImage(iconImageRef.current, 0, 0, iconSize, iconSize);
+
+    // Get image data
+    const imageData = tempCtx.getImageData(0, 0, iconSize, iconSize);
+    const data = imageData.data;
+
+    // Parse the operator color (rgba string)
+    const colorMatch = operatorColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+    const r = colorMatch ? parseInt(colorMatch[1]) : 64;
+    const g = colorMatch ? parseInt(colorMatch[2]) : 150;
+    const b = colorMatch ? parseInt(colorMatch[3]) : 240;
+
+    // Apply color filter: replace non-transparent pixels with operator color
+    for (let i = 0; i < data.length; i += 4) {
+      const alpha = data[i + 3];
+      if (alpha > 0) {
+        // Preserve alpha, replace RGB with operator color
+        data[i] = r;
+        data[i + 1] = g;
+        data[i + 2] = b;
+        // Keep original alpha: data[i + 3] = alpha;
+      }
+    }
+
+    // Put the modified image data back
+    tempCtx.putImageData(imageData, 0, 0);
+
+    // Draw the colorized icon onto the main canvas
+    ctx.drawImage(tempCanvas, iconX, iconY, iconSize, iconSize);
+  }
+}
+
 
         } else {
           // === OUTER NODES WITH LAYERED SHADOWS ===

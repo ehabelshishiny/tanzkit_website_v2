@@ -28,16 +28,6 @@ interface NetworkNode {
   connections: number[];
 }
 
-// Rain drop interface
-interface RainDrop {
-  x: number;
-  y: number;
-  speed: number;
-  length: number;
-  baseOpacity: number;
-  width: number;
-}
-
 interface HeroSectionProps {
   title?: string;
   subtitle?: string;
@@ -55,7 +45,6 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [networkNodes, setNetworkNodes] = useState<NetworkNode[]>([]);
-  const [rainDrops, setRainDrops] = useState<RainDrop[]>([]);
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [canvasSize, setCanvasSize] = useState({ width: 1200, height: 800 });
@@ -146,25 +135,6 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     return path;
   };
 
-  // Initialize rain drops - now spans entire width
-  const initializeRainDrops = (width: number, height: number) => {
-    const drops: RainDrop[] = [];
-    const dropCount = 80;
-    
-    for (let i = 0; i < dropCount; i++) {
-      drops.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        speed: (2 + Math.random() * 4) * 0.4, // Your updated speed
-        length: 40 + Math.random() * 80,
-        baseOpacity: 0.1 + Math.random() * 0.3,
-        width: 2 + Math.random() * 2
-      });
-    }
-    
-    setRainDrops(drops);
-  };
-
   // Initialize canvas size - NOW WORKS ON ALL SCREENS
   useEffect(() => {
     const updateCanvasSize = () => {
@@ -180,9 +150,9 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     updateCanvasSize();
     window.addEventListener('resize', updateCanvasSize);
     return () => window.removeEventListener('resize', updateCanvasSize);
-  }, []); // Removed isDesktop dependency
+  }, []);
 
-  // Initialize vehicles, network nodes, and rain drops
+  // Initialize vehicles and network nodes
   useEffect(() => {
     const { width, height } = canvasSize;
 
@@ -269,12 +239,10 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       setNetworkNodes(newNodes);
     }
 
-    // Initialize rain drops on ALL screen sizes
-    initializeRainDrops(width, height);
     setIsVisible(true);
   }, [canvasSize, isRTL, isDesktop]);
 
-  // Animation loop - NOW WORKS ON ALL SCREENS
+  // Animation loop
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -292,40 +260,6 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     const animate = () => {
       ctx.fillStyle = isDark ? 'rgba(20, 20, 30, 0.95)' : 'rgba(255, 255, 255, 0.95)';
       ctx.fillRect(0, 0, canvasSize.width, canvasSize.height);
-
-      // Draw rain drops FIRST (behind everything) - ALWAYS VISIBLE
-      ctx.save();
-      
-      const opacityMultiplier = isDark ? 0.4 : 0.8; // Your updated values
-      
-      rainDrops.forEach(drop => {
-        drop.y += drop.speed;
-        
-        if (drop.y > canvasSize.height + drop.length) {
-          drop.y = -drop.length;
-          drop.x = Math.random() * canvasSize.width;
-        }
-        
-        const finalOpacity = drop.baseOpacity * opacityMultiplier;
-        
-        const gradient = ctx.createLinearGradient(drop.x, drop.y, drop.x, drop.y + drop.length);
-        
-        const baseColor = isDark ? '45, 212, 191' : '94, 234, 212';
-        gradient.addColorStop(0, `rgba(${baseColor}, 0)`);
-        gradient.addColorStop(0.5, `rgba(${baseColor}, ${finalOpacity})`);
-        gradient.addColorStop(1, `rgba(${baseColor}, 0)`);
-        
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = drop.width;
-        ctx.lineCap = 'round';
-        
-        ctx.beginPath();
-        ctx.moveTo(drop.x, drop.y);
-        ctx.lineTo(drop.x, drop.y + drop.length);
-        ctx.stroke();
-      });
-      
-      ctx.restore();
 
       // Draw vehicle paths and vehicles ONLY ON DESKTOP
       if (isDesktop) {
@@ -426,7 +360,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [vehicles, networkNodes, canvasSize, rainDrops, isDark, isDesktop, isRTL]); // Removed isDesktop from dependency
+  }, [vehicles, networkNodes, canvasSize, isDark, isDesktop, isRTL]);
 
   // Scroll handler
   useEffect(() => {
@@ -450,7 +384,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       className="relative bg-gray-100 dark:bg-slate-900 xl:bg-gradient-to-br xl:from-slate-900 xl:via-slate-800 xl:to-slate-900 overflow-hidden xl:min-h-screen"
       onMouseMove={handleMouseMove}
     >
-      {/* Animated Background Canvas - NOW ALWAYS VISIBLE */}
+      {/* Animated Background Canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
@@ -461,12 +395,12 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
       {/* Hero Content */}
       <div
-        className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-19 xl:py-12 xl:sm:py-16 xl:md:py-20 xl:lg:py-20 flex items-start xl:items-center xl:min-h-screen"
+        className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-19 xl:py-16 flex items-start xl:min-h-screen"
         style={{ transform: `translateY(${scrollY * -0.05}px)` }}
       >
         <div className="max-w-4xl w-full mx-auto lg:mx-0">
           {/* Animated Headline */}
-          <div className="mb-4 xl:mb-6 xl:sm:mb-8">
+          <div className="mb-8 xl:mb-12">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight xl:text-6xl xl:sm:text-7xl">
 <span
   className={`inline-block transition-all duration-1000 ease-out text-foreground text-4xl sm:text-6xl md:text-7xl xl:text-6xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}

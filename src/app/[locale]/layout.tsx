@@ -1,7 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
+import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic, Almarai } from 'next/font/google';
 import { locales } from '@/i18n';
 import { LenisProvider } from '@/components/providers/lenis-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
@@ -25,6 +25,13 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
   variable: '--font-ibm-plex-arabic',
   subsets: ['arabic'],
   weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+});
+
+const cairo = Almarai({
+  variable: '--font-cairo',
+  subsets: ['arabic'],
+  weight: ['300', '400', '700', '800'],
   display: 'swap',
 });
 
@@ -53,7 +60,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${ibmPlexSansArabic.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${ibmPlexSansArabic.variable} ${cairo.variable} antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider
