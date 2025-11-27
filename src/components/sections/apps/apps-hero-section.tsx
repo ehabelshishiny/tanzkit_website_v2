@@ -57,18 +57,22 @@ const CenterImage = () => {
     setMounted(true);
   }, []);
 
-  // Subtle zoom effect on scroll
-  const scale = useTransform(
+  // Blur effect on scroll - starts immediately when scrolling
+  const blur = useTransform(
     scrollY,
-    [0, SECTION_HEIGHT],
-    [1, 1.1]
+    [0, 2000],
+    [0, 8]
   );
 
+  // Fade out effect at the end
   const opacity = useTransform(
     scrollY,
     [SECTION_HEIGHT, SECTION_HEIGHT + 500],
     [1, 0]
   );
+
+  // Combine blur with px unit for filter
+  const filter = useMotionTemplate`blur(${blur}px)`;
 
   // Use placeholder during SSR to avoid hydration mismatch
   const backgroundImage = mounted
@@ -77,18 +81,20 @@ const CenterImage = () => {
 
   return (
     <motion.div
-      className="sticky top-0 h-screen w-full"
+      className="sticky top-16 h-[calc(100vh-4rem)] w-full"
       style={{
-        scale,
         opacity,
+        filter,
         backgroundImage,
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '72%',
+        backgroundSize: 'cover',
       }}
     />
   );
 };
+
+
 
 const ParallaxImages = () => {
   const { theme } = useTheme();
@@ -120,7 +126,7 @@ const ParallaxImages = () => {
         alt="Driver App Screenshot"
         start={-200}
         end={200}
-        className="w-full sm:w-[35%] md:w-1/6 rounded-lg"
+        className="w-full sm:w-[35%] md:w-2/9 rounded-lg"
         aspectRatio="portrait"
       />
 
@@ -130,7 +136,7 @@ const ParallaxImages = () => {
         alt="Enterprise Dashboard Screenshot"
         start={-300}
         end={-250}
-        className="mx-auto w-full md:w-2/3 lg:w-5/9 rounded-lg"
+        className="mx-auto w-full md:w-2/3 lg:w-6/9 rounded-lg"
         aspectRatio="landscape"
         contain
       />
@@ -139,9 +145,9 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={getThemeImage(theme, 'mobile_2.png')}
         alt="Supervisor App Screenshot"
-        start={-400}
+        start={-550}
         end={0}
-        className="ml-auto w-full sm:w-[35%] md:w-1/6 rounded-lg"
+        className="ml-auto w-full sm:w-[35%] md:w-2/9 rounded-lg"
         aspectRatio="portrait"
       />
 
@@ -149,9 +155,9 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={getThemeImage(theme, 'mobile_3.png')}
         alt="Rider App Screenshot"
-        start={-150}
+        start={-650}
         end={-500}
-        className="ml-0 sm:ml-24 w-full sm:w-[35%] md:w-1/6 rounded-lg mb-32"
+        className="ml-0 sm:ml-24 w-full sm:w-[35%] md:w-2/9 rounded-lg mb-32"
         aspectRatio="portrait"
       />
     </div>
