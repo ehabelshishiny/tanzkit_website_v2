@@ -63,10 +63,21 @@
   "solutions": {
     "main": {
       "hero": {
-        "title": "Smart Mobility, Practical Results",
-        "subtitle": "Tranzkit turns complex transport into dependable, efficient movement. Our AI-powered platform connects operators, drivers, enterprises, and passengers so every trip runs smoother, cheaper, and safer.",
-        "cta": "Explore Solutions"
-      },
+  "title": {
+    "smart": "Smart",
+    "mobility": "Mobility",
+    "practicalResults": ", Practical Results"
+  },
+  "subtitle": "Tranzkit turns complex transport into dependable, efficient movement. Our AI-powered platform connects operators, drivers, enterprises, and passengers so every trip runs smoother, cheaper, and safer.",
+  "cta": "Explore Solutions",
+  "nodes": {
+    "operator": "Operator",
+    "enterprise": "Enterprise",
+    "supervisor": "Supervisor",
+    "driver": "Driver",
+    "rider": "Rider"
+  }
+},
       "intro": {
         "text": "One platform for operations, drivers, companies, and riders. Use Tranzkit to reduce costs, improve on-time performance, and get clear insights into every trip."
       },

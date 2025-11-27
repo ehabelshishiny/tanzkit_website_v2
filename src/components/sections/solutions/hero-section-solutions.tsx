@@ -166,7 +166,7 @@ export function HeroSectionSolutions() {
         pulsePhase: 0,
         connections: [0],
         type: 'operator',
-        label: 'Operator'
+        label: t('nodes.operator')
       },
       {
         id: 2,
@@ -177,7 +177,7 @@ export function HeroSectionSolutions() {
         pulsePhase: Math.PI * 0.4,
         connections: [0],
         type: 'enterprise',
-        label: 'Enterprise'
+        label: t('nodes.enterprise')
       },
       {
         id: 3,
@@ -188,7 +188,7 @@ export function HeroSectionSolutions() {
         pulsePhase: Math.PI * 0.8,
         connections: [0],
         type: 'supervisor',
-        label: 'Supervisor'
+        label: t('nodes.supervisor')
       },
       {
         id: 4,
@@ -199,7 +199,7 @@ export function HeroSectionSolutions() {
         pulsePhase: Math.PI * 1.2,
         connections: [0],
         type: 'driver',
-        label: 'Driver'
+        label: t('nodes.driver')
       },
       {
         id: 5,
@@ -210,7 +210,7 @@ export function HeroSectionSolutions() {
         pulsePhase: Math.PI * 1.6,
         connections: [0],
         type: 'passenger',
-        label: 'Rider'
+        label: t('nodes.rider')
       }
     ];
 
@@ -233,7 +233,7 @@ export function HeroSectionSolutions() {
     setTimeout(() => {
       isNetworkInitialized.current = true;
     }, 100);
-  }, [canvasSize, locale]);
+  }, [canvasSize, locale, t]);
 
   // Create particle burst from hub
   const createParticleBurst = (hubNode: NetworkNode) => {
@@ -630,9 +630,9 @@ if (iconLoaded && iconImageRef.current) {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="text-accent">Smart</span>{' '}
-              <span className="text-primary">Mobility</span>
-              <span className="text-foreground">, Practical Results</span>
+              <span className="text-accent">{t('title.smart')}</span>{' '}
+              <span className="text-primary">{t('title.mobility')}</span>
+              <span className="text-foreground">{t('title.practicalResults')}</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
               {t('subtitle')}
