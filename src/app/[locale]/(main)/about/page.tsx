@@ -3,7 +3,7 @@ import { StorySection } from '@/components/sections/about/story-section';
 import { Timeline } from '@/components/sections/about/timeline';
 import { TeamGrid } from '@/components/sections/about/team-grid';
 import { CareersList } from '@/components/sections/about/careers-list';
-import { CTASection } from '@/components/sections/cta-section';
+import { CTASection } from '@/components/sections/homepage/cta-section';
 
 export default function AboutPage() {
   return (

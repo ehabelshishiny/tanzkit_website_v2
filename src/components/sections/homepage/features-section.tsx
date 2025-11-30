@@ -13,7 +13,7 @@ const featureIcons = {
 };
 
 export function FeaturesSection() {
-  const t = useTranslations('featuresSimple');
+  const t = useTranslations('homepage.featuresSimple');
 
   // Get features array from translations
   const features = t.raw('items') as Array<{

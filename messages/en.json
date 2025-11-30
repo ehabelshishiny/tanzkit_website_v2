@@ -52,175 +52,175 @@
     "redirecting": "Redirecting to Application...",
     "preparingTrial": "Please wait while we prepare your trial experience"
   },
-  "home": {
+  "homepage": {
     "hero": {
       "title": "The Enterprise OS",
       "titleHighlight": "For Workforce Mobility",
       "subtitle": "The all-in-one platform for operators, enterprises, supervisors, drivers, and passengers",
       "cta": "Start Your Free Trial"
+    },
+    "cta": {
+      "heading": "Ready to Transform Your Business?",
+      "subtitle": "Join thousands of businesses already using Tranzkit to optimize their operations"
+    },
+    "featuresSimple": {
+      "heading": "Powerful Features",
+      "subtitle": "Everything you need to run a successful transportation business",
+      "items": [
+        {
+          "title": "Lightning Fast",
+          "description": "Optimized performance for seamless user experience"
+        },
+        {
+          "title": "Secure & Reliable",
+          "description": "Enterprise-grade security for your peace of mind"
+        },
+        {
+          "title": "User-Friendly",
+          "description": "Intuitive interface designed for all user types"
+        },
+        {
+          "title": "Advanced Analytics",
+          "description": "Data-driven insights to optimize your operations"
+        }
+      ]
+    },
+    "logoBar": {
+      "heading": "Trusted by Industry Leaders",
+      "subtitle": "Join hundreds of companies transforming their transportation operations"
+    },
+    "features": {
+      "heading": "Powerful Features for Modern Transportation",
+      "subtitle": "Everything you need to manage your fleet efficiently and delight your passengers",
+      "visualizationPlaceholder": "Feature visualization placeholder",
+      "tabs": {
+        "realtime": {
+          "label": "Real-time Tracking",
+          "title": "Live Fleet Monitoring",
+          "description": "Track your entire fleet in real-time with GPS precision and instant updates.",
+          "benefits": [
+            "Real-time vehicle location tracking",
+            "Live driver status updates",
+            "Instant route optimization",
+            "Automated dispatch notifications"
+          ]
+        },
+        "security": {
+          "label": "Advanced Security",
+          "title": "Enterprise-Grade Protection",
+          "description": "Bank-level security with end-to-end encryption and compliance certifications.",
+          "benefits": [
+            "End-to-end data encryption",
+            "Multi-factor authentication",
+            "Role-based access control",
+            "SOC 2 Type II certified"
+          ]
+        },
+        "analytics": {
+          "label": "Smart Analytics",
+          "title": "Data-Driven Insights",
+          "description": "Make informed decisions with comprehensive analytics and reporting tools.",
+          "benefits": [
+            "Custom dashboard creation",
+            "Predictive maintenance alerts",
+            "Performance metrics tracking",
+            "Automated report generation"
+          ]
+        },
+        "collaboration": {
+          "label": "Team Collaboration",
+          "title": "Seamless Communication",
+          "description": "Connect drivers, dispatchers, and passengers with integrated communication tools.",
+          "benefits": [
+            "In-app messaging system",
+            "Automated notifications",
+            "Shared trip information",
+            "Multi-language support"
+          ]
+        }
+      }
+    },
+    "testimonials": {
+      "heading": "What Our Clients Say",
+      "subtitle": "Trusted by transportation businesses worldwide",
+      "items": [
+        {
+          "quote": "Tranzkit transformed our operations. The platform is intuitive and powerful.",
+          "author": "John Doe",
+          "role": "CEO, Transport Co."
+        },
+        {
+          "quote": "Best investment we made for our fleet management. Highly recommended!",
+          "author": "Jane Smith",
+          "role": "Operations Manager"
+        },
+        {
+          "quote": "The real-time tracking and analytics have been game-changing for our business.",
+          "author": "Mike Johnson",
+          "role": "Fleet Director"
+        }
+      ]
+    },
+    "whyChoose": {
+      "heading": "Why Choose Tranzkit",
+      "subtitle": "The complete platform for modern transportation businesses",
+      "items": [
+        {
+          "title": "Comprehensive Platform",
+          "description": "All-in-one solution for modern transportation needs"
+        },
+        {
+          "title": "Real-time Tracking",
+          "description": "Monitor your fleet and operations in real-time"
+        },
+        {
+          "title": "Scalable Solution",
+          "description": "Grows with your business from startup to enterprise"
+        }
+      ]
+    },
+    "seeInAction": {
+      "heading": "See Tranzkit in Action",
+      "subtitle": "Explore our intuitive interface designed for efficiency and ease of use",
+      "items": [
+        {
+          "id": 1,
+          "title": "Dashboard Overview",
+          "description": "Comprehensive fleet management dashboard with real-time insights",
+          "category": "Dashboard"
+        },
+        {
+          "id": 2,
+          "title": "Live Tracking",
+          "description": "Real-time vehicle tracking with interactive map interface",
+          "category": "Tracking"
+        },
+        {
+          "id": 3,
+          "title": "Analytics Reports",
+          "description": "Detailed analytics and performance metrics visualization",
+          "category": "Analytics"
+        },
+        {
+          "id": 4,
+          "title": "Driver Management",
+          "description": "Manage drivers, schedules, and performance tracking",
+          "category": "Management"
+        },
+        {
+          "id": 5,
+          "title": "Passenger App",
+          "description": "User-friendly passenger booking and tracking interface",
+          "category": "Mobile"
+        },
+        {
+          "id": 6,
+          "title": "Route Optimization",
+          "description": "AI-powered route planning and optimization tools",
+          "category": "Optimization"
+        }
+      ]
     }
-  },
-  "cta": {
-    "heading": "Ready to Transform Your Business?",
-    "subtitle": "Join thousands of businesses already using Tranzkit to optimize their operations"
-  },
-  "featuresSimple": {
-    "heading": "Powerful Features",
-    "subtitle": "Everything you need to run a successful transportation business",
-    "items": [
-      {
-        "title": "Lightning Fast",
-        "description": "Optimized performance for seamless user experience"
-      },
-      {
-        "title": "Secure & Reliable",
-        "description": "Enterprise-grade security for your peace of mind"
-      },
-      {
-        "title": "User-Friendly",
-        "description": "Intuitive interface designed for all user types"
-      },
-      {
-        "title": "Advanced Analytics",
-        "description": "Data-driven insights to optimize your operations"
-      }
-    ]
-  },
-  "logoBar": {
-    "heading": "Trusted by Industry Leaders",
-    "subtitle": "Join hundreds of companies transforming their transportation operations"
-  },
-  "features": {
-    "heading": "Powerful Features for Modern Transportation",
-    "subtitle": "Everything you need to manage your fleet efficiently and delight your passengers",
-    "visualizationPlaceholder": "Feature visualization placeholder",
-    "tabs": {
-      "realtime": {
-        "label": "Real-time Tracking",
-        "title": "Live Fleet Monitoring",
-        "description": "Track your entire fleet in real-time with GPS precision and instant updates.",
-        "benefits": [
-          "Real-time vehicle location tracking",
-          "Live driver status updates",
-          "Instant route optimization",
-          "Automated dispatch notifications"
-        ]
-      },
-      "security": {
-        "label": "Advanced Security",
-        "title": "Enterprise-Grade Protection",
-        "description": "Bank-level security with end-to-end encryption and compliance certifications.",
-        "benefits": [
-          "End-to-end data encryption",
-          "Multi-factor authentication",
-          "Role-based access control",
-          "SOC 2 Type II certified"
-        ]
-      },
-      "analytics": {
-        "label": "Smart Analytics",
-        "title": "Data-Driven Insights",
-        "description": "Make informed decisions with comprehensive analytics and reporting tools.",
-        "benefits": [
-          "Custom dashboard creation",
-          "Predictive maintenance alerts",
-          "Performance metrics tracking",
-          "Automated report generation"
-        ]
-      },
-      "collaboration": {
-        "label": "Team Collaboration",
-        "title": "Seamless Communication",
-        "description": "Connect drivers, dispatchers, and passengers with integrated communication tools.",
-        "benefits": [
-          "In-app messaging system",
-          "Automated notifications",
-          "Shared trip information",
-          "Multi-language support"
-        ]
-      }
-    }
-  },
-  "testimonials": {
-    "heading": "What Our Clients Say",
-    "subtitle": "Trusted by transportation businesses worldwide",
-    "items": [
-      {
-        "quote": "Tranzkit transformed our operations. The platform is intuitive and powerful.",
-        "author": "John Doe",
-        "role": "CEO, Transport Co."
-      },
-      {
-        "quote": "Best investment we made for our fleet management. Highly recommended!",
-        "author": "Jane Smith",
-        "role": "Operations Manager"
-      },
-      {
-        "quote": "The real-time tracking and analytics have been game-changing for our business.",
-        "author": "Mike Johnson",
-        "role": "Fleet Director"
-      }
-    ]
-  },
-  "whyChoose": {
-    "heading": "Why Choose Tranzkit",
-    "subtitle": "The complete platform for modern transportation businesses",
-    "items": [
-      {
-        "title": "Comprehensive Platform",
-        "description": "All-in-one solution for modern transportation needs"
-      },
-      {
-        "title": "Real-time Tracking",
-        "description": "Monitor your fleet and operations in real-time"
-      },
-      {
-        "title": "Scalable Solution",
-        "description": "Grows with your business from startup to enterprise"
-      }
-    ]
-  },
-  "seeInAction": {
-    "heading": "See Tranzkit in Action",
-    "subtitle": "Explore our intuitive interface designed for efficiency and ease of use",
-    "items": [
-      {
-        "id": 1,
-        "title": "Dashboard Overview",
-        "description": "Comprehensive fleet management dashboard with real-time insights",
-        "category": "Dashboard"
-      },
-      {
-        "id": 2,
-        "title": "Live Tracking",
-        "description": "Real-time vehicle tracking with interactive map interface",
-        "category": "Tracking"
-      },
-      {
-        "id": 3,
-        "title": "Analytics Reports",
-        "description": "Detailed analytics and performance metrics visualization",
-        "category": "Analytics"
-      },
-      {
-        "id": 4,
-        "title": "Driver Management",
-        "description": "Manage drivers, schedules, and performance tracking",
-        "category": "Management"
-      },
-      {
-        "id": 5,
-        "title": "Passenger App",
-        "description": "User-friendly passenger booking and tracking interface",
-        "category": "Mobile"
-      },
-      {
-        "id": 6,
-        "title": "Route Optimization",
-        "description": "AI-powered route planning and optimization tools",
-        "category": "Optimization"
-      }
-    ]
   },
   "solutions": {
     "main": {

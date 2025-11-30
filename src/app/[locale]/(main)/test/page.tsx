@@ -1,6 +1,6 @@
 'use client';
 
-import { HeroSection } from '@/components/sections/hero-section';
+import { HeroSection } from '@/components/sections/homepage/hero-section';
 
 export default function TestPage() {
   return (

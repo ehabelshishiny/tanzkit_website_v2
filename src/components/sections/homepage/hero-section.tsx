@@ -35,7 +35,7 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
-  const t = useTranslations('home.hero');
+  const t = useTranslations('homepage.hero');
   const tCommon = useTranslations('common');
   const { theme } = useTheme();
   const locale = useLocale();

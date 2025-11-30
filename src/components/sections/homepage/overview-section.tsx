@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { SectionContainer } from '@/components/layout/SectionContainer';
 
 export function OverviewSection() {
-  const t = useTranslations('whyChoose');
+  const t = useTranslations('homepage.whyChoose');
 
   // Get features array from translations
   const features = t.raw('items') as Array<{

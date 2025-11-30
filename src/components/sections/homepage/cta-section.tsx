@@ -7,7 +7,7 @@ import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 import { SectionContainer } from '@/components/layout/SectionContainer';
 
 export function CTASection() {
-  const t = useTranslations('cta');
+  const t = useTranslations('homepage.cta');
   const tCommon = useTranslations('common');
 
   return (

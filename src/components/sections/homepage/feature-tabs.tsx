@@ -15,7 +15,7 @@ const iconMap = {
 };
 
 export function FeatureTabs() {
-  const t = useTranslations('features');
+  const t = useTranslations('homepage.features');
   const locale = useLocale();
   const isRTL = locale === 'ar';
 

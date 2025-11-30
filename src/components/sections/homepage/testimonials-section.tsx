@@ -7,7 +7,7 @@ import { Quote } from 'lucide-react';
 import { SectionContainer } from '@/components/layout/SectionContainer';
 
 export function TestimonialsSection() {
-  const t = useTranslations('testimonials');
+  const t = useTranslations('homepage.testimonials');
 
   // Get testimonials array from translations
   const testimonials = t.raw('items') as Array<{

@@ -16,7 +16,7 @@ import { ScaleOnHover } from '@/components/animations/scale-on-hover';
 import { useState } from 'react';
 
 export function ScreenshotCarousel() {
-  const t = useTranslations('seeInAction');
+  const t = useTranslations('homepage.seeInAction');
   const locale = useLocale();
   const isRTL = locale === 'ar';
   const [api, setApi] = useState<CarouselApi>();

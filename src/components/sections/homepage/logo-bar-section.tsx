@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { FadeIn } from '@/components/animations/fade-in';
 
 export function LogoBarSection() {
-  const t = useTranslations('logoBar');
+  const t = useTranslations('homepage.logoBar');
 
   // Placeholder for partner logos
   const partners = ['Partner 1', 'Partner 2', 'Partner 3', 'Partner 4', 'Partner 5'];
