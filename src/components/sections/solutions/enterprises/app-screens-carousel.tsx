@@ -10,31 +10,56 @@ import {
 import { Card } from '@/components/ui/card';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { Smartphone } from 'lucide-react';
-import { useTranslations, useLocale } from 'next-intl';
+
+const screens = [
+  {
+    id: 1,
+    title: 'Dashboard Overview',
+    description: 'Monitor your entire fleet at a glance with real-time metrics',
+    category: 'Management'
+  },
+  {
+    id: 2,
+    title: 'Live Tracking Map',
+    description: 'Track all vehicles in real-time with interactive map interface',
+    category: 'Tracking'
+  },
+  {
+    id: 3,
+    title: 'Driver Profiles',
+    description: 'Manage driver information, schedules, and performance',
+    category: 'Drivers'
+  },
+  {
+    id: 4,
+    title: 'Booking Interface',
+    description: 'Intuitive booking flow for passengers with smart suggestions',
+    category: 'Passenger'
+  },
+  {
+    id: 5,
+    title: 'Analytics Dashboard',
+    description: 'Comprehensive reports and insights for decision making',
+    category: 'Analytics'
+  },
+  {
+    id: 6,
+    title: 'Route Optimization',
+    description: 'AI-powered route planning for maximum efficiency',
+    category: 'Optimization'
+  }
+];
 
 export function AppScreensCarousel() {
-  const t = useTranslations('solutions.enterprisesPassengers.appScreens');
-  const locale = useLocale();
-  const isRTL = locale === 'ar';
-
-  // Get screens count dynamically
-  const screensCount = 6;
-  const screens = Array.from({ length: screensCount }, (_, i) => ({
-    id: i + 1,
-    title: t(`screens.${i}.title`),
-    description: t(`screens.${i}.description`),
-    category: t(`screens.${i}.category`)
-  }));
-
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-16 bg-muted/30">
       <ScrollReveal>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {t('title')}
+            Powerful Apps for Every User
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('subtitle')}
+            Intuitive interfaces designed for enterprises, drivers, and passengers
           </p>
         </div>
       </ScrollReveal>
@@ -43,13 +68,12 @@ export function AppScreensCarousel() {
         opts={{
           align: 'start',
           loop: true,
-          direction: isRTL ? 'rtl' : 'ltr',
         }}
         className="w-full"
       >
-        <CarouselContent className={isRTL ? '-mr-4' : '-ml-4'}>
+        <CarouselContent className="-ml-4">
           {screens.map((screen) => (
-            <CarouselItem key={screen.id} className={`${isRTL ? 'pr-4' : 'pl-4'} md:basis-1/2 lg:basis-1/3`}>
+            <CarouselItem key={screen.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
               <Card className="overflow-hidden h-full">
                 <div className="aspect-[9/16] bg-gradient-to-br from-primary/20 via-primary/10 to-background flex items-center justify-center relative group">
                   <div className="absolute inset-0 bg-grid-pattern opacity-5" />
@@ -81,3 +105,4 @@ export function AppScreensCarousel() {
     </section>
   );
 }
+

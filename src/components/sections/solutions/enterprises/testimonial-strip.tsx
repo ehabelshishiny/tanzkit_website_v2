@@ -39,12 +39,13 @@ export function TestimonialStrip() {
         {testimonials.map((testimonial) => (
           <StaggerItem key={testimonial.id}>
             <Card className="p-6 h-full hover:shadow-lg transition-shadow relative">
-              <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/20" />
-              
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-1">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <Quote className="w-8 h-8 text-primary/20" />
               </div>
 
               <p className="text-muted-foreground mb-6 relative z-10">
