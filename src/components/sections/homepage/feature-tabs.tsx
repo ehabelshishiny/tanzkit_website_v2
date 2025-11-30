@@ -65,11 +65,11 @@ export function FeatureTabs() {
                 transition={{ duration: 0.5 }}
               >
                 <Card className="p-4 sm:p-6 lg:p-8">
-                  {/* Use flexbox with conditional direction instead of grid */}
-                  <div className={`flex flex-col md:flex-row gap-6 sm:gap-8 ${isRTL ? 'md:flex-row-reverse' : ''}`}>
+                  {/* Use flexbox - RTL auto-reverses the layout naturally */}
+                  <div className="flex flex-col md:flex-row gap-6 sm:gap-8">
                     {/* Text Content - Always first in DOM order */}
                     <div className="flex-1 md:w-1/2">
-                      <div className={`flex items-center gap-3 mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <div className={`flex items-center gap-3 mb-4`}>
                         <div className="p-2.5 sm:p-3 bg-primary/10 rounded-lg flex-shrink-0">
                           <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                         </div>
@@ -87,7 +87,7 @@ export function FeatureTabs() {
                             initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 }}
-                            className={`flex items-start gap-2.5 ${isRTL ? 'flex-row-reverse text-right' : 'text-left'}`}
+                            className={`flex items-start gap-2.5 ${isRTL ? 'text-right' : 'text-left'}`}
                           >
                             <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center mt-0.5 flex-shrink-0">
                               <div className="w-2 h-2 rounded-full bg-primary" />
