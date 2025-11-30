@@ -6,11 +6,20 @@ import { FadeIn } from '@/components/animations/fade-in';
 export function LogoBarSection() {
   const t = useTranslations('homepage.logoBar');
 
-  // Placeholder for partner logos
-  const partners = ['Partner 1', 'Partner 2', 'Partner 3', 'Partner 4', 'Partner 5'];
+  // Placeholder for partner logos - now 8 partners
+  const partners = [
+    'Partner 1', 
+    'Partner 2', 
+    'Partner 3', 
+    'Partner 4', 
+    'Partner 5',
+    'Partner 6',
+    'Partner 7',
+    'Partner 8'
+  ];
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 overflow-hidden">
       <div className="container">
         <FadeIn>
           <div className="text-center mb-12">
@@ -21,16 +30,35 @@ export function LogoBarSection() {
           </div>
         </FadeIn>
 
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-          {partners.map((partner, index) => (
-            <FadeIn key={partner} delay={0.1 * (index + 1)}>
-              <div className="flex h-16 w-32 items-center justify-center rounded-lg bg-muted">
+        {/* Infinite Marquee Container */}
+        <div className="logo-marquee">
+          {/* First Group */}
+          <div className="logo-marquee-group">
+            {partners.map((partner) => (
+              <div 
+                key={`group1-${partner}`}
+                className="flex h-16 w-32 md:h-20 md:w-40 items-center justify-center rounded-lg bg-muted flex-shrink-0"
+              >
                 <span className="text-sm font-medium text-muted-foreground">
                   {partner}
                 </span>
               </div>
-            </FadeIn>
-          ))}
+            ))}
+          </div>
+
+          {/* Second Group (Duplicate for seamless infinite loop) */}
+          <div className="logo-marquee-group" aria-hidden="true">
+            {partners.map((partner) => (
+              <div 
+                key={`group2-${partner}`}
+                className="flex h-16 w-32 md:h-20 md:w-40 items-center justify-center rounded-lg bg-muted flex-shrink-0"
+              >
+                <span className="text-sm font-medium text-muted-foreground">
+                  {partner}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

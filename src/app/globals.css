@@ -239,3 +239,115 @@ html[lang="ar"] code,
 html[lang="ar"] pre {
   font-family: var(--font-geist-mono), monospace;
 }
+
+/* === Logo Marquee Animation - Infinite Scroll === */
+.logo-marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 2rem;
+  /* Gradient mask for smooth fade on edges */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.logo-marquee-group {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  animation: scroll-logos-ltr 40s linear infinite;
+  /* Prevent animation pause on any interaction */
+  animation-play-state: running !important;
+}
+
+/* LTR Animation (English) - Scroll Left */
+@keyframes scroll-logos-ltr {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 2rem));
+  }
+}
+
+/* RTL Support for Arabic - Scroll Right */
+html[lang="ar"] .logo-marquee {
+  /* Reverse gradient direction for RTL */
+  mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+html[lang="ar"] .logo-marquee-group {
+  /* Use RTL animation for Arabic */
+  animation: scroll-logos-rtl 40s linear infinite;
+}
+
+/* RTL Animation - Scroll from Left to Right */
+@keyframes scroll-logos-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(100% + 2rem));
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-group {
+    animation-play-state: paused !important;
+  }
+}
+
+/* Responsive gap adjustments */
+@media (max-width: 768px) {
+  .logo-marquee,
+  .logo-marquee-group {
+    gap: 1.5rem;
+  }
+  
+  /* LTR responsive */
+  @keyframes scroll-logos-ltr {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 1.5rem));
+    }
+  }
+  
+  /* RTL responsive */
+  @keyframes scroll-logos-rtl {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(100% + 1.5rem));
+    }
+  }
+}
