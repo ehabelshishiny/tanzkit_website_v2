@@ -4,56 +4,22 @@ import { Card } from '@/components/ui/card';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { HoverTilt } from '@/components/animations/hover-tilt';
 import { BarChart3, Shield, Zap, Users, Globe, Clock } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
-const features = [
-  {
-    icon: BarChart3,
-    title: 'Advanced Analytics',
-    description: 'Real-time insights and predictive analytics for data-driven decisions',
-    size: 'large'
-  },
-  {
-    icon: Shield,
-    title: 'Enterprise Security',
-    description: 'Bank-level encryption and compliance certifications',
-    size: 'large'
-  },
-  {
-    icon: Zap,
-    title: 'Instant Dispatch',
-    description: 'Automated routing and real-time driver allocation',
-    size: 'medium'
-  },
-  {
-    icon: Users,
-    title: 'Team Management',
-    description: 'Comprehensive tools for managing drivers and staff',
-    size: 'medium'
-  },
-  {
-    icon: Globe,
-    title: 'Multi-location Support',
-    description: 'Manage operations across multiple cities and regions',
-    size: 'medium'
-  },
-  {
-    icon: Clock,
-    title: '24/7 Operations',
-    description: 'Round-the-clock support and monitoring',
-    size: 'full'
-  }
-];
+const featureIcons = [BarChart3, Shield, Zap, Users, Globe, Clock];
 
 export function FeatureShowcaseBentoGrid() {
+  const t = useTranslations('solutions.enterprisesPassengers.featureShowcase');
+
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Everything You Need to Succeed
+            {t('title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Powerful features designed for enterprise-scale transportation management
+            {t('subtitle')}
           </p>
         </div>
       </ScrollReveal>
@@ -68,19 +34,19 @@ export function FeatureShowcaseBentoGrid() {
                   <div className="p-4 bg-primary/10 rounded-lg w-fit mb-4">
                     <BarChart3 className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">{features[0].title}</h3>
+                  <h3 className="text-2xl font-bold mb-3">{t('features.0.title')}</h3>
                   <p className="text-muted-foreground flex-grow">
-                    {features[0].description}
+                    {t('features.0.description')}
                   </p>
                   <div className="mt-6 pt-6 border-t">
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-success" />
-                        <span>Active</span>
+                        <span>{t('features.0.badges.active')}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-primary" />
-                        <span>Enterprise Ready</span>
+                        <span>{t('features.0.badges.ready')}</span>
                       </div>
                     </div>
                   </div>
@@ -95,19 +61,19 @@ export function FeatureShowcaseBentoGrid() {
                   <div className="p-4 bg-primary/10 rounded-lg w-fit mb-4">
                     <Shield className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">{features[1].title}</h3>
+                  <h3 className="text-2xl font-bold mb-3">{t('features.1.title')}</h3>
                   <p className="text-muted-foreground flex-grow">
-                    {features[1].description}
+                    {t('features.1.description')}
                   </p>
                   <div className="mt-6 pt-6 border-t">
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-success" />
-                        <span>Active</span>
+                        <span>{t('features.1.badges.active')}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-primary" />
-                        <span>Enterprise Ready</span>
+                        <span>{t('features.1.badges.ready')}</span>
                       </div>
                     </div>
                   </div>
@@ -126,9 +92,9 @@ export function FeatureShowcaseBentoGrid() {
                   <div className="p-4 bg-primary/10 rounded-lg w-fit mb-4">
                     <Zap className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">{features[2].title}</h3>
+                  <h3 className="text-2xl font-bold mb-3">{t('features.2.title')}</h3>
                   <p className="text-muted-foreground flex-grow">
-                    {features[2].description}
+                    {t('features.2.description')}
                   </p>
                 </div>
               </Card>
@@ -141,9 +107,9 @@ export function FeatureShowcaseBentoGrid() {
                   <div className="p-4 bg-primary/10 rounded-lg w-fit mb-4">
                     <Users className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">{features[3].title}</h3>
+                  <h3 className="text-2xl font-bold mb-3">{t('features.3.title')}</h3>
                   <p className="text-muted-foreground flex-grow">
-                    {features[3].description}
+                    {t('features.3.description')}
                   </p>
                 </div>
               </Card>
@@ -160,9 +126,9 @@ export function FeatureShowcaseBentoGrid() {
                   <div className="p-4 bg-primary/10 rounded-lg w-fit mb-4">
                     <Globe className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">{features[4].title}</h3>
+                  <h3 className="text-2xl font-bold mb-3">{t('features.4.title')}</h3>
                   <p className="text-muted-foreground flex-grow">
-                    {features[4].description}
+                    {t('features.4.description')}
                   </p>
                 </div>
               </Card>
@@ -175,9 +141,9 @@ export function FeatureShowcaseBentoGrid() {
                   <div className="p-4 bg-primary/10 rounded-lg w-fit mb-4">
                     <Clock className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">{features[5].title}</h3>
+                  <h3 className="text-2xl font-bold mb-3">{t('features.5.title')}</h3>
                   <p className="text-muted-foreground flex-grow">
-                    {features[5].description}
+                    {t('features.5.description')}
                   </p>
                 </div>
               </Card>
@@ -188,4 +154,3 @@ export function FeatureShowcaseBentoGrid() {
     </section>
   );
 }
-
