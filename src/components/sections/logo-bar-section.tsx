@@ -1,8 +1,11 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { FadeIn } from '@/components/animations/fade-in';
 
 export function LogoBarSection() {
+  const t = useTranslations('logoBar');
+
   // Placeholder for partner logos
   const partners = ['Partner 1', 'Partner 2', 'Partner 3', 'Partner 4', 'Partner 5'];
 
@@ -11,9 +14,9 @@ export function LogoBarSection() {
       <div className="container">
         <FadeIn>
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-semibold mb-4">Trusted by Industry Leaders</h2>
+            <h2 className="text-2xl font-semibold mb-4">{t('heading')}</h2>
             <p className="text-muted-foreground">
-              Join hundreds of companies transforming their transportation operations
+              {t('subtitle')}
             </p>
           </div>
         </FadeIn>
@@ -33,4 +36,3 @@ export function LogoBarSection() {
     </section>
   );
 }
-

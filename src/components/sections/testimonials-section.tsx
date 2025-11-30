@@ -1,28 +1,20 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { FadeIn } from '@/components/animations/fade-in';
 import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
 import { Quote } from 'lucide-react';
 import { SectionContainer } from '@/components/layout/SectionContainer';
 
 export function TestimonialsSection() {
-  const testimonials = [
-    {
-      quote: 'Tranzkit transformed our operations. The platform is intuitive and powerful.',
-      author: 'John Doe',
-      role: 'CEO, Transport Co.',
-    },
-    {
-      quote: 'Best investment we made for our fleet management. Highly recommended!',
-      author: 'Jane Smith',
-      role: 'Operations Manager',
-    },
-    {
-      quote: 'The real-time tracking and analytics have been game-changing for our business.',
-      author: 'Mike Johnson',
-      role: 'Fleet Director',
-    },
-  ];
+  const t = useTranslations('testimonials');
+
+  // Get testimonials array from translations
+  const testimonials = t.raw('items') as Array<{
+    quote: string;
+    author: string;
+    role: string;
+  }>;
 
   return (
     <section className="py-16 md:py-24 bg-muted/50">
@@ -30,17 +22,17 @@ export function TestimonialsSection() {
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              What Our Clients Say
+              {t('heading')}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Trusted by transportation businesses worldwide
+              {t('subtitle')}
             </p>
           </div>
         </FadeIn>
 
         <div className="grid gap-6 md:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <FadeIn key={testimonial.author} delay={0.1 * (index + 1)}>
+            <FadeIn key={index} delay={0.1 * (index + 1)}>
               {/* Apply 3D card effect to all testimonial cards */}
               <CardContainer containerClassName="w-full h-full">
                 <CardBody className="relative group/card w-full h-full">
@@ -72,4 +64,3 @@ export function TestimonialsSection() {
     </section>
   );
 }
-

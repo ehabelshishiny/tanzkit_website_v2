@@ -7,7 +7,8 @@ import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 import { SectionContainer } from '@/components/layout/SectionContainer';
 
 export function CTASection() {
-  const t = useTranslations('common');
+  const t = useTranslations('cta');
+  const tCommon = useTranslations('common');
 
   return (
     <section className="py-16 md:py-24">
@@ -15,15 +16,15 @@ export function CTASection() {
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Ready to Transform Your Business?
+              {t('heading')}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Join thousands of businesses already using Tranzkit to optimize their operations
+              {t('subtitle')}
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <TrialCTAButton variant="secondary" size="lg" />
               <Button size="lg" variant="outline">
-                {t('bookDemo')}
+                {tCommon('bookDemo')}
               </Button>
             </div>
           </div>
@@ -32,4 +33,3 @@ export function CTASection() {
     </section>
   );
 }
-

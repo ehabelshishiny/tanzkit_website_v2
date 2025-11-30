@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 import type { CarouselApi } from '@/components/ui/carousel';
 import {
@@ -12,51 +13,21 @@ import {
 import { Card } from '@/components/ui/card';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { ScaleOnHover } from '@/components/animations/scale-on-hover';
-import { useEffect, useState } from 'react';
-
-const screenshots = [
-  {
-    id: 1,
-    title: 'Dashboard Overview',
-    description: 'Comprehensive fleet management dashboard with real-time insights',
-    category: 'Dashboard'
-  },
-  {
-    id: 2,
-    title: 'Live Tracking',
-    description: 'Real-time vehicle tracking with interactive map interface',
-    category: 'Tracking'
-  },
-  {
-    id: 3,
-    title: 'Analytics Reports',
-    description: 'Detailed analytics and performance metrics visualization',
-    category: 'Analytics'
-  },
-  {
-    id: 4,
-    title: 'Driver Management',
-    description: 'Manage drivers, schedules, and performance tracking',
-    category: 'Management'
-  },
-  {
-    id: 5,
-    title: 'Passenger App',
-    description: 'User-friendly passenger booking and tracking interface',
-    category: 'Mobile'
-  },
-  {
-    id: 6,
-    title: 'Route Optimization',
-    description: 'AI-powered route planning and optimization tools',
-    category: 'Optimization'
-  }
-];
+import { useState } from 'react';
 
 export function ScreenshotCarousel() {
+  const t = useTranslations('seeInAction');
   const locale = useLocale();
   const isRTL = locale === 'ar';
   const [api, setApi] = useState<CarouselApi>();
+
+  // Get screenshots array from translations
+  const screenshots = t.raw('items') as Array<{
+    id: number;
+    title: string;
+    description: string;
+    category: string;
+  }>;
 
   const handlePrevClick = () => {
     if (api) {
@@ -82,10 +53,10 @@ export function ScreenshotCarousel() {
     <ScrollReveal className="w-full max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          See Tranzkit in Action
+          {t('heading')}
         </h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Explore our intuitive interface designed for efficiency and ease of use
+          {t('subtitle')}
         </p>
       </div>
 

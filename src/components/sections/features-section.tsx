@@ -1,32 +1,25 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { FadeIn } from '@/components/animations/fade-in';
 import { Zap, Shield, Users, BarChart } from 'lucide-react';
 import { SectionContainer } from '@/components/layout/SectionContainer';
 
+const featureIcons = {
+  0: Zap,
+  1: Shield,
+  2: Users,
+  3: BarChart
+};
+
 export function FeaturesSection() {
-  const features = [
-    {
-      icon: Zap,
-      title: 'Lightning Fast',
-      description: 'Optimized performance for seamless user experience',
-    },
-    {
-      icon: Shield,
-      title: 'Secure & Reliable',
-      description: 'Enterprise-grade security for your peace of mind',
-    },
-    {
-      icon: Users,
-      title: 'User-Friendly',
-      description: 'Intuitive interface designed for all user types',
-    },
-    {
-      icon: BarChart,
-      title: 'Advanced Analytics',
-      description: 'Data-driven insights to optimize your operations',
-    },
-  ];
+  const t = useTranslations('featuresSimple');
+
+  // Get features array from translations
+  const features = t.raw('items') as Array<{
+    title: string;
+    description: string;
+  }>;
 
   return (
     <section className="py-16 md:py-24 bg-muted/50">
@@ -34,19 +27,19 @@ export function FeaturesSection() {
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Powerful Features
+              {t('heading')}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Everything you need to run a successful transportation business
+              {t('subtitle')}
             </p>
           </div>
         </FadeIn>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => {
-            const Icon = feature.icon;
+            const Icon = featureIcons[index as keyof typeof featureIcons];
             return (
-              <FadeIn key={feature.title} delay={0.1 * (index + 1)}>
+              <FadeIn key={index} delay={0.1 * (index + 1)}>
                 <div className="flex flex-col items-center text-center">
                   <div className="mb-4 rounded-full bg-primary/10 p-4">
                     <Icon className="h-8 w-8 text-primary" />
@@ -62,4 +55,3 @@ export function FeaturesSection() {
     </section>
   );
 }
-
