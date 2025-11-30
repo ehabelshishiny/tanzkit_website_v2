@@ -53,64 +53,65 @@ export function FeatureTabs() {
           })}
         </TabsList>
 
-        {featureTabs.map((featureId) => {
-          const Icon = iconMap[featureId as keyof typeof iconMap];
-          const benefits = t.raw(`tabs.${featureId}.benefits`) as string[];
+       {featureTabs.map((featureId) => {
+  const Icon = iconMap[featureId as keyof typeof iconMap];
+  const benefits = t.raw(`tabs.${featureId}.benefits`) as string[];
 
-          return (
-            <TabsContent key={featureId} value={featureId}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Card className="p-4 sm:p-6 lg:p-8">
-                  {/* Use flexbox with conditional direction instead of grid */}
-                  <div className={`flex flex-col md:flex-row gap-6 sm:gap-8 ${isRTL ? 'md:flex-row-reverse' : ''}`}>
-                    {/* Text Content - Always first in DOM order */}
-                    <div className="flex-1 md:w-1/2">
-                      <div className={`flex items-center gap-3 mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                        <div className="p-2.5 sm:p-3 bg-primary/10 rounded-lg flex-shrink-0">
-                          <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-                        </div>
-                        <h3 className={`text-xl sm:text-2xl font-bold ${isRTL ? 'text-right' : 'text-left'}`}>
-                          {t(`tabs.${featureId}.title`)}
-                        </h3>
-                      </div>
-                      <p className={`text-sm sm:text-base text-muted-foreground mb-6 ${isRTL ? 'text-right' : 'text-left'}`}>
-                        {t(`tabs.${featureId}.description`)}
-                      </p>
-                      <ul className="space-y-3">
-                        {benefits.map((benefit, index) => (
-                          <motion.li
-                            key={index}
-                            initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            className={`flex items-start gap-2.5 ${isRTL ? 'flex-row-reverse text-right' : 'text-left'}`}
-                          >
-                            <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center mt-0.5 flex-shrink-0">
-                              <div className="w-2 h-2 rounded-full bg-primary" />
-                            </div>
-                            <span className="text-sm sm:text-base">{benefit}</span>
-                          </motion.li>
-                        ))}
-                      </ul>
+  return (
+    <TabsContent key={featureId} value={featureId}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Card className="p-4 sm:p-6 lg:p-8">
+          {/* MODIFIED: Removed conditional flex-row-reverse */}
+          <div className="flex flex-col md:flex-row gap-6 sm:gap-8">
+            {/* Text Content - Always first in DOM order */}
+            <div className="flex-1 md:w-1/2">
+              <div className={`flex items-center gap-3 mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <div className="p-2.5 sm:p-3 bg-primary/10 rounded-lg flex-shrink-0">
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                </div>
+                <h3 className={`text-xl sm:text-2xl font-bold ${isRTL ? 'text-right' : 'text-left'}`}>
+                  {t(`tabs.${featureId}.title`)}
+                </h3>
+              </div>
+              <p className={`text-sm sm:text-base text-muted-foreground mb-6 ${isRTL ? 'text-right' : 'text-left'}`}>
+                {t(`tabs.${featureId}.description`)}
+              </p>
+              <ul className="space-y-3">
+                {benefits.map((benefit, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`flex items-start gap-2.5 ${isRTL ? 'flex-row-reverse text-right' : 'text-left'}`}
+                  >
+                    <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                      <div className="w-2 h-2 rounded-full bg-primary" />
                     </div>
+                    <span className="text-sm sm:text-base">{benefit}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
 
-                    {/* Visualization - Always second in DOM order */}
-                    <div className="flex-1 md:w-1/2 bg-muted rounded-lg flex items-center justify-center p-6 sm:p-8 min-h-[200px] sm:min-h-[300px]">
-                      <div className="text-center text-muted-foreground">
-                        <Icon className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-4 opacity-20" />
-                        <p className="text-xs sm:text-sm">{t('visualizationPlaceholder')}</p>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            </TabsContent>
-          );
-        })}
+            {/* Visualization - Always second in DOM order */}
+            <div className="flex-1 md:w-1/2 bg-muted rounded-lg flex items-center justify-center p-6 sm:p-8 min-h-[200px] sm:min-h-[300px]">
+              <div className="text-center text-muted-foreground">
+                <Icon className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-4 opacity-20" />
+                <p className="text-xs sm:text-sm">{t('visualizationPlaceholder')}</p>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </motion.div>
+    </TabsContent>
+  );
+})}
+
       </Tabs>
     </ScrollReveal>
   );
