@@ -1,8 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export function AnimatedHeader() {
+  const t = useTranslations('resources.main.hero');
+  
   return (
     <section className="w-full bg-gradient-to-b from-primary/5 to-background py-20">
       <div className="max-w-4xl mx-auto px-4 text-center">
@@ -12,14 +15,13 @@ export function AnimatedHeader() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Resources & Insights
+            {t('title')}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Explore our collection of articles, guides, and industry insights
+            {t('subtitle')}
           </p>
         </motion.div>
       </div>
     </section>
   );
 }
-

@@ -364,9 +364,9 @@ export default function AppsShowcase() {
                         animation: `fadeInUp 0.6s ease-out ${(index + 1) * 0.15}s both`
                       }}
                     >
-                      <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
+                      <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 shadow-2xl`}>
                         {/* Portrait Device Mockup - SUPERVISOR (index 0) / DRIVER (index 1) */}
-                        <div className={`relative mb-8 mx-auto w-52 aspect-[9/16] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
+                        <div className={`relative mb-8 mx-auto w-52 aspect-[9/18] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
                           <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-28 h-8 ${themeClasses.phoneNotch} rounded-b-3xl z-10`}></div>
                           <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} overflow-hidden`}>
                             {/* Image Content */}
@@ -495,7 +495,7 @@ export default function AppsShowcase() {
                   >
                     <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
                       {/* Portrait Device Mockup - RIDER APP */}
-                      <div className={`relative mb-8 mx-auto w-52 aspect-[9/16] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
+                      <div className={`relative mb-8 mx-auto w-52 aspect-[9/18] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
                         <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-28 h-8 ${themeClasses.phoneNotch} rounded-b-3xl z-10`}></div>
                         <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} overflow-hidden`}>
                           {/* Image Content */}

@@ -222,6 +222,114 @@
       ]
     }
   },
+    "resources": {
+    "main": {
+      "hero": {
+        "title": "Resources & Insights",
+        "subtitle": "Explore our collection of articles, guides, and industry insights"
+      },
+      "filters": {
+        "all": "All",
+        "blog": "Blog",
+        "whitepapers": "Whitepapers",
+        "caseStudies": "Case Studies"
+      },
+      "cards": {
+        "types": {
+          "blog": "Blog",
+          "whitepaper": "Whitepaper",
+          "caseStudy": "Case Study"
+        },
+        "items": [
+          {
+            "type": "blog",
+            "title": "The Future of Urban Transportation",
+            "excerpt": "Exploring trends and innovations shaping the future of mobility",
+            "date": "March 15, 2024"
+          },
+          {
+            "type": "whitepaper",
+            "title": "Fleet Management Best Practices",
+            "excerpt": "Comprehensive guide to optimizing fleet operations",
+            "date": "March 10, 2024"
+          },
+          {
+            "type": "caseStudy",
+            "title": "How TechCorp Reduced Costs by 30%",
+            "excerpt": "Success story of enterprise transportation transformation",
+            "date": "March 5, 2024"
+          },
+          {
+            "type": "blog",
+            "title": "AI in Transportation: A Deep Dive",
+            "excerpt": "Understanding the role of artificial intelligence in modern mobility",
+            "date": "February 28, 2024"
+          },
+          {
+            "type": "whitepaper",
+            "title": "Sustainability in Fleet Operations",
+            "excerpt": "Strategies for reducing environmental impact",
+            "date": "February 20, 2024"
+          },
+          {
+            "type": "caseStudy",
+            "title": "Global Logistics: Scaling Across Regions",
+            "excerpt": "Multi-region expansion success story",
+            "date": "February 15, 2024"
+          }
+        ]
+      }
+    },
+    "faq": {
+      "hero": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Find answers to common questions about Tranzkit"
+      },
+      "items": [
+        {
+          "question": "How do I get started with Tranzkit?",
+          "answer": "Getting started is easy! Download our app from the App Store or Google Play, create an account, and you can start booking rides immediately."
+        },
+        {
+          "question": "What payment methods do you accept?",
+          "answer": "We accept all major credit cards, debit cards, and digital wallets including Apple Pay and Google Pay."
+        },
+        {
+          "question": "Is Tranzkit available in my city?",
+          "answer": "We currently operate in major cities across the Middle East and are expanding rapidly. Check our app to see if we serve your area."
+        },
+        {
+          "question": "How do I become a driver?",
+          "answer": "Visit our driver portal, complete the application form, and our team will guide you through the onboarding process."
+        },
+        {
+          "question": "What are your enterprise solutions?",
+          "answer": "We offer comprehensive fleet management, employee transportation, and custom integration solutions for businesses of all sizes."
+        }
+      ]
+    },
+    "blog": {
+      "detailPage": {
+        "prefix": "Blog Post:",
+        "publishedOn": "Published on",
+        "placeholder": "This is a placeholder for the blog post content. MDX integration will be added in Phase 2."
+      }
+    },
+    "caseStudies": {
+      "detailPage": {
+        "prefix": "Case Study:",
+        "publishedOn": "Published on",
+        "placeholder": "This is a placeholder for the case study content. MDX integration will be added in Phase 2."
+      }
+    },
+    "whitepapers": {
+      "detailPage": {
+        "prefix": "Whitepaper:",
+        "publishedOn": "Published on",
+        "placeholder": "This is a placeholder for the whitepaper content. MDX integration will be added in Phase 2."
+      }
+    }
+  },
   "solutions": {
     "enterprisesPassengers": {
       "hero": {
@@ -790,7 +898,7 @@
       }
     }
   },
-"pricing": {
+  "pricing": {
   "hero": {
     "title": "Pricing That Scales With You",
     "subtitle": "Start with a plan that fits your needs today, and grow as your business expands",
@@ -1060,7 +1168,12 @@
       "subtitle": "Have questions? We're here to help. Reach out to our team.",
       "emailUs": "Email Us",
       "callUs": "Call Us",
-      "visitUs": "Visit Us"
+      "visitUs": "Visit Us",
+      "contactInfo": {
+        "email": "support@tranzkit.com",
+        "phone": "+1 (555) 123-4567",
+        "location": "Dubai, UAE"
+      }
     },
     "form": {
       "labels": {

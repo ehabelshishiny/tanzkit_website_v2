@@ -2,7 +2,7 @@
 
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,10 +12,12 @@ import { FadeIn } from '@/components/animations/fade-in';
 import { contactFormSchema, type ContactFormData } from '@/lib/validations/contact';
 import { toast } from 'sonner';
 import { Mail, User, Building, Phone, MessageSquare, Users2 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 export function ContactForm() {
   const t = useTranslations('contact.form');
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
   const searchParams = useSearchParams();
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -127,6 +129,8 @@ export function ContactForm() {
             {...register('name')}
             placeholder={t('placeholders.name')}
             disabled={isSubmitting}
+            className={isRTL ? 'text-right' : ''}
+            dir={isRTL ? 'rtl' : 'ltr'}
           />
           {errors.name && (
             <p className="mt-1 text-sm text-destructive">{errors.name.message}</p>
@@ -145,6 +149,8 @@ export function ContactForm() {
             {...register('email')}
             placeholder={t('placeholders.email')}
             disabled={isSubmitting}
+            className={isRTL ? 'text-right' : ''}
+            dir={isRTL ? 'rtl' : 'ltr'}
           />
           {errors.email && (
             <p className="mt-1 text-sm text-destructive">{errors.email.message}</p>
@@ -162,6 +168,8 @@ export function ContactForm() {
             {...register('company')}
             placeholder={t('placeholders.company')}
             disabled={isSubmitting}
+            className={isRTL ? 'text-right' : ''}
+            dir={isRTL ? 'rtl' : 'ltr'}
           />
           {errors.company && (
             <p className="mt-1 text-sm text-destructive">{errors.company.message}</p>
@@ -180,6 +188,8 @@ export function ContactForm() {
             {...register('phone')}
             placeholder={t('placeholders.phone')}
             disabled={isSubmitting}
+            className={isRTL ? 'text-right' : ''}
+            dir={isRTL ? 'rtl' : 'ltr'}
           />
           {errors.phone && (
             <p className="mt-1 text-sm text-destructive">{errors.phone.message}</p>
@@ -201,18 +211,18 @@ export function ContactForm() {
                 value={field.value}
                 disabled={isSubmitting}
               >
-                <SelectTrigger id="userType">
+                <SelectTrigger id="userType" className={isRTL ? 'text-right' : ''} dir={isRTL ? 'rtl' : 'ltr'}>
                   <SelectValue placeholder={t('placeholders.userType')} />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className={isRTL ? 'text-right' : ''} dir={isRTL ? 'rtl' : 'ltr'}>
                   <SelectItem value="enterprise">
-                    <div className="flex flex-col items-start">
+                    <div className={`flex flex-col ${isRTL ? 'items-end' : 'items-start'}`}>
                       <span className="font-medium">{t('userTypes.enterprise.label')}</span>
                       <span className="text-xs text-slate-600 dark:text-slate-100">{t('userTypes.enterprise.description')}</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="operator">
-                    <div className="flex flex-col items-start">
+                    <div className={`flex flex-col ${isRTL ? 'items-end' : 'items-start'}`}>
                       <span className="font-medium">{t('userTypes.operator.label')}</span>
                       <span className="text-xs text-slate-600 dark:text-slate-100">{t('userTypes.operator.description')}</span>
                     </div>
@@ -238,6 +248,8 @@ export function ContactForm() {
             placeholder={t('placeholders.message')}
             rows={5}
             disabled={isSubmitting}
+            className={isRTL ? 'text-right' : ''}
+            dir={isRTL ? 'rtl' : 'ltr'}
           />
           {errors.message && (
             <p className="mt-1 text-sm text-destructive">{errors.message.message}</p>
@@ -272,4 +284,3 @@ export function ContactForm() {
     </FadeIn>
   );
 }
-

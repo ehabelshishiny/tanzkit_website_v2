@@ -74,10 +74,10 @@ export function PricingCards() {
                   )}
                 </div>
 
-                <ul className={`space-y-3 mb-8 flex-grow ${isRTL ? 'text-right' : 'text-left'}`}>
+                <ul className="space-y-3 mb-8 flex-grow">
                   {featureKeys.map((key) => (
-                    <li key={key} className={`flex items-start gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <Check className={`w-5 h-5 text-primary flex-shrink-0 mt-0.5`} />
+                    <li key={key} className={`flex items-start gap-2 ${isRTL ? 'flex-row-reverse text-right' : 'text-left'}`}>
+                      <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                       <span className="text-sm">{planT(`features.${key}`)}</span>
                     </li>
                   ))}

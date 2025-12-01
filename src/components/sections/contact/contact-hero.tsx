@@ -35,25 +35,24 @@ export function ContactHero() {
               <Mail className="w-8 h-8 text-primary" />
             </div>
             <h3 className="font-semibold mb-2">{t('emailUs')}</h3>
-            <p className="text-muted-foreground">support@tranzkit.com</p>
+            <p className="text-muted-foreground">{t('contactInfo.email')}</p>
           </div>
           <div className="text-center">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
               <Phone className="w-8 h-8 text-primary" />
             </div>
             <h3 className="font-semibold mb-2">{t('callUs')}</h3>
-            <p className="text-muted-foreground">+1 (555) 123-4567</p>
+            <p className="text-muted-foreground">{t('contactInfo.phone')}</p>
           </div>
           <div className="text-center">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
               <MapPin className="w-8 h-8 text-primary" />
             </div>
             <h3 className="font-semibold mb-2">{t('visitUs')}</h3>
-            <p className="text-muted-foreground">Dubai, UAE</p>
+            <p className="text-muted-foreground">{t('contactInfo.location')}</p>
           </div>
         </motion.div>
       </div>
     </section>
   );
 }
-
