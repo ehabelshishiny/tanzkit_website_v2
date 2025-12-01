@@ -351,3 +351,20 @@ html[lang="ar"] .logo-marquee-group {
     }
   }
 }
+/* === RTL Support for Pricing Cards === */
+/* LTR: Checkmark LEFT, Text RIGHT */
+html[dir="ltr"] .pricing-feature-item {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  gap: 0.5rem;
+}
+
+/* RTL: Checkmark RIGHT, Text LEFT */
+html[dir="rtl"] .pricing-feature-item {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  text-align: right !important;
+  gap: 0.5rem !important;
+}
+
