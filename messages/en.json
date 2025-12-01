@@ -882,6 +882,178 @@
     }
   }
 },
+  "about": {
+    "hero": {
+      "title": "Transforming Transportation",
+      "subtitle": "We're on a mission to make transportation smarter, safer, and more accessible for everyone",
+      "stats": {
+        "enterprises": {
+          "value": "500+",
+          "label": "Enterprise Clients"
+        },
+        "drivers": {
+          "value": "50K+",
+          "label": "Active Drivers"
+        },
+        "trips": {
+          "value": "2M+",
+          "label": "Trips Completed"
+        }
+      }
+    },
+    "story": {
+      "heading": "Our Story",
+      "subtitle": "From a simple idea to a global transportation platform",
+      "mission": {
+        "title": "Our Mission",
+        "text": "To revolutionize urban transportation by providing intelligent, efficient, and sustainable mobility solutions that connect people, businesses, and communities. We believe in making transportation accessible, reliable, and environmentally responsible."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "text": "To become the world's most trusted transportation platform, empowering millions of people with seamless mobility solutions. We envision a future where transportation is smart, sustainable, and serves the needs of every community."
+      },
+      "values": {
+        "title": "Our Values",
+        "innovation": {
+          "title": "Innovation",
+          "description": "Constantly pushing boundaries with cutting-edge technology"
+        },
+        "reliability": {
+          "title": "Reliability",
+          "description": "Building trust through consistent, dependable service"
+        },
+        "sustainability": {
+          "title": "Sustainability",
+          "description": "Committed to reducing environmental impact"
+        }
+      }
+    },
+    "timeline": {
+      "heading": "Our Journey",
+      "subtitle": "Key milestones in our mission to transform transportation",
+      "milestones": [
+        {
+          "year": "2018",
+          "title": "Company Founded",
+          "description": "Tranzkit was born from a vision to revolutionize urban transportation"
+        },
+        {
+          "year": "2019",
+          "title": "First 1000 Rides",
+          "description": "Reached our first major milestone with 1000 successful trips"
+        },
+        {
+          "year": "2020",
+          "title": "Enterprise Launch",
+          "description": "Launched enterprise solutions for corporate transportation"
+        },
+        {
+          "year": "2021",
+          "title": "Regional Expansion",
+          "description": "Expanded operations to 5 major cities across the region"
+        },
+        {
+          "year": "2022",
+          "title": "AI Integration",
+          "description": "Introduced AI-powered route optimization and demand forecasting"
+        },
+        {
+          "year": "2023",
+          "title": "1 Million Trips",
+          "description": "Celebrated 1 million completed trips and 10,000 active drivers"
+        },
+        {
+          "year": "2024",
+          "title": "Global Recognition",
+          "description": "Awarded Best Transportation Platform by industry leaders"
+        }
+      ]
+    },
+    "team": {
+      "heading": "Meet Our Team",
+      "subtitle": "The passionate people behind Tranzkit's success",
+      "members": [
+        {
+          "name": "Ahmed Hassan",
+          "role": "CEO & Founder",
+          "initials": "AH",
+          "bio": "Visionary leader with 15+ years in transportation technology"
+        },
+        {
+          "name": "Sarah Mitchell",
+          "role": "CTO",
+          "initials": "SM",
+          "bio": "Tech innovator specializing in AI and machine learning"
+        },
+        {
+          "name": "Omar Al-Rashid",
+          "role": "COO",
+          "initials": "OA",
+          "bio": "Operations expert with global fleet management experience"
+        },
+        {
+          "name": "Lisa Chen",
+          "role": "Head of Product",
+          "initials": "LC",
+          "bio": "Product strategist focused on user-centric design"
+        },
+        {
+          "name": "Mohammed Ali",
+          "role": "Head of Engineering",
+          "initials": "MA",
+          "bio": "Engineering leader building scalable transportation systems"
+        },
+        {
+          "name": "Emily Rodriguez",
+          "role": "Head of Customer Success",
+          "initials": "ER",
+          "bio": "Customer advocate ensuring exceptional service delivery"
+        }
+      ]
+    },
+    "careers": {
+      "heading": "Join Our Team",
+      "subtitle": "Help us build the future of transportation",
+      "applyNow": "Apply Now",
+      "openings": [
+        {
+          "title": "Senior Full Stack Engineer",
+          "department": "Engineering",
+          "location": "Remote",
+          "type": "Full-time",
+          "description": "Build scalable systems for our transportation platform"
+        },
+        {
+          "title": "Product Manager",
+          "department": "Product",
+          "location": "Dubai, UAE",
+          "type": "Full-time",
+          "description": "Drive product strategy and roadmap for enterprise solutions"
+        },
+        {
+          "title": "UX/UI Designer",
+          "department": "Design",
+          "location": "Remote",
+          "type": "Full-time",
+          "description": "Create beautiful, intuitive experiences for drivers and passengers"
+        },
+        {
+          "title": "Data Scientist",
+          "department": "Data",
+          "location": "Riyadh, KSA",
+          "type": "Full-time",
+          "description": "Develop ML models for route optimization and demand forecasting"
+        },
+        {
+          "title": "Customer Success Manager",
+          "department": "Customer Success",
+          "location": "Cairo, Egypt",
+          "type": "Full-time",
+          "description": "Help enterprise clients succeed with our platform"
+        }
+      ]
+    }
+  },
   "contact": {
     "hero": {
       "title": "Get in Touch",

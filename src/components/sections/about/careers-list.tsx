@@ -2,59 +2,32 @@
 
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { StaggerChildren, StaggerItem } from '@/components/animations/stagger-children';
 import { MapPin, Clock, Briefcase } from 'lucide-react';
-
-const openings = [
-  {
-    title: 'Senior Full Stack Engineer',
-    department: 'Engineering',
-    location: 'Remote',
-    type: 'Full-time',
-    description: 'Build scalable systems for our transportation platform'
-  },
-  {
-    title: 'Product Manager',
-    department: 'Product',
-    location: 'Dubai, UAE',
-    type: 'Full-time',
-    description: 'Drive product strategy and roadmap for enterprise solutions'
-  },
-  {
-    title: 'UX/UI Designer',
-    department: 'Design',
-    location: 'Remote',
-    type: 'Full-time',
-    description: 'Create beautiful, intuitive experiences for drivers and passengers'
-  },
-  {
-    title: 'Data Scientist',
-    department: 'Data',
-    location: 'Riyadh, KSA',
-    type: 'Full-time',
-    description: 'Develop ML models for route optimization and demand forecasting'
-  },
-  {
-    title: 'Customer Success Manager',
-    department: 'Customer Success',
-    location: 'Cairo, Egypt',
-    type: 'Full-time',
-    description: 'Help enterprise clients succeed with our platform'
-  }
-];
+import { useTranslations } from 'next-intl';
 
 export function CareersList() {
+  const t = useTranslations('about.careers');
+
+  // Get job openings as an array
+  const openings = Array.from({ length: 5 }, (_, i) => ({
+    title: t(`openings.${i}.title`),
+    department: t(`openings.${i}.department`),
+    location: t(`openings.${i}.location`),
+    type: t(`openings.${i}.type`),
+    description: t(`openings.${i}.description`)
+  }));
+
   return (
     <section className="w-full max-w-6xl mx-auto px-4 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Join Our Team
+            {t('heading')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Help us build the future of transportation
+            {t('subtitle')}
           </p>
         </div>
       </ScrollReveal>
@@ -88,7 +61,7 @@ export function CareersList() {
                     </div>
                   </div>
                 </div>
-                <Button className="md:flex-shrink-0">Apply Now</Button>
+                <Button className="md:flex-shrink-0">{t('applyNow')}</Button>
               </div>
             </Card>
           </StaggerItem>
@@ -97,4 +70,3 @@ export function CareersList() {
     </section>
   );
 }
-

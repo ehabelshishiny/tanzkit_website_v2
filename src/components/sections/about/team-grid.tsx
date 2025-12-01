@@ -4,56 +4,28 @@ import { Card } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { StaggerChildren, StaggerItem } from '@/components/animations/stagger-children';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
-
-const team = [
-  {
-    name: 'Ahmed Hassan',
-    role: 'CEO & Founder',
-    initials: 'AH',
-    bio: 'Visionary leader with 15+ years in transportation technology'
-  },
-  {
-    name: 'Sarah Mitchell',
-    role: 'CTO',
-    initials: 'SM',
-    bio: 'Tech innovator specializing in AI and machine learning'
-  },
-  {
-    name: 'Omar Al-Rashid',
-    role: 'COO',
-    initials: 'OA',
-    bio: 'Operations expert with global fleet management experience'
-  },
-  {
-    name: 'Lisa Chen',
-    role: 'Head of Product',
-    initials: 'LC',
-    bio: 'Product strategist focused on user-centric design'
-  },
-  {
-    name: 'Mohammed Ali',
-    role: 'Head of Engineering',
-    initials: 'MA',
-    bio: 'Engineering leader building scalable transportation systems'
-  },
-  {
-    name: 'Emily Rodriguez',
-    role: 'Head of Customer Success',
-    initials: 'ER',
-    bio: 'Customer advocate ensuring exceptional service delivery'
-  }
-];
+import { useTranslations } from 'next-intl';
 
 export function TeamGrid() {
+  const t = useTranslations('about.team');
+
+  // Get team members as an array
+  const team = Array.from({ length: 6 }, (_, i) => ({
+    name: t(`members.${i}.name`),
+    role: t(`members.${i}.role`),
+    initials: t(`members.${i}.initials`),
+    bio: t(`members.${i}.bio`)
+  }));
+
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-16 bg-muted/30">
       <ScrollReveal>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Meet Our Team
+            {t('heading')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            The passionate people behind Tranzkit's success
+            {t('subtitle')}
           </p>
         </div>
       </ScrollReveal>
