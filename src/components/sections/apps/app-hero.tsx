@@ -3,8 +3,11 @@
 import { motion } from 'framer-motion';
 import { Smartphone, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslations } from 'next-intl';
 
 export function AppHero() {
+  const t = useTranslations('apps.template.hero');
+
   return (
     <section className="w-full bg-gradient-to-b from-primary/5 to-background py-20">
       <div className="max-w-6xl mx-auto px-4">
@@ -15,20 +18,19 @@ export function AppHero() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Download Our Apps
+              {t('title')}
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Get the Tranzkit app for seamless transportation at your fingertips. 
-              Available for iOS and Android.
+              {t('subtitle')}
             </p>
             <div className="flex flex-wrap gap-4">
               <Button size="lg" className="gap-2">
                 <Download className="w-5 h-5" />
-                App Store
+                {t('buttons.appStore')}
               </Button>
               <Button size="lg" variant="outline" className="gap-2">
                 <Download className="w-5 h-5" />
-                Google Play
+                {t('buttons.googlePlay')}
               </Button>
             </div>
           </motion.div>
@@ -53,4 +55,3 @@ export function AppHero() {
     </section>
   );
 }
-

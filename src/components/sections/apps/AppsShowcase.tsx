@@ -1,19 +1,20 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 export default function AppsShowcase() {
   const { theme } = useTheme();
+  const t = useTranslations('apps.main.showcase');
+  const tHero = useTranslations('apps.main.hero');
   const [mounted, setMounted] = useState(false);
   const [activeSegment, setActiveSegment] = useState<'operators' | 'enterprise'>('operators');
 
-  // Wait until client-side mount to prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Prevent rendering theme-dependent content until mounted
   if (!mounted) {
     return (
       <div className="min-h-screen bg-slate-950 py-20 px-6">
@@ -32,83 +33,88 @@ export default function AppsShowcase() {
 
   const segments = {
     operators: {
-      title: 'Operators Dashboard',
-      description: 'Complete fleet management ecosystem for transportation operators',
+      title: t('segments.operators.title'),
+      description: t('segments.operators.description'),
       icon: 'ri-truck-line',
       color: 'ocean',
       dashboard: {
         id: 'operators-dashboard',
-        name: 'Operators Dashboard',
-        description: 'Central command hub for fleet operations',
-        platform: 'Web Application',
+        name: t('segments.operators.dashboard.name'),
+        description: t('segments.operators.dashboard.description'),
+        platform: t('segments.operators.dashboard.platform'),
         icon: 'ri-dashboard-3-line',
         benefits: [
-          'Real-time fleet visibility',
-          'AI-powered dispatch automation',
-          'Predictive maintenance analytics'
+          t('segments.operators.dashboard.benefits.visibility'),
+          t('segments.operators.dashboard.benefits.automation'),
+          t('segments.operators.dashboard.benefits.analytics')
         ],
-        deviceType: 'landscape'
+        cta: t('segments.operators.dashboard.cta'),
+        deviceType: 'landscape' as const
       },
       apps: [
         {
           id: 'supervisor-app',
-          name: 'Supervisor App',
-          description: 'Mobile fleet oversight and driver management',
-          platform: 'iOS & Android',
+          name: t('segments.operators.supervisor.name'),
+          description: t('segments.operators.supervisor.description'),
+          platform: t('segments.operators.supervisor.platform'),
           icon: 'ri-user-star-line',
           benefits: [
-            'Live driver performance tracking',
-            'Instant incident response',
-            'Mobile task assignment'
+            t('segments.operators.supervisor.benefits.tracking'),
+            t('segments.operators.supervisor.benefits.response'),
+            t('segments.operators.supervisor.benefits.assignment')
           ],
-          deviceType: 'portrait'
+          cta: t('segments.operators.supervisor.cta'),
+          deviceType: 'portrait' as const
         },
         {
           id: 'driver-app',
-          name: 'Driver App',
-          description: 'AI-guided navigation and trip management',
-          platform: 'iOS & Android',
+          name: t('segments.operators.driver.name'),
+          description: t('segments.operators.driver.description'),
+          platform: t('segments.operators.driver.platform'),
           icon: 'ri-steering-2-line',
           benefits: [
-            'Smart route optimization',
-            'Automated trip logging',
-            'Real-time dispatch sync'
+            t('segments.operators.driver.benefits.optimization'),
+            t('segments.operators.driver.benefits.logging'),
+            t('segments.operators.driver.benefits.sync')
           ],
-          deviceType: 'portrait'
+          cta: t('segments.operators.driver.cta'),
+          deviceType: 'portrait' as const
         }
       ]
     },
     enterprise: {
-      title: 'Enterprise Dashboard',
-      description: 'Strategic mobility platform for corporate transportation programs',
+      title: t('segments.enterprise.title'),
+      description: t('segments.enterprise.description'),
       icon: 'ri-building-2-line',
       color: 'emerald',
       dashboard: {
         id: 'enterprise-dashboard',
-        name: 'Enterprise Dashboard',
-        description: 'Strategic mobility intelligence platform',
-        platform: 'Web Application',
+        name: t('segments.enterprise.dashboard.name'),
+        description: t('segments.enterprise.dashboard.description'),
+        platform: t('segments.enterprise.dashboard.platform'),
         icon: 'ri-building-line',
         benefits: [
-          'Organization-wide analytics',
-          'Cost optimization insights',
-          'Compliance management'
+          t('segments.enterprise.dashboard.benefits.analytics'),
+          t('segments.enterprise.dashboard.benefits.optimization'),
+          t('segments.enterprise.dashboard.benefits.compliance')
         ],
-        deviceType: 'landscape'
+        cta: t('segments.enterprise.dashboard.cta'),
+        deviceType: 'landscape' as const
       },
       apps: [
         {
           id: 'rider-app',
-          name: 'Rider App',
-          description: 'Seamless employee transportation experience',
-          platform: 'iOS & Android',
+          name: t('segments.enterprise.rider.name'),
+          description: t('segments.enterprise.rider.description'),
+          platform: t('segments.enterprise.rider.platform'),
           icon: 'ri-user-location-line',
           benefits: [
-            'One-tap ride booking',
-            'Real-time driver tracking',
-            'Integrated payment system'
+            t('segments.enterprise.rider.benefits.booking'),
+            t('segments.enterprise.rider.benefits.tracking'),
+            t('segments.enterprise.rider.benefits.payment')
           ],
-          deviceType: 'portrait'
+          cta: t('segments.enterprise.rider.cta'),
+          deviceType: 'portrait' as const
         }
       ]
     }
@@ -209,15 +215,11 @@ export default function AppsShowcase() {
       <div className="max-w-[1400px] mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${colors.light} border ${colors.border} mb-6`}>
-            <i className={`ri-cpu-line ${colors.text} text-sm`}></i>
-            <span className={`${colors.text} text-sm font-medium`}>AI Workforce Mobility Platform</span>
-          </div>
           <h1 className={`text-5xl md:text-6xl font-bold ${themeClasses.textPrimary} mb-6`}>
-            Intelligent Application Ecosystem
+            {tHero('title')}
           </h1>
           <p className={`text-xl ${themeClasses.textSecondary} max-w-3xl mx-auto`}>
-            Two powerful segments, five integrated applications, one unified AI platform
+            {tHero('subtitle')}
           </p>
         </div>
 
@@ -241,9 +243,9 @@ export default function AppsShowcase() {
                   <i className="ri-truck-line text-xl"></i>
                 </div>
                 <div className="text-left">
-                  <div className="text-sm font-bold">Operators</div>
+                  <div className="text-sm font-bold">{t('segments.operators.tabLabel')}</div>
                   <div className={`text-xs ${activeSegment === 'operators' ? 'text-[#7ED977]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'}`}>
-                    3 Applications
+                    {t('segments.operators.appsCount')}
                   </div>
                 </div>
               </div>
@@ -266,9 +268,9 @@ export default function AppsShowcase() {
                   <i className="ri-building-2-line text-xl"></i>
                 </div>
                 <div className="text-left">
-                  <div className="text-sm font-bold">Enterprise</div>
+                  <div className="text-sm font-bold">{t('segments.enterprise.tabLabel')}</div>
                   <div className={`text-xs ${activeSegment === 'enterprise' ? 'text-[#0F2E63]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'}`}>
-                    2 Applications
+                    {t('segments.enterprise.appsCount')}
                   </div>
                 </div>
               </div>
@@ -319,7 +321,7 @@ export default function AppsShowcase() {
                             </div>
                           </div>
                           <div className={`absolute top-8 right-8 px-4 py-2 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
-                            <span className={`${colors.text} text-xs font-medium`}>AI-Powered</span>
+                            <span className={`${colors.text} text-xs font-medium`}>{t('badges.aiPowered')}</span>
                           </div>
                         </div>
                       </div>
@@ -348,7 +350,7 @@ export default function AppsShowcase() {
                         </ul>
 
                         <button className={`px-8 py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer`}>
-                          Explore Dashboard
+                          {currentSegment.dashboard.cta}
                         </button>
                       </div>
                     </div>
@@ -365,7 +367,7 @@ export default function AppsShowcase() {
                       }}
                     >
                       <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 shadow-2xl`}>
-                        {/* Portrait Device Mockup - SUPERVISOR (index 0) / DRIVER (index 1) */}
+                        {/* Portrait Device Mockup */}
                         <div className={`relative mb-8 mx-auto w-52 aspect-[9/18] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
                           <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-28 h-8 ${themeClasses.phoneNotch} rounded-b-3xl z-10`}></div>
                           <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} overflow-hidden`}>
@@ -377,7 +379,7 @@ export default function AppsShowcase() {
                                     ? (isDarkTheme ? '/AppShowcase_section/dark_theme/dark_mobile_1.png' : '/AppShowcase_section/light_theme/light_mobile_1.png')
                                     : (isDarkTheme ? '/AppShowcase_section/dark_theme/dark_mobile_2.png' : '/AppShowcase_section/light_theme/light_mobile_2.png')
                                 }
-                                alt={`${app.name} Screenshot`}
+                                alt={index === 0 ? 'Supervisor App Screenshot' : 'Driver App Screenshot'}
                                 fill
                                 className="object-cover"
                               />
@@ -385,7 +387,7 @@ export default function AppsShowcase() {
                           </div>
                           <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 w-24 h-1.5 ${themeClasses.phoneIndicator} rounded-full z-10`}></div>
                           <div className={`absolute top-14 right-5 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
-                            <span className={`${colors.text} text-[11px] font-medium`}>Real-time</span>
+                            <span className={`${colors.text} text-[11px] font-medium`}>{t('badges.realtime')}</span>
                           </div>
                         </div>
 
@@ -413,7 +415,7 @@ export default function AppsShowcase() {
                           </ul>
 
                           <button className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer`}>
-                            Learn More
+                            {app.cta}
                           </button>
                         </div>
                       </div>
@@ -432,7 +434,7 @@ export default function AppsShowcase() {
                     }}
                   >
                     <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
-                      {/* Landscape Device Mockup - ENTERPRISE DASHBOARD */}
+                      {/* Landscape Device Mockup */}
                       <div className={`relative mb-8 rounded-2xl ${themeClasses.mockupBg} border ${themeClasses.mockupBorder} p-4 aspect-[16/10] overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
                         <div className={`absolute inset-0 bg-gradient-to-br ${colors.light}`}></div>
                         <div className={`relative h-full rounded-xl ${themeClasses.mockupInnerBg} border ${themeClasses.mockupInnerBorder} overflow-hidden`}>
@@ -453,7 +455,7 @@ export default function AppsShowcase() {
                           </div>
                         </div>
                         <div className={`absolute top-6 right-6 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
-                          <span className={`${colors.text} text-xs font-medium`}>Real-time</span>
+                          <span className={`${colors.text} text-xs font-medium`}>{t('badges.realtime')}</span>
                         </div>
                       </div>
 
@@ -481,7 +483,7 @@ export default function AppsShowcase() {
                         </ul>
 
                         <button className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer`}>
-                          View Details
+                          {currentSegment.dashboard.cta}
                         </button>
                       </div>
                     </div>
@@ -494,7 +496,7 @@ export default function AppsShowcase() {
                     }}
                   >
                     <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
-                      {/* Portrait Device Mockup - RIDER APP */}
+                      {/* Portrait Device Mockup */}
                       <div className={`relative mb-8 mx-auto w-52 aspect-[9/18] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
                         <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-28 h-8 ${themeClasses.phoneNotch} rounded-b-3xl z-10`}></div>
                         <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} overflow-hidden`}>
@@ -510,7 +512,7 @@ export default function AppsShowcase() {
                         </div>
                         <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 w-24 h-1.5 ${themeClasses.phoneIndicator} rounded-full z-10`}></div>
                         <div className={`absolute top-14 right-5 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
-                          <span className={`${colors.text} text-[11px] font-medium`}>AI-Powered</span>
+                          <span className={`${colors.text} text-[11px] font-medium`}>{t('badges.aiPowered')}</span>
                         </div>
                       </div>
 
@@ -538,7 +540,7 @@ export default function AppsShowcase() {
                         </ul>
 
                         <button className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer`}>
-                          Learn More
+                          {currentSegment.apps[0].cta}
                         </button>
                       </div>
                     </div>

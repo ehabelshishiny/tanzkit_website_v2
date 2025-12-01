@@ -1246,125 +1246,291 @@
     },
     "copyright": "All rights reserved."
   },
-  "apps": {
-    "main": {
-      "hero": {
-        "title": "Powerful Apps for Every User",
-        "subtitle": "Download our suite of mobile and web applications designed for supervisors, drivers, riders, operators, and enterprises. Experience seamless transportation management at your fingertips.",
-        "cta": "Explore Our Apps"
+ "apps": {
+  "main": {
+    "hero": {
+      "badge": "AI Workforce Mobility Platform",
+      "mainTitle": "Intelligent Application Ecosystem",
+      "mainSubtitle": "Two powerful segments, five integrated applications, one unified AI platform",
+      "title": "Powerful Apps for Every User",
+      "subtitle": "Download our suite of mobile and web applications designed for supervisors, drivers, riders, operators, and enterprises. Experience seamless transportation management at your fingertips.",
+      "cta": "Explore Our Apps"
+    },
+    "parallaxHero": {
+      "title": {
+        "intelligent": "Intelligent",
+        "application": "Application",
+        "ecosystem": "Ecosystem"
       },
-      "showcase": {
-        "title": "Choose Your App",
-        "subtitle": "Select the app that matches your role in the transportation ecosystem"
+      "subtitle": "Discover our comprehensive suite of mobile and web applications designed to revolutionize workforce mobility across every role",
+      "imageAlts": {
+        "operatorsDashboard": "Operators Dashboard Screenshot",
+        "driverApp": "Driver App Screenshot",
+        "enterpriseDashboard": "Enterprise Dashboard Screenshot",
+        "supervisorApp": "Supervisor App Screenshot",
+        "riderApp": "Rider App Screenshot"
       }
     },
-    "supervisor": {
-      "hero": {
-        "title": "Supervisor App",
-        "subtitle": "Manage operations with precision. Real-time fleet monitoring and operational control for transport supervisors.",
-        "cta": "Download Now"
+    "showcase": {
+      "title": "Choose Your App",
+      "subtitle": "Select the app that matches your role in the transportation ecosystem",
+      "segments": {
+        "operators": {
+          "title": "Operators Dashboard",
+          "description": "Complete fleet management ecosystem for transportation operators",
+          "tabLabel": "Operators",
+          "appsCount": "3 Applications",
+          "dashboard": {
+            "name": "Operators Dashboard",
+            "description": "Central command hub for fleet operations",
+            "platform": "Web Application",
+            "benefits": {
+              "visibility": "Real-time fleet visibility",
+              "automation": "AI-powered dispatch automation",
+              "analytics": "Predictive maintenance analytics"
+            },
+            "cta": "Explore Dashboard"
+          },
+          "supervisor": {
+            "name": "Supervisor App",
+            "description": "Mobile fleet oversight and driver management",
+            "platform": "iOS & Android",
+            "benefits": {
+              "tracking": "Live driver performance tracking",
+              "response": "Instant incident response",
+              "assignment": "Mobile task assignment"
+            },
+            "cta": "Learn More"
+          },
+          "driver": {
+            "name": "Driver App",
+            "description": "AI-guided navigation and trip management",
+            "platform": "iOS & Android",
+            "benefits": {
+              "optimization": "Smart route optimization",
+              "logging": "Automated trip logging",
+              "sync": "Real-time dispatch sync"
+            },
+            "cta": "Learn More"
+          }
+        },
+        "enterprise": {
+          "title": "Enterprise Dashboard",
+          "description": "Strategic mobility platform for corporate transportation programs",
+          "tabLabel": "Enterprise",
+          "appsCount": "2 Applications",
+          "dashboard": {
+            "name": "Enterprise Dashboard",
+            "description": "Strategic mobility intelligence platform",
+            "platform": "Web Application",
+            "benefits": {
+              "analytics": "Organization-wide analytics",
+              "optimization": "Cost optimization insights",
+              "compliance": "Compliance management"
+            },
+            "cta": "View Details"
+          },
+          "rider": {
+            "name": "Rider App",
+            "description": "Seamless employee transportation experience",
+            "platform": "iOS & Android",
+            "benefits": {
+              "booking": "One-tap ride booking",
+              "tracking": "Real-time driver tracking",
+              "payment": "Integrated payment system"
+            },
+            "cta": "Learn More"
+          }
+        }
       },
-      "description": "The Supervisor App gives you complete visibility and control over your fleet operations. Monitor vehicles in real-time, manage driver assignments, track performance metrics, and respond to incidents instantly—all from your mobile device.",
-      "features": {
-        "realTimeTracking": "Real-Time Tracking",
-        "realTimeTrackingDesc": "Monitor all vehicles and drivers with live GPS tracking and instant location updates",
-        "analytics": "Performance Analytics",
-        "analyticsDesc": "Access comprehensive dashboards with key metrics, trends, and operational insights",
-        "alerts": "Smart Alerts",
-        "alertsDesc": "Receive instant notifications for delays, incidents, route deviations, and critical events",
-        "teamManagement": "Team Management",
-        "teamManagementDesc": "Assign tasks, manage schedules, and communicate with your driver team efficiently"
-      },
-      "downloadCta": "Get the Supervisor App"
-    },
-    "driver": {
-      "hero": {
-        "title": "Driver App",
-        "subtitle": "Navigate smarter, earn more. Optimized routes and seamless trip management for professional drivers.",
-        "cta": "Download Now"
-      },
-      "description": "The Driver App is your essential companion on the road. Get optimized routes, manage your schedule, track earnings, and provide excellent service to passengers—all with an intuitive, easy-to-use interface designed for drivers.",
-      "features": {
-        "smartRouting": "Smart Routing",
-        "smartRoutingDesc": "AI-powered navigation with real-time traffic updates and optimal route suggestions",
-        "scheduleManagement": "Schedule Management",
-        "scheduleManagementDesc": "View your shifts, manage availability, and accept trip assignments seamlessly",
-        "earnings": "Earnings Tracking",
-        "earningsDesc": "Monitor your income in real-time with detailed breakdowns and payment history",
-        "safety": "Safety Features",
-        "safetyDesc": "Emergency assistance, trip verification, and safety protocols built into every ride"
-      },
-      "downloadCta": "Get the Driver App"
-    },
-    "rider": {
-      "hero": {
-        "title": "Rider App",
-        "subtitle": "Book rides in seconds. Fast, safe, and reliable transportation whenever you need it.",
-        "cta": "Download Now"
-      },
-      "description": "The Rider App makes booking transportation effortless. Request rides instantly, track your driver in real-time, pay securely, and rate your experience—all in a beautifully designed app that puts you in control.",
-      "features": {
-        "quickBooking": "Quick Booking",
-        "quickBookingDesc": "Book rides in seconds with smart address suggestions and saved locations",
-        "liveTracking": "Live Tracking",
-        "liveTrackingDesc": "Track your driver's location in real-time with accurate ETAs and route visibility",
-        "payments": "Flexible Payments",
-        "paymentsDesc": "Multiple payment options including cards, digital wallets, and corporate accounts",
-        "support": "24/7 Support",
-        "supportDesc": "Get help anytime with in-app chat support and comprehensive help resources"
-      },
-      "downloadCta": "Get the Rider App"
-    },
-    "operatorDashboard": {
-      "hero": {
-        "title": "Operator Dashboard",
-        "subtitle": "Complete fleet control. Comprehensive platform for transport operators to manage and optimize operations.",
-        "cta": "Get Started"
-      },
-      "description": "The Operator Dashboard provides transport operators with powerful tools to manage fleets, drivers, routes, and finances. Make data-driven decisions with comprehensive analytics, automate operations, and scale your business efficiently.",
-      "features": {
-        "businessIntelligence": "Business Intelligence",
-        "businessIntelligenceDesc": "Advanced analytics and reporting tools for strategic decision-making and growth",
-        "fleetManagement": "Fleet Management",
-        "fleetManagementDesc": "Complete vehicle lifecycle management, maintenance tracking, and utilization optimization",
-        "revenueOptimization": "Revenue Optimization",
-        "revenueOptimizationDesc": "Dynamic pricing, demand forecasting, and revenue management tools",
-        "compliance": "Compliance & Safety",
-        "complianceDesc": "Automated compliance tracking, safety protocols, and regulatory reporting"
-      },
-      "downloadCta": "Access Dashboard"
-    },
-    "enterpriseDashboard": {
-      "hero": {
-        "title": "Enterprise Dashboard",
-        "subtitle": "Corporate mobility management. Streamline employee transportation and logistics for your organization.",
-        "cta": "Get Started"
-      },
-      "description": "The Enterprise Dashboard empowers organizations to manage employee transportation efficiently. Control costs, ensure policy compliance, track usage, and provide seamless mobility solutions for your workforce with enterprise-grade security and reporting.",
-      "features": {
-        "employeeManagement": "Employee Management",
-        "employeeManagementDesc": "Centralized employee profiles, ride approvals, and department-level access control",
-        "costControl": "Cost Control",
-        "costControlDesc": "Budget management, spending limits, cost allocation, and detailed expense tracking",
-        "reporting": "Advanced Reporting",
-        "reportingDesc": "Customizable reports, usage analytics, and executive dashboards for informed decisions",
-        "security": "Enterprise Security",
-        "securityDesc": "SSO integration, role-based access, data encryption, and compliance with corporate policies"
-      },
-      "downloadCta": "Access Dashboard"
-    },
-    "common": {
-      "downloadOn": "Download on the",
-      "appStore": "App Store",
-      "playStore": "Google Play",
-      "getItOn": "Get it on",
-      "availableOn": "Available on",
-      "requirements": "Requirements",
-      "version": "Version",
-      "screenshots": "Screenshots",
-      "keyFeatures": "Key Features",
-      "learnMore": "Learn More",
-      "backToApps": "Back to All Apps"
+      "badges": {
+        "aiPowered": "AI-Powered",
+        "realtime": "Real-time"
+      }
     }
+  },
+  "template": {
+    "hero": {
+      "title": "Download Our Apps",
+      "subtitle": "Get the Tranzkit app for seamless transportation at your fingertips. Available for iOS and Android.",
+      "buttons": {
+        "appStore": "App Store",
+        "googlePlay": "Google Play"
+      }
+    },
+    "screenshots": {
+      "title": "App Screenshots",
+      "subtitle": "Explore the intuitive interface of our mobile apps",
+      "screens": {
+        "homeScreen": {
+          "title": "Home Screen",
+          "description": "Quick access to all features"
+        },
+        "bookRide": {
+          "title": "Book a Ride",
+          "description": "Simple booking interface"
+        },
+        "trackRide": {
+          "title": "Track Your Ride",
+          "description": "Real-time GPS tracking"
+        },
+        "payment": {
+          "title": "Payment",
+          "description": "Secure payment options"
+        },
+        "tripHistory": {
+          "title": "Trip History",
+          "description": "View all your past trips"
+        },
+        "profile": {
+          "title": "Profile",
+          "description": "Manage your account"
+        }
+      }
+    },
+    "steps": {
+      "title": "Get Started in 4 Easy Steps",
+      "stepLabel": "Step",
+      "items": {
+        "download": {
+          "title": "Download the App",
+          "description": "Get Tranzkit from App Store or Google Play"
+        },
+        "createAccount": {
+          "title": "Create Account",
+          "description": "Sign up in seconds with your email or phone"
+        },
+        "bookRide": {
+          "title": "Book Your Ride",
+          "description": "Enter destination and request a ride"
+        },
+        "enjoyRate": {
+          "title": "Enjoy & Rate",
+          "description": "Relax and rate your experience"
+        }
+      }
+    },
+    "download": {
+      "title": "Ready to Get Started?",
+      "subtitle": "Download Tranzkit now and experience seamless transportation",
+      "buttons": {
+        "ios": "Download for iOS",
+        "android": "Download for Android"
+      },
+      "qr": {
+        "title": "Scan to Download",
+        "subtitle": "Works with both iOS and Android"
+      }
+    }
+  },
+  "supervisor": {
+    "hero": {
+      "title": "Supervisor App",
+      "subtitle": "Manage operations with precision. Real-time fleet monitoring and operational control for transport supervisors.",
+      "cta": "Download Now"
+    },
+    "description": "The Supervisor App gives you complete visibility and control over your fleet operations. Monitor vehicles in real-time, manage driver assignments, track performance metrics, and respond to incidents instantly—all from your mobile device.",
+    "features": {
+      "realTimeTracking": "Real-Time Tracking",
+      "realTimeTrackingDesc": "Monitor all vehicles and drivers with live GPS tracking and instant location updates",
+      "analytics": "Performance Analytics",
+      "analyticsDesc": "Access comprehensive dashboards with key metrics, trends, and operational insights",
+      "alerts": "Smart Alerts",
+      "alertsDesc": "Receive instant notifications for delays, incidents, route deviations, and critical events",
+      "teamManagement": "Team Management",
+      "teamManagementDesc": "Assign tasks, manage schedules, and communicate with your driver team efficiently"
+    },
+    "downloadCta": "Get the Supervisor App"
+  },
+  "driver": {
+    "hero": {
+      "title": "Driver App",
+      "subtitle": "Navigate smarter, earn more. Optimized routes and seamless trip management for professional drivers.",
+      "cta": "Download Now"
+    },
+    "description": "The Driver App is your essential companion on the road. Get optimized routes, manage your schedule, track earnings, and provide excellent service to passengers—all with an intuitive, easy-to-use interface designed for drivers.",
+    "features": {
+      "smartRouting": "Smart Routing",
+      "smartRoutingDesc": "AI-powered navigation with real-time traffic updates and optimal route suggestions",
+      "scheduleManagement": "Schedule Management",
+      "scheduleManagementDesc": "View your shifts, manage availability, and accept trip assignments seamlessly",
+      "earnings": "Earnings Tracking",
+      "earningsDesc": "Monitor your income in real-time with detailed breakdowns and payment history",
+      "safety": "Safety Features",
+      "safetyDesc": "Emergency assistance, trip verification, and safety protocols built into every ride"
+    },
+    "downloadCta": "Get the Driver App"
+  },
+  "rider": {
+    "hero": {
+      "title": "Rider App",
+      "subtitle": "Book rides in seconds. Fast, safe, and reliable transportation whenever you need it.",
+      "cta": "Download Now"
+    },
+    "description": "The Rider App makes booking transportation effortless. Request rides instantly, track your driver in real-time, pay securely, and rate your experience—all in a beautifully designed app that puts you in control.",
+    "features": {
+      "quickBooking": "Quick Booking",
+      "quickBookingDesc": "Book rides in seconds with smart address suggestions and saved locations",
+      "liveTracking": "Live Tracking",
+      "liveTrackingDesc": "Track your driver's location in real-time with accurate ETAs and route visibility",
+      "payments": "Flexible Payments",
+      "paymentsDesc": "Multiple payment options including cards, digital wallets, and corporate accounts",
+      "support": "24/7 Support",
+      "supportDesc": "Get help anytime with in-app chat support and comprehensive help resources"
+    },
+    "downloadCta": "Get the Rider App"
+  },
+  "operatorDashboard": {
+    "hero": {
+      "title": "Operator Dashboard",
+      "subtitle": "Complete fleet control. Comprehensive platform for transport operators to manage and optimize operations.",
+      "cta": "Get Started"
+    },
+    "description": "The Operator Dashboard provides transport operators with powerful tools to manage fleets, drivers, routes, and finances. Make data-driven decisions with comprehensive analytics, automate operations, and scale your business efficiently.",
+    "features": {
+      "businessIntelligence": "Business Intelligence",
+      "businessIntelligenceDesc": "Advanced analytics and reporting tools for strategic decision-making and growth",
+      "fleetManagement": "Fleet Management",
+      "fleetManagementDesc": "Complete vehicle lifecycle management, maintenance tracking, and utilization optimization",
+      "revenueOptimization": "Revenue Optimization",
+      "revenueOptimizationDesc": "Dynamic pricing, demand forecasting, and revenue management tools",
+      "compliance": "Compliance & Safety",
+      "complianceDesc": "Automated compliance tracking, safety protocols, and regulatory reporting"
+    },
+    "downloadCta": "Access Dashboard"
+  },
+  "enterpriseDashboard": {
+    "hero": {
+      "title": "Enterprise Dashboard",
+      "subtitle": "Corporate mobility management. Streamline employee transportation and logistics for your organization.",
+      "cta": "Get Started"
+    },
+    "description": "The Enterprise Dashboard empowers organizations to manage employee transportation efficiently. Control costs, ensure policy compliance, track usage, and provide seamless mobility solutions for your workforce with enterprise-grade security and reporting.",
+    "features": {
+      "employeeManagement": "Employee Management",
+      "employeeManagementDesc": "Centralized employee profiles, ride approvals, and department-level access control",
+      "costControl": "Cost Control",
+      "costControlDesc": "Budget management, spending limits, cost allocation, and detailed expense tracking",
+      "reporting": "Advanced Reporting",
+      "reportingDesc": "Customizable reports, usage analytics, and executive dashboards for informed decisions",
+      "security": "Enterprise Security",
+      "securityDesc": "SSO integration, role-based access, data encryption, and compliance with corporate policies"
+    },
+    "downloadCta": "Access Dashboard"
+  },
+  "common": {
+    "downloadOn": "Download on the",
+    "appStore": "App Store",
+    "playStore": "Google Play",
+    "getItOn": "Get it on",
+    "availableOn": "Available on",
+    "requirements": "Requirements",
+    "version": "Version",
+    "screenshots": "Screenshots",
+    "keyFeatures": "Key Features",
+    "learnMore": "Learn More",
+    "backToApps": "Back to All Apps"
   }
+}
+
 }
