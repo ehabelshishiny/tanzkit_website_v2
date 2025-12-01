@@ -222,7 +222,7 @@
       ]
     }
   },
-    "resources": {
+  "resources": {
     "main": {
       "hero": {
         "title": "Resources & Insights",
@@ -331,6 +331,81 @@
     }
   },
   "solutions": {
+     "main": {
+      "hero": {
+        "title": {
+          "smart": "Smart",
+          "mobility": "Mobility",
+          "practicalResults": " for Practical Results"
+        },
+        "subtitle": "A comprehensive platform connecting operators, enterprises, supervisors, drivers, and passengers for seamless transportation management",
+        "cta": "Explore Solutions",
+        "nodes": {
+          "operator": "Operators",
+          "enterprise": "Enterprises",
+          "supervisor": "Supervisors",
+          "driver": "Drivers",
+          "rider": "Riders"
+        }
+      },
+      "intro": {
+        "text": "Transportation is complex. Managing fleets, coordinating drivers, ensuring passenger satisfaction, and optimizing costs all require different tools working together seamlessly. Tranzkit brings everything into one intelligent platform—giving operators control, enterprises visibility, supervisors real-time insights, drivers efficiency, and passengers peace of mind."
+      },
+      "howWeHelp": {
+        "title": "How We Help Transform Transportation",
+        "benefits": [
+          "Unified platform for all stakeholders—operators, enterprises, supervisors, drivers, and passengers",
+          "Real-time tracking and analytics for complete operational visibility",
+          "AI-powered optimization for routes, pricing, and resource allocation",
+          "Scalable solutions that grow with your business needs"
+        ]
+      },
+      "audienceCards": {
+        "operators": {
+          "headline": "For Operators & Drivers",
+          "description": "Complete fleet management tools and driver empowerment features for efficient operations",
+          "benefits": [
+            "Real-time fleet tracking and monitoring",
+            "Driver management and performance analytics",
+            "Revenue optimization with dynamic pricing",
+            "Automated dispatch and smart routing"
+          ],
+          "cta": "Explore Operator Solutions"
+        },
+        "enterprises": {
+          "headline": "For Enterprises & Passengers",
+          "description": "Corporate transportation management and seamless passenger experiences",
+          "benefits": [
+            "Employee transportation program management",
+            "Cost control and budget optimization",
+            "Real-time ride tracking and safety features",
+            "Comprehensive reporting and compliance"
+          ],
+          "cta": "Explore Enterprise Solutions"
+        }
+      },
+      "technology": {
+        "title": "Powered by Advanced Technology",
+        "highlights": [
+          "AI-Driven Route Optimization",
+          "Real-Time Analytics & Insights",
+          "Enterprise-Grade Security",
+          "Multi-Language Support"
+        ]
+      },
+      "whyTranzkit": {
+        "title": "Why Choose Tranzkit",
+        "reasons": [
+          "Reduce operational costs by up to 30%",
+          "Save time with automated workflows",
+          "Complete visibility across all operations"
+        ]
+      },
+      "cta": {
+        "title": "Ready to Transform Your Transportation Operations?",
+        "subtitle": "Join leading organizations already using Tranzkit to optimize their fleet management and passenger experiences"
+      }
+    },
     "enterprisesPassengers": {
       "hero": {
         "title": "Reliable Transport. Total Visibility.",
@@ -1531,6 +1606,5 @@
     "learnMore": "Learn More",
     "backToApps": "Back to All Apps"
   }
-}
-
+  }
 }

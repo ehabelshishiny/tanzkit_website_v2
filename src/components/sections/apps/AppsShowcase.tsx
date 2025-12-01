@@ -1,13 +1,14 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 
 export default function AppsShowcase() {
   const { theme } = useTheme();
   const t = useTranslations('apps.main.showcase');
   const tHero = useTranslations('apps.main.hero');
+  const locale = useLocale();
   const [mounted, setMounted] = useState(false);
   const [activeSegment, setActiveSegment] = useState<'operators' | 'enterprise'>('operators');
 
@@ -244,7 +245,7 @@ export default function AppsShowcase() {
                 </div>
                 <div className="text-left">
                   <div className="text-sm font-bold">{t('segments.operators.tabLabel')}</div>
-                  <div className={`text-xs ${activeSegment === 'operators' ? 'text-[#7ED977]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'}`}>
+                  <div className={`text-xs ${activeSegment === 'operators' ? 'text-[#7ED977]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'} ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
                     {t('segments.operators.appsCount')}
                   </div>
                 </div>
@@ -269,7 +270,7 @@ export default function AppsShowcase() {
                 </div>
                 <div className="text-left">
                   <div className="text-sm font-bold">{t('segments.enterprise.tabLabel')}</div>
-                  <div className={`text-xs ${activeSegment === 'enterprise' ? 'text-[#0F2E63]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'}`}>
+                  <div className={`text-xs ${activeSegment === 'enterprise' ? 'text-[#0F2E63]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'} ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
                     {t('segments.enterprise.appsCount')}
                   </div>
                 </div>
