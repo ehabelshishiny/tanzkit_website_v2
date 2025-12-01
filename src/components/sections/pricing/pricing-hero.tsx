@@ -1,24 +1,27 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Zap, Shield, TrendingUp } from 'lucide-react';
 
-const highlights = [
-  {
-    icon: Zap,
-    text: 'No setup fees'
-  },
-  {
-    icon: Shield,
-    text: 'Cancel anytime'
-  },
-  {
-    icon: TrendingUp,
-    text: '30-day free trial'
-  }
-];
-
 export function PricingHero() {
+  const t = useTranslations('pricing.hero');
+
+  const highlights = [
+    {
+      icon: Zap,
+      text: t('highlights.noSetupFees')
+    },
+    {
+      icon: Shield,
+      text: t('highlights.cancelAnytime')
+    },
+    {
+      icon: TrendingUp,
+      text: t('highlights.freeTrial')
+    }
+  ];
+
   return (
     <section className="w-full bg-gradient-to-b from-primary/5 to-background py-20">
       <div className="max-w-4xl mx-auto px-4 text-center">
@@ -28,10 +31,10 @@ export function PricingHero() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Pricing That Scales With You
+            {t('title')}
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Start with a plan that fits your needs today, and grow as your business expands
+            {t('subtitle')}
           </p>
         </motion.div>
 
@@ -54,4 +57,3 @@ export function PricingHero() {
     </section>
   );
 }
-

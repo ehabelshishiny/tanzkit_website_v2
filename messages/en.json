@@ -790,6 +790,98 @@
       }
     }
   },
+"pricing": {
+  "hero": {
+    "title": "Pricing That Scales With You",
+    "subtitle": "Start with a plan that fits your needs today, and grow as your business expands",
+    "highlights": {
+      "noSetupFees": "No setup fees",
+      "cancelAnytime": "Cancel anytime",
+      "freeTrial": "30-day free trial"
+    }
+  },
+  "cards": {
+    "heading": "Simple, Transparent Pricing",
+    "subtitle": "Choose the plan that fits your business needs",
+    "period": "/month",
+    "badges": {
+      "mostPopular": "Most Popular",
+      "bestValue": "Best Value"
+    },
+    "contactSales": "Contact Sales",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "price": "$299",
+        "description": "Perfect for small fleets getting started",
+        "features": {
+          "0": "Up to 10 vehicles",
+          "1": "Basic analytics dashboard",
+          "2": "Mobile apps for drivers",
+          "3": "Email support",
+          "4": "Standard routing",
+          "5": "Monthly reports"
+        }
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "$799",
+        "description": "Ideal for growing transportation businesses",
+        "features": {
+          "0": "Up to 50 vehicles",
+          "1": "Advanced analytics & insights",
+          "2": "Priority support (24/7)",
+          "3": "AI-powered route optimization",
+          "4": "Custom branding",
+          "5": "API access",
+          "6": "Real-time reporting",
+          "7": "Driver performance tracking"
+        }
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Custom",
+        "description": "Tailored solutions for large-scale operations",
+        "features": {
+          "0": "Unlimited vehicles",
+          "1": "Dedicated account manager",
+          "2": "Custom integrations",
+          "3": "White-label solution",
+          "4": "Advanced security features",
+          "5": "SLA guarantees",
+          "6": "Custom analytics",
+          "7": "Multi-region support",
+          "8": "Training & onboarding"
+        }
+      }
+    }
+  },
+  "comparison": {
+    "title": "Compare Plans",
+    "subtitle": "See which features are included in each plan",
+    "tableHeaders": {
+      "feature": "Feature",
+      "starter": "Starter",
+      "professional": "Professional",
+      "enterprise": "Enterprise"
+    },
+    "features": {
+      "vehicleTracking": "Vehicle Tracking",
+      "mobileApps": "Mobile Apps",
+      "basicAnalytics": "Basic Analytics",
+      "emailSupport": "Email Support",
+      "aiRouteOptimization": "AI Route Optimization",
+      "prioritySupport": "Priority Support (24/7)",
+      "customBranding": "Custom Branding",
+      "apiAccess": "API Access",
+      "whiteLabelSolution": "White-label Solution",
+      "dedicatedAccountManager": "Dedicated Account Manager",
+      "customIntegrations": "Custom Integrations",
+      "slaGuarantees": "SLA Guarantees",
+      "multiRegionSupport": "Multi-region Support"
+    }
+  }
+},
   "contact": {
     "hero": {
       "title": "Get in Touch",

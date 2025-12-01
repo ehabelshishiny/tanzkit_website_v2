@@ -1,48 +1,61 @@
 'use client';
 
+import { useTranslations, useLocale } from 'next-intl';
 import { Card } from '@/components/ui/card';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { Check, X } from 'lucide-react';
 
-const features = [
-  { name: 'Vehicle Tracking', starter: true, professional: true, enterprise: true },
-  { name: 'Mobile Apps', starter: true, professional: true, enterprise: true },
-  { name: 'Basic Analytics', starter: true, professional: true, enterprise: true },
-  { name: 'Email Support', starter: true, professional: true, enterprise: true },
-  { name: 'AI Route Optimization', starter: false, professional: true, enterprise: true },
-  { name: 'Priority Support (24/7)', starter: false, professional: true, enterprise: true },
-  { name: 'Custom Branding', starter: false, professional: true, enterprise: true },
-  { name: 'API Access', starter: false, professional: true, enterprise: true },
-  { name: 'White-label Solution', starter: false, professional: false, enterprise: true },
-  { name: 'Dedicated Account Manager', starter: false, professional: false, enterprise: true },
-  { name: 'Custom Integrations', starter: false, professional: false, enterprise: true },
-  { name: 'SLA Guarantees', starter: false, professional: false, enterprise: true },
-  { name: 'Multi-region Support', starter: false, professional: false, enterprise: true },
-];
-
 export function ComparisonTable() {
+  const t = useTranslations('pricing.comparison');
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+
+  const features = [
+    { key: 'vehicleTracking', starter: true, professional: true, enterprise: true },
+    { key: 'mobileApps', starter: true, professional: true, enterprise: true },
+    { key: 'basicAnalytics', starter: true, professional: true, enterprise: true },
+    { key: 'emailSupport', starter: true, professional: true, enterprise: true },
+    { key: 'aiRouteOptimization', starter: false, professional: true, enterprise: true },
+    { key: 'prioritySupport', starter: false, professional: true, enterprise: true },
+    { key: 'customBranding', starter: false, professional: true, enterprise: true },
+    { key: 'apiAccess', starter: false, professional: true, enterprise: true },
+    { key: 'whiteLabelSolution', starter: false, professional: false, enterprise: true },
+    { key: 'dedicatedAccountManager', starter: false, professional: false, enterprise: true },
+    { key: 'customIntegrations', starter: false, professional: false, enterprise: true },
+    { key: 'slaGuarantees', starter: false, professional: false, enterprise: true },
+    { key: 'multiRegionSupport', starter: false, professional: false, enterprise: true },
+  ];
+
   return (
     <section className="w-full max-w-6xl mx-auto px-4 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Compare Plans
+            {t('title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            See which features are included in each plan
+            {t('subtitle')}
           </p>
         </div>
       </ScrollReveal>
 
       <ScrollReveal delay={0.2}>
         <Card className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full" dir={isRTL ? 'rtl' : 'ltr'}>
             <thead>
               <tr className="border-b">
-                <th className="text-left p-4 font-semibold">Feature</th>
-                <th className="text-center p-4 font-semibold">Starter</th>
-                <th className="text-center p-4 font-semibold bg-primary/5">Professional</th>
-                <th className="text-center p-4 font-semibold">Enterprise</th>
+                <th className={`${isRTL ? 'text-right' : 'text-left'} p-4 font-semibold`}>
+                  {t('tableHeaders.feature')}
+                </th>
+                <th className="text-center p-4 font-semibold">
+                  {t('tableHeaders.starter')}
+                </th>
+                <th className="text-center p-4 font-semibold bg-primary/5">
+                  {t('tableHeaders.professional')}
+                </th>
+                <th className="text-center p-4 font-semibold">
+                  {t('tableHeaders.enterprise')}
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -51,7 +64,9 @@ export function ComparisonTable() {
                   key={index} 
                   className="border-b hover:bg-muted/50 transition-colors"
                 >
-                  <td className="p-4">{feature.name}</td>
+                  <td className={`p-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+                    {t(`features.${feature.key}`)}
+                  </td>
                   <td className="text-center p-4">
                     {feature.starter ? (
                       <Check className="w-5 h-5 text-success mx-auto" />
@@ -82,4 +97,3 @@ export function ComparisonTable() {
     </section>
   );
 }
-
