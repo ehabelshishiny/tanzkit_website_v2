@@ -61,9 +61,18 @@ const getThemeImage = (theme: string | undefined, imageName: string): string => 
 
 // New Text Hero Component
 const TextHero = () => {
+  const { scrollY } = useScroll();
+  
+  // Blur effect when scrolling starts - from 0px to 300px scroll
+  const blur = useTransform(scrollY, [0, 4500], [0, 12]);
+  const filter = useMotionTemplate`blur(${blur}px)`;
+
   return (
     <div className="sticky top-16 h-[calc(100vh-4rem)] w-full flex items-center justify-center bg-gray-100 dark:bg-muted/50">
-      <div className="max-w-4xl px-6 text-center">
+      <motion.div 
+        className="max-w-4xl px-6 text-center"
+        style={{ filter }}
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -82,7 +91,7 @@ const TextHero = () => {
             Discover our comprehensive suite of mobile and web applications designed to revolutionize workforce mobility across every role
           </p>
         </motion.div>
-      </div>
+      </motion.div>
     </div>
   );
 };
@@ -118,7 +127,7 @@ const ParallaxImages = () => {
         alt="Operators Dashboard Screenshot"
         start={-100}
         end={100}
-        className="mx-auto w-full md:w-1/2 lg:w-1/2 rounded-lg"
+        className="ml-auto mr-16 w-full md:w-1/2 lg:w-1/2 rounded-lg"
         aspectRatio="landscape"
         contain
       />
@@ -158,9 +167,9 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={getThemeImage(theme, 'mobile_3.png')}
         alt="Rider App Screenshot"
-        start={-800}
+        start={-850}
         end={-550}
-        className="ml-0 sm:ml-24 w-full sm:w-[35%] md:w-2/9 rounded-lg mb-32"
+        className="ml-0 sm:ml-48 w-full sm:w-[35%] md:w-2/9 rounded-lg mb-32"
         aspectRatio="portrait"
       />
     </div>
