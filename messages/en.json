@@ -222,14 +222,14 @@
       ]
     }
   },
-   "solutions": {
+  "solutions": {
     "enterprisesPassengers": {
       "hero": {
         "title": "Reliable Transport. Total Visibility.",
         "subtitle": "Tranzkit gives enterprises control over employee mobility and offers passengers a seamless, stress-free travel experience.",
         "cta": "Book a Demo"
       },
-       "audienceSwitcher": {
+      "audienceSwitcher": {
         "tabs": {
           "enterprise": "Enterprises",
           "passenger": "Passengers"
@@ -278,7 +278,7 @@
             }
           ]
         }
-  },
+      },
       "overview": {
         "text": "Companies need to transport employees safely, efficiently, and cost-effectively. Passengers want timely, safe rides without uncertainty. Tranzkit meets both needs in a single platform - delivering insights, automation, and real-time updates for everyone."
       },
@@ -508,6 +508,285 @@
         "title": "Enhance Your Transport Experience.",
         "subtitle": "Gain control and reliability for your team today.",
         "button": "Book Your Demo"
+      }
+    },
+    "operatorsDrivers": {
+      "hero": {
+        "title": "Scale Your Fleet Operations",
+        "subtitle": "Empower operators with advanced tools and drivers with seamless earning opportunities",
+        "cta": "Get Started"
+      },
+      "overview": {
+        "text": "Operators need efficient fleet management and revenue optimization. Drivers want flexible schedules and reliable income. Tranzkit bridges both worlds with powerful automation, real-time insights, and tools designed for growth."
+      },
+      "roleSwitcher": {
+        "tabs": {
+          "operator": "Operators",
+          "driver": "Drivers"
+        },
+        "operator": {
+          "title": "For Fleet Operators",
+          "description": "Complete control over your transportation operations",
+          "features": [
+            {
+              "title": "Fleet Management Dashboard",
+              "description": "Monitor and manage your entire fleet from a centralized command center"
+            },
+            {
+              "title": "Driver Management",
+              "description": "Recruit, onboard, and manage drivers with comprehensive tools"
+            },
+            {
+              "title": "Revenue Optimization",
+              "description": "Maximize earnings with dynamic pricing and demand forecasting"
+            },
+            {
+              "title": "Compliance & Safety",
+              "description": "Ensure regulatory compliance and maintain safety standards"
+            }
+          ]
+        },
+        "driver": {
+          "title": "For Drivers",
+          "description": "Earn more with flexible schedules and powerful tools",
+          "features": [
+            {
+              "title": "Flexible Earnings",
+              "description": "Drive on your schedule and maximize your income with smart routing"
+            },
+            {
+              "title": "Easy Navigation",
+              "description": "Turn-by-turn navigation with real-time traffic updates"
+            },
+            {
+              "title": "Instant Payments",
+              "description": "Get paid quickly with multiple payout options"
+            },
+            {
+              "title": "Driver Support",
+              "description": "24/7 support team ready to help with any issues"
+            }
+          ]
+        }
+      },
+      "timeline": {
+        "title": "24/7 Operations Management",
+        "subtitle": "Track and manage your fleet operations around the clock",
+        "steps": [
+          {
+            "time": "00:00",
+            "title": "System Initialization",
+            "description": "Fleet management system starts, all vehicles sync status"
+          },
+          {
+            "time": "06:00",
+            "title": "Morning Rush",
+            "description": "Peak demand period, dynamic pricing activated, all drivers online"
+          },
+          {
+            "time": "09:00",
+            "title": "Business Hours",
+            "description": "Corporate bookings increase, route optimization in progress"
+          },
+          {
+            "time": "12:00",
+            "title": "Midday Operations",
+            "description": "Lunch hour surge, driver breaks scheduled, maintenance checks"
+          },
+          {
+            "time": "17:00",
+            "title": "Evening Peak",
+            "description": "Highest demand period, all resources deployed, real-time adjustments"
+          },
+          {
+            "time": "22:00",
+            "title": "Night Shift",
+            "description": "Reduced operations, night drivers active, system maintenance"
+          }
+        ]
+      },
+      "dashboards": {
+        "title": "Powerful Dashboard Views",
+        "subtitle": "Everything you need to manage your operations efficiently",
+        "items": [
+          {
+            "title": "Analytics Dashboard",
+            "description": "Comprehensive metrics and KPIs for data-driven decisions",
+            "metrics": ["Revenue", "Trips", "Efficiency"]
+          },
+          {
+            "title": "Live Fleet Map",
+            "description": "Real-time vehicle tracking with heat maps and zones",
+            "metrics": ["Active Vehicles", "Coverage", "Demand"]
+          },
+          {
+            "title": "Driver Management",
+            "description": "Monitor driver performance, schedules, and availability",
+            "metrics": ["Active Drivers", "Rating", "Earnings"]
+          },
+          {
+            "title": "Revenue Dashboard",
+            "description": "Track earnings, expenses, and profitability in real-time",
+            "metrics": ["Daily Revenue", "Profit Margin", "Growth"]
+          },
+          {
+            "title": "Performance Insights",
+            "description": "Identify trends and optimize operations with AI insights",
+            "metrics": ["Efficiency", "Utilization", "Satisfaction"]
+          },
+          {
+            "title": "Operations Control",
+            "description": "Configure pricing, zones, and operational parameters",
+            "metrics": ["Active Rules", "Zones", "Pricing"]
+          }
+        ]
+      },
+      "mobileApps": {
+        "title": "Driver App Features",
+        "subtitle": "Everything drivers need in one powerful mobile application",
+        "features": [
+          {
+            "title": "Smart Navigation",
+            "description": "Turn-by-turn directions with real-time traffic",
+            "badge": "Essential"
+          },
+          {
+            "title": "Earnings Tracker",
+            "description": "Real-time earnings and payout management",
+            "badge": "Popular"
+          },
+          {
+            "title": "In-App Chat",
+            "description": "Communicate with passengers and support",
+            "badge": "New"
+          },
+          {
+            "title": "Rating System",
+            "description": "Build your reputation with passenger ratings",
+            "badge": "Essential"
+          },
+          {
+            "title": "Smart Notifications",
+            "description": "Get alerts for new rides and updates",
+            "badge": "Essential"
+          },
+          {
+            "title": "Offline Mode",
+            "description": "Continue working even without internet",
+            "badge": "Premium"
+          }
+        ]
+      },
+      "features": {
+        "title": "Key Features",
+        "items": [
+          {
+            "title": "Intelligent Fleet Management",
+            "description": "Complete operational control",
+            "points": [
+              "Real-time fleet tracking and monitoring",
+              "Automated dispatch and routing",
+              "Vehicle maintenance scheduling"
+            ]
+          },
+          {
+            "title": "Driver Empowerment Tools",
+            "description": "Everything drivers need to succeed",
+            "points": [
+              "Flexible schedule management",
+              "Transparent earnings tracking",
+              "In-app support and training"
+            ]
+          },
+          {
+            "title": "Revenue & Analytics",
+            "description": "Data-driven business insights",
+            "points": [
+              "Dynamic pricing strategies",
+              "Performance analytics and reporting",
+              "Demand forecasting and optimization"
+            ]
+          },
+          {
+            "title": "Safety & Compliance",
+            "description": "Industry-leading standards",
+            "points": [
+              "Driver verification and background checks",
+              "Real-time safety monitoring",
+              "Regulatory compliance automation"
+            ]
+          }
+        ]
+      },
+      "aiAdvantage": {
+        "title": "AI-Powered Intelligence",
+        "description": "Leverage artificial intelligence to optimize fleet utilization, predict demand patterns, and automate complex routing decisions. Our AI engine continuously learns from your operations to deliver smarter recommendations and maximize profitability."
+      },
+      "impact": {
+        "title": "Real Results",
+        "metrics": [
+          {
+            "value": "30",
+            "suffix": "%",
+            "label": "increase in fleet utilization"
+          },
+          {
+            "value": "2",
+            "suffix": "x",
+            "label": "faster driver onboarding"
+          },
+          {
+            "value": "100",
+            "suffix": "%",
+            "label": "regulatory compliance coverage"
+          },
+          {
+            "value": "24/7",
+            "label": "operational support and monitoring"
+          }
+        ]
+      },
+      "cta": {
+        "title": "Ready to Transform Your Operations?",
+        "subtitle": "Join leading operators and drivers on Tranzkit today"
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Find answers to common questions about our platform",
+        "items": [
+          {
+            "question": "How do I onboard new drivers to the platform?",
+            "answer": "Our streamlined onboarding process includes document verification, background checks, and training modules. Drivers can complete the entire process through the mobile app in 24-48 hours."
+          },
+          {
+            "question": "What are the commission rates for operators?",
+            "answer": "Commission rates are flexible and depend on your fleet size and service area. Contact our sales team for a customized pricing plan that fits your business model."
+          },
+          {
+            "question": "Can I set custom pricing for different zones?",
+            "answer": "Yes, our platform supports zone-based pricing, surge pricing, and custom rate cards. You have full control over pricing strategies to maximize revenue."
+          },
+          {
+            "question": "How does the driver payment system work?",
+            "answer": "Drivers can choose from multiple payout options including instant pay, daily, or weekly transfers. All transactions are tracked in real-time with detailed earning reports."
+          },
+          {
+            "question": "What safety features are included?",
+            "answer": "We provide comprehensive safety features including real-time tracking, SOS buttons, driver verification, trip sharing, and 24/7 support for both drivers and passengers."
+          },
+          {
+            "question": "Can I integrate with my existing systems?",
+            "answer": "Yes, Tranzkit offers robust APIs and webhooks for seamless integration with your existing fleet management, accounting, and HR systems."
+          },
+          {
+            "question": "What kind of analytics and reporting do you provide?",
+            "answer": "Our analytics dashboard provides real-time insights on fleet utilization, revenue, driver performance, passenger satisfaction, and operational efficiency with exportable reports."
+          },
+          {
+            "question": "Is there support for multiple languages?",
+            "answer": "Yes, our platform supports multiple languages including English and Arabic, with more languages being added based on market demand."
+          }
+        ]
       }
     }
   },
