@@ -299,32 +299,16 @@ export default function AppsShowcase() {
                 >
                   <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-10 ${themeClasses.cardHoverBorder} transition-all duration-500`}>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                      {/* Landscape Device Mockup - OPERATORS DASHBOARD */}
+                      {/* Operators Dashboard Image */}
                       <div>
-                        <div className={`relative rounded-2xl ${themeClasses.mockupBg} border ${themeClasses.mockupBorder} p-5 aspect-[16/10] overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
-                          <div className={`absolute inset-0 bg-gradient-to-br ${colors.light}`}></div>
-                          <div className={`relative h-full rounded-xl ${themeClasses.mockupInnerBg} border ${themeClasses.mockupInnerBorder} overflow-hidden`}>
-                            {/* Browser Chrome */}
-                            <div className={`flex items-center gap-2 px-4 py-3 border-b ${themeClasses.mockupInnerBorder}`}>
-                              <div className="w-3 h-3 rounded-full bg-red-500/60"></div>
-                              <div className="w-3 h-3 rounded-full bg-yellow-500/60"></div>
-                              <div className="w-3 h-3 rounded-full bg-green-500/60"></div>
-                            </div>
-                            {/* Image Content */}
-                            <div className="relative w-full h-[calc(100%-44px)]">
-                              <Image
-                                src={'/AppShowcase_section/operators_dashboard.png'}
-                                alt="Operators Dashboard Screenshot"
-                                fill
-                                className="object-cover"
-                                priority
-                              />
-                            </div>
-                          </div>
-                          <div className={`absolute top-8 right-8 px-4 py-2 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
-                            <span className={`${colors.text} text-xs font-medium`}>{t('badges.aiPowered')}</span>
-                          </div>
-                        </div>
+                        <Image
+                          src={'/AppShowcase_section/operators_dashboard.png'}
+                          alt="Operators Dashboard Screenshot"
+                          width={1600}
+                          height={1000}
+                          className="w-full h-auto"
+                          priority
+                        />
                       </div>
 
                       {/* Content */}
@@ -368,28 +352,19 @@ export default function AppsShowcase() {
                       }}
                     >
                       <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 shadow-2xl`}>
-                        {/* Portrait Device Mockup */}
-                        <div className={`relative mb-8 mx-auto w-52 aspect-[9/18] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
-                          <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-28 h-8 ${themeClasses.phoneNotch} rounded-b-3xl z-10`}></div>
-                          <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} overflow-hidden`}>
-                            {/* Image Content */}
-                            <div className="relative w-full h-full">
-                              <Image
-                                src={
-                                  index === 0
-                                    ? ('/AppShowcase_section/supervisor.png')
-                                    : ('/AppShowcase_section/driver.png')
-                                }
-                                alt={index === 0 ? 'Supervisor App Screenshot' : 'Driver App Screenshot'}
-                                fill
-                                className="object-cover"
-                              />
-                            </div>
-                          </div>
-                          <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 w-24 h-1.5 ${themeClasses.phoneIndicator} rounded-full z-10`}></div>
-                          <div className={`absolute top-14 right-5 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
-                            <span className={`${colors.text} text-[11px] font-medium`}>{t('badges.realtime')}</span>
-                          </div>
+                        {/* Mobile App Image */}
+                        <div className="mb-8 w-1/3 mx-auto">
+                          <Image
+                            src={
+                              index === 0
+                                ? ('/AppShowcase_section/supervisor.png')
+                                : ('/AppShowcase_section/driver.png')
+                            }
+                            alt={index === 0 ? 'Supervisor App Screenshot' : 'Driver App Screenshot'}
+                            width={900}
+                            height={1950}
+                            className="w-full h-auto mx-auto"
+                          />
                         </div>
 
                         {/* Content */}
@@ -435,29 +410,15 @@ export default function AppsShowcase() {
                     }}
                   >
                     <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
-                      {/* Landscape Device Mockup */}
-                      <div className={`relative mb-8 rounded-2xl ${themeClasses.mockupBg} border ${themeClasses.mockupBorder} p-4 aspect-[16/10] overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
-                        <div className={`absolute inset-0 bg-gradient-to-br ${colors.light}`}></div>
-                        <div className={`relative h-full rounded-xl ${themeClasses.mockupInnerBg} border ${themeClasses.mockupInnerBorder} overflow-hidden`}>
-                          {/* Browser Chrome */}
-                          <div className={`flex items-center gap-2 px-4 py-2 border-b ${themeClasses.mockupInnerBorder}`}>
-                            <div className="w-3 h-3 rounded-full bg-red-500/60"></div>
-                            <div className="w-3 h-3 rounded-full bg-yellow-500/60"></div>
-                            <div className="w-3 h-3 rounded-full bg-green-500/60"></div>
-                          </div>
-                          {/* Image Content */}
-                          <div className="relative w-full h-[calc(100%-38px)]">
-                            <Image
-                              src={'/AppShowcase_section/enterprise_dashboard.png'}
-                              alt="Enterprise Dashboard Screenshot"
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                        </div>
-                        <div className={`absolute top-6 right-6 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
-                          <span className={`${colors.text} text-xs font-medium`}>{t('badges.realtime')}</span>
-                        </div>
+                      {/* Enterprise Dashboard Image */}
+                      <div className="mb-8">
+                        <Image
+                          src={'/AppShowcase_section/enterprise_dashboard.png'}
+                          alt="Enterprise Dashboard Screenshot"
+                          width={1600}
+                          height={1000}
+                          className="w-full h-auto"
+                        />
                       </div>
 
                       {/* Content Below Image */}
@@ -497,24 +458,15 @@ export default function AppsShowcase() {
                     }}
                   >
                     <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
-                      {/* Portrait Device Mockup */}
-                      <div className={`relative mb-8 mx-auto w-52 aspect-[9/18] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
-                        <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-28 h-8 ${themeClasses.phoneNotch} rounded-b-3xl z-10`}></div>
-                        <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} overflow-hidden`}>
-                          {/* Image Content */}
-                          <div className="relative w-full h-full">
-                            <Image
-                              src={'/AppShowcase_section/rider.png'}
-                              alt="Rider App Screenshot"
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                        </div>
-                        <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 w-24 h-1.5 ${themeClasses.phoneIndicator} rounded-full z-10`}></div>
-                        <div className={`absolute top-14 right-5 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
-                          <span className={`${colors.text} text-[11px] font-medium`}>{t('badges.aiPowered')}</span>
-                        </div>
+                      {/* Rider App Image */}
+                      <div className="mb-8 w-1/3 mx-auto">
+                        <Image
+                          src={'/AppShowcase_section/rider.png'}
+                          alt="Rider App Screenshot"
+                          width={900}
+                          height={1950}
+                          className="w-full h-auto mx-auto"
+                        />
                       </div>
 
                       {/* Content */}
