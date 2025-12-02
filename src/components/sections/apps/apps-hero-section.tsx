@@ -52,11 +52,6 @@ const Hero = () => {
   );
 };
 
-const getThemeImage = (theme: string | undefined, imageName: string): string => {
-  const themeFolder = theme === 'dark' ? 'dark_theme' : 'light_theme';
-  const prefix = theme === 'dark' ? 'dark' : 'light';
-  return `/app_hero_section/${themeFolder}/${prefix}_${imageName}`;
-};
 
 const TextHero = () => {
   const { scrollY } = useScroll();
@@ -117,7 +112,7 @@ const ParallaxImages = () => {
   return (
     <div className={`mx-auto max-w-7xl px-4 pt-[200px] ${isRTL ? 'rtl' : ''}`}>
       <ParallaxImg
-        src={getThemeImage(theme, 'desktop_1.png')}
+        src={'/app_hero_section/operators_dashboard.png'}
         alt={t('operatorsDashboard')}
         start={-100}
         end={100}
@@ -127,7 +122,7 @@ const ParallaxImages = () => {
       />
 
       <ParallaxImg
-        src={getThemeImage(theme, 'mobile_1.png')}
+        src={'/app_hero_section/driver.png'}
         alt={t('driverApp')}
         start={-250}
         end={150}
@@ -136,7 +131,7 @@ const ParallaxImages = () => {
       />
 
       <ParallaxImg
-        src={getThemeImage(theme, 'desktop_2.png')}
+        src={'/app_hero_section/enterprise_dashboard.png'}
         alt={t('enterpriseDashboard')}
         start={-400}
         end={-300}
@@ -146,16 +141,16 @@ const ParallaxImages = () => {
       />
 
       <ParallaxImg
-        src={getThemeImage(theme, 'mobile_2.png')}
+        src={'/app_hero_section/supervisor.png'}
         alt={t('supervisorApp')}
         start={-650}
         end={-50}
-        className={`${isRTL ? 'mr-auto' : 'ml-auto'} w-full sm:w-[35%] md:w-2/9 rounded-lg`}
+        className={`${isRTL ? 'mr-auto' : 'ml-auto'} w-full sm:w-[35%] md:w-2/8 rounded-lg`}
         aspectRatio="portrait"
       />
 
       <ParallaxImg
-        src={getThemeImage(theme, 'mobile_3.png')}
+        src={'/app_hero_section/rider.png'}
         alt={t('riderApp')}
         start={-850}
         end={-550}
