@@ -313,7 +313,7 @@ export default function AppsShowcase() {
                             {/* Image Content */}
                             <div className="relative w-full h-[calc(100%-44px)]">
                               <Image
-                                src={isDarkTheme ? '/AppShowcase_section/dark_theme/dark_desktop_1.png' : '/AppShowcase_section/light_theme/light_desktop_1.png'}
+                                src={'/AppShowcase_section/operators_dashboard.png'}
                                 alt="Operators Dashboard Screenshot"
                                 fill
                                 className="object-cover"
@@ -377,8 +377,8 @@ export default function AppsShowcase() {
                               <Image
                                 src={
                                   index === 0
-                                    ? (isDarkTheme ? '/AppShowcase_section/dark_theme/dark_mobile_1.png' : '/AppShowcase_section/light_theme/light_mobile_1.png')
-                                    : (isDarkTheme ? '/AppShowcase_section/dark_theme/dark_mobile_2.png' : '/AppShowcase_section/light_theme/light_mobile_2.png')
+                                    ? ('/AppShowcase_section/supervisor.png')
+                                    : ('/AppShowcase_section/driver.png')
                                 }
                                 alt={index === 0 ? 'Supervisor App Screenshot' : 'Driver App Screenshot'}
                                 fill
@@ -448,7 +448,7 @@ export default function AppsShowcase() {
                           {/* Image Content */}
                           <div className="relative w-full h-[calc(100%-38px)]">
                             <Image
-                              src={isDarkTheme ? '/AppShowcase_section/dark_theme/dark_desktop_2.png' : '/AppShowcase_section/light_theme/light_desktop_2.png'}
+                              src={'/AppShowcase_section/enterprise_dashboard.png'}
                               alt="Enterprise Dashboard Screenshot"
                               fill
                               className="object-cover"
@@ -504,7 +504,7 @@ export default function AppsShowcase() {
                           {/* Image Content */}
                           <div className="relative w-full h-full">
                             <Image
-                              src={isDarkTheme ? '/AppShowcase_section/dark_theme/dark_mobile_3.png' : '/AppShowcase_section/light_theme/light_mobile_3.png'}
+                              src={'/AppShowcase_section/rider.png'}
                               alt="Rider App Screenshot"
                               fill
                               className="object-cover"
