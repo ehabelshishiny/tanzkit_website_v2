@@ -116,7 +116,7 @@ const ParallaxImages = () => {
         alt={t('operatorsDashboard')}
         start={-100}
         end={100}
-        className={`${isRTL ? 'mr-auto ml-16' : 'ml-auto mr-16'} w-full md:w-1/2 lg:w-1/2 rounded-lg`}
+        className={`${isRTL ? 'mr-auto ml-16' : 'ml-auto mr-16'} w-full md:w-1/2 lg:w-4/7 rounded-lg`}
         aspectRatio="landscape"
         contain
       />
@@ -126,8 +126,9 @@ const ParallaxImages = () => {
         alt={t('driverApp')}
         start={-250}
         end={150}
-        className="w-full sm:w-[35%] md:w-2/9 rounded-lg"
+        className="w-full sm:w-[35%] md:w-3/14 rounded-lg"
         aspectRatio="portrait"
+        contain
       />
 
       <ParallaxImg
@@ -135,7 +136,7 @@ const ParallaxImages = () => {
         alt={t('enterpriseDashboard')}
         start={-400}
         end={-300}
-        className="mx-auto w-full md:w-2/3 lg:w-6/9 rounded-lg"
+        className="mx-auto w-full md:w-2/3 lg:w-7/10 rounded-lg"
         aspectRatio="landscape"
         contain
       />
@@ -145,17 +146,19 @@ const ParallaxImages = () => {
         alt={t('supervisorApp')}
         start={-650}
         end={-50}
-        className={`${isRTL ? 'mr-auto' : 'ml-auto'} w-full sm:w-[35%] md:w-2/8 rounded-lg`}
+        className={`${isRTL ? 'mr-auto' : 'ml-auto'} w-full sm:w-[35%] md:w-3/14 rounded-lg`}
         aspectRatio="portrait"
+        contain
       />
 
       <ParallaxImg
         src={'/app_hero_section/rider.png'}
         alt={t('riderApp')}
-        start={-850}
+        start={-1000}
         end={-550}
-        className={`${isRTL ? 'mr-0 ml-48' : 'ml-0 sm:ml-48'} w-full sm:w-[35%] md:w-2/9 rounded-lg mb-32`}
+        className={`${isRTL ? 'mr-0 ml-48' : 'ml-0 sm:ml-48'} w-full sm:w-[35%] md:w-3/14 rounded-lg mb-32`}
         aspectRatio="portrait"
+        contain
       />
     </div>
   );
