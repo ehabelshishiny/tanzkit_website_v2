@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 import { SectionContainer } from '@/components/layout/SectionContainer';
+import { Typography } from '@/components/ui/typography';
 
 interface Vehicle {
   id: number;
@@ -400,11 +401,15 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
         style={{ transform: `translateY(${scrollY * -0.05}px)` }}
       >
         <div className="max-w-4xl w-full mx-auto lg:mx-0">
-          {/* Animated Headline */}
+          {/* Animated Headline - MIGRATED TO TYPOGRAPHY COMPONENT */}
           <div className="mb-8 xl:mb-12">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight xl:text-6xl xl:sm:text-7xl">
+            <Typography
+              variant="display"
+              as="h1"
+              className="font-bold leading-tight"
+            >
               <span
-                className={`inline-block transition-all duration-1000 ease-out text-foreground text-4xl sm:text-6xl md:text-7xl xl:text-6xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                className={`inline-block transition-all duration-1000 ease-out text-foreground ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
                 style={{ transitionDelay: '0.3s' }}
               >
                 {title || t('title')}
@@ -414,20 +419,23 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
                 style={{ transitionDelay: '0.6s' }}
               >
                 <span 
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 animate-pulse drop-shadow-2xl text-5xl sm:text-7xl md:text-8xl xl:text-7xl"
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 animate-pulse drop-shadow-2xl"
                   style={{ lineHeight: 1.1 }}
                 >
                   {t('titleHighlight')}
                 </span>
               </span>
               <br />
-            </h1>
-            <h2
-              className={`text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mt-4 xl:mt-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+            </Typography>
+            
+            <Typography
+              variant="subtitle"
+              as="h2"
+              className={`text-muted-foreground mt-4 xl:mt-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
               style={{ transitionDelay: '1.2s' }}
             >
               {subtitle || t('subtitle')}
-            </h2>
+            </Typography>
           </div>
 
           {/* CTA Buttons */}
@@ -444,9 +452,9 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
             </div>
 
             <button className="group relative px-6 sm:px-8 py-3 sm:py-4 border-2 border-accent text-accent font-semibold rounded-lg transition-all duration-500 hover:bg-gradient-to-r hover:from-accent hover:to-primary hover:text-primary-foreground hover:scale-105 hover:shadow-lg hover:shadow-accent/30 whitespace-nowrap overflow-hidden cursor-pointer w-full sm:w-auto">
-              <span className="flex items-center justify-center gap-2 relative z-10 transition-all duration-300">
+              <Typography variant="button" className="flex items-center justify-center gap-2 relative z-10 transition-all duration-300">
                 {tCommon('learnMore')}
-              </span>
+              </Typography>
             </button>
           </div>
 

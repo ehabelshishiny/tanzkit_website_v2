@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { FadeIn } from '@/components/animations/fade-in';
 import { Zap, Shield, Users, BarChart } from 'lucide-react';
 import { SectionContainer } from '@/components/layout/SectionContainer';
+import { Typography } from '@/components/ui/typography';
 
 const featureIcons = {
   0: Zap,
@@ -26,12 +27,12 @@ export function FeaturesSection() {
       <SectionContainer>
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <Typography variant="h2" align="center" className="tracking-tight">
               {t('heading')}
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            </Typography>
+            <Typography variant="subtitle" align="center" className="mt-4 text-muted-foreground">
               {t('subtitle')}
-            </p>
+            </Typography>
           </div>
         </FadeIn>
 
@@ -44,8 +45,12 @@ export function FeaturesSection() {
                   <div className="mb-4 rounded-full bg-primary/10 p-4">
                     <Icon className="h-8 w-8 text-primary" />
                   </div>
-                  <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <Typography variant="h4" align="center" className="mb-2">
+                    {feature.title}
+                  </Typography>
+                  <Typography variant="body" align="center" className="text-muted-foreground">
+                    {feature.description}
+                  </Typography>
                 </div>
               </FadeIn>
             );

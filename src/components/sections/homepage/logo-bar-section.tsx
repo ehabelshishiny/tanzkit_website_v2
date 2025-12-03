@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { FadeIn } from '@/components/animations/fade-in';
+import { Typography } from '@/components/ui/typography';
 
 export function LogoBarSection() {
   const t = useTranslations('homepage.logoBar');
@@ -23,10 +24,12 @@ export function LogoBarSection() {
       <div className="container">
         <FadeIn>
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-semibold mb-4">{t('heading')}</h2>
-            <p className="text-muted-foreground">
+            <Typography variant="h3" align="center" className="mb-4">
+              {t('heading')}
+            </Typography>
+            <Typography variant="body" align="center" className="text-muted-foreground">
               {t('subtitle')}
-            </p>
+            </Typography>
           </div>
         </FadeIn>
 
@@ -39,9 +42,9 @@ export function LogoBarSection() {
                 key={`group1-${partner}`}
                 className="flex h-16 w-32 md:h-20 md:w-40 items-center justify-center rounded-lg bg-muted flex-shrink-0"
               >
-                <span className="text-sm font-medium text-muted-foreground">
+                <Typography variant="caption" className="font-medium text-muted-foreground">
                   {partner}
-                </span>
+                </Typography>
               </div>
             ))}
           </div>
@@ -53,9 +56,9 @@ export function LogoBarSection() {
                 key={`group2-${partner}`}
                 className="flex h-16 w-32 md:h-20 md:w-40 items-center justify-center rounded-lg bg-muted flex-shrink-0"
               >
-                <span className="text-sm font-medium text-muted-foreground">
+                <Typography variant="caption" className="font-medium text-muted-foreground">
                   {partner}
-                </span>
+                </Typography>
               </div>
             ))}
           </div>

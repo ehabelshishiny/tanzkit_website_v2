@@ -216,29 +216,11 @@
 }
 
 /* === Arabic Font Configuration === */
-/* IBM Plex Sans Arabic for body text and general content */
-html[lang="ar"] body {
-  font-family: var(--font-ibm-plex-arabic), var(--font-geist-sans), sans-serif;
-}
-
-html[lang="ar"] .font-sans {
-  font-family: var(--font-ibm-plex-arabic), sans-serif;
-}
-
-/* for headers, titles, and headings */
-html[lang="ar"] h1,
-html[lang="ar"] .heading,
-html[lang="ar"] .title {
-  font-family: var(--font-noto-sans-arabic), var(--font-noto-sans-arabic), sans-serif;
-  font-weight: 700;
-}
-
-/* Keep monospace font (code blocks) unchanged for both locales */
-html[lang="ar"] .font-mono,
-html[lang="ar"] code,
-html[lang="ar"] pre {
-  font-family: var(--font-geist-mono), monospace;
-}
+/* 
+  NOTE: Arabic font handling is now done via Typography component.
+  Old global CSS rules have been removed in favor of the component-based approach.
+  See: src/components/ui/typography.tsx
+*/
 
 /* === Logo Marquee Animation - Infinite Scroll === */
 .logo-marquee {
@@ -351,6 +333,7 @@ html[lang="ar"] .logo-marquee-group {
     }
   }
 }
+
 /* === RTL Support for Pricing Cards === */
 /* LTR: Checkmark LEFT, Text RIGHT */
 html[dir="ltr"] .pricing-feature-item {
@@ -368,3 +351,33 @@ html[dir="rtl"] .pricing-feature-item {
   gap: 0.5rem !important;
 }
 
+/* ========================================
+   Typography System Font Classes
+   ======================================== */
+
+/* English - Geist Sans (default) */
+.font-sans {
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+/* Arabic - Alarabia Custom Font (for headers, titles) */
+.font-alarabia {
+  font-family: var(--font-alarabia), var(--font-geist-sans), sans-serif;
+}
+
+
+/* Arabic - Cairo Font (for headers, titles) */
+/* .font-cairo {
+  font-family: var(--font-cairo), var(--font-geist-sans), sans-serif;
+} */
+
+
+/* Arabic - IBM Plex Sans Arabic (for body, subtitle, caption, buttons) */
+.font-ibm-arabic {
+  font-family: var(--font-ibm-plex-arabic), var(--font-geist-sans), sans-serif;
+}
+
+/* Monospace (unchanged for both languages) */
+.font-mono {
+  font-family: var(--font-geist-mono), monospace;
+}

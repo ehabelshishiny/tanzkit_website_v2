@@ -5,6 +5,7 @@ import { FadeIn } from '@/components/animations/fade-in';
 import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
 import { Quote } from 'lucide-react';
 import { SectionContainer } from '@/components/layout/SectionContainer';
+import { Typography } from '@/components/ui/typography';
 
 export function TestimonialsSection() {
   const t = useTranslations('homepage.testimonials');
@@ -21,12 +22,12 @@ export function TestimonialsSection() {
       <SectionContainer>
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <Typography variant="h2" align="center" className="tracking-tight">
               {t('heading')}
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            </Typography>
+            <Typography variant="subtitle" align="center" className="mt-4 text-muted-foreground">
               {t('subtitle')}
-            </p>
+            </Typography>
           </div>
         </FadeIn>
 
@@ -44,13 +45,19 @@ export function TestimonialsSection() {
                       <CardItem translateZ="60">
                         <Quote className="h-8 w-8 text-primary mb-4" />
                       </CardItem>
-                      <CardItem translateZ="70" as="p" className="mb-4 text-muted-foreground">
-                        {testimonial.quote}
+                      <CardItem translateZ="70" as="div">
+                        <Typography variant="body" className="mb-4 text-muted-foreground">
+                          {testimonial.quote}
+                        </Typography>
                       </CardItem>
                       <CardItem translateZ="60">
                         <div>
-                          <p className="font-semibold">{testimonial.author}</p>
-                          <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                          <Typography variant="body" className="font-semibold">
+                            {testimonial.author}
+                          </Typography>
+                          <Typography variant="caption" className="text-muted-foreground">
+                            {testimonial.role}
+                          </Typography>
                         </div>
                       </CardItem>
                     </div>

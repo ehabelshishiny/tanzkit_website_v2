@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { FadeIn } from '@/components/animations/fade-in';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { SectionContainer } from '@/components/layout/SectionContainer';
+import { Typography } from '@/components/ui/typography';
 
 export function OverviewSection() {
   const t = useTranslations('homepage.whyChoose');
@@ -19,12 +20,12 @@ export function OverviewSection() {
       <SectionContainer>
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <Typography variant="h2" align="center" className="tracking-tight">
               {t('heading')}
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            </Typography>
+            <Typography variant="subtitle" align="center" className="mt-4 text-muted-foreground">
               {t('subtitle')}
-            </p>
+            </Typography>
           </div>
         </FadeIn>
 
@@ -33,10 +34,18 @@ export function OverviewSection() {
             <FadeIn key={feature.title} delay={0.1 * (index + 1)}>
               <Card>
                 <CardHeader>
-                  <CardTitle>{feature.title}</CardTitle>
+                  <CardTitle>
+                    <Typography variant="h4">
+                      {feature.title}
+                    </Typography>
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription>{feature.description}</CardDescription>
+                  <CardDescription>
+                    <Typography variant="body" className="text-muted-foreground">
+                      {feature.description}
+                    </Typography>
+                  </CardDescription>
                 </CardContent>
               </Card>
             </FadeIn>

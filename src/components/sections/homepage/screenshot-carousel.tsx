@@ -13,6 +13,7 @@ import {
 import { Card } from '@/components/ui/card';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { ScaleOnHover } from '@/components/animations/scale-on-hover';
+import { Typography } from '@/components/ui/typography';
 import { useState } from 'react';
 
 export function ScreenshotCarousel() {
@@ -52,12 +53,12 @@ export function ScreenshotCarousel() {
   return (
     <ScrollReveal className="w-full max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <Typography variant="h2" align="center" className="mb-4">
           {t('heading')}
-        </h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        </Typography>
+        <Typography variant="subtitle" align="center" className="text-muted-foreground max-w-2xl mx-auto">
           {t('subtitle')}
-        </p>
+        </Typography>
       </div>
 
       <Carousel
@@ -78,20 +79,22 @@ export function ScreenshotCarousel() {
                     <div className="absolute inset-0 bg-grid-pattern opacity-10" />
                     <div className="text-center z-10 p-6">
                       <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                        <span className="text-2xl font-bold text-primary">
+                        <Typography variant="h3" className="text-primary">
                           {screenshot.id}
-                        </span>
+                        </Typography>
                       </div>
-                      <div className="inline-block px-3 py-1 bg-primary/10 rounded-full text-xs font-medium mb-2">
+                      <Typography variant="caption" className="inline-block px-3 py-1 bg-primary/10 rounded-full font-medium mb-2">
                         {screenshot.category}
-                      </div>
+                      </Typography>
                     </div>
                   </div>
                   <div className="p-4 flex flex-col flex-1">
-                    <h3 className="font-semibold mb-2">{screenshot.title}</h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
+                    <Typography variant="h4" className="font-semibold mb-2">
+                      {screenshot.title}
+                    </Typography>
+                    <Typography variant="body" className="text-muted-foreground line-clamp-2">
                       {screenshot.description}
-                    </p>
+                    </Typography>
                   </div>
                 </Card>
               </ScaleOnHover>
