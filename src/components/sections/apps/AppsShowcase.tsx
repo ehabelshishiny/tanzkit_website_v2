@@ -297,7 +297,7 @@ export default function AppsShowcase() {
                     animation: 'fadeInUp 0.6s ease-out both'
                   }}
                 >
-                  <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-10 ${themeClasses.cardHoverBorder} transition-all duration-500`}>
+                  <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-10 ${themeClasses.cardHoverBorder} transition-all duration-500 shadow-xl`}>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                       {/* Operators Dashboard Image */}
                       <div>
@@ -351,7 +351,7 @@ export default function AppsShowcase() {
                         animation: `fadeInUp 0.6s ease-out ${(index + 1) * 0.15}s both`
                       }}
                     >
-                      <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 shadow-2xl`}>
+                      <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 shadow-xl`}>
                         {/* Mobile App Image */}
                         <div className="mb-8 w-1/3 mx-auto">
                           <Image
@@ -409,7 +409,7 @@ export default function AppsShowcase() {
                       animation: 'fadeInUp 0.6s ease-out both'
                     }}
                   >
-                    <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
+                    <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full shadow-xl`}>
                       {/* Enterprise Dashboard Image */}
                       <div className="mb-8">
                         <Image
@@ -457,7 +457,7 @@ export default function AppsShowcase() {
                       animation: 'fadeInUp 0.6s ease-out 0.15s both'
                     }}
                   >
-                    <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
+                    <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full shadow-xl`}>
                       {/* Rider App Image */}
                       <div className="mb-8 w-1/3 mx-auto">
                         <Image

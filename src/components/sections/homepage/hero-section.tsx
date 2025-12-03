@@ -379,10 +379,11 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
   };
 
   return (
-   <section
+    <section
       ref={containerRef}
-      className="relative bg-gray-100 dark:bg-slate-900 xl:bg-gradient-to-br xl:from-slate-900 xl:via-slate-800 xl:to-slate-900 overflow-hidden xl:min-h-screen"
+      className="relative bg-background overflow-hidden xl:min-h-screen"
       onMouseMove={handleMouseMove}
+      suppressHydrationWarning
     >
       {/* Animated Background Canvas */}
       <canvas
@@ -402,12 +403,12 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
           {/* Animated Headline */}
           <div className="mb-8 xl:mb-12">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight xl:text-6xl xl:sm:text-7xl">
-<span
-  className={`inline-block transition-all duration-1000 ease-out text-foreground text-4xl sm:text-6xl md:text-7xl xl:text-6xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-  style={{ transitionDelay: '0.3s' }}
->
-  {title || t('title')}
-</span>
+              <span
+                className={`inline-block transition-all duration-1000 ease-out text-foreground text-4xl sm:text-6xl md:text-7xl xl:text-6xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                style={{ transitionDelay: '0.3s' }}
+              >
+                {title || t('title')}
+              </span>
               <span
                 className={`inline-block transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
                 style={{ transitionDelay: '0.6s' }}
@@ -449,13 +450,12 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
             </button>
           </div>
 
-              {/* Stats - Desktop only to avoid extra vertical space on mobile/tablet */}
+          {/* Stats - Desktop only to avoid extra vertical space on mobile/tablet */}
           <div
             className={`hidden xl:grid grid-cols-3 gap-8 xl:mt-12 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             style={{ transitionDelay: '2.1s' }}
           >
           </div>
-
         </div>
       </div>
 
