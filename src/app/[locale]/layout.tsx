@@ -29,13 +29,42 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
   display: 'swap',
 });
 
-// Custom Alarabia Font
+// Custom Hacen Tunisia Font - Multiple Weights
 const alarabiaFont = localFont({
-  src: '../../../public/fonts/Aljazeera_font.ttf',
+  src: [
+    {
+      path: '../../../public/fonts/hacen-tunisia/hacen-tunisia-lt.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/hacen-tunisia/hacen-tunisia.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/hacen-tunisia/hacen-tunisia-bd.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/hacen-tunisia/hacen-tunisia-bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
   variable: '--font-alarabia',
   display: 'swap',
-  weight: '400 700',
 });
+
+
+// Custom Alarabia Font
+// const alarabiaFont = localFont({
+//   src: '../../../public/fonts/Aljazeera_font.ttf',
+//   variable: '--font-alarabia',
+//   display: 'swap',
+//   weight: '400 700',
+// });
 
 
 // // Custom Alarabia Font
