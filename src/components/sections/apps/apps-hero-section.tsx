@@ -85,13 +85,11 @@ const TextHero = () => {
     </div>
   );
 };
-
 const ParallaxImages = () => {
   const { theme } = useTheme();
   const locale = useLocale();
   const t = useTranslations('apps.main.parallaxHero.imageAlts');
   const [mounted, setMounted] = useState(false);
-  const isRTL = locale === 'ar';
 
   useEffect(() => {
     setMounted(true);
@@ -99,7 +97,7 @@ const ParallaxImages = () => {
 
   if (!mounted) {
     return (
-      <div className="mx-auto max-w-7xl px-4 pt-[200px]">
+      <div className="mx-auto max-w-7xl px-4 pt-[200px]" dir="ltr">
         <div className="mx-auto w-full md:w-1/2 lg:w-1/2 rounded-lg shadow-2xl aspect-[16/9] bg-muted" />
         <div className="w-full sm:w-[35%] md:w-1/4 rounded-lg shadow-2xl aspect-[9/16] bg-muted" />
         <div className="mx-auto w-full md:w-2/3 lg:w-3/4 rounded-lg shadow-2xl aspect-[16/9] bg-muted" />
@@ -110,13 +108,13 @@ const ParallaxImages = () => {
   }
 
   return (
-    <div className={`mx-auto max-w-7xl px-4 pt-[200px] ${isRTL ? 'rtl' : ''}`}>
+    <div className="mx-auto max-w-7xl px-4 pt-[200px]" dir="ltr">
       <ParallaxImg
         src={'/app_hero_section/operators_dashboard.png'}
         alt={t('operatorsDashboard')}
         start={-100}
         end={100}
-        className={`${isRTL ? 'mr-auto ml-16' : 'ml-auto mr-16'} w-full md:w-1/2 lg:w-4/7 rounded-lg`}
+        className="ml-auto mr-16 w-full md:w-1/2 lg:w-4/7 rounded-lg"
         aspectRatio="landscape"
         contain
       />
@@ -146,7 +144,7 @@ const ParallaxImages = () => {
         alt={t('supervisorApp')}
         start={-650}
         end={-50}
-        className={`${isRTL ? 'mr-auto' : 'ml-auto'} w-full sm:w-[35%] md:w-3/14 rounded-lg`}
+        className="ml-auto w-full sm:w-[35%] md:w-3/14 rounded-lg"
         aspectRatio="portrait"
         contain
       />
@@ -156,13 +154,14 @@ const ParallaxImages = () => {
         alt={t('riderApp')}
         start={-1000}
         end={-550}
-        className={`${isRTL ? 'mr-0 ml-48' : 'ml-0 sm:ml-48'} w-full sm:w-[35%] md:w-3/14 rounded-lg mb-32`}
+        className="ml-0 sm:ml-48 w-full sm:w-[35%] md:w-3/14 rounded-lg mb-32"
         aspectRatio="portrait"
         contain
       />
     </div>
   );
 };
+
 
 const ParallaxImg = ({
   className,
