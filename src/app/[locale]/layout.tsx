@@ -30,32 +30,76 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
 });
 
 // Custom Hacen Tunisia Font - Multiple Weights
+// const alarabiaFont = localFont({
+//   src: [
+//     {
+//       path: '../../../public/fonts/hacen-tunisia/hacen-tunisia-lt.ttf',
+//       weight: '300',
+//       style: 'normal',
+//     },
+//     {
+//       path: '../../../public/fonts/hacen-tunisia/hacen-tunisia.ttf',
+//       weight: '400',
+//       style: 'normal',
+//     },
+//     {
+//       path: '../../../public/fonts/hacen-tunisia/hacen-tunisia-bd.ttf',
+//       weight: '600',
+//       style: 'normal',
+//     },
+//     {
+//       path: '../../../public/fonts/hacen-tunisia/hacen-tunisia-bold.ttf',
+//       weight: '700',
+//       style: 'normal',
+//     },
+//   ],
+//   variable: '--font-alarabia',
+//   display: 'swap',
+// });
+
+// Custom DIN Next Font - Multiple Weights
 const alarabiaFont = localFont({
   src: [
     {
-      path: '../../../public/fonts/hacen-tunisia/hacen-tunisia-lt.ttf',
+      path: '../../../public/fonts/din-next/din-next-lt-w23-ultra-light.ttf',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/din-next/din-next-lt-w23-light.ttf',
       weight: '300',
       style: 'normal',
     },
     {
-      path: '../../../public/fonts/hacen-tunisia/hacen-tunisia.ttf',
+      path: '../../../public/fonts/din-next/din-next-lt-w23-regular.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../../../public/fonts/hacen-tunisia/hacen-tunisia-bd.ttf',
-      weight: '600',
+      path: '../../../public/fonts/din-next/din-next-lt-w23-medium.ttf',
+      weight: '500',
       style: 'normal',
     },
     {
-      path: '../../../public/fonts/hacen-tunisia/hacen-tunisia-bold.ttf',
+      path: '../../../public/fonts/din-next/din-next-lt-w23-bold.ttf',
       weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/din-next/din-next-lt-w23-heavy.ttf',
+      weight: '800',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/din-next/din-next-lt-w23-black.ttf',
+      weight: '900',
       style: 'normal',
     },
   ],
   variable: '--font-alarabia',
   display: 'swap',
 });
+
 
 
 // Custom Alarabia Font
