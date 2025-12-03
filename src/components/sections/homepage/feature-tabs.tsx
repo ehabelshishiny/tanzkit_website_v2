@@ -46,7 +46,7 @@ export function FeatureTabs() {
                 className="flex items-center justify-center gap-2 py-3 px-4 data-[state=active]:bg-background data-[state=active]:shadow-sm min-h-[48px] w-full"
               >
                 <Icon className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                <Typography variant="button" className="truncate">
+                <Typography variant="button" className={isRTL ? "leading-relaxed" : "truncate"}>
                   {t(`tabs.${featureId}.label`)}
                 </Typography>
               </TabsTrigger>
