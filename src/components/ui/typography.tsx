@@ -92,6 +92,7 @@ export interface TypographyProps
    * Text alignment
    */
   align?: 'left' | 'center' | 'right';
+   htmlFor?: string;
 }
 
 /**

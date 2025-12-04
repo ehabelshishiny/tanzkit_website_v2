@@ -4,6 +4,7 @@ import { useTranslations, useLocale, useMessages } from 'next-intl';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Typography } from '@/components/ui/typography';
 import { StaggerChildren, StaggerItem } from '@/components/animations/stagger-children';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { Check } from 'lucide-react';
@@ -17,7 +18,6 @@ export function PricingCards() {
   const isRTL = locale === 'ar';
   const [isClient, setIsClient] = useState(false);
 
-  // Ensure client-side rendering
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -37,12 +37,13 @@ export function PricingCards() {
     }
   ];
 
-  // Don't render until client-side is ready
   if (!isClient || !messages) {
     return (
       <section className="w-full max-w-7xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Loading...</h2>
+          <Typography variant="h2" align="center" className="mb-4">
+            Loading...
+          </Typography>
         </div>
       </section>
     );
@@ -52,12 +53,12 @@ export function PricingCards() {
     <section className="w-full max-w-7xl mx-auto px-4 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <Typography variant="h2" align="center" className="mb-4">
             {t('heading')}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </Typography>
+          <Typography variant="subtitle" align="center" className="text-muted-foreground max-w-2xl mx-auto">
             {t('subtitle')}
-          </p>
+          </Typography>
         </div>
       </ScrollReveal>
 
@@ -71,7 +72,6 @@ export function PricingCards() {
             }
           };
           
-          // Safely get features from messages object
           let featureKeys: string[] = [];
           try {
             const planMessages = messages?.pricing?.cards?.plans?.[plan.id]?.features;
@@ -82,7 +82,6 @@ export function PricingCards() {
             console.error(`Error loading features for ${plan.id}:`, error);
           }
 
-          // Skip rendering if no features found
           if (featureKeys.length === 0) {
             console.warn(`No features found for plan: ${plan.id}`);
             return null;
@@ -99,15 +98,21 @@ export function PricingCards() {
                   <Badge className="w-fit mb-4">{t(`badges.${plan.badge}`)}</Badge>
                 )}
                 
-                <h3 className="text-2xl font-bold mb-2">{planT('name')}</h3>
-                <p className="text-muted-foreground mb-6">{planT('description')}</p>
+                <Typography variant="h3" className="mb-2">
+                  {planT('name')}
+                </Typography>
+                <Typography variant="body" className="text-muted-foreground mb-6">
+                  {planT('description')}
+                </Typography>
                 
                 <div className="mb-6">
-                  <span className="text-4xl font-bold">
+                  <Typography variant="h3" as="span">
                     {planT('price')}
-                  </span>
+                  </Typography>
                   {plan.id !== 'enterprise' && (
-                    <span className="text-muted-foreground ms-1">{t('period')}</span>
+                    <Typography variant="body" as="span" className="text-muted-foreground ms-1">
+                      {t('period')}
+                    </Typography>
                   )}
                 </div>
 
@@ -127,15 +132,16 @@ export function PricingCards() {
                           style={{ marginTop: '0.125rem' }}
                         />
                       </div>
-                      <span 
-                        className="text-sm" 
+                      <Typography 
+                        variant="body" 
+                        className="text-sm"
                         style={{ 
                           flex: 1,
                           textAlign: isRTL ? 'right' : 'left'
                         }}
                       >
                         {planT(`features.${key}`)}
-                      </span>
+                      </Typography>
                     </li>
                   ))}
                 </ul>

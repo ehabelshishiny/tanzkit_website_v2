@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Zap, Shield, TrendingUp } from 'lucide-react';
+import { Typography } from '@/components/ui/typography';
 
 export function PricingHero() {
   const t = useTranslations('pricing.hero');
@@ -30,12 +31,12 @@ export function PricingHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <Typography variant="display" as="h1" align="center" className="mb-6">
             {t('title')}
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          </Typography>
+          <Typography variant="subtitle" align="center" className="text-muted-foreground mb-8 max-w-2xl mx-auto">
             {t('subtitle')}
-          </p>
+          </Typography>
         </motion.div>
 
         <motion.div
@@ -49,7 +50,9 @@ export function PricingHero() {
               <div className="p-2 bg-primary/10 rounded-lg">
                 <highlight.icon className="w-5 h-5 text-primary" />
               </div>
-              <span className="font-medium">{highlight.text}</span>
+              <Typography variant="body" className="font-medium">
+                {highlight.text}
+              </Typography>
             </div>
           ))}
         </motion.div>

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { Typography } from '@/components/ui/typography';
 
 interface SectionHeaderProps {
   title: string;
@@ -13,17 +14,17 @@ interface SectionHeaderProps {
   className?: string;
 }
 
-const alignmentVariants = {
-  left: 'text-left',
-  center: 'text-center',
-  right: 'text-right',
+const alignmentMap = {
+  left: 'left' as const,
+  center: 'center' as const,
+  right: 'right' as const,
 };
 
-const titleSizeVariants = {
-  sm: 'text-2xl md:text-3xl',
-  md: 'text-3xl md:text-4xl',
-  lg: 'text-4xl md:text-5xl',
-  xl: 'text-5xl md:text-6xl',
+const titleSizeMap = {
+  sm: 'h3' as const,
+  md: 'h2' as const,
+  lg: 'h2' as const,
+  xl: 'h1' as const,
 };
 
 const containerVariants = {
@@ -62,38 +63,43 @@ export function SectionHeader({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
-      className={cn('mb-12 md:mb-16', alignmentVariants[alignment], className)}
+      className={cn('mb-12 md:mb-16', className)}
     >
       {subtitle && (
-        <motion.p
-          variants={itemVariants}
-          className="text-sm md:text-base font-semibold uppercase tracking-wider mb-4"
-          style={{ color: accentColor }}
-        >
-          {subtitle}
-        </motion.p>
+        <motion.div variants={itemVariants}>
+          <Typography 
+            variant="overline" 
+            align={alignmentMap[alignment]}
+            className="mb-4"
+            style={{ color: accentColor }}
+          >
+            {subtitle}
+          </Typography>
+        </motion.div>
       )}
       
-      <motion.h2
-        variants={itemVariants}
-        className={cn(
-          'font-bold leading-tight',
-          titleSizeVariants[titleSize]
-        )}
-      >
-        {title}
-      </motion.h2>
+      <motion.div variants={itemVariants}>
+        <Typography
+          variant={titleSizeMap[titleSize]}
+          align={alignmentMap[alignment]}
+          className="font-bold leading-tight"
+        >
+          {title}
+        </Typography>
+      </motion.div>
       
       {description && (
-        <motion.p
-          variants={itemVariants}
-          className="mt-4 text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-3xl"
-          style={alignment === 'center' ? { marginLeft: 'auto', marginRight: 'auto' } : {}}
-        >
-          {description}
-        </motion.p>
+        <motion.div variants={itemVariants}>
+          <Typography
+            variant="subtitle"
+            align={alignmentMap[alignment]}
+            className="mt-4 text-slate-600 dark:text-slate-300 max-w-3xl"
+            style={alignment === 'center' ? { marginLeft: 'auto', marginRight: 'auto' } : {}}
+          >
+            {description}
+          </Typography>
+        </motion.div>
       )}
     </motion.div>
   );
 }
-

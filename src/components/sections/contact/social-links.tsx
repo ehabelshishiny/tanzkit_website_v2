@@ -1,6 +1,7 @@
 'use client';
 
 import { Card } from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { ScaleOnHover } from '@/components/animations/scale-on-hover';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
@@ -20,10 +21,12 @@ export function SocialLinks() {
     <section className="w-full max-w-4xl mx-auto px-4 py-16">
       <ScrollReveal>
         <Card className="p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4">{t('title')}</h2>
-          <p className="text-muted-foreground mb-8">
+          <Typography variant="h3" align="center" className="mb-4">
+            {t('title')}
+          </Typography>
+          <Typography variant="body" align="center" className="text-muted-foreground mb-8">
             {t('subtitle')}
-          </p>
+          </Typography>
           <div className="flex justify-center gap-4">
             {socialLinks.map((social, index) => (
               <ScaleOnHover key={index}>
@@ -42,4 +45,3 @@ export function SocialLinks() {
     </section>
   );
 }
-

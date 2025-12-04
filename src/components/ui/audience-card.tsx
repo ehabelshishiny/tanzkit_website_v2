@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 import { useLocale } from 'next-intl';
 import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
+import { Typography } from '@/components/ui/typography';
 
 interface AudienceCardProps {
   title: string;
@@ -67,11 +68,13 @@ export function AudienceCard({
           </div>
         )}
         
-        <h3 className="text-2xl md:text-3xl font-bold mb-4">{title}</h3>
+        <Typography variant="h3" className="mb-4">
+          {title}
+        </Typography>
         
-        <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
+        <Typography variant="body" className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
           {description}
-        </p>
+        </Typography>
         
         <ul className="space-y-3 mb-8">
           {benefits.map((benefit, index) => (
@@ -91,18 +94,17 @@ export function AudienceCard({
                   />
                 </svg>
               </span>
-              <span className="text-base text-slate-700 dark:text-slate-300">
+              <Typography variant="body" className="text-slate-700 dark:text-slate-300">
                 {benefit}
-              </span>
+              </Typography>
             </li>
           ))}
         </ul>
         
-    <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-4 transition-all">
-  <span>{ctaText}</span>
-  <RTLAwareArrow className="w-5 h-5" />
-</div>
-
+        <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-4 transition-all">
+          <Typography variant="button">{ctaText}</Typography>
+          <RTLAwareArrow className="w-5 h-5" />
+        </div>
       </Link>
     </motion.div>
   );

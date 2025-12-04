@@ -29,7 +29,6 @@ export function AudienceCardsSection() {
       maxWidth="2xl"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Operators & Drivers Card */}
         <AudienceCard
           title={t('operators.headline')}
           description={t('operators.description')}
@@ -39,7 +38,6 @@ export function AudienceCardsSection() {
           gradient="from-primary/10 to-chart-1/10"
         />
 
-        {/* Enterprises & Passengers Card */}
         <AudienceCard
           title={t('enterprises.headline')}
           description={t('enterprises.description')}
@@ -52,4 +50,3 @@ export function AudienceCardsSection() {
     </SectionContainer>
   );
 }
-

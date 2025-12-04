@@ -1,6 +1,7 @@
 'use client';
 
 import { Card } from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { Calendar } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
@@ -10,7 +11,6 @@ export function Timeline() {
   const locale = useLocale();
   const isRTL = locale === 'ar';
 
-  // Get milestones as an array
   const milestones = Array.from({ length: 7 }, (_, i) => ({
     year: t(`milestones.${i}.year`),
     title: t(`milestones.${i}.title`),
@@ -21,17 +21,16 @@ export function Timeline() {
     <section className="w-full max-w-6xl mx-auto px-4 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <Typography variant="h2" align="center" className="mb-4">
             {t('heading')}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </Typography>
+          <Typography variant="subtitle" align="center" className="text-muted-foreground max-w-2xl mx-auto">
             {t('subtitle')}
-          </p>
+          </Typography>
         </div>
       </ScrollReveal>
 
       <div className="relative">
-        {/* Timeline line */}
         <div className={`absolute top-0 bottom-0 w-0.5 bg-primary/20 hidden md:block transform ${
           isRTL ? 'right-1/2 translate-x-1/2' : 'left-1/2 -translate-x-1/2'
         }`} />
@@ -53,11 +52,15 @@ export function Timeline() {
                 </div>
 
                 <Card className="flex-1 p-6 hover:shadow-lg transition-shadow">
-                  <div className="text-sm font-medium text-primary mb-2">
+                  <Typography variant="caption" className="text-primary mb-2 font-medium">
                     {milestone.year}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{milestone.title}</h3>
-                  <p className="text-muted-foreground">{milestone.description}</p>
+                  </Typography>
+                  <Typography variant="h4" className="mb-2">
+                    {milestone.title}
+                  </Typography>
+                  <Typography variant="body" className="text-muted-foreground">
+                    {milestone.description}
+                  </Typography>
                 </Card>
               </div>
             </ScrollReveal>

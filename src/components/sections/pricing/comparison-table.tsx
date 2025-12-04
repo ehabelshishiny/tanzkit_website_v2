@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { Card } from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { Check, X } from 'lucide-react';
 
@@ -30,12 +31,12 @@ export function ComparisonTable() {
     <section className="w-full max-w-6xl mx-auto px-4 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <Typography variant="h2" align="center" className="mb-4">
             {t('title')}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </Typography>
+          <Typography variant="subtitle" align="center" className="text-muted-foreground max-w-2xl mx-auto">
             {t('subtitle')}
-          </p>
+          </Typography>
         </div>
       </ScrollReveal>
 
@@ -45,16 +46,24 @@ export function ComparisonTable() {
             <thead>
               <tr className="border-b">
                 <th className={`${isRTL ? 'text-right' : 'text-left'} p-4 font-semibold`}>
-                  {t('tableHeaders.feature')}
+                  <Typography variant="body" className="font-semibold">
+                    {t('tableHeaders.feature')}
+                  </Typography>
                 </th>
                 <th className="text-center p-4 font-semibold">
-                  {t('tableHeaders.starter')}
+                  <Typography variant="body" className="font-semibold">
+                    {t('tableHeaders.starter')}
+                  </Typography>
                 </th>
                 <th className="text-center p-4 font-semibold bg-primary/5">
-                  {t('tableHeaders.professional')}
+                  <Typography variant="body" className="font-semibold">
+                    {t('tableHeaders.professional')}
+                  </Typography>
                 </th>
                 <th className="text-center p-4 font-semibold">
-                  {t('tableHeaders.enterprise')}
+                  <Typography variant="body" className="font-semibold">
+                    {t('tableHeaders.enterprise')}
+                  </Typography>
                 </th>
               </tr>
             </thead>
@@ -65,7 +74,9 @@ export function ComparisonTable() {
                   className="border-b hover:bg-muted/50 transition-colors"
                 >
                   <td className={`p-4 ${isRTL ? 'text-right' : 'text-left'}`}>
-                    {t(`features.${feature.key}`)}
+                    <Typography variant="body">
+                      {t(`features.${feature.key}`)}
+                    </Typography>
                   </td>
                   <td className="text-center p-4">
                     {feature.starter ? (

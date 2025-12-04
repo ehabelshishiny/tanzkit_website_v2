@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { SectionContainer } from '@/components/ui/section-container';
 import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
+import { Typography } from '@/components/ui/typography';
 import { motion } from 'framer-motion';
 import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 
@@ -22,12 +23,12 @@ export function CtaSection() {
         transition={{ duration: 0.8 }}
         className="text-center"
       >
-        <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-primary/90 bg-clip-text text-transparent mb-6">
+        <Typography variant="h2" align="center" className="bg-gradient-to-r from-primary to-primary/90 bg-clip-text text-transparent mb-6">
           {t('title')}
-        </h2>
-        <p className="text-xl md:text-2xl text-foreground mb-10 max-w-3xl mx-auto">
+        </Typography>
+        <Typography variant="subtitle" align="center" className="text-foreground mb-10 max-w-3xl mx-auto">
           {t('subtitle')}
-        </p>
+        </Typography>
         <TrialCTAButton
           variant="secondary"
           size="lg"
