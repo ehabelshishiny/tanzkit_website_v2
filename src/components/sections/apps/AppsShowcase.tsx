@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+import { Typography } from '@/components/ui/typography';
 
 export default function AppsShowcase() {
   const { theme } = useTheme();
@@ -216,12 +217,12 @@ export default function AppsShowcase() {
       <div className="max-w-[1400px] mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className={`text-5xl md:text-6xl font-bold ${themeClasses.textPrimary} mb-6`}>
+          <Typography variant="h1" className={`${themeClasses.textPrimary} mb-6`}>
             {tHero('title')}
-          </h1>
-          <p className={`text-xl ${themeClasses.textSecondary} max-w-3xl mx-auto`}>
+          </Typography>
+          <Typography variant="subtitle" className={`${themeClasses.textSecondary} max-w-3xl mx-auto`}>
             {tHero('subtitle')}
-          </p>
+          </Typography>
         </div>
 
         {/* Segment Switcher */}
@@ -244,10 +245,10 @@ export default function AppsShowcase() {
                   <i className="ri-truck-line text-xl"></i>
                 </div>
                 <div className="text-left">
-                  <div className="text-sm font-bold">{t('segments.operators.tabLabel')}</div>
-                  <div className={`text-xs ${activeSegment === 'operators' ? 'text-[#7ED977]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'} ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+                  <Typography variant="caption" as="div" className="font-bold">{t('segments.operators.tabLabel')}</Typography>
+                  <Typography variant="caption" as="div" className={`${activeSegment === 'operators' ? 'text-[#7ED977]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'} ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
                     {t('segments.operators.appsCount')}
-                  </div>
+                  </Typography>
                 </div>
               </div>
             </button>
@@ -269,10 +270,10 @@ export default function AppsShowcase() {
                   <i className="ri-building-2-line text-xl"></i>
                 </div>
                 <div className="text-left">
-                  <div className="text-sm font-bold">{t('segments.enterprise.tabLabel')}</div>
-                  <div className={`text-xs ${activeSegment === 'enterprise' ? 'text-[#0F2E63]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'} ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+                  <Typography variant="caption" as="div" className="font-bold">{t('segments.enterprise.tabLabel')}</Typography>
+                  <Typography variant="caption" as="div" className={`${activeSegment === 'enterprise' ? 'text-[#0F2E63]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'} ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
                     {t('segments.enterprise.appsCount')}
-                  </div>
+                  </Typography>
                 </div>
               </div>
             </button>
@@ -282,8 +283,8 @@ export default function AppsShowcase() {
         {/* Segment Content */}
         <div className="mb-12">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className={`text-4xl font-bold ${themeClasses.textPrimary} mb-4`}>{currentSegment.title}</h2>
-            <p className={`text-lg ${themeClasses.textSecondary}`}>{currentSegment.description}</p>
+            <Typography variant="h2" className={`${themeClasses.textPrimary} mb-4`}>{currentSegment.title}</Typography>
+            <Typography variant="body" className={themeClasses.textSecondary}>{currentSegment.description}</Typography>
           </div>
 
           {/* Dynamic Grid Layout */}
@@ -315,12 +316,12 @@ export default function AppsShowcase() {
                       <div className="space-y-5">
                         <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
                           <i className={`ri-computer-line ${themeClasses.badgeIcon} text-sm`}></i>
-                          <span className={`${themeClasses.badgeText} text-sm font-medium`}>{currentSegment.dashboard.platform}</span>
+                          <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>{currentSegment.dashboard.platform}</Typography>
                         </div>
 
                         <div>
-                          <h3 className={`text-3xl font-bold ${themeClasses.textPrimary} mb-3`}>{currentSegment.dashboard.name}</h3>
-                          <p className={`${themeClasses.textSecondary} text-base`}>{currentSegment.dashboard.description}</p>
+                          <Typography variant="h3" className={`${themeClasses.textPrimary} mb-3`}>{currentSegment.dashboard.name}</Typography>
+                          <Typography variant="body" className={themeClasses.textSecondary}>{currentSegment.dashboard.description}</Typography>
                         </div>
 
                         <ul className="space-y-3">
@@ -329,7 +330,7 @@ export default function AppsShowcase() {
                               <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
                                 <i className="ri-check-line text-white text-sm"></i>
                               </div>
-                              <span className={`${themeClasses.textTertiary} text-base`}>{benefit}</span>
+                              <Typography variant="body" as="span" className={themeClasses.textTertiary}>{benefit}</Typography>
                             </li>
                           ))}
                         </ul>
@@ -371,12 +372,12 @@ export default function AppsShowcase() {
                         <div className="space-y-4">
                           <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
                             <i className={`ri-smartphone-line ${themeClasses.badgeIcon} text-xs`}></i>
-                            <span className={`${themeClasses.badgeText} text-xs font-medium`}>{app.platform}</span>
+                            <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>{app.platform}</Typography>
                           </div>
 
                           <div>
-                            <h3 className={`text-2xl font-bold ${themeClasses.textPrimary} mb-2`}>{app.name}</h3>
-                            <p className={`${themeClasses.textSecondary} text-sm`}>{app.description}</p>
+                            <Typography variant="h3" className={`${themeClasses.textPrimary} mb-2`}>{app.name}</Typography>
+                            <Typography variant="caption" className={themeClasses.textSecondary}>{app.description}</Typography>
                           </div>
 
                           <ul className="space-y-3">
@@ -385,7 +386,7 @@ export default function AppsShowcase() {
                                 <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
                                   <i className="ri-check-line text-white text-xs"></i>
                                 </div>
-                                <span className={`${themeClasses.textTertiary} text-sm`}>{benefit}</span>
+                                <Typography variant="caption" as="span" className={themeClasses.textTertiary}>{benefit}</Typography>
                               </li>
                             ))}
                           </ul>
@@ -425,12 +426,12 @@ export default function AppsShowcase() {
                       <div className="space-y-4">
                         <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
                           <i className={`ri-computer-line ${themeClasses.badgeIcon} text-xs`}></i>
-                          <span className={`${themeClasses.badgeText} text-xs font-medium`}>{currentSegment.dashboard.platform}</span>
+                          <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>{currentSegment.dashboard.platform}</Typography>
                         </div>
 
                         <div>
-                          <h3 className={`text-2xl font-bold ${themeClasses.textPrimary} mb-2`}>{currentSegment.dashboard.name}</h3>
-                          <p className={`${themeClasses.textSecondary} text-sm`}>{currentSegment.dashboard.description}</p>
+                          <Typography variant="h3" className={`${themeClasses.textPrimary} mb-2`}>{currentSegment.dashboard.name}</Typography>
+                          <Typography variant="caption" className={themeClasses.textSecondary}>{currentSegment.dashboard.description}</Typography>
                         </div>
 
                         <ul className="space-y-2">
@@ -439,7 +440,7 @@ export default function AppsShowcase() {
                               <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
                                 <i className="ri-check-line text-white text-xs"></i>
                               </div>
-                              <span className={`${themeClasses.textTertiary} text-sm`}>{benefit}</span>
+                              <Typography variant="caption" as="span" className={themeClasses.textTertiary}>{benefit}</Typography>
                             </li>
                           ))}
                         </ul>
@@ -459,7 +460,7 @@ export default function AppsShowcase() {
                   >
                     <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full shadow-xl`}>
                       {/* Rider App Image */}
-                      <div className="mb-8 w-1/3 mx-auto">
+                      <div className="mb-8 w-5/17 mx-auto">
                         <Image
                           src={'/AppShowcase_section/rider.png'}
                           alt="Rider App Screenshot"
@@ -473,12 +474,12 @@ export default function AppsShowcase() {
                       <div className="space-y-4">
                         <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
                           <i className={`ri-smartphone-line ${themeClasses.badgeIcon} text-xs`}></i>
-                          <span className={`${themeClasses.badgeText} text-xs font-medium`}>{currentSegment.apps[0].platform}</span>
+                          <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>{currentSegment.apps[0].platform}</Typography>
                         </div>
 
                         <div>
-                          <h3 className={`text-2xl font-bold ${themeClasses.textPrimary} mb-2`}>{currentSegment.apps[0].name}</h3>
-                          <p className={`${themeClasses.textSecondary} text-sm`}>{currentSegment.apps[0].description}</p>
+                          <Typography variant="h3" className={`${themeClasses.textPrimary} mb-2`}>{currentSegment.apps[0].name}</Typography>
+                          <Typography variant="caption" className={themeClasses.textSecondary}>{currentSegment.apps[0].description}</Typography>
                         </div>
 
                         <ul className="space-y-3">
@@ -487,7 +488,7 @@ export default function AppsShowcase() {
                               <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
                                 <i className="ri-check-line text-white text-xs"></i>
                               </div>
-                              <span className={`${themeClasses.textTertiary} text-sm`}>{benefit}</span>
+                              <Typography variant="caption" as="span" className={themeClasses.textTertiary}>{benefit}</Typography>
                             </li>
                           ))}
                         </ul>

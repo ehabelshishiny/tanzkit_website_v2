@@ -1,6 +1,7 @@
 'use client';
 
 import { Card } from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { StaggerChildren, StaggerItem } from '@/components/animations/stagger-children';
 import { CheckCircle2 } from 'lucide-react';
@@ -28,10 +29,10 @@ export function WorkflowStepper({ type = 'passenger' }: WorkflowStepperProps) {
     <section className="w-full max-w-7xl mx-auto px-4 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <Typography variant="h2" className="mb-4">{t('title')}</Typography>
+          <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
             {t('subtitle')}
-          </p>
+          </Typography>
         </div>
       </ScrollReveal>
 
@@ -46,8 +47,8 @@ export function WorkflowStepper({ type = 'passenger' }: WorkflowStepperProps) {
                   </div>
                 </div>
                 <div className="flex-grow">
-                  <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                  <p className="text-muted-foreground">{step.description}</p>
+                  <Typography variant="h4" className="mb-2">{step.title}</Typography>
+                  <Typography variant="body" className="text-muted-foreground">{step.description}</Typography>
                 </div>
                 {index < steps.length - 1 ? (
                   <RTLAwareArrow className="w-6 h-6 text-muted-foreground hidden md:block" />

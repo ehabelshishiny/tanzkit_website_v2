@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { ScaleOnHover } from '@/components/animations/scale-on-hover';
 import { Apple, Smartphone, QrCode } from 'lucide-react';
@@ -14,12 +15,12 @@ export function DownloadButtons() {
     <section className="w-full max-w-4xl mx-auto px-4 py-16">
       <ScrollReveal>
         <Card className="p-12 text-center bg-gradient-to-br from-primary/5 to-background">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <Typography variant="h2" className="mb-4">
             {t('title')}
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
+          </Typography>
+          <Typography variant="body" className="text-muted-foreground mb-8">
             {t('subtitle')}
-          </p>
+          </Typography>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <ScaleOnHover>
@@ -39,8 +40,8 @@ export function DownloadButtons() {
           <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
             <QrCode className="w-16 h-16" />
             <div className="text-left">
-              <div className="font-medium">{t('qr.title')}</div>
-              <div>{t('qr.subtitle')}</div>
+              <Typography variant="body" className="font-medium">{t('qr.title')}</Typography>
+              <Typography variant="caption">{t('qr.subtitle')}</Typography>
             </div>
           </div>
         </Card>

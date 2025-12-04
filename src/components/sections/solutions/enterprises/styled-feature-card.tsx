@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Typography } from '@/components/ui/typography';
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 
@@ -64,12 +65,10 @@ export function StyledFeatureCard({
       )}
       
       <div className="flex-1">
-        {/* H3: Sora SemiBold 24px/30px */}
-        <h3 className="mb-3">{title}</h3>
-        {/* Body text: Inter Regular 16px/24px */}
-        <p className="body-text text-slate-600 dark:text-slate-300 mb-4">
+        <Typography variant="h3" className="mb-3">{title}</Typography>
+        <Typography variant="body" className="text-slate-600 dark:text-slate-300 mb-4">
           {description}
-        </p>
+        </Typography>
         
         {features && features.length > 0 && (
           <ul className="space-y-2">
@@ -81,8 +80,7 @@ export function StyledFeatureCard({
                 <span className="text-lg mt-0.5" style={{ color: iconColor }}>
                   •
                 </span>
-                {/* Feature list text: Inter Regular 16px/24px */}
-                <span className="feature-list-text text-slate-700 dark:text-slate-300">{feature}</span>
+                <Typography variant="body" as="span" className="text-slate-700 dark:text-slate-300">{feature}</Typography>
               </li>
             ))}
           </ul>
@@ -91,4 +89,3 @@ export function StyledFeatureCard({
     </motion.div>
   );
 }
-

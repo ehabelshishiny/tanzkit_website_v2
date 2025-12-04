@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Typography } from '@/components/ui/typography';
 import { SectionContainer } from '@/components/ui/section-container';
 import { fadeInUp } from '@/lib/animation-variants';
 import { getIconComponent } from '@/lib/icon-mapper';
@@ -46,12 +47,12 @@ export function AppFeaturesSection({
         variants={fadeInUp}
         className="text-center mb-16"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+        <Typography variant="h2" className="mb-4 text-foreground">
           {title}
-        </h2>
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+        </Typography>
+        <Typography variant="body" className="text-muted-foreground max-w-3xl mx-auto">
           {description}
-        </p>
+        </Typography>
       </motion.div>
 
       {/* Features Grid */}
@@ -80,12 +81,12 @@ export function AppFeaturesSection({
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-bold mb-3 text-foreground">
+              <Typography variant="h3" className="mb-3 text-foreground">
                 {feature.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              </Typography>
+              <Typography variant="body" className="text-muted-foreground">
                 {feature.description}
-              </p>
+              </Typography>
             </motion.div>
           );
         })}
@@ -93,4 +94,3 @@ export function AppFeaturesSection({
     </SectionContainer>
   );
 }
-

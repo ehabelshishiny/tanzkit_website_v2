@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { Typography } from '@/components/ui/typography';
 import {
   Carousel,
   CarouselContent,
@@ -21,12 +22,12 @@ export function DashboardPreviewCarousel() {
     <section className="w-full max-w-7xl mx-auto px-4 py-16 bg-muted/30">
       <ScrollReveal>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <Typography variant="h2" className="mb-4">
             {t('title')}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </Typography>
+          <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
             {t('subtitle')}
-          </p>
+          </Typography>
         </div>
       </ScrollReveal>
 
@@ -59,12 +60,12 @@ export function DashboardPreviewCarousel() {
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="font-semibold text-lg mb-2">
+                    <Typography variant="h4" className="mb-2">
                       {t(`items.${index}.title`)}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
+                    </Typography>
+                    <Typography variant="caption" className="text-muted-foreground">
                       {t(`items.${index}.description`)}
-                    </p>
+                    </Typography>
                   </div>
                 </Card>
               </CarouselItem>

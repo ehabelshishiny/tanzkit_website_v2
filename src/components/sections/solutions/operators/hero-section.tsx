@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { Typography } from '@/components/ui/typography';
 import { GradientButton } from '@/components/ui/gradient-button';
 import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 
@@ -101,14 +102,12 @@ export function OperatorsHeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* H1: Maintaining original responsive classes */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight drop-shadow-sm">
+            <Typography variant="h1" className="text-slate-900 dark:text-white mb-6 drop-shadow-sm">
               {t('title')}
-            </h1>
-            {/* Subheading: Maintaining original responsive classes */}
-            <p className="text-xl md:text-2xl text-slate-800 dark:text-white/95 mb-8 leading-relaxed drop-shadow-sm">
+            </Typography>
+            <Typography variant="subtitle" className="text-slate-800 dark:text-white/95 mb-8 drop-shadow-sm">
               {t('subtitle')}
-            </p>
+            </Typography>
             <GradientButton
               href="/contact"
               size="lg"

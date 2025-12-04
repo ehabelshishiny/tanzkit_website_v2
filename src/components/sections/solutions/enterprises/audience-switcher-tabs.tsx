@@ -2,6 +2,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card } from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
 import { motion } from 'framer-motion';
 import { Building2, Users } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
@@ -32,12 +33,12 @@ export function AudienceSwitcherTabs() {
             transition={{ duration: 0.5 }}
           >
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <Typography variant="h2" className="mb-4">
                 {t('enterprise.title')}
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              </Typography>
+              <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
                 {t('enterprise.description')}
-              </p>
+              </Typography>
             </div>
             {/* RTL-aware grid - auto-flows in correct direction */}
             <div className={`grid md:grid-cols-2 gap-6 ${isRTL ? 'md:grid-flow-dense' : ''}`}>
@@ -49,12 +50,12 @@ export function AudienceSwitcherTabs() {
                   transition={{ delay: index * 0.1 }}
                 >
                   <Card className="p-6 h-full hover:shadow-lg transition-shadow">
-                    <h3 className="text-xl font-semibold mb-3">
+                    <Typography variant="h3" className="mb-3">
                       {t(`enterprise.features.${index}.title`)}
-                    </h3>
-                    <p className="text-muted-foreground">
+                    </Typography>
+                    <Typography variant="body" className="text-muted-foreground">
                       {t(`enterprise.features.${index}.description`)}
-                    </p>
+                    </Typography>
                   </Card>
                 </motion.div>
               ))}
@@ -69,12 +70,12 @@ export function AudienceSwitcherTabs() {
             transition={{ duration: 0.5 }}
           >
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <Typography variant="h2" className="mb-4">
                 {t('passenger.title')}
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              </Typography>
+              <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
                 {t('passenger.description')}
-              </p>
+              </Typography>
             </div>
             {/* RTL-aware grid */}
             <div className={`grid md:grid-cols-2 gap-6 ${isRTL ? 'md:grid-flow-dense' : ''}`}>
@@ -86,12 +87,12 @@ export function AudienceSwitcherTabs() {
                   transition={{ delay: index * 0.1 }}
                 >
                   <Card className="p-6 h-full hover:shadow-lg transition-shadow">
-                    <h3 className="text-xl font-semibold mb-3">
+                    <Typography variant="h3" className="mb-3">
                       {t(`passenger.features.${index}.title`)}
-                    </h3>
-                    <p className="text-muted-foreground">
+                    </Typography>
+                    <Typography variant="body" className="text-muted-foreground">
                       {t(`passenger.features.${index}.description`)}
-                    </p>
+                    </Typography>
                   </Card>
                 </motion.div>
               ))}

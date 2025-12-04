@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
+import { Typography } from '@/components/ui/typography';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card } from '@/components/ui/card';
 import { motion } from 'framer-motion';
@@ -49,12 +50,12 @@ export function RoleSwitcherTabs() {
             transition={{ duration: 0.5 }}
           >
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <Typography variant="h2" className="mb-4">
                 {t('operator.title')}
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              </Typography>
+              <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
                 {t('operator.description')}
-              </p>
+              </Typography>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               {[0, 1, 2, 3].map((index) => (
@@ -65,12 +66,12 @@ export function RoleSwitcherTabs() {
                   transition={{ delay: index * 0.1 }}
                 >
                   <Card className={`p-6 h-full hover:shadow-lg transition-shadow ${isRTL ? 'text-right' : 'text-left'}`}>
-                    <h3 className="text-xl font-semibold mb-3">
+                    <Typography variant="h3" className="mb-3">
                       {t(`operator.features.${index}.title`)}
-                    </h3>
-                    <p className="text-muted-foreground">
+                    </Typography>
+                    <Typography variant="body" className="text-muted-foreground">
                       {t(`operator.features.${index}.description`)}
-                    </p>
+                    </Typography>
                   </Card>
                 </motion.div>
               ))}
@@ -85,12 +86,12 @@ export function RoleSwitcherTabs() {
             transition={{ duration: 0.5 }}
           >
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <Typography variant="h2" className="mb-4">
                 {t('driver.title')}
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              </Typography>
+              <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
                 {t('driver.description')}
-              </p>
+              </Typography>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               {[0, 1, 2, 3].map((index) => (
@@ -101,12 +102,12 @@ export function RoleSwitcherTabs() {
                   transition={{ delay: index * 0.1 }}
                 >
                   <Card className={`p-6 h-full hover:shadow-lg transition-shadow ${isRTL ? 'text-right' : 'text-left'}`}>
-                    <h3 className="text-xl font-semibold mb-3">
+                    <Typography variant="h3" className="mb-3">
                       {t(`driver.features.${index}.title`)}
-                    </h3>
-                    <p className="text-muted-foreground">
+                    </Typography>
+                    <Typography variant="body" className="text-muted-foreground">
                       {t(`driver.features.${index}.description`)}
-                    </p>
+                    </Typography>
                   </Card>
                 </motion.div>
               ))}

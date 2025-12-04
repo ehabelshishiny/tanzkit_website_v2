@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Card } from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
 import { useTranslations } from 'next-intl';
 
 export default function FAQPage() {
@@ -15,12 +16,12 @@ export default function FAQPage() {
     <main className="container py-12">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <Typography variant="h1" className="mb-4">
             {t('hero.title')}
-          </h1>
-          <p className="text-lg text-muted-foreground">
+          </Typography>
+          <Typography variant="body" className="text-muted-foreground">
             {t('hero.subtitle')}
-          </p>
+          </Typography>
         </div>
 
         <Card className="p-8">

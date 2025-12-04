@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { Typography } from '@/components/ui/typography';
 import { SectionContainer } from '@/components/ui/section-container';
 import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 import { motion } from 'framer-motion';
@@ -23,12 +24,12 @@ export function OperatorsCtaSection() {
         transition={{ duration: 0.8 }}
         className="text-center"
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+        <Typography variant="h2" className="text-foreground mb-6">
           {t('title')}
-        </h2>
-        <p className="text-xl md:text-2xl text-foreground/80 mb-10 max-w-3xl mx-auto">
+        </Typography>
+        <Typography variant="subtitle" className="text-foreground/80 mb-10 max-w-3xl mx-auto">
           {t('subtitle')}
-        </p>
+        </Typography>
         <TrialCTAButton
           variant="secondary"
           size="lg"

@@ -10,6 +10,7 @@ import {
 import { useRef, useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { useTranslations, useLocale } from 'next-intl';
+import { Typography } from '@/components/ui/typography';
 
 const SECTION_HEIGHT = 1800;
 
@@ -71,15 +72,15 @@ const TextHero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <Typography variant="display" className="mb-6">
             <span className="text-blue-600 dark:text-blue-400">{t('title.intelligent')} </span>
             <span className="text-emerald-600 dark:text-emerald-400">{t('title.application')} </span>
             <span className="text-foreground">{t('title.ecosystem')}</span>
-          </h1>
+          </Typography>
 
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto">
+          <Typography variant="subtitle" className="text-muted-foreground mb-8 max-w-3xl mx-auto">
             {t('subtitle')}
-          </p>
+          </Typography>
         </motion.div>
       </motion.div>
     </div>

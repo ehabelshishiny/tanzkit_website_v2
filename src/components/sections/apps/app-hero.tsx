@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Smartphone, Download } from 'lucide-react';
+import { Typography } from '@/components/ui/typography';
 import { Button } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
 
@@ -17,12 +18,12 @@ export function AppHero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <Typography variant="h2" className="mb-6">
               {t('title')}
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            </Typography>
+            <Typography variant="subtitle" className="text-muted-foreground mb-8">
               {t('subtitle')}
-            </p>
+            </Typography>
             <div className="flex flex-wrap gap-4">
               <Button size="lg" className="gap-2">
                 <Download className="w-5 h-5" />

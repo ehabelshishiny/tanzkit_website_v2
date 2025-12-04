@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { Typography } from '@/components/ui/typography';
 import { Card } from '@/components/ui/card';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { CheckCircle2 } from 'lucide-react';
@@ -12,12 +13,12 @@ export function OperationsTimeline() {
     <section className="w-full max-w-7xl mx-auto px-4 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <Typography variant="h2" className="mb-4">
             {t('title')}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </Typography>
+          <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
             {t('subtitle')}
-          </p>
+          </Typography>
         </div>
       </ScrollReveal>
 
@@ -37,20 +38,20 @@ export function OperationsTimeline() {
                 <Card className="flex-grow p-6 hover:shadow-lg transition-shadow">
                   <div className="flex items-start justify-between gap-4 mb-3">
                     <div>
-                      <div className="text-sm font-medium text-primary mb-1">
+                      <Typography variant="caption" as="div" className="font-medium text-primary mb-1">
                         {t(`steps.${index}.time`)}
-                      </div>
-                      <h3 className="text-xl font-semibold">
+                      </Typography>
+                      <Typography variant="h4">
                         {t(`steps.${index}.title`)}
-                      </h3>
+                      </Typography>
                     </div>
                     <div className="md:hidden w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <CheckCircle2 className="w-6 h-6 text-primary" />
                     </div>
                   </div>
-                  <p className="text-muted-foreground">
+                  <Typography variant="body" className="text-muted-foreground">
                     {t(`steps.${index}.description`)}
-                  </p>
+                  </Typography>
                 </Card>
               </div>
             </ScrollReveal>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { Typography } from '@/components/ui/typography';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
@@ -16,12 +17,12 @@ export function MobileAppUIGrid() {
     <section className="w-full max-w-7xl mx-auto px-4 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <Typography variant="h2" className="mb-4">
             {t('title')}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </Typography>
+          <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
             {t('subtitle')}
-          </p>
+          </Typography>
         </div>
       </ScrollReveal>
 
@@ -31,9 +32,9 @@ export function MobileAppUIGrid() {
           const badge = t(`features.${index}.badge`);
           
           return (
-            <ScrollReveal key={index} delay={index * 0.1}>
-              <HoverTilt>
-                <Card className="p-6 h-full hover:shadow-lg transition-shadow relative overflow-hidden">
+            <ScrollReveal key={index} delay={index * 0.1} className="h-full">
+              <HoverTilt className="h-full">
+                <Card className="p-6 h-full flex flex-col hover:shadow-lg transition-shadow relative overflow-hidden">
                   <div className="absolute top-4 right-4">
                     <Badge variant={badge === 'New' || badge === 'جديد' ? 'default' : 'secondary'}>
                       {badge}
@@ -44,12 +45,12 @@ export function MobileAppUIGrid() {
                     <Icon className="w-8 h-8 text-primary" />
                   </div>
                   
-                  <h3 className="text-xl font-semibold mb-3">
+                  <Typography variant="h4" className="mb-3">
                     {t(`features.${index}.title`)}
-                  </h3>
-                  <p className="text-muted-foreground">
+                  </Typography>
+                  <Typography variant="body" className="text-muted-foreground flex-grow">
                     {t(`features.${index}.description`)}
-                  </p>
+                  </Typography>
                 </Card>
               </HoverTilt>
             </ScrollReveal>

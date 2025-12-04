@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { Typography } from '@/components/ui/typography';
 import { GradientButton } from '@/components/ui/gradient-button';
 import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 
@@ -96,14 +97,12 @@ export function EnterprisesHeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* H1: Sora SemiBold 48px/56px (responsive: 32px/40px on mobile) */}
-            <h1 className="text-slate-900 dark:text-white mb-6">
+            <Typography variant="h1" className="text-slate-900 dark:text-white mb-6">
               {t('title')}
-            </h1>
-            {/* Subheading: Space Grotesk Medium 18px/24px */}
-            <p className="subheading text-slate-700 dark:text-slate-300 mb-8">
+            </Typography>
+            <Typography variant="subtitle" className="text-slate-700 dark:text-slate-300 mb-8">
               {t('subtitle')}
-            </p>
+            </Typography>
             <GradientButton
               href="/contact"
               size="lg"

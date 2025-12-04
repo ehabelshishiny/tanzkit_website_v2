@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Typography } from '@/components/ui/typography';
 import { cn } from '@/lib/utils';
 import { fadeInUp } from '@/lib/animation-variants';
 import { getIconComponent } from '@/lib/icon-mapper';
@@ -78,9 +79,9 @@ export function AppDetailHero({
             variants={fadeInUp}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
+            <Typography variant="h1" className="mb-6 text-foreground">
               {title}
-            </h1>
+            </Typography>
           </motion.div>
 
           {/* Subtitle */}
@@ -90,13 +91,12 @@ export function AppDetailHero({
             variants={fadeInUp}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <Typography variant="subtitle" className="text-muted-foreground max-w-3xl mx-auto">
               {subtitle}
-            </p>
+            </Typography>
           </motion.div>
         </div>
       </div>
     </section>
   );
 }
-

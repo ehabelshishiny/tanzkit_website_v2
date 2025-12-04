@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { Typography } from '@/components/ui/typography';
 import { SectionContainer } from '@/components/ui/section-container';
 import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 import { motion } from 'framer-motion';
@@ -23,14 +24,12 @@ export function EnterprisesCtaSection() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          {/* H2: Sora SemiBold 36px/42px */}
-          <h2 className="text-foreground mb-6">
+          <Typography variant="h2" className="text-foreground mb-6">
             {t('title')}
-          </h2>
-          {/* Subheading: Space Grotesk Medium 18px/24px */}
-          <p className="subheading text-muted-foreground mb-10 max-w-3xl mx-auto">
+          </Typography>
+          <Typography variant="subtitle" className="text-muted-foreground mb-10 max-w-3xl mx-auto">
             {t('subtitle')}
-          </p>
+          </Typography>
           <TrialCTAButton
             variant="secondary"
             size="lg"

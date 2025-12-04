@@ -8,6 +8,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Card } from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { Smartphone } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -28,12 +29,12 @@ export function ScreenCarousel() {
     <section className="w-full max-w-7xl mx-auto px-4 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <Typography variant="h2" className="mb-4">
             {t('title')}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </Typography>
+          <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
             {t('subtitle')}
-          </p>
+          </Typography>
         </div>
       </ScrollReveal>
 
@@ -46,8 +47,8 @@ export function ScreenCarousel() {
                   <Smartphone className="w-16 h-16 text-primary/40" />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-semibold mb-1">{screen.title}</h3>
-                  <p className="text-sm text-muted-foreground">{screen.description}</p>
+                  <Typography variant="h4" className="mb-1">{screen.title}</Typography>
+                  <Typography variant="caption" className="text-muted-foreground">{screen.description}</Typography>
                 </div>
               </Card>
             </CarouselItem>

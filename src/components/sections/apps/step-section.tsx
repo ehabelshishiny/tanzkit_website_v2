@@ -1,6 +1,7 @@
 'use client';
 
 import { Card } from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
 import { StaggerChildren, StaggerItem } from '@/components/animations/stagger-children';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { Download, UserPlus, MapPin, Star } from 'lucide-react';
@@ -36,9 +37,9 @@ export function StepSection() {
     <section className="w-full max-w-6xl mx-auto px-4 py-16 bg-muted/30">
       <ScrollReveal>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <Typography variant="h2" className="mb-4">
             {t('title')}
-          </h2>
+          </Typography>
         </div>
       </ScrollReveal>
 
@@ -49,9 +50,9 @@ export function StepSection() {
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                 <step.icon className="w-8 h-8 text-primary" />
               </div>
-              <div className="text-sm font-medium text-primary mb-2">{t('stepLabel')} {index + 1}</div>
-              <h3 className="font-semibold mb-2">{step.title}</h3>
-              <p className="text-sm text-muted-foreground">{step.description}</p>
+              <Typography variant="caption" className="font-medium text-primary mb-2">{t('stepLabel')} {index + 1}</Typography>
+              <Typography variant="h4" className="mb-2">{step.title}</Typography>
+              <Typography variant="caption" className="text-muted-foreground">{step.description}</Typography>
             </Card>
           </StaggerItem>
         ))}
