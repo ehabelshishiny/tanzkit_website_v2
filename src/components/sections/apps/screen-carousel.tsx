@@ -10,10 +10,16 @@ import {
 import { Card } from '@/components/ui/card';
 import { Typography } from '@/components/ui/typography';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
-import { Smartphone } from 'lucide-react';
+import { Smartphone, Monitor } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
-export function ScreenCarousel() {
+interface ScreenCarouselProps {
+  screenshots: string[];
+  layoutType: 'portrait' | 'landscape';
+}
+
+export function ScreenCarousel({ screenshots, layoutType }: ScreenCarouselProps) {
   const t = useTranslations('apps.template.screenshots');
 
   const screens = [
@@ -24,6 +30,11 @@ export function ScreenCarousel() {
     { id: 5, title: t('screens.tripHistory.title'), description: t('screens.tripHistory.description') },
     { id: 6, title: t('screens.profile.title'), description: t('screens.profile.description') }
   ];
+
+  // Determine aspect ratio and carousel basis based on layout type
+  const aspectRatio = layoutType === 'landscape' ? 'aspect-[16/9]' : 'aspect-[9/16]';
+  const carouselBasis = layoutType === 'landscape' ? 'md:basis-1/2 lg:basis-1/2' : 'md:basis-1/3 lg:basis-1/4';
+  const PlaceholderIcon = layoutType === 'landscape' ? Monitor : Smartphone;
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-16">
@@ -40,11 +51,20 @@ export function ScreenCarousel() {
 
       <Carousel opts={{ align: 'start', loop: true }} className="w-full">
         <CarouselContent className="-ml-4">
-          {screens.map((screen) => (
-            <CarouselItem key={screen.id} className="pl-4 md:basis-1/3 lg:basis-1/4">
+          {screens.map((screen, index) => (
+            <CarouselItem key={screen.id} className={`pl-4 ${carouselBasis}`}>
               <Card className="overflow-hidden">
-                <div className="aspect-[9/16] bg-gradient-to-br from-primary/20 to-background flex items-center justify-center">
-                  <Smartphone className="w-16 h-16 text-primary/40" />
+                <div className={`${aspectRatio} bg-gradient-to-br from-primary/20 to-background flex items-center justify-center relative`}>
+                  {screenshots[index] ? (
+                    <Image
+                      src={screenshots[index]}
+                      alt={screen.title}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <PlaceholderIcon className="w-16 h-16 text-primary/40" />
+                  )}
                 </div>
                 <div className="p-4">
                   <Typography variant="h4" className="mb-1">{screen.title}</Typography>

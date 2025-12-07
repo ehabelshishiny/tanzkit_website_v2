@@ -1323,6 +1323,20 @@
   },
  "apps": {
   "main": {
+        "names": {
+      "operatorDashboard": "لوحة تحكم المشغل",
+      "enterpriseDashboard": "لوحة تحكم المؤسسة",
+      "supervisorApp": "تطبيق المشرف",
+      "driverApp": "تطبيق السائق",
+      "riderApp": "تطبيق الراكب"
+    },
+    "descriptions": {
+      "operatorDashboard": "مركز تحكم شامل لعمليات الأسطول",
+      "enterpriseDashboard": "تحليلات متقدمة وإدارة للمؤسسات",
+      "supervisorApp": "مراقبة وتنسيق الأسطول في الوقت الفعلي",
+      "driverApp": "تحسين المسارات وإدارة التسليم",
+      "riderApp": "تجربة حجز وتنقل سلسة"
+    },
     "hero": {
       "badge": "منصة الذكاء الاصطناعي لتنقل القوى العاملة",
       "mainTitle": "نظام التطبيقات الذكية",
@@ -1426,11 +1440,11 @@
   },
   "template": {
     "hero": {
-      "title": "قم بتنزيل تطبيقاتنا",
-      "subtitle": "احصل على تطبيق Tranzkit للنقل السلس في متناول يدك. متاح لأنظمة iOS و Android.",
+      "downloadTitle": "حمّل تطبيق {appName}",
+      "subtitle": "احصل على تطبيق ترانزكت للنقل السلس في متناول يدك. متاح لأنظمة iOS و Android.",
       "buttons": {
-        "appStore": "App Store",
-        "googlePlay": "Google Play"
+        "appStore": "متجر ابل",
+        "googlePlay": "جوجل بلاي"
       }
     },
     "screenshots": {

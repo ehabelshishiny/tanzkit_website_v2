@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Typography } from '@/components/ui/typography';
 
 export default function AppsShowcase() {
@@ -335,9 +336,9 @@ export default function AppsShowcase() {
                           ))}
                         </ul>
 
-                        <button className={`px-8 py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer`}>
+                        <Link href={`/${locale}/apps/operator-dashboard`} className={`px-8 py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}>
                           {currentSegment.dashboard.cta}
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -391,9 +392,12 @@ export default function AppsShowcase() {
                             ))}
                           </ul>
 
-                          <button className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer`}>
+                          <Link 
+                            href={`/${locale}/apps/${index === 0 ? 'supervisor' : 'driver'}`}
+                            className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}
+                          >
                             {app.cta}
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -445,9 +449,9 @@ export default function AppsShowcase() {
                           ))}
                         </ul>
 
-                        <button className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer`}>
+                        <Link href={`/${locale}/apps/enterprise-dashboard`} className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}>
                           {currentSegment.dashboard.cta}
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -493,9 +497,9 @@ export default function AppsShowcase() {
                           ))}
                         </ul>
 
-                        <button className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer`}>
+                        <Link href={`/${locale}/apps/rider`} className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}>
                           {currentSegment.apps[0].cta}
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>

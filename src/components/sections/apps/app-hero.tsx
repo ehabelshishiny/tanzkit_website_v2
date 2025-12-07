@@ -4,10 +4,23 @@ import { motion } from 'framer-motion';
 import { Smartphone, Download } from 'lucide-react';
 import { Typography } from '@/components/ui/typography';
 import { Button } from '@/components/ui/button';
-import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 
-export function AppHero() {
-  const t = useTranslations('apps.template.hero');
+interface AppHeroProps {
+  appName: string;
+  appNameAr: string;
+  appDescription: string;
+  appDescriptionAr: string;
+}
+
+export function AppHero({ appName, appNameAr, appDescription, appDescriptionAr }: AppHeroProps) {
+  const locale = useLocale();
+  
+  const displayName = locale === 'ar' ? appNameAr : appName;
+  const downloadPrefix = locale === 'ar' ? 'حمّل' : 'Download Our';
+  const subtitle = locale === 'ar' ? 'تجربة إدارة نقل سلسة' : 'Experience seamless transportation management';
+  const appStoreText = locale === 'ar' ? 'آب ستور' : 'App Store';
+  const googlePlayText = locale === 'ar' ? 'جوجل بلاي' : 'Google Play';
 
   return (
     <section className="w-full bg-gradient-to-b from-primary/5 to-background py-20">
@@ -19,19 +32,19 @@ export function AppHero() {
             transition={{ duration: 0.6 }}
           >
             <Typography variant="h2" className="mb-6">
-              {t('title')}
+              {downloadPrefix} {displayName}
             </Typography>
             <Typography variant="subtitle" className="text-muted-foreground mb-8">
-              {t('subtitle')}
+              {subtitle}
             </Typography>
             <div className="flex flex-wrap gap-4">
               <Button size="lg" className="gap-2">
                 <Download className="w-5 h-5" />
-                {t('buttons.appStore')}
+                {appStoreText}
               </Button>
               <Button size="lg" variant="outline" className="gap-2">
                 <Download className="w-5 h-5" />
-                {t('buttons.googlePlay')}
+                {googlePlayText}
               </Button>
             </div>
           </motion.div>

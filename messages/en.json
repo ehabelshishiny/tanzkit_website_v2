@@ -1322,6 +1322,20 @@
     "copyright": "All rights reserved."
   },
  "apps": {
+      "names": {
+      "operatorDashboard": "Operator Dashboard",
+      "enterpriseDashboard": "Enterprise Dashboard",
+      "supervisorApp": "Supervisor App",
+      "driverApp": "Driver App",
+      "riderApp": "Rider App"
+    },
+    "descriptions": {
+      "operatorDashboard": "Comprehensive control center for fleet operations",
+      "enterpriseDashboard": "Advanced analytics and management for enterprises",
+      "supervisorApp": "Real-time fleet monitoring and coordination",
+      "driverApp": "Optimized route navigation and delivery management",
+      "riderApp": "Seamless booking and ride experience"
+    },
   "main": {
     "hero": {
       "badge": "AI Workforce Mobility Platform",
@@ -1426,7 +1440,7 @@
   },
   "template": {
     "hero": {
-      "title": "Download Our Apps",
+      "downloadTitle": "Download Our {appName}",
       "subtitle": "Get the Tranzkit app for seamless transportation at your fingertips. Available for iOS and Android.",
       "buttons": {
         "appStore": "App Store",
