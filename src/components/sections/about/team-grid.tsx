@@ -2,59 +2,31 @@
 
 import { Card } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Typography } from '@/components/ui/typography';
 import { StaggerChildren, StaggerItem } from '@/components/animations/stagger-children';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
-
-const team = [
-  {
-    name: 'Ahmed Hassan',
-    role: 'CEO & Founder',
-    initials: 'AH',
-    bio: 'Visionary leader with 15+ years in transportation technology'
-  },
-  {
-    name: 'Sarah Mitchell',
-    role: 'CTO',
-    initials: 'SM',
-    bio: 'Tech innovator specializing in AI and machine learning'
-  },
-  {
-    name: 'Omar Al-Rashid',
-    role: 'COO',
-    initials: 'OA',
-    bio: 'Operations expert with global fleet management experience'
-  },
-  {
-    name: 'Lisa Chen',
-    role: 'Head of Product',
-    initials: 'LC',
-    bio: 'Product strategist focused on user-centric design'
-  },
-  {
-    name: 'Mohammed Ali',
-    role: 'Head of Engineering',
-    initials: 'MA',
-    bio: 'Engineering leader building scalable transportation systems'
-  },
-  {
-    name: 'Emily Rodriguez',
-    role: 'Head of Customer Success',
-    initials: 'ER',
-    bio: 'Customer advocate ensuring exceptional service delivery'
-  }
-];
+import { useTranslations } from 'next-intl';
 
 export function TeamGrid() {
+  const t = useTranslations('about.team');
+
+  const team = Array.from({ length: 6 }, (_, i) => ({
+    name: t(`members.${i}.name`),
+    role: t(`members.${i}.role`),
+    initials: t(`members.${i}.initials`),
+    bio: t(`members.${i}.bio`)
+  }));
+
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-16 bg-muted/30">
       <ScrollReveal>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Meet Our Team
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            The passionate people behind Tranzkit's success
-          </p>
+          <Typography variant="h2" align="center" className="mb-4">
+            {t('heading')}
+          </Typography>
+          <Typography variant="subtitle" align="center" className="text-muted-foreground max-w-2xl mx-auto">
+            {t('subtitle')}
+          </Typography>
         </div>
       </ScrollReveal>
 
@@ -67,9 +39,15 @@ export function TeamGrid() {
                   {member.initials}
                 </AvatarFallback>
               </Avatar>
-              <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-              <div className="text-sm text-primary font-medium mb-3">{member.role}</div>
-              <p className="text-sm text-muted-foreground">{member.bio}</p>
+              <Typography variant="h4" align="center" className="mb-1">
+                {member.name}
+              </Typography>
+              <Typography variant="caption" align="center" className="text-primary font-medium mb-3">
+                {member.role}
+              </Typography>
+              <Typography variant="body" align="center" className="text-sm text-muted-foreground">
+                {member.bio}
+              </Typography>
             </Card>
           </StaggerItem>
         ))}

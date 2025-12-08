@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Typography } from '@/components/ui/typography';
 import { LucideIcon } from 'lucide-react';
 
 // Register GSAP plugins
@@ -88,7 +89,10 @@ export function GsapImpactTile({
             ease: 'power2.out',
             onUpdate: function () {
               if (numberRef.current) {
-                numberRef.current.textContent = Math.ceil(this.targets()[0].val).toString();
+                const span = numberRef.current.querySelector('span');
+                if (span) {
+                  span.textContent = Math.ceil(this.targets()[0].val).toString();
+                }
               }
             },
           },
@@ -153,17 +157,20 @@ export function GsapImpactTile({
       </div>
 
       {/* Number */}
-      <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary-foreground mb-4">
-        {prefix}
-        <span ref={numberRef}>{typeof value === 'number' ? '0' : value}</span>
-        {suffix}
+      <div ref={numberRef}>
+        <Typography variant="display" as="div" className="text-primary-foreground mb-4">
+          {prefix}
+          <span>{typeof value === 'number' ? '0' : value}</span>
+          {suffix}
+        </Typography>
       </div>
 
       {/* Label */}
-      <p ref={labelRef} className="text-primary-foreground text-lg md:text-xl font-medium opacity-90">
-        {label}
-      </p>
+      <div ref={labelRef}>
+        <Typography variant="subtitle" as="p" className="text-primary-foreground opacity-90">
+          {label}
+        </Typography>
+      </div>
     </div>
   );
 }
-

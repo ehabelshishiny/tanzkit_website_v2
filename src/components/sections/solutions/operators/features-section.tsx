@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { Typography } from '@/components/ui/typography';
 import { SectionContainer } from '@/components/ui/section-container';
 import { SectionHeader } from '@/components/ui/section-header';
 import { FeatureCard } from '@/components/ui/feature-card';
@@ -17,9 +18,9 @@ export function OperatorsFeaturesSection() {
     >
       {/* Overview */}
       <div className="text-center mb-16">
-        <p className="text-xl md:text-2xl text-slate-700 dark:text-gray-100 leading-relaxed max-w-4xl mx-auto">
+        <Typography variant="subtitle" className="text-slate-700 dark:text-gray-100 max-w-4xl mx-auto">
           {t('overview.text')}
-        </p>
+        </Typography>
       </div>
 
       {/* Features */}
@@ -94,4 +95,3 @@ export function OperatorsFeaturesSection() {
     </SectionContainer>
   );
 }
-

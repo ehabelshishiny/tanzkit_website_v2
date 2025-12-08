@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Apple, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
 import { SectionContainer } from '@/components/ui/section-container';
 import { fadeInUp, scaleIn } from '@/lib/animation-variants';
 
@@ -35,12 +36,12 @@ export function AppDownloadSection({
         variants={fadeInUp}
       >
         <Card className="p-12 text-center bg-gradient-to-br from-card to-muted/50 border-border">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+          <Typography variant="h2" className="mb-4 text-foreground">
             {t('downloadOn')}
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
+          </Typography>
+          <Typography variant="body" className="text-muted-foreground mb-8">
             {t('availableOn')} iOS & Android
-          </p>
+          </Typography>
 
           {/* Download Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -75,19 +76,18 @@ export function AppDownloadSection({
           </div>
 
           {/* Requirements */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center text-sm text-muted-foreground">
-            <div>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Typography variant="caption" className="text-muted-foreground">
               <span className="font-medium text-foreground">iOS:</span>{' '}
               {requirements.ios}
-            </div>
-            <div>
+            </Typography>
+            <Typography variant="caption" className="text-muted-foreground">
               <span className="font-medium text-foreground">Android:</span>{' '}
               {requirements.android}
-            </div>
+            </Typography>
           </div>
         </Card>
       </motion.div>
     </SectionContainer>
   );
 }
-

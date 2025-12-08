@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { appsArray } from '@/config/apps';
 import { AppCard } from '@/components/ui/app-card';
+import { Typography } from '@/components/ui/typography';
 import { SectionContainer } from '@/components/ui/section-container';
 import { fadeInUp } from '@/lib/animation-variants';
 
@@ -52,15 +53,15 @@ export function AppsGridSection() {
         variants={fadeInUp}
         className="text-center mb-16"
       >
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+        <Typography variant="h2" className="mb-4 text-foreground">
           {t('title')}
-        </h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        </Typography>
+        <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
           {t('subtitle')}
-        </p>
+        </Typography>
       </motion.div>
 
-            {/* Bento Grid Layout - Glassmorphism Style */}
+      {/* Bento Grid Layout - Glassmorphism Style */}
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -187,7 +188,6 @@ export function AppsGridSection() {
             </motion.div>
           )}
         </div>
-
 
         {/* Tablet View (768px - 1023px): Desktop full width, 3 mobile apps in one row */}
         <div className="hidden md:block lg:hidden space-y-4">

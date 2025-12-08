@@ -1,24 +1,28 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Zap, Shield, TrendingUp } from 'lucide-react';
-
-const highlights = [
-  {
-    icon: Zap,
-    text: 'No setup fees'
-  },
-  {
-    icon: Shield,
-    text: 'Cancel anytime'
-  },
-  {
-    icon: TrendingUp,
-    text: '30-day free trial'
-  }
-];
+import { Typography } from '@/components/ui/typography';
 
 export function PricingHero() {
+  const t = useTranslations('pricing.hero');
+
+  const highlights = [
+    {
+      icon: Zap,
+      text: t('highlights.noSetupFees')
+    },
+    {
+      icon: Shield,
+      text: t('highlights.cancelAnytime')
+    },
+    {
+      icon: TrendingUp,
+      text: t('highlights.freeTrial')
+    }
+  ];
+
   return (
     <section className="w-full bg-gradient-to-b from-primary/5 to-background py-20">
       <div className="max-w-4xl mx-auto px-4 text-center">
@@ -27,12 +31,12 @@ export function PricingHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Pricing That Scales With You
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Start with a plan that fits your needs today, and grow as your business expands
-          </p>
+          <Typography variant="display" as="h1" align="center" className="mb-6">
+            {t('title')}
+          </Typography>
+          <Typography variant="subtitle" align="center" className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+            {t('subtitle')}
+          </Typography>
         </motion.div>
 
         <motion.div
@@ -46,7 +50,9 @@ export function PricingHero() {
               <div className="p-2 bg-primary/10 rounded-lg">
                 <highlight.icon className="w-5 h-5 text-primary" />
               </div>
-              <span className="font-medium">{highlight.text}</span>
+              <Typography variant="body" className="font-medium">
+                {highlight.text}
+              </Typography>
             </div>
           ))}
         </motion.div>
@@ -54,4 +60,3 @@ export function PricingHero() {
     </section>
   );
 }
-

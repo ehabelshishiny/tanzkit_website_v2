@@ -1,10 +1,37 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Smartphone, Download } from 'lucide-react';
+import { Download } from 'lucide-react';
+import Image from 'next/image';
+import { Typography } from '@/components/ui/typography';
 import { Button } from '@/components/ui/button';
+import { useLocale } from 'next-intl';
 
-export function AppHero() {
+interface AppHeroProps {
+  appName: string;
+  appNameAr: string;
+  appDescription: string;
+  appDescriptionAr: string;
+  heroImage: string;
+  layoutType: 'portrait' | 'landscape';
+}
+
+export function AppHero({ 
+  appName, 
+  appNameAr, 
+  appDescription, 
+  appDescriptionAr,
+  heroImage,
+  layoutType 
+}: AppHeroProps) {
+  const locale = useLocale();
+  
+  const displayName = locale === 'ar' ? appNameAr : appName;
+  const downloadPrefix = locale === 'ar' ? 'حمّل' : 'Download Our';
+  const subtitle = locale === 'ar' ? 'تجربة إدارة نقل سلسة' : 'Experience seamless transportation management';
+  const appStoreText = locale === 'ar' ? 'آب ستور' : 'App Store';
+  const googlePlayText = locale === 'ar' ? 'جوجل بلاي' : 'Google Play';
+
   return (
     <section className="w-full bg-gradient-to-b from-primary/5 to-background py-20">
       <div className="max-w-6xl mx-auto px-4">
@@ -14,21 +41,20 @@ export function AppHero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Download Our Apps
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Get the Tranzkit app for seamless transportation at your fingertips. 
-              Available for iOS and Android.
-            </p>
+            <Typography variant="h2" className="mb-6">
+              {downloadPrefix} {displayName}
+            </Typography>
+            <Typography variant="subtitle" className="text-muted-foreground mb-8">
+              {subtitle}
+            </Typography>
             <div className="flex flex-wrap gap-4">
               <Button size="lg" className="gap-2">
                 <Download className="w-5 h-5" />
-                App Store
+                {appStoreText}
               </Button>
               <Button size="lg" variant="outline" className="gap-2">
                 <Download className="w-5 h-5" />
-                Google Play
+                {googlePlayText}
               </Button>
             </div>
           </motion.div>
@@ -40,10 +66,17 @@ export function AppHero() {
             className="flex justify-center"
           >
             <div className="relative">
-              <div className="w-64 h-[500px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl flex items-center justify-center shadow-2xl">
-                <Smartphone className="w-32 h-32 text-primary/40" />
+              <div className="rounded-4xl shadow-2xl relative bg-transparent">
+                <Image
+                  src={heroImage}
+                  alt={`${appName} Screenshot`}
+                  width={layoutType === 'portrait' ? 256 : 500}
+                  height={layoutType === 'portrait' ? 500 : 256}
+                  className="object-contain"
+                  priority
+                />
               </div>
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center shadow-lg">
                 <Download className="w-10 h-10 text-primary" />
               </div>
             </div>
@@ -53,4 +86,3 @@ export function AppHero() {
     </section>
   );
 }
-

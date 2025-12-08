@@ -1,69 +1,46 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
+import { Typography } from '@/components/ui/typography';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { Building, Car } from 'lucide-react';
 
-const operatorContent = {
-  title: 'For Fleet Operators',
-  description: 'Complete control over your transportation operations',
-  features: [
-    {
-      title: 'Fleet Management Dashboard',
-      description: 'Monitor and manage your entire fleet from a centralized command center'
-    },
-    {
-      title: 'Driver Management',
-      description: 'Recruit, onboard, and manage drivers with comprehensive tools'
-    },
-    {
-      title: 'Revenue Optimization',
-      description: 'Maximize earnings with dynamic pricing and demand forecasting'
-    },
-    {
-      title: 'Compliance & Safety',
-      description: 'Ensure regulatory compliance and maintain safety standards'
-    }
-  ]
-};
-
-const driverContent = {
-  title: 'For Drivers',
-  description: 'Earn more with flexible schedules and powerful tools',
-  features: [
-    {
-      title: 'Flexible Earnings',
-      description: 'Drive on your schedule and maximize your income with smart routing'
-    },
-    {
-      title: 'Easy Navigation',
-      description: 'Turn-by-turn navigation with real-time traffic updates'
-    },
-    {
-      title: 'Instant Payments',
-      description: 'Get paid quickly with multiple payout options'
-    },
-    {
-      title: 'Driver Support',
-      description: '24/7 support team ready to help with any issues'
-    }
-  ]
-};
-
 export function RoleSwitcherTabs() {
+  const t = useTranslations('solutions.operatorsDrivers.roleSwitcher');
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 py-16">
+    <section className="w-full max-w-7xl mx-auto px-4 py-16" dir={isRTL ? 'rtl' : 'ltr'}>
       <Tabs defaultValue="operator" className="w-full">
         <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
-          <TabsTrigger value="operator" className="gap-2">
-            <Building className="w-4 h-4" />
-            <span>Operators</span>
-          </TabsTrigger>
-          <TabsTrigger value="driver" className="gap-2">
-            <Car className="w-4 h-4" />
-            <span>Drivers</span>
-          </TabsTrigger>
+          {/* Conditionally render tabs in reverse order for RTL */}
+          {isRTL ? (
+            <>
+              <TabsTrigger value="driver" className="gap-2">
+                <Car className="w-4 h-4" />
+                <span>{t('tabs.driver')}</span>
+              </TabsTrigger>
+              <TabsTrigger value="operator" className="gap-2">
+                <Building className="w-4 h-4" />
+                <span>{t('tabs.operator')}</span>
+              </TabsTrigger>
+            </>
+          ) : (
+            <>
+              <TabsTrigger value="operator" className="gap-2">
+                <Building className="w-4 h-4" />
+                <span>{t('tabs.operator')}</span>
+              </TabsTrigger>
+              <TabsTrigger value="driver" className="gap-2">
+                <Car className="w-4 h-4" />
+                <span>{t('tabs.driver')}</span>
+              </TabsTrigger>
+            </>
+          )}
         </TabsList>
 
         <TabsContent value="operator">
@@ -73,24 +50,28 @@ export function RoleSwitcherTabs() {
             transition={{ duration: 0.5 }}
           >
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                {operatorContent.title}
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                {operatorContent.description}
-              </p>
+              <Typography variant="h2" className="mb-4">
+                {t('operator.title')}
+              </Typography>
+              <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
+                {t('operator.description')}
+              </Typography>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
-              {operatorContent.features.map((feature, index) => (
+              {[0, 1, 2, 3].map((index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="p-6 h-full hover:shadow-lg transition-shadow">
-                    <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                    <p className="text-muted-foreground">{feature.description}</p>
+                  <Card className={`p-6 h-full hover:shadow-lg transition-shadow ${isRTL ? 'text-right' : 'text-left'}`}>
+                    <Typography variant="h3" className="mb-3">
+                      {t(`operator.features.${index}.title`)}
+                    </Typography>
+                    <Typography variant="body" className="text-muted-foreground">
+                      {t(`operator.features.${index}.description`)}
+                    </Typography>
                   </Card>
                 </motion.div>
               ))}
@@ -105,24 +86,28 @@ export function RoleSwitcherTabs() {
             transition={{ duration: 0.5 }}
           >
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                {driverContent.title}
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                {driverContent.description}
-              </p>
+              <Typography variant="h2" className="mb-4">
+                {t('driver.title')}
+              </Typography>
+              <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
+                {t('driver.description')}
+              </Typography>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
-              {driverContent.features.map((feature, index) => (
+              {[0, 1, 2, 3].map((index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="p-6 h-full hover:shadow-lg transition-shadow">
-                    <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                    <p className="text-muted-foreground">{feature.description}</p>
+                  <Card className={`p-6 h-full hover:shadow-lg transition-shadow ${isRTL ? 'text-right' : 'text-left'}`}>
+                    <Typography variant="h3" className="mb-3">
+                      {t(`driver.features.${index}.title`)}
+                    </Typography>
+                    <Typography variant="body" className="text-muted-foreground">
+                      {t(`driver.features.${index}.description`)}
+                    </Typography>
                   </Card>
                 </motion.div>
               ))}
@@ -133,4 +118,3 @@ export function RoleSwitcherTabs() {
     </section>
   );
 }
-

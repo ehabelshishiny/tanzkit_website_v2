@@ -2,6 +2,7 @@
 
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+import { Typography } from '@/components/ui/typography';
 import { LucideIcon } from 'lucide-react';
 
 interface ImpactTileProps {
@@ -88,7 +89,7 @@ export function ImpactTile({
         </motion.div>
 
         {/* Metric Value */}
-        <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary-foreground mb-4">
+        <Typography variant="display" as="div" className="text-primary-foreground mb-4">
           {prefix}
           {typeof value === 'number' && animateOnScroll ? (
             <span ref={displayValue}>0</span>
@@ -96,14 +97,13 @@ export function ImpactTile({
             <span>{value}</span>
           )}
           {suffix}
-        </div>
+        </Typography>
 
         {/* Label */}
-        <p className="text-primary-foreground text-lg md:text-xl font-medium opacity-90">
+        <Typography variant="subtitle" className="text-primary-foreground opacity-90">
           {label}
-        </p>
+        </Typography>
       </div>
     </motion.div>
   );
 }
-

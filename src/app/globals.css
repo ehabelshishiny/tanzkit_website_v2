@@ -216,26 +216,167 @@
 }
 
 /* === Arabic Font Configuration === */
-/* IBM Plex Sans Arabic for body text and general content */
-html[lang="ar"] body {
+/* 
+  NOTE: Arabic font handling is now done via Typography component.
+  Old global CSS rules have been removed in favor of the component-based approach.
+  See: src/components/ui/typography.tsx
+*/
+
+/* === Logo Marquee Animation - Infinite Scroll === */
+.logo-marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 2rem;
+  /* Gradient mask for smooth fade on edges */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.logo-marquee-group {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  animation: scroll-logos-ltr 40s linear infinite;
+  /* Prevent animation pause on any interaction */
+  animation-play-state: running !important;
+}
+
+/* LTR Animation (English) - Scroll Left */
+@keyframes scroll-logos-ltr {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 2rem));
+  }
+}
+
+/* RTL Support for Arabic - Scroll Right */
+html[lang="ar"] .logo-marquee {
+  /* Reverse gradient direction for RTL */
+  mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+html[lang="ar"] .logo-marquee-group {
+  /* Use RTL animation for Arabic */
+  animation: scroll-logos-rtl 40s linear infinite;
+}
+
+/* RTL Animation - Scroll from Left to Right */
+@keyframes scroll-logos-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(100% + 2rem));
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-group {
+    animation-play-state: paused !important;
+  }
+}
+
+/* Responsive gap adjustments */
+@media (max-width: 768px) {
+  .logo-marquee,
+  .logo-marquee-group {
+    gap: 1.5rem;
+  }
+  
+  /* LTR responsive */
+  @keyframes scroll-logos-ltr {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 1.5rem));
+    }
+  }
+  
+  /* RTL responsive */
+  @keyframes scroll-logos-rtl {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(100% + 1.5rem));
+    }
+  }
+}
+
+/* === RTL Support for Pricing Cards === */
+/* LTR: Checkmark LEFT, Text RIGHT */
+html[dir="ltr"] .pricing-feature-item {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  gap: 0.5rem;
+}
+
+/* RTL: Checkmark RIGHT, Text LEFT */
+html[dir="rtl"] .pricing-feature-item {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  text-align: right !important;
+  gap: 0.5rem !important;
+}
+
+/* ========================================
+   Typography System Font Classes
+   ======================================== */
+
+/* English - Geist Sans (default) */
+.font-sans {
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+/* Arabic - Alarabia Custom Font (for headers, titles) */
+.font-alarabia {
+  font-family: var(--font-alarabia), var(--font-geist-sans), sans-serif;
+}
+
+/* Arabic - Cairo Font (for headers, titles) */
+/* .font-cairo {
+  font-family: var(--font-cairo), var(--font-geist-sans), sans-serif;
+} */
+
+
+/* Arabic - IBM Plex Sans Arabic (for body, subtitle, caption, buttons) */
+.font-ibm-arabic {
   font-family: var(--font-ibm-plex-arabic), var(--font-geist-sans), sans-serif;
 }
 
-html[lang="ar"] .font-sans {
-  font-family: var(--font-ibm-plex-arabic), sans-serif;
-}
-
-/* for headers, titles, and headings */
-html[lang="ar"] h1,
-html[lang="ar"] .heading,
-html[lang="ar"] .title {
-  font-family: var(--font-noto-sans-arabic), var(--font-noto-sans-arabic), sans-serif;
-  font-weight: 700;
-}
-
-/* Keep monospace font (code blocks) unchanged for both locales */
-html[lang="ar"] .font-mono,
-html[lang="ar"] code,
-html[lang="ar"] pre {
+/* Monospace (unchanged for both languages) */
+.font-mono {
   font-family: var(--font-geist-mono), monospace;
 }

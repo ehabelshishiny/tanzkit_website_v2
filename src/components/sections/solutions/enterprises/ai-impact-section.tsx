@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { Typography } from '@/components/ui/typography';
 import { SectionContainer } from '@/components/ui/section-container';
 import { SectionHeader } from '@/components/ui/section-header';
 import { FramerMetricCard } from '../operators/framer-metric-card';
@@ -87,20 +88,21 @@ export function EnterprisesAiImpactSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="max-w-3xl"
             >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-foreground via-foreground/90 to-foreground/80 bg-clip-text">
+              <Typography variant="h2" className="text-foreground mb-6 bg-gradient-to-r from-foreground via-foreground/90 to-foreground/80 bg-clip-text">
                 {t('aiAdvantage.title')}
-              </h2>
+              </Typography>
               
               {/* Description with emphasis */}
-              <motion.p
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="text-base md:text-lg lg:text-xl text-foreground/70 leading-relaxed font-light"
               >
-                {t('aiAdvantage.description')}
-              </motion.p>
+                <Typography variant="subtitle" className="text-foreground/70 font-light">
+                  {t('aiAdvantage.description')}
+                </Typography>
+              </motion.div>
             </motion.div>
 
             {/* Decorative line element */}
@@ -134,7 +136,7 @@ export function EnterprisesAiImpactSection() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight text-primary-foreground dark:text-gray-100">{t('impact.title')}</h2>
+            <Typography variant="h2" className="text-primary-foreground dark:text-gray-100">{t('impact.title')}</Typography>
           </motion.div>
 
           {/* Impact Cards Grid - 2x2 Layout */}

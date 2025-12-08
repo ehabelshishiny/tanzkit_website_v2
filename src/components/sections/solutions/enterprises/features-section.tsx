@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { Typography } from '@/components/ui/typography';
 import { SectionContainer } from '@/components/ui/section-container';
 import { StyledFeatureCard } from './styled-feature-card';
 import { Building2, Users, BarChart3, Shield } from 'lucide-react';
@@ -15,16 +16,15 @@ export function EnterprisesFeaturesSection() {
       maxWidth="2xl"
     >
       <div className="text-center mb-16">
-        <p className="subheading text-[#334155] dark:text-gray-100 max-w-4xl mx-auto">
+        <Typography variant="subtitle" className="text-[#334155] dark:text-gray-100 max-w-4xl mx-auto">
           {t('overview.text')}
-        </p>
+        </Typography>
       </div>
 
       {/* Features */}
       <div>
-        {/* H2: Sora SemiBold 36px/42px */}
         <div className="text-center mb-12 md:mb-16">
-          <h2>{t('features.title')}</h2>
+          <Typography variant="h2">{t('features.title')}</Typography>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
           {/* Feature 1 */}
@@ -91,4 +91,3 @@ export function EnterprisesFeaturesSection() {
     </SectionContainer>
   );
 }
-

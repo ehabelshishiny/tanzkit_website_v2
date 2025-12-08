@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Card } from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
 import { SectionContainer } from '@/components/ui/section-container';
 import { Smartphone } from 'lucide-react';
 import { fadeInUp } from '@/lib/animation-variants';
@@ -35,9 +36,9 @@ export function AppScreenshotsCarousel({
         variants={fadeInUp}
         className="text-center mb-12"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+        <Typography variant="h2" className="text-foreground">
           {title}
-        </h2>
+        </Typography>
       </motion.div>
 
       {/* Carousel */}
@@ -94,12 +95,12 @@ export function AppScreenshotsCarousel({
 
                 {/* Screenshot info */}
                 <div className="p-6 bg-card">
-                  <h3 className="font-semibold text-lg mb-2 text-foreground">
+                  <Typography variant="h3" className="mb-2 text-foreground">
                     {screenshot.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
+                  </Typography>
+                  <Typography variant="caption" className="text-muted-foreground">
                     {screenshot.description}
-                  </p>
+                  </Typography>
                 </div>
               </Card>
             </CarouselItem>
@@ -111,4 +112,3 @@ export function AppScreenshotsCarousel({
     </SectionContainer>
   );
 }
-

@@ -2,6 +2,7 @@
 
 import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
+import { Typography } from '@/components/ui/typography';
 import { LucideIcon } from 'lucide-react';
 
 interface FramerMetricCardProps {
@@ -151,7 +152,7 @@ export function FramerMetricCard({
       </motion.div>
 
       {/* Number with counter animation */}
-      <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground dark:text-gray-100 mb-2 drop-shadow-lg">
+      <Typography variant="h2" as="div" className="text-primary-foreground dark:text-gray-100 mb-2 drop-shadow-lg">
         {prefix}
         {typeof value === 'number' ? (
           <span ref={displayValue}>0</span>
@@ -159,13 +160,12 @@ export function FramerMetricCard({
           <span>{value}</span>
         )}
         {suffix}
-      </div>
+      </Typography>
 
       {/* Label */}
-      <p className="text-primary-foreground dark:text-gray-100 text-sm md:text-base font-medium opacity-95">
+      <Typography variant="caption" as="p" className="text-primary-foreground dark:text-gray-100 font-medium opacity-95">
         {label}
-      </p>
+      </Typography>
     </motion.div>
   );
 }
-

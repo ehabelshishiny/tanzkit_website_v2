@@ -1,19 +1,23 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Typography } from '@/components/ui/typography';
 
 export default function AppsShowcase() {
   const { theme } = useTheme();
+  const t = useTranslations('apps.main.showcase');
+  const tHero = useTranslations('apps.main.hero');
+  const locale = useLocale();
   const [mounted, setMounted] = useState(false);
   const [activeSegment, setActiveSegment] = useState<'operators' | 'enterprise'>('operators');
 
-  // Wait until client-side mount to prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Prevent rendering theme-dependent content until mounted
   if (!mounted) {
     return (
       <div className="min-h-screen bg-slate-950 py-20 px-6">
@@ -32,83 +36,88 @@ export default function AppsShowcase() {
 
   const segments = {
     operators: {
-      title: 'Operators Dashboard',
-      description: 'Complete fleet management ecosystem for transportation operators',
+      title: t('segments.operators.title'),
+      description: t('segments.operators.description'),
       icon: 'ri-truck-line',
       color: 'ocean',
       dashboard: {
         id: 'operators-dashboard',
-        name: 'Operators Dashboard',
-        description: 'Central command hub for fleet operations',
-        platform: 'Web Application',
+        name: t('segments.operators.dashboard.name'),
+        description: t('segments.operators.dashboard.description'),
+        platform: t('segments.operators.dashboard.platform'),
         icon: 'ri-dashboard-3-line',
         benefits: [
-          'Real-time fleet visibility',
-          'AI-powered dispatch automation',
-          'Predictive maintenance analytics'
+          t('segments.operators.dashboard.benefits.visibility'),
+          t('segments.operators.dashboard.benefits.automation'),
+          t('segments.operators.dashboard.benefits.analytics')
         ],
-        deviceType: 'landscape'
+        cta: t('segments.operators.dashboard.cta'),
+        deviceType: 'landscape' as const
       },
       apps: [
         {
           id: 'supervisor-app',
-          name: 'Supervisor App',
-          description: 'Mobile fleet oversight and driver management',
-          platform: 'iOS & Android',
+          name: t('segments.operators.supervisor.name'),
+          description: t('segments.operators.supervisor.description'),
+          platform: t('segments.operators.supervisor.platform'),
           icon: 'ri-user-star-line',
           benefits: [
-            'Live driver performance tracking',
-            'Instant incident response',
-            'Mobile task assignment'
+            t('segments.operators.supervisor.benefits.tracking'),
+            t('segments.operators.supervisor.benefits.response'),
+            t('segments.operators.supervisor.benefits.assignment')
           ],
-          deviceType: 'portrait'
+          cta: t('segments.operators.supervisor.cta'),
+          deviceType: 'portrait' as const
         },
         {
           id: 'driver-app',
-          name: 'Driver App',
-          description: 'AI-guided navigation and trip management',
-          platform: 'iOS & Android',
+          name: t('segments.operators.driver.name'),
+          description: t('segments.operators.driver.description'),
+          platform: t('segments.operators.driver.platform'),
           icon: 'ri-steering-2-line',
           benefits: [
-            'Smart route optimization',
-            'Automated trip logging',
-            'Real-time dispatch sync'
+            t('segments.operators.driver.benefits.optimization'),
+            t('segments.operators.driver.benefits.logging'),
+            t('segments.operators.driver.benefits.sync')
           ],
-          deviceType: 'portrait'
+          cta: t('segments.operators.driver.cta'),
+          deviceType: 'portrait' as const
         }
       ]
     },
     enterprise: {
-      title: 'Enterprise Dashboard',
-      description: 'Strategic mobility platform for corporate transportation programs',
+      title: t('segments.enterprise.title'),
+      description: t('segments.enterprise.description'),
       icon: 'ri-building-2-line',
       color: 'emerald',
       dashboard: {
         id: 'enterprise-dashboard',
-        name: 'Enterprise Dashboard',
-        description: 'Strategic mobility intelligence platform',
-        platform: 'Web Application',
+        name: t('segments.enterprise.dashboard.name'),
+        description: t('segments.enterprise.dashboard.description'),
+        platform: t('segments.enterprise.dashboard.platform'),
         icon: 'ri-building-line',
         benefits: [
-          'Organization-wide analytics',
-          'Cost optimization insights',
-          'Compliance management'
+          t('segments.enterprise.dashboard.benefits.analytics'),
+          t('segments.enterprise.dashboard.benefits.optimization'),
+          t('segments.enterprise.dashboard.benefits.compliance')
         ],
-        deviceType: 'landscape'
+        cta: t('segments.enterprise.dashboard.cta'),
+        deviceType: 'landscape' as const
       },
       apps: [
         {
           id: 'rider-app',
-          name: 'Rider App',
-          description: 'Seamless employee transportation experience',
-          platform: 'iOS & Android',
+          name: t('segments.enterprise.rider.name'),
+          description: t('segments.enterprise.rider.description'),
+          platform: t('segments.enterprise.rider.platform'),
           icon: 'ri-user-location-line',
           benefits: [
-            'One-tap ride booking',
-            'Real-time driver tracking',
-            'Integrated payment system'
+            t('segments.enterprise.rider.benefits.booking'),
+            t('segments.enterprise.rider.benefits.tracking'),
+            t('segments.enterprise.rider.benefits.payment')
           ],
-          deviceType: 'portrait'
+          cta: t('segments.enterprise.rider.cta'),
+          deviceType: 'portrait' as const
         }
       ]
     }
@@ -209,16 +218,12 @@ export default function AppsShowcase() {
       <div className="max-w-[1400px] mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${colors.light} border ${colors.border} mb-6`}>
-            <i className={`ri-cpu-line ${colors.text} text-sm`}></i>
-            <span className={`${colors.text} text-sm font-medium`}>AI Workforce Mobility Platform</span>
-          </div>
-          <h1 className={`text-5xl md:text-6xl font-bold ${themeClasses.textPrimary} mb-6`}>
-            Intelligent Application Ecosystem
-          </h1>
-          <p className={`text-xl ${themeClasses.textSecondary} max-w-3xl mx-auto`}>
-            Two powerful segments, five integrated applications, one unified AI platform
-          </p>
+          <Typography variant="h1" className={`${themeClasses.textPrimary} mb-6`}>
+            {tHero('title')}
+          </Typography>
+          <Typography variant="subtitle" className={`${themeClasses.textSecondary} max-w-3xl mx-auto`}>
+            {tHero('subtitle')}
+          </Typography>
         </div>
 
         {/* Segment Switcher */}
@@ -241,10 +246,10 @@ export default function AppsShowcase() {
                   <i className="ri-truck-line text-xl"></i>
                 </div>
                 <div className="text-left">
-                  <div className="text-sm font-bold">Operators</div>
-                  <div className={`text-xs ${activeSegment === 'operators' ? 'text-[#7ED977]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'}`}>
-                    3 Applications
-                  </div>
+                  <Typography variant="caption" as="div" className="font-bold">{t('segments.operators.tabLabel')}</Typography>
+                  <Typography variant="caption" as="div" className={`${activeSegment === 'operators' ? 'text-[#7ED977]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'} ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+                    {t('segments.operators.appsCount')}
+                  </Typography>
                 </div>
               </div>
             </button>
@@ -266,10 +271,10 @@ export default function AppsShowcase() {
                   <i className="ri-building-2-line text-xl"></i>
                 </div>
                 <div className="text-left">
-                  <div className="text-sm font-bold">Enterprise</div>
-                  <div className={`text-xs ${activeSegment === 'enterprise' ? 'text-[#0F2E63]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'}`}>
-                    2 Applications
-                  </div>
+                  <Typography variant="caption" as="div" className="font-bold">{t('segments.enterprise.tabLabel')}</Typography>
+                  <Typography variant="caption" as="div" className={`${activeSegment === 'enterprise' ? 'text-[#0F2E63]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'} ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+                    {t('segments.enterprise.appsCount')}
+                  </Typography>
                 </div>
               </div>
             </button>
@@ -279,8 +284,8 @@ export default function AppsShowcase() {
         {/* Segment Content */}
         <div className="mb-12">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className={`text-4xl font-bold ${themeClasses.textPrimary} mb-4`}>{currentSegment.title}</h2>
-            <p className={`text-lg ${themeClasses.textSecondary}`}>{currentSegment.description}</p>
+            <Typography variant="h2" className={`${themeClasses.textPrimary} mb-4`}>{currentSegment.title}</Typography>
+            <Typography variant="body" className={themeClasses.textSecondary}>{currentSegment.description}</Typography>
           </div>
 
           {/* Dynamic Grid Layout */}
@@ -294,46 +299,31 @@ export default function AppsShowcase() {
                     animation: 'fadeInUp 0.6s ease-out both'
                   }}
                 >
-                  <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-10 ${themeClasses.cardHoverBorder} transition-all duration-500`}>
+                  <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-10 ${themeClasses.cardHoverBorder} transition-all duration-500 shadow-xl`}>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                      {/* Landscape Device Mockup - OPERATORS DASHBOARD */}
+                      {/* Operators Dashboard Image */}
                       <div>
-                        <div className={`relative rounded-2xl ${themeClasses.mockupBg} border ${themeClasses.mockupBorder} p-5 aspect-[16/10] overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
-                          <div className={`absolute inset-0 bg-gradient-to-br ${colors.light}`}></div>
-                          <div className={`relative h-full rounded-xl ${themeClasses.mockupInnerBg} border ${themeClasses.mockupInnerBorder} overflow-hidden`}>
-                            {/* Browser Chrome */}
-                            <div className={`flex items-center gap-2 px-4 py-3 border-b ${themeClasses.mockupInnerBorder}`}>
-                              <div className="w-3 h-3 rounded-full bg-red-500/60"></div>
-                              <div className="w-3 h-3 rounded-full bg-yellow-500/60"></div>
-                              <div className="w-3 h-3 rounded-full bg-green-500/60"></div>
-                            </div>
-                            {/* Image Content */}
-                            <div className="relative w-full h-[calc(100%-44px)]">
-                              <Image
-                                src={isDarkTheme ? '/AppShowcase_section/dark_theme/dark_desktop_1.png' : '/AppShowcase_section/light_theme/light_desktop_1.png'}
-                                alt="Operators Dashboard Screenshot"
-                                fill
-                                className="object-cover"
-                                priority
-                              />
-                            </div>
-                          </div>
-                          <div className={`absolute top-8 right-8 px-4 py-2 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
-                            <span className={`${colors.text} text-xs font-medium`}>AI-Powered</span>
-                          </div>
-                        </div>
+                        <Image
+                          src={'/assets/apps_screenshots/GIF/Operator GIF.gif'}
+                          alt="Operators Dashboard Screenshot"
+                          width={1600}
+                          height={1000}
+                          className="w-full h-auto"
+                          priority
+                          unoptimized
+                        />
                       </div>
 
                       {/* Content */}
                       <div className="space-y-5">
                         <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
                           <i className={`ri-computer-line ${themeClasses.badgeIcon} text-sm`}></i>
-                          <span className={`${themeClasses.badgeText} text-sm font-medium`}>{currentSegment.dashboard.platform}</span>
+                          <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>{currentSegment.dashboard.platform}</Typography>
                         </div>
 
                         <div>
-                          <h3 className={`text-3xl font-bold ${themeClasses.textPrimary} mb-3`}>{currentSegment.dashboard.name}</h3>
-                          <p className={`${themeClasses.textSecondary} text-base`}>{currentSegment.dashboard.description}</p>
+                          <Typography variant="h3" className={`${themeClasses.textPrimary} mb-3`}>{currentSegment.dashboard.name}</Typography>
+                          <Typography variant="body" className={themeClasses.textSecondary}>{currentSegment.dashboard.description}</Typography>
                         </div>
 
                         <ul className="space-y-3">
@@ -342,14 +332,14 @@ export default function AppsShowcase() {
                               <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
                                 <i className="ri-check-line text-white text-sm"></i>
                               </div>
-                              <span className={`${themeClasses.textTertiary} text-base`}>{benefit}</span>
+                              <Typography variant="body" as="span" className={themeClasses.textTertiary}>{benefit}</Typography>
                             </li>
                           ))}
                         </ul>
 
-                        <button className={`px-8 py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer`}>
-                          Explore Dashboard
-                        </button>
+                        <Link href={`/${locale}/apps/operator-dashboard`} className={`px-8 py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}>
+                          {currentSegment.dashboard.cta}
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -364,41 +354,33 @@ export default function AppsShowcase() {
                         animation: `fadeInUp 0.6s ease-out ${(index + 1) * 0.15}s both`
                       }}
                     >
-                      <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
-                        {/* Portrait Device Mockup - SUPERVISOR (index 0) / DRIVER (index 1) */}
-                        <div className={`relative mb-8 mx-auto w-52 aspect-[9/16] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
-                          <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-28 h-8 ${themeClasses.phoneNotch} rounded-b-3xl z-10`}></div>
-                          <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} overflow-hidden`}>
-                            {/* Image Content */}
-                            <div className="relative w-full h-full">
-                              <Image
-                                src={
-                                  index === 0
-                                    ? (isDarkTheme ? '/AppShowcase_section/dark_theme/dark_mobile_1.png' : '/AppShowcase_section/light_theme/light_mobile_1.png')
-                                    : (isDarkTheme ? '/AppShowcase_section/dark_theme/dark_mobile_2.png' : '/AppShowcase_section/light_theme/light_mobile_2.png')
-                                }
-                                alt={`${app.name} Screenshot`}
-                                fill
-                                className="object-cover"
-                              />
-                            </div>
-                          </div>
-                          <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 w-24 h-1.5 ${themeClasses.phoneIndicator} rounded-full z-10`}></div>
-                          <div className={`absolute top-14 right-5 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
-                            <span className={`${colors.text} text-[11px] font-medium`}>Real-time</span>
-                          </div>
+                      <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 shadow-xl`}>
+                        {/* Mobile App Image */}
+                        <div className="mb-8 w-1/3 mx-auto">
+                          <Image
+                            src={
+                              index === 0
+                                ? ('/assets/apps_screenshots/GIF/Supervisor GIF.gif')
+                                : ('/assets/apps_screenshots/GIF/Driver GIF.gif')
+                            }
+                            alt={index === 0 ? 'Supervisor App Screenshot' : 'Driver App Screenshot'}
+                            width={900}
+                            height={1950}
+                            className="w-full h-auto mx-auto"
+                            unoptimized
+                          />
                         </div>
 
                         {/* Content */}
                         <div className="space-y-4">
                           <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
                             <i className={`ri-smartphone-line ${themeClasses.badgeIcon} text-xs`}></i>
-                            <span className={`${themeClasses.badgeText} text-xs font-medium`}>{app.platform}</span>
+                            <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>{app.platform}</Typography>
                           </div>
 
                           <div>
-                            <h3 className={`text-2xl font-bold ${themeClasses.textPrimary} mb-2`}>{app.name}</h3>
-                            <p className={`${themeClasses.textSecondary} text-sm`}>{app.description}</p>
+                            <Typography variant="h3" className={`${themeClasses.textPrimary} mb-2`}>{app.name}</Typography>
+                            <Typography variant="caption" className={themeClasses.textSecondary}>{app.description}</Typography>
                           </div>
 
                           <ul className="space-y-3">
@@ -407,14 +389,17 @@ export default function AppsShowcase() {
                                 <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
                                   <i className="ri-check-line text-white text-xs"></i>
                                 </div>
-                                <span className={`${themeClasses.textTertiary} text-sm`}>{benefit}</span>
+                                <Typography variant="caption" as="span" className={themeClasses.textTertiary}>{benefit}</Typography>
                               </li>
                             ))}
                           </ul>
 
-                          <button className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer`}>
-                            Learn More
-                          </button>
+                          <Link 
+                            href={`/${locale}/apps/${index === 0 ? 'supervisor' : 'driver'}`}
+                            className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}
+                          >
+                            {app.cta}
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -431,42 +416,29 @@ export default function AppsShowcase() {
                       animation: 'fadeInUp 0.6s ease-out both'
                     }}
                   >
-                    <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
-                      {/* Landscape Device Mockup - ENTERPRISE DASHBOARD */}
-                      <div className={`relative mb-8 rounded-2xl ${themeClasses.mockupBg} border ${themeClasses.mockupBorder} p-4 aspect-[16/10] overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
-                        <div className={`absolute inset-0 bg-gradient-to-br ${colors.light}`}></div>
-                        <div className={`relative h-full rounded-xl ${themeClasses.mockupInnerBg} border ${themeClasses.mockupInnerBorder} overflow-hidden`}>
-                          {/* Browser Chrome */}
-                          <div className={`flex items-center gap-2 px-4 py-2 border-b ${themeClasses.mockupInnerBorder}`}>
-                            <div className="w-3 h-3 rounded-full bg-red-500/60"></div>
-                            <div className="w-3 h-3 rounded-full bg-yellow-500/60"></div>
-                            <div className="w-3 h-3 rounded-full bg-green-500/60"></div>
-                          </div>
-                          {/* Image Content */}
-                          <div className="relative w-full h-[calc(100%-38px)]">
-                            <Image
-                              src={isDarkTheme ? '/AppShowcase_section/dark_theme/dark_desktop_2.png' : '/AppShowcase_section/light_theme/light_desktop_2.png'}
-                              alt="Enterprise Dashboard Screenshot"
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                        </div>
-                        <div className={`absolute top-6 right-6 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
-                          <span className={`${colors.text} text-xs font-medium`}>Real-time</span>
-                        </div>
+                    <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full shadow-xl`}>
+                      {/* Enterprise Dashboard Image */}
+                      <div className="mb-8">
+                        <Image
+                          src={'/assets/apps_screenshots/GIF/Enterprise GIF.gif'}
+                          alt="Enterprise Dashboard Screenshot"
+                          width={1600}
+                          height={1000}
+                          className="w-full h-auto"
+                          unoptimized
+                        />
                       </div>
 
                       {/* Content Below Image */}
                       <div className="space-y-4">
                         <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
                           <i className={`ri-computer-line ${themeClasses.badgeIcon} text-xs`}></i>
-                          <span className={`${themeClasses.badgeText} text-xs font-medium`}>{currentSegment.dashboard.platform}</span>
+                          <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>{currentSegment.dashboard.platform}</Typography>
                         </div>
 
                         <div>
-                          <h3 className={`text-2xl font-bold ${themeClasses.textPrimary} mb-2`}>{currentSegment.dashboard.name}</h3>
-                          <p className={`${themeClasses.textSecondary} text-sm`}>{currentSegment.dashboard.description}</p>
+                          <Typography variant="h3" className={`${themeClasses.textPrimary} mb-2`}>{currentSegment.dashboard.name}</Typography>
+                          <Typography variant="caption" className={themeClasses.textSecondary}>{currentSegment.dashboard.description}</Typography>
                         </div>
 
                         <ul className="space-y-2">
@@ -475,14 +447,14 @@ export default function AppsShowcase() {
                               <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
                                 <i className="ri-check-line text-white text-xs"></i>
                               </div>
-                              <span className={`${themeClasses.textTertiary} text-sm`}>{benefit}</span>
+                              <Typography variant="caption" as="span" className={themeClasses.textTertiary}>{benefit}</Typography>
                             </li>
                           ))}
                         </ul>
 
-                        <button className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer`}>
-                          View Details
-                        </button>
+                        <Link href={`/${locale}/apps/enterprise-dashboard`} className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}>
+                          {currentSegment.dashboard.cta}
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -493,37 +465,29 @@ export default function AppsShowcase() {
                       animation: 'fadeInUp 0.6s ease-out 0.15s both'
                     }}
                   >
-                    <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full`}>
-                      {/* Portrait Device Mockup - RIDER APP */}
-                      <div className={`relative mb-8 mx-auto w-52 aspect-[9/16] rounded-[2.5rem] ${themeClasses.phoneBg} border-[5px] ${themeClasses.phoneBorder} overflow-hidden group-hover:${colors.border} transition-all duration-500 shadow-2xl`}>
-                        <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-28 h-8 ${themeClasses.phoneNotch} rounded-b-3xl z-10`}></div>
-                        <div className={`h-full bg-gradient-to-br ${themeClasses.phoneGradient} overflow-hidden`}>
-                          {/* Image Content */}
-                          <div className="relative w-full h-full">
-                            <Image
-                              src={isDarkTheme ? '/AppShowcase_section/dark_theme/dark_mobile_3.png' : '/AppShowcase_section/light_theme/light_mobile_3.png'}
-                              alt="Rider App Screenshot"
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                        </div>
-                        <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 w-24 h-1.5 ${themeClasses.phoneIndicator} rounded-full z-10`}></div>
-                        <div className={`absolute top-14 right-5 px-3 py-1.5 rounded-full ${colors.bg} ${colors.border} border backdrop-blur-sm z-10`}>
-                          <span className={`${colors.text} text-[11px] font-medium`}>AI-Powered</span>
-                        </div>
+                    <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full shadow-xl`}>
+                      {/* Rider App Image */}
+                      <div className="mb-8 w-5/17 mx-auto">
+                        <Image
+                          src={'/assets/apps_screenshots/GIF/Rider GIF.gif'}
+                          alt="Rider App Screenshot"
+                          width={900}
+                          height={1950}
+                          className="w-full h-auto mx-auto"
+                          unoptimized
+                        />
                       </div>
 
                       {/* Content */}
                       <div className="space-y-4">
                         <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
                           <i className={`ri-smartphone-line ${themeClasses.badgeIcon} text-xs`}></i>
-                          <span className={`${themeClasses.badgeText} text-xs font-medium`}>{currentSegment.apps[0].platform}</span>
+                          <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>{currentSegment.apps[0].platform}</Typography>
                         </div>
 
                         <div>
-                          <h3 className={`text-2xl font-bold ${themeClasses.textPrimary} mb-2`}>{currentSegment.apps[0].name}</h3>
-                          <p className={`${themeClasses.textSecondary} text-sm`}>{currentSegment.apps[0].description}</p>
+                          <Typography variant="h3" className={`${themeClasses.textPrimary} mb-2`}>{currentSegment.apps[0].name}</Typography>
+                          <Typography variant="caption" className={themeClasses.textSecondary}>{currentSegment.apps[0].description}</Typography>
                         </div>
 
                         <ul className="space-y-3">
@@ -532,14 +496,14 @@ export default function AppsShowcase() {
                               <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
                                 <i className="ri-check-line text-white text-xs"></i>
                               </div>
-                              <span className={`${themeClasses.textTertiary} text-sm`}>{benefit}</span>
+                              <Typography variant="caption" as="span" className={themeClasses.textTertiary}>{benefit}</Typography>
                             </li>
                           ))}
                         </ul>
 
-                        <button className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer`}>
-                          Learn More
-                        </button>
+                        <Link href={`/${locale}/apps/rider`} className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}>
+                          {currentSegment.apps[0].cta}
+                        </Link>
                       </div>
                     </div>
                   </div>

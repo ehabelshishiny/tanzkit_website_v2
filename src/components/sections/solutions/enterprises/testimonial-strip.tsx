@@ -1,52 +1,38 @@
 'use client';
 
 import { Card } from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { StaggerChildren, StaggerItem } from '@/components/animations/stagger-children';
 import { Quote, Star } from 'lucide-react';
-
-const testimonials = [
-  {
-    id: 1,
-    name: 'Sarah Johnson',
-    role: 'Fleet Manager',
-    company: 'TechCorp Industries',
-    content: 'Tranzkit transformed our employee transportation program. We reduced costs by 30% while improving service quality.',
-    rating: 5,
-    initials: 'SJ'
-  },
-  {
-    id: 2,
-    name: 'Ahmed Al-Rashid',
-    role: 'Operations Director',
-    company: 'Global Logistics',
-    content: 'The real-time tracking and analytics have given us unprecedented visibility into our fleet operations.',
-    rating: 5,
-    initials: 'AA'
-  },
-  {
-    id: 3,
-    name: 'Maria Garcia',
-    role: 'HR Manager',
-    company: 'Innovation Labs',
-    content: 'Our employees love the app. It\'s made their daily commute stress-free and reliable.',
-    rating: 5,
-    initials: 'MG'
-  }
-];
+import { useTranslations } from 'next-intl';
 
 export function TestimonialStrip() {
+  const t = useTranslations('solutions.enterprisesPassengers.testimonials');
+
+  // Get testimonials count dynamically
+  const testimonialsCount = 3;
+  const testimonials = Array.from({ length: testimonialsCount }, (_, i) => ({
+    id: i + 1,
+    name: t(`items.${i}.name`),
+    role: t(`items.${i}.role`),
+    company: t(`items.${i}.company`),
+    content: t(`items.${i}.content`),
+    initials: t(`items.${i}.initials`),
+    rating: 5
+  }));
+
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Trusted by Leading Organizations
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            See what our enterprise clients say about Tranzkit
-          </p>
+          <Typography variant="h2" className="mb-4">
+            {t('title')}
+          </Typography>
+          <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
+            {t('subtitle')}
+          </Typography>
         </div>
       </ScrollReveal>
 
@@ -54,17 +40,18 @@ export function TestimonialStrip() {
         {testimonials.map((testimonial) => (
           <StaggerItem key={testimonial.id}>
             <Card className="p-6 h-full hover:shadow-lg transition-shadow relative">
-              <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/20" />
-              
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-1">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <Quote className="w-8 h-8 text-primary/20" />
               </div>
 
-              <p className="text-muted-foreground mb-6 relative z-10">
+              <Typography variant="body" className="text-muted-foreground mb-6 relative z-10">
                 "{testimonial.content}"
-              </p>
+              </Typography>
 
               <div className="flex items-center gap-3 pt-4 border-t">
                 <Avatar>
@@ -73,10 +60,10 @@ export function TestimonialStrip() {
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <div className="font-semibold">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">
+                  <Typography variant="body" className="font-semibold">{testimonial.name}</Typography>
+                  <Typography variant="caption" className="text-muted-foreground">
                     {testimonial.role}, {testimonial.company}
-                  </div>
+                  </Typography>
                 </div>
               </div>
             </Card>
@@ -86,4 +73,3 @@ export function TestimonialStrip() {
     </section>
   );
 }
-

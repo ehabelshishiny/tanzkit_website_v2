@@ -1,7 +1,8 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic, Noto_Sans_Arabic } from 'next/font/google';
+import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
+import localFont from 'next/font/local';
 import { locales } from '@/i18n';
 import { LenisProvider } from '@/components/providers/lenis-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
@@ -28,12 +29,58 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
   display: 'swap',
 });
 
-const notoSansArabic = Noto_Sans_Arabic({
-  variable: '--font-noto-sans-arabic',
-  subsets: ['arabic'],
-  weight: ['600', '700', '800', '900'],
+// Custom DIN Next Font - Multiple Weights
+const alarabiaFont = localFont({
+  src: [
+    {
+      path: '../../../public/fonts/din-next/din-next-lt-w23-ultra-light.ttf',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/din-next/din-next-lt-w23-light.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/din-next/din-next-lt-w23-regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/din-next/din-next-lt-w23-medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/din-next/din-next-lt-w23-bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/din-next/din-next-lt-w23-heavy.ttf',
+      weight: '800',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/din-next/din-next-lt-w23-black.ttf',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-alarabia',
   display: 'swap',
 });
+
+
+// Custom Alarabia Font
+// const alarabiaFont = localFont({
+//   src: '../../../public/fonts/Alarabia_font.ttf',
+//   variable: '--font-alarabia',
+//   display: 'swap',
+//   weight: '400 700',
+// });
+
 
 export default async function LocaleLayout({
   children,
@@ -60,14 +107,15 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${ibmPlexSansArabic.variable} ${notoSansArabic.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${ibmPlexSansArabic.variable} ${alarabiaFont.variable} antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
+          storageKey="tranzkit-theme"
         >
           <LenisProvider>
             <NextIntlClientProvider messages={messages}>

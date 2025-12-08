@@ -5,7 +5,7 @@ import { AppDetailHero } from './app-detail-hero';
 import { AppFeaturesSection } from './app-features-section';
 import { AppScreenshotsCarousel } from './app-screenshots-carousel';
 import { AppDownloadSection } from './app-download-section';
-import { CTASection } from '@/components/sections/cta-section';
+import { CTASection } from '@/components/sections/homepage/cta-section';
 import type { AppConfig } from '@/config/apps';
 
 interface AppDetailTemplateProps {

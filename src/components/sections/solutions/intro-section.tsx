@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { SectionContainer } from '@/components/ui/section-container';
 import { SectionHeader } from '@/components/ui/section-header';
 import { BenefitsList } from '@/components/ui/benefits-list';
+import { Typography } from '@/components/ui/typography';
 import { CheckCircle } from 'lucide-react';
 
 export function IntroSection() {
@@ -41,9 +42,9 @@ export function IntroSection() {
     >
       {/* Intro Text */}
       <div className="text-center mb-16">
-        <p className="text-xl md:text-2xl text-slate-700 dark:text-gray-100 leading-relaxed max-w-4xl mx-auto">
+        <Typography variant="subtitle" align="center" className="text-slate-700 dark:text-gray-100 leading-relaxed max-w-4xl mx-auto">
           {t('intro.text')}
-        </p>
+        </Typography>
       </div>
 
       {/* How We Help */}
@@ -62,4 +63,3 @@ export function IntroSection() {
     </SectionContainer>
   );
 }
-

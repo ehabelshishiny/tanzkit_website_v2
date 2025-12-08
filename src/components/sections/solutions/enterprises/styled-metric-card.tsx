@@ -2,6 +2,7 @@
 
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+import { Typography } from '@/components/ui/typography';
 import { cn } from '@/lib/utils';
 
 interface StyledMetricCardProps {
@@ -73,7 +74,7 @@ export function StyledMetricCard({
         className
       )}
     >
-      <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2" style={{ color }}>
+      <Typography variant="display" as="div" className="mb-2" style={{ color }}>
         {prefix}
         {typeof value === 'number' && animateOnScroll ? (
           <span ref={displayValue}>0</span>
@@ -81,17 +82,15 @@ export function StyledMetricCard({
           <span>{value}</span>
         )}
         {suffix}
-      </div>
+      </Typography>
       
-      {/* Label: Inter Regular 16px/24px (body text) */}
-      <p className="body-text font-semibold mb-2">{label}</p>
+      <Typography variant="body" className="font-semibold mb-2">{label}</Typography>
       
       {description && (
-        <p className="text-sm md:text-base text-slate-600 dark:text-slate-300">
+        <Typography variant="caption" className="text-slate-600 dark:text-slate-300">
           {description}
-        </p>
+        </Typography>
       )}
     </motion.div>
   );
 }
-
