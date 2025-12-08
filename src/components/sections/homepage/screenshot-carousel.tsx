@@ -15,6 +15,7 @@ import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { ScaleOnHover } from '@/components/animations/scale-on-hover';
 import { Typography } from '@/components/ui/typography';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export function ScreenshotCarousel() {
   const t = useTranslations('homepage.seeInAction');
@@ -75,18 +76,14 @@ export function ScreenshotCarousel() {
             <CarouselItem key={screenshot.id} className="ltr:pl-4 rtl:pr-4 md:basis-1/2 lg:basis-1/3 p-4">
               <ScaleOnHover className="h-full">
                 <Card className="overflow-hidden h-[380px] flex flex-col">
-                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center relative group">
-                    <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-                    <div className="text-center z-10 p-6">
-                      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                        <Typography variant="h3" className="text-primary">
-                          {screenshot.id}
-                        </Typography>
-                      </div>
-                      <Typography variant="caption" className="inline-block px-3 py-1 bg-primary/10 rounded-full font-medium mb-2">
-                        {screenshot.category}
-                      </Typography>
-                    </div>
+                  <div className="relative h-[240px] overflow-hidden">
+                    <Image
+                      src={`/assets/homepage/see_tranzkit_in_action/${screenshot.id}.png`}
+                      alt={screenshot.title}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
                   </div>
                   <div className="p-4 flex flex-col flex-1">
                     <Typography variant="h4" className="font-semibold mb-2">
