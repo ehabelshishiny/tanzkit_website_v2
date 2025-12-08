@@ -3,21 +3,13 @@
 import { useTranslations } from 'next-intl';
 import { FadeIn } from '@/components/animations/fade-in';
 import { Typography } from '@/components/ui/typography';
+import Image from 'next/image';
 
 export function LogoBarSection() {
   const t = useTranslations('homepage.logoBar');
 
-  // Placeholder for partner logos - now 8 partners
-  const partners = [
-    'Partner 1', 
-    'Partner 2', 
-    'Partner 3', 
-    'Partner 4', 
-    'Partner 5',
-    'Partner 6',
-    'Partner 7',
-    'Partner 8'
-  ];
+  // Partner logos - 8 partners
+  const partnerCount = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
     <section className="py-16 md:py-24 overflow-hidden">
@@ -37,28 +29,36 @@ export function LogoBarSection() {
         <div className="logo-marquee">
           {/* First Group */}
           <div className="logo-marquee-group">
-            {partners.map((partner) => (
+            {partnerCount.map((index) => (
               <div 
-                key={`group1-${partner}`}
-                className="flex h-16 w-32 md:h-20 md:w-40 items-center justify-center rounded-lg bg-muted flex-shrink-0"
+                key={`group1-${index}`}
+                className="relative h-16 w-32 md:h-20 md:w-40 flex items-center justify-center rounded-lg bg-background flex-shrink-0 p-4"
               >
-                <Typography variant="caption" className="font-medium text-muted-foreground">
-                  {partner}
-                </Typography>
+                <Image
+                  src={`/assets/homepage/logos/${index}.png`}
+                  alt={`Partner ${index}`}
+                  fill
+                  className="object-contain p-2"
+                  sizes="160px"
+                />
               </div>
             ))}
           </div>
 
           {/* Second Group (Duplicate for seamless infinite loop) */}
           <div className="logo-marquee-group" aria-hidden="true">
-            {partners.map((partner) => (
+            {partnerCount.map((index) => (
               <div 
-                key={`group2-${partner}`}
-                className="flex h-16 w-32 md:h-20 md:w-40 items-center justify-center rounded-lg bg-muted flex-shrink-0"
+                key={`group2-${index}`}
+                className="relative h-16 w-32 md:h-20 md:w-40 flex items-center justify-center rounded-lg bg-background flex-shrink-0 p-4"
               >
-                <Typography variant="caption" className="font-medium text-muted-foreground">
-                  {partner}
-                </Typography>
+                <Image
+                  src={`/assets/homepage/logos/${index}.png`}
+                  alt={`Partner ${index}`}
+                  fill
+                  className="object-contain p-2"
+                  sizes="160px"
+                />
               </div>
             ))}
           </div>
