@@ -54,13 +54,13 @@ export function ScreenCarousel({ screenshots, layoutType }: ScreenCarouselProps)
           {screens.map((screen, index) => (
             <CarouselItem key={screen.id} className={`pl-4 ${carouselBasis}`}>
               <Card className="overflow-hidden">
-                <div className={`${aspectRatio} bg-gradient-to-br from-primary/20 to-background flex items-center justify-center relative`}>
+                <div className={`${aspectRatio} bg-card flex items-center justify-center relative`}>
                   {screenshots[index] ? (
                     <Image
                       src={screenshots[index]}
                       alt={screen.title}
                       fill
-                      className="object-cover"
+                      className="object-contain scale-[0.95]"
                     />
                   ) : (
                     <PlaceholderIcon className="w-16 h-16 text-primary/40" />
