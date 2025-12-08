@@ -75,8 +75,8 @@ export function ScreenshotCarousel() {
           {screenshots.map((screenshot) => (
             <CarouselItem key={screenshot.id} className="ltr:pl-4 rtl:pr-4 md:basis-1/2 lg:basis-1/3 p-4">
               <ScaleOnHover className="h-full">
-                <Card className="overflow-hidden h-[380px] flex flex-col">
-                  <div className="relative h-[240px] overflow-hidden">
+                <Card className="overflow-hidden h-[400px] flex flex-col">
+                  <div className="relative h-[200px] flex-shrink-0 overflow-hidden">
                     <Image
                       src={`/assets/homepage/see_tranzkit_in_action/${screenshot.id}.png`}
                       alt={screenshot.title}
@@ -85,8 +85,8 @@ export function ScreenshotCarousel() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
-                  <div className="p-4 flex flex-col flex-1">
-                    <Typography variant="h4" className="font-semibold mb-2">
+                  <div className="p-4 flex flex-col flex-1 min-h-0">
+                    <Typography variant="h4" className="font-semibold mb-2 line-clamp-1">
                       {screenshot.title}
                     </Typography>
                     <Typography variant="body" className="text-muted-foreground line-clamp-2">
