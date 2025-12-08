@@ -7,12 +7,20 @@ import { motion } from 'framer-motion';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { Typography } from '@/components/ui/typography';
 import { Zap, Shield, TrendingUp, Users } from 'lucide-react';
+import Image from 'next/image';
 
 const iconMap = {
   realtime: Zap,
   security: Shield,
   analytics: TrendingUp,
   collaboration: Users
+};
+
+const imageMap = {
+  realtime: '/assets/homepage/features/live_tracking.png',
+  security: '/assets/homepage/features/advanced_security.png',
+  analytics: '/assets/homepage/features/smart_Analytics.png',
+  collaboration: '/assets/homepage/features/team_collaboration.png'
 };
 
 export function FeatureTabs() {
@@ -102,13 +110,15 @@ export function FeatureTabs() {
                     </div>
 
                     {/* Visualization - Always second in DOM order */}
-                    <div className="flex-1 md:w-1/2 bg-muted rounded-lg flex items-center justify-center p-6 sm:p-8 min-h-[200px] sm:min-h-[300px]">
-                      <div className="text-center text-muted-foreground">
-                        <Icon className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-4 opacity-20" />
-                        <Typography variant="caption" className="text-muted-foreground">
-                          {t('visualizationPlaceholder')}
-                        </Typography>
-                      </div>
+                    <div className="relative flex-1 md:w-1/2 rounded-lg overflow-hidden min-h-[200px] sm:min-h-[300px]">
+                      <Image
+                        src={imageMap[featureId as keyof typeof imageMap]}
+                        alt={t(`tabs.${featureId}.title`)}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority={featureId === 'realtime'}
+                      />
                     </div>
                   </div>
                 </Card>
