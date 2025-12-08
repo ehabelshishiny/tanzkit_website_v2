@@ -304,12 +304,13 @@ export default function AppsShowcase() {
                       {/* Operators Dashboard Image */}
                       <div>
                         <Image
-                          src={'/AppShowcase_section/operators_dashboard.png'}
+                          src={'/apps_screenshots/GIF/Operator GIF.gif'}
                           alt="Operators Dashboard Screenshot"
                           width={1600}
                           height={1000}
                           className="w-full h-auto"
                           priority
+                          unoptimized
                         />
                       </div>
 
@@ -359,13 +360,14 @@ export default function AppsShowcase() {
                           <Image
                             src={
                               index === 0
-                                ? ('/AppShowcase_section/supervisor.png')
-                                : ('/AppShowcase_section/driver.png')
+                                ? ('/apps_screenshots/GIF/Supervisor GIF.gif')
+                                : ('/apps_screenshots/GIF/Driver GIF.gif')
                             }
                             alt={index === 0 ? 'Supervisor App Screenshot' : 'Driver App Screenshot'}
                             width={900}
                             height={1950}
                             className="w-full h-auto mx-auto"
+                            unoptimized
                           />
                         </div>
 
@@ -418,11 +420,12 @@ export default function AppsShowcase() {
                       {/* Enterprise Dashboard Image */}
                       <div className="mb-8">
                         <Image
-                          src={'/AppShowcase_section/enterprise_dashboard.png'}
+                          src={'/apps_screenshots/GIF/Enterprise GIF.gif'}
                           alt="Enterprise Dashboard Screenshot"
                           width={1600}
                           height={1000}
                           className="w-full h-auto"
+                          unoptimized
                         />
                       </div>
 
@@ -466,11 +469,12 @@ export default function AppsShowcase() {
                       {/* Rider App Image */}
                       <div className="mb-8 w-5/17 mx-auto">
                         <Image
-                          src={'/AppShowcase_section/rider.png'}
+                          src={'/apps_screenshots/GIF/Rider GIF.gif'}
                           alt="Rider App Screenshot"
                           width={900}
                           height={1950}
                           className="w-full h-auto mx-auto"
+                          unoptimized
                         />
                       </div>
 
