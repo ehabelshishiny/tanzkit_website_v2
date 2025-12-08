@@ -304,7 +304,7 @@ export default function AppsShowcase() {
                       {/* Operators Dashboard Image */}
                       <div>
                         <Image
-                          src={'/apps_screenshots/GIF/Operator GIF.gif'}
+                          src={'/assets/apps_screenshots/GIF/Operator GIF.gif'}
                           alt="Operators Dashboard Screenshot"
                           width={1600}
                           height={1000}
@@ -360,8 +360,8 @@ export default function AppsShowcase() {
                           <Image
                             src={
                               index === 0
-                                ? ('/apps_screenshots/GIF/Supervisor GIF.gif')
-                                : ('/apps_screenshots/GIF/Driver GIF.gif')
+                                ? ('/assets/apps_screenshots/GIF/Supervisor GIF.gif')
+                                : ('/assets/apps_screenshots/GIF/Driver GIF.gif')
                             }
                             alt={index === 0 ? 'Supervisor App Screenshot' : 'Driver App Screenshot'}
                             width={900}
@@ -420,7 +420,7 @@ export default function AppsShowcase() {
                       {/* Enterprise Dashboard Image */}
                       <div className="mb-8">
                         <Image
-                          src={'/apps_screenshots/GIF/Enterprise GIF.gif'}
+                          src={'/assets/apps_screenshots/GIF/Enterprise GIF.gif'}
                           alt="Enterprise Dashboard Screenshot"
                           width={1600}
                           height={1000}
@@ -469,7 +469,7 @@ export default function AppsShowcase() {
                       {/* Rider App Image */}
                       <div className="mb-8 w-5/17 mx-auto">
                         <Image
-                          src={'/apps_screenshots/GIF/Rider GIF.gif'}
+                          src={'/assets/apps_screenshots/GIF/Rider GIF.gif'}
                           alt="Rider App Screenshot"
                           width={900}
                           height={1950}

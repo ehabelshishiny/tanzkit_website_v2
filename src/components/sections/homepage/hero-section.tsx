@@ -414,14 +414,15 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
               >
                 {title || t('title')}
               </span>
-             <span
+<span
   className={`inline-block transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
   style={{ transitionDelay: '0.6s' }}
 >
-  <span className="text-foreground">For </span>
-  <span className="text-accent">Workforce </span>
-  <span className="text-primary">Mobility</span>
+  <span className="text-foreground">{t('titleHighlight.for')} </span>
+  <span className="text-accent">{t('titleHighlight.workforce')} </span>
+  <span className="text-primary">{t('titleHighlight.mobility')}</span>
 </span>
+
 
               <br />
             </Typography>

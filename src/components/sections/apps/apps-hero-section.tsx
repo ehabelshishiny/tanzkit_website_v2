@@ -111,7 +111,7 @@ const ParallaxImages = () => {
   return (
     <div className="mx-auto max-w-7xl px-4 pt-[200px]" dir="ltr">
       <ParallaxImg
-        src={'/apps_screenshots/operator-dashboard/1.png'}
+        src={'/assets/apps_screenshots/operator-dashboard/1.png'}
         alt={t('operatorsDashboard')}
         start={-100}
         end={100}
@@ -121,7 +121,7 @@ const ParallaxImages = () => {
       />
 
       <ParallaxImg
-        src={'/apps_screenshots/driver/1.png'}
+        src={'/assets/apps_screenshots/driver/1.png'}
         alt={t('driverApp')}
         start={-250}
         end={150}
@@ -131,7 +131,7 @@ const ParallaxImages = () => {
       />
 
       <ParallaxImg
-        src={'/apps_screenshots/enterprise-dashboard/1.png'}
+        src={'/assets/apps_screenshots/enterprise-dashboard/1.png'}
         alt={t('enterpriseDashboard')}
         start={-400}
         end={-300}
@@ -141,7 +141,7 @@ const ParallaxImages = () => {
       />
 
       <ParallaxImg
-        src={'/apps_screenshots/supervisor/1.png'}
+        src={'/assets/apps_screenshots/supervisor/1.png'}
         alt={t('supervisorApp')}
         start={-650}
         end={-50}
@@ -151,7 +151,7 @@ const ParallaxImages = () => {
       />
 
       <ParallaxImg
-        src={'/apps_screenshots/rider/1.png'}
+        src={'/assets/apps_screenshots/rider/1.png'}
         alt={t('riderApp')}
         start={-1000}
         end={-550}

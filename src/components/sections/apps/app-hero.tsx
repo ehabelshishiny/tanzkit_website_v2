@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Smartphone, Download } from 'lucide-react';
+import { Download } from 'lucide-react';
+import Image from 'next/image';
 import { Typography } from '@/components/ui/typography';
 import { Button } from '@/components/ui/button';
 import { useLocale } from 'next-intl';
@@ -11,9 +12,18 @@ interface AppHeroProps {
   appNameAr: string;
   appDescription: string;
   appDescriptionAr: string;
+  heroImage: string;
+  layoutType: 'portrait' | 'landscape';
 }
 
-export function AppHero({ appName, appNameAr, appDescription, appDescriptionAr }: AppHeroProps) {
+export function AppHero({ 
+  appName, 
+  appNameAr, 
+  appDescription, 
+  appDescriptionAr,
+  heroImage,
+  layoutType 
+}: AppHeroProps) {
   const locale = useLocale();
   
   const displayName = locale === 'ar' ? appNameAr : appName;
@@ -56,10 +66,17 @@ export function AppHero({ appName, appNameAr, appDescription, appDescriptionAr }
             className="flex justify-center"
           >
             <div className="relative">
-              <div className="w-64 h-[500px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl flex items-center justify-center shadow-2xl">
-                <Smartphone className="w-32 h-32 text-primary/40" />
+              <div className="rounded-4xl shadow-2xl relative bg-transparent">
+                <Image
+                  src={heroImage}
+                  alt={`${appName} Screenshot`}
+                  width={layoutType === 'portrait' ? 256 : 500}
+                  height={layoutType === 'portrait' ? 500 : 256}
+                  className="object-contain"
+                  priority
+                />
               </div>
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center shadow-lg">
                 <Download className="w-10 h-10 text-primary" />
               </div>
             </div>

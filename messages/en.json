@@ -55,7 +55,11 @@
   "homepage": {
     "hero": {
       "title": "The Enterprise OS",
-      "titleHighlight": "For Workforce Mobility",
+      "titleHighlight": {
+      "for": "For",
+      "workforce": "Workforce",
+      "mobility": "Mobility"
+    },
       "subtitle": "The all-in-one platform for operators, enterprises, supervisors, drivers, and passengers",
       "cta": "Start Your Free Trial"
     },

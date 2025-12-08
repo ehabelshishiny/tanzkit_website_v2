@@ -17,6 +17,8 @@ export function AppDetailOriginalTemplate({ appConfig }: AppDetailOriginalTempla
         appNameAr={appConfig.nameAr}
         appDescription={appConfig.description}
         appDescriptionAr={appConfig.descriptionAr}
+        heroImage={appConfig.screenshots[0]}
+        layoutType={appConfig.layoutType}
       />
       <ScreenCarousel screenshots={appConfig.screenshots} layoutType={appConfig.layoutType} />
       <StepSection />
