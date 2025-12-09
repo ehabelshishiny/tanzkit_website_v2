@@ -113,7 +113,7 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={'/assets/apps_screenshots/operator-dashboard/1.png'}
         alt={t('operatorsDashboard')}
-        start={-100}
+        start={-600}
         end={100}
         className="ml-auto mr-16 w-full md:w-1/2 lg:w-4/7 rounded-lg"
         aspectRatio="landscape"
@@ -123,7 +123,7 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={'/assets/apps_screenshots/driver/1.png'}
         alt={t('driverApp')}
-        start={-250}
+        start={-750}
         end={150}
         className="w-full sm:w-[35%] md:w-3/14 rounded-lg"
         aspectRatio="portrait"
@@ -133,7 +133,7 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={'/assets/apps_screenshots/enterprise-dashboard/1.png'}
         alt={t('enterpriseDashboard')}
-        start={-400}
+        start={-850}
         end={-300}
         className="mx-auto w-full md:w-2/3 lg:w-7/10 rounded-lg"
         aspectRatio="landscape"
@@ -143,7 +143,7 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={'/assets/apps_screenshots/supervisor/1.png'}
         alt={t('supervisorApp')}
-        start={-650}
+        start={-1000}
         end={-50}
         className="ml-auto w-full sm:w-[35%] md:w-3/14 rounded-lg"
         aspectRatio="portrait"
@@ -153,7 +153,7 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={'/assets/apps_screenshots/rider/1.png'}
         alt={t('riderApp')}
-        start={-1000}
+        start={-1300}
         end={-550}
         className="ml-0 sm:ml-48 w-full sm:w-[35%] md:w-3/14 rounded-lg mb-32"
         aspectRatio="portrait"
