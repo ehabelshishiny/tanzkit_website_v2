@@ -62,11 +62,12 @@ const TextHero = () => {
   const filter = useMotionTemplate`blur(${blur}px)`;
 
   return (
-    <div className="sticky top-16 h-[calc(100vh-4rem)] w-full flex items-center justify-center bg-gray-100 dark:bg-muted/50">
+    <div className="sticky top-15 h-[calc(100vh-4rem)] w-full flex items-start justify-center pt-24 bg-gray-100 dark:bg-muted/50">
       <motion.div 
         className="max-w-4xl px-6 text-center"
         style={{ filter }}
       >
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -113,9 +114,9 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={'/assets/apps_screenshots/operator-dashboard/1.png'}
         alt={t('operatorsDashboard')}
-        start={-600}
+        start={-580}
         end={100}
-        className="ml-auto mr-16 w-full md:w-1/2 lg:w-4/7 rounded-lg"
+        className="ml-auto mr-10 w-full md:w-1/2 lg:w-4/7 rounded-lg"
         aspectRatio="landscape"
         contain
       />
@@ -123,7 +124,7 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={'/assets/apps_screenshots/driver/1.png'}
         alt={t('driverApp')}
-        start={-750}
+        start={-800}
         end={150}
         className="w-full sm:w-[35%] md:w-3/14 rounded-lg"
         aspectRatio="portrait"
@@ -133,9 +134,9 @@ const ParallaxImages = () => {
       <ParallaxImg
         src={'/assets/apps_screenshots/enterprise-dashboard/1.png'}
         alt={t('enterpriseDashboard')}
-        start={-850}
+        start={-800}
         end={-300}
-        className="mx-auto w-full md:w-2/3 lg:w-7/10 rounded-lg"
+        className="ml-auto mr-35 w-full md:w-2/3 lg:w-7/10 rounded-lg"
         aspectRatio="landscape"
         contain
       />
@@ -155,7 +156,7 @@ const ParallaxImages = () => {
         alt={t('riderApp')}
         start={-1300}
         end={-550}
-        className="ml-0 sm:ml-48 w-full sm:w-[35%] md:w-3/14 rounded-lg mb-32"
+        className="ml-0 sm:ml-30 w-full sm:w-[35%] md:w-3/14 rounded-lg mb-32"
         aspectRatio="portrait"
         contain
       />

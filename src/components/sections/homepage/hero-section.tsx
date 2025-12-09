@@ -386,19 +386,20 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
       onMouseMove={handleMouseMove}
       suppressHydrationWarning
     >
-      {/* ✅ LAYER 1: Animated Gradient Background with Brand Colors */}
+            {/* ✅ LAYER 1: Animated Gradient Background with Brand Colors - LIGHTER LIGHT THEME */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-[oklch(0.95_0.02_250)] via-[oklch(0.92_0.04_240)] to-[oklch(0.90_0.03_165)] dark:from-[oklch(0.15_0.04_250)] dark:via-[oklch(0.20_0.06_240)] dark:to-[oklch(0.18_0.04_165)] animate-gradient-shift"
+        className="absolute inset-0 bg-gradient-to-br from-[oklch(0.98_0.01_250)] via-[oklch(0.97_0.015_240)] to-[oklch(0.96_0.015_165)] dark:from-[oklch(0.15_0.04_250)] dark:via-[oklch(0.20_0.06_240)] dark:to-[oklch(0.18_0.04_165)] animate-gradient-shift"
         style={{ backgroundSize: '200% 200%' }}
       />
 
-      {/* ✅ LAYER 2: Floating Orbs - Brand Color Accents */}
-      <div className="absolute inset-0 opacity-30 dark:opacity-20 pointer-events-none">
+      {/* ✅ LAYER 2: Floating Orbs - Brand Color Accents - LIGHTER & MORE SUBTLE */}
+      <div className="absolute inset-0 opacity-20 dark:opacity-20 pointer-events-none">
         {/* Ocean Blue Orb */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[oklch(0.52_0.12_240)]/40 dark:bg-[oklch(0.60_0.14_240)]/50 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[oklch(0.65_0.08_240)]/30 dark:bg-[oklch(0.60_0.14_240)]/50 rounded-full blur-3xl animate-float-slow" />
         {/* Emerald Orb */}
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[oklch(0.65_0.12_165)]/40 dark:bg-[oklch(0.70_0.14_165)]/50 rounded-full blur-3xl animate-float-slower" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[oklch(0.75_0.08_165)]/30 dark:bg-[oklch(0.70_0.14_165)]/50 rounded-full blur-3xl animate-float-slower" />
       </div>
+
 
       {/* ✅ LAYER 3: Animated Background Canvas (Now Transparent) */}
       <canvas
