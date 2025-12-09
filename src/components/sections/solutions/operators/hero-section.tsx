@@ -68,8 +68,11 @@ export function OperatorsHeroSection() {
         />
       </div>
 
-      {/* Brand-colored wave pattern */}
-      <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.12]">
+      {/* Dark mode - Deep blue gradient - MOVED BEFORE PATTERN */}
+      <div className="absolute inset-0 opacity-0 dark:opacity-100 bg-gradient-to-br dark:from-blue-950 dark:via-slate-900 dark:to-blue-900" />
+
+      {/* Brand-colored wave pattern - Light mode */}
+      <div className="absolute inset-0 opacity-[0.08] dark:opacity-0">
         <div 
           className="absolute inset-0"
           style={{
@@ -88,8 +91,25 @@ export function OperatorsHeroSection() {
         />
       </div>
 
-      {/* Dark mode brand gradient */}
-      <div className="absolute inset-0 opacity-0 dark:opacity-100 bg-gradient-to-br dark:from-[oklch(var(--brand-navy))] dark:via-[oklch(var(--brand-ocean))] dark:to-[oklch(var(--brand-emerald))]" />
+      {/* Grey wave pattern - Dark mode only */}
+      <div className="absolute inset-0 opacity-0 dark:opacity-[0.15]">
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              repeating-linear-gradient(
+                45deg,
+                rgb(100, 116, 139) 0px,
+                transparent 2px,
+                transparent 20px,
+                rgb(71, 85, 105) 22px,
+                transparent 24px,
+                transparent 44px
+              )
+            `,
+          }}
+        />
+      </div>
 
       {/* Overlay for text contrast */}
       <div className="absolute inset-0 bg-white/10 dark:bg-black/30" />

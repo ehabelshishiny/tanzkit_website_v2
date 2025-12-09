@@ -118,14 +118,109 @@ export function OperatorsAiImpactSection() {
       </SectionContainer>
 
       {/* Impact Metrics Section - Advanced Framer Motion */}
-      <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-accent via-primary to-secondary">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-            backgroundSize: '32px 32px'
-          }} />
+      <section 
+        className="relative py-20 md:py-28 overflow-hidden"
+        style={{
+          background: `
+            linear-gradient(135deg, 
+              oklch(0.95 0.02 250) 0%, 
+              oklch(0.96 0.03 240) 25%, 
+              oklch(0.96 0.03 165) 50%, 
+              oklch(0.97 0.03 130) 75%, 
+              oklch(0.96 0.02 240) 100%
+            )
+          `
+        }}
+      >
+        {/* Animated brand gradient overlay - flowing colors */}
+        <div className="absolute inset-0 opacity-60 dark:opacity-30">
+          <div 
+            className="absolute inset-0 animate-gradient-shift"
+            style={{
+              background: `
+                linear-gradient(
+                  45deg,
+                  oklch(0.90 0.05 250) 0%,
+                  oklch(0.92 0.07 240) 25%,
+                  oklch(0.93 0.07 165) 50%,
+                  oklch(0.94 0.08 130) 75%,
+                  oklch(0.92 0.06 240) 100%
+                )
+              `,
+              backgroundSize: '400% 400%',
+            }}
+          />
         </div>
+
+        {/* Brand color orbs - navy, ocean, emerald, lime */}
+        <div className="absolute inset-0">
+          {/* Navy orb - top left */}
+          <div 
+            className="absolute -top-20 -left-20 w-96 h-96 rounded-full blur-3xl opacity-20 dark:opacity-15 animate-float-slow"
+            style={{ backgroundColor: 'oklch(0.75 0.08 250)' }}
+          />
+          {/* Ocean orb - center right */}
+          <div 
+            className="absolute top-1/2 -right-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-25 dark:opacity-20 animate-float-slower"
+            style={{ backgroundColor: 'oklch(0.80 0.10 240)' }}
+          />
+          {/* Emerald orb - bottom left */}
+          <div 
+            className="absolute -bottom-32 left-1/4 w-[450px] h-[450px] rounded-full blur-3xl opacity-20 dark:opacity-15 animate-float-slow"
+            style={{ backgroundColor: 'oklch(0.82 0.10 165)', animationDelay: '-7s' }}
+          />
+          {/* Lime orb - top center */}
+          <div 
+            className="absolute -top-24 left-1/2 w-80 h-80 rounded-full blur-3xl opacity-15 dark:opacity-10 animate-float-slower"
+            style={{ backgroundColor: 'oklch(0.88 0.10 130)', animationDelay: '-3s' }}
+          />
+        </div>
+
+        {/* Dark mode - Deep blue gradient - MOVED BEFORE PATTERNS */}
+        <div className="absolute inset-0 opacity-0 dark:opacity-100 bg-gradient-to-br dark:from-blue-950 dark:via-slate-900 dark:to-blue-900" />
+
+        {/* Brand-colored wave pattern - Light mode */}
+        <div className="absolute inset-0 opacity-[0.08] dark:opacity-0">
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                repeating-linear-gradient(
+                  45deg,
+                  oklch(0.52 0.12 240) 0px,
+                  transparent 2px,
+                  transparent 20px,
+                  oklch(0.65 0.12 165) 22px,
+                  transparent 24px,
+                  transparent 44px
+                )
+              `,
+            }}
+          />
+        </div>
+
+       {/* Grey wave pattern - Dark mode only */}
+        <div className="absolute inset-0 opacity-0 dark:opacity-[0.15]">
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                repeating-linear-gradient(
+                  45deg,
+                  rgb(100, 116, 139) 0px,
+                  transparent 2px,
+                  transparent 20px,
+                  rgb(71, 85, 105) 22px,
+                  transparent 24px,
+                  transparent 44px
+                )
+              `,
+            }}
+          />
+        </div>
+
+        {/* Minimal overlay */}
+        <div className="absolute inset-0 bg-white/10 dark:bg-blue-950/20" />
 
         <div className="relative z-10 w-full px-4 max-w-7xl mx-auto">
           {/* Section Title */}
@@ -136,7 +231,7 @@ export function OperatorsAiImpactSection() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <Typography variant="h2" className="text-primary-foreground dark:text-gray-100">{t('impact.title')}</Typography>
+            <Typography variant="h2" className="text-slate-900 dark:text-white drop-shadow-sm">{t('impact.title')}</Typography>
           </motion.div>
 
           {/* Impact Cards Grid - 2x2 Layout */}
