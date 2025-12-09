@@ -74,54 +74,55 @@ export function FeatureTabs() {
                 transition={{ duration: 0.5 }}
               >
                 <Card className="p-4 sm:p-6 lg:p-8">
-                  {/* Use flexbox - RTL auto-reverses the layout naturally */}
-                  <div className="flex flex-col md:flex-row gap-6 sm:gap-8">
-                    {/* Text Content - Always first in DOM order */}
-                    <div className="flex-1 md:w-1/2">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="p-2.5 sm:p-3 bg-primary/10 rounded-lg flex-shrink-0">
-                          <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-                        </div>
-                        <Typography variant="h3">
-                          {t(`tabs.${featureId}.title`)}
-                        </Typography>
-                      </div>
-                      <Typography variant="body" className="text-muted-foreground mb-6">
-                        {t(`tabs.${featureId}.description`)}
-                      </Typography>
-                      <ul className="space-y-3">
-                        {benefits.map((benefit, index) => (
-                          <motion.li
-                            key={index}
-                            initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            className="flex items-start gap-2.5"
-                          >
-                            <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center mt-0.5 flex-shrink-0">
-                              <div className="w-2 h-2 rounded-full bg-primary" />
-                            </div>
-                            <Typography variant="body">
-                              {benefit}
-                            </Typography>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </div>
+  {/* Use flexbox - RTL auto-reverses the layout naturally */}
+  <div className="flex flex-col md:flex-row gap-6 sm:gap-8">
+    {/* Image - First in DOM order for mobile (top position) */}
+    <div className="relative flex-1 md:w-1/2 rounded-lg overflow-hidden min-h-[200px] sm:min-h-[300px] md:order-2">
+      <Image
+        src={imageMap[featureId as keyof typeof imageMap]}
+        alt={t(`tabs.${featureId}.title`)}
+        fill
+        className="object-cover"
+        sizes="(max-width: 768px) 100vw, 50vw"
+        priority={featureId === 'realtime'}
+      />
+    </div>
 
-                    {/* Visualization - Always second in DOM order */}
-                    <div className="relative flex-1 md:w-1/2 rounded-lg overflow-hidden min-h-[200px] sm:min-h-[300px]">
-                      <Image
-                        src={imageMap[featureId as keyof typeof imageMap]}
-                        alt={t(`tabs.${featureId}.title`)}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        priority={featureId === 'realtime'}
-                      />
-                    </div>
-                  </div>
-                </Card>
+    {/* Text Content - Second in DOM order for mobile (bottom position) */}
+    <div className="flex-1 md:w-1/2 md:order-1">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="p-2.5 sm:p-3 bg-primary/10 rounded-lg flex-shrink-0">
+          <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+        </div>
+        <Typography variant="h3">
+          {t(`tabs.${featureId}.title`)}
+        </Typography>
+      </div>
+      <Typography variant="body" className="text-muted-foreground mb-6">
+        {t(`tabs.${featureId}.description`)}
+      </Typography>
+      <ul className="space-y-3">
+        {benefits.map((benefit, index) => (
+          <motion.li
+            key={index}
+            initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.1 }}
+            className="flex items-start gap-2.5"
+          >
+            <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+              <div className="w-2 h-2 rounded-full bg-primary" />
+            </div>
+            <Typography variant="body">
+              {benefit}
+            </Typography>
+          </motion.li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</Card>
+
               </motion.div>
             </TabsContent>
           );
