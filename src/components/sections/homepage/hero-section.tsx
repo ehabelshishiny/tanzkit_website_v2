@@ -161,18 +161,18 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     if (isDesktop) {
       const route1 = generateSPath(
         isRTL ? 0 : width - 0,
-        Math.max(20, height * 0.06) + 50,
+        Math.max(20, height * 0.06) + 60,
         isRTL ? width - Math.min(width * 0.08, 60) : Math.min(width * 0.08, 60),
-        Math.min(height * 0.94, height - 100) + 50,
+        Math.min(height * 0.94, height - 100) + 30,
         420,
         isRTL
       );
 
       const route2 = generateSPath(
         isRTL ? 0 : width - 0,
-        Math.max(40, height * 0.12) + 50,
+        Math.max(40, height * 0.18) + 30,
         isRTL ? width - Math.min(width * 0.12, 100) : Math.min(width * 0.12, 100),
-        Math.min(height * 0.9, height - 40) + 50,
+        Math.min(height * 0.9, height - 40) + 60,
         420,
         isRTL
       );
@@ -259,8 +259,8 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     ctx.scale(dpr, dpr);
 
     const animate = () => {
-      ctx.fillStyle = isDark ? 'rgba(20, 20, 30, 0.95)' : 'rgba(255, 255, 255, 0.95)';
-      ctx.fillRect(0, 0, canvasSize.width, canvasSize.height);
+      // ✅ FIXED: Clear canvas to transparent instead of opaque background
+      ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
 
       // Draw vehicle paths and vehicles ONLY ON DESKTOP
       if (isDesktop) {
@@ -382,11 +382,25 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
   return (
     <section
       ref={containerRef}
-      className="relative bg-background overflow-hidden xl:min-h-screen"
+      className="relative overflow-hidden xl:min-h-screen"
       onMouseMove={handleMouseMove}
       suppressHydrationWarning
     >
-      {/* Animated Background Canvas */}
+      {/* ✅ LAYER 1: Animated Gradient Background with Brand Colors */}
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-[oklch(0.95_0.02_250)] via-[oklch(0.92_0.04_240)] to-[oklch(0.90_0.03_165)] dark:from-[oklch(0.15_0.04_250)] dark:via-[oklch(0.20_0.06_240)] dark:to-[oklch(0.18_0.04_165)] animate-gradient-shift"
+        style={{ backgroundSize: '200% 200%' }}
+      />
+
+      {/* ✅ LAYER 2: Floating Orbs - Brand Color Accents */}
+      <div className="absolute inset-0 opacity-30 dark:opacity-20 pointer-events-none">
+        {/* Ocean Blue Orb */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[oklch(0.52_0.12_240)]/40 dark:bg-[oklch(0.60_0.14_240)]/50 rounded-full blur-3xl animate-float-slow" />
+        {/* Emerald Orb */}
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[oklch(0.65_0.12_165)]/40 dark:bg-[oklch(0.70_0.14_165)]/50 rounded-full blur-3xl animate-float-slower" />
+      </div>
+
+      {/* ✅ LAYER 3: Animated Background Canvas (Now Transparent) */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
@@ -395,7 +409,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
         }}
       />
 
-      {/* Hero Content */}
+      {/* ✅ LAYER 4: Hero Content */}
       <div
         className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-19 xl:py-16 flex items-start xl:min-h-screen"
         style={{ transform: `translateY(${scrollY * -0.05}px)` }}
@@ -414,16 +428,14 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
               >
                 {title || t('title')}
               </span>
-<span
-  className={`inline-block transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-  style={{ transitionDelay: '0.6s' }}
->
-  <span className="text-foreground">{t('titleHighlight.for')} </span>
-  <span className="text-accent">{t('titleHighlight.workforce')} </span>
-  <span className="text-primary">{t('titleHighlight.mobility')}</span>
-</span>
-
-
+              <span
+                className={`inline-block transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                style={{ transitionDelay: '0.6s' }}
+              >
+                <span className="text-foreground">{t('titleHighlight.for')} </span>
+                <span className="text-accent">{t('titleHighlight.workforce')} </span>
+                <span className="text-primary">{t('titleHighlight.mobility')}</span>
+              </span>
               <br />
             </Typography>
             
@@ -466,7 +478,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* ✅ LAYER 5: Scroll Indicator */}
       <div
         className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
         style={{ transform: `translateX(-50%) translateY(${scrollY * -0.1}px)` }}
