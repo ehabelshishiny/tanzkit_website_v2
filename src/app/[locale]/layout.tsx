@@ -3,6 +3,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
 import localFont from 'next/font/local';
+import Script from 'next/script';
 import { locales } from '@/i18n';
 import { LenisProvider } from '@/components/providers/lenis-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
@@ -126,6 +127,11 @@ export default async function LocaleLayout({
           </LenisProvider>
           <Toaster position="top-right" richColors />
         </ThemeProvider>
+        <Script
+          // src="https://codefy-os.vercel.app/widget.js"
+          // data-api-key="cfy_2e3f3e89d5e64d09b26a286c39d1a89c"
+          // strategy="lazyOnload"
+        />
       </body>
     </html>
   );
