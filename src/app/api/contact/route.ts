@@ -115,17 +115,9 @@ export async function POST(request: NextRequest) {
   }
 }
 
-/**
- * GET /api/contact
- * Return API information (optional)
- */
+// ✅ Remove GET handler or require authentication
 export async function GET() {
-  return NextResponse.json({
-    message: 'Contact Form API',
-    version: '1.0.0',
-    endpoints: {
-      POST: '/api/contact - Submit contact form',
-    },
-  });
+  return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
 }
+
 
