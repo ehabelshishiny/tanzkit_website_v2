@@ -110,20 +110,26 @@ export function Header() {
           </div>
 
           {/* Right: Action Buttons */}
-          <div className="flex items-center justify-end gap-3">
+          <div className="flex items-center gap-3 justify-self-end">
+
             {/* Desktop (xl and above): Theme Toggle, Language Switcher, Trial Button */}
-            <div className="hidden xl:flex items-center gap-3">
-              <ThemeToggle />
-              <LanguageSwitcher />
-              <TrialCTAButton variant="primary" size="lg" />
+            <div className="hidden xl:flex items-center gap-2">
+              <div className="flex items-center gap-1 pointer-events-auto">
+                <ThemeToggle />
+                <LanguageSwitcher />
+              </div>
+              <div className="w-px h-6 bg-border mx-2" />
+              <TrialCTAButton variant="primary" size="lg" className="relative z-10 pointer-events-auto" />
             </div>
 
             {/* Mobile/Tablet (below xl): Theme Toggle, Language Switcher, Menu Button */}
             <div className="flex xl:hidden items-center gap-2">
-              <ThemeToggle />
-              <LanguageSwitcher />
+              <div className="flex items-center gap-1 pointer-events-auto">
+                <ThemeToggle />
+                <LanguageSwitcher />
+              </div>
               <button
-                className="p-2"
+                className="p-2 pointer-events-auto"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
               >
