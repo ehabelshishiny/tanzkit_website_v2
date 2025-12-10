@@ -127,10 +127,11 @@ export default async function LocaleLayout({
           </LenisProvider>
           <Toaster position="top-right" richColors />
         </ThemeProvider>
-        <Script
-          // src="https://codefy-os.vercel.app/widget.js"
-          // data-api-key="cfy_2e3f3e89d5e64d09b26a286c39d1a89c"
-          // strategy="lazyOnload"
+<Script
+          src="https://codefy-os.vercel.app/api/widget.js"
+          data-api-key="cfy_08df4792586441e79921e48842a16cf9"
+          data-api-url="https://codefy-os.vercel.app"
+          strategy="lazyOnload"
         />
       </body>
     </html>
