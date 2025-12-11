@@ -8,9 +8,10 @@ import { Typography } from '@/components/ui/typography';
 export function ContactHero() {
   const t = useTranslations('contact.hero');
 
-  return (
-    <section className="w-full bg-gradient-to-b from-primary/5 to-background py-20">
-      <div className="max-w-6xl mx-auto px-4">
+return (
+  <section className="w-full overflow-x-hidden bg-gradient-to-b from-primary/5 to-background py-20">
+    <div className="max-w-6xl mx-auto px-4 w-full">
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
