@@ -127,24 +127,25 @@ export function HeroSectionSolutions() {
 
   // Initialize canvas size with proper DPI scaling
   useEffect(() => {
-    const updateCanvasSize = () => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
-        
-        // Set display size (CSS pixels)
-        const displayWidth = Math.max(1200, rect.width);
-        const displayHeight = Math.max(800, rect.height);
-        
-        // Set buffer size (actual pixels, accounting for device pixel ratio)
-        setCanvasSize({
-          width: Math.floor(displayWidth * dpr),
-          height: Math.floor(displayHeight * dpr),
-          displayWidth,
-          displayHeight
-        });
-      }
-    };
+  const updateCanvasSize = () => {
+  if (containerRef.current) {
+    const rect = containerRef.current.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    
+    // Set display size (CSS pixels) - use actual rect dimensions
+    const displayWidth = rect.width;
+    const displayHeight = rect.height;
+    
+    // Set buffer size (actual pixels, accounting for device pixel ratio)
+    setCanvasSize({
+      width: Math.floor(displayWidth * dpr),
+      height: Math.floor(displayHeight * dpr),
+      displayWidth,
+      displayHeight
+    });
+  }
+};
+
 
     updateCanvasSize();
     window.addEventListener('resize', updateCanvasSize);
@@ -155,7 +156,7 @@ export function HeroSectionSolutions() {
   useEffect(() => {
     const { displayWidth, displayHeight } = canvasSize;
     const centerX = locale === 'ar' ? displayWidth * 0.25 : displayWidth * 0.75;
-    const centerY = displayHeight * 0.40;
+    const centerY = displayHeight * 0.45;
     const radius = 180;
     
     const angleOffset = -Math.PI / 2;
