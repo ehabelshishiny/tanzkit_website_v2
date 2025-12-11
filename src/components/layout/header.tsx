@@ -120,7 +120,7 @@ export function Header() {
               </div>
               <div className="w-px h-6 bg-border mx-2" />
               <TrialCTAButton variant="primary" size="lg" className="relative z-10 pointer-events-auto" />
-            </div>
+            </div>{/* Mobile Navigation Menu - Show below xl breakpoint */}
 
             {/* Mobile/Tablet (below xl): Theme Toggle, Language Switcher, Menu Button */}
             <div className="flex xl:hidden items-center gap-2">
@@ -141,21 +141,22 @@ export function Header() {
       </nav>
 
       {/* Mobile Navigation Menu - Show below xl breakpoint */}
-      {mobileMenuOpen && (
-        <div className="xl:hidden border-t fixed left-0 right-0 bg-background z-40 max-h-[calc(100vh-4rem)] overflow-y-auto">
-          <div className={`w-full py-4 px-6 ${locale === 'ar' ? 'flex flex-col-reverse space-y-reverse space-y-3' : 'space-y-3'}`}>
-            {navigation.map((item) => (
-              <div key={item.name}>
-                <Link
-                  href={item.href}
-                  className="block py-2 text-sm font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-                {/* Mobile Subpages */}
-                {item.subPages.length > 0 && (
-                  <div className={`mt-2 space-y-2 ${locale === 'ar' ? 'mr-4' : 'ml-4'}`}>
+{mobileMenuOpen && (
+  <div className="xl:hidden border-t fixed left-0 right-0 bg-background z-40 max-h-[calc(100vh-4rem)] overflow-y-auto overflow-x-hidden">
+    <div className={`w-full py-4 px-6 space-y-3`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+      {navigation.map((item) => (
+        <div key={item.name}>
+          <Link
+            href={item.href}
+            className="block py-2 text-sm font-medium"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {item.name}
+          </Link>
+          {/* Mobile Subpages */}
+          {item.subPages.length > 0 && (
+            <div className={`mt-2 space-y-2 ${locale === 'ar' ? 'mr-4' : 'ml-4'}`}>
+
                     {item.subPages.map((subPage) => (
                       <Link
                         key={subPage.href}
