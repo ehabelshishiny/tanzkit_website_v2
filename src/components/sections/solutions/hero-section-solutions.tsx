@@ -51,12 +51,17 @@ export function HeroSectionSolutions() {
   const [networkNodes, setNetworkNodes] = useState<NetworkNode[]>([]);
   const pulseDots = useRef<PulseDot[]>([]);
   const particles = useRef<Particle[]>([]);
-  const [canvasSize, setCanvasSize] = useState({ width: 1200, height: 800 });
+  const [canvasSize, setCanvasSize] = useState({ 
+    width: 1200, 
+    height: 800,
+    displayWidth: 1200,
+    displayHeight: 800
+  });
   const [mounted, setMounted] = useState(false);
   const [iconLoaded, setIconLoaded] = useState(false);
   const animationRef = useRef<number | null>(null);
   const lastParticleBurst = useRef<number>(0);
-  const isNetworkInitialized = useRef(false); // ✅ NEW: Track if network is ready
+  const isNetworkInitialized = useRef(false);
 
   // Track mounted state for theme detection
   useEffect(() => {
@@ -120,14 +125,23 @@ export function HeroSectionSolutions() {
     };
   }, []);
 
-  // Initialize canvas size
+  // Initialize canvas size with proper DPI scaling
   useEffect(() => {
     const updateCanvasSize = () => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        
+        // Set display size (CSS pixels)
+        const displayWidth = Math.max(1200, rect.width);
+        const displayHeight = Math.max(800, rect.height);
+        
+        // Set buffer size (actual pixels, accounting for device pixel ratio)
         setCanvasSize({
-          width: Math.max(1200, rect.width),
-          height: Math.max(800, rect.height)
+          width: Math.floor(displayWidth * dpr),
+          height: Math.floor(displayHeight * dpr),
+          displayWidth,
+          displayHeight
         });
       }
     };
@@ -139,9 +153,9 @@ export function HeroSectionSolutions() {
 
   // Initialize network visualization
   useEffect(() => {
-    const { width, height } = canvasSize;
-    const centerX = locale === 'ar' ? width * 0.25 : width * 0.75;
-    const centerY = height * 0.45;
+    const { displayWidth, displayHeight } = canvasSize;
+    const centerX = locale === 'ar' ? displayWidth * 0.25 : displayWidth * 0.75;
+    const centerY = displayHeight * 0.40;
     const radius = 180;
     
     const angleOffset = -Math.PI / 2;
@@ -230,7 +244,7 @@ export function HeroSectionSolutions() {
     }
     pulseDots.current = newPulseDots;
     
-    // ✅ NEW: Mark network as initialized after a short delay
+    // Mark network as initialized after a short delay
     setTimeout(() => {
       isNetworkInitialized.current = true;
     }, 100);
@@ -238,7 +252,7 @@ export function HeroSectionSolutions() {
 
   // Create particle burst from hub
   const createParticleBurst = (hubNode: NetworkNode) => {
-    const particleCount = 12; // Number of particles per burst
+    const particleCount = 12;
     const newParticles: Particle[] = [];
     
     for (let i = 0; i < particleCount; i++) {
@@ -250,11 +264,11 @@ export function HeroSectionSolutions() {
         x: hubNode.x,
         y: hubNode.y,
         angle: angle,
-        speed: 0.8 + Math.random() * 0.6, // 0.8 to 1.4
+        speed: 0.8 + Math.random() * 0.6,
         distance: 0,
-        maxDistance: 60 + Math.random() * 40, // 60 to 100
+        maxDistance: 60 + Math.random() * 40,
         color: getNodeColor(colorIndex, isDark, 1),
-        size: 3 + Math.random() * 2, // 3 to 5
+        size: 3 + Math.random() * 2,
         alpha: 1
       });
     }
@@ -271,10 +285,16 @@ export function HeroSectionSolutions() {
     if (!ctx) return;
 
     const animate = () => {
-      ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
+      const dpr = window.devicePixelRatio || 1;
+      
+      // Scale context to match device pixel ratio
+      ctx.save();
+      ctx.scale(dpr, dpr);
+      
+      ctx.clearRect(0, 0, canvasSize.displayWidth, canvasSize.displayHeight);
       const currentTime = Date.now();
 
-      // ✅ FIXED: Only create particle burst after network is fully initialized
+      // Only create particle burst after network is fully initialized
       const hubNode = networkNodes.find(n => n.type === 'hub');
       if (isNetworkInitialized.current && hubNode && currentTime - lastParticleBurst.current > 2000) {
         createParticleBurst(hubNode);
@@ -336,9 +356,9 @@ export function HeroSectionSolutions() {
         particle.distance += particle.speed;
         const progress = particle.distance / particle.maxDistance;
         
-        if (progress >= 1) return false; // Remove particle
+        if (progress >= 1) return false;
         
-        particle.alpha = 1 - progress; // Fade out as it travels
+        particle.alpha = 1 - progress;
         
         const x = particle.x + Math.cos(particle.angle) * particle.distance;
         const y = particle.y + Math.sin(particle.angle) * particle.distance;
@@ -367,12 +387,12 @@ export function HeroSectionSolutions() {
         if (node.type === 'hub') {
           // === HUB WITH GRADIENT RING BORDER & LAYERED SHADOWS ===
           
-          // 1. LAYERED SHADOW DEPTH (Multiple shadow layers)
+          // 1. LAYERED SHADOW DEPTH
           const shadowLayers = [
-            { offsetX: 0, offsetY: 12, blur: 24, alpha: 0.15 },  // Deepest shadow
-            { offsetX: 0, offsetY: 8, blur: 16, alpha: 0.12 },   // Medium shadow
-            { offsetX: 0, offsetY: 4, blur: 8, alpha: 0.08 },    // Close shadow
-            { offsetX: 0, offsetY: 2, blur: 4, alpha: 0.05 }     // Subtle shadow
+            { offsetX: 0, offsetY: 12, blur: 24, alpha: 0.15 },
+            { offsetX: 0, offsetY: 8, blur: 16, alpha: 0.12 },
+            { offsetX: 0, offsetY: 4, blur: 8, alpha: 0.08 },
+            { offsetX: 0, offsetY: 2, blur: 4, alpha: 0.05 }
           ];
           
           shadowLayers.forEach(shadow => {
@@ -394,37 +414,31 @@ export function HeroSectionSolutions() {
           ctx.shadowOffsetX = 0;
           ctx.shadowOffsetY = 0;
 
+          // 2. Background circle matching hero gradient
+          const hubGradient = ctx.createLinearGradient(
+            0, 0, 
+            canvasSize.displayWidth, canvasSize.displayHeight
+          );
 
-// 3. Background circle matching hero gradient
-// Sample the exact gradient at hub position to create transparent illusion
-const hubGradient = ctx.createLinearGradient(
-  0, 0, 
-  canvasSize.width, canvasSize.height
-);
+          if (isDark) {
+            hubGradient.addColorStop(0, 'oklch(0.15 0.04 250)');
+            hubGradient.addColorStop(0.5, 'oklch(0.20 0.06 240)');
+            hubGradient.addColorStop(1, 'oklch(0.18 0.04 165)');
+          } else {
+            hubGradient.addColorStop(0, 'oklch(0.95 0.02 250)');
+            hubGradient.addColorStop(0.5, 'oklch(0.92 0.04 240)');
+            hubGradient.addColorStop(1, 'oklch(0.90 0.03 165)');
+          }
 
-if (isDark) {
-  // Dark mode gradient (matching hero section)
-  hubGradient.addColorStop(0, 'oklch(0.15 0.04 250)');    // from
-  hubGradient.addColorStop(0.5, 'oklch(0.20 0.06 240)');  // via
-  hubGradient.addColorStop(1, 'oklch(0.18 0.04 165)');    // to
-} else {
-  // Light mode gradient (matching hero section)
-  hubGradient.addColorStop(0, 'oklch(0.95 0.02 250)');    // from
-  hubGradient.addColorStop(0.5, 'oklch(0.92 0.04 240)');  // via
-  hubGradient.addColorStop(1, 'oklch(0.90 0.03 165)');    // to
-}
+          ctx.fillStyle = hubGradient;
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
+          ctx.fill();
 
-ctx.fillStyle = hubGradient;
-ctx.beginPath();
-ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
-ctx.fill();
-
-
-          // 4. ANIMATED GRADIENT RING BORDER
+          // 3. ANIMATED GRADIENT RING BORDER
           const time = Date.now() * 0.001;
-          const rotationAngle = time * 0.7; // Rotate gradient slowly
+          const rotationAngle = time * 0.7;
           
-          // Calculate gradient positions with rotation
           const gradStartX = node.x + Math.cos(rotationAngle) * 35;
           const gradStartY = node.y + Math.sin(rotationAngle) * 35;
           const gradEndX = node.x + Math.cos(rotationAngle + Math.PI) * 35;
@@ -434,10 +448,10 @@ ctx.fill();
             gradStartX, gradStartY,
             gradEndX, gradEndY
           );
-          borderGradient.addColorStop(0, getNodeColor(0, isDark, 0.9));    // Ocean Blue
-          borderGradient.addColorStop(0.33, getNodeColor(2, isDark, 0.9)); // Cyan
-          borderGradient.addColorStop(0.66, getNodeColor(4, isDark, 0.9)); // Teal
-          borderGradient.addColorStop(1, getNodeColor(5, isDark, 0.9));    // Emerald
+          borderGradient.addColorStop(0, getNodeColor(0, isDark, 0.9));
+          borderGradient.addColorStop(0.33, getNodeColor(2, isDark, 0.9));
+          borderGradient.addColorStop(0.66, getNodeColor(4, isDark, 0.9));
+          borderGradient.addColorStop(1, getNodeColor(5, isDark, 0.9));
           
           ctx.strokeStyle = borderGradient;
           ctx.lineWidth = 4;
@@ -445,7 +459,7 @@ ctx.fill();
           ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
           ctx.stroke();
 
-          // 5. Inner highlight for depth
+          // 4. Inner highlight for depth
           const innerHighlight = ctx.createRadialGradient(
             node.x - 10, node.y - 10, 0,
             node.x, node.y, 25
@@ -457,60 +471,46 @@ ctx.fill();
           ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
           ctx.fill();
 
-// 6. Draw Tranzkit icon with dynamic color matching "operator" node
-if (iconLoaded && iconImageRef.current) {
-  const iconSize = 40;
-  const iconX = node.x - iconSize / 2;
-  const iconY = node.y - iconSize / 2;
+          // 5. Draw Tranzkit icon with dynamic color
+          if (iconLoaded && iconImageRef.current) {
+            const iconSize = 40;
+            const iconX = node.x - iconSize / 2;
+            const iconY = node.y - iconSize / 2;
 
-  // Get the "operator" node color (index 1)
-  const operatorColor = getNodeColor(1, isDark, 1.0);
+            const operatorColor = getNodeColor(1, isDark, 1.0);
 
-  // Create an off-screen canvas for color manipulation
-  const tempCanvas = document.createElement('canvas');
-  tempCanvas.width = iconSize;
-  tempCanvas.height = iconSize;
-  const tempCtx = tempCanvas.getContext('2d');
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = iconSize;
+            tempCanvas.height = iconSize;
+            const tempCtx = tempCanvas.getContext('2d');
 
-  if (tempCtx) {
-    // Draw the original SVG
-    tempCtx.drawImage(iconImageRef.current, 0, 0, iconSize, iconSize);
+            if (tempCtx) {
+              tempCtx.drawImage(iconImageRef.current, 0, 0, iconSize, iconSize);
+              const imageData = tempCtx.getImageData(0, 0, iconSize, iconSize);
+              const data = imageData.data;
 
-    // Get image data
-    const imageData = tempCtx.getImageData(0, 0, iconSize, iconSize);
-    const data = imageData.data;
+              const colorMatch = operatorColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+              const r = colorMatch ? parseInt(colorMatch[1]) : 64;
+              const g = colorMatch ? parseInt(colorMatch[2]) : 150;
+              const b = colorMatch ? parseInt(colorMatch[3]) : 240;
 
-    // Parse the operator color (rgba string)
-    const colorMatch = operatorColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
-    const r = colorMatch ? parseInt(colorMatch[1]) : 64;
-    const g = colorMatch ? parseInt(colorMatch[2]) : 150;
-    const b = colorMatch ? parseInt(colorMatch[3]) : 240;
+              for (let i = 0; i < data.length; i += 4) {
+                const alpha = data[i + 3];
+                if (alpha > 0) {
+                  data[i] = r;
+                  data[i + 1] = g;
+                  data[i + 2] = b;
+                }
+              }
 
-    // Apply color filter: replace non-transparent pixels with operator color
-    for (let i = 0; i < data.length; i += 4) {
-      const alpha = data[i + 3];
-      if (alpha > 0) {
-        // Preserve alpha, replace RGB with operator color
-        data[i] = r;
-        data[i + 1] = g;
-        data[i + 2] = b;
-        // Keep original alpha: data[i + 3] = alpha;
-      }
-    }
-
-    // Put the modified image data back
-    tempCtx.putImageData(imageData, 0, 0);
-
-    // Draw the colorized icon onto the main canvas
-    ctx.drawImage(tempCanvas, iconX, iconY, iconSize, iconSize);
-  }
-}
-
+              tempCtx.putImageData(imageData, 0, 0);
+              ctx.drawImage(tempCanvas, iconX, iconY, iconSize, iconSize);
+            }
+          }
 
         } else {
           // === OUTER NODES WITH LAYERED SHADOWS ===
           
-          // 1. Layered shadows for depth
           const nodeShadows = [
             { offsetX: 0, offsetY: 6, blur: 12, alpha: 0.12 },
             { offsetX: 0, offsetY: 3, blur: 6, alpha: 0.08 },
@@ -535,7 +535,7 @@ if (iconLoaded && iconImageRef.current) {
           ctx.shadowOffsetX = 0;
           ctx.shadowOffsetY = 0;
 
-          // 2. Outer glow
+          // Outer glow
           const glowGradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 35);
           glowGradient.addColorStop(0, getNodeColor(index, isDark, 0.3));
           glowGradient.addColorStop(1, getNodeColor(index, isDark, 0));
@@ -544,26 +544,26 @@ if (iconLoaded && iconImageRef.current) {
           ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
           ctx.fill();
 
-          // 3. Node circle with gradient
+          // Node circle with gradient
           const nodeGradient = ctx.createRadialGradient(
             node.x - 5, node.y - 5, 0,
             node.x + 5, node.y + 5, 20
           );
-          nodeGradient.addColorStop(1, getNodeColor(index, isDark, 1.0));
+          nodeGradient.addColorStop(0, getNodeColor(index, isDark, 1.0));
           nodeGradient.addColorStop(1, getNodeColor(index, isDark, 1.0));
           ctx.fillStyle = nodeGradient;
           ctx.beginPath();
           ctx.arc(node.x, node.y, 18, 0, Math.PI * 2);
           ctx.fill();
 
-          // 4. Border
+          // Border
           ctx.strokeStyle = getNodeColor(index, isDark, 0.4);
           ctx.lineWidth = 2;
           ctx.beginPath();
           ctx.arc(node.x, node.y, 18, 0, Math.PI * 2);
           ctx.stroke();
 
-          // 5. Simple pulse ring
+          // Pulse ring
           const pulseSize = 4 + Math.sin(Date.now() * 0.002 + node.pulsePhase) * 3;
           ctx.strokeStyle = getNodeColor(index, isDark, 0.5);
           ctx.lineWidth = 2;
@@ -581,6 +581,7 @@ if (iconLoaded && iconImageRef.current) {
         }
       });
 
+      ctx.restore();
       animationRef.current = requestAnimationFrame(animate);
     };
 
@@ -603,13 +604,11 @@ if (iconLoaded && iconImageRef.current) {
 
       {/* Floating Orbs - Brand Color Accents */}
       <div className="absolute inset-0 opacity-30 dark:opacity-20 pointer-events-none">
-        {/* Ocean Blue Orb */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[oklch(0.52_0.12_240)]/40 dark:bg-[oklch(0.60_0.14_240)]/50 rounded-full blur-3xl animate-float-slow" />
-        {/* Emerald Orb */}
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[oklch(0.65_0.12_165)]/40 dark:bg-[oklch(0.70_0.14_165)]/50 rounded-full blur-3xl animate-float-slower" />
       </div>
 
-     {/* Canvas Background - Network Visualization */}
+      {/* Canvas Background - Network Visualization */}
       <div 
         ref={containerRef} 
         className="absolute inset-0 hidden xl:block"
@@ -618,40 +617,43 @@ if (iconLoaded && iconImageRef.current) {
           ref={canvasRef}
           width={canvasSize.width}
           height={canvasSize.height}
-          className="w-full h-full"
+          style={{
+            width: `${canvasSize.displayWidth}px`,
+            height: `${canvasSize.displayHeight}px`
+          }}
+          className="block"
         />
       </div>
 
       {/* Content */}
-<div className="relative z-10 w-full px-6 md:px-8 lg:px-12 py-20">
-  <div className="max-w-2xl">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      <Typography variant="display" as="h1" className="mb-6 leading-tight">
-        <span className="text-accent">{t('title.smart')}</span>{' '}
-        <span className="text-primary">{t('title.mobility')}</span>
-        <span className="text-foreground">{t('title.practicalResults')}</span>
-      </Typography>
-      <Typography variant="subtitle" className="text-muted-foreground mb-8 leading-relaxed">
-        {t('subtitle')}
-      </Typography>
-      <GradientButton
-        href="#explore"
-        size="lg"
-        icon={<RTLAwareArrow className="w-5 h-5" />}
-        iconPosition="right"
-      >
-        {t('cta')}
-      </GradientButton>
-    </motion.div>
-  </div>
-</div>
+      <div className="relative z-10 w-full px-6 md:px-8 lg:px-12 py-20">
+        <div className="max-w-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography variant="display" as="h1" className="mb-6 leading-tight">
+              <span className="text-accent">{t('title.smart')}</span>{' '}
+              <span className="text-primary">{t('title.mobility')}</span>
+              <span className="text-foreground">{t('title.practicalResults')}</span>
+            </Typography>
+            <Typography variant="subtitle" className="text-muted-foreground mb-8 leading-relaxed">
+              {t('subtitle')}
+            </Typography>
+            <GradientButton
+              href="#explore"
+              size="lg"
+              icon={<RTLAwareArrow className="w-5 h-5" />}
+              iconPosition="right"
+            >
+              {t('cta')}
+            </GradientButton>
+          </motion.div>
+        </div>
+      </div>
 
-
-      {/* Gradient Overlay - Adjusted for Better Contrast */}
+      {/* Gradient Overlay */}
       <div 
         className={`absolute inset-0 bg-gradient-to-r pointer-events-none ${
           locale === 'ar' 
