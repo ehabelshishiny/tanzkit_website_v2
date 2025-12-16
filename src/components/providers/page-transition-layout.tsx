@@ -44,33 +44,36 @@ export function PageTransitionLayout({ children }: PageTransitionLayoutProps) {
   }
 
   // Smart animation variants based on navigation pattern
-  const getAnimationVariant = () => {
-    // Check if RTL to adjust animations (SSR-safe)
-    const isRTL = typeof document !== 'undefined' && document.documentElement.dir === 'rtl';
-    
-    // Enhanced modern animation with multiple layers
-    // For RTL: Disable Y-axis transforms to prevent scroll conflicts
-    return {
-      initial: {
-        opacity: 0,
-        scale: 0.98,
-        y: isRTL ? 0 : 24,
-        filter: 'blur(8px)',
-      },
-      animate: {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        filter: 'blur(0px)',
-      },
-      exit: {
-        opacity: 0,
-        scale: 0.98,
-        y: isRTL ? 0 : -24,
-        filter: 'blur(8px)',
-      },
-    };
+ const getAnimationVariant = () => {
+  // Check if RTL to adjust animations (SSR-safe)
+  const isRTL = typeof document !== 'undefined' && document.documentElement.dir === 'rtl';
+  // Check if mobile
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  
+  // Enhanced modern animation with multiple layers
+  // For RTL mobile: Disable Y-axis and scale transforms to prevent scroll conflicts
+  return {
+    initial: {
+      opacity: 0,
+      scale: (isRTL && isMobile) ? 1 : 0.98,
+      y: (isRTL && isMobile) ? 0 : (isRTL ? 0 : 24),
+      filter: 'blur(8px)',
+    },
+    animate: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      filter: 'blur(0px)',
+    },
+    exit: {
+      opacity: 0,
+      scale: (isRTL && isMobile) ? 1 : 0.98,
+      y: (isRTL && isMobile) ? 0 : (isRTL ? 0 : -24),
+      filter: 'blur(8px)',
+    },
   };
+};
+
 
   const variant = getAnimationVariant();
 

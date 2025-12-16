@@ -142,8 +142,8 @@ export function Header() {
 
       {/* Mobile Navigation Menu - Show below xl breakpoint */}
 {mobileMenuOpen && (
-  <div className="xl:hidden border-t fixed left-0 right-0 bg-background z-40 max-h-[calc(100vh-4rem)] overflow-y-auto overflow-x-hidden">
-    <div className={`w-full py-4 px-6 space-y-3`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+  <div className="xl:hidden border-t fixed inset-x-0 bg-background z-40 max-h-[calc(100vh-4rem)] overflow-y-auto">
+    <div className={`w-full py-4 px-6 space-y-3 overflow-x-hidden`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       {navigation.map((item) => (
         <div key={item.name}>
           <Link

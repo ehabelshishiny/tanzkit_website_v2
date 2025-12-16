@@ -102,9 +102,9 @@ export function ContactForm() {
   }
 
   return (
-    <FadeIn>
-      <div className="mx-auto max-w-2xl w-full px-4 overflow-x-hidden">
-        <div className="bg-card border border-border rounded-xl shadow-lg p-8 md:p-10">
+  <FadeIn>
+    <div className="mx-auto max-w-2xl">
+      <div className="bg-card border border-border rounded-xl shadow-lg p-8 md:p-10">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <input
               type="text"
