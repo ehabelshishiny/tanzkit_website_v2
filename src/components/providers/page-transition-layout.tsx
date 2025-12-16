@@ -17,8 +17,18 @@ export function PageTransitionLayout({ children }: PageTransitionLayoutProps) {
   useEffect(() => {
     setIsNavigating(true);
     
-    // Smooth scroll to top
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    // Fix for RTL: Use scrollTo with left: 0 to prevent horizontal scroll
+    const isRTL = document.documentElement.dir === 'rtl';
+    
+    if (isRTL) {
+      // For RTL: Reset both vertical and horizontal scroll
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      // Force re-flow to prevent scroll artifacts
+      document.documentElement.scrollLeft = 0;
+    } else {
+      // For LTR: Normal scroll to top
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
     
     // Reset navigation state after transition
     const timer = setTimeout(() => {
@@ -35,13 +45,17 @@ export function PageTransitionLayout({ children }: PageTransitionLayoutProps) {
 
   // Smart animation variants based on navigation pattern
   const getAnimationVariant = () => {
+    // Check if RTL to adjust animations (SSR-safe)
+    const isRTL = typeof document !== 'undefined' && document.documentElement.dir === 'rtl';
+    
     // Enhanced modern animation with multiple layers
+    // For RTL: Disable Y-axis transforms to prevent scroll conflicts
     return {
       initial: {
         opacity: 0,
-        scale: 0.96,
-        y: 24,
-        filter: 'blur(10px)',
+        scale: 0.98,
+        y: isRTL ? 0 : 24,
+        filter: 'blur(8px)',
       },
       animate: {
         opacity: 1,
@@ -51,9 +65,9 @@ export function PageTransitionLayout({ children }: PageTransitionLayoutProps) {
       },
       exit: {
         opacity: 0,
-        scale: 0.96,
-        y: -24,
-        filter: 'blur(10px)',
+        scale: 0.98,
+        y: isRTL ? 0 : -24,
+        filter: 'blur(8px)',
       },
     };
   };

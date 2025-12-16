@@ -379,3 +379,35 @@ html[dir="rtl"] .pricing-feature-item {
 .font-mono {
   font-family: var(--font-geist-mono), monospace;
 }
+
+
+/* ========================================
+   RTL Scroll Behavior & Overflow Control
+   ======================================== */
+
+/* Prevent horizontal scroll globally */
+body {
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
+
+/* RTL-specific scroll fixes */
+html[dir="rtl"] body {
+  /* Prevent horizontal scroll artifacts in RTL */
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  /* Ensure scroll starts at correct position */
+  scroll-behavior: auto;
+}
+
+/* Fix for centered containers in RTL */
+html[dir="rtl"] .container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ensure max-width containers don't create horizontal scroll in RTL */
+html[dir="rtl"] [class*="max-w-"] {
+  box-sizing: border-box;
+}
+
