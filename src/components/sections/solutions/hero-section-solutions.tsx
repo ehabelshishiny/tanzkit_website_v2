@@ -595,13 +595,14 @@ export function HeroSectionSolutions() {
     };
   }, [networkNodes, canvasSize, isDark, iconLoaded]);
 
-  return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    return (
+    <section className="relative xl:min-h-screen flex items-center overflow-hidden">
       {/* Animated Gradient Background with Brand Colors */}
       <div
         className="absolute inset-0 bg-gradient-to-br from-[oklch(0.95_0.02_250)] via-[oklch(0.92_0.04_240)] to-[oklch(0.90_0.03_165)] dark:from-[oklch(0.15_0.04_250)] dark:via-[oklch(0.20_0.06_240)] dark:to-[oklch(0.18_0.04_165)] animate-gradient-shift"
         style={{ backgroundSize: '200% 200%' }}
       />
+
 
       {/* Floating Orbs - Brand Color Accents */}
       <div className="absolute inset-0 opacity-30 dark:opacity-20 pointer-events-none">

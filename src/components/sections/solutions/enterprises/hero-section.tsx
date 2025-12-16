@@ -11,7 +11,7 @@ export function EnterprisesHeroSection() {
 
   return (
     <section
-      className="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50 dark:from-slate-950 dark:via-blue-950/50 dark:to-slate-950"
+      className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50 dark:from-slate-950 dark:via-blue-950/50 dark:to-slate-950"
     >
       {/* Animated grid with glow effect */}
       <div className="absolute inset-0 opacity-40 dark:opacity-30">

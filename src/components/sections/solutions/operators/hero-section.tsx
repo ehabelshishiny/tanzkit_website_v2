@@ -11,7 +11,7 @@ export function OperatorsHeroSection() {
 
   return (
     <section
-      className="relative min-h-[70vh] flex items-center overflow-hidden"
+      className="relative min-h-[60vh] flex items-center overflow-hidden"
       style={{
         background: `
           linear-gradient(135deg, 
