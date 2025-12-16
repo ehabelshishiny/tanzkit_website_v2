@@ -9,7 +9,7 @@ export default function ContactPage() {
       <ContactHero />
       <section className="container py-12">
         <Suspense fallback={
-          <div className="mx-auto max-w-2xl w-full px-4">
+          <div className="mx-auto max-w-2xl">
             <div className="bg-card border border-border rounded-xl shadow-lg p-8 md:p-10 animate-pulse">
               <div className="space-y-6">
                 <div className="h-10 bg-muted rounded"></div>
@@ -30,3 +30,4 @@ export default function ContactPage() {
     </>
   );
 }
+
