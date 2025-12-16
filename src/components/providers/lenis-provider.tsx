@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import Lenis from 'lenis';
 
 interface LenisProviderProps {
@@ -8,8 +8,20 @@ interface LenisProviderProps {
 }
 
 export function LenisProvider({ children }: LenisProviderProps) {
+  const [isRTL, setIsRTL] = useState(false);
+
   useEffect(() => {
-    // Initialize Lenis smooth scrolling
+    // Check if document is RTL
+    const rtl = document.documentElement.dir === 'rtl';
+    setIsRTL(rtl);
+
+    // Skip Lenis initialization for RTL languages to avoid scroll conflicts
+    if (rtl) {
+      console.log('Lenis disabled for RTL mode - using native scroll');
+      return;
+    }
+
+    // Initialize Lenis smooth scrolling only for LTR
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -37,4 +49,3 @@ export function LenisProvider({ children }: LenisProviderProps) {
 
   return <>{children}</>;
 }
-
