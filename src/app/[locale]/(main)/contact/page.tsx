@@ -5,9 +5,9 @@ import { SocialLinks } from '@/components/sections/contact/social-links';
 
 export default function ContactPage() {
   return (
-    <div className="w-full overflow-x-hidden">
+    <>
       <ContactHero />
-      <section className="container py-12 w-full max-w-full">
+      <section className="container py-12">
         <Suspense fallback={
           <div className="mx-auto max-w-2xl w-full px-4">
             <div className="bg-card border border-border rounded-xl shadow-lg p-8 md:p-10 animate-pulse">
@@ -27,8 +27,6 @@ export default function ContactPage() {
         </Suspense>
       </section>
       <SocialLinks />
-    </div>
+    </>
   );
 }
-
-
