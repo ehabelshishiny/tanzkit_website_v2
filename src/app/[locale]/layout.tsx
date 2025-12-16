@@ -8,6 +8,7 @@ import { locales } from '@/i18n';
 import { LenisProvider } from '@/components/providers/lenis-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { PageTransitionLayout } from '@/components/providers/page-transition-layout';
+import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
 import { Toaster } from 'sonner';
 import '../globals.css';
 
@@ -127,6 +128,7 @@ export default async function LocaleLayout({
           </LenisProvider>
           <Toaster position="top-right" richColors />
         </ThemeProvider>
+        <ScrollToTopButton />
 <Script
           src="https://codefy-os.vercel.app/api/widget.js"
           data-api-key="cfy_08df4792586441e79921e48842a16cf9"
