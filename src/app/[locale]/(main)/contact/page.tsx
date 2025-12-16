@@ -5,7 +5,7 @@ import { SocialLinks } from '@/components/sections/contact/social-links';
 
 export default function ContactPage() {
   return (
-    <>
+    <div className="overflow-x-hidden">
       <ContactHero />
       <section className="container py-12">
         <Suspense fallback={
@@ -27,7 +27,8 @@ export default function ContactPage() {
         </Suspense>
       </section>
       <SocialLinks />
-    </>
+    </div>
   );
 }
+
 
