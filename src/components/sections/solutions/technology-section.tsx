@@ -1,36 +1,42 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { SectionContainer } from '@/components/ui/section-container';
 import { SectionHeader } from '@/components/ui/section-header';
 import { FeatureCard } from '@/components/ui/feature-card';
 import { Brain, BarChart3, Shield, Globe } from 'lucide-react';
 
-export function TechnologySection() {
-  const t = useTranslations('solutions.main.technology');
+interface TechnologySectionProps {
+  data: {
+    title: string;
+    highlights: string[];
+  };
+}
 
-  const features = [
-    {
-      icon: <Brain className="w-8 h-8" />,
-      iconColor: 'hsl(var(--chart-1))',
-      title: t('highlights.0')
-    },
-    {
-      icon: <BarChart3 className="w-8 h-8" />,
-      iconColor: 'hsl(var(--chart-4))',
-      title: t('highlights.1')
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      iconColor: 'hsl(var(--chart-2))',
-      title: t('highlights.2')
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      iconColor: 'hsl(var(--chart-5))',
-      title: t('highlights.3')
-    }
+export function TechnologySection({ data }: TechnologySectionProps) {
+  // Safety check
+  if (!data || !data.highlights) {
+    return null;
+  }
+
+  const icons = [
+    <Brain key="brain" className="w-8 h-8" />,
+    <BarChart3 key="chart" className="w-8 h-8" />,
+    <Shield key="shield" className="w-8 h-8" />,
+    <Globe key="globe" className="w-8 h-8" />
   ];
+
+  const iconColors = [
+    'hsl(var(--chart-1))',
+    'hsl(var(--chart-4))',
+    'hsl(var(--chart-2))',
+    'hsl(var(--chart-5))'
+  ];
+
+  const features = data.highlights.map((highlight, index) => ({
+    icon: icons[index % icons.length],
+    iconColor: iconColors[index % iconColors.length],
+    title: highlight
+  }));
 
   return (
     <SectionContainer
@@ -39,7 +45,7 @@ export function TechnologySection() {
       maxWidth="2xl"
     >
       <SectionHeader
-        title={t('title')}
+        title={data.title}
         alignment="center"
         titleSize="lg"
       />

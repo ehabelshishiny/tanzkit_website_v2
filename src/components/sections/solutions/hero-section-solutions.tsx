@@ -2,11 +2,30 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { GradientButton } from '@/components/ui/gradient-button';
 import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 import { Typography } from '@/components/ui/typography';
+
+interface HeroSectionSolutionsProps {
+  data: {
+    title: {
+      smart: string;
+      mobility: string;
+      practicalResults: string;
+    };
+    subtitle: string;
+    cta: string;
+    nodes: {
+      operator: string;
+      enterprise: string;
+      supervisor: string;
+      driver: string;
+      rider: string;
+    };
+  };
+}
 
 interface NetworkNode {
   id: number;
@@ -41,8 +60,7 @@ interface Particle {
   alpha: number;
 }
 
-export function HeroSectionSolutions() {
-  const t = useTranslations('solutions.main.hero');
+export function HeroSectionSolutions({ data }: HeroSectionSolutionsProps) {
   const locale = useLocale();
   const { theme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -51,8 +69,8 @@ export function HeroSectionSolutions() {
   const [networkNodes, setNetworkNodes] = useState<NetworkNode[]>([]);
   const pulseDots = useRef<PulseDot[]>([]);
   const particles = useRef<Particle[]>([]);
-  const [canvasSize, setCanvasSize] = useState({ 
-    width: 1200, 
+  const [canvasSize, setCanvasSize] = useState({
+    width: 1200,
     height: 800,
     displayWidth: 1200,
     displayHeight: 800
@@ -154,14 +172,19 @@ export function HeroSectionSolutions() {
 
   // Initialize network visualization
   useEffect(() => {
+    // Safety check - don't initialize if data is missing
+    if (!data || !data.nodes) {
+      return;
+    }
+
     const { displayWidth, displayHeight } = canvasSize;
     const centerX = locale === 'ar' ? displayWidth * 0.25 : displayWidth * 0.75;
     const centerY = displayHeight * 0.45;
     const radius = 180;
-    
+
     const angleOffset = -Math.PI / 2;
     const angleStep = (Math.PI * 2) / 5;
-    
+
     const newNodes: NetworkNode[] = [
       {
         id: 0,
@@ -182,7 +205,7 @@ export function HeroSectionSolutions() {
         pulsePhase: 0,
         connections: [0],
         type: 'operator',
-        label: t('nodes.operator')
+        label: data.nodes.operator
       },
       {
         id: 2,
@@ -193,7 +216,7 @@ export function HeroSectionSolutions() {
         pulsePhase: Math.PI * 0.4,
         connections: [0],
         type: 'enterprise',
-        label: t('nodes.enterprise')
+        label: data.nodes.enterprise
       },
       {
         id: 3,
@@ -204,7 +227,7 @@ export function HeroSectionSolutions() {
         pulsePhase: Math.PI * 0.8,
         connections: [0],
         type: 'supervisor',
-        label: t('nodes.supervisor')
+        label: data.nodes.supervisor
       },
       {
         id: 4,
@@ -215,7 +238,7 @@ export function HeroSectionSolutions() {
         pulsePhase: Math.PI * 1.2,
         connections: [0],
         type: 'driver',
-        label: t('nodes.driver')
+        label: data.nodes.driver
       },
       {
         id: 5,
@@ -226,7 +249,7 @@ export function HeroSectionSolutions() {
         pulsePhase: Math.PI * 1.6,
         connections: [0],
         type: 'passenger',
-        label: t('nodes.rider')
+        label: data.nodes.rider
       }
     ];
 
@@ -249,7 +272,8 @@ export function HeroSectionSolutions() {
     setTimeout(() => {
       isNetworkInitialized.current = true;
     }, 100);
-  }, [canvasSize, locale, t]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [canvasSize.displayWidth, canvasSize.displayHeight, locale]);
 
   // Create particle burst from hub
   const createParticleBurst = (hubNode: NetworkNode) => {
@@ -595,6 +619,11 @@ export function HeroSectionSolutions() {
     };
   }, [networkNodes, canvasSize, isDark, iconLoaded]);
 
+  // Safety check for data - after all hooks
+  if (!data || !data.title || !data.nodes) {
+    return null;
+  }
+
     return (
     <section className="relative xl:min-h-screen flex items-center overflow-hidden">
       {/* Animated Gradient Background with Brand Colors */}
@@ -628,20 +657,21 @@ export function HeroSectionSolutions() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full px-6 md:px-8 lg:px-12 py-20">
-        <div className="max-w-2xl">
+      <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-12 py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <Typography variant="display" as="h1" className="mb-6 leading-tight">
-              <span className="text-accent">{t('title.smart')}</span>{' '}
-              <span className="text-primary">{t('title.mobility')}</span>
-              <span className="text-foreground">{t('title.practicalResults')}</span>
+              <span className="text-accent">{data.title.smart}</span>{' '}
+              <span className="text-primary">{data.title.mobility}</span>
+              <span className="text-foreground">{data.title.practicalResults}</span>
             </Typography>
             <Typography variant="subtitle" className="text-muted-foreground mb-8 leading-relaxed">
-              {t('subtitle')}
+              {data.subtitle}
             </Typography>
             <GradientButton
               href="#explore"
@@ -649,9 +679,10 @@ export function HeroSectionSolutions() {
               icon={<RTLAwareArrow className="w-5 h-5" />}
               iconPosition="right"
             >
-              {t('cta')}
+              {data.cta}
             </GradientButton>
           </motion.div>
+        </div>
         </div>
       </div>
 

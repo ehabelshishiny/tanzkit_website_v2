@@ -2,11 +2,31 @@ import { Suspense } from 'react';
 import { ContactHero } from '@/components/sections/contact/contact-hero';
 import { ContactForm } from '@/components/forms/contact-form';
 import { SocialLinks } from '@/components/sections/contact/social-links';
+import { getContactPage, getSiteSettings } from '@/lib/sanity/queries';
+import { notFound } from 'next/navigation';
 
-export default function ContactPage() {
+interface ContactPageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+export default async function ContactPage({ params }: ContactPageProps) {
+  const { locale } = await params;
+
+  // Fetch contact page data and site settings from Sanity
+  const [contactPageData, siteSettings] = await Promise.all([
+    getContactPage(locale),
+    getSiteSettings(locale),
+  ]);
+
+  if (!contactPageData) {
+    notFound();
+  }
+
   return (
     <>
-      <ContactHero />
+      <ContactHero data={contactPageData.hero} />
       <section className="container py-12">
         <Suspense fallback={
           <div className="mx-auto max-w-2xl w-full px-4">
@@ -23,10 +43,10 @@ export default function ContactPage() {
             </div>
           </div>
         }>
-          <ContactForm />
+          <ContactForm labels={contactPageData.form} />
         </Suspense>
       </section>
-      <SocialLinks />
+      <SocialLinks data={siteSettings.socialLinks} />
     </>
   );
 }

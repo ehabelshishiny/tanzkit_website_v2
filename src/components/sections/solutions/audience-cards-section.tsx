@@ -1,26 +1,33 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { SectionContainer } from '@/components/ui/section-container';
 import { AudienceCard } from '@/components/ui/audience-card';
 
-export function AudienceCardsSection() {
-  const t = useTranslations('solutions.main.audienceCards');
+interface AudienceCardsSectionProps {
+  data: {
+    operators: {
+      headline: string;
+      description: string;
+      benefits: string[];
+      cta: string;
+    };
+    enterprises: {
+      headline: string;
+      description: string;
+      benefits: string[];
+      cta: string;
+    };
+  };
+}
+
+export function AudienceCardsSection({ data }: AudienceCardsSectionProps) {
   const locale = useLocale();
 
-  const operatorsBenefits = [
-    t('operators.benefits.0'),
-    t('operators.benefits.1'),
-    t('operators.benefits.2'),
-    t('operators.benefits.3')
-  ];
-
-  const enterprisesBenefits = [
-    t('enterprises.benefits.0'),
-    t('enterprises.benefits.1'),
-    t('enterprises.benefits.2'),
-    t('enterprises.benefits.3')
-  ];
+  // Safety check
+  if (!data || !data.operators || !data.enterprises) {
+    return null;
+  }
 
   return (
     <SectionContainer
@@ -30,19 +37,19 @@ export function AudienceCardsSection() {
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <AudienceCard
-          title={t('operators.headline')}
-          description={t('operators.description')}
-          benefits={operatorsBenefits}
-          ctaText={t('operators.cta')}
+          title={data.operators.headline}
+          description={data.operators.description}
+          benefits={data.operators.benefits}
+          ctaText={data.operators.cta}
           ctaLink={`/${locale}/solutions/operators-drivers`}
           gradient="from-primary/10 to-chart-1/10"
         />
 
         <AudienceCard
-          title={t('enterprises.headline')}
-          description={t('enterprises.description')}
-          benefits={enterprisesBenefits}
-          ctaText={t('enterprises.cta')}
+          title={data.enterprises.headline}
+          description={data.enterprises.description}
+          benefits={data.enterprises.benefits}
+          ctaText={data.enterprises.cta}
           ctaLink={`/${locale}/solutions/enterprises-passengers`}
           gradient="from-chart-4/10 to-accent/10"
         />

@@ -18,7 +18,21 @@ export default function TestPage() {
       `}</style>
 
       <div className="test-page-hero">
-        <HeroSection />
+        <HeroSection
+          data={{
+            title: "Test Page",
+            titleHighlight: "",
+            subtitle: "This is a test page for component testing",
+            primaryCta: {
+              text: "Get Started",
+              href: "/",
+            },
+            secondaryCta: {
+              text: "Learn More",
+              href: "/",
+            }
+          }}
+        />
       </div>
 
       {/* Clean canvas for component testing - add your components here */}

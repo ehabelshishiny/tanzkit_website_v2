@@ -51,7 +51,7 @@ export function SectionContainer({
         className
       )}
     >
-      <div className={cn('w-full px-4 md:px-6', maxWidthVariants[maxWidth])}>
+      <div className={cn('w-full px-4 md:px-6 mx-auto', maxWidthVariants[maxWidth])}>
         {children}
       </div>
     </section>

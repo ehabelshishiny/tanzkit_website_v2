@@ -1,7 +1,9 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
+import { draftMode } from 'next/headers';
+// Temporarily commented out due to Next.js 16 Turbopack + Google Fonts bug
+// import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
 import localFont from 'next/font/local';
 import Script from 'next/script';
 import { locales } from '@/i18n';
@@ -10,26 +12,28 @@ import { ThemeProvider } from '@/components/providers/theme-provider';
 import { PageTransitionLayout } from '@/components/providers/page-transition-layout';
 import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
 import { Toaster } from 'sonner';
+import { VisualEditing } from 'next-sanity/visual-editing';
 import '../globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-  display: 'swap',
-});
+// Temporarily commented out due to Next.js 16 Turbopack + Google Fonts bug
+// const geistSans = Geist({
+//   variable: '--font-geist-sans',
+//   subsets: ['latin'],
+//   display: 'swap',
+// });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-  display: 'swap',
-});
+// const geistMono = Geist_Mono({
+//   variable: '--font-geist-mono',
+//   subsets: ['latin'],
+//   display: 'swap',
+// });
 
-const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
-  variable: '--font-ibm-plex-arabic',
-  subsets: ['arabic'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-});
+// const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
+//   variable: '--font-ibm-plex-arabic',
+//   subsets: ['arabic'],
+//   weight: ['300', '400', '500', '600', '700'],
+//   display: 'swap',
+// });
 
 // Custom DIN Next Font - Multiple Weights
 const alarabiaFont = localFont({
@@ -109,7 +113,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${ibmPlexSansArabic.variable} ${alarabiaFont.variable} antialiased`}
+        className={`${alarabiaFont.variable} antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider
@@ -129,6 +133,7 @@ export default async function LocaleLayout({
           <Toaster position="top-right" richColors />
         </ThemeProvider>
         <ScrollToTopButton />
+        {(await draftMode()).isEnabled && <VisualEditing />}
 <Script
           src="https://codefy-os.vercel.app/api/widget.js"
           data-api-key="cfy_08df4792586441e79921e48842a16cf9"

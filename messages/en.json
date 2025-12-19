@@ -25,12 +25,11 @@
         }
       },
       "resources": {
-        "helpCenter": "Help Center",
         "blog": "Blog",
         "caseStudies": "Case Studies",
         "faq": "FAQ",
-        "webinars": "Webinars",
-        "whitepapers": "Whitepapers"
+        "documentation": "Documentation",
+        "careers": "Careers"
       },
       "apps": {
         "supervisor": "Supervisor App",
@@ -234,10 +233,36 @@
       },
       "filters": {
         "all": "All",
-        "blog": "Blog",
+        "blog": "Blogs",
         "whitepapers": "Whitepapers",
-        "caseStudies": "Case Studies"
+        "caseStudies": "Case Studies",
+        "faq": "FAQ",
+        "careers": "Careers"
       },
+      "viewAll": "View All",
+      "noResources": "No resources available yet.",
+      "noBlogPosts": "No blog posts available yet.",
+      "noCaseStudies": "Case studies coming soon.",
+      "noFAQs": "No FAQs available yet. Check back soon!",
+      "noCareers": "No open positions at the moment. Please check back soon.",
+      "applyNow": "Apply Now",
+      "latestBlogPosts": "Latest Blog Posts",
+      "featuredCaseStudies": "Featured Case Studies",
+      "frequentlyAskedQuestions": "Frequently Asked Questions",
+      "openPositions": "Open Positions",
+      "categories": "Categories",
+      "sortBy": "Sort by",
+      "newest": "Newest",
+      "oldest": "Oldest",
+      "clearFilters": "Clear Filters",
+      "noResults": "No results found",
+      "tryAdjustingFilters": "Try adjusting your filters or search query",
+      "searchPlaceholder": "Search...",
+      "industry": "Industry",
+      "allIndustries": "All Industries",
+      "blogTitle": "Blog",
+      "caseStudiesTitle": "Case Studies",
+      "faqTitle": "Frequently Asked Questions",
       "cards": {
         "types": {
           "blog": "Blog",
@@ -1315,10 +1340,11 @@
       "operatorsDrivers": "Operators & Drivers"
     },
     "resources": {
-      "helpCenter": "Help Center",
       "blog": "Blog",
       "caseStudies": "Case Studies",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "documentation": "Documentation",
+      "careers": "Careers"
     },
     "company": {
       "careers": "Careers"
@@ -1367,6 +1393,14 @@
     "showcase": {
       "title": "Choose Your App",
       "subtitle": "Select the app that matches your role in the transportation ecosystem",
+      "appsLabel": "Apps",
+      "cta": "Learn More",
+      "platforms": {
+        "mobile": "iOS & Android",
+        "web": "Web Application",
+        "ios": "iOS",
+        "android": "Android"
+      },
       "segments": {
         "operators": {
           "title": "Operators Dashboard",

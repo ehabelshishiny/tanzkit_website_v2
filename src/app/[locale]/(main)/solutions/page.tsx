@@ -4,16 +4,26 @@ import { AudienceCardsSection } from '@/components/sections/solutions/audience-c
 import { TechnologySection } from '@/components/sections/solutions/technology-section';
 import { WhyTranzkitSection } from '@/components/sections/solutions/why-tranzkit-section';
 import { CtaSection } from '@/components/sections/solutions/cta-section';
+import { getSolutionsPage } from '@/lib/sanity/queries';
 
-export default function SolutionsPage() {
+interface SolutionsPageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+export default async function SolutionsPage({ params }: SolutionsPageProps) {
+  const { locale } = await params;
+  const solutionsData = await getSolutionsPage(locale);
+
   return (
     <main>
-      <HeroSectionSolutions />
-      <IntroSection />
-      <AudienceCardsSection />
-      <TechnologySection />
-      <WhyTranzkitSection />
-      <CtaSection />
+      <HeroSectionSolutions data={solutionsData?.hero} />
+      <IntroSection data={solutionsData?.intro} />
+      <AudienceCardsSection data={solutionsData?.audienceCards} />
+      <TechnologySection data={solutionsData?.technology} />
+      <WhyTranzkitSection data={solutionsData?.whyTranzkit} />
+      <CtaSection data={solutionsData?.cta} />
     </main>
   );
 }

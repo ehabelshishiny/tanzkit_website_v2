@@ -7,15 +7,28 @@ import { Quote } from 'lucide-react';
 import { SectionContainer } from '@/components/layout/SectionContainer';
 import { Typography } from '@/components/ui/typography';
 
-export function TestimonialsSection() {
+interface TestimonialsSectionProps {
+  data?: {
+    heading?: string;
+    subtitle?: string;
+    items?: Array<{
+      quote: string;
+      author: string;
+      role: string;
+      rating?: number;
+    }>;
+  };
+}
+
+export function TestimonialsSection({ data }: TestimonialsSectionProps) {
   const t = useTranslations('homepage.testimonials');
 
-  // Get testimonials array from translations
-  const testimonials = t.raw('items') as Array<{
+  // Use Sanity data if available, otherwise fall back to translations
+  const testimonials = data?.items || (t.raw('items') as Array<{
     quote: string;
     author: string;
     role: string;
-  }>;
+  }>);
 
   return (
     <section className="py-16 md:py-24 bg-muted/50">
@@ -23,10 +36,10 @@ export function TestimonialsSection() {
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center mb-12">
             <Typography variant="h2" align="center" className="tracking-tight">
-              {t('heading')}
+              {data?.heading || t('heading')}
             </Typography>
             <Typography variant="subtitle" align="center" className="mt-4 text-muted-foreground">
-              {t('subtitle')}
+              {data?.subtitle || t('subtitle')}
             </Typography>
           </div>
         </FadeIn>

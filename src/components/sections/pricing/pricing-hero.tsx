@@ -1,41 +1,49 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Zap, Shield, TrendingUp } from 'lucide-react';
 import { Typography } from '@/components/ui/typography';
 
-export function PricingHero() {
-  const t = useTranslations('pricing.hero');
+interface PricingHeroProps {
+  data: {
+    title: string;
+    subtitle: string;
+    highlightNoSetupFees: string;
+    highlightCancelAnytime: string;
+    highlightFreeTrial: string;
+  };
+}
 
+export function PricingHero({ data }: PricingHeroProps) {
   const highlights = [
     {
       icon: Zap,
-      text: t('highlights.noSetupFees')
+      text: data.highlightNoSetupFees
     },
     {
       icon: Shield,
-      text: t('highlights.cancelAnytime')
+      text: data.highlightCancelAnytime
     },
     {
       icon: TrendingUp,
-      text: t('highlights.freeTrial')
+      text: data.highlightFreeTrial
     }
   ];
 
   return (
     <section className="w-full bg-gradient-to-b from-primary/5 to-background py-20">
-      <div className="max-w-4xl mx-auto px-4 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+        <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <Typography variant="display" as="h1" align="center" className="mb-6">
-            {t('title')}
+            {data.title}
           </Typography>
           <Typography variant="subtitle" align="center" className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            {t('subtitle')}
+            {data.subtitle}
           </Typography>
         </motion.div>
 
@@ -56,6 +64,7 @@ export function PricingHero() {
             </div>
           ))}
         </motion.div>
+        </div>
       </div>
     </section>
   );

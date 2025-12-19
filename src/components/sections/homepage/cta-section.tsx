@@ -7,7 +7,24 @@ import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 import { SectionContainer } from '@/components/layout/SectionContainer';
 import { Typography } from '@/components/ui/typography';
 
-export function CTASection() {
+interface CTASectionProps {
+  data?: {
+    heading?: string;
+    subtitle?: string;
+    primaryCta?: {
+      text?: string;
+      href?: string;
+      variant?: string;
+    };
+    secondaryCta?: {
+      text?: string;
+      href?: string;
+      variant?: string;
+    };
+  };
+}
+
+export function CTASection({ data }: CTASectionProps) {
   const t = useTranslations('homepage.cta');
   const tCommon = useTranslations('common');
 
@@ -17,15 +34,19 @@ export function CTASection() {
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center">
             <Typography variant="h2" align="center" className="tracking-tight">
-              {t('heading')}
+              {data?.heading || t('heading')}
             </Typography>
             <Typography variant="subtitle" align="center" className="mt-4 text-muted-foreground">
-              {t('subtitle')}
+              {data?.subtitle || t('subtitle')}
             </Typography>
             <div className="mt-8 flex items-center justify-center gap-4">
-              <TrialCTAButton variant="secondary" size="lg" />
+              <TrialCTAButton
+                variant="secondary"
+                size="lg"
+                customText={data?.primaryCta?.text}
+              />
               <Button size="lg" variant="outline">
-                {tCommon('bookDemo')}
+                {data?.secondaryCta?.text || tCommon('bookDemo')}
               </Button>
             </div>
           </div>

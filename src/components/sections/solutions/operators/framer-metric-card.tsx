@@ -41,19 +41,20 @@ export function FramerMetricCard({
   const displayValue = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (isInView && typeof value === 'number') {
-      motionValue.set(value);
-    }
-  }, [isInView, value, motionValue]);
+    if (typeof value !== 'number') return;
 
-  useEffect(() => {
     const unsubscribe = springValue.on('change', (latest) => {
       if (displayValue.current) {
         displayValue.current.textContent = Math.ceil(latest).toString();
       }
     });
+
+    if (isInView) {
+      motionValue.set(value);
+    }
+
     return () => unsubscribe();
-  }, [springValue]);
+  }, [isInView, value, motionValue, springValue]);
 
   // 3D tilt effect
   const x = useMotionValue(0);

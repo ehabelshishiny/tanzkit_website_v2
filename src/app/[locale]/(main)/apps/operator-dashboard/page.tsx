@@ -1,8 +1,20 @@
 import { AppDetailOriginalTemplate } from '@/components/sections/apps/app-detail-original-template';
-import { appsData } from '@/config/apps-data';
+import { getAppBySlug } from '@/lib/sanity/queries';
+import { notFound } from 'next/navigation';
 
-export default function OperatorDashboardPage() {
-  const appConfig = appsData['operator-dashboard'];
-  
-  return <AppDetailOriginalTemplate appConfig={appConfig} />;
+interface OperatorDashboardPageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+export default async function OperatorDashboardPage({ params }: OperatorDashboardPageProps) {
+  const { locale } = await params;
+  const appData = await getAppBySlug('operator-dashboard', locale);
+
+  if (!appData) {
+    notFound();
+  }
+
+  return <AppDetailOriginalTemplate appData={appData} locale={locale} />;
 }

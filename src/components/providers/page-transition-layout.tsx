@@ -12,14 +12,20 @@ export function PageTransitionLayout({ children }: PageTransitionLayoutProps) {
   const pathname = usePathname();
   const shouldReduceMotion = useReducedMotion();
   const [isNavigating, setIsNavigating] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Prevent hydration mismatch by only enabling animations after mount
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Smart scroll restoration - scroll to top on page change
   useEffect(() => {
     setIsNavigating(true);
-    
+
     // Smooth scroll to top
     window.scrollTo({ top: 0, behavior: 'instant' });
-    
+
     // Reset navigation state after transition
     const timer = setTimeout(() => {
       setIsNavigating(false);
@@ -28,8 +34,8 @@ export function PageTransitionLayout({ children }: PageTransitionLayoutProps) {
     return () => clearTimeout(timer);
   }, [pathname]);
 
-  // Respect user's motion preferences (accessibility)
-  if (shouldReduceMotion) {
+  // Respect user's motion preferences (accessibility) or not mounted yet
+  if (shouldReduceMotion || !isMounted) {
     return <>{children}</>;
   }
 
@@ -158,6 +164,7 @@ export function PageTransitionLayout({ children }: PageTransitionLayoutProps) {
           style={{
             willChange: 'transform, opacity, filter',
           }}
+          suppressHydrationWarning
         >
           {children}
         </motion.div>

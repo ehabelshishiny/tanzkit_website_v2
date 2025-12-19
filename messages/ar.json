@@ -25,12 +25,11 @@
         }
       },
       "resources": {
-        "helpCenter": "مركز المساعدة",
         "blog": "المدونة",
         "caseStudies": "دراسات الحالة",
         "faq": "الأسئلة الشائعة",
-        "webinars": "الندوات عبر الإنترنت",
-        "whitepapers": "الأوراق البيضاء"
+        "documentation": "التوثيق",
+        "careers": "الوظائف"
       },
       "apps": {
         "supervisor": "تطبيق المشرف",
@@ -236,8 +235,34 @@
         "all": "الكل",
         "blog": "المدونة",
         "whitepapers": "الأوراق البيضاء",
-        "caseStudies": "دراسات الحالة"
+        "caseStudies": "دراسات الحالة",
+        "faq": "الأسئلة الشائعة",
+        "careers": "الوظائف"
       },
+      "viewAll": "عرض الكل",
+      "noResources": "لا توجد موارد متاحة حتى الآن.",
+      "noBlogPosts": "لا توجد مقالات متاحة حتى الآن.",
+      "noCaseStudies": "دراسات الحالة قريباً.",
+      "noFAQs": "لا توجد أسئلة شائعة حتى الآن. تحقق مرة أخرى قريباً!",
+      "noCareers": "لا توجد وظائف متاحة حالياً. يرجى التحقق مرة أخرى قريباً.",
+      "applyNow": "التقديم الآن",
+      "latestBlogPosts": "أحدث المقالات",
+      "featuredCaseStudies": "دراسات الحالة المميزة",
+      "frequentlyAskedQuestions": "الأسئلة الشائعة",
+      "openPositions": "الوظائف المتاحة",
+      "categories": "الفئات",
+      "sortBy": "ترتيب حسب",
+      "newest": "الأحدث",
+      "oldest": "الأقدم",
+      "clearFilters": "مسح الفلاتر",
+      "noResults": "لم يتم العثور على نتائج",
+      "tryAdjustingFilters": "حاول تعديل الفلاتر أو استعلام البحث",
+      "searchPlaceholder": "بحث...",
+      "industry": "الصناعة",
+      "allIndustries": "جميع الصناعات",
+      "blogTitle": "المدونة",
+      "caseStudiesTitle": "دراسات الحالة",
+      "faqTitle": "الأسئلة الشائعة",
       "cards": {
         "types": {
           "blog": "مدونة",
@@ -1315,10 +1340,11 @@
       "operatorsDrivers": "المشغلين والسائقين"
     },
     "resources": {
-      "helpCenter": "مركز المساعدة",
       "blog": "المدونة",
       "caseStudies": "دراسات الحالة",
-      "faq": "الأسئلة الشائعة"
+      "faq": "الأسئلة الشائعة",
+      "documentation": "التوثيق",
+      "careers": "الوظائف"
     },
     "company": {
       "careers": "الوظائف"
@@ -1367,6 +1393,14 @@
     "showcase": {
       "title": "اختر تطبيقك",
       "subtitle": "حدد التطبيق الذي يتناسب مع دورك في نظام النقل",
+      "appsLabel": "تطبيقات",
+      "cta": "اعرف المزيد",
+      "platforms": {
+        "mobile": "iOS و Android",
+        "web": "تطبيق ويب",
+        "ios": "iOS",
+        "android": "Android"
+      },
       "segments": {
         "operators": {
           "title": "لوحة تحكم المشغلين",

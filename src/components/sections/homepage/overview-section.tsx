@@ -6,14 +6,25 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { SectionContainer } from '@/components/layout/SectionContainer';
 import { Typography } from '@/components/ui/typography';
 
-export function OverviewSection() {
+interface OverviewSectionProps {
+  data?: {
+    heading?: string;
+    subtitle?: string;
+    features?: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+}
+
+export function OverviewSection({ data }: OverviewSectionProps) {
   const t = useTranslations('homepage.whyChoose');
 
-  // Get features array from translations
-  const features = t.raw('items') as Array<{
+  // Use Sanity data if available, otherwise fall back to translations
+  const features = data?.features || (t.raw('items') as Array<{
     title: string;
     description: string;
-  }>;
+  }>);
 
   return (
     <section className="py-16 md:py-24">
@@ -21,10 +32,10 @@ export function OverviewSection() {
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center mb-12">
             <Typography variant="h2" align="center" className="tracking-tight">
-              {t('heading')}
+              {data?.heading || t('heading')}
             </Typography>
             <Typography variant="subtitle" align="center" className="mt-4 text-muted-foreground">
-              {t('subtitle')}
+              {data?.subtitle || t('subtitle')}
             </Typography>
           </div>
         </FadeIn>

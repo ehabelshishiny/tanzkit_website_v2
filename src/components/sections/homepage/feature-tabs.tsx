@@ -8,6 +8,7 @@ import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { Typography } from '@/components/ui/typography';
 import { Zap, Shield, TrendingUp, Users } from 'lucide-react';
 import Image from 'next/image';
+import { urlFor } from '@/lib/sanity/image';
 
 const iconMap = {
   realtime: Zap,
@@ -23,48 +24,92 @@ const imageMap = {
   collaboration: '/assets/homepage/features/team_collaboration.png'
 };
 
-export function FeatureTabs() {
+interface FeatureTabsProps {
+  data?: {
+    heading?: string;
+    subtitle?: string;
+    tabs?: Array<{
+      _key: string;
+      label: string;
+      title: string;
+      description: string;
+      features?: Array<{
+        _key: string;
+        text: string;
+      }>;
+      image?: any;
+    }>;
+  };
+}
+
+export function FeatureTabs({ data }: FeatureTabsProps) {
   const t = useTranslations('homepage.features');
   const locale = useLocale();
   const isRTL = locale === 'ar';
 
-  // Get feature tabs from translations
-  const featureTabs = ['realtime', 'security', 'analytics', 'collaboration'];
+  // Debug logging
+  if (process.env.NODE_ENV === 'development' && data?.tabs) {
+    console.log('FeatureTabs - Received data:', {
+      tabsCount: data.tabs.length,
+      firstTab: data.tabs[0],
+      hasImages: data.tabs.map(tab => ({
+        key: tab._key,
+        hasImage: !!tab.image,
+        hasAsset: !!tab.image?.asset
+      }))
+    });
+  }
+
+  // Use Sanity data if available, otherwise fall back to translations
+  const featureTabs = data?.tabs || ['realtime', 'security', 'analytics', 'collaboration'];
+  const usingSanityData = !!data?.tabs;
+
+  const firstTabId = usingSanityData && data.tabs ? data.tabs[0]._key : 'realtime';
 
   return (
     <ScrollReveal className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
       <div className="text-center mb-8 sm:mb-12">
         <Typography variant="h2" align="center" className="mb-3 sm:mb-4">
-          {t('heading')}
+          {data?.heading || t('heading')}
         </Typography>
         <Typography variant="subtitle" align="center" className="text-muted-foreground max-w-2xl mx-auto px-4">
-          {t('subtitle')}
+          {data?.subtitle || t('subtitle')}
         </Typography>
       </div>
 
-      <Tabs defaultValue="realtime" className="w-full" dir={isRTL ? 'rtl' : 'ltr'}>
+      <Tabs defaultValue={firstTabId} className="w-full" dir={isRTL ? 'rtl' : 'ltr'}>
         {/* TabsList with RTL support */}
         <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 mb-6 sm:mb-8 h-auto p-2 bg-muted/50">
-          {featureTabs.map((featureId) => {
-            const Icon = iconMap[featureId as keyof typeof iconMap];
+          {featureTabs.map((tab, index) => {
+            const featureId = typeof tab === 'string' ? tab : tab._key;
+            const Icon = iconMap[featureId as keyof typeof iconMap] || Zap;
+            const label = typeof tab === 'string' ? t(`tabs.${featureId}.label`) : tab.label;
             return (
-              <TabsTrigger 
-                key={featureId} 
-                value={featureId} 
+              <TabsTrigger
+                key={featureId}
+                value={featureId}
                 className="flex items-center justify-center gap-2 py-3 px-4 data-[state=active]:bg-background data-[state=active]:shadow-sm min-h-[48px] w-full"
               >
                 <Icon className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                 <Typography variant="button" className={isRTL ? "leading-relaxed" : "truncate"}>
-                  {t(`tabs.${featureId}.label`)}
+                  {label}
                 </Typography>
               </TabsTrigger>
             );
           })}
         </TabsList>
 
-        {featureTabs.map((featureId) => {
-          const Icon = iconMap[featureId as keyof typeof iconMap];
-          const benefits = t.raw(`tabs.${featureId}.benefits`) as string[];
+        {featureTabs.map((tab, index) => {
+          const featureId = typeof tab === 'string' ? tab : tab._key;
+          const Icon = iconMap[featureId as keyof typeof iconMap] || Zap;
+          const title = typeof tab === 'string' ? t(`tabs.${featureId}.title`) : tab.title;
+          const description = typeof tab === 'string' ? t(`tabs.${featureId}.description`) : tab.description;
+          const benefits = typeof tab === 'string'
+            ? (t.raw(`tabs.${featureId}.benefits`) as string[])
+            : (tab.features?.map(f => f.text) || []);
+
+          // Check if we have a valid Sanity image with asset
+          const tabImage = (typeof tab !== 'string' && tab.image?.asset) ? tab.image : null;
 
           return (
             <TabsContent key={featureId} value={featureId}>
@@ -73,38 +118,49 @@ export function FeatureTabs() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <Card className="p-4 sm:p-6 lg:p-8">
+                <Card className="p-6 lg:p-8">
   {/* Use flexbox - RTL auto-reverses the layout naturally */}
-  <div className="flex flex-col md:flex-row gap-6 sm:gap-8">
+  <div className="flex flex-col md:flex-row gap-8">
     {/* Image - First in DOM order for mobile (top position) */}
-    <div className="relative flex-1 md:w-1/2 rounded-lg overflow-hidden min-h-[200px] sm:min-h-[300px] md:order-2">
-      <Image
-        src={imageMap[featureId as keyof typeof imageMap]}
-        alt={t(`tabs.${featureId}.title`)}
-        fill
-        className="object-cover"
-        sizes="(max-width: 768px) 100vw, 50vw"
-        priority={featureId === 'realtime'}
-      />
+    <div className="w-full md:w-1/2 md:order-2 flex-shrink-0 p-4">
+      {tabImage ? (
+        <Image
+          src={urlFor(tabImage).width(1200).fit('max').url() || ''}
+          alt={title}
+          width={1200}
+          height={800}
+          className="w-full h-auto object-contain"
+          priority={index === 0}
+        />
+      ) : (
+        <Image
+          src={imageMap[featureId as keyof typeof imageMap]}
+          alt={title}
+          width={1200}
+          height={800}
+          className="w-full h-auto object-contain"
+          priority={featureId === 'realtime' || featureId === firstTabId}
+        />
+      )}
     </div>
 
     {/* Text Content - Second in DOM order for mobile (bottom position) */}
-    <div className="flex-1 md:w-1/2 md:order-1">
+    <div className="w-full md:w-1/2 md:order-1 flex-shrink-0">
       <div className="flex items-center gap-3 mb-4">
         <div className="p-2.5 sm:p-3 bg-primary/10 rounded-lg flex-shrink-0">
           <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
         </div>
         <Typography variant="h3">
-          {t(`tabs.${featureId}.title`)}
+          {title}
         </Typography>
       </div>
       <Typography variant="body" className="text-muted-foreground mb-6">
-        {t(`tabs.${featureId}.description`)}
+        {description}
       </Typography>
       <ul className="space-y-3">
         {benefits.map((benefit, index) => (
           <motion.li
-            key={index}
+            key={`${featureId}-benefit-${index}`}
             initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}

@@ -1,8 +1,20 @@
 import { AppDetailOriginalTemplate } from '@/components/sections/apps/app-detail-original-template';
-import { appsData } from '@/config/apps-data';
+import { getAppBySlug } from '@/lib/sanity/queries';
+import { notFound } from 'next/navigation';
 
-export default function DriverAppPage() {
-  const appConfig = appsData['driver'];
-  
-  return <AppDetailOriginalTemplate appConfig={appConfig} />;
+interface DriverAppPageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+export default async function DriverAppPage({ params }: DriverAppPageProps) {
+  const { locale } = await params;
+  const appData = await getAppBySlug('driver', locale);
+
+  if (!appData) {
+    notFound();
+  }
+
+  return <AppDetailOriginalTemplate appData={appData} locale={locale} />;
 }

@@ -5,12 +5,39 @@ import { Card } from '@/components/ui/card';
 import { Typography } from '@/components/ui/typography';
 import { motion } from 'framer-motion';
 import { Building2, Users } from 'lucide-react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 
-export function AudienceSwitcherTabs() {
-  const t = useTranslations('solutions.enterprisesPassengers.audienceSwitcher');
+interface AudienceSwitcherTabsProps {
+  data?: {
+    tabs?: {
+      enterprise?: string;
+      passenger?: string;
+    };
+    enterprise?: {
+      title?: string;
+      description?: string;
+      features?: Array<{
+        title?: string;
+        description?: string;
+      }>;
+    };
+    passenger?: {
+      title?: string;
+      description?: string;
+      features?: Array<{
+        title?: string;
+        description?: string;
+      }>;
+    };
+  };
+}
+
+export function AudienceSwitcherTabs({ data }: AudienceSwitcherTabsProps) {
   const locale = useLocale();
   const isRTL = locale === 'ar';
+
+  // Render empty if no data to maintain consistent structure
+  if (!data) return <div className="w-full max-w-7xl mx-auto px-4 py-16" />;
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-16">
@@ -18,11 +45,11 @@ export function AudienceSwitcherTabs() {
         <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
           <TabsTrigger value="enterprise" className="gap-2">
             <Building2 className="w-4 h-4" />
-            <span>{t('tabs.enterprise')}</span>
+            <span>{data.tabs?.enterprise || 'Enterprise'}</span>
           </TabsTrigger>
           <TabsTrigger value="passenger" className="gap-2">
             <Users className="w-4 h-4" />
-            <span>{t('tabs.passenger')}</span>
+            <span>{data.tabs?.passenger || 'Passenger'}</span>
           </TabsTrigger>
         </TabsList>
 
@@ -34,15 +61,15 @@ export function AudienceSwitcherTabs() {
           >
             <div className="text-center mb-12">
               <Typography variant="h2" className="mb-4">
-                {t('enterprise.title')}
+                {data.enterprise?.title}
               </Typography>
               <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
-                {t('enterprise.description')}
+                {data.enterprise?.description}
               </Typography>
             </div>
             {/* RTL-aware grid - auto-flows in correct direction */}
             <div className={`grid md:grid-cols-2 gap-6 ${isRTL ? 'md:grid-flow-dense' : ''}`}>
-              {[0, 1, 2, 3].map((index) => (
+              {data.enterprise?.features?.map((feature, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -51,10 +78,10 @@ export function AudienceSwitcherTabs() {
                 >
                   <Card className="p-6 h-full hover:shadow-lg transition-shadow">
                     <Typography variant="h3" className="mb-3">
-                      {t(`enterprise.features.${index}.title`)}
+                      {feature.title}
                     </Typography>
                     <Typography variant="body" className="text-muted-foreground">
-                      {t(`enterprise.features.${index}.description`)}
+                      {feature.description}
                     </Typography>
                   </Card>
                 </motion.div>
@@ -71,15 +98,15 @@ export function AudienceSwitcherTabs() {
           >
             <div className="text-center mb-12">
               <Typography variant="h2" className="mb-4">
-                {t('passenger.title')}
+                {data.passenger?.title}
               </Typography>
               <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
-                {t('passenger.description')}
+                {data.passenger?.description}
               </Typography>
             </div>
             {/* RTL-aware grid */}
             <div className={`grid md:grid-cols-2 gap-6 ${isRTL ? 'md:grid-flow-dense' : ''}`}>
-              {[0, 1, 2, 3].map((index) => (
+              {data.passenger?.features?.map((feature, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -88,10 +115,10 @@ export function AudienceSwitcherTabs() {
                 >
                   <Card className="p-6 h-full hover:shadow-lg transition-shadow">
                     <Typography variant="h3" className="mb-3">
-                      {t(`passenger.features.${index}.title`)}
+                      {feature.title}
                     </Typography>
                     <Typography variant="body" className="text-muted-foreground">
-                      {t(`passenger.features.${index}.description`)}
+                      {feature.description}
                     </Typography>
                   </Card>
                 </motion.div>

@@ -10,17 +10,33 @@ const featureIcons = {
   0: Zap,
   1: Shield,
   2: Users,
-  3: BarChart
+  3: BarChart,
+  Zap: Zap,
+  Shield: Shield,
+  Users: Users,
+  BarChart: BarChart
 };
 
-export function FeaturesSection() {
+interface FeaturesSectionProps {
+  data?: {
+    heading?: string;
+    subtitle?: string;
+    features?: Array<{
+      icon?: string;
+      title: string;
+      description: string;
+    }>;
+  };
+}
+
+export function FeaturesSection({ data }: FeaturesSectionProps) {
   const t = useTranslations('homepage.featuresSimple');
 
-  // Get features array from translations
-  const features = t.raw('items') as Array<{
+  // Use Sanity data if available, otherwise fall back to translations
+  const features = data?.features || (t.raw('items') as Array<{
     title: string;
     description: string;
-  }>;
+  }>);
 
   return (
     <section className="py-16 md:py-24 bg-muted/50">
@@ -28,17 +44,19 @@ export function FeaturesSection() {
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center mb-12">
             <Typography variant="h2" align="center" className="tracking-tight">
-              {t('heading')}
+              {data?.heading || t('heading')}
             </Typography>
             <Typography variant="subtitle" align="center" className="mt-4 text-muted-foreground">
-              {t('subtitle')}
+              {data?.subtitle || t('subtitle')}
             </Typography>
           </div>
         </FadeIn>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => {
-            const Icon = featureIcons[index as keyof typeof featureIcons];
+            // Get icon from Sanity data or use default based on index
+            const iconName = ('icon' in feature && feature.icon) ? feature.icon : index.toString();
+            const Icon = featureIcons[iconName as keyof typeof featureIcons] || Zap;
             return (
               <FadeIn key={index} delay={0.1 * (index + 1)}>
                 <div className="flex flex-col items-center text-center">

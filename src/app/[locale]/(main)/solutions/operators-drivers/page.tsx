@@ -7,19 +7,32 @@ import { FAQAccordion } from '@/components/sections/solutions/operators/faq-acco
 import { OperatorsFeaturesSection } from '@/components/sections/solutions/operators/features-section';
 import { OperatorsAiImpactSection } from '@/components/sections/solutions/operators/ai-impact-section';
 import { OperatorsCtaSection } from '@/components/sections/solutions/operators/cta-section';
+import { getSolutionsOperatorsDriversPage } from '@/lib/sanity/queries';
 
-export default function OperatorsDriversPage() {
+interface OperatorsDriversPageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+export default async function OperatorsDriversPage({ params }: OperatorsDriversPageProps) {
+  const { locale } = await params;
+  const pageData = await getSolutionsOperatorsDriversPage(locale);
+
+  // Provide empty object as fallback to prevent hydration issues
+  const safePageData = pageData || {};
+
   return (
     <main>
-      <OperatorsHeroSection />
-      <RoleSwitcherTabs />
-      <OperationsTimeline />
-      <DashboardPreviewCarousel />
-      <MobileAppUIGrid />
-      <OperatorsFeaturesSection />
-      <OperatorsAiImpactSection />
-      <OperatorsCtaSection />
-      <FAQAccordion />
+      <OperatorsHeroSection data={safePageData.hero} />
+      <RoleSwitcherTabs data={safePageData.roleSwitcher} />
+      <OperationsTimeline data={safePageData.timeline} />
+      <DashboardPreviewCarousel data={safePageData.dashboards} />
+      <MobileAppUIGrid data={safePageData.mobileApps} />
+      <OperatorsFeaturesSection data={safePageData.features} />
+      <OperatorsAiImpactSection data={safePageData.aiImpact} />
+      <OperatorsCtaSection data={safePageData.cta} />
+      <FAQAccordion data={safePageData.faq} />
     </main>
   );
 }

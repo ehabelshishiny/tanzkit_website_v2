@@ -1,6 +1,5 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 import { Typography } from '@/components/ui/typography';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -8,10 +7,37 @@ import { Card } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { Building, Car } from 'lucide-react';
 
-export function RoleSwitcherTabs() {
-  const t = useTranslations('solutions.operatorsDrivers.roleSwitcher');
+interface RoleSwitcherTabsProps {
+  data?: {
+    tabs?: {
+      operator?: string;
+      driver?: string;
+    };
+    operator?: {
+      title?: string;
+      description?: string;
+      features?: Array<{
+        title?: string;
+        description?: string;
+      }>;
+    };
+    driver?: {
+      title?: string;
+      description?: string;
+      features?: Array<{
+        title?: string;
+        description?: string;
+      }>;
+    };
+  };
+}
+
+export function RoleSwitcherTabs({ data }: RoleSwitcherTabsProps) {
   const locale = useLocale();
   const isRTL = locale === 'ar';
+
+  // Render empty if no data to maintain consistent structure
+  if (!data) return <div className="w-full max-w-7xl mx-auto px-4 py-16" />;
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-16" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -22,22 +48,22 @@ export function RoleSwitcherTabs() {
             <>
               <TabsTrigger value="driver" className="gap-2">
                 <Car className="w-4 h-4" />
-                <span>{t('tabs.driver')}</span>
+                <span>{data.tabs?.driver || 'Driver'}</span>
               </TabsTrigger>
               <TabsTrigger value="operator" className="gap-2">
                 <Building className="w-4 h-4" />
-                <span>{t('tabs.operator')}</span>
+                <span>{data.tabs?.operator || 'Operator'}</span>
               </TabsTrigger>
             </>
           ) : (
             <>
               <TabsTrigger value="operator" className="gap-2">
                 <Building className="w-4 h-4" />
-                <span>{t('tabs.operator')}</span>
+                <span>{data.tabs?.operator || 'Operator'}</span>
               </TabsTrigger>
               <TabsTrigger value="driver" className="gap-2">
                 <Car className="w-4 h-4" />
-                <span>{t('tabs.driver')}</span>
+                <span>{data.tabs?.driver || 'Driver'}</span>
               </TabsTrigger>
             </>
           )}
@@ -51,14 +77,14 @@ export function RoleSwitcherTabs() {
           >
             <div className="text-center mb-12">
               <Typography variant="h2" className="mb-4">
-                {t('operator.title')}
+                {data.operator?.title}
               </Typography>
               <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
-                {t('operator.description')}
+                {data.operator?.description}
               </Typography>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
-              {[0, 1, 2, 3].map((index) => (
+              {data.operator?.features?.map((feature, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -67,10 +93,10 @@ export function RoleSwitcherTabs() {
                 >
                   <Card className={`p-6 h-full hover:shadow-lg transition-shadow ${isRTL ? 'text-right' : 'text-left'}`}>
                     <Typography variant="h3" className="mb-3">
-                      {t(`operator.features.${index}.title`)}
+                      {feature.title}
                     </Typography>
                     <Typography variant="body" className="text-muted-foreground">
-                      {t(`operator.features.${index}.description`)}
+                      {feature.description}
                     </Typography>
                   </Card>
                 </motion.div>
@@ -87,14 +113,14 @@ export function RoleSwitcherTabs() {
           >
             <div className="text-center mb-12">
               <Typography variant="h2" className="mb-4">
-                {t('driver.title')}
+                {data.driver?.title}
               </Typography>
               <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
-                {t('driver.description')}
+                {data.driver?.description}
               </Typography>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
-              {[0, 1, 2, 3].map((index) => (
+              {data.driver?.features?.map((feature, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -103,10 +129,10 @@ export function RoleSwitcherTabs() {
                 >
                   <Card className={`p-6 h-full hover:shadow-lg transition-shadow ${isRTL ? 'text-right' : 'text-left'}`}>
                     <Typography variant="h3" className="mb-3">
-                      {t(`driver.features.${index}.title`)}
+                      {feature.title}
                     </Typography>
                     <Typography variant="body" className="text-muted-foreground">
-                      {t(`driver.features.${index}.description`)}
+                      {feature.description}
                     </Typography>
                   </Card>
                 </motion.div>

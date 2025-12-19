@@ -1,5 +1,5 @@
-import { createClient } from '@sanity/client'
-import type { SanityClient } from '@sanity/client'
+import { createClient } from 'next-sanity'
+import { draftMode } from 'next/headers'
 
 // Validate environment variables
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
@@ -12,34 +12,38 @@ if (!projectId || !dataset) {
   )
 }
 
-// Client for reading data (public, no token needed)
-export const client: SanityClient = createClient({
+// Base client configuration
+const clientConfig = {
   projectId,
   dataset,
   apiVersion,
-  useCdn: true, // Use CDN for faster reads in production
-  perspective: 'published', // Only return published documents
-})
+  useCdn: true,
+  token: process.env.SANITY_API_READ_TOKEN,
+}
 
-// Client for writing/mutations (requires API token)
-export const writeClient: SanityClient = createClient({
-  projectId,
-  dataset,
-  apiVersion,
-  useCdn: false, // Don't use CDN for writes
-  token: process.env.SANITY_API_TOKEN, // Only available server-side
-  perspective: 'published',
-})
+// Main client - stega will be enabled conditionally via getClient()
+export const client = createClient(clientConfig)
 
-// Client for preview mode (includes drafts)
-export const previewClient: SanityClient = createClient({
-  projectId,
-  dataset,
-  apiVersion,
-  useCdn: false,
-  token: process.env.SANITY_API_TOKEN,
-  perspective: 'previewDrafts', // Include draft documents
-})
+// Helper function to get client with appropriate configuration
+export async function getClient() {
+  const isDraftMode = (await draftMode()).isEnabled
+
+  if (isDraftMode) {
+    // Return client with stega enabled for visual editing
+    return createClient({
+      ...clientConfig,
+      useCdn: false,
+      perspective: 'drafts',
+      stega: {
+        enabled: true,
+        studioUrl: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL || 'http://localhost:3000/studio',
+      },
+    })
+  }
+
+  // Return regular client for published content
+  return client
+}
 
 // Export config for reuse
 export const sanityConfig = {

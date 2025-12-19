@@ -1,11 +1,12 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 import { SectionContainer } from '@/components/layout/SectionContainer';
 import { Typography } from '@/components/ui/typography';
+import Link from 'next/link';
 
 interface Vehicle {
   id: number;
@@ -30,14 +31,24 @@ interface NetworkNode {
 }
 
 interface HeroSectionProps {
-  title?: string;
-  subtitle?: string;
-  cta?: string;
+  data: {
+    title: string;
+    titleHighlight: string;
+    subtitle: string;
+    primaryCta?: {
+      text: string;
+      href: string;
+      openInNewTab?: boolean;
+    };
+    secondaryCta?: {
+      text: string;
+      href: string;
+      openInNewTab?: boolean;
+    };
+  };
 }
 
-export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
-  const t = useTranslations('homepage.hero');
-  const tCommon = useTranslations('common');
+export function HeroSection({ data }: HeroSectionProps) {
   const { theme } = useTheme();
   const locale = useLocale();
   const isRTL = locale === 'ar';
@@ -46,7 +57,7 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [networkNodes, setNetworkNodes] = useState<NetworkNode[]>([]);
-  const [scrollY, setScrollY] = useState(0);
+  const scrollYRef = useRef(0);
   const [isVisible, setIsVisible] = useState(false);
   const [canvasSize, setCanvasSize] = useState({ width: 1200, height: 800 });
   const [mounted, setMounted] = useState(false);
@@ -55,6 +66,9 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
   const mousePositionRef = useRef({ x: 0, y: 0 });
   const carImageRef = useRef<HTMLImageElement | null>(null);
   const carImageRedRef = useRef<HTMLImageElement | null>(null);
+  const canvasElementRef = useRef<HTMLDivElement>(null);
+  const contentElementRef = useRef<HTMLDivElement>(null);
+  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
   // Track mounted state for theme detection
   useEffect(() => {
@@ -141,9 +155,15 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     const updateCanvasSize = () => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
-        setCanvasSize({
-          width: Math.max(1200, rect.width),
-          height: Math.max(800, rect.height)
+        const newWidth = Math.max(1200, rect.width);
+        const newHeight = Math.max(800, rect.height);
+
+        // Only update if size changed significantly (more than 10px difference)
+        setCanvasSize(prev => {
+          if (Math.abs(prev.width - newWidth) > 10 || Math.abs(prev.height - newHeight) > 10) {
+            return { width: newWidth, height: newHeight };
+          }
+          return prev;
         });
       }
     };
@@ -363,9 +383,23 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
     };
   }, [vehicles, networkNodes, canvasSize, isDark, isDesktop, isRTL]);
 
-  // Scroll handler
+  // Scroll handler - using refs to avoid re-renders
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => {
+      scrollYRef.current = window.scrollY;
+
+      // Update transforms directly without causing re-renders
+      if (canvasElementRef.current) {
+        canvasElementRef.current.style.transform = `translateY(${scrollYRef.current * 0.2}px)`;
+      }
+      if (contentElementRef.current) {
+        contentElementRef.current.style.transform = `translateY(${scrollYRef.current * -0.05}px)`;
+      }
+      if (scrollIndicatorRef.current) {
+        scrollIndicatorRef.current.style.transform = `translateX(-50%) translateY(${scrollYRef.current * -0.1}px)`;
+      }
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -402,20 +436,20 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
 
 
       {/* ✅ LAYER 3: Animated Background Canvas (Now Transparent) */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-        style={{
-          transform: `translateY(${scrollY * 0.2}px)`,
-        }}
-      />
+      <div ref={canvasElementRef} className="absolute inset-0 w-full h-full">
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full"
+        />
+      </div>
 
       {/* ✅ LAYER 4: Hero Content */}
       <div
-        className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-19 xl:py-16 flex items-start xl:min-h-screen"
-        style={{ transform: `translateY(${scrollY * -0.05}px)` }}
+        ref={contentElementRef}
+        className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-20 xl:py-16 flex items-start xl:min-h-screen"
       >
-        <div className="max-w-4xl w-full mx-auto lg:mx-0">
+        <div className="max-w-7xl w-full mx-auto">
+          <div className="max-w-4xl w-full mx-auto lg:mx-0">
           {/* Animated Headline - MIGRATED TO TYPOGRAPHY COMPONENT */}
           <div className="mb-8 xl:mb-12">
             <Typography
@@ -427,26 +461,29 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
                 className={`inline-block transition-all duration-1000 ease-out text-foreground ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
                 style={{ transitionDelay: '0.3s' }}
               >
-                {title || t('title')}
+                {data.title}
               </span>
+              <br />
               <span
                 className={`inline-block transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
                 style={{ transitionDelay: '0.6s' }}
               >
-                <span className="text-foreground">{t('titleHighlight.for')} </span>
-                <span className="text-accent">{t('titleHighlight.workforce')} </span>
-                <span className="text-primary">{t('titleHighlight.mobility')}</span>
+                <span
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary drop-shadow-2xl"
+                  style={{ lineHeight: 1.1 }}
+                >
+                  {data.titleHighlight}
+                </span>
               </span>
-              <br />
             </Typography>
-            
+
             <Typography
               variant="subtitle"
               as="h2"
               className={`text-muted-foreground mt-4 xl:mt-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
               style={{ transitionDelay: '1.2s' }}
             >
-              {subtitle || t('subtitle')}
+              {data.subtitle}
             </Typography>
           </div>
 
@@ -455,19 +492,29 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
             className={`flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 xl:mt-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             style={{ transitionDelay: '1.8s' }}
           >
-            <div className="animate-pulse hover:animate-none">
-              <TrialCTAButton
-                variant="primary"
-                size="lg"
-                className="shadow-2xl shadow-accent/50 !h-[48px] sm:!h-[60px] w-full sm:w-auto"
-              />
-            </div>
+            {data.primaryCta && (
+              <div className="animate-pulse hover:animate-none">
+                <TrialCTAButton
+                  variant="primary"
+                  size="lg"
+                  className="shadow-2xl shadow-accent/50 !h-[48px] sm:!h-[60px] w-full sm:w-auto"
+                  customText={data.primaryCta.text}
+                />
+              </div>
+            )}
 
-            <button className="group relative px-6 sm:px-8 py-3 sm:py-4 border-2 border-accent text-accent font-semibold rounded-lg transition-all duration-500 hover:bg-gradient-to-r hover:from-accent hover:to-primary hover:text-primary-foreground hover:scale-105 hover:shadow-lg hover:shadow-accent/30 whitespace-nowrap overflow-hidden cursor-pointer w-full sm:w-auto">
-              <Typography variant="button" className="flex items-center justify-center gap-2 relative z-10 transition-all duration-300">
-                {tCommon('learnMore')}
-              </Typography>
-            </button>
+            {data.secondaryCta && (
+              <Link
+                href={data.secondaryCta.href}
+                target={data.secondaryCta.openInNewTab ? '_blank' : undefined}
+                rel={data.secondaryCta.openInNewTab ? 'noopener noreferrer' : undefined}
+                className="group relative px-6 sm:px-8 py-3 sm:py-4 border-2 border-accent text-accent font-semibold rounded-lg transition-all duration-500 hover:bg-gradient-to-r hover:from-accent hover:to-primary hover:text-primary-foreground hover:scale-105 hover:shadow-lg hover:shadow-accent/30 whitespace-nowrap overflow-hidden cursor-pointer w-full sm:w-auto"
+              >
+                <Typography variant="button" className="flex items-center justify-center gap-2 relative z-10 transition-all duration-300">
+                  {data.secondaryCta.text}
+                </Typography>
+              </Link>
+            )}
           </div>
 
           {/* Stats - Desktop only to avoid extra vertical space on mobile/tablet */}
@@ -477,12 +524,13 @@ export function HeroSection({ title, subtitle, cta }: HeroSectionProps) {
           >
           </div>
         </div>
+        </div>
       </div>
 
       {/* ✅ LAYER 5: Scroll Indicator */}
       <div
+        ref={scrollIndicatorRef}
         className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
-        style={{ transform: `translateX(-50%) translateY(${scrollY * -0.1}px)` }}
       >
         <svg
           className="w-5 h-5 sm:w-6 sm:h-6 text-teal-400 hover:text-teal-300 transition-colors duration-300"

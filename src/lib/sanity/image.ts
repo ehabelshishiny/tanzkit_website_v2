@@ -1,5 +1,5 @@
-import imageUrlBuilder from '@sanity/image-url'
-import { client } from './client'
+import { createImageUrlBuilder } from '@sanity/image-url'
+import { createClient } from 'next-sanity'
 
 // Type definition for Sanity image (without problematic import)
 type ImageAsset = {
@@ -25,8 +25,16 @@ type SanityImageType = {
   }
 }
 
+// Create a simple client for image URL building (no draft mode)
+const imageClient = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-01-01',
+  useCdn: true,
+})
+
 // Initialize image URL builder
-const builder = imageUrlBuilder(client)
+const builder = createImageUrlBuilder(imageClient)
 
 /**
  * Generate optimized image URL from Sanity image asset
@@ -61,9 +69,9 @@ export function getResponsiveImageUrls(source: SanityImageType | any) {
   }
 
   return {
-    mobile: urlFor(source).width(640).url() || '',
-    tablet: urlFor(source).width(1024).url() || '',
-    desktop: urlFor(source).width(1920).url() || '',
+    mobile: urlFor(source).width(640).fit('max').url() || '',
+    tablet: urlFor(source).width(1024).fit('max').url() || '',
+    desktop: urlFor(source).width(1920).fit('max').url() || '',
   }
 }
 
@@ -102,3 +110,6 @@ export function getImageDimensions(source: {
 
   return { width, height }
 }
+
+// Alias for consistency with common naming conventions
+export const urlForImage = urlFor

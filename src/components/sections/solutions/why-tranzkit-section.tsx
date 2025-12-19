@@ -1,31 +1,34 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { SectionContainer } from '@/components/ui/section-container';
 import { SectionHeader } from '@/components/ui/section-header';
 import { BenefitsList } from '@/components/ui/benefits-list';
 import { TrendingDown, Clock, Eye } from 'lucide-react';
 
-export function WhyTranzkitSection() {
-  const t = useTranslations('solutions.main.whyTranzkit');
+interface WhyTranzkitSectionProps {
+  data: {
+    title: string;
+    reasons: string[];
+  };
+}
 
-  const reasons = [
-    {
-      id: '1',
-      title: t('reasons.0'),
-      icon: <TrendingDown className="w-8 h-8 text-green-600" />
-    },
-    {
-      id: '2',
-      title: t('reasons.1'),
-      icon: <Clock className="w-8 h-8 text-blue-600" />
-    },
-    {
-      id: '3',
-      title: t('reasons.2'),
-      icon: <Eye className="w-8 h-8 text-purple-600" />
-    }
+export function WhyTranzkitSection({ data }: WhyTranzkitSectionProps) {
+  // Safety check
+  if (!data || !data.reasons) {
+    return null;
+  }
+
+  const icons = [
+    <TrendingDown key="trending" className="w-8 h-8 text-green-600" />,
+    <Clock key="clock" className="w-8 h-8 text-blue-600" />,
+    <Eye key="eye" className="w-8 h-8 text-purple-600" />
   ];
+
+  const reasons = data.reasons.map((reason, index) => ({
+    id: String(index + 1),
+    title: reason,
+    icon: icons[index % icons.length]
+  }));
 
   return (
     <SectionContainer
@@ -34,7 +37,7 @@ export function WhyTranzkitSection() {
       maxWidth="2xl"
     >
       <SectionHeader
-        title={t('title')}
+        title={data.title}
         alignment="center"
         titleSize="lg"
       />
