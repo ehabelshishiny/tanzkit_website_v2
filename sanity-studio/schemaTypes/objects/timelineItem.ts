@@ -1,4 +1,5 @@
 import { defineType } from 'sanity';
+import { iconField } from '../fields/iconField';
 
 export const timelineItem = defineType({
   name: 'timelineItem',
@@ -24,12 +25,9 @@ export const timelineItem = defineType({
       type: 'localizedText',
       validation: (Rule) => Rule.required(),
     },
-    {
-      name: 'icon',
-      title: 'Icon',
-      type: 'string',
-      description: 'Icon name or identifier',
-    },
+    iconField({
+      description: 'Select an icon for this timeline item',
+    }),
   ],
   preview: {
     select: {

@@ -1,4 +1,5 @@
 import { defineType } from 'sanity';
+import { iconField } from '../fields/iconField';
 
 export const technologyItem = defineType({
   name: 'technologyItem',
@@ -17,12 +18,9 @@ export const technologyItem = defineType({
       type: 'localizedText',
       validation: (Rule) => Rule.required(),
     },
-    {
-      name: 'icon',
-      title: 'Icon',
-      type: 'string',
-      description: 'Icon name or identifier',
-    },
+    iconField({
+      description: 'Select an icon for this technology',
+    }),
     {
       name: 'image',
       title: 'Image',

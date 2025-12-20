@@ -216,15 +216,6 @@ export const homePageQuery = (locale: string = 'en') => groq`
       ${localizedField('subtitle', locale)},
       features[] {
         _key,
-        ${localizedField('title', locale)},
-        ${localizedField('description', locale)}
-      }
-    },
-    featuresSimple {
-      ${localizedField('heading', locale)},
-      ${localizedField('subtitle', locale)},
-      features[] {
-        _key,
         icon,
         ${localizedField('title', locale)},
         ${localizedField('description', locale)}
@@ -417,7 +408,11 @@ export const solutionsPageQuery = (locale: string = 'en') => groq`
     },
     technology {
       ${localizedField('title', locale)},
-      "highlights": highlights[].${locale}
+      highlights[] {
+        _key,
+        icon,
+        ${localizedField('text', locale)}
+      }
     },
     whyTranzkit {
       ${localizedField('title', locale)},
@@ -1646,15 +1641,10 @@ export async function getAllFAQs(locale: string = 'en') {
  * Documentation Queries
  */
 
-// Documentation Page (Single landing page with HTML content)
+// Documentation Page (Full-width HTML content page)
 export const documentationPageQuery = (locale: string = 'en') => groq`
   *[_type == "documentationPage"][0] {
     _id,
-    hero {
-      ${localizedField('title', locale)},
-      ${localizedField('subtitle', locale)},
-      ${localizedField('description', locale)}
-    },
     "htmlContent": coalesce(htmlContent.${locale}, htmlContent.en),
     seo {
       ${localizedField('metaTitle', locale)},

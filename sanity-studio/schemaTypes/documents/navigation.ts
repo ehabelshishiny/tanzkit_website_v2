@@ -1,5 +1,6 @@
 import { defineType } from 'sanity';
 import { MenuIcon } from '@sanity/icons';
+import { IconPicker } from '../../components/IconPicker';
 
 /**
  * Navigation (Singleton)
@@ -61,7 +62,10 @@ export const navigation = defineType({
                       name: 'icon',
                       title: 'Icon',
                       type: 'string',
-                      description: 'Lucide icon name (optional)',
+                      description: 'Select an icon for this menu item (optional)',
+                      components: {
+                        input: IconPicker,
+                      },
                     },
                   ],
                   preview: {

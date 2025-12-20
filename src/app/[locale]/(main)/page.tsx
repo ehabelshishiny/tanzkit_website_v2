@@ -1,5 +1,4 @@
 import { HeroSection } from '@/components/sections/homepage/hero-section';
-import { OverviewSection } from '@/components/sections/homepage/overview-section';
 import { FeaturesSection } from '@/components/sections/homepage/features-section';
 import { FeatureTabs } from '@/components/sections/homepage/feature-tabs';
 import { ScreenshotCarousel } from '@/components/sections/homepage/screenshot-carousel';
@@ -57,20 +56,10 @@ export default async function HomePage({ params }: HomePageProps) {
     notFound();
   }
 
-  // Debug logging (only in development)
-  if (process.env.NODE_ENV === 'development') {
-    console.log('=== HOME PAGE DATA DEBUG ===');
-    console.log('Feature Tabs:', JSON.stringify(homePageData.featureTabs, null, 2));
-    console.log('Screenshot Carousel:', JSON.stringify(homePageData.screenshotCarousel, null, 2));
-    console.log('Logo Bar:', JSON.stringify(homePageData.logoBar, null, 2));
-    console.log('===========================');
-  }
-
   return (
     <>
       <HeroSection data={homePageData.hero} />
-      <OverviewSection data={homePageData.overview} />
-      <FeaturesSection data={homePageData.featuresSimple} />
+      <FeaturesSection data={homePageData.overview} />
       <FeatureTabs data={homePageData.featureTabs} />
       <ScreenshotCarousel data={homePageData.screenshotCarousel} />
       <LogoBarSection data={homePageData.logoBar} />

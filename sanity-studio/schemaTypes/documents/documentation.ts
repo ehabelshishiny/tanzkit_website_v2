@@ -6,48 +6,27 @@ export const documentationPage = defineType({
   title: 'Documentation Page',
   type: 'document',
   icon: BookIcon,
+  description: 'Full-width HTML documentation page (no hero section, just HTML content)',
   fields: [
-    {
-      name: 'hero',
-      title: 'Hero Section',
-      type: 'object',
-      fields: [
-        {
-          name: 'title',
-          title: 'Title',
-          type: 'localizedString',
-          validation: (Rule) => Rule.required(),
-        },
-        {
-          name: 'subtitle',
-          title: 'Subtitle',
-          type: 'localizedString',
-        },
-        {
-          name: 'description',
-          title: 'Description',
-          type: 'localizedText',
-        },
-      ],
-    },
     {
       name: 'htmlContent',
       title: 'HTML Content',
       type: 'object',
+      description: '📝 Add your complete HTML documentation here. The content will be displayed full-width with navbar and footer only.',
       fields: [
         {
           name: 'en',
           title: 'English HTML',
           type: 'text',
-          rows: 20,
-          description: 'Full HTML content for the documentation page (English)',
+          rows: 25,
+          description: 'Complete HTML content for the documentation page (English). Can include styles, scripts, and any HTML elements.',
         },
         {
           name: 'ar',
           title: 'Arabic HTML',
           type: 'text',
-          rows: 20,
-          description: 'Full HTML content for the documentation page (Arabic)',
+          rows: 25,
+          description: 'Complete HTML content for the documentation page (Arabic). Can include styles, scripts, and any HTML elements.',
         },
       ],
       validation: (Rule) => Rule.required(),
@@ -56,16 +35,14 @@ export const documentationPage = defineType({
       name: 'seo',
       title: 'SEO Settings',
       type: 'seo',
+      description: 'Configure meta title, description, and other SEO settings',
     },
   ],
   preview: {
-    select: {
-      title: 'hero.title.en',
-    },
-    prepare({ title }) {
+    prepare() {
       return {
-        title: title || 'Documentation Page',
-        subtitle: 'Single landing page with HTML content',
+        title: 'Documentation Page',
+        subtitle: 'Full-width HTML content page',
       };
     },
   },

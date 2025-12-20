@@ -1,5 +1,6 @@
 import { defineType } from 'sanity';
 import { CaseIcon } from '@sanity/icons';
+import { IconPicker } from '../../components/IconPicker';
 
 export const caseStudy = defineType({
   name: 'caseStudy',
@@ -128,7 +129,10 @@ export const caseStudy = defineType({
               name: 'icon',
               title: 'Icon Name',
               type: 'string',
-              description: 'Lucide icon name (e.g., TrendingUp, DollarSign)',
+              description: 'Select an icon for this metric (e.g., TrendingUp, DollarSign)',
+              components: {
+                input: IconPicker,
+              },
             },
           ],
           preview: {

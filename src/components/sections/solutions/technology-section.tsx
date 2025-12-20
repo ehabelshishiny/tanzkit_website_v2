@@ -3,12 +3,16 @@
 import { SectionContainer } from '@/components/ui/section-container';
 import { SectionHeader } from '@/components/ui/section-header';
 import { FeatureCard } from '@/components/ui/feature-card';
-import { Brain, BarChart3, Shield, Globe } from 'lucide-react';
+import { getLucideIcon } from '@/lib/lucide-icons';
 
 interface TechnologySectionProps {
   data: {
     title: string;
-    highlights: string[];
+    highlights: Array<{
+      _key: string;
+      icon: string;
+      text: string;
+    }>;
   };
 }
 
@@ -18,13 +22,6 @@ export function TechnologySection({ data }: TechnologySectionProps) {
     return null;
   }
 
-  const icons = [
-    <Brain key="brain" className="w-8 h-8" />,
-    <BarChart3 key="chart" className="w-8 h-8" />,
-    <Shield key="shield" className="w-8 h-8" />,
-    <Globe key="globe" className="w-8 h-8" />
-  ];
-
   const iconColors = [
     'hsl(var(--chart-1))',
     'hsl(var(--chart-4))',
@@ -32,11 +29,15 @@ export function TechnologySection({ data }: TechnologySectionProps) {
     'hsl(var(--chart-5))'
   ];
 
-  const features = data.highlights.map((highlight, index) => ({
-    icon: icons[index % icons.length],
-    iconColor: iconColors[index % iconColors.length],
-    title: highlight
-  }));
+  const features = data.highlights.map((highlight, index) => {
+    const IconComponent = getLucideIcon(highlight.icon, 'Brain');
+
+    return {
+      icon: <IconComponent key={highlight._key} className="w-8 h-8" />,
+      iconColor: iconColors[index % iconColors.length],
+      title: highlight.text
+    };
+  });
 
   return (
     <SectionContainer

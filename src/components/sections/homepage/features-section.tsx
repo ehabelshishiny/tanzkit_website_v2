@@ -2,20 +2,12 @@
 
 import { useTranslations } from 'next-intl';
 import { FadeIn } from '@/components/animations/fade-in';
-import { Zap, Shield, Users, BarChart } from 'lucide-react';
 import { SectionContainer } from '@/components/layout/SectionContainer';
 import { Typography } from '@/components/ui/typography';
+import { getLucideIcon } from '@/lib/lucide-icons';
 
-const featureIcons = {
-  0: Zap,
-  1: Shield,
-  2: Users,
-  3: BarChart,
-  Zap: Zap,
-  Shield: Shield,
-  Users: Users,
-  BarChart: BarChart
-};
+// Default icons for fallback (when no icon specified in Sanity)
+const defaultIcons = ['Zap', 'Shield', 'Users', 'BarChart'];
 
 interface FeaturesSectionProps {
   data?: {
@@ -30,7 +22,14 @@ interface FeaturesSectionProps {
 }
 
 export function FeaturesSection({ data }: FeaturesSectionProps) {
-  const t = useTranslations('homepage.featuresSimple');
+  const t = useTranslations('homepage.whyChoose');
+
+  // Debug logging
+  console.log('=== FEATURES SECTION DEBUG ===');
+  console.log('Data received:', JSON.stringify(data, null, 2));
+  console.log('Features:', data?.features);
+  console.log('First feature:', data?.features?.[0]);
+  console.log('==============================');
 
   // Use Sanity data if available, otherwise fall back to translations
   const features = data?.features || (t.raw('items') as Array<{
@@ -55,8 +54,11 @@ export function FeaturesSection({ data }: FeaturesSectionProps) {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => {
             // Get icon from Sanity data or use default based on index
-            const iconName = ('icon' in feature && feature.icon) ? feature.icon : index.toString();
-            const Icon = featureIcons[iconName as keyof typeof featureIcons] || Zap;
+            const iconName: string = ('icon' in feature && typeof feature.icon === 'string' && feature.icon)
+              ? feature.icon
+              : defaultIcons[index % defaultIcons.length];
+            const Icon = getLucideIcon(iconName, 'Zap');
+
             return (
               <FadeIn key={index} delay={0.1 * (index + 1)}>
                 <div className="flex flex-col items-center text-center">

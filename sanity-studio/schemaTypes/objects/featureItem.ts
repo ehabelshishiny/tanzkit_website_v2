@@ -1,4 +1,5 @@
 import { defineType } from 'sanity';
+import { iconField } from '../fields/iconField';
 
 /**
  * Feature Item Object
@@ -9,12 +10,9 @@ export const featureItem = defineType({
   title: 'Feature Item',
   type: 'object',
   fields: [
-    {
-      name: 'icon',
-      title: 'Icon',
-      type: 'string',
-      description: 'Lucide icon name (e.g., Zap, Shield, Users)',
-    },
+    iconField({
+      description: 'Select an icon for this feature (e.g., Zap, Shield, Users)',
+    }),
     {
       name: 'title',
       title: 'Title',

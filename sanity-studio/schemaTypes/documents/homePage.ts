@@ -1,5 +1,6 @@
 import { defineType } from 'sanity';
 import { HomeIcon } from '@sanity/icons';
+import { iconField } from '../fields/iconField';
 
 /**
  * Home Page (Singleton)
@@ -19,54 +20,67 @@ export const homePage = defineType({
     },
     {
       name: 'overview',
-      title: 'Why Choose Section',
+      title: 'Why Choose Tranzkit',
       type: 'object',
-      description: 'Overview section highlighting key benefits',
+      description: '✨ Features section with icons highlighting key benefits (4 features recommended)',
       fields: [
         {
           name: 'heading',
           title: 'Section Heading',
           type: 'localizedString',
+          description: 'Main heading (e.g., "Why Choose Tranzkit")',
         },
         {
           name: 'subtitle',
           title: 'Section Subtitle',
           type: 'localizedText',
+          description: 'Supporting text below the heading',
         },
         {
           name: 'features',
           title: 'Features',
           type: 'array',
+          description: '➕ Add 4 features with icons. Each feature needs an icon, title, and description',
+          validation: (Rule) => Rule.min(3).max(6).warning('Recommended: 4 features for optimal display'),
           of: [
             {
               type: 'object',
               fields: [
+                iconField({
+                  description: 'Select an icon for this feature (e.g., Zap, Shield, Users, BarChart)',
+                  required: true,
+                }),
                 {
                   name: 'title',
                   title: 'Title',
                   type: 'localizedString',
+                  description: 'Feature title (e.g., "Lightning Fast")',
                   validation: (Rule) => Rule.required(),
                 },
                 {
                   name: 'description',
                   title: 'Description',
                   type: 'localizedText',
+                  description: 'Brief description of the feature',
+                  validation: (Rule) => Rule.required(),
                 },
               ],
               preview: {
                 select: {
                   title: 'title.en',
+                  icon: 'icon',
+                },
+                prepare({ title, icon }) {
+                  return {
+                    title: title || 'Untitled Feature',
+                    subtitle: icon ? `Icon: ${icon}` : 'No icon selected',
+                  };
                 },
               },
             },
           ],
         },
       ],
-    },
-    {
-      name: 'featuresSimple',
-      title: 'Features (Simple)',
-      type: 'featureSection',
     },
     {
       name: 'featureTabs',

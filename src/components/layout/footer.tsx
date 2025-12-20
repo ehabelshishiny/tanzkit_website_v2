@@ -24,7 +24,6 @@ export function Footer() {
     company: [
       { name: t('apps'), href: `/${locale}/apps` },
       { name: t('about'), href: `/${locale}/about` },
-      { name: tFooter('company.careers'), href: `/${locale}/about/careers` },
       { name: t('contact'), href: `/${locale}/contact` },
     ],
   };

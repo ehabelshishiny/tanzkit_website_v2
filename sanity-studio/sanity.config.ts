@@ -3,6 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {presentationTool} from 'sanity/presentation'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
+import {deskStructure} from './structure/deskStructure'
 
 export default defineConfig({
   name: 'default',
@@ -14,7 +15,9 @@ export default defineConfig({
   basePath: '/studio',
 
   plugins: [
-    structureTool(),
+    structureTool({
+      structure: deskStructure,
+    }),
     presentationTool({
       previewUrl: {
         origin: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',

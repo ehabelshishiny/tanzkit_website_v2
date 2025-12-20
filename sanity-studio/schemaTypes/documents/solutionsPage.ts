@@ -1,4 +1,5 @@
 import { defineType } from 'sanity';
+import { iconField } from '../fields/iconField';
 
 export const solutionsPage = defineType({
   name: 'solutionsPage',
@@ -186,6 +187,7 @@ export const solutionsPage = defineType({
       name: 'technology',
       title: 'Technology Section',
       type: 'object',
+      description: '🔧 Technology highlights with icons (4 items recommended)',
       fields: [
         {
           name: 'title',
@@ -196,7 +198,37 @@ export const solutionsPage = defineType({
           name: 'highlights',
           title: 'Highlights',
           type: 'array',
-          of: [{ type: 'localizedString' }],
+          description: '➕ Add technology highlights with icons (e.g., Brain, BarChart3, Shield, Globe)',
+          validation: (Rule) => Rule.min(3).max(6).warning('Recommended: 4 highlights for optimal display'),
+          of: [
+            {
+              type: 'object',
+              fields: [
+                iconField({
+                  description: 'Select an icon for this highlight (e.g., Brain, BarChart3, Shield, Globe)',
+                  required: true,
+                }),
+                {
+                  name: 'text',
+                  title: 'Text',
+                  type: 'localizedString',
+                  validation: (Rule) => Rule.required(),
+                },
+              ],
+              preview: {
+                select: {
+                  text: 'text.en',
+                  icon: 'icon',
+                },
+                prepare({ text, icon }) {
+                  return {
+                    title: text || 'Untitled Highlight',
+                    subtitle: icon ? `Icon: ${icon}` : 'No icon selected',
+                  };
+                },
+              },
+            },
+          ],
         },
       ],
     },

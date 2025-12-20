@@ -6,15 +6,14 @@ import Image from 'next/image';
 import { useLocale } from 'next-intl';
 import { ArrowRight } from 'lucide-react';
 import { CardContainer, CardBody, CardItem } from './3d-card';
-import { getIconComponent } from '@/lib/icon-mapper';
-import type { IconName } from '@/config/apps';
+import { getLucideIcon } from '@/lib/lucide-icons';
 
 interface AppCard3DVariantProps {
   id: string;
   name: string;
   tagline: string;
   description: string;
-  iconName: IconName;
+  iconName: string;
   image?: string;
   appType?: 'mobile' | 'desktop';
   gradient: string;
@@ -34,7 +33,7 @@ export function AppCard3DVariant({
 }: AppCard3DVariantProps) {
   const locale = useLocale();
   const href = `/${locale}/apps/${id}`;
-  const Icon = getIconComponent(iconName);
+  const Icon = getLucideIcon(iconName, 'Smartphone');
 
   // Determine image aspect ratio and card dimensions based on app type
   // Desktop apps: 16:9 aspect ratio for landscape 1920x1080 desktop screenshots

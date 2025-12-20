@@ -1,4 +1,5 @@
 import { defineType } from 'sanity';
+import { IconPicker } from '../../components/IconPicker';
 
 /**
  * Solutions: Operators & Drivers Page
@@ -224,7 +225,10 @@ export const solutionsOperatorsDriversPage = defineType({
                   name: 'icon',
                   title: 'Icon Name',
                   type: 'string',
-                  description: 'Lucide icon name (optional)',
+                  description: 'Select an icon for this timeline item (optional)',
+                  components: {
+                    input: IconPicker,
+                  },
                 },
               ],
             },

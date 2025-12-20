@@ -6,15 +6,16 @@ import { Card } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { Typography } from '@/components/ui/typography';
-import { Zap, Shield, TrendingUp, Users } from 'lucide-react';
 import Image from 'next/image';
 import { urlFor } from '@/lib/sanity/image';
+import { getLucideIcon } from '@/lib/lucide-icons';
 
-const iconMap = {
-  realtime: Zap,
-  security: Shield,
-  analytics: TrendingUp,
-  collaboration: Users
+// Default icon names for fallback
+const defaultIconMap: Record<string, string> = {
+  realtime: 'Zap',
+  security: 'Shield',
+  analytics: 'TrendingUp',
+  collaboration: 'Users'
 };
 
 const imageMap = {
@@ -33,6 +34,7 @@ interface FeatureTabsProps {
       label: string;
       title: string;
       description: string;
+      icon?: string;
       features?: Array<{
         _key: string;
         text: string;
@@ -80,9 +82,15 @@ export function FeatureTabs({ data }: FeatureTabsProps) {
       <Tabs defaultValue={firstTabId} className="w-full" dir={isRTL ? 'rtl' : 'ltr'}>
         {/* TabsList with RTL support */}
         <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 mb-6 sm:mb-8 h-auto p-2 bg-muted/50">
-          {featureTabs.map((tab, index) => {
+          {featureTabs.map((tab) => {
             const featureId = typeof tab === 'string' ? tab : tab._key;
-            const Icon = iconMap[featureId as keyof typeof iconMap] || Zap;
+
+            // Get icon name from Sanity data or use default
+            const iconName = (typeof tab !== 'string' && tab.icon)
+              ? tab.icon
+              : defaultIconMap[featureId] || 'Zap';
+            const Icon = getLucideIcon(iconName, 'Zap');
+
             const label = typeof tab === 'string' ? t(`tabs.${featureId}.label`) : tab.label;
             return (
               <TabsTrigger
@@ -101,7 +109,13 @@ export function FeatureTabs({ data }: FeatureTabsProps) {
 
         {featureTabs.map((tab, index) => {
           const featureId = typeof tab === 'string' ? tab : tab._key;
-          const Icon = iconMap[featureId as keyof typeof iconMap] || Zap;
+
+          // Get icon name from Sanity data or use default
+          const iconName = (typeof tab !== 'string' && tab.icon)
+            ? tab.icon
+            : defaultIconMap[featureId] || 'Zap';
+          const Icon = getLucideIcon(iconName, 'Zap');
+
           const title = typeof tab === 'string' ? t(`tabs.${featureId}.title`) : tab.title;
           const description = typeof tab === 'string' ? t(`tabs.${featureId}.description`) : tab.description;
           const benefits = typeof tab === 'string'
