@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { FadeIn } from '@/components/animations/fade-in';
 import { Typography } from '@/components/ui/typography';
 import Image from 'next/image';
@@ -16,6 +17,8 @@ interface LogoBarSectionProps {
 
 export function LogoBarSection({ data }: LogoBarSectionProps) {
   const t = useTranslations('homepage.logoBar');
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
 
   // Use Sanity logos if available, otherwise fallback to hardcoded
   const usingSanityData = !!data?.logos && data.logos.length > 0;
@@ -43,10 +46,10 @@ export function LogoBarSection({ data }: LogoBarSectionProps) {
         ));
     }
 
-    return [1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+    return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((i) => (
       <div
         key={`${keyPrefix}-${i}`}
-        className="h-16 w-32 md:h-20 md:w-40 flex items-center justify-center rounded-lg bg-background flex-shrink-0 p-3"
+        className="h-16 w-32 md:h-30 md:w-30 flex items-center justify-center rounded-lg bg-background flex-shrink-0 p-3"
       >
         <div className="relative w-full h-full">
           <Image
@@ -72,9 +75,18 @@ export function LogoBarSection({ data }: LogoBarSectionProps) {
           }
         }
 
+        @keyframes marquee-rtl {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(50%);
+          }
+        }
+
         .marquee-container {
           display: flex;
-          animation: marquee 30s linear infinite;
+          animation: ${isRTL ? 'marquee-rtl' : 'marquee'} 30s linear infinite;
         }
 
         .marquee-container:hover {
