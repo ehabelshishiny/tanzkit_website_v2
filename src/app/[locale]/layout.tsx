@@ -138,7 +138,7 @@ export default async function LocaleLayout({
   {`
     (function() {
       var script = document.createElement('script');
-      script.src = 'http://localhost:3000/api/widget-loader.js';
+      script.src = 'https://codefy-os.vercel.app/api/widget-loader.js';
       script.setAttribute('data-embed-key', 'cfy_08df4792586441e79921e48842a16cf9');
       script.setAttribute('data-position', 'bottom-right');
       document.head.appendChild(script);
