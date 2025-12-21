@@ -7,7 +7,7 @@ export function FilterTabs() {
   const t = useTranslations('resources.main.filters');
   const locale = useLocale();
   const isRTL = locale === 'ar';
-  
+
   // Define tab order - will be reversed for RTL
   const tabs = [
     { value: 'all', label: t('all') },
@@ -15,7 +15,7 @@ export function FilterTabs() {
     { value: 'whitepapers', label: t('whitepapers') },
     { value: 'case-studies', label: t('caseStudies') },
   ];
-  
+
   // Reverse the order for RTL languages
   const displayTabs = isRTL ? [...tabs].reverse() : tabs;
   

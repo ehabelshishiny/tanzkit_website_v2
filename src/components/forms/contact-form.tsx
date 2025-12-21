@@ -13,10 +13,36 @@ import { FadeIn } from '@/components/animations/fade-in';
 import { contactFormSchema, type ContactFormData } from '@/lib/validations/contact';
 import { toast } from 'sonner';
 import { Mail, User, Building, Phone, MessageSquare, Users2 } from 'lucide-react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 
-export function ContactForm() {
-  const t = useTranslations('contact.form');
+interface ContactFormProps {
+  labels: {
+    title: string;
+    subtitle: string;
+    name: string;
+    namePlaceholder: string;
+    email: string;
+    emailPlaceholder: string;
+    company: string;
+    companyPlaceholder: string;
+    phone: string;
+    phonePlaceholder: string;
+    userType: string;
+    userTypePlaceholder: string;
+    userTypeEnterprise: string;
+    userTypeOperator: string;
+    message: string;
+    messagePlaceholder: string;
+    notRobot: string;
+    submit: string;
+    submitting: string;
+    successTitle: string;
+    successMessage: string;
+    successButton: string;
+  };
+}
+
+export function ContactForm({ labels }: ContactFormProps) {
   const locale = useLocale();
   const isRTL = locale === 'ar';
   const searchParams = useSearchParams();
@@ -66,7 +92,7 @@ export function ContactForm() {
       console.log('✅ API Success:', result);
 
       setHasSubmitted(true);
-      toast.success(t('success.message'));
+      toast.success(labels.successMessage);
 
       console.log('✅ Form submission complete');
     } catch (error) {
@@ -81,20 +107,17 @@ export function ContactForm() {
         <div className="mx-auto max-w-2xl p-8 border rounded-lg bg-muted/30 text-center space-y-4">
           <div className="text-5xl">✅</div>
           <Typography variant="h3" align="center">
-            {t('success.title')}
+            {labels.successTitle}
           </Typography>
           <Typography variant="body" align="center" className="text-muted-foreground">
-            {t('success.message')}
-          </Typography>
-          <Typography variant="caption" align="center" className="text-muted-foreground">
-            {t('success.note')}
+            {labels.successMessage}
           </Typography>
           <Button
             onClick={() => window.location.reload()}
             variant="outline"
             className="mt-4"
           >
-            {t('success.refresh')}
+            {labels.successButton}
           </Button>
         </div>
       </FadeIn>
@@ -117,12 +140,12 @@ export function ContactForm() {
             <div>
               <Typography variant="caption" as="label" htmlFor="name" className="block font-medium mb-2 flex items-center gap-2">
                 <User className="w-4 h-4" />
-                {t('labels.name')} *
+                {labels.name} *
               </Typography>
               <Input
                 id="name"
                 {...register('name')}
-                placeholder={t('placeholders.name')}
+                placeholder={labels.namePlaceholder}
                 disabled={isSubmitting}
                 className={isRTL ? 'text-right' : ''}
                 dir={isRTL ? 'rtl' : 'ltr'}
@@ -137,13 +160,13 @@ export function ContactForm() {
             <div>
               <Typography variant="caption" as="label" htmlFor="email" className="block font-medium mb-2 flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                {t('labels.email')} *
+                {labels.email} *
               </Typography>
               <Input
                 id="email"
                 type="email"
                 {...register('email')}
-                placeholder={t('placeholders.email')}
+                placeholder={labels.emailPlaceholder}
                 disabled={isSubmitting}
                 className={isRTL ? 'text-right' : ''}
                 dir={isRTL ? 'rtl' : 'ltr'}
@@ -158,12 +181,12 @@ export function ContactForm() {
             <div>
               <Typography variant="caption" as="label" htmlFor="company" className="block font-medium mb-2 flex items-center gap-2">
                 <Building className="w-4 h-4" />
-                {t('labels.company')} *
+                {labels.company} *
               </Typography>
               <Input
                 id="company"
                 {...register('company')}
-                placeholder={t('placeholders.company')}
+                placeholder={labels.companyPlaceholder}
                 disabled={isSubmitting}
                 className={isRTL ? 'text-right' : ''}
                 dir={isRTL ? 'rtl' : 'ltr'}
@@ -178,13 +201,13 @@ export function ContactForm() {
             <div>
               <Typography variant="caption" as="label" htmlFor="phone" className="block font-medium mb-2 flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                {t('labels.phone')} *
+                {labels.phone} *
               </Typography>
               <Input
                 id="phone"
                 type="tel"
                 {...register('phone')}
-                placeholder={t('placeholders.phone')}
+                placeholder={labels.phonePlaceholder}
                 disabled={isSubmitting}
                 className={isRTL ? 'text-right' : ''}
                 dir={isRTL ? 'rtl' : 'ltr'}
@@ -199,7 +222,7 @@ export function ContactForm() {
             <div>
               <Typography variant="caption" as="label" htmlFor="userType" className="block font-medium mb-2 flex items-center gap-2">
                 <Users2 className="w-4 h-4" />
-                {t('labels.userType')} *
+                {labels.userType} *
               </Typography>
               <Controller
                 name="userType"
@@ -211,26 +234,20 @@ export function ContactForm() {
                     disabled={isSubmitting}
                   >
                     <SelectTrigger id="userType" className={isRTL ? 'text-right' : ''} dir={isRTL ? 'rtl' : 'ltr'}>
-                      <SelectValue placeholder={t('placeholders.userType')} />
+                      <SelectValue placeholder={labels.userTypePlaceholder} />
                     </SelectTrigger>
                     <SelectContent className={isRTL ? 'text-right' : ''} dir={isRTL ? 'rtl' : 'ltr'}>
                       <SelectItem value="enterprise">
                         <div className={`flex flex-col ${isRTL ? 'items-end' : 'items-start'}`}>
                           <Typography variant="caption" className="font-medium">
-                            {t('userTypes.enterprise.label')}
-                          </Typography>
-                          <Typography variant="caption" className="text-xs text-slate-600 dark:text-slate-100">
-                            {t('userTypes.enterprise.description')}
+                            {labels.userTypeEnterprise}
                           </Typography>
                         </div>
                       </SelectItem>
                       <SelectItem value="operator">
                         <div className={`flex flex-col ${isRTL ? 'items-end' : 'items-start'}`}>
                           <Typography variant="caption" className="font-medium">
-                            {t('userTypes.operator.label')}
-                          </Typography>
-                          <Typography variant="caption" className="text-xs text-slate-600 dark:text-slate-100">
-                            {t('userTypes.operator.description')}
+                            {labels.userTypeOperator}
                           </Typography>
                         </div>
                       </SelectItem>
@@ -248,12 +265,12 @@ export function ContactForm() {
             <div>
               <Typography variant="caption" as="label" htmlFor="message" className="block font-medium mb-2 flex items-center gap-2">
                 <MessageSquare className="w-4 h-4" />
-                {t('labels.message')} *
+                {labels.message} *
               </Typography>
               <Textarea
                 id="message"
                 {...register('message')}
-                placeholder={t('placeholders.message')}
+                placeholder={labels.messagePlaceholder}
                 rows={5}
                 disabled={isSubmitting}
                 className={isRTL ? 'text-right' : ''}
@@ -276,7 +293,7 @@ export function ContactForm() {
                   className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
                 />
                 <Typography variant="caption" as="label" htmlFor="notRobot" className="font-medium cursor-pointer">
-                  ☑️ {t('captcha')} *
+                  ☑️ {labels.notRobot} *
                 </Typography>
               </div>
               {errors.notRobot && (
@@ -287,7 +304,7 @@ export function ContactForm() {
             </div>
 
             <Button type="submit" size="lg" disabled={isSubmitting} className="w-full">
-              {isSubmitting ? t('submitting') : t('submit')}
+              {isSubmitting ? labels.submitting : labels.submit}
             </Button>
           </form>
         </div>

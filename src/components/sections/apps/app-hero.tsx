@@ -9,28 +9,46 @@ import { useLocale } from 'next-intl';
 
 interface AppHeroProps {
   appName: string;
-  appNameAr: string;
+  tagline?: string;
   appDescription: string;
-  appDescriptionAr: string;
   heroImage: string;
   layoutType: 'portrait' | 'landscape';
+  platforms?: {
+    ios?: boolean;
+    android?: boolean;
+    web?: boolean;
+  };
+  storeUrls?: {
+    appStore?: string;
+    playStore?: string;
+    webApp?: string;
+  };
 }
 
-export function AppHero({ 
-  appName, 
-  appNameAr, 
-  appDescription, 
-  appDescriptionAr,
+export function AppHero({
+  appName,
+  tagline,
+  appDescription,
   heroImage,
-  layoutType 
+  layoutType,
+  platforms,
+  storeUrls
 }: AppHeroProps) {
   const locale = useLocale();
-  
-  const displayName = locale === 'ar' ? appNameAr : appName;
-  const downloadPrefix = locale === 'ar' ? 'حمّل' : 'Download Our';
-  const subtitle = locale === 'ar' ? 'تجربة إدارة نقل سلسة' : 'Experience seamless transportation management';
+
+  const downloadPrefix = locale === 'ar' ? 'حمّل' : 'Download';
+  const defaultSubtitle = locale === 'ar' ? 'تجربة إدارة نقل سلسة' : 'Experience seamless transportation management';
   const appStoreText = locale === 'ar' ? 'آب ستور' : 'App Store';
   const googlePlayText = locale === 'ar' ? 'جوجل بلاي' : 'Google Play';
+  const webAppText = locale === 'ar' ? 'تطبيق الويب' : 'Web App';
+
+  // Use tagline if available, otherwise use default subtitle
+  const subtitle = tagline || defaultSubtitle;
+
+  // Determine which buttons to show based on platforms
+  const showAppStore = platforms?.ios;
+  const showPlayStore = platforms?.android;
+  const showWebApp = platforms?.web;
 
   return (
     <section className="w-full bg-gradient-to-b from-primary/5 to-background py-20">
@@ -42,20 +60,71 @@ export function AppHero({
             transition={{ duration: 0.6 }}
           >
             <Typography variant="h2" className="mb-6">
-              {downloadPrefix} {displayName}
+              {downloadPrefix} {appName}
             </Typography>
             <Typography variant="subtitle" className="text-muted-foreground mb-8">
               {subtitle}
             </Typography>
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="gap-2">
-                <Download className="w-5 h-5" />
-                {appStoreText}
-              </Button>
-              <Button size="lg" variant="outline" className="gap-2">
-                <Download className="w-5 h-5" />
-                {googlePlayText}
-              </Button>
+              {showAppStore && (
+                <Button
+                  size="lg"
+                  className="gap-2"
+                  asChild={!!storeUrls?.appStore}
+                >
+                  {storeUrls?.appStore ? (
+                    <a href={storeUrls.appStore} target="_blank" rel="noopener noreferrer">
+                      <Download className="w-5 h-5" />
+                      {appStoreText}
+                    </a>
+                  ) : (
+                    <>
+                      <Download className="w-5 h-5" />
+                      {appStoreText}
+                    </>
+                  )}
+                </Button>
+              )}
+              {showPlayStore && (
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="gap-2"
+                  asChild={!!storeUrls?.playStore}
+                >
+                  {storeUrls?.playStore ? (
+                    <a href={storeUrls.playStore} target="_blank" rel="noopener noreferrer">
+                      <Download className="w-5 h-5" />
+                      {googlePlayText}
+                    </a>
+                  ) : (
+                    <>
+                      <Download className="w-5 h-5" />
+                      {googlePlayText}
+                    </>
+                  )}
+                </Button>
+              )}
+              {showWebApp && (
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="gap-2"
+                  asChild={!!storeUrls?.webApp}
+                >
+                  {storeUrls?.webApp ? (
+                    <a href={storeUrls.webApp} target="_blank" rel="noopener noreferrer">
+                      <Download className="w-5 h-5" />
+                      {webAppText}
+                    </a>
+                  ) : (
+                    <>
+                      <Download className="w-5 h-5" />
+                      {webAppText}
+                    </>
+                  )}
+                </Button>
+              )}
             </div>
           </motion.div>
 

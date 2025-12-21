@@ -1,0 +1,155 @@
+{
+  "_type": "solutionsOperatorsDriversPage",
+  "hero": {
+    "title": {
+      "en": "Scale Your Fleet Operations",
+      "ar": "قم بتوسيع عمليات أسطولك"
+    },
+    "subtitle": {
+      "en": "Empower operators with advanced tools and drivers with seamless earning opportunities",
+      "ar": "قم بتمكين المشغلين بأدوات متقدمة والسائقين بفرص كسب سلسة"
+    },
+    "cta": {
+      "en": "Get Started",
+      "ar": "ابدأ الآن"
+    }
+  },
+  "overview": {
+    "text": {
+      "en": "Operators need efficient fleet management and revenue optimization. Drivers want flexible schedules and reliable income. Tranzkit bridges both worlds with powerful automation, real-time insights, and tools designed for growth.",
+      "ar": "يحتاج المشغلون إلى إدارة فعالة للأسطول وتحسين الإيرادات. يريد السائقون جداول مرنة ودخل موثوق. يربط Tranzkit بين العالمين بأتمتة قوية ورؤى في الوقت الفعلي وأدوات مصممة للنمو."
+    }
+  },
+  "roleSwitcher": {
+    "tabs": {
+      "operator": {
+        "en": "Operators",
+        "ar": "المشغلون"
+      },
+      "driver": {
+        "en": "Drivers",
+        "ar": "السائقون"
+      }
+    },
+    "operator": {
+      "title": {
+        "en": "For Fleet Operators",
+        "ar": "لمشغلي الأسطول"
+      },
+      "description": {
+        "en": "Complete control over your transportation operations",
+        "ar": "تحكم كامل في عمليات النقل الخاصة بك"
+      },
+      "features": [
+        {
+          "_key": "operator-feature-0",
+          "_type": "featureItem",
+          "title": {
+            "en": "Fleet Management Dashboard",
+            "ar": "لوحة إدارة الأسطول"
+          },
+          "description": {
+            "en": "Monitor and manage your entire fleet from a centralized command center",
+            "ar": "راقب وأدر أسطولك بالكامل من مركز قيادة مركزي"
+          }
+        },
+        {
+          "_key": "operator-feature-1",
+          "_type": "featureItem",
+          "title": {
+            "en": "Driver Management",
+            "ar": "إدارة السائقين"
+          },
+          "description": {
+            "en": "Recruit, onboard, and manage drivers with comprehensive tools",
+            "ar": "قم بتوظيف وإدارة السائقين بأدوات شاملة"
+          }
+        },
+        {
+          "_key": "operator-feature-2",
+          "_type": "featureItem",
+          "title": {
+            "en": "Revenue Optimization",
+            "ar": "تحسين الإيرادات"
+          },
+          "description": {
+            "en": "Maximize earnings with dynamic pricing and demand forecasting",
+            "ar": "زيادة الأرباح مع التسعير الديناميكي والتنبؤ بالطلب"
+          }
+        },
+        {
+          "_key": "operator-feature-3",
+          "_type": "featureItem",
+          "title": {
+            "en": "Compliance & Safety",
+            "ar": "الامتثال والسلامة"
+          },
+          "description": {
+            "en": "Ensure regulatory compliance and maintain safety standards",
+            "ar": "ضمان الامتثال التنظيمي والحفاظ على معايير السلامة"
+          }
+        }
+      ]
+    },
+    "driver": {
+      "title": {
+        "en": "For Drivers",
+        "ar": "للسائقين"
+      },
+      "description": {
+        "en": "Earn more with flexible schedules and powerful tools",
+        "ar": "اكسب المزيد مع جداول مرنة وأدوات قوية"
+      },
+      "features": [
+        {
+          "_key": "driver-feature-0",
+          "_type": "featureItem",
+          "title": {
+            "en": "Flexible Earnings",
+            "ar": "أرباح مرنة"
+          },
+          "description": {
+            "en": "Drive on your schedule and maximize your income with smart routing",
+            "ar": "قد على جدولك الزمني وزيادة دخلك مع التوجيه الذكي"
+          }
+        },
+        {
+          "_key": "driver-feature-1",
+          "_type": "featureItem",
+          "title": {
+            "en": "Easy Navigation",
+            "ar": "ملاحة سهلة"
+          },
+          "description": {
+            "en": "Turn-by-turn navigation with real-time traffic updates",
+            "ar": "ملاحة خطوة بخطوة مع تحديثات حركة المرور في الوقت الفعلي"
+          }
+        },
+        {
+          "_key": "driver-feature-2",
+          "_type": "featureItem",
+          "title": {
+            "en": "Instant Payments",
+            "ar": "مدفوعات فورية"
+          },
+          "description": {
+            "en": "Get paid quickly with multiple payout options",
+            "ar": "احصل على أموالك بسرعة مع خيارات دفع متعددة"
+          }
+        },
+        {
+          "_key": "driver-feature-3",
+          "_type": "featureItem",
+          "title": {
+            "en": "Driver Support",
+            "ar": "دعم السائق"
+          },
+          "description": {
+            "en": "24/7 support team ready to help with any issues",
+            "ar": "فريق دعم على مدار الساعة جاهز للمساعدة في أي مشاكل"
+          }
+        }
+      ]
+    }
+  }
+}

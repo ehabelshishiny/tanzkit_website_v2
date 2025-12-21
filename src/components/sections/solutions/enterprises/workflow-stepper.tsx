@@ -5,33 +5,50 @@ import { Typography } from '@/components/ui/typography';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { StaggerChildren, StaggerItem } from '@/components/animations/stagger-children';
 import { CheckCircle2 } from 'lucide-react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 
 interface WorkflowStepperProps {
   type?: 'passenger' | 'enterprise';
+  data?: {
+    passenger?: {
+      title?: string;
+      subtitle?: string;
+      steps?: Array<{
+        title?: string;
+        description?: string;
+      }>;
+    };
+    enterprise?: {
+      title?: string;
+      subtitle?: string;
+      steps?: Array<{
+        title?: string;
+        description?: string;
+      }>;
+    };
+  };
 }
 
-export function WorkflowStepper({ type = 'passenger' }: WorkflowStepperProps) {
+export function WorkflowStepper({ type = 'passenger', data }: WorkflowStepperProps) {
   const locale = useLocale();
   const isRTL = locale === 'ar';
-  const t = useTranslations(`solutions.enterprisesPassengers.workflow.${type}`);
 
-  // Get steps count dynamically
-  const stepsCount = 5; // Both passenger and enterprise have 5 steps
-  const steps = Array.from({ length: stepsCount }, (_, i) => ({
-    step: i + 1,
-    title: t(`steps.${i}.title`),
-    description: t(`steps.${i}.description`)
-  }));
+  // Render empty if no data to maintain consistent structure
+  if (!data) return <section className="w-full max-w-7xl mx-auto px-4 py-16" />;
+
+  const workflowData = type === 'passenger' ? data.passenger : data.enterprise;
+  if (!workflowData) return <section className="w-full max-w-7xl mx-auto px-4 py-16" />;
+
+  const steps = workflowData.steps || [];
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
-          <Typography variant="h2" className="mb-4">{t('title')}</Typography>
+          <Typography variant="h2" className="mb-4">{workflowData.title}</Typography>
           <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
-            {t('subtitle')}
+            {workflowData.subtitle}
           </Typography>
         </div>
       </ScrollReveal>
@@ -43,7 +60,7 @@ export function WorkflowStepper({ type = 'passenger' }: WorkflowStepperProps) {
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <span className="text-xl font-bold text-primary">{step.step}</span>
+                    <span className="text-xl font-bold text-primary">{index + 1}</span>
                   </div>
                 </div>
                 <div className="flex-grow">

@@ -1,36 +1,43 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { SectionContainer } from '@/components/ui/section-container';
 import { SectionHeader } from '@/components/ui/section-header';
 import { FeatureCard } from '@/components/ui/feature-card';
-import { Brain, BarChart3, Shield, Globe } from 'lucide-react';
+import { getLucideIcon } from '@/lib/lucide-icons';
 
-export function TechnologySection() {
-  const t = useTranslations('solutions.main.technology');
+interface TechnologySectionProps {
+  data: {
+    title: string;
+    highlights: Array<{
+      _key: string;
+      icon: string;
+      text: string;
+    }>;
+  };
+}
 
-  const features = [
-    {
-      icon: <Brain className="w-8 h-8" />,
-      iconColor: 'hsl(var(--chart-1))',
-      title: t('highlights.0')
-    },
-    {
-      icon: <BarChart3 className="w-8 h-8" />,
-      iconColor: 'hsl(var(--chart-4))',
-      title: t('highlights.1')
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      iconColor: 'hsl(var(--chart-2))',
-      title: t('highlights.2')
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      iconColor: 'hsl(var(--chart-5))',
-      title: t('highlights.3')
-    }
+export function TechnologySection({ data }: TechnologySectionProps) {
+  // Safety check
+  if (!data || !data.highlights) {
+    return null;
+  }
+
+  const iconColors = [
+    'hsl(var(--chart-1))',
+    'hsl(var(--chart-4))',
+    'hsl(var(--chart-2))',
+    'hsl(var(--chart-5))'
   ];
+
+  const features = data.highlights.map((highlight, index) => {
+    const IconComponent = getLucideIcon(highlight.icon, 'Brain');
+
+    return {
+      icon: <IconComponent key={highlight._key} className="w-8 h-8" />,
+      iconColor: iconColors[index % iconColors.length],
+      title: highlight.text
+    };
+  });
 
   return (
     <SectionContainer
@@ -39,7 +46,7 @@ export function TechnologySection() {
       maxWidth="2xl"
     >
       <SectionHeader
-        title={t('title')}
+        title={data.title}
         alignment="center"
         titleSize="lg"
       />

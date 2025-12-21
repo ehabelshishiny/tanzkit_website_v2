@@ -1,15 +1,27 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { Typography } from '@/components/ui/typography';
 import { SectionContainer } from '@/components/ui/section-container';
-import { SectionHeader } from '@/components/ui/section-header';
 import { FramerMetricCard } from '../operators/framer-metric-card';
 import { Brain, TrendingDown, Clock, Heart, Route } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export function EnterprisesAiImpactSection() {
-  const t = useTranslations('solutions.enterprisesPassengers');
+interface EnterprisesAiImpactSectionProps {
+  data?: {
+    title?: string;
+    subtitle?: string;
+    impactTitle?: string;
+    metrics?: Array<{
+      value?: string;
+      label?: string;
+      description?: string;
+    }>;
+  };
+}
+
+export function EnterprisesAiImpactSection({ data }: EnterprisesAiImpactSectionProps) {
+  // Render empty if no data to maintain consistent structure
+  if (!data) return <section className="w-full max-w-7xl mx-auto px-4 py-16" />;
 
   return (
     <>
@@ -89,9 +101,9 @@ export function EnterprisesAiImpactSection() {
               className="max-w-3xl"
             >
               <Typography variant="h2" className="text-foreground mb-6 bg-gradient-to-r from-foreground via-foreground/90 to-foreground/80 bg-clip-text">
-                {t('aiAdvantage.title')}
+                {data.title}
               </Typography>
-              
+
               {/* Description with emphasis */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -100,7 +112,7 @@ export function EnterprisesAiImpactSection() {
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
                 <Typography variant="subtitle" className="text-foreground/70 font-light">
-                  {t('aiAdvantage.description')}
+                  {data.subtitle}
                 </Typography>
               </motion.div>
             </motion.div>
@@ -197,47 +209,39 @@ export function EnterprisesAiImpactSection() {
 
         <div className="relative z-10 w-full px-4 max-w-7xl mx-auto">
           {/* Section Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <Typography variant="h2" className="text-slate-900 dark:text-white">{t('impact.title')}</Typography>
-          </motion.div>
+          {data.impactTitle && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <Typography variant="h2" className="text-slate-900 dark:text-white drop-shadow-sm">
+                {data.impactTitle}
+              </Typography>
+            </motion.div>
+          )}
 
-          {/* Impact Cards Grid - 2x2 Layout */}
+          {/* Impact Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <FramerMetricCard
-              value={25}
-              suffix="%"
-              label={t('impact.metrics.0.label')}
-              icon={TrendingDown}
-              variant="secondary"
-              delay={0}
-            />
-            <FramerMetricCard
-              value={t('impact.metrics.1.value')}
-              label={t('impact.metrics.1.label')}
-              icon={Clock}
-              variant="primary"
-              delay={0.15}
-            />
-            <FramerMetricCard
-              value={t('impact.metrics.2.value')}
-              label={t('impact.metrics.2.label')}
-              icon={Heart}
-              variant="accent"
-              delay={0.3}
-            />
-            <FramerMetricCard
-              value={t('impact.metrics.3.value')}
-              label={t('impact.metrics.3.label')}
-              icon={Route}
-              variant="success"
-              delay={0.45}
-            />
+            {data.metrics?.filter(metric => metric.value && metric.label).map((metric, index) => {
+              const icons = [TrendingDown, Clock, Heart, Route];
+              const variants = ['secondary', 'primary', 'accent', 'success'] as const;
+              const Icon = icons[index % icons.length];
+              const variant = variants[index % variants.length];
+
+              return (
+                <FramerMetricCard
+                  key={index}
+                  value={metric.value!}
+                  label={metric.label!}
+                  icon={Icon}
+                  variant={variant}
+                  delay={index * 0.15}
+                />
+              );
+            })}
           </div>
         </div>
       </section>

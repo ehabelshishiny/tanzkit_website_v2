@@ -44,21 +44,20 @@ export function StyledMetricCard({
   const displayValue = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (isInView && animateOnScroll && typeof value === 'number') {
+    if (typeof value !== 'number' || !animateOnScroll) return;
+
+    const unsubscribe = springValue.on('change', (latest) => {
+      if (displayValue.current) {
+        displayValue.current.textContent = Math.round(latest).toString();
+      }
+    });
+
+    if (isInView) {
       motionValue.set(value);
     }
-  }, [isInView, value, motionValue, animateOnScroll]);
 
-  useEffect(() => {
-    if (typeof value === 'number' && animateOnScroll) {
-      const unsubscribe = springValue.on('change', (latest) => {
-        if (displayValue.current) {
-          displayValue.current.textContent = Math.round(latest).toString();
-        }
-      });
-      return () => unsubscribe();
-    }
-  }, [springValue, value, animateOnScroll]);
+    return () => unsubscribe();
+  }, [isInView, value, motionValue, springValue, animateOnScroll]);
 
   return (
     <motion.div

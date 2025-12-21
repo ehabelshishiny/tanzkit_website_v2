@@ -4,13 +4,24 @@ import { Card } from '@/components/ui/card';
 import { Typography } from '@/components/ui/typography';
 import { StaggerChildren, StaggerItem } from '@/components/animations/stagger-children';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
-import { Download, UserPlus, MapPin, Star } from 'lucide-react';
+import { Download, UserPlus, MapPin, Star, CheckCircle, Settings } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-export function StepSection() {
+interface WorkflowStep {
+  _key: string;
+  title: string;
+  description: string;
+}
+
+interface StepSectionProps {
+  steps?: WorkflowStep[];
+}
+
+export function StepSection({ steps: sanitySteps }: StepSectionProps) {
   const t = useTranslations('apps.template.steps');
 
-  const steps = [
+  // Default fallback steps if no Sanity data
+  const defaultSteps = [
     {
       icon: Download,
       title: t('items.download.title'),
@@ -33,6 +44,18 @@ export function StepSection() {
     }
   ];
 
+  // Icon mapping for steps
+  const iconMap = [Download, UserPlus, MapPin, Star, CheckCircle, Settings];
+
+  // Use Sanity steps if available, otherwise use default
+  const stepsToDisplay = sanitySteps && sanitySteps.length > 0
+    ? sanitySteps.map((step, index) => ({
+        icon: iconMap[index % iconMap.length],
+        title: step.title,
+        description: step.description
+      }))
+    : defaultSteps;
+
   return (
     <section className="w-full max-w-6xl mx-auto px-4 py-16 bg-muted/30">
       <ScrollReveal>
@@ -43,9 +66,9 @@ export function StepSection() {
         </div>
       </ScrollReveal>
 
-      <StaggerChildren className="grid md:grid-cols-4 gap-6">
-        {steps.map((step, index) => (
-          <StaggerItem key={index}>
+      <StaggerChildren className={`grid gap-6 ${stepsToDisplay.length <= 4 ? 'md:grid-cols-4' : 'md:grid-cols-3 lg:grid-cols-4'}`}>
+        {stepsToDisplay.map((step, index) => (
+          <StaggerItem key={sanitySteps?.[index]?._key || index}>
             <Card className="p-6 text-center h-full">
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                 <step.icon className="w-8 h-8 text-primary" />

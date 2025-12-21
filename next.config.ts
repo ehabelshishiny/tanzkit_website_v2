@@ -22,14 +22,35 @@ images: {
     dangerouslyAllowSVG: false, // Security
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        pathname: '/images/**',
+      },
+    ],
   },
-  
+
   // Add compression
   compress: true,
-  
+
   // Enable production optimizations
   reactStrictMode: true,
-  
+
+  // Sanity Studio configuration
+  transpilePackages: ['@sanity/vision'],
+
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // Don't resolve 'jsdom' on the client
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        jsdom: false,
+      };
+    }
+    return config;
+  },
+
   // Remove test pages in production
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],

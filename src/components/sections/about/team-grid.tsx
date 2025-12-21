@@ -5,33 +5,36 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Typography } from '@/components/ui/typography';
 import { StaggerChildren, StaggerItem } from '@/components/animations/stagger-children';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
-import { useTranslations } from 'next-intl';
 
-export function TeamGrid() {
-  const t = useTranslations('about.team');
+interface TeamGridProps {
+  data: {
+    heading: string;
+    subtitle: string;
+    members: Array<{
+      name: string;
+      role: string;
+      initials: string;
+      bio: string;
+    }>;
+  };
+}
 
-  const team = Array.from({ length: 6 }, (_, i) => ({
-    name: t(`members.${i}.name`),
-    role: t(`members.${i}.role`),
-    initials: t(`members.${i}.initials`),
-    bio: t(`members.${i}.bio`)
-  }));
-
+export function TeamGrid({ data }: TeamGridProps) {
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 py-16 bg-muted/30">
+    <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-16 bg-muted/30">
       <ScrollReveal>
         <div className="text-center mb-12">
           <Typography variant="h2" align="center" className="mb-4">
-            {t('heading')}
+            {data.heading}
           </Typography>
           <Typography variant="subtitle" align="center" className="text-muted-foreground max-w-2xl mx-auto">
-            {t('subtitle')}
+            {data.subtitle}
           </Typography>
         </div>
       </ScrollReveal>
 
       <StaggerChildren className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {team.map((member, index) => (
+        {data.members.map((member, index) => (
           <StaggerItem key={index}>
             <Card className="p-6 text-center hover:shadow-lg transition-shadow h-[355px] flex flex-col">
               <Avatar className="w-24 h-24 mx-auto mb-4">

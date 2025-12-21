@@ -1,13 +1,23 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
 import { Typography } from '@/components/ui/typography';
 import { GradientButton } from '@/components/ui/gradient-button';
 import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 
-export function OperatorsHeroSection() {
-  const t = useTranslations('solutions.operatorsDrivers.hero');
+interface OperatorsHeroSectionProps {
+  data?: {
+    title?: string;
+    subtitle?: string;
+    cta?: string;
+  };
+}
+
+export function OperatorsHeroSection({ data }: OperatorsHeroSectionProps) {
+  // Provide default values to prevent hydration mismatches
+  const title = data?.title || '';
+  const subtitle = data?.subtitle || '';
+  const cta = data?.cta || '';
 
   return (
     <section
@@ -115,18 +125,19 @@ export function OperatorsHeroSection() {
       <div className="absolute inset-0 bg-white/10 dark:bg-black/30" />
 
       {/* Content */}
-      <div className="relative z-10 w-full px-4 py-20">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <Typography variant="h1" className="text-slate-900 dark:text-white mb-6 drop-shadow-sm">
-              {t('title')}
+              {title}
             </Typography>
             <Typography variant="subtitle" className="text-slate-800 dark:text-white/95 mb-8 drop-shadow-sm">
-              {t('subtitle')}
+              {subtitle}
             </Typography>
             <GradientButton
               href="/contact"
@@ -135,9 +146,10 @@ export function OperatorsHeroSection() {
               iconPosition="right"
               className="bg-white hover:bg-white/90 text-secondary button-text transition-colors duration-300 shadow-lg"
             >
-              {t('cta')}
+              {cta}
             </GradientButton>
           </motion.div>
+        </div>
         </div>
       </div>
     </section>

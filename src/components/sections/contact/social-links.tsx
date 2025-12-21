@@ -5,33 +5,39 @@ import { Typography } from '@/components/ui/typography';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { ScaleOnHover } from '@/components/animations/scale-on-hover';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import { useTranslations } from 'next-intl';
 
-const socialLinks = [
-  { icon: Facebook, name: 'Facebook', url: '#' },
-  { icon: Twitter, name: 'Twitter', url: '#' },
-  { icon: Linkedin, name: 'LinkedIn', url: '#' },
-  { icon: Instagram, name: 'Instagram', url: '#' }
-];
+interface SocialLinksProps {
+  data: {
+    facebook?: string;
+    twitter?: string;
+    linkedin?: string;
+    instagram?: string;
+  };
+}
 
-export function SocialLinks() {
-  const t = useTranslations('contact.social');
+export function SocialLinks({ data }: SocialLinksProps) {
+  const socialLinks = [
+    { icon: Facebook, name: 'Facebook', url: data.facebook || '#' },
+    { icon: Twitter, name: 'Twitter', url: data.twitter || '#' },
+    { icon: Linkedin, name: 'LinkedIn', url: data.linkedin || '#' },
+    { icon: Instagram, name: 'Instagram', url: data.instagram || '#' }
+  ].filter(social => social.url !== '#'); // Only show links that are provided
+
+  if (socialLinks.length === 0) {
+    return null; // Don't render if no social links are provided
+  }
 
   return (
-    <section className="w-full max-w-4xl mx-auto px-4 py-16">
+    <section className="w-full max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-16">
       <ScrollReveal>
         <Card className="p-8 text-center">
-          <Typography variant="h3" align="center" className="mb-4">
-            {t('title')}
-          </Typography>
-          <Typography variant="body" align="center" className="text-muted-foreground mb-8">
-            {t('subtitle')}
-          </Typography>
           <div className="flex justify-center gap-4">
             {socialLinks.map((social, index) => (
               <ScaleOnHover key={index}>
                 <a
                   href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
                   aria-label={social.name}
                 >

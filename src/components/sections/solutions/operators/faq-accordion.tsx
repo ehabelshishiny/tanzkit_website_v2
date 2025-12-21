@@ -1,6 +1,5 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { Typography } from '@/components/ui/typography';
 import {
   Accordion,
@@ -10,31 +9,43 @@ import {
 } from '@/components/ui/accordion';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 
-export function FAQAccordion() {
-  const t = useTranslations('solutions.operatorsDrivers.faq');
+interface FAQAccordionProps {
+  data?: {
+    title?: string;
+    subtitle?: string;
+    items?: Array<{
+      question?: string;
+      answer?: string;
+    }>;
+  };
+}
+
+export function FAQAccordion({ data }: FAQAccordionProps) {
+  // Render empty if no data to maintain consistent structure
+  if (!data) return <section className="w-full max-w-7xl mx-auto px-4 py-16" />;
 
   return (
     <section className="w-full max-w-4xl mx-auto px-4 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
           <Typography variant="h2" className="mb-4">
-            {t('title')}
+            {data.title}
           </Typography>
           <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
-            {t('subtitle')}
+            {data.subtitle}
           </Typography>
         </div>
       </ScrollReveal>
 
       <ScrollReveal delay={0.2}>
         <Accordion type="single" collapsible className="w-full">
-          {[0, 1, 2, 3, 4, 5, 6, 7].map((index) => (
+          {data.items?.map((item, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger className="text-left">
-                {t(`items.${index}.question`)}
+                {item.question}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                {t(`items.${index}.answer`)}
+                {item.answer}
               </AccordionContent>
             </AccordionItem>
           ))}

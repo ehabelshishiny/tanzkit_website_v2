@@ -15,15 +15,15 @@ export function Footer() {
       { name: tFooter('solutions.operatorsDrivers'), href: `/${locale}/solutions/operators-drivers` },
     ],
     resources: [
-      { name: tFooter('resources.helpCenter'), href: `/${locale}/resources/help-center` },
       { name: tFooter('resources.blog'), href: `/${locale}/resources/blog` },
       { name: tFooter('resources.caseStudies'), href: `/${locale}/resources/case-studies` },
       { name: tFooter('resources.faq'), href: `/${locale}/resources/faq` },
+      { name: tFooter('resources.documentation'), href: `/${locale}/resources/documentation` },
+      { name: tFooter('resources.careers'), href: `/${locale}/resources/careers` },
     ],
     company: [
       { name: t('apps'), href: `/${locale}/apps` },
       { name: t('about'), href: `/${locale}/about` },
-      { name: tFooter('company.careers'), href: `/${locale}/about/careers` },
       { name: t('contact'), href: `/${locale}/contact` },
     ],
   };

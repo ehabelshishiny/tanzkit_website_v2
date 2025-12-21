@@ -1,13 +1,23 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
 import { Typography } from '@/components/ui/typography';
 import { GradientButton } from '@/components/ui/gradient-button';
 import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 
-export function EnterprisesHeroSection() {
-  const t = useTranslations('solutions.enterprisesPassengers.hero');
+interface EnterprisesHeroSectionProps {
+  data?: {
+    title?: string;
+    subtitle?: string;
+    cta?: string;
+  };
+}
+
+export function EnterprisesHeroSection({ data }: EnterprisesHeroSectionProps) {
+  // Provide default values to prevent hydration mismatches
+  const title = data?.title || '';
+  const subtitle = data?.subtitle || '';
+  const cta = data?.cta || '';
 
   return (
     <section
@@ -90,18 +100,19 @@ export function EnterprisesHeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full px-4 py-20">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <Typography variant="h1" className="text-slate-900 dark:text-white mb-6">
-              {t('title')}
+              {title}
             </Typography>
             <Typography variant="subtitle" className="text-slate-700 dark:text-slate-300 mb-8">
-              {t('subtitle')}
+              {subtitle}
             </Typography>
             <GradientButton
               href="/contact"
@@ -110,9 +121,10 @@ export function EnterprisesHeroSection() {
               iconPosition="right"
               className="bg-white hover:bg-white/90 text-secondary button-text transition-colors duration-300 shadow-xl"
             >
-              {t('cta')}
+              {cta}
             </GradientButton>
           </motion.div>
+        </div>
         </div>
       </div>
     </section>

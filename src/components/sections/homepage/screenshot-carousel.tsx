@@ -16,20 +16,52 @@ import { ScaleOnHover } from '@/components/animations/scale-on-hover';
 import { Typography } from '@/components/ui/typography';
 import { useState } from 'react';
 import Image from 'next/image';
+import { urlFor } from '@/lib/sanity/image';
 
-export function ScreenshotCarousel() {
+interface ScreenshotCarouselProps {
+  data?: {
+    heading?: string;
+    subtitle?: string;
+    items?: Array<{
+      _key: string;
+      title: string;
+      description: string;
+      category: string;
+      image?: any;
+    }>;
+  };
+}
+
+export function ScreenshotCarousel({ data }: ScreenshotCarouselProps) {
   const t = useTranslations('homepage.seeInAction');
   const locale = useLocale();
   const isRTL = locale === 'ar';
   const [api, setApi] = useState<CarouselApi>();
 
-  // Get screenshots array from translations
-  const screenshots = t.raw('items') as Array<{
+  // Debug logging
+  if (process.env.NODE_ENV === 'development' && data?.items) {
+    console.log('ScreenshotCarousel - Received data:', {
+      itemsCount: data.items.length,
+      firstItem: data.items[0],
+      hasImages: data.items.map(item => ({
+        key: item._key,
+        title: item.title,
+        hasImage: !!item.image,
+        hasAsset: !!item.image?.asset,
+        assetRef: item.image?.asset?._ref
+      }))
+    });
+  }
+
+  // Use Sanity data if available, otherwise fall back to translations
+  const screenshots = data?.items || (t.raw('items') as Array<{
     id: number;
     title: string;
     description: string;
     category: string;
-  }>;
+  }>);
+
+  const usingSanityData = !!data?.items;
 
   const handlePrevClick = () => {
     if (api) {
@@ -52,13 +84,13 @@ export function ScreenshotCarousel() {
   };
 
   return (
-    <ScrollReveal className="w-full max-w-7xl mx-auto px-4 py-16">
+    <ScrollReveal className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-16">
       <div className="text-center mb-12">
         <Typography variant="h2" align="center" className="mb-4">
-          {t('heading')}
+          {data?.heading || t('heading')}
         </Typography>
         <Typography variant="subtitle" align="center" className="text-muted-foreground max-w-2xl mx-auto">
-          {t('subtitle')}
+          {data?.subtitle || t('subtitle')}
         </Typography>
       </div>
 
@@ -69,34 +101,56 @@ export function ScreenshotCarousel() {
           loop: true,
           direction: isRTL ? 'rtl' : 'ltr',
         }}
-        className="w-full ltr:pl-4 rtl:pr-4"
+        className="w-full ltr:pl-4 rtl:pr-4 py-4"
       >
-        <CarouselContent className="ltr:ml-0 ltr:pl-3 rtl:mr-0 rtl:pr-4">
-          {screenshots.map((screenshot) => (
-            <CarouselItem key={screenshot.id} className="ltr:pl-4 rtl:pr-4 md:basis-1/2 lg:basis-1/3 p-4">
-              <ScaleOnHover className="h-full">
-                <Card className="overflow-hidden h-[400px] flex flex-col">
-                  <div className="relative h-[200px] flex-shrink-0 overflow-hidden">
-                    <Image
-                      src={`/assets/homepage/see_tranzkit_in_action/${screenshot.id}.png`}
-                      alt={screenshot.title}
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="p-4 flex flex-col flex-1 min-h-0">
-                    <Typography variant="h4" className="font-semibold mb-2 line-clamp-1">
-                      {screenshot.title}
-                    </Typography>
-                    <Typography variant="body" className="text-muted-foreground line-clamp-2">
-                      {screenshot.description}
-                    </Typography>
-                  </div>
-                </Card>
-              </ScaleOnHover>
-            </CarouselItem>
-          ))}
+        <CarouselContent className="ltr:ml-0 ltr:pl-3 rtl:mr-0 rtl:pr-4 py-2">
+          {screenshots.map((screenshot) => {
+            const itemKey = usingSanityData ? (screenshot as any)._key : (screenshot as any).id;
+
+            // Check if we have Sanity data with an image
+            let imageUrl = null;
+            if (usingSanityData && (screenshot as any).image?.asset) {
+              try {
+                imageUrl = urlFor((screenshot as any).image).width(1200).fit('max').url();
+              } catch (error) {
+                console.error('Error generating image URL:', error);
+              }
+            }
+
+            // Fallback to static images if no Sanity image
+            if (!imageUrl && !usingSanityData) {
+              imageUrl = `/assets/homepage/see_tranzkit_in_action/${(screenshot as any).id}.png`;
+            }
+
+            return (
+              <CarouselItem key={itemKey} className="ltr:pl-4 rtl:pr-4 md:basis-1/2 lg:basis-1/3 py-4">
+                <ScaleOnHover className="h-full relative hover:z-10">
+                  <Card className="h-full flex flex-col">
+                    {/* Image Container - no background, with padding */}
+                    <div className="w-full p-4">
+                      {imageUrl && (
+                        <Image
+                          src={imageUrl}
+                          alt={screenshot.title}
+                          width={1200}
+                          height={800}
+                          className="w-full h-auto object-contain"
+                        />
+                      )}
+                    </div>
+                    <div className="p-6 flex flex-col flex-1">
+                      <Typography variant="h4" className="font-semibold mb-2 line-clamp-2">
+                        {screenshot.title}
+                      </Typography>
+                      <Typography variant="body" className="text-muted-foreground line-clamp-3">
+                        {screenshot.description}
+                      </Typography>
+                    </div>
+                  </Card>
+                </ScaleOnHover>
+              </CarouselItem>
+            );
+          })}
         </CarouselContent>
         <CarouselPrevious className="hidden md:flex" onClick={handlePrevClick} />
         <CarouselNext className="hidden md:flex" onClick={handleNextClick} />

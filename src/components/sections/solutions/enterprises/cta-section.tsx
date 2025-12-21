@@ -1,14 +1,21 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { Typography } from '@/components/ui/typography';
 import { SectionContainer } from '@/components/ui/section-container';
 import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 import { motion } from 'framer-motion';
 import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 
-export function EnterprisesCtaSection() {
-  const t = useTranslations('solutions.enterprisesPassengers.cta');
+interface EnterprisesCtaSectionProps {
+  data?: {
+    heading?: string;
+    subtitle?: string;
+  };
+}
+
+export function EnterprisesCtaSection({ data }: EnterprisesCtaSectionProps) {
+  // Render empty if no data to maintain consistent structure
+  if (!data) return <section className="w-full max-w-7xl mx-auto px-4 py-16" />;
 
   return (
     <div className="bg-background dark:bg-card">
@@ -25,10 +32,10 @@ export function EnterprisesCtaSection() {
           className="text-center"
         >
           <Typography variant="h2" className="text-foreground mb-6">
-            {t('title')}
+            {data.heading}
           </Typography>
           <Typography variant="subtitle" className="text-muted-foreground mb-10 max-w-3xl mx-auto">
-            {t('subtitle')}
+            {data.subtitle}
           </Typography>
           <TrialCTAButton
             variant="secondary"

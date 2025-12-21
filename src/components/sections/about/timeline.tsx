@@ -4,28 +4,38 @@ import { Card } from '@/components/ui/card';
 import { Typography } from '@/components/ui/typography';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { Calendar } from 'lucide-react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 
-export function Timeline() {
-  const t = useTranslations('about.timeline');
+interface TimelineProps {
+  data: {
+    heading: string;
+    subtitle: string;
+    milestones: Array<{
+      year: string;
+      title: string;
+      description: string;
+    }>;
+  };
+}
+
+export function Timeline({ data }: TimelineProps) {
   const locale = useLocale();
   const isRTL = locale === 'ar';
 
-  const milestones = Array.from({ length: 7 }, (_, i) => ({
-    year: t(`milestones.${i}.year`),
-    title: t(`milestones.${i}.title`),
-    description: t(`milestones.${i}.description`)
-  }));
+  // Safety check for milestones
+  if (!data?.milestones || data.milestones.length === 0) {
+    return null;
+  }
 
   return (
-    <section className="w-full max-w-6xl mx-auto px-4 py-16">
+    <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-16">
       <ScrollReveal>
         <div className="text-center mb-12">
           <Typography variant="h2" align="center" className="mb-4">
-            {t('heading')}
+            {data.heading}
           </Typography>
           <Typography variant="subtitle" align="center" className="text-muted-foreground max-w-2xl mx-auto">
-            {t('subtitle')}
+            {data.subtitle}
           </Typography>
         </div>
       </ScrollReveal>
@@ -36,15 +46,15 @@ export function Timeline() {
         }`} />
 
         <div className="space-y-12">
-          {milestones.map((milestone, index) => (
+          {data.milestones.map((milestone, index) => (
             <ScrollReveal key={index} delay={index * 0.1}>
               <div className={`flex items-center gap-8 ${
-                index % 2 === 0 
+                index % 2 === 0
                   ? isRTL ? 'md:flex-row-reverse' : 'md:flex-row'
                   : isRTL ? 'md:flex-row' : 'md:flex-row-reverse'
               }`}>
                 <div className="flex-1 hidden md:block" />
-                
+
                 <div className="relative flex-shrink-0">
                   <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center relative z-10">
                     <Calendar className="w-8 h-8 text-primary" />

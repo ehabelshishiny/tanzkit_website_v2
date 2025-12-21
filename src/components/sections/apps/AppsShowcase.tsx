@@ -1,18 +1,75 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Typography } from '@/components/ui/typography';
+import { urlFor } from '@/lib/sanity/image';
 
-export default function AppsShowcase() {
+interface SanityImage {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+  url?: string;
+}
+
+interface App {
+  _id: string;
+  name: string;
+  slug: { current: string };
+  tagline: string;
+  description: string;
+  category: 'operators' | 'enterprise';
+  layoutType: 'portrait' | 'landscape';
+  benefits: string[];
+  screenshots: SanityImage[];
+  platforms: {
+    ios?: boolean;
+    android?: boolean;
+    web?: boolean;
+  };
+}
+
+interface SegmentData {
+  title: string;
+  description: string;
+  tabLabel: string;
+}
+
+interface ShowcaseData {
+  title: string;
+  subtitle: string;
+  operatorsSegment: SegmentData;
+  enterpriseSegment: SegmentData;
+  operatorApps: App[];
+  enterpriseApps: App[];
+}
+
+interface AppsShowcaseProps {
+  data: ShowcaseData;
+}
+
+export default function AppsShowcase({ data }: AppsShowcaseProps) {
   const { theme } = useTheme();
-  const t = useTranslations('apps.main.showcase');
-  const tHero = useTranslations('apps.main.hero');
   const locale = useLocale();
   const [mounted, setMounted] = useState(false);
   const [activeSegment, setActiveSegment] = useState<'operators' | 'enterprise'>('operators');
+
+  // Localized labels
+  const ctaLabel = locale === 'ar' ? 'اعرف المزيد' : 'Learn More';
+
+  // Extract apps from data
+  const operatorApps = data.operatorApps || [];
+  const enterpriseApps = data.enterpriseApps || [];
+
+  // Separate dashboard from mobile apps
+  const operatorDashboard = operatorApps.find(app => app.layoutType === 'landscape');
+  const operatorMobileApps = operatorApps.filter(app => app.layoutType === 'portrait');
+  const enterpriseDashboard = enterpriseApps.find(app => app.layoutType === 'landscape');
+  const enterpriseMobileApps = enterpriseApps.filter(app => app.layoutType === 'portrait');
 
   useEffect(() => {
     setMounted(true);
@@ -34,96 +91,21 @@ export default function AppsShowcase() {
 
   const isDarkTheme = theme === 'dark';
 
-  const segments = {
-    operators: {
-      title: t('segments.operators.title'),
-      description: t('segments.operators.description'),
-      icon: 'ri-truck-line',
-      color: 'ocean',
-      dashboard: {
-        id: 'operators-dashboard',
-        name: t('segments.operators.dashboard.name'),
-        description: t('segments.operators.dashboard.description'),
-        platform: t('segments.operators.dashboard.platform'),
-        icon: 'ri-dashboard-3-line',
-        benefits: [
-          t('segments.operators.dashboard.benefits.visibility'),
-          t('segments.operators.dashboard.benefits.automation'),
-          t('segments.operators.dashboard.benefits.analytics')
-        ],
-        cta: t('segments.operators.dashboard.cta'),
-        deviceType: 'landscape' as const
-      },
-      apps: [
-        {
-          id: 'supervisor-app',
-          name: t('segments.operators.supervisor.name'),
-          description: t('segments.operators.supervisor.description'),
-          platform: t('segments.operators.supervisor.platform'),
-          icon: 'ri-user-star-line',
-          benefits: [
-            t('segments.operators.supervisor.benefits.tracking'),
-            t('segments.operators.supervisor.benefits.response'),
-            t('segments.operators.supervisor.benefits.assignment')
-          ],
-          cta: t('segments.operators.supervisor.cta'),
-          deviceType: 'portrait' as const
-        },
-        {
-          id: 'driver-app',
-          name: t('segments.operators.driver.name'),
-          description: t('segments.operators.driver.description'),
-          platform: t('segments.operators.driver.platform'),
-          icon: 'ri-steering-2-line',
-          benefits: [
-            t('segments.operators.driver.benefits.optimization'),
-            t('segments.operators.driver.benefits.logging'),
-            t('segments.operators.driver.benefits.sync')
-          ],
-          cta: t('segments.operators.driver.cta'),
-          deviceType: 'portrait' as const
-        }
-      ]
-    },
-    enterprise: {
-      title: t('segments.enterprise.title'),
-      description: t('segments.enterprise.description'),
-      icon: 'ri-building-2-line',
-      color: 'emerald',
-      dashboard: {
-        id: 'enterprise-dashboard',
-        name: t('segments.enterprise.dashboard.name'),
-        description: t('segments.enterprise.dashboard.description'),
-        platform: t('segments.enterprise.dashboard.platform'),
-        icon: 'ri-building-line',
-        benefits: [
-          t('segments.enterprise.dashboard.benefits.analytics'),
-          t('segments.enterprise.dashboard.benefits.optimization'),
-          t('segments.enterprise.dashboard.benefits.compliance')
-        ],
-        cta: t('segments.enterprise.dashboard.cta'),
-        deviceType: 'landscape' as const
-      },
-      apps: [
-        {
-          id: 'rider-app',
-          name: t('segments.enterprise.rider.name'),
-          description: t('segments.enterprise.rider.description'),
-          platform: t('segments.enterprise.rider.platform'),
-          icon: 'ri-user-location-line',
-          benefits: [
-            t('segments.enterprise.rider.benefits.booking'),
-            t('segments.enterprise.rider.benefits.tracking'),
-            t('segments.enterprise.rider.benefits.payment')
-          ],
-          cta: t('segments.enterprise.rider.cta'),
-          deviceType: 'portrait' as const
-        }
-      ]
-    }
-  };
+  // Get platform label
+  const getPlatformLabel = (app: App) => {
+    const labels = {
+      mobile: locale === 'ar' ? 'iOS و Android' : 'iOS & Android',
+      web: locale === 'ar' ? 'تطبيق ويب' : 'Web App',
+      ios: 'iOS',
+      android: 'Android',
+    };
 
-  const currentSegment = segments[activeSegment];
+    if (app.platforms.ios && app.platforms.android) return labels.mobile;
+    if (app.platforms.web) return labels.web;
+    if (app.platforms.ios) return labels.ios;
+    if (app.platforms.android) return labels.android;
+    return labels.mobile;
+  };
 
   const getGradientClasses = (segment: 'operators' | 'enterprise') => {
     if (segment === 'operators') {
@@ -214,15 +196,15 @@ export default function AppsShowcase() {
   };
 
   return (
-    <div className={`min-h-screen ${themeClasses.bg} py-20 px-6`}>
-      <div className="max-w-[1400px] mx-auto">
+    <div className={`min-h-screen ${themeClasses.bg} py-20 px-4 sm:px-6 md:px-8`}>
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 px-4">
           <Typography variant="h1" className={`${themeClasses.textPrimary} mb-6`}>
-            {tHero('title')}
+            {data.title}
           </Typography>
           <Typography variant="subtitle" className={`${themeClasses.textSecondary} max-w-3xl mx-auto`}>
-            {tHero('subtitle')}
+            {data.subtitle}
           </Typography>
         </div>
 
@@ -239,16 +221,16 @@ export default function AppsShowcase() {
             >
               <div className="flex items-center gap-3">
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                  activeSegment === 'operators' 
-                    ? 'bg-white/20' 
+                  activeSegment === 'operators'
+                    ? 'bg-white/20'
                     : themeClasses.switcherIconBg
                 }`}>
                   <i className="ri-truck-line text-xl"></i>
                 </div>
                 <div className="text-left">
-                  <Typography variant="caption" as="div" className="font-bold">{t('segments.operators.tabLabel')}</Typography>
+                  <Typography variant="caption" as="div" className="font-bold">{data.operatorsSegment.tabLabel}</Typography>
                   <Typography variant="caption" as="div" className={`${activeSegment === 'operators' ? 'text-[#7ED977]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'} ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
-                    {t('segments.operators.appsCount')}
+                    {operatorApps.length} {locale === 'ar' ? 'تطبيقات' : 'Apps'}
                   </Typography>
                 </div>
               </div>
@@ -264,16 +246,16 @@ export default function AppsShowcase() {
             >
               <div className="flex items-center gap-3">
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                  activeSegment === 'enterprise' 
-                    ? 'bg-white/20' 
+                  activeSegment === 'enterprise'
+                    ? 'bg-white/20'
                     : themeClasses.switcherIconBg
                 }`}>
                   <i className="ri-building-2-line text-xl"></i>
                 </div>
                 <div className="text-left">
-                  <Typography variant="caption" as="div" className="font-bold">{t('segments.enterprise.tabLabel')}</Typography>
+                  <Typography variant="caption" as="div" className="font-bold">{data.enterpriseSegment.tabLabel}</Typography>
                   <Typography variant="caption" as="div" className={`${activeSegment === 'enterprise' ? 'text-[#0F2E63]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'} ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
-                    {t('segments.enterprise.appsCount')}
+                    {enterpriseApps.length} {locale === 'ar' ? 'تطبيقات' : 'Apps'}
                   </Typography>
                 </div>
               </div>
@@ -284,8 +266,12 @@ export default function AppsShowcase() {
         {/* Segment Content */}
         <div className="mb-12">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <Typography variant="h2" className={`${themeClasses.textPrimary} mb-4`}>{currentSegment.title}</Typography>
-            <Typography variant="body" className={themeClasses.textSecondary}>{currentSegment.description}</Typography>
+            <Typography variant="h2" className={`${themeClasses.textPrimary} mb-4`}>
+              {activeSegment === 'operators' ? data.operatorsSegment.title : data.enterpriseSegment.title}
+            </Typography>
+            <Typography variant="body" className={themeClasses.textSecondary}>
+              {activeSegment === 'operators' ? data.operatorsSegment.description : data.enterpriseSegment.description}
+            </Typography>
           </div>
 
           {/* Dynamic Grid Layout */}
@@ -293,77 +279,225 @@ export default function AppsShowcase() {
             {activeSegment === 'operators' ? (
               <>
                 {/* Dashboard - Full Width Landscape */}
-                <div
-                  className="w-full"
-                  style={{
-                    animation: 'fadeInUp 0.6s ease-out both'
-                  }}
-                >
-                  <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-10 ${themeClasses.cardHoverBorder} transition-all duration-500 shadow-xl`}>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                      {/* Operators Dashboard Image */}
-                      <div>
-                        <Image
-                          src={'/assets/apps_screenshots/GIF/Operator GIF.gif'}
-                          alt="Operators Dashboard Screenshot"
-                          width={1600}
-                          height={1000}
-                          className="w-full h-auto"
-                          priority
-                          unoptimized
-                        />
-                      </div>
-
-                      {/* Content */}
-                      <div className="space-y-5">
-                        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
-                          <i className={`ri-computer-line ${themeClasses.badgeIcon} text-sm`}></i>
-                          <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>{currentSegment.dashboard.platform}</Typography>
-                        </div>
-
+                {operatorDashboard && (
+                  <div
+                    className="w-full"
+                    style={{
+                      animation: 'fadeInUp 0.6s ease-out both'
+                    }}
+                  >
+                    <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-10 ${themeClasses.cardHoverBorder} transition-all duration-500 shadow-xl`}>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                        {/* Operators Dashboard Image */}
                         <div>
-                          <Typography variant="h3" className={`${themeClasses.textPrimary} mb-3`}>{currentSegment.dashboard.name}</Typography>
-                          <Typography variant="body" className={themeClasses.textSecondary}>{currentSegment.dashboard.description}</Typography>
+                          <Image
+                            src={'/assets/apps_screenshots/GIF/Operator GIF.gif'}
+                            alt={operatorDashboard.name}
+                            width={1600}
+                            height={1000}
+                            className="w-full h-auto"
+                            priority
+                            unoptimized
+                          />
                         </div>
 
-                        <ul className="space-y-3">
-                          {currentSegment.dashboard.benefits.map((benefit, idx) => (
-                            <li key={idx} className="flex items-start gap-3">
-                              <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
-                                <i className="ri-check-line text-white text-sm"></i>
-                              </div>
-                              <Typography variant="body" as="span" className={themeClasses.textTertiary}>{benefit}</Typography>
-                            </li>
-                          ))}
-                        </ul>
+                        {/* Content */}
+                        <div className="space-y-5">
+                          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
+                            <i className={`ri-computer-line ${themeClasses.badgeIcon} text-sm`}></i>
+                            <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>
+                              {getPlatformLabel(operatorDashboard)}
+                            </Typography>
+                          </div>
 
-                        <Link href={`/${locale}/apps/operator-dashboard`} className={`px-8 py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}>
-                          {currentSegment.dashboard.cta}
-                        </Link>
+                          <div>
+                            <Typography variant="h3" className={`${themeClasses.textPrimary} mb-3`}>
+                              {operatorDashboard.name}
+                            </Typography>
+                            <Typography variant="body" className={themeClasses.textSecondary}>
+                              {operatorDashboard.description}
+                            </Typography>
+                          </div>
+
+                          <ul className="space-y-3">
+                            {operatorDashboard.benefits.map((benefit, idx) => (
+                              <li key={idx} className="flex items-start gap-3">
+                                <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                                  <i className="ri-check-line text-white text-sm"></i>
+                                </div>
+                                <Typography variant="body" as="span" className={themeClasses.textTertiary}>
+                                  {benefit}
+                                </Typography>
+                              </li>
+                            ))}
+                          </ul>
+
+                          <Link
+                            href={`/${locale}/apps/${operatorDashboard.slug.current}`}
+                            className={`px-8 py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}
+                          >
+                            {ctaLabel}
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
 
                 {/* Mobile Apps Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {currentSegment.apps.map((app, index) => (
+                  {operatorMobileApps.map((app, index) => {
+                    // Map slug to GIF filename
+                    const gifMap: Record<string, string> = {
+                      'supervisor': 'Supervisor GIF.gif',
+                      'driver': 'Driver GIF.gif',
+                    };
+                    const gifFile = gifMap[app.slug.current] || 'Supervisor GIF.gif';
+
+                    return (
+                      <div
+                        key={app._id}
+                        style={{
+                          animation: `fadeInUp 0.6s ease-out ${(index + 1) * 0.15}s both`
+                        }}
+                      >
+                        <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 shadow-xl`}>
+                          {/* Mobile App Image */}
+                          <div className="mb-8 w-1/3 mx-auto">
+                            <Image
+                              src={`/assets/apps_screenshots/GIF/${gifFile}`}
+                              alt={app.name}
+                              width={900}
+                              height={1950}
+                              className="w-full h-auto mx-auto"
+                              unoptimized
+                            />
+                          </div>
+
+                          {/* Content */}
+                          <div className="space-y-4">
+                            <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
+                              <i className={`ri-smartphone-line ${themeClasses.badgeIcon} text-xs`}></i>
+                              <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>
+                                {getPlatformLabel(app)}
+                              </Typography>
+                            </div>
+
+                            <div>
+                              <Typography variant="h3" className={`${themeClasses.textPrimary} mb-2`}>
+                                {app.name}
+                              </Typography>
+                              <Typography variant="caption" className={themeClasses.textSecondary}>
+                                {app.description}
+                              </Typography>
+                            </div>
+
+                            <ul className="space-y-3">
+                              {app.benefits.map((benefit, idx) => (
+                                <li key={idx} className="flex items-start gap-3">
+                                  <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                                    <i className="ri-check-line text-white text-xs"></i>
+                                  </div>
+                                  <Typography variant="caption" as="span" className={themeClasses.textTertiary}>
+                                    {benefit}
+                                  </Typography>
+                                </li>
+                              ))}
+                            </ul>
+
+                            <Link
+                              href={`/${locale}/apps/${app.slug.current}`}
+                              className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}
+                            >
+                              {ctaLabel}
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            ) : (
+              <>
+                {/* Enterprise: Dashboard + Rider App Side by Side */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {/* Enterprise Dashboard */}
+                  {enterpriseDashboard && (
                     <div
-                      key={app.id}
+                      style={{
+                        animation: 'fadeInUp 0.6s ease-out both'
+                      }}
+                    >
+                      <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full shadow-xl`}>
+                        {/* Enterprise Dashboard Image */}
+                        <div className="mb-8">
+                          <Image
+                            src={'/assets/apps_screenshots/GIF/Enterprise GIF.gif'}
+                            alt={enterpriseDashboard.name}
+                            width={1600}
+                            height={1000}
+                            className="w-full h-auto"
+                            unoptimized
+                          />
+                        </div>
+
+                        {/* Content Below Image */}
+                        <div className="space-y-4">
+                          <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
+                            <i className={`ri-computer-line ${themeClasses.badgeIcon} text-xs`}></i>
+                            <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>
+                              {getPlatformLabel(enterpriseDashboard)}
+                            </Typography>
+                          </div>
+
+                          <div>
+                            <Typography variant="h3" className={`${themeClasses.textPrimary} mb-2`}>
+                              {enterpriseDashboard.name}
+                            </Typography>
+                            <Typography variant="caption" className={themeClasses.textSecondary}>
+                              {enterpriseDashboard.description}
+                            </Typography>
+                          </div>
+
+                          <ul className="space-y-2">
+                            {enterpriseDashboard.benefits.map((benefit, idx) => (
+                              <li key={idx} className="flex items-start gap-3">
+                                <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                                  <i className="ri-check-line text-white text-xs"></i>
+                                </div>
+                                <Typography variant="caption" as="span" className={themeClasses.textTertiary}>
+                                  {benefit}
+                                </Typography>
+                              </li>
+                            ))}
+                          </ul>
+
+                          <Link
+                            href={`/${locale}/apps/${enterpriseDashboard.slug.current}`}
+                            className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}
+                          >
+                            {ctaLabel}
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Rider App */}
+                  {enterpriseMobileApps.map((app, index) => (
+                    <div
+                      key={app._id}
                       style={{
                         animation: `fadeInUp 0.6s ease-out ${(index + 1) * 0.15}s both`
                       }}
                     >
-                      <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 shadow-xl`}>
-                        {/* Mobile App Image */}
-                        <div className="mb-8 w-1/3 mx-auto">
+                      <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full shadow-xl`}>
+                        {/* Rider App Image */}
+                        <div className="mb-8 w-5/17 mx-auto">
                           <Image
-                            src={
-                              index === 0
-                                ? ('/assets/apps_screenshots/GIF/Supervisor GIF.gif')
-                                : ('/assets/apps_screenshots/GIF/Driver GIF.gif')
-                            }
-                            alt={index === 0 ? 'Supervisor App Screenshot' : 'Driver App Screenshot'}
+                            src={'/assets/apps_screenshots/GIF/Rider GIF.gif'}
+                            alt={app.name}
                             width={900}
                             height={1950}
                             className="w-full h-auto mx-auto"
@@ -375,12 +509,18 @@ export default function AppsShowcase() {
                         <div className="space-y-4">
                           <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
                             <i className={`ri-smartphone-line ${themeClasses.badgeIcon} text-xs`}></i>
-                            <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>{app.platform}</Typography>
+                            <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>
+                              {getPlatformLabel(app)}
+                            </Typography>
                           </div>
 
                           <div>
-                            <Typography variant="h3" className={`${themeClasses.textPrimary} mb-2`}>{app.name}</Typography>
-                            <Typography variant="caption" className={themeClasses.textSecondary}>{app.description}</Typography>
+                            <Typography variant="h3" className={`${themeClasses.textPrimary} mb-2`}>
+                              {app.name}
+                            </Typography>
+                            <Typography variant="caption" className={themeClasses.textSecondary}>
+                              {app.description}
+                            </Typography>
                           </div>
 
                           <ul className="space-y-3">
@@ -389,124 +529,23 @@ export default function AppsShowcase() {
                                 <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
                                   <i className="ri-check-line text-white text-xs"></i>
                                 </div>
-                                <Typography variant="caption" as="span" className={themeClasses.textTertiary}>{benefit}</Typography>
+                                <Typography variant="caption" as="span" className={themeClasses.textTertiary}>
+                                  {benefit}
+                                </Typography>
                               </li>
                             ))}
                           </ul>
 
-                          <Link 
-                            href={`/${locale}/apps/${index === 0 ? 'supervisor' : 'driver'}`}
+                          <Link
+                            href={`/${locale}/apps/${app.slug.current}`}
                             className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}
                           >
-                            {app.cta}
+                            {ctaLabel}
                           </Link>
                         </div>
                       </div>
                     </div>
                   ))}
-                </div>
-              </>
-            ) : (
-              <>
-                {/* Enterprise: Dashboard + Rider App Side by Side */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  {/* Enterprise Dashboard */}
-                  <div
-                    style={{
-                      animation: 'fadeInUp 0.6s ease-out both'
-                    }}
-                  >
-                    <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full shadow-xl`}>
-                      {/* Enterprise Dashboard Image */}
-                      <div className="mb-8">
-                        <Image
-                          src={'/assets/apps_screenshots/GIF/Enterprise GIF.gif'}
-                          alt="Enterprise Dashboard Screenshot"
-                          width={1600}
-                          height={1000}
-                          className="w-full h-auto"
-                          unoptimized
-                        />
-                      </div>
-
-                      {/* Content Below Image */}
-                      <div className="space-y-4">
-                        <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
-                          <i className={`ri-computer-line ${themeClasses.badgeIcon} text-xs`}></i>
-                          <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>{currentSegment.dashboard.platform}</Typography>
-                        </div>
-
-                        <div>
-                          <Typography variant="h3" className={`${themeClasses.textPrimary} mb-2`}>{currentSegment.dashboard.name}</Typography>
-                          <Typography variant="caption" className={themeClasses.textSecondary}>{currentSegment.dashboard.description}</Typography>
-                        </div>
-
-                        <ul className="space-y-2">
-                          {currentSegment.dashboard.benefits.map((benefit, idx) => (
-                            <li key={idx} className="flex items-start gap-3">
-                              <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
-                                <i className="ri-check-line text-white text-xs"></i>
-                              </div>
-                              <Typography variant="caption" as="span" className={themeClasses.textTertiary}>{benefit}</Typography>
-                            </li>
-                          ))}
-                        </ul>
-
-                        <Link href={`/${locale}/apps/enterprise-dashboard`} className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}>
-                          {currentSegment.dashboard.cta}
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Rider App */}
-                  <div
-                    style={{
-                      animation: 'fadeInUp 0.6s ease-out 0.15s both'
-                    }}
-                  >
-                    <div className={`group relative ${themeClasses.cardBg} backdrop-blur-sm border ${themeClasses.cardBorder} rounded-3xl p-8 ${themeClasses.cardHoverBorder} transition-all duration-500 h-full shadow-xl`}>
-                      {/* Rider App Image */}
-                      <div className="mb-8 w-5/17 mx-auto">
-                        <Image
-                          src={'/assets/apps_screenshots/GIF/Rider GIF.gif'}
-                          alt="Rider App Screenshot"
-                          width={900}
-                          height={1950}
-                          className="w-full h-auto mx-auto"
-                          unoptimized
-                        />
-                      </div>
-
-                      {/* Content */}
-                      <div className="space-y-4">
-                        <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-full ${themeClasses.badgeBg} border ${themeClasses.badgeBorder}`}>
-                          <i className={`ri-smartphone-line ${themeClasses.badgeIcon} text-xs`}></i>
-                          <Typography variant="caption" as="span" className={`${themeClasses.badgeText} font-medium`}>{currentSegment.apps[0].platform}</Typography>
-                        </div>
-
-                        <div>
-                          <Typography variant="h3" className={`${themeClasses.textPrimary} mb-2`}>{currentSegment.apps[0].name}</Typography>
-                          <Typography variant="caption" className={themeClasses.textSecondary}>{currentSegment.apps[0].description}</Typography>
-                        </div>
-
-                        <ul className="space-y-3">
-                          {currentSegment.apps[0].benefits.map((benefit, idx) => (
-                            <li key={idx} className="flex items-start gap-3">
-                              <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.primary} flex items-center justify-center flex-shrink-0 mt-0.5`}>
-                                <i className="ri-check-line text-white text-xs"></i>
-                              </div>
-                              <Typography variant="caption" as="span" className={themeClasses.textTertiary}>{benefit}</Typography>
-                            </li>
-                          ))}
-                        </ul>
-
-                        <Link href={`/${locale}/apps/rider`} className={`w-full py-3 rounded-xl bg-gradient-to-r ${colors.primary} text-white font-medium hover:shadow-lg ${colors.shadow} transition-all duration-300 whitespace-nowrap cursor-pointer inline-block text-center`}>
-                          {currentSegment.apps[0].cta}
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </>
             )}

@@ -1,14 +1,23 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { SectionContainer } from '@/components/ui/section-container';
 import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 import { Typography } from '@/components/ui/typography';
 import { motion } from 'framer-motion';
 import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 
-export function CtaSection() {
-  const t = useTranslations('solutions.main.cta');
+interface CtaSectionProps {
+  data: {
+    title: string;
+    subtitle: string;
+  };
+}
+
+export function CtaSection({ data }: CtaSectionProps) {
+  // Safety check
+  if (!data) {
+    return null;
+  }
 
   return (
     <SectionContainer
@@ -24,10 +33,10 @@ export function CtaSection() {
         className="text-center"
       >
         <Typography variant="h2" align="center" className="bg-gradient-to-r from-primary to-primary/90 bg-clip-text text-transparent mb-6">
-          {t('title')}
+          {data.title}
         </Typography>
         <Typography variant="subtitle" align="center" className="text-foreground mb-10 max-w-3xl mx-auto">
-          {t('subtitle')}
+          {data.subtitle}
         </Typography>
         <TrialCTAButton
           variant="secondary"

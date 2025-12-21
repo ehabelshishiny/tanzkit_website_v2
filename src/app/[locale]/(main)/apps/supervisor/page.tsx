@@ -1,8 +1,20 @@
 import { AppDetailOriginalTemplate } from '@/components/sections/apps/app-detail-original-template';
-import { appsData } from '@/config/apps-data';
+import { getAppBySlug } from '@/lib/sanity/queries';
+import { notFound } from 'next/navigation';
 
-export default function SupervisorAppPage() {
-  const appConfig = appsData['supervisor'];
-  
-  return <AppDetailOriginalTemplate appConfig={appConfig} />;
+interface SupervisorAppPageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+export default async function SupervisorAppPage({ params }: SupervisorAppPageProps) {
+  const { locale } = await params;
+  const appData = await getAppBySlug('supervisor', locale);
+
+  if (!appData) {
+    notFound();
+  }
+
+  return <AppDetailOriginalTemplate appData={appData} locale={locale} />;
 }

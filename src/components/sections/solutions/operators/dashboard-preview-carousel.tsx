@@ -1,6 +1,5 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { Typography } from '@/components/ui/typography';
 import {
   Carousel,
@@ -13,19 +12,29 @@ import { Card } from '@/components/ui/card';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { ScaleOnHover } from '@/components/animations/scale-on-hover';
 import Image from 'next/image';
+import { urlFor } from '@/lib/sanity/image';
 
-export function DashboardPreviewCarousel() {
-  const t = useTranslations('solutions.operatorsDrivers.dashboards');
+interface DashboardPreviewCarouselProps {
+  data?: {
+    title?: string;
+    subtitle?: string;
+    screenshots?: any[];
+  };
+}
+
+export function DashboardPreviewCarousel({ data }: DashboardPreviewCarouselProps) {
+  // Render empty if no data to maintain consistent structure
+  if (!data) return <section className="w-full max-w-7xl mx-auto px-4 py-16" />;
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-16 bg-muted/30">
       <ScrollReveal>
         <div className="text-center mb-12">
           <Typography variant="h2" className="mb-4">
-            {t('title')}
+            {data.title}
           </Typography>
           <Typography variant="body" className="text-muted-foreground max-w-2xl mx-auto">
-            {t('subtitle')}
+            {data.subtitle}
           </Typography>
         </div>
       </ScrollReveal>
@@ -38,26 +47,32 @@ export function DashboardPreviewCarousel() {
         className="w-full"
       >
         <CarouselContent className="-ml-4">
-          {[0, 1, 2, 3, 4, 5].map((index) => {
+          {data.screenshots?.filter(item => item.image).map((item, index) => {
+            const imageUrl = item.image ? urlFor(item.image).width(1200).fit('max').url() : '';
+
             return (
               <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 p-4">
                 <ScaleOnHover className="h-full">
                   <Card className="overflow-hidden h-[400px] flex flex-col">
-                    <div className="relative h-[200px] flex-shrink-0 overflow-hidden">
-                      <Image
-                        src={`/assets/apps_screenshots/operator-dashboard/${index + 1}.png`}
-                        alt={t(`items.${index}.title`)}
-                        fill
-                        className="object-contain"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
+                    <div className="relative h-[200px] flex-shrink-0 bg-muted/30 p-3">
+                      {imageUrl && (
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={imageUrl}
+                            alt={item.title || `Dashboard ${index + 1}`}
+                            fill
+                            className="object-contain"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          />
+                        </div>
+                      )}
                     </div>
                     <div className="p-4 flex flex-col flex-1 min-h-0">
                       <Typography variant="h4" className="font-semibold mb-2 line-clamp-1">
-                        {t(`items.${index}.title`)}
+                        {item.title || `Dashboard ${index + 1}`}
                       </Typography>
                       <Typography variant="body" className="text-muted-foreground line-clamp-2">
-                        {t(`items.${index}.description`)}
+                        {item.description || 'Dashboard view'}
                       </Typography>
                     </div>
                   </Card>

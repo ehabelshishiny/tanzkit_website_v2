@@ -9,12 +9,23 @@ import {
 } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Typography } from '@/components/ui/typography';
 
 const SECTION_HEIGHT = 1800;
 
-export function AppsHeroSection() {
+interface HeroData {
+  titlePart1?: string;
+  titlePart2?: string;
+  titlePart3?: string;
+  subtitle?: string;
+}
+
+interface AppsHeroSectionProps {
+  data?: HeroData;
+}
+
+export function AppsHeroSection({ data }: AppsHeroSectionProps) {
   return (
     <div className="hidden lg:block bg-gray-100 dark:bg-muted/50">
       <ReactLenis
@@ -23,15 +34,15 @@ export function AppsHeroSection() {
           lerp: 0.05,
         }}
       >
-        <Hero />
+        <Hero data={data} />
       </ReactLenis>
     </div>
   );
 }
 
-const Hero = () => {
+const Hero = ({ data }: { data?: HeroData }) => {
   const { scrollY } = useScroll();
-  
+
   const heroOpacity = useTransform(
     scrollY,
     [SECTION_HEIGHT, SECTION_HEIGHT + 500],
@@ -40,13 +51,13 @@ const Hero = () => {
 
   return (
     <motion.div
-      style={{ 
+      style={{
         height: `calc(${SECTION_HEIGHT}px + 100vh)`,
         opacity: heroOpacity
       }}
       className="relative w-full"
     >
-      <TextHero />
+      <TextHero data={data} />
       <ParallaxImages />
       <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-b from-background/0 to-background" />
     </motion.div>
@@ -54,19 +65,28 @@ const Hero = () => {
 };
 
 
-const TextHero = () => {
+const TextHero = ({ data }: { data?: HeroData }) => {
   const { scrollY } = useScroll();
   const t = useTranslations('apps.main.parallaxHero');
-  
+
   const blur = useTransform(scrollY, [0, 4500], [0, 12]);
   const filter = useMotionTemplate`blur(${blur}px)`;
 
+  // Get title parts from Sanity data or fallback to translations
+  const titleParts = [
+    data?.titlePart1 || t('title.intelligent'),
+    data?.titlePart2 || t('title.application'),
+    data?.titlePart3 || t('title.ecosystem')
+  ];
+  const colors = ['text-blue-600 dark:text-blue-400', 'text-emerald-600 dark:text-emerald-400', 'text-foreground'];
+
   return (
     <div className="sticky top-15 h-[calc(100vh-4rem)] w-full flex items-start justify-center pt-24 bg-gray-100 dark:bg-muted/50">
-      <motion.div 
-        className="max-w-4xl px-6 text-center"
+      <motion.div
+        className="max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-8"
         style={{ filter }}
       >
+        <div className="max-w-4xl mx-auto text-center">
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -74,15 +94,18 @@ const TextHero = () => {
           transition={{ duration: 0.8 }}
         >
           <Typography variant="display" className="mb-6">
-            <span className="text-blue-600 dark:text-blue-400">{t('title.intelligent')} </span>
-            <span className="text-emerald-600 dark:text-emerald-400">{t('title.application')} </span>
-            <span className="text-foreground">{t('title.ecosystem')}</span>
+            {titleParts.map((word, index) => (
+              <span key={index} className={colors[index % colors.length]}>
+                {word}{index < titleParts.length - 1 ? ' ' : ''}
+              </span>
+            ))}
           </Typography>
 
           <Typography variant="subtitle" className="text-muted-foreground mb-8 max-w-3xl mx-auto">
-            {t('subtitle')}
+            {data?.subtitle || t('subtitle')}
           </Typography>
         </motion.div>
+        </div>
       </motion.div>
     </div>
   );
@@ -90,7 +113,6 @@ const TextHero = () => {
 const ParallaxImages = () => {
   const { theme } = useTheme();
   const locale = useLocale();
-  const t = useTranslations('apps.main.parallaxHero.imageAlts');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -113,7 +135,7 @@ const ParallaxImages = () => {
     <div className="mx-auto max-w-7xl px-4 pt-[200px]" dir="ltr">
       <ParallaxImg
         src={'/assets/apps_screenshots/operator-dashboard/1.png'}
-        alt={t('operatorsDashboard')}
+        alt="Operator Dashboard"
         start={-580}
         end={100}
         className="ml-auto mr-10 w-full md:w-1/2 lg:w-4/7 rounded-lg"
@@ -123,7 +145,7 @@ const ParallaxImages = () => {
 
       <ParallaxImg
         src={'/assets/apps_screenshots/driver/1.png'}
-        alt={t('driverApp')}
+        alt="Driver App"
         start={-800}
         end={150}
         className="w-full sm:w-[35%] md:w-3/14 rounded-lg"
@@ -133,7 +155,7 @@ const ParallaxImages = () => {
 
       <ParallaxImg
         src={'/assets/apps_screenshots/enterprise-dashboard/1.png'}
-        alt={t('enterpriseDashboard')}
+        alt="Enterprise Dashboard"
         start={-800}
         end={-300}
         className="ml-auto mr-35 w-full md:w-2/3 lg:w-7/10 rounded-lg"
@@ -143,7 +165,7 @@ const ParallaxImages = () => {
 
       <ParallaxImg
         src={'/assets/apps_screenshots/supervisor/1.png'}
-        alt={t('supervisorApp')}
+        alt="Supervisor App"
         start={-1000}
         end={-50}
         className="ml-auto w-full sm:w-[35%] md:w-3/14 rounded-lg"
@@ -153,7 +175,7 @@ const ParallaxImages = () => {
 
       <ParallaxImg
         src={'/assets/apps_screenshots/rider/1.png'}
-        alt={t('riderApp')}
+        alt="Rider App"
         start={-1300}
         end={-550}
         className="ml-0 sm:ml-30 w-full sm:w-[35%] md:w-3/14 rounded-lg mb-32"

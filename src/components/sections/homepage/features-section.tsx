@@ -2,25 +2,40 @@
 
 import { useTranslations } from 'next-intl';
 import { FadeIn } from '@/components/animations/fade-in';
-import { Zap, Shield, Users, BarChart } from 'lucide-react';
 import { SectionContainer } from '@/components/layout/SectionContainer';
 import { Typography } from '@/components/ui/typography';
+import { getLucideIcon } from '@/lib/lucide-icons';
 
-const featureIcons = {
-  0: Zap,
-  1: Shield,
-  2: Users,
-  3: BarChart
-};
+// Default icons for fallback (when no icon specified in Sanity)
+const defaultIcons = ['Zap', 'Shield', 'Users', 'BarChart'];
 
-export function FeaturesSection() {
-  const t = useTranslations('homepage.featuresSimple');
+interface FeaturesSectionProps {
+  data?: {
+    heading?: string;
+    subtitle?: string;
+    features?: Array<{
+      icon?: string;
+      title: string;
+      description: string;
+    }>;
+  };
+}
 
-  // Get features array from translations
-  const features = t.raw('items') as Array<{
+export function FeaturesSection({ data }: FeaturesSectionProps) {
+  const t = useTranslations('homepage.whyChoose');
+
+  // Debug logging
+  console.log('=== FEATURES SECTION DEBUG ===');
+  console.log('Data received:', JSON.stringify(data, null, 2));
+  console.log('Features:', data?.features);
+  console.log('First feature:', data?.features?.[0]);
+  console.log('==============================');
+
+  // Use Sanity data if available, otherwise fall back to translations
+  const features = data?.features || (t.raw('items') as Array<{
     title: string;
     description: string;
-  }>;
+  }>);
 
   return (
     <section className="py-16 md:py-24 bg-muted/50">
@@ -28,17 +43,22 @@ export function FeaturesSection() {
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center mb-12">
             <Typography variant="h2" align="center" className="tracking-tight">
-              {t('heading')}
+              {data?.heading || t('heading')}
             </Typography>
             <Typography variant="subtitle" align="center" className="mt-4 text-muted-foreground">
-              {t('subtitle')}
+              {data?.subtitle || t('subtitle')}
             </Typography>
           </div>
         </FadeIn>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => {
-            const Icon = featureIcons[index as keyof typeof featureIcons];
+            // Get icon from Sanity data or use default based on index
+            const iconName: string = ('icon' in feature && typeof feature.icon === 'string' && feature.icon)
+              ? feature.icon
+              : defaultIcons[index % defaultIcons.length];
+            const Icon = getLucideIcon(iconName, 'Zap');
+
             return (
               <FadeIn key={index} delay={0.1 * (index + 1)}>
                 <div className="flex flex-col items-center text-center">
