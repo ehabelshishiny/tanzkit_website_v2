@@ -28,7 +28,7 @@ export function LogoBarSection({ data }: LogoBarSectionProps) {
   const renderLogos = (keyPrefix: string) => {
     if (usingSanityData && logos) {
       return logos
-        .filter((logo) => logo && logo._ref) // Filter out null/undefined logos
+        .filter((logo) => logo && logo.asset) // Filter out null/undefined logos
         .map((logo, index) => (
           <div
             key={`${keyPrefix}-${index}`}
