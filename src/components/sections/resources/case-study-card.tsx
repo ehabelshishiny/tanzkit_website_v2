@@ -10,6 +10,8 @@ interface CaseStudyCardProps {
 }
 
 export function CaseStudyCard({ caseStudy, locale }: CaseStudyCardProps) {
+  const isRTL = locale === 'ar';
+  
   return (
     <Link href={`/${locale}/resources/case-studies/${caseStudy.slug.current}`} className="group">
       <Card className="h-full overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-xl">
@@ -27,7 +29,7 @@ export function CaseStudyCard({ caseStudy, locale }: CaseStudyCardProps) {
             
             {/* Categories on Image */}
             {caseStudy.categories && caseStudy.categories.length > 0 && (
-              <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+              <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} flex flex-wrap gap-2`}>
                 {caseStudy.categories.slice(0, 2).map((category: any) => (
                   <Badge
                     key={category.slug.current}
@@ -35,7 +37,10 @@ export function CaseStudyCard({ caseStudy, locale }: CaseStudyCardProps) {
                     style={{ 
                       backgroundColor: category.color ? `${category.color}15` : undefined,
                       color: category.color || undefined,
-                      borderLeft: category.color ? `3px solid ${category.color}` : undefined
+                      ...(isRTL 
+                        ? { borderRight: category.color ? `3px solid ${category.color}` : undefined }
+                        : { borderLeft: category.color ? `3px solid ${category.color}` : undefined }
+                      )
                     }}
                   >
                     {category.name}
@@ -46,7 +51,7 @@ export function CaseStudyCard({ caseStudy, locale }: CaseStudyCardProps) {
 
             {/* Client Logo Overlay */}
             {caseStudy.clientLogo?.asset?.url && (
-              <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm p-3 rounded-lg shadow-lg">
+              <div className={`absolute bottom-4 ${isRTL ? 'left-4' : 'right-4'} bg-white/95 backdrop-blur-sm p-3 rounded-lg shadow-lg`}>
                 <div className="relative h-8 w-20">
                   <Image
                     src={caseStudy.clientLogo.asset.url}
@@ -63,19 +68,19 @@ export function CaseStudyCard({ caseStudy, locale }: CaseStudyCardProps) {
         {/* Content */}
         <div className="p-6 space-y-4">
           {/* Client Info */}
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <div className="flex items-center gap-1.5">
+          <div className={`flex items-center gap-4 text-sm text-muted-foreground ${isRTL ? 'flex-row-reverse' : ''}`}>
+            <div className={`flex items-center gap-1.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
               <Building2 className="h-4 w-4" />
               <span className="font-medium">{caseStudy.clientName}</span>
             </div>
             {caseStudy.industry && (
-              <div className="flex items-center gap-1.5">
+              <div className={`flex items-center gap-1.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <TrendingUp className="h-4 w-4" />
                 <span>{caseStudy.industry}</span>
               </div>
             )}
             {caseStudy.location && (
-              <div className="flex items-center gap-1.5">
+              <div className={`flex items-center gap-1.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <MapPin className="h-4 w-4" />
                 <span>{caseStudy.location}</span>
               </div>
@@ -83,20 +88,20 @@ export function CaseStudyCard({ caseStudy, locale }: CaseStudyCardProps) {
           </div>
 
           {/* Title */}
-          <h3 className="text-xl font-bold line-clamp-2 group-hover:text-primary transition-colors leading-tight">
+          <h3 className={`text-xl font-bold line-clamp-2 group-hover:text-primary transition-colors leading-tight ${isRTL ? 'text-right' : 'text-left'}`}>
             {caseStudy.title}
           </h3>
 
           {/* Excerpt */}
-          <p className="text-muted-foreground line-clamp-3 text-sm leading-relaxed">
+          <p className={`text-muted-foreground line-clamp-3 text-sm leading-relaxed ${isRTL ? 'text-right' : 'text-left'}`}>
             {caseStudy.excerpt}
           </p>
 
           {/* Key Metrics Preview */}
           {caseStudy.metrics && caseStudy.metrics.length > 0 && (
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className={`flex flex-wrap gap-4 pt-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
               {caseStudy.metrics.slice(0, 2).map((metric: any, index: number) => (
-                <div key={index} className="flex flex-col">
+                <div key={index} className={`flex flex-col ${isRTL ? 'items-end' : 'items-start'}`}>
                   <span className="text-2xl font-bold text-primary">{metric.value}</span>
                   <span className="text-xs text-muted-foreground">{metric.label}</span>
                 </div>
@@ -108,12 +113,12 @@ export function CaseStudyCard({ caseStudy, locale }: CaseStudyCardProps) {
           <div className="border-t pt-4" />
 
           {/* Footer */}
-          <div className="flex items-center justify-between">
+          <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} justify-between`}>
             <span className="text-sm font-medium text-primary">View Case Study</span>
             
             {/* Read More Arrow */}
             <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className={`h-5 w-5 transition-transform ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
             </div>
           </div>
         </div>
@@ -121,4 +126,3 @@ export function CaseStudyCard({ caseStudy, locale }: CaseStudyCardProps) {
     </Link>
   );
 }
-

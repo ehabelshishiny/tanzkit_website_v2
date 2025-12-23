@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -17,6 +18,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { PortableText } from '@/components/ui/portable-text';
+
 
 interface ResourcesHubClientProps {
   resourcesPage: any;
@@ -47,6 +49,7 @@ interface ResourcesHubClientProps {
   };
 }
 
+
 export function ResourcesHubClient({
   resourcesPage,
   blogPosts,
@@ -60,14 +63,17 @@ export function ResourcesHubClient({
 }: ResourcesHubClientProps) {
   const [activeTab, setActiveTab] = useState('all');
 
+
   // Check if RTL locale
   const isRTL = locale === 'ar';
+
 
   // Combine all resources for "All" tab
   const allResources = [
     ...blogPosts.map((post: any) => ({ ...post, type: 'blog' })),
     ...caseStudies.map((study: any) => ({ ...study, type: 'caseStudy' })),
   ].sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
 
   // Define tabs in order
   const tabsOrder = [
@@ -78,8 +84,10 @@ export function ResourcesHubClient({
     { value: 'careers', label: translations.careers, icon: Briefcase },
   ];
 
+
   // Reverse tabs for RTL
   const displayTabs = isRTL ? [...tabsOrder].reverse() : tabsOrder;
+
 
   return (
     <div className="min-h-screen">
@@ -104,24 +112,33 @@ export function ResourcesHubClient({
         </div>
       </section>
 
+
       {/* Tabs Section */}
       <SectionContainer className="py-12">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-5 mb-12">
             {displayTabs.map((tab) => (
               <TabsTrigger key={tab.value} value={tab.value}>
-                {tab.icon && (
-                  <tab.icon className={`h-4 w-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+                {isRTL ? (
+                  <>
+                    {tab.label}
+                    {tab.icon && <tab.icon className="h-4 w-4 ml-2" />}
+                  </>
+                ) : (
+                  <>
+                    {tab.icon && <tab.icon className="h-4 w-4 mr-2" />}
+                    {tab.label}
+                  </>
                 )}
-                {tab.label}
               </TabsTrigger>
             ))}
           </TabsList>
 
+
           {/* All Tab */}
           <TabsContent value="all" className="mt-0">
             {allResources.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" dir={isRTL ? 'rtl' : 'ltr'}>
                 {allResources.slice(0, 9).map((resource: any) => {
                   if (resource.type === 'blog') {
                     return <BlogCard key={resource._id} post={resource} locale={locale} />;
@@ -138,6 +155,7 @@ export function ResourcesHubClient({
               </div>
             )}
           </TabsContent>
+
 
           {/* Blog Tab */}
           <TabsContent value="blog" className="mt-0">
@@ -159,8 +177,9 @@ export function ResourcesHubClient({
               )}
             </div>
 
+
             {blogPosts.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" dir={isRTL ? 'rtl' : 'ltr'}>
                 {blogPosts.slice(0, 6).map((post: any) => (
                   <BlogCard key={post._id} post={post} locale={locale} />
                 ))}
@@ -171,6 +190,7 @@ export function ResourcesHubClient({
               </div>
             )}
           </TabsContent>
+
 
           {/* Case Studies Tab */}
           <TabsContent value="caseStudies" className="mt-0">
@@ -194,8 +214,9 @@ export function ResourcesHubClient({
               )}
             </div>
 
+
             {caseStudies.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" dir={isRTL ? 'rtl' : 'ltr'}>
                 {caseStudies.slice(0, 6).map((caseStudy: any) => (
                   <CaseStudyCard key={caseStudy._id} caseStudy={caseStudy} locale={locale} />
                 ))}
@@ -208,6 +229,7 @@ export function ResourcesHubClient({
               </div>
             )}
           </TabsContent>
+
 
           {/* FAQ Tab */}
           <TabsContent value="faq" className="mt-0">
@@ -229,6 +251,7 @@ export function ResourcesHubClient({
               )}
             </div>
 
+
             {faqs && faqs.length > 0 ? (
               <div className="space-y-6">
                 {faqs.slice(0, 2).map((category: any) => (
@@ -248,6 +271,7 @@ export function ResourcesHubClient({
                         {category.items.length} {category.items.length === 1 ? 'question' : 'questions'}
                       </span>
                     </div>
+
 
                     {/* FAQ Accordion */}
                     <Accordion type="single" collapsible className="w-full">
@@ -276,6 +300,7 @@ export function ResourcesHubClient({
             )}
           </TabsContent>
 
+
           {/* Careers Tab */}
           <TabsContent value="careers" className="mt-0">
             <div className="mb-8">
@@ -292,16 +317,17 @@ export function ResourcesHubClient({
                 </Link>
               </div>
 
+
               {careers && careers.length > 0 ? (
                 <div className="space-y-4">
                   {careers.slice(0, 5).map((job: any) => (
                     <Card key={job._key} className="p-6 hover:shadow-lg transition-shadow">
-                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                      <div className={`flex flex-col md:flex-row md:items-center md:justify-between gap-4 ${isRTL ? 'md:flex-row-reverse' : ''}`}>
                         <div className="flex-grow">
-                          <h3 className="text-xl font-bold mb-2">{job.title}</h3>
-                          <p className="text-muted-foreground text-sm mb-3">{job.description}</p>
-                          <div className="flex flex-wrap gap-2">
-                            <Badge variant="secondary" className="flex items-center gap-1">
+                          <h3 className={`text-xl font-bold mb-2 ${isRTL ? 'text-right' : 'text-left'}`}>{job.title}</h3>
+                          <p className={`text-muted-foreground text-sm mb-3 ${isRTL ? 'text-right' : 'text-left'}`}>{job.description}</p>
+                          <div className={`flex flex-wrap gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                            <Badge variant="secondary" className={`flex items-center gap-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
                               <Briefcase className="w-3 h-3" />
                               {job.department}
                             </Badge>

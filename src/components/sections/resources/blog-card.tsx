@@ -11,6 +11,8 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ post, locale }: BlogCardProps) {
+  const isRTL = locale === 'ar';
+  
   const publishedDate = new Date(post.publishedAt).toLocaleDateString(locale, {
     year: 'numeric',
     month: 'short',
@@ -34,7 +36,7 @@ export function BlogCard({ post, locale }: BlogCardProps) {
 
             {/* Categories on Image */}
             {post.categories && post.categories.length > 0 && (
-              <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+              <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} flex flex-wrap gap-2`}>
                 {post.categories.slice(0, 2).map((category: any) => (
                   <Badge
                     key={category.slug.current}
@@ -42,7 +44,10 @@ export function BlogCard({ post, locale }: BlogCardProps) {
                     style={{
                       backgroundColor: category.color ? `${category.color}15` : undefined,
                       color: category.color || undefined,
-                      borderLeft: category.color ? `3px solid ${category.color}` : undefined
+                      ...(isRTL 
+                        ? { borderRight: category.color ? `3px solid ${category.color}` : undefined }
+                        : { borderLeft: category.color ? `3px solid ${category.color}` : undefined }
+                      )
                     }}
                   >
                     {category.name}
@@ -56,12 +61,12 @@ export function BlogCard({ post, locale }: BlogCardProps) {
         {/* Content */}
         <div className="p-6 space-y-4">
           {/* Title */}
-          <h3 className="text-xl font-bold line-clamp-2 group-hover:text-primary transition-colors leading-tight">
+          <h3 className={`text-xl font-bold line-clamp-2 group-hover:text-primary transition-colors leading-tight ${isRTL ? 'text-right' : 'text-left'}`}>
             {post.title}
           </h3>
 
           {/* Excerpt */}
-          <p className="text-muted-foreground line-clamp-3 text-sm leading-relaxed">
+          <p className={`text-muted-foreground line-clamp-3 text-sm leading-relaxed ${isRTL ? 'text-right' : 'text-left'}`}>
             {post.excerpt}
           </p>
 
@@ -69,9 +74,9 @@ export function BlogCard({ post, locale }: BlogCardProps) {
           <div className="border-t pt-4" />
 
           {/* Footer */}
-          <div className="flex items-center justify-between">
+          <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} justify-between`}>
             {/* Author Info */}
-            <div className="flex items-center gap-3">
+            <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
               {post.author && (
                 <>
                   <Avatar className="h-8 w-8">
@@ -82,13 +87,13 @@ export function BlogCard({ post, locale }: BlogCardProps) {
                   </Avatar>
                   <div className="flex flex-col">
                     <span className="text-sm font-medium">{post.author.name}</span>
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                      <div className="flex items-center gap-1">
+                    <div className={`flex items-center gap-3 text-xs text-muted-foreground ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <div className={`flex items-center gap-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
                         <Calendar className="h-3 w-3" />
                         <span>{publishedDate}</span>
                       </div>
                       {post.readingTime && (
-                        <div className="flex items-center gap-1">
+                        <div className={`flex items-center gap-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
                           <Clock className="h-3 w-3" />
                           <span>{post.readingTime} min</span>
                         </div>
@@ -101,7 +106,7 @@ export function BlogCard({ post, locale }: BlogCardProps) {
 
             {/* Read More Arrow */}
             <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className={`h-5 w-5 transition-transform ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
             </div>
           </div>
         </div>
@@ -109,4 +114,3 @@ export function BlogCard({ post, locale }: BlogCardProps) {
     </Link>
   );
 }
-
