@@ -310,9 +310,9 @@ html[dir="rtl"] .pricing-feature-item {
   font-family: var(--font-geist-sans), sans-serif;
 }
 
-/* Arabic - Alarabia Custom Font (for headers, titles) */
-.font-alarabia {
-  font-family: var(--font-alarabia), var(--font-geist-sans), sans-serif;
+/* Arabic - DIN Next Font (for headers, titles) */
+.font-din {
+  font-family: var(--font-din), var(--font-geist-sans), sans-serif;
 }
 
 /* Arabic - Cairo Font (for headers, titles) */

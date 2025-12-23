@@ -2,8 +2,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { draftMode } from 'next/headers';
-// Temporarily commented out due to Next.js 16 Turbopack + Google Fonts bug
-// import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
 import localFont from 'next/font/local';
 import Script from 'next/script';
 import { locales } from '@/i18n';
@@ -15,28 +13,108 @@ import { Toaster } from 'sonner';
 import { VisualEditing } from 'next-sanity/visual-editing';
 import '../globals.css';
 
-// Temporarily commented out due to Next.js 16 Turbopack + Google Fonts bug
-// const geistSans = Geist({
-//   variable: '--font-geist-sans',
-//   subsets: ['latin'],
-//   display: 'swap',
-// });
+// ============================================
+// Font Configuration - Starting Simple
+// ============================================
 
-// const geistMono = Geist_Mono({
-//   variable: '--font-geist-mono',
-//   subsets: ['latin'],
-//   display: 'swap',
-// });
+// Geist Sans - English Primary Font (Start with just Regular)
+const geistSans = localFont({
+  src: [
+    {
+      path: '../../../public/fonts/geist-sans/Geist-Light.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/geist-sans/Geist-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/geist-sans/Geist-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/geist-sans/Geist-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/geist-sans/Geist-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-geist-sans',
+  display: 'swap',
+});
 
-// const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
-//   variable: '--font-ibm-plex-arabic',
-//   subsets: ['arabic'],
-//   weight: ['300', '400', '500', '600', '700'],
-//   display: 'swap',
-// });
 
-// Custom DIN Next Font - Multiple Weights
-const alarabiaFont = localFont({
+// Geist Mono - Monospace Font (Start with just Regular)
+const geistMono = localFont({
+  src: [
+    {
+      path: '../../../public/fonts/geist-mono/GeistMono-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/geist-mono/GeistMono-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+        {
+      path: '../../../public/fonts/geist-mono/GeistMono-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/geist-mono/GeistMono-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-geist-mono',
+  display: 'swap',
+});
+
+
+// IBM Plex Sans Arabic - Arabic Body Text Font (Keep what works)
+const ibmPlexSansArabic = localFont({
+  src: [
+    {
+      path: '../../../public/fonts/ibm-plex-sans-arabic/IBMPlexSansArabic-Light.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/ibm-plex-sans-arabic/IBMPlexSansArabic-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/ibm-plex-sans-arabic/IBMPlexSansArabic-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/ibm-plex-sans-arabic/IBMPlexSansArabic-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/ibm-plex-sans-arabic/IBMPlexSansArabic-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-ibm-plex-arabic',
+  display: 'swap',
+});
+
+// DIN Next - Arabic Headers Font (Keep what works)
+const dinFont = localFont({
   src: [
     {
       path: '../../../public/fonts/din-next/din-next-lt-w23-ultra-light.ttf',
@@ -74,19 +152,9 @@ const alarabiaFont = localFont({
       style: 'normal',
     },
   ],
-  variable: '--font-alarabia',
+  variable: '--font-din',
   display: 'swap',
 });
-
-
-// Custom Alarabia Font
-// const alarabiaFont = localFont({
-//   src: '../../../public/fonts/Alarabia_font.ttf',
-//   variable: '--font-alarabia',
-//   display: 'swap',
-//   weight: '400 700',
-// });
-
 
 export default async function LocaleLayout({
   children,
@@ -97,13 +165,10 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  // Ensure that the incoming `locale` is valid
   if (!locales.includes(locale as any)) {
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
 
   return (
@@ -113,7 +178,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body
-        className={`${alarabiaFont.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${ibmPlexSansArabic.variable} ${dinFont.variable} antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider
@@ -134,17 +199,17 @@ export default async function LocaleLayout({
         </ThemeProvider>
         <ScrollToTopButton />
         {(await draftMode()).isEnabled && <VisualEditing />}
-<Script id="codefy-widget" strategy="lazyOnload">
-  {`
-    (function() {
-      var script = document.createElement('script');
-      script.src = 'https://codefy-os.vercel.app/api/widget-loader.js';
-      script.setAttribute('data-embed-key', 'cfy_08df4792586441e79921e48842a16cf9');
-      script.setAttribute('data-position', 'bottom-right');
-      document.head.appendChild(script);
-    })();
-  `}
-</Script>
+        <Script id="codefy-widget" strategy="lazyOnload">
+          {`
+            (function() {
+              var script = document.createElement('script');
+              script.src = 'https://codefy-os.vercel.app/api/widget-loader.js';
+              script.setAttribute('data-embed-key', 'cfy_08df4792586441e79921e48842a16cf9');
+              script.setAttribute('data-position', 'bottom-right');
+              document.head.appendChild(script);
+            })();
+          `}
+        </Script>
       </body>
     </html>
   );

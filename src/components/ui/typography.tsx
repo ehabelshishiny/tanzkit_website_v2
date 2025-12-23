@@ -40,15 +40,15 @@ const typographyVariants = cva('', {
 const getFontClass = (variant: string, locale: string) => {
   const isArabic = locale === 'ar';
   
-  // Headings and Display use Alarabia Custom Font
-  const alarabiaVariants = ['display', 'h1', 'h2', 'h3', 'h4'];
+  // Headings and Display use DIN Next Font
+  const dinVariants = ['display', 'h1', 'h2', 'h3', 'h4'];
   
   // Body, Subtitle, Caption, Overline, and Button use IBM Plex Sans Arabic
   const ibmVariants = ['body', 'subtitle', 'caption', 'overline', 'button'];
   
   if (isArabic) {
-    if (alarabiaVariants.includes(variant)) {
-      return 'font-alarabia'; // Alarabia Custom Font
+    if (dinVariants.includes(variant)) {
+      return 'font-din'; // DIN Next Font
     }
     if (ibmVariants.includes(variant)) {
       return 'font-ibm-arabic'; // IBM Plex Sans Arabic
@@ -58,6 +58,7 @@ const getFontClass = (variant: string, locale: string) => {
   // English uses Geist for all
   return 'font-sans';
 };
+
 
 // HTML element mapping for semantic correctness
 const variantToElement = {
@@ -99,10 +100,10 @@ export interface TypographyProps
  * Typography Component
  * 
  * Provides consistent text styling across the application with automatic
- * font switching between English (Geist) and Arabic (Alarabia/IBM Plex Arabic).
+ * font switching between English (Geist) and Arabic (DIN Next/IBM Plex Arabic).
  * 
  * Font Assignment:
- * - Headings (display, h1-h4): Alarabia Custom Font
+ * - Headings (display, h1-h4): DIN Next Font
  * - Body text (body, subtitle, caption, overline, button): IBM Plex Sans Arabic
  * 
  * RTL Support:
@@ -117,6 +118,7 @@ export interface TypographyProps
  * </Typography>
  * ```
  */
+
 export const Typography = React.forwardRef<HTMLElement, TypographyProps>(
   ({ className, variant = 'body', align, as, children, ...props }, ref) => {
     const locale = useLocale();
