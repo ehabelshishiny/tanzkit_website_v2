@@ -49,9 +49,14 @@ export function ComparisonTable({ data }: ComparisonTableProps) {
               <tr className="border-b">
                 {isRTL ? (
                   <>
+                    <th className="text-end p-4 font-semibold">
+                      <Typography variant="body" className="font-semibold text-right">
+                        {data.tableHeaderFeature}
+                      </Typography>
+                    </th>
                     <th className="text-center p-4 font-semibold">
                       <Typography variant="body" className="font-semibold">
-                        {data.tableHeaderEnterprise}
+                        {data.tableHeaderStarter}
                       </Typography>
                     </th>
                     <th className="text-center p-4 font-semibold bg-primary/5">
@@ -61,12 +66,7 @@ export function ComparisonTable({ data }: ComparisonTableProps) {
                     </th>
                     <th className="text-center p-4 font-semibold">
                       <Typography variant="body" className="font-semibold">
-                        {data.tableHeaderStarter}
-                      </Typography>
-                    </th>
-                    <th className="text-start p-4 font-semibold">
-                      <Typography variant="body" className="font-semibold">
-                        {data.tableHeaderFeature}
+                        {data.tableHeaderEnterprise}
                       </Typography>
                     </th>
                   </>
@@ -104,8 +104,13 @@ export function ComparisonTable({ data }: ComparisonTableProps) {
                 >
                   {isRTL ? (
                     <>
+                      <td className="p-4 text-end">
+                        <Typography variant="body" className="text-right">
+                          {feature.feature}
+                        </Typography>
+                      </td>
                       <td className="text-center p-4">
-                        {feature.enterprise ? (
+                        {feature.starter ? (
                           <Check className="w-5 h-5 text-success mx-auto" />
                         ) : (
                           <X className="w-5 h-5 text-muted-foreground/30 mx-auto" />
@@ -119,16 +124,11 @@ export function ComparisonTable({ data }: ComparisonTableProps) {
                         )}
                       </td>
                       <td className="text-center p-4">
-                        {feature.starter ? (
+                        {feature.enterprise ? (
                           <Check className="w-5 h-5 text-success mx-auto" />
                         ) : (
                           <X className="w-5 h-5 text-muted-foreground/30 mx-auto" />
                         )}
-                      </td>
-                      <td className="p-4 text-start">
-                        <Typography variant="body">
-                          {feature.feature}
-                        </Typography>
                       </td>
                     </>
                   ) : (
