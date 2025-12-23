@@ -38,21 +38,6 @@ export function ScreenshotCarousel({ data }: ScreenshotCarouselProps) {
   const isRTL = locale === 'ar';
   const [api, setApi] = useState<CarouselApi>();
 
-  // Debug logging
-  if (process.env.NODE_ENV === 'development' && data?.items) {
-    console.log('ScreenshotCarousel - Received data:', {
-      itemsCount: data.items.length,
-      firstItem: data.items[0],
-      hasImages: data.items.map(item => ({
-        key: item._key,
-        title: item.title,
-        hasImage: !!item.image,
-        hasAsset: !!item.image?.asset,
-        assetRef: item.image?.asset?._ref
-      }))
-    });
-  }
-
   // Use Sanity data if available, otherwise fall back to translations
   const screenshots = data?.items || (t.raw('items') as Array<{
     id: number;
@@ -128,14 +113,21 @@ export function ScreenshotCarousel({ data }: ScreenshotCarouselProps) {
                   <Card className="h-full flex flex-col">
                     {/* Image Container - no background, with padding */}
                     <div className="w-full p-4">
-                      {imageUrl && (
+                      {imageUrl ? (
                         <Image
                           src={imageUrl}
-                          alt={screenshot.title}
+                          alt={screenshot.title || 'Screenshot'}
                           width={1200}
                           height={800}
                           className="w-full h-auto object-contain"
+                          priority={false}
                         />
+                      ) : (
+                        <div className="w-full h-48 flex items-center justify-center bg-muted rounded-md">
+                          <Typography variant="body" className="text-muted-foreground">
+                            No image available
+                          </Typography>
+                        </div>
                       )}
                     </div>
                     <div className="p-6 flex flex-col flex-1">
