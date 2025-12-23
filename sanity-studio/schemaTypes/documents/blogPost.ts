@@ -14,8 +14,7 @@ export const blogPost = defineType({
       type: 'localizedString',
       validation: (Rule) =>
         Rule.required()
-          .max(100)
-          .warning('💡 Titles work best under 60 characters for SEO'),
+          .error('⚠️ Blog post title is required'),
     },
     {
       name: 'slug',
@@ -35,8 +34,7 @@ export const blogPost = defineType({
       description: '📝 Short summary shown on blog cards and search results\n📏 Keep it concise: 150-200 characters is ideal\n✅ This is what readers see before clicking',
       validation: (Rule) =>
         Rule.required()
-          .max(300)
-          .warning('💡 Excerpts work best between 150-200 characters'),
+          .error('⚠️ Excerpt is required'),
     },
     {
       name: 'content',
@@ -70,9 +68,7 @@ export const blogPost = defineType({
           description: '♿ Describe the image for screen readers and SEO\n📝 Be descriptive but concise\n✅ Good example: "Team collaborating on transportation software dashboard"\n❌ Bad example: "Image" or "Photo"',
           validation: (Rule) =>
             Rule.required()
-              .min(10)
-              .max(125)
-              .error('⚠️ Alt text is required and should be between 10-125 characters'),
+              .error('⚠️ Alt text is required for accessibility'),
         },
       ],
       validation: (Rule) => Rule.required(),
@@ -188,4 +184,3 @@ export const blogPost = defineType({
     },
   ],
 });
-

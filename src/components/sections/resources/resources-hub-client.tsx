@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SectionContainer } from '@/components/ui/section-container';
 import { BlogCard } from './blog-card';
+import { CaseStudyCard } from './case-study-card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, BookOpen, FileText, HelpCircle, Briefcase } from 'lucide-react';
 import { Card } from '@/components/ui/card';
@@ -59,11 +60,26 @@ export function ResourcesHubClient({
 }: ResourcesHubClientProps) {
   const [activeTab, setActiveTab] = useState('all');
 
+  // Check if RTL locale
+  const isRTL = locale === 'ar';
+
   // Combine all resources for "All" tab
   const allResources = [
     ...blogPosts.map((post: any) => ({ ...post, type: 'blog' })),
     ...caseStudies.map((study: any) => ({ ...study, type: 'caseStudy' })),
   ].sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
+  // Define tabs in order
+  const tabsOrder = [
+    { value: 'all', label: translations.all, icon: null },
+    { value: 'blog', label: translations.blogs, icon: FileText },
+    { value: 'caseStudies', label: translations.caseStudies, icon: BookOpen },
+    { value: 'faq', label: translations.faq, icon: HelpCircle },
+    { value: 'careers', label: translations.careers, icon: Briefcase },
+  ];
+
+  // Reverse tabs for RTL
+  const displayTabs = isRTL ? [...tabsOrder].reverse() : tabsOrder;
 
   return (
     <div className="min-h-screen">
@@ -92,23 +108,14 @@ export function ResourcesHubClient({
       <SectionContainer className="py-12">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-5 mb-12">
-            <TabsTrigger value="all">{translations.all}</TabsTrigger>
-            <TabsTrigger value="blog">
-              <FileText className="h-4 w-4 mr-2" />
-              {translations.blogs}
-            </TabsTrigger>
-            <TabsTrigger value="caseStudies">
-              <BookOpen className="h-4 w-4 mr-2" />
-              {translations.caseStudies}
-            </TabsTrigger>
-            <TabsTrigger value="faq">
-              <HelpCircle className="h-4 w-4 mr-2" />
-              {translations.faq}
-            </TabsTrigger>
-            <TabsTrigger value="careers">
-              <Briefcase className="h-4 w-4 mr-2" />
-              {translations.careers}
-            </TabsTrigger>
+            {displayTabs.map((tab) => (
+              <TabsTrigger key={tab.value} value={tab.value}>
+                {tab.icon && (
+                  <tab.icon className={`h-4 w-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+                )}
+                {tab.label}
+              </TabsTrigger>
+            ))}
           </TabsList>
 
           {/* All Tab */}
@@ -119,7 +126,9 @@ export function ResourcesHubClient({
                   if (resource.type === 'blog') {
                     return <BlogCard key={resource._id} post={resource} locale={locale} />;
                   }
-                  // We'll create CaseStudyCard later
+                  if (resource.type === 'caseStudy') {
+                    return <CaseStudyCard key={resource._id} caseStudy={resource} locale={locale} />;
+                  }
                   return null;
                 })}
               </div>
@@ -133,14 +142,15 @@ export function ResourcesHubClient({
           {/* Blog Tab */}
           <TabsContent value="blog" className="mt-0">
             <div className="mb-8">
-              <div className="flex items-center justify-between mb-6">
+              <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} justify-between mb-6`}>
                 <h2 className="text-2xl font-bold">
                   {resourcesPage?.blogSection?.title || translations.latestBlogPosts}
                 </h2>
                 <Link href={`/${locale}/resources/blog`}>
                   <Button variant="outline">
+                    {isRTL && <ArrowRight className="mr-2 h-4 w-4 rotate-180" />}
                     {translations.viewAll}
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    {!isRTL && <ArrowRight className="ml-2 h-4 w-4" />}
                   </Button>
                 </Link>
               </div>
@@ -165,14 +175,15 @@ export function ResourcesHubClient({
           {/* Case Studies Tab */}
           <TabsContent value="caseStudies" className="mt-0">
             <div className="mb-8">
-              <div className="flex items-center justify-between mb-6">
+              <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} justify-between mb-6`}>
                 <h2 className="text-2xl font-bold">
                   {resourcesPage?.caseStudiesSection?.title || translations.featuredCaseStudies}
                 </h2>
                 <Link href={`/${locale}/resources/case-studies`}>
                   <Button variant="outline">
+                    {isRTL && <ArrowRight className="mr-2 h-4 w-4 rotate-180" />}
                     {translations.viewAll}
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    {!isRTL && <ArrowRight className="ml-2 h-4 w-4" />}
                   </Button>
                 </Link>
               </div>
@@ -183,24 +194,33 @@ export function ResourcesHubClient({
               )}
             </div>
 
-            <div className="text-center py-16">
-              <p className="text-muted-foreground text-lg">
-                {translations.noCaseStudies}
-              </p>
-            </div>
+            {caseStudies.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {caseStudies.slice(0, 6).map((caseStudy: any) => (
+                  <CaseStudyCard key={caseStudy._id} caseStudy={caseStudy} locale={locale} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-16">
+                <p className="text-muted-foreground text-lg">
+                  {translations.noCaseStudies}
+                </p>
+              </div>
+            )}
           </TabsContent>
 
           {/* FAQ Tab */}
           <TabsContent value="faq" className="mt-0">
             <div className="mb-8">
-              <div className="flex items-center justify-between mb-6">
+              <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} justify-between mb-6`}>
                 <h2 className="text-2xl font-bold">
                   {resourcesPage?.faqSection?.title || translations.frequentlyAskedQuestions}
                 </h2>
                 <Link href={`/${locale}/resources/faq`}>
                   <Button variant="outline">
+                    {isRTL && <ArrowRight className="mr-2 h-4 w-4 rotate-180" />}
                     {translations.viewAll}
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    {!isRTL && <ArrowRight className="ml-2 h-4 w-4" />}
                   </Button>
                 </Link>
               </div>
@@ -259,14 +279,15 @@ export function ResourcesHubClient({
           {/* Careers Tab */}
           <TabsContent value="careers" className="mt-0">
             <div className="mb-8">
-              <div className="flex items-center justify-between mb-6">
+              <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} justify-between mb-6`}>
                 <h2 className="text-2xl font-bold">
                   {translations.openPositions}
                 </h2>
                 <Link href={`/${locale}/resources/careers`}>
                   <Button variant="outline">
+                    {isRTL && <ArrowRight className="mr-2 h-4 w-4 rotate-180" />}
                     {translations.viewAll}
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    {!isRTL && <ArrowRight className="ml-2 h-4 w-4" />}
                   </Button>
                 </Link>
               </div>
@@ -311,4 +332,3 @@ export function ResourcesHubClient({
     </div>
   );
 }
-
