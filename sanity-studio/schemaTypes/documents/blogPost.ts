@@ -57,9 +57,6 @@ export const blogPost = defineType({
           options: {
             hotspot: true,
           },
-          validation: (Rule) =>
-            Rule.required()
-              .error('⚠️ Featured image is required for all blog posts'),
         },
         {
           name: 'alt',

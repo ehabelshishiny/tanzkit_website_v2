@@ -124,6 +124,9 @@ export function FeatureTabs({ data }: FeatureTabsProps) {
 
           // Check if we have a valid Sanity image with asset
           const tabImage = (typeof tab !== 'string' && tab.image?.asset) ? tab.image : null;
+          const sanityImageUrl = tabImage ? (urlFor(tabImage).width(1200).fit('max').url() || null) : null;
+          const fallbackImage = imageMap[featureId as keyof typeof imageMap] || imageMap.realtime;
+          const imageSrc = sanityImageUrl || fallbackImage;
 
           return (
             <TabsContent key={featureId} value={featureId}>
@@ -137,9 +140,9 @@ export function FeatureTabs({ data }: FeatureTabsProps) {
   <div className="flex flex-col md:flex-row gap-8">
     {/* Image - First in DOM order for mobile (top position) */}
     <div className="w-full md:w-1/2 md:order-2 flex-shrink-0 p-4">
-      {tabImage ? (
+      {imageSrc ? (
         <Image
-          src={urlFor(tabImage).width(1200).fit('max').url() || ''}
+          src={imageSrc}
           alt={title}
           width={1200}
           height={800}
@@ -147,14 +150,7 @@ export function FeatureTabs({ data }: FeatureTabsProps) {
           priority={index === 0}
         />
       ) : (
-        <Image
-          src={imageMap[featureId as keyof typeof imageMap]}
-          alt={title}
-          width={1200}
-          height={800}
-          className="w-full h-auto object-contain"
-          priority={featureId === 'realtime' || featureId === firstTabId}
-        />
+        <div className="w-full aspect-[3/2] rounded-lg bg-muted/40 border border-border/50" />
       )}
     </div>
 

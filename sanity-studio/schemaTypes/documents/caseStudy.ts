@@ -62,7 +62,6 @@ export const caseStudy = defineType({
           options: {
             hotspot: true,
           },
-          validation: (Rule) => Rule.required(),
         },
         {
           name: 'alt',
@@ -237,4 +236,3 @@ export const caseStudy = defineType({
     },
   ],
 });
-

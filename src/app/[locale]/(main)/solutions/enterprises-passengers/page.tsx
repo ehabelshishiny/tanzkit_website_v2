@@ -8,11 +8,39 @@ import { EnterprisesFeaturesSection } from '@/components/sections/solutions/ente
 import { EnterprisesAiImpactSection } from '@/components/sections/solutions/enterprises/ai-impact-section';
 import { EnterprisesCtaSection } from '@/components/sections/solutions/enterprises/cta-section';
 import { getSolutionsEnterprisesPassengersPage } from '@/lib/sanity/queries';
+import { generateResourceMetadata } from '@/lib/seo/metadata';
+import { Metadata } from 'next';
 
 interface EnterprisesPassengersPageProps {
   params: Promise<{
     locale: string;
   }>;
+}
+
+export async function generateMetadata({ params }: EnterprisesPassengersPageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const page = await getSolutionsEnterprisesPassengersPage(locale);
+
+  if (!page) {
+    return {
+      title: 'Enterprises & Passengers Solutions',
+      description: 'Enterprise transport visibility and passenger experience solutions by Tranzkit.',
+    };
+  }
+
+  return generateResourceMetadata(
+    {
+      metaTitle: page.seo?.metaTitle,
+      metaDescription: page.seo?.metaDescription,
+      keywords: page.seo?.keywords?.[locale] || page.seo?.keywords,
+      canonicalUrl: 'solutions/enterprises-passengers',
+      noIndex: page.seo?.noIndex,
+      noFollow: page.seo?.noFollow,
+    },
+    locale,
+    page.hero?.title,
+    page.hero?.subtitle
+  );
 }
 
 export default async function EnterprisesPassengersPage({ params }: EnterprisesPassengersPageProps) {

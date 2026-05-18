@@ -25,9 +25,11 @@ export default async function PricingPage({ params }: PricingPageProps) {
     <>
       <PricingHero data={pricingPageData.hero} />
       <PricingCards data={pricingPageData.pricingCards} />
-      <ComparisonTable data={pricingPageData.comparisonTable} />
+      <ComparisonTable
+        data={pricingPageData.comparisonTable}
+        plans={pricingPageData.pricingCards?.plans || []}
+      />
       <CTASection data={pricingPageData.cta} />
     </>
   );
 }
-

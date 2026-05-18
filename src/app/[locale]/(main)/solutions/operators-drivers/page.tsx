@@ -8,11 +8,39 @@ import { OperatorsFeaturesSection } from '@/components/sections/solutions/operat
 import { OperatorsAiImpactSection } from '@/components/sections/solutions/operators/ai-impact-section';
 import { OperatorsCtaSection } from '@/components/sections/solutions/operators/cta-section';
 import { getSolutionsOperatorsDriversPage } from '@/lib/sanity/queries';
+import { generateResourceMetadata } from '@/lib/seo/metadata';
+import { Metadata } from 'next';
 
 interface OperatorsDriversPageProps {
   params: Promise<{
     locale: string;
   }>;
+}
+
+export async function generateMetadata({ params }: OperatorsDriversPageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const page = await getSolutionsOperatorsDriversPage(locale);
+
+  if (!page) {
+    return {
+      title: 'Operators & Drivers Solutions',
+      description: 'Fleet operations and driver execution solutions by Tranzkit.',
+    };
+  }
+
+  return generateResourceMetadata(
+    {
+      metaTitle: page.seo?.metaTitle,
+      metaDescription: page.seo?.metaDescription,
+      keywords: page.seo?.keywords?.[locale] || page.seo?.keywords,
+      canonicalUrl: 'solutions/operators-drivers',
+      noIndex: page.seo?.noIndex,
+      noFollow: page.seo?.noFollow,
+    },
+    locale,
+    page.hero?.title,
+    page.hero?.subtitle
+  );
 }
 
 export default async function OperatorsDriversPage({ params }: OperatorsDriversPageProps) {
@@ -36,4 +64,3 @@ export default async function OperatorsDriversPage({ params }: OperatorsDriversP
     </main>
   );
 }
-

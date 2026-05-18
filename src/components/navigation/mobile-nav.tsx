@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 import {
   Sheet,
   SheetContent,
@@ -95,15 +96,14 @@ export function MobileNav() {
           </Accordion>
 
           <div className="flex flex-col gap-3 mt-6 pt-6 border-t">
-            <Button asChild variant="outline" className="w-full">
-              <Link href={`/${locale}/contact`} onClick={() => setOpen(false)}>
-                {t('getStarted')}
-              </Link>
-            </Button>
+            <TrialCTAButton
+              variant="primary"
+              size="lg"
+              fullWidth={true}
+            />
           </div>
         </nav>
       </SheetContent>
     </Sheet>
   );
 }
-

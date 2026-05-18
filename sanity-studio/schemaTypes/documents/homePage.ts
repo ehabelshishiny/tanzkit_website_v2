@@ -157,7 +157,6 @@ export const homePage = defineType({
                   title: 'Tab Image',
                   type: 'image',
                   description: '🖼️ Feature screenshot or illustration (recommended: 1200x800px, landscape orientation)',
-                  validation: (Rule) => Rule.required().error('Each tab must have an image'),
                   options: {
                     hotspot: true,
                   },
@@ -224,7 +223,6 @@ export const homePage = defineType({
                   title: 'Screenshot Image',
                   type: 'image',
                   description: '📱 App screenshot or interface preview (recommended: actual app screenshots at 1200px width)',
-                  validation: (Rule) => Rule.required().error('Each screenshot item must have an image'),
                   options: {
                     hotspot: true,
                   },
@@ -319,4 +317,3 @@ export const homePage = defineType({
     },
   },
 });
-

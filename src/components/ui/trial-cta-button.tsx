@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
+import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
@@ -44,20 +45,19 @@ export function TrialCTAButton({
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations('common');
+  const { theme } = useTheme();
   const isRTL = locale === 'ar';
 
   const handleClick = () => {
-    if (!disabled) {
-      // Check if external app URL is configured
-      const appUrl = process.env.NEXT_PUBLIC_APP_TRIAL_URL;
+    if (!disabled && typeof window !== 'undefined') {
+      // Get current theme, default to 'light' if not set
+      const currentTheme = theme || 'light';
 
-      if (appUrl && typeof window !== 'undefined') {
-        // Redirect to external application URL
-        window.location.href = appUrl;
-      } else {
-        // Fallback to placeholder trial page
-        router.push(`/${locale}/trial`);
-      }
+      // Build signup URL with theme and language parameters
+      const signupUrl = `https://operator.tranzkit.com/signup?theme=${currentTheme}&lang=${locale}`;
+
+      // Redirect to signup page on the same tab
+      window.location.href = signupUrl;
     }
   };
 

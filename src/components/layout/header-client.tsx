@@ -134,4 +134,3 @@ export function HeaderClient({ locale, navigation }: HeaderClientProps) {
     </header>
   );
 }
-
