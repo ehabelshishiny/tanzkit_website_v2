@@ -1,22 +1,10 @@
 import { createClient } from 'next-sanity'
 import { draftMode } from 'next/headers'
-
-// Validate environment variables
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
-const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2025-12-10'
-
-if (!projectId || !dataset) {
-  throw new Error(
-    'Missing Sanity environment variables. Check your .env.local file.'
-  )
-}
+import { sanityConfig } from './config'
 
 // Base client configuration
 const clientConfig = {
-  projectId,
-  dataset,
-  apiVersion,
+  ...sanityConfig,
   useCdn: true,
   token: process.env.SANITY_API_READ_TOKEN,
 }
@@ -45,9 +33,4 @@ export async function getClient() {
   return client
 }
 
-// Export config for reuse
-export const sanityConfig = {
-  projectId,
-  dataset,
-  apiVersion,
-}
+export { sanityConfig }

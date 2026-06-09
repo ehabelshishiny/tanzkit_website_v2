@@ -1,5 +1,7 @@
 import { createImageUrlBuilder } from '@sanity/image-url'
+import type { SanityImageSource } from '@sanity/image-url'
 import { createClient } from 'next-sanity'
+import { sanityConfig } from './config'
 
 // Type definition for Sanity image (without problematic import)
 type ImageAsset = {
@@ -27,9 +29,7 @@ type SanityImageType = {
 
 // Create a simple client for image URL building (no draft mode)
 const imageClient = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-01-01',
+  ...sanityConfig,
   useCdn: true,
 })
 
@@ -44,9 +44,9 @@ const builder = createImageUrlBuilder(imageClient)
  * @example
  * const imageUrl = urlFor(image).width(800).height(600).url()
  */
-export function urlFor(source: SanityImageType | any) {
+export function urlFor(source: SanityImageType | SanityImageSource | null | undefined) {
   if (!source) {
-    return builder.image({} as any)
+    return builder.image({ _ref: '' })
   }
   return builder.image(source)
 }
@@ -59,7 +59,7 @@ export function urlFor(source: SanityImageType | any) {
  * @example
  * const { mobile, tablet, desktop } = getResponsiveImageUrls(image)
  */
-export function getResponsiveImageUrls(source: SanityImageType | any) {
+export function getResponsiveImageUrls(source: SanityImageType | SanityImageSource | null | undefined) {
   if (!source) {
     return {
       mobile: '',
