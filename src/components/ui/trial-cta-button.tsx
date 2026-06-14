@@ -54,7 +54,7 @@ export function TrialCTAButton({
       const currentTheme = theme || 'light';
 
       // Build signup URL with theme and language parameters
-      const signupUrl = `https://operator.tranzkit.com/signup?theme=${currentTheme}&lang=${locale}`;
+      const signupUrl = `https://app.tranzkit.com/signup?theme=${currentTheme}&lang=${locale}`;
 
       // Redirect to signup page on the same tab
       window.location.href = signupUrl;

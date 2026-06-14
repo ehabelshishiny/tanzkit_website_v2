@@ -41,7 +41,7 @@ Updated the Pricing navigation link to open an external URL in a new tab instead
 
 The pricing link now opens:
 ```
-https://operator.tranzkit.com/signup?theme={theme}&lang={lang}
+https://app.tranzkit.com/signup?theme={theme}&lang={lang}
 ```
 
 ### Parameters
@@ -49,8 +49,8 @@ https://operator.tranzkit.com/signup?theme={theme}&lang={lang}
 - `lang`: `en` | `ar` (dynamically set based on current locale)
 
 ### Examples
-- English + Light theme: `https://operator.tranzkit.com/signup?theme=light&lang=en`
-- Arabic + Dark theme: `https://operator.tranzkit.com/signup?theme=dark&lang=ar`
+- English + Light theme: `https://app.tranzkit.com/signup?theme=light&lang=en`
+- Arabic + Dark theme: `https://app.tranzkit.com/signup?theme=dark&lang=ar`
 
 ## Behavior
 
@@ -80,4 +80,3 @@ https://operator.tranzkit.com/signup?theme={theme}&lang={lang}
 - The internal pricing page at `/${locale}/pricing` still exists but is no longer linked from the navigation
 - If you want to remove the internal pricing page entirely, you can delete `src/app/[locale]/(main)/pricing/page.tsx` and related components
 - The implementation follows the same pattern as the existing `trial-cta-button.tsx` component
-

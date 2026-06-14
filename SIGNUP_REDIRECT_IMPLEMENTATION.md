@@ -15,7 +15,7 @@ Update all "Get Started" and "Start Now" CTA buttons to redirect to the Tranzkit
 
 ### **Signup URL Format**
 ```
-https://operator.tranzkit.com/signup?theme={theme}&lang={lang}
+https://app.tranzkit.com/signup?theme={theme}&lang={lang}
 ```
 
 **Parameters:**
@@ -23,8 +23,8 @@ https://operator.tranzkit.com/signup?theme={theme}&lang={lang}
 - `lang`: `en` | `ar` (default: `en`)
 
 **Examples:**
-- English + Light theme: `https://operator.tranzkit.com/signup?theme=light&lang=en`
-- Arabic + Dark theme: `https://operator.tranzkit.com/signup?theme=dark&lang=ar`
+- English + Light theme: `https://app.tranzkit.com/signup?theme=light&lang=en`
+- Arabic + Dark theme: `https://app.tranzkit.com/signup?theme=dark&lang=ar`
 
 ---
 
@@ -36,7 +36,7 @@ https://operator.tranzkit.com/signup?theme={theme}&lang={lang}
 - Added `useTheme` hook import from `next-themes`
 - Updated `handleClick` function to build signup URL with current theme and language
 - Removed fallback to placeholder trial page
-- Now redirects to `https://operator.tranzkit.com/signup?theme={theme}&lang={lang}`
+- Now redirects to `https://app.tranzkit.com/signup?theme={theme}&lang={lang}`
 
 **Key Code:**
 ```tsx
@@ -50,7 +50,7 @@ const handleClick = () => {
     const currentTheme = theme || 'light';
     
     // Build signup URL with theme and language parameters
-    const signupUrl = `https://operator.tranzkit.com/signup?theme=${currentTheme}&lang=${locale}`;
+    const signupUrl = `https://app.tranzkit.com/signup?theme=${currentTheme}&lang=${locale}`;
     
     // Redirect to signup page on the same tab
     window.location.href = signupUrl;
@@ -161,7 +161,7 @@ All the following components now redirect to the signup page with theme and lang
 
 All "Get Started" and "Start Now" buttons now redirect to:
 ```
-https://operator.tranzkit.com/signup?theme={current_theme}&lang={current_language}
+https://app.tranzkit.com/signup?theme={current_theme}&lang={current_language}
 ```
 
 ---
@@ -174,4 +174,3 @@ https://operator.tranzkit.com/signup?theme={current_theme}&lang={current_languag
 4. Switch between English/Arabic and verify URL parameters
 5. Test on mobile devices using the mobile navigation
 6. Verify the signup page correctly receives and applies the theme and language parameters
-
