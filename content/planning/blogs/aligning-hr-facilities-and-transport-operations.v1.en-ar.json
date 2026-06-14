@@ -1,0 +1,267 @@
+{
+  "documentType": "blogPost",
+  "action": "draft",
+  "_id": "blog-hr-facilities-transport-alignment",
+  "slug": {
+    "_type": "slug",
+    "current": "aligning-hr-facilities-and-transport-operations"
+  },
+  "title": {
+    "en": "Aligning HR, Facilities, and Transport Operations",
+    "ar": "مواءمة الموارد البشرية والمرافق وعمليات النقل"
+  },
+  "excerpt": {
+    "en": "A practical governance model for aligning policy, demand, service delivery, and accountability across enterprise transport teams.",
+    "ar": "نموذج حوكمة عملي لمواءمة السياسات والطلب وتنفيذ الخدمة والمساءلة بين فرق النقل داخل الشركة."
+  },
+  "content": {
+    "en": [
+      {
+        "_key": "align-en-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-en-01-span",
+            "_type": "span",
+            "text": "Employee transportation usually fails in the gaps between departments. HR defines policy, facilities protects service continuity, and transport operations handles daily execution, but those decisions often move on different timelines.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "align-en-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-en-02-span",
+            "_type": "span",
+            "text": "When those teams are not aligned, exceptions grow faster than planning can absorb them. Demand changes arrive late, supplier follow-up becomes reactive, and service debates turn personal instead of evidence-based.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "align-en-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-en-03-span",
+            "_type": "span",
+            "text": "What alignment should look like",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "align-en-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-en-04-span",
+            "_type": "span",
+            "text": "One demand model with clear ownership for approvals and changes.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "align-en-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-en-05-span",
+            "_type": "span",
+            "text": "A shared service review cadence across HR, facilities, and transport leads.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "align-en-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-en-06-span",
+            "_type": "span",
+            "text": "A common exception and escalation view tied to actual service data.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "align-en-07",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-en-07-span",
+            "_type": "span",
+            "text": "Cross-functional alignment is not a soft governance topic. It directly affects service reliability, rider trust, and how much operational waste the business absorbs every month.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "align-ar-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-ar-01-span",
+            "_type": "span",
+            "text": "يفشل نقل الموظفين غالبًا في المساحات الفاصلة بين الإدارات. فالموارد البشرية تضع السياسة، والمرافق تحافظ على استمرارية الخدمة، وعمليات النقل تتولى التنفيذ اليومي، لكن هذه القرارات تتحرك غالبًا على جداول مختلفة.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "align-ar-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-ar-02-span",
+            "_type": "span",
+            "text": "وعندما لا تكون هذه الفرق على تنسيق واحد، تتراكم الاستثناءات أسرع من قدرة التخطيط على احتوائها. فتصل تغييرات الطلب متأخرة، وتصبح متابعة الموردين رد فعل لا إدارة استباقية، وتتحول مناقشات الخدمة إلى جدل بدلاً من اعتمادها على بيانات واضحة.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "align-ar-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-ar-03-span",
+            "_type": "span",
+            "text": "كيف يجب أن تبدو المواءمة",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "align-ar-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-ar-04-span",
+            "_type": "span",
+            "text": "نموذج طلب واحد مع ملكية واضحة للموافقات والتغييرات.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "align-ar-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-ar-05-span",
+            "_type": "span",
+            "text": "وتيرة مراجعة مشتركة للخدمة بين الموارد البشرية والمرافق وقيادات النقل.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "align-ar-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-ar-06-span",
+            "_type": "span",
+            "text": "عرض موحد للاستثناءات والتصعيدات مرتبط بالبيانات الفعلية للخدمة.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "align-ar-07",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "align-ar-07-span",
+            "_type": "span",
+            "text": "هذه المواءمة ليست موضوعًا تنظيميًا ناعمًا، بل تؤثر مباشرة في موثوقية الخدمة وثقة الركاب وحجم الهدر التشغيلي الذي تتحمله الشركة كل شهر.",
+            "marks": []
+          }
+        ]
+      }
+    ]
+  },
+  "authorSlug": "team-codefy-hub",
+  "categorySlugs": [
+    "enterprise-mobility",
+    "operations-control"
+  ],
+  "tags": [
+    "HR transport policy",
+    "facilities transport management",
+    "enterprise mobility governance",
+    "transport operations alignment",
+    "Tranzkit"
+  ],
+  "publishedAt": "2026-05-16T09:00:00.000Z",
+  "updatedAt": "2026-06-14T00:00:00.000Z",
+  "readingTime": 7,
+  "featured": false,
+  "status": "published",
+  "seo": {
+    "metaTitle": {
+      "en": "Aligning HR, Facilities, and Transport Operations | Tranzkit",
+      "ar": "مواءمة الموارد البشرية والمرافق وعمليات النقل | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Learn how to align HR, facilities, and transport operations through one governance model for employee transportation.",
+      "ar": "تعرّف كيف توائم بين الموارد البشرية والمرافق وعمليات النقل عبر نموذج حوكمة موحد لنقل الموظفين."
+    },
+    "keywords": [
+      "HR commute operations",
+      "facilities transport management",
+      "enterprise mobility governance",
+      "employee transport policy",
+      "Tranzkit"
+    ],
+    "noIndex": false,
+    "noFollow": false
+  }
+}

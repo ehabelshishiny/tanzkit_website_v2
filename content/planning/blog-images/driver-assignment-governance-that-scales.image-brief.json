@@ -1,0 +1,43 @@
+{
+  "documentType": "blogPostImageBrief",
+  "targetDocumentId": "blog-driver-assignment-governance",
+  "slug": "driver-assignment-governance-that-scales",
+  "title": {
+    "en": "Driver and vehicle assignment control",
+    "ar": "التحكم في تخصيص السائقين والمركبات"
+  },
+  "about": {
+    "en": "A transport operations visual showing assignment, readiness, and dispatch control.",
+    "ar": "مشهد تشغيلي للنقل يوضح التخصيص والجاهزية والتحكم في التشغيل."
+  },
+  "recommendedVisual": {
+    "en": "An assignment board style dashboard with drivers, vehicles, routes, and readiness indicators.",
+    "ar": "لوحة تشغيل بأسلوب شاشة تخصيص تعرض السائقين والمركبات والخطوط ومؤشرات الجاهزية."
+  },
+  "mustInclude": [
+    "dispatch board feel",
+    "driver and vehicle pairing",
+    "readiness indicators",
+    "route assignment cues",
+    "clean enterprise UI"
+  ],
+  "mustAvoid": [
+    "consumer delivery driver visuals",
+    "helmet or warehouse logistics bias",
+    "real plates or personal identities",
+    "busy map clutter",
+    "cartoon icons only"
+  ],
+  "alt": {
+    "en": "Operations visual showing driver assignment, vehicle readiness, and route control",
+    "ar": "مشهد تشغيلي يوضح تخصيص السائقين وجاهزية المركبات والتحكم في الخطوط"
+  },
+  "dimensions": {
+    "width": 1200,
+    "height": 675,
+    "aspectRatio": "16:9",
+    "format": "JPG or WebP",
+    "maxFileSize": "250KB",
+    "safeZone": "Keep assignment panels centered"
+  }
+}

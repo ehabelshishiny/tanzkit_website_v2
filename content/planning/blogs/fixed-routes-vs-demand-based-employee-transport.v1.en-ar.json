@@ -1,0 +1,356 @@
+{
+  "documentType": "blogPost",
+  "action": "draft",
+  "_id": "blog-fixed-route-vs-demand-transport",
+  "slug": {
+    "_type": "slug",
+    "current": "fixed-routes-vs-demand-based-employee-transport"
+  },
+  "title": {
+    "en": "Fixed Routes vs Demand-Based Employee Transport",
+    "ar": "النقل الثابت مقابل النقل حسب الطلب للموظفين"
+  },
+  "excerpt": {
+    "en": "A practical comparison of where fixed routes work best, where demand-based transport fits better, and how to control cost and service across both.",
+    "ar": "مقارنة عملية بين الحالات التي تناسب فيها المسارات الثابتة، والحالات التي ينجح فيها النقل حسب الطلب، وكيفية ضبط التكلفة والخدمة عبر النموذجين."
+  },
+  "content": {
+    "en": [
+      {
+        "_key": "routes-en-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-en-01-span",
+            "_type": "span",
+            "text": "Most employee transportation programs are not choosing between two pure models. They are deciding how much of the network should stay fixed, and where flexible demand-based service creates better coverage or lower waste.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-en-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-en-02-span",
+            "_type": "span",
+            "text": "Fixed routes usually perform well where employee attendance is stable, pickup patterns repeat daily, and shift timing is disciplined. In those cases, route clarity, occupancy planning, and supplier execution become easier to govern.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-en-03",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-en-03-span",
+            "_type": "span",
+            "text": "Demand-based transport becomes more useful when travel demand changes by site, late shift releases are common, or low-density areas make fixed route economics hard to justify. It gives better flexibility, but only if requests, cutoffs, and approvals are controlled properly.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-en-04",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-en-04-span",
+            "_type": "span",
+            "text": "When fixed routes are the better choice",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-en-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-en-05-span",
+            "_type": "span",
+            "text": "Stable rider demand across the same shifts and service windows.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-en-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-en-06-span",
+            "_type": "span",
+            "text": "High pooling potential that supports stronger occupancy targets.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-en-07",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-en-07-span",
+            "_type": "span",
+            "text": "When demand-based service is worth it",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-en-08",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-en-08-span",
+            "_type": "span",
+            "text": "Variable attendance, scattered destinations, or uneven site-level demand.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-en-09",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-en-09-span",
+            "_type": "span",
+            "text": "Special trips or exception coverage that would distort a standard route plan.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-en-10",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-en-10-span",
+            "_type": "span",
+            "text": "The strongest transport programs do not defend one model ideologically. They manage both models with one operating layer that can compare cost, service quality, response times, and supplier performance across the same reporting structure.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "routes-ar-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-ar-01-span",
+            "_type": "span",
+            "text": "معظم برامج نقل الموظفين لا تختار بين نموذجين منفصلين بالكامل، بل تحدد أي جزء من الشبكة ينبغي أن يبقى ثابتًا، وأين يصبح النقل حسب الطلب أكثر ملاءمة من حيث التغطية أو تقليل الهدر.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-ar-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-ar-02-span",
+            "_type": "span",
+            "text": "تنجح المسارات الثابتة غالبًا عندما يكون حضور الموظفين مستقرًا، وتتكرر نقاط الركوب يوميًا، وتكون الورديات منضبطة في توقيتها. في هذه الحالات يصبح التحكم في الإشغال، ووضوح الخطوط، ومتابعة الموردين أسهل بكثير.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-ar-03",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-ar-03-span",
+            "_type": "span",
+            "text": "أما النقل حسب الطلب فيصبح أكثر فائدة عندما يتغير الطلب من موقع إلى آخر، أو تتكرر الورديات المتأخرة، أو تكون الكثافة منخفضة بما يجعل تشغيل الخط الثابت أقل جدوى. لكنه يحتاج إلى حوكمة دقيقة للطلبات، ومواعيد الإغلاق، والموافقات، حتى لا يتحول إلى فوضى تشغيلية.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-ar-04",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-ar-04-span",
+            "_type": "span",
+            "text": "متى يكون الخط الثابت هو الخيار الأفضل",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-ar-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-ar-05-span",
+            "_type": "span",
+            "text": "عند وجود طلب ثابت عبر نفس الورديات ونفس نوافذ الخدمة.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-ar-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-ar-06-span",
+            "_type": "span",
+            "text": "عندما تسمح أنماط الركوب بتحقيق أهداف واضحة للإشغال وتجميع الرحلات.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-ar-07",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-ar-07-span",
+            "_type": "span",
+            "text": "متى يستحق النقل حسب الطلب",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-ar-08",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-ar-08-span",
+            "_type": "span",
+            "text": "عند تغير الحضور بشكل متكرر أو تشتت الوجهات أو تفاوت الطلب بين المواقع.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-ar-09",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-ar-09-span",
+            "_type": "span",
+            "text": "عند الحاجة إلى تغطية رحلات خاصة أو استثناءات لا يناسبها نموذج الخط الثابت.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "routes-ar-10",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "routes-ar-10-span",
+            "_type": "span",
+            "text": "أقوى برامج النقل لا تتعامل مع النموذجين كاختيار نظري، بل تديرهما من طبقة تشغيل واحدة تستطيع مقارنة التكلفة وجودة الخدمة وسرعة الاستجابة وأداء الموردين وفق هيكل متابعة موحد.",
+            "marks": []
+          }
+        ]
+      }
+    ]
+  },
+  "authorSlug": "team-codefy-hub",
+  "categorySlugs": [
+    "route-optimization",
+    "enterprise-mobility"
+  ],
+  "tags": [
+    "fixed route employee transport",
+    "demand-based employee transport",
+    "transport model selection",
+    "corporate commute planning",
+    "Tranzkit"
+  ],
+  "publishedAt": "2026-05-11T09:00:00.000Z",
+  "updatedAt": "2026-06-14T00:00:00.000Z",
+  "readingTime": 8,
+  "featured": false,
+  "status": "published",
+  "seo": {
+    "metaTitle": {
+      "en": "Fixed Routes vs Demand-Based Employee Transport | Tranzkit",
+      "ar": "المسارات الثابتة مقابل النقل حسب الطلب للموظفين | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Compare fixed-route and demand-based employee transport models using demand behavior, service quality, and cost control logic.",
+      "ar": "قارن بين المسارات الثابتة والنقل حسب الطلب للموظفين باستخدام منطق الطلب وجودة الخدمة وضبط التكلفة."
+    },
+    "keywords": [
+      "fixed route transport",
+      "demand-based employee transport",
+      "corporate mobility planning",
+      "transport service model",
+      "employee transport software",
+      "Tranzkit"
+    ],
+    "noIndex": false,
+    "noFollow": false
+  }
+}

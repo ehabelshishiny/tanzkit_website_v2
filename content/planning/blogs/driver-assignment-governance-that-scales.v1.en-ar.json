@@ -1,0 +1,267 @@
+{
+  "documentType": "blogPost",
+  "action": "draft",
+  "_id": "blog-driver-assignment-governance",
+  "slug": {
+    "_type": "slug",
+    "current": "driver-assignment-governance-that-scales"
+  },
+  "title": {
+    "en": "Driver Assignment Governance That Scales",
+    "ar": "حوكمة تخصيص السائقين القابلة للتوسع"
+  },
+  "excerpt": {
+    "en": "A practical guide to building driver assignment logic that stays controlled under daily transport pressure.",
+    "ar": "دليل عملي لبناء منطق تخصيص السائقين بطريقة تبقى منضبطة تحت ضغط التشغيل اليومي."
+  },
+  "content": {
+    "en": [
+      {
+        "_key": "drv-en-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-en-01-span",
+            "_type": "span",
+            "text": "Driver assignment is where transport planning becomes operational reality. If assignment logic is weak, the rest of the service day starts with avoidable risk.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "drv-en-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-en-02-span",
+            "_type": "span",
+            "text": "Teams often think of assignment as a dispatch task only. In practice, it is a control point that needs driver availability, vehicle readiness, shift limits, route knowledge, and late-change approvals to stay aligned.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "drv-en-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-en-03-span",
+            "_type": "span",
+            "text": "Controls that matter",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "drv-en-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-en-04-span",
+            "_type": "span",
+            "text": "Availability checks tied to shift rules and operating limits.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "drv-en-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-en-05-span",
+            "_type": "span",
+            "text": "Vehicle readiness checks before final assignment release.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "drv-en-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-en-06-span",
+            "_type": "span",
+            "text": "Approval trails for late swaps, exceptions, and manual overrides.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "drv-en-07",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-en-07-span",
+            "_type": "span",
+            "text": "Scalable governance does not slow dispatch down. It removes hidden confusion, reduces rework, and makes live operations more predictable once the day begins.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "drv-ar-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-ar-01-span",
+            "_type": "span",
+            "text": "تخصيص السائقين هو النقطة التي يتحول فيها التخطيط إلى واقع تشغيلي. وإذا كان منطق التخصيص ضعيفًا، يبدأ يوم الخدمة بمخاطر يمكن تجنبها.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "drv-ar-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-ar-02-span",
+            "_type": "span",
+            "text": "تتعامل بعض الفرق مع التخصيص بوصفه مهمة تشغيلية فقط، لكنه في الحقيقة نقطة رقابة تحتاج إلى ربط توفر السائق، وجاهزية المركبة، وحدود الوردية، ومعرفة الخط، وموافقات التغيير المتأخر ضمن قرار واحد متماسك.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "drv-ar-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-ar-03-span",
+            "_type": "span",
+            "text": "الضوابط الأهم",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "drv-ar-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-ar-04-span",
+            "_type": "span",
+            "text": "التحقق من التوفر مع قواعد الورديات والحدود التشغيلية.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "drv-ar-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-ar-05-span",
+            "_type": "span",
+            "text": "فحوصات جاهزية المركبة قبل اعتماد التخصيص النهائي.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "drv-ar-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-ar-06-span",
+            "_type": "span",
+            "text": "مسارات موافقة واضحة للتبديلات المتأخرة والاستثناءات والتعديلات اليدوية.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "drv-ar-07",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "drv-ar-07-span",
+            "_type": "span",
+            "text": "الحوكمة القابلة للتوسع لا تعطل التشغيل، بل تقلل الغموض وإعادة العمل، وتجعل الخدمة المباشرة أكثر قابلية للتوقع منذ لحظة الانطلاق.",
+            "marks": []
+          }
+        ]
+      }
+    ]
+  },
+  "authorSlug": "team-codefy-hub",
+  "categorySlugs": [
+    "fleet-vendor-management",
+    "operations-control"
+  ],
+  "tags": [
+    "driver assignment",
+    "transport dispatch governance",
+    "vehicle readiness",
+    "shift control",
+    "Tranzkit"
+  ],
+  "publishedAt": "2026-05-14T09:00:00.000Z",
+  "updatedAt": "2026-06-14T00:00:00.000Z",
+  "readingTime": 7,
+  "featured": false,
+  "status": "published",
+  "seo": {
+    "metaTitle": {
+      "en": "Driver Assignment Governance That Scales | Tranzkit",
+      "ar": "حوكمة تخصيص السائقين القابلة للتوسع | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Improve transport execution with stronger driver assignment rules, vehicle readiness checks, and approval control.",
+      "ar": "حسّن تنفيذ النقل عبر قواعد أقوى لتخصيص السائقين وفحوصات جاهزية المركبات وضبط الموافقات."
+    },
+    "keywords": [
+      "driver assignment governance",
+      "transport dispatch control",
+      "fleet readiness",
+      "employee transport operations",
+      "Tranzkit"
+    ],
+    "noIndex": false,
+    "noFollow": false
+  }
+}

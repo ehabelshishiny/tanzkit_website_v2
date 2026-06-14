@@ -1,0 +1,43 @@
+{
+  "documentType": "blogPostImageBrief",
+  "targetDocumentId": "blog-closing-ops-finance-loop",
+  "slug": "closing-operations-finance-loop-transport",
+  "title": {
+    "en": "Operations to finance workflow loop",
+    "ar": "حلقة سير العمل بين التشغيل والمالية"
+  },
+  "about": {
+    "en": "A visual connecting dispatch activity, approvals, invoice review, and settlement outcomes.",
+    "ar": "مشهد يربط بين التشغيل والموافقات ومراجعة الفواتير ونتائج التسوية."
+  },
+  "recommendedVisual": {
+    "en": "A connected workflow dashboard showing trip events flowing into approvals, finance review, and variance reporting.",
+    "ar": "لوحة مترابطة تعرض تدفق أحداث الرحلات إلى الموافقات والمراجعة المالية وتقارير الانحراف."
+  },
+  "mustInclude": [
+    "workflow connection feel",
+    "dispatch and finance modules",
+    "approval and reporting cues",
+    "enterprise operations design",
+    "clear data flow direction"
+  ],
+  "mustAvoid": [
+    "generic finance charts only",
+    "consumer bookkeeping look",
+    "cash-heavy literal imagery",
+    "real client records",
+    "overly abstract shapes without product context"
+  ],
+  "alt": {
+    "en": "Connected workflow visual showing transport operations, approvals, invoicing, and finance review",
+    "ar": "مشهد مترابط يوضح تشغيل النقل والموافقات والفوترة والمراجعة المالية"
+  },
+  "dimensions": {
+    "width": 1200,
+    "height": 675,
+    "aspectRatio": "16:9",
+    "format": "JPG or WebP",
+    "maxFileSize": "250KB",
+    "safeZone": "Keep main workflow flow centered"
+  }
+}

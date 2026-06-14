@@ -1,0 +1,43 @@
+{
+  "documentType": "blogPostImageBrief",
+  "targetDocumentId": "blog-employee-commute-confidence",
+  "slug": "building-employee-commute-confidence-at-scale",
+  "title": {
+    "en": "Rider visibility and service confidence",
+    "ar": "رؤية الراكب وثقة الخدمة"
+  },
+  "about": {
+    "en": "A visual showing employee trip visibility, status communication, and rider confidence within a managed transport service.",
+    "ar": "مشهد يوضح رؤية الرحلة والتواصل الخدمي وثقة الراكب ضمن خدمة نقل مُدارة."
+  },
+  "recommendedVisual": {
+    "en": "A mobile-plus-dashboard composition showing live trip visibility, ETA status, and issue follow-up in a professional employee transport context.",
+    "ar": "تكوين يجمع بين الجوال ولوحة التشغيل لعرض الرحلة المباشرة ووقت الوصول المتوقع ومتابعة المشكلة ضمن سياق احترافي لنقل الموظفين."
+  },
+  "mustInclude": [
+    "mobile rider view cues",
+    "service status visibility",
+    "clear ETA or trip progress",
+    "professional enterprise context",
+    "calm and trustworthy visual tone"
+  ],
+  "mustAvoid": [
+    "ride-hailing consumer branding",
+    "crowded passenger photography",
+    "real trip data or maps",
+    "alarmist incident visuals",
+    "overly dark or stressful mood"
+  ],
+  "alt": {
+    "en": "Visual showing rider trip visibility and service status updates in employee transportation",
+    "ar": "مشهد يوضح رؤية الراكب للرحلة وتحديثات حالة الخدمة في نقل الموظفين"
+  },
+  "dimensions": {
+    "width": 1200,
+    "height": 675,
+    "aspectRatio": "16:9",
+    "format": "JPG or WebP",
+    "maxFileSize": "250KB",
+    "safeZone": "Keep mobile UI and status indicators centered"
+  }
+}

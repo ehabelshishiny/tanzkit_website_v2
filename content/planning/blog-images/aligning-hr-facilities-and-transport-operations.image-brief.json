@@ -1,0 +1,43 @@
+{
+  "documentType": "blogPostImageBrief",
+  "targetDocumentId": "blog-hr-facilities-transport-alignment",
+  "slug": "aligning-hr-facilities-and-transport-operations",
+  "title": {
+    "en": "Cross-functional transport governance",
+    "ar": "حوكمة النقل بين الإدارات"
+  },
+  "about": {
+    "en": "A visual showing enterprise teams aligned around one transport control workflow.",
+    "ar": "صورة توضح تنسيق فرق الشركة حول سير واحد للتحكم في النقل."
+  },
+  "recommendedVisual": {
+    "en": "A collaborative dashboard composition linking HR, facilities, and transport operations views around one service model.",
+    "ar": "تصميم تعاوني يربط بين شاشات الموارد البشرية والمرافق وعمليات النقل حول نموذج خدمة واحد."
+  },
+  "mustInclude": [
+    "multi-team workflow feel",
+    "enterprise planning context",
+    "shared visibility theme",
+    "dashboard-led composition",
+    "professional B2B presentation"
+  ],
+  "mustAvoid": [
+    "conference room stock photography",
+    "abstract handshake visuals",
+    "consumer mobility app feel",
+    "real corporate data",
+    "overly busy split layouts"
+  ],
+  "alt": {
+    "en": "Enterprise workflow visual showing HR, facilities, and transport operations aligned in one control model",
+    "ar": "مشهد مؤسسي يوضح مواءمة الموارد البشرية والمرافق وعمليات النقل ضمن نموذج تحكم واحد"
+  },
+  "dimensions": {
+    "width": 1200,
+    "height": 675,
+    "aspectRatio": "16:9",
+    "format": "JPG or WebP",
+    "maxFileSize": "250KB",
+    "safeZone": "Keep central workflow elements and labels centered"
+  }
+}

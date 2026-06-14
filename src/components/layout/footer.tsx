@@ -18,7 +18,6 @@ export function Footer() {
       { name: tFooter('resources.blog'), href: `/${locale}/resources/blog` },
       { name: tFooter('resources.caseStudies'), href: `/${locale}/resources/case-studies` },
       { name: tFooter('resources.faq'), href: `/${locale}/resources/faq` },
-      { name: tFooter('resources.documentation'), href: `/${locale}/resources/documentation` },
       { name: tFooter('resources.careers'), href: `/${locale}/resources/careers` },
     ],
     company: [

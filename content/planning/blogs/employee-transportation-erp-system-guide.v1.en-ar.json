@@ -1,0 +1,352 @@
+{
+  "documentType": "blogPost",
+  "action": "draft",
+  "_id": "blog-employee-transport-erp-system-guide",
+  "slug": {
+    "_type": "slug",
+    "current": "employee-transportation-erp-system-guide"
+  },
+  "title": {
+    "en": "What Is an Employee Transportation ERP System?",
+    "ar": "ما هو نظام ERP لنقل الموظفين؟"
+  },
+  "excerpt": {
+    "en": "A clear guide to the planning, execution, control, and finance layers that make employee transportation run as one operating system.",
+    "ar": "دليل واضح لطبقات التخطيط والتنفيذ والتحكم والمالية التي تجعل نقل الموظفين يعمل كنظام تشغيل واحد."
+  },
+  "content": {
+    "en": [
+      {
+        "_key": "erp-en-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-en-01-span",
+            "_type": "span",
+            "text": "An employee transportation ERP system does more than record trips. It gives operators and enterprise teams one structured operating model for demand, routes, assignments, service delivery, and financial control.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-en-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-en-02-span",
+            "_type": "span",
+            "text": "Many transport programs still run through spreadsheets, chat groups, and disconnected billing files. That setup may work for a small volume of trips, but it breaks down once you have multiple sites, suppliers, shifts, pricing rules, and service exceptions moving at the same time.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-en-03",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-en-03-span",
+            "_type": "span",
+            "text": "A proper ERP approach treats routes, schedules, bookings, riders, vehicles, drivers, suppliers, and contracts as connected business objects. Once those objects are linked, teams can see what was planned, what actually happened, who approved changes, and how that affects cost and accountability.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-en-04",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-en-04-span",
+            "_type": "span",
+            "text": "What sits inside the ERP layer",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-en-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-en-05-span",
+            "_type": "span",
+            "text": "Demand planning that connects employee need, shift patterns, and service frequency.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-en-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-en-06-span",
+            "_type": "span",
+            "text": "Operational control for routes, schedules, assignments, live trips, and supplier execution.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-en-07",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-en-07-span",
+            "_type": "span",
+            "text": "Financial visibility for pricing, invoice review, deductions, payables, and settlement cycles.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-en-08",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-en-08-span",
+            "_type": "span",
+            "text": "Why enterprises and operators both need it",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-en-09",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-en-09-span",
+            "_type": "span",
+            "text": "Enterprise teams need service control, planned-versus-actual review, and pricing visibility. Operators need dispatch discipline, field execution clarity, and faster reconciliation. An ERP system works when both sides operate on the same service logic instead of maintaining separate versions of the truth.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-en-10",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-en-10-span",
+            "_type": "span",
+            "text": "The real value is not software for its own sake. The value is turning transport into a controllable workflow where planning, service quality, supplier management, and finance all move together.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "erp-ar-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-ar-01-span",
+            "_type": "span",
+            "text": "نظام ERP لنقل الموظفين لا يقتصر على تسجيل الرحلات، بل يوفّر نموذج تشغيل منظمًا يجمع بين تخطيط الطلب، وإدارة الخطوط، والتخصيصات، وتنفيذ الخدمة، والرقابة المالية في إطار واحد.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-ar-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-ar-02-span",
+            "_type": "span",
+            "text": "لا تزال كثير من برامج النقل تُدار عبر جداول منفصلة ومحادثات تشغيلية وملفات فوترة غير مترابطة. وقد يبدو ذلك مقبولًا عند حجم محدود، لكنه يبدأ في إرباك الخدمة فور تعدد المواقع والموردين والورديات وقواعد التسعير والاستثناءات اليومية.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-ar-03",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-ar-03-span",
+            "_type": "span",
+            "text": "النموذج الصحيح يتعامل مع الخطوط والجداول والحجوزات والركاب والمركبات والسائقين والموردين والعقود ككيانات مترابطة. وعند ربط هذه العناصر معًا، يصبح من الممكن معرفة ما تم التخطيط له، وما نُفذ فعليًا، ومن وافق على التغييرات، وما الأثر المالي والتشغيلي لذلك.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-ar-04",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-ar-04-span",
+            "_type": "span",
+            "text": "ما الذي يحتويه هذا النظام",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-ar-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-ar-05-span",
+            "_type": "span",
+            "text": "تخطيط للطلب يربط بين أعداد الموظفين والورديات وتكرار الخدمة المطلوب.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-ar-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-ar-06-span",
+            "_type": "span",
+            "text": "تحكم تشغيلي في الخطوط والجداول والتخصيصات والرحلات المباشرة وتنفيذ الموردين.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-ar-07",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-ar-07-span",
+            "_type": "span",
+            "text": "رؤية مالية للتسعير ومراجعة الفواتير والخصومات والمستحقات ودورات التسوية.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-ar-08",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-ar-08-span",
+            "_type": "span",
+            "text": "لماذا تحتاجه الشركات والمشغلون معًا",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-ar-09",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-ar-09-span",
+            "_type": "span",
+            "text": "تحتاج الشركات إلى وضوح في مستوى الخدمة ومراجعة المخطط مقابل المنفذ ورؤية دقيقة للتكلفة والتسعير. ويحتاج المشغلون إلى انضباط في التشغيل ووضوح في التنفيذ الميداني وتسريع في المطابقات المالية. وتنجح المنصة عندما يعمل الطرفان وفق منطق خدمة واحد، لا وفق نسخ متفرقة من الحقيقة.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "erp-ar-10",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "erp-ar-10-span",
+            "_type": "span",
+            "text": "القيمة الحقيقية هنا ليست في وجود برنامج إضافي، بل في تحويل النقل إلى عملية قابلة للتحكم، بحيث تتحرك قرارات التخطيط وجودة الخدمة وإدارة الموردين والمالية ضمن سير تشغيل واحد.",
+            "marks": []
+          }
+        ]
+      }
+    ]
+  },
+  "authorSlug": "team-codefy-hub",
+  "categorySlugs": [
+    "employee-transport-erp",
+    "operations-control"
+  ],
+  "tags": [
+    "employee transportation ERP",
+    "transport operations platform",
+    "corporate commute control",
+    "dispatch and billing visibility",
+    "Tranzkit"
+  ],
+  "publishedAt": "2026-05-10T09:00:00.000Z",
+  "updatedAt": "2026-06-14T00:00:00.000Z",
+  "readingTime": 8,
+  "featured": true,
+  "status": "published",
+  "seo": {
+    "metaTitle": {
+      "en": "What Is an Employee Transportation ERP System? | Tranzkit",
+      "ar": "ما هو نظام ERP لنقل الموظفين؟ | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Understand how an employee transportation ERP system connects planning, service control, supplier execution, and finance in one operating model.",
+      "ar": "تعرّف كيف يربط نظام ERP لنقل الموظفين بين التخطيط والتحكم في الخدمة وتنفيذ الموردين والمالية ضمن نموذج تشغيل واحد."
+    },
+    "keywords": [
+      "employee transportation ERP",
+      "transport operating system",
+      "employee transport planning",
+      "supplier transport control",
+      "transport finance visibility",
+      "Tranzkit"
+    ],
+    "noIndex": false,
+    "noFollow": false
+  }
+}

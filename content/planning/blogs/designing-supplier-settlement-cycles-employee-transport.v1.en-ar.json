@@ -1,0 +1,267 @@
+{
+  "documentType": "blogPost",
+  "action": "draft",
+  "_id": "blog-supplier-settlement-cycles",
+  "slug": {
+    "_type": "slug",
+    "current": "designing-supplier-settlement-cycles-employee-transport"
+  },
+  "title": {
+    "en": "Designing Supplier Settlement Cycles in Employee Transport",
+    "ar": "تصميم دورات تسوية الموردين في نقل الموظفين"
+  },
+  "excerpt": {
+    "en": "How to structure payable cycles, approvals, and deductions so supplier settlement stays controlled and auditable.",
+    "ar": "كيفية تنظيم دورات المستحقات والموافقات والخصومات بحيث تبقى تسويات الموردين منضبطة وقابلة للتدقيق."
+  },
+  "content": {
+    "en": [
+      {
+        "_key": "set-en-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-en-01-span",
+            "_type": "span",
+            "text": "Supplier settlement is not just a back-office task. It is one of the clearest tests of whether transport operations, approvals, and commercial terms are being managed in a disciplined way.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "set-en-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-en-02-span",
+            "_type": "span",
+            "text": "When cycles are unclear, every payment run turns into a negotiation. Teams spend time rebuilding service history, debating deductions, and checking which exceptions were actually approved.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "set-en-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-en-03-span",
+            "_type": "span",
+            "text": "Three settlement controls to define early",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "set-en-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-en-04-span",
+            "_type": "span",
+            "text": "Cycle cutoff dates linked to service periods and invoice submission rules.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "set-en-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-en-05-span",
+            "_type": "span",
+            "text": "Deduction logic tied to SLA, service failure, or compliance events.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "set-en-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-en-06-span",
+            "_type": "span",
+            "text": "A dispute and resubmission path that preserves the audit trail.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "set-en-07",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-en-07-span",
+            "_type": "span",
+            "text": "Well-designed settlement cycles protect margin, reduce payout friction, and give both buyers and operators a cleaner commercial relationship over time.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "set-ar-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-ar-01-span",
+            "_type": "span",
+            "text": "تسوية الموردين ليست مهمة خلفية فقط، بل هي أحد أوضح الاختبارات على مدى انضباط التشغيل والموافقات والشروط التجارية في برنامج النقل.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "set-ar-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-ar-02-span",
+            "_type": "span",
+            "text": "عندما تكون الدورة غير واضحة، يتحول كل صرف إلى جولة تفاوض جديدة. وتضيع الفرق وقتها في إعادة بناء سجل الخدمة، ومناقشة الخصومات، والتحقق مما إذا كانت الاستثناءات قد اعتُمدت بالفعل.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "set-ar-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-ar-03-span",
+            "_type": "span",
+            "text": "ثلاثة ضوابط يجب تحديدها مبكرًا",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "set-ar-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-ar-04-span",
+            "_type": "span",
+            "text": "تواريخ إغلاق الدورة وربطها بفترات الخدمة وقواعد تقديم الفواتير.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "set-ar-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-ar-05-span",
+            "_type": "span",
+            "text": "منطق خصومات مرتبط بحالات SLA أو الإخفاقات التشغيلية أو أحداث الامتثال.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "set-ar-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-ar-06-span",
+            "_type": "span",
+            "text": "مسار نزاع وإعادة تقديم يحافظ على الأثر التدقيقي كاملًا.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "set-ar-07",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "set-ar-07-span",
+            "_type": "span",
+            "text": "تصميم الدورة بشكل جيد يحمي الهامش، ويقلل احتكاك السداد، ويمنح الجهة المشترية والمشغّل علاقة تجارية أوضح وأكثر استقرارًا مع الوقت.",
+            "marks": []
+          }
+        ]
+      }
+    ]
+  },
+  "authorSlug": "team-codefy-hub",
+  "categorySlugs": [
+    "billing-settlement",
+    "fleet-vendor-management"
+  ],
+  "tags": [
+    "supplier settlement",
+    "transport payables",
+    "invoice cycle control",
+    "deduction workflow",
+    "Tranzkit"
+  ],
+  "publishedAt": "2026-05-15T09:00:00.000Z",
+  "updatedAt": "2026-06-14T00:00:00.000Z",
+  "readingTime": 8,
+  "featured": false,
+  "status": "published",
+  "seo": {
+    "metaTitle": {
+      "en": "Designing Supplier Settlement Cycles in Employee Transport | Tranzkit",
+      "ar": "تصميم دورات تسوية الموردين في نقل الموظفين | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Learn how to structure supplier settlement cycles, deductions, and approvals in employee transportation.",
+      "ar": "تعرّف كيف تنظم دورات تسوية الموردين والخصومات والموافقات في نقل الموظفين."
+    },
+    "keywords": [
+      "supplier settlement transport",
+      "employee transport payables",
+      "settlement cycle governance",
+      "transport deductions",
+      "Tranzkit"
+    ],
+    "noIndex": false,
+    "noFollow": false
+  }
+}

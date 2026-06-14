@@ -64,15 +64,19 @@ export default async function FAQPage({ params }: FAQPageProps) {
     faqTitle: t('faqTitle'),
   };
 
+  const heroTitle = faqPage?.hero?.title || translations.faqTitle;
+  const heroSubtitle = faqPage?.hero?.subtitle || undefined;
+  const heroDescription = faqPage?.hero?.description || undefined;
+
   return (
     <>
       <StructuredData data={structuredData} />
       <FAQListingClient
         faqCategories={faqCategories || []}
         locale={locale}
-        heroTitle={faqPage?.hero?.title}
-        heroSubtitle={faqPage?.hero?.subtitle}
-        heroDescription={faqPage?.hero?.description}
+        heroTitle={heroTitle}
+        heroSubtitle={heroSubtitle}
+        heroDescription={heroDescription}
         translations={translations}
       />
     </>

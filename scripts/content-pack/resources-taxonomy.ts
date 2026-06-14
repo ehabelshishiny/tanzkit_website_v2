@@ -52,13 +52,6 @@ export const resourcesHubPageDoc = {
       'اعثر على إجابات واضحة حول الإعداد والتشغيل والتكاملات وآليات الفوترة وأفضل ممارسات الحوكمة.',
     ),
   },
-  documentationSection: {
-    title: L('Documentation', 'التوثيق'),
-    description: L(
-      'Detailed technical and operational documentation for implementation teams, transport admins, and integration stakeholders.',
-      'توثيق تقني وتشغيلي تفصيلي لفرق التنفيذ ومديري النقل وأصحاب المصلحة في التكامل.',
-    ),
-  },
   careersSection: {
     title: L('Careers', 'الوظائف'),
     description: L(
@@ -191,36 +184,6 @@ export const faqPageDoc = {
   ),
 }
 
-export const documentationPageDoc = {
-  _id: 'documentationPage',
-  _type: 'documentationPage',
-  htmlContent: {
-    en: `<section><h1>Tranzkit Documentation</h1><p>Technical and operational documentation for implementing Tranzkit Employee Transportation ERP. This section covers architecture, onboarding workflows, dispatch and route planning setup, role permissions, and finance operations including billing and settlement.</p><h2>What You Will Find</h2><ul><li>Platform architecture and environment setup</li><li>Data structure and import guidelines</li><li>Operations configuration for routes, schedules, and assignments</li><li>Live operations monitoring and exception handling</li><li>Billing, invoice validation, and settlement process flows</li><li>Integration guidance for enterprise systems</li></ul></section>`,
-    ar: `<section><h1>توثيق ترانزكيت</h1><p>توثيق تقني وتشغيلي لتنفيذ نظام ERP نقل الموظفين من ترانزكيت. يغطي هذا القسم المعمارية التقنية وإجراءات الإعداد وتهيئة التوزيع وتخطيط المسارات والصلاحيات والعمليات المالية بما في ذلك الفوترة والتسوية.</p><h2>ماذا ستجد هنا</h2><ul><li>معمارية المنصة وإعداد البيئات</li><li>هيكلة البيانات وإرشادات الاستيراد</li><li>تهيئة التشغيل للمسارات والجداول والتخصيصات</li><li>متابعة التشغيل المباشر وإدارة الاستثناءات</li><li>مسارات الفوترة والتحقق من الفواتير والتسويات</li><li>إرشادات التكامل مع أنظمة الشركات</li></ul></section>`,
-  },
-  seo: seo(
-    'Tranzkit Documentation | Employee Transportation ERP',
-    'توثيق ترانزكيت | ERP نقل الموظفين',
-    'Access Tranzkit documentation for implementation, operations setup, transport workflows, and billing and settlement controls.',
-    'ادخل إلى توثيق ترانزكيت للتنفيذ وإعداد التشغيل ومسارات النقل وضوابط الفوترة والتسوية.',
-    [
-      'tranzkit documentation',
-      'employee transportation ERP docs',
-      'transport operations documentation',
-      'dispatch workflow documentation',
-      'transport billing documentation',
-    ],
-    [
-      'توثيق ترانزكيت',
-      'توثيق ERP نقل الموظفين',
-      'توثيق تشغيل النقل',
-      'توثيق مسارات التوزيع',
-      'توثيق فوترة النقل',
-    ],
-    'https://tranzkit.com/resources/documentation',
-  ),
-}
-
 export const authorDocs = [
   {
     _id: 'author-tranzkit-editorial-team',
@@ -342,7 +305,6 @@ export const resourcesTaxonomyPack = {
     blogPageDoc,
     caseStudiesPageDoc,
     faqPageDoc,
-    documentationPageDoc,
   ],
   authors: authorDocs,
   blogCategories: blogCategoryDocs,

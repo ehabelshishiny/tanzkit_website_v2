@@ -16,7 +16,7 @@ import { PortableText } from '@/components/ui/portable-text';
 interface FAQListingClientProps {
   faqCategories: any[];
   locale: string;
-  heroTitle?: string;
+  heroTitle: string;
   heroSubtitle?: string;
   heroDescription?: string;
   translations: {
@@ -115,7 +115,7 @@ export function FAQListingClient({
             <p className="text-primary font-semibold mb-4">{heroSubtitle}</p>
           )}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            {heroTitle || translations.faqTitle}
+            {heroTitle}
           </h1>
           {heroDescription && (
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -263,4 +263,3 @@ export function FAQListingClient({
     </div>
   );
 }
-

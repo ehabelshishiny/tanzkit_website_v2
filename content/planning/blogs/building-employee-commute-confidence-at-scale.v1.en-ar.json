@@ -1,0 +1,267 @@
+{
+  "documentType": "blogPost",
+  "action": "draft",
+  "_id": "blog-employee-commute-confidence",
+  "slug": {
+    "_type": "slug",
+    "current": "building-employee-commute-confidence-at-scale"
+  },
+  "title": {
+    "en": "Building Employee Commute Confidence at Scale",
+    "ar": "بناء ثقة الموظف في التنقل على نطاق واسع"
+  },
+  "excerpt": {
+    "en": "How better trip visibility, issue handling, and service communication improve rider trust across employee transportation programs.",
+    "ar": "كيف ترفع رؤية الرحلة ومعالجة المشكلات والتواصل الخدمي المنظم ثقة الركاب في برامج نقل الموظفين."
+  },
+  "content": {
+    "en": [
+      {
+        "_key": "conf-en-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-en-01-span",
+            "_type": "span",
+            "text": "Rider confidence is built through repeated operational reliability. Employees trust transport when they know where the trip stands, what changed, and how quickly the service team responds when something goes wrong.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "conf-en-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-en-02-span",
+            "_type": "span",
+            "text": "In many programs, communication only starts after delays become visible. That creates unnecessary uncertainty. A stronger operating model gives riders practical visibility before frustration builds.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "conf-en-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-en-03-span",
+            "_type": "span",
+            "text": "Confidence drivers that matter most",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "conf-en-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-en-04-span",
+            "_type": "span",
+            "text": "Live trip status and clearer estimated arrival visibility.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "conf-en-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-en-05-span",
+            "_type": "span",
+            "text": "Incident handling with traceable follow-up instead of informal complaint loops.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "conf-en-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-en-06-span",
+            "_type": "span",
+            "text": "Post-trip feedback that feeds service review rather than disappearing into inboxes.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "conf-en-07",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-en-07-span",
+            "_type": "span",
+            "text": "At scale, confidence is not a branding exercise. It is proof that operations, supervisors, and rider communication are working from one service truth.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "conf-ar-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-ar-01-span",
+            "_type": "span",
+            "text": "تُبنى ثقة الراكب عبر الاعتمادية التشغيلية المتكررة. فالموظف يثق في الخدمة عندما يعرف أين وصلت الرحلة، وما الذي تغير، ومدى سرعة استجابة فريق الخدمة عند حدوث مشكلة.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "conf-ar-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-ar-02-span",
+            "_type": "span",
+            "text": "في كثير من البرامج لا يبدأ التواصل إلا بعد أن يصبح التأخير واضحًا. وهذا يخلق قدرًا غير ضروري من القلق. أما النموذج الأقوى فيمنح الراكب رؤية عملية مبكرة قبل أن تتصاعد حالة الإحباط.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "conf-ar-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-ar-03-span",
+            "_type": "span",
+            "text": "العوامل التي تصنع الثقة فعلًا",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "conf-ar-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-ar-04-span",
+            "_type": "span",
+            "text": "حالة الرحلة المباشرة ووضوح أفضل لوقت الوصول المتوقع.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "conf-ar-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-ar-05-span",
+            "_type": "span",
+            "text": "معالجة للحوادث والشكاوى بمسار متابعة موثق بدل الدورات غير الرسمية.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "conf-ar-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-ar-06-span",
+            "_type": "span",
+            "text": "تغذية راجعة بعد الرحلة تدخل في مراجعة الخدمة بدل أن تضيع في الرسائل.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "conf-ar-07",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "conf-ar-07-span",
+            "_type": "span",
+            "text": "وعند التوسع، لا تصبح الثقة مسألة تسويقية، بل دليلًا على أن التشغيل والإشراف وتواصل الركاب يعملون وفق حقيقة خدمة واحدة.",
+            "marks": []
+          }
+        ]
+      }
+    ]
+  },
+  "authorSlug": "team-codefy-hub",
+  "categorySlugs": [
+    "enterprise-mobility",
+    "safety-compliance"
+  ],
+  "tags": [
+    "employee trip visibility",
+    "rider confidence",
+    "transport service communication",
+    "incident handling",
+    "Tranzkit"
+  ],
+  "publishedAt": "2026-05-18T09:00:00.000Z",
+  "updatedAt": "2026-06-14T00:00:00.000Z",
+  "readingTime": 7,
+  "featured": false,
+  "status": "published",
+  "seo": {
+    "metaTitle": {
+      "en": "Building Employee Commute Confidence at Scale | Tranzkit",
+      "ar": "بناء ثقة الموظف في التنقل على نطاق واسع | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Learn how trip visibility, issue handling, and service communication improve employee commute confidence.",
+      "ar": "تعرّف كيف ترفع رؤية الرحلة ومعالجة المشكلات والتواصل الخدمي ثقة الموظف في التنقل."
+    },
+    "keywords": [
+      "employee commute confidence",
+      "rider visibility",
+      "transport service communication",
+      "employee transport app",
+      "Tranzkit"
+    ],
+    "noIndex": false,
+    "noFollow": false
+  }
+}

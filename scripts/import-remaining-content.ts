@@ -36,7 +36,6 @@ const resourcesTaxonomyPack = (resourcesTaxonomyModule as any).resourcesTaxonomy
     (resourcesTaxonomyModule as any).blogPageDoc,
     (resourcesTaxonomyModule as any).caseStudiesPageDoc,
     (resourcesTaxonomyModule as any).faqPageDoc,
-    (resourcesTaxonomyModule as any).documentationPageDoc,
   ],
   authors: (resourcesTaxonomyModule as any).authorDocs || [],
   blogCategories: (resourcesTaxonomyModule as any).blogCategoryDocs || [],
@@ -76,7 +75,6 @@ async function upsertSingletons() {
     ['blogPage', 'blogPage', pageByType.get('blogPage') as AnyDoc],
     ['caseStudiesPage', 'caseStudiesPage', pageByType.get('caseStudiesPage') as AnyDoc],
     ['faqPage', 'faqPage', pageByType.get('faqPage') as AnyDoc],
-    ['documentationPage', 'documentationPage', pageByType.get('documentationPage') as AnyDoc],
   ]
 
   for (const [id, type, data] of singletonMap) {
@@ -262,8 +260,7 @@ async function main() {
       "resourcesHubPage": defined(*[_id=="resourcesHubPage"][0]._id),
       "blogPage": defined(*[_id=="blogPage"][0]._id),
       "caseStudiesPage": defined(*[_id=="caseStudiesPage"][0]._id),
-      "faqPage": defined(*[_id=="faqPage"][0]._id),
-      "documentationPage": defined(*[_id=="documentationPage"][0]._id)
+      "faqPage": defined(*[_id=="faqPage"][0]._id)
     },
     "counts": {
       "authors": count(*[_type=="author"]),

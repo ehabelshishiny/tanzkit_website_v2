@@ -80,23 +80,6 @@ export const resourcesHubPage = defineType({
       ],
     },
     {
-      name: 'documentationSection',
-      title: 'Documentation Section',
-      type: 'object',
-      fields: [
-        {
-          name: 'title',
-          title: 'Section Title',
-          type: 'localizedString',
-        },
-        {
-          name: 'description',
-          title: 'Section Description',
-          type: 'localizedText',
-        },
-      ],
-    },
-    {
       name: 'careersSection',
       title: 'Careers Section',
       type: 'object',
@@ -127,4 +110,3 @@ export const resourcesHubPage = defineType({
     },
   },
 });
-

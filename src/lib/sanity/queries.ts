@@ -1223,10 +1223,6 @@ export const resourcesHubPageQuery = (locale: string = 'en') => groq`
       ${localizedField('title', locale)},
       ${localizedField('description', locale)}
     },
-    documentationSection {
-      ${localizedField('title', locale)},
-      ${localizedField('description', locale)}
-    },
     careersSection {
       ${localizedField('title', locale)},
       ${localizedField('description', locale)}
@@ -1338,7 +1334,7 @@ export const faqPageQuery = (locale: string = 'en') => groq`
 export async function getFAQPage(locale: string = 'en') {
   const client = await getClient();
   return client.fetch(faqPageQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
+    next: { revalidate: 60 } // Cache for 1 minute
   });
 }
 
@@ -1635,34 +1631,3 @@ export async function getAllFAQs(locale: string = 'en') {
  */
 
 
-
-
-/**
- * Documentation Queries
- */
-
-// Documentation Page (Full-width HTML content page)
-export const documentationPageQuery = (locale: string = 'en') => groq`
-  *[_type == "documentationPage"][0] {
-    _id,
-    "htmlContent": coalesce(htmlContent.${locale}, htmlContent.en),
-    seo {
-      ${localizedField('metaTitle', locale)},
-      ${localizedField('metaDescription', locale)},
-      keywords,
-      ogImage {
-        ${localizedField('asset', locale)}->{
-          _id,
-          url
-        }
-      }
-    }
-  }
-`;
-
-export async function getDocumentationPage(locale: string = 'en') {
-  const client = await getClient();
-  return client.fetch(documentationPageQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  });
-}

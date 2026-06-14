@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { getTranslations, getLocale } from 'next-intl/server';
 import { HeaderClient } from './header-client';
 
@@ -36,7 +35,6 @@ export async function Header() {
     { name: t('submenus.resources.blog'), href: `/${locale}/resources/blog` },
     { name: t('submenus.resources.caseStudies'), href: `/${locale}/resources/case-studies` },
     { name: t('submenus.resources.faq'), href: `/${locale}/resources/faq` },
-    { name: t('submenus.resources.documentation'), href: `/${locale}/resources/documentation` },
     { name: t('submenus.resources.careers'), href: `/${locale}/resources/careers` },
   ];
 

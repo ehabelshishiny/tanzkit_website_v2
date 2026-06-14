@@ -1,0 +1,267 @@
+{
+  "documentType": "blogPost",
+  "action": "draft",
+  "_id": "blog-tranzkit-codefy-hub-experience",
+  "slug": {
+    "_type": "slug",
+    "current": "tranzkit-shaped-by-20-years-transport-erp-delivery"
+  },
+  "title": {
+    "en": "How Tranzkit Was Shaped by 20+ Years of Transport and ERP Delivery",
+    "ar": "كيف تشكّل ترانزكيت بخبرة تتجاوز 20 عامًا في النقل وERP"
+  },
+  "excerpt": {
+    "en": "Why Tranzkit was built around real transport execution, buyer-operator alignment, and finance-aware operating workflows.",
+    "ar": "لماذا بُني ترانزكيت حول التنفيذ التشغيلي الحقيقي للنقل ومواءمة الجهة المشترية مع المشغّل وسير العمل الواعي بالمالية."
+  },
+  "content": {
+    "en": [
+      {
+        "_key": "exp-en-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-en-01-span",
+            "_type": "span",
+            "text": "Tranzkit was not designed as abstract mobility software. It was shaped around the daily pressure points that transport teams face when service commitments, route changes, supplier control, and financial accountability all collide in one operating day.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "exp-en-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-en-02-span",
+            "_type": "span",
+            "text": "That matters because many platforms describe transport at a high level but do not reflect the real discipline needed in assignments, approvals, service variance, and settlement follow-up. Practical delivery experience changes how the product is structured.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "exp-en-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-en-03-span",
+            "_type": "span",
+            "text": "What that experience shaped",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "exp-en-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-en-04-span",
+            "_type": "span",
+            "text": "Object-based control across routes, schedules, trips, drivers, vehicles, and suppliers.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "exp-en-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-en-05-span",
+            "_type": "span",
+            "text": "Shared buyer-operator visibility instead of separate operational narratives.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "exp-en-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-en-06-span",
+            "_type": "span",
+            "text": "Finance-aware workflows that do not wait until the end of the month to reveal transport problems.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "exp-en-07",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-en-07-span",
+            "_type": "span",
+            "text": "That is the difference between a software layer that reports on transport and an operating system that actually helps control it.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "exp-ar-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-ar-01-span",
+            "_type": "span",
+            "text": "لم يُصمم ترانزكيت كبرنامج تنقل نظري، بل تشكل حول نقاط الضغط اليومية التي تواجهها فرق النقل عندما تجتمع التزامات الخدمة وتغييرات الخطوط والتحكم في الموردين والمساءلة المالية في يوم تشغيل واحد.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "exp-ar-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-ar-02-span",
+            "_type": "span",
+            "text": "وهذا مهم لأن كثيرًا من المنصات تتحدث عن النقل بشكل عام، لكنها لا تعكس الانضباط الحقيقي المطلوب في التخصيصات والموافقات وانحرافات الخدمة ومتابعة التسويات. أما الخبرة العملية فتغير طريقة بناء المنتج من الأساس.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "exp-ar-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-ar-03-span",
+            "_type": "span",
+            "text": "ما الذي شكلته هذه الخبرة",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "exp-ar-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-ar-04-span",
+            "_type": "span",
+            "text": "تحكم قائم على الكيانات عبر الخطوط والجداول والرحلات والسائقين والمركبات والموردين.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "exp-ar-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-ar-05-span",
+            "_type": "span",
+            "text": "رؤية مشتركة بين الجهة المشترية والمشغّل بدل تعدد الروايات التشغيلية.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "exp-ar-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-ar-06-span",
+            "_type": "span",
+            "text": "سير عمل واعٍ بالمالية لا ينتظر نهاية الشهر حتى يكشف مشكلات النقل.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "exp-ar-07",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "exp-ar-07-span",
+            "_type": "span",
+            "text": "وهذا هو الفرق بين طبقة برمجية تكتفي بالتقارير عن النقل، وبين نظام تشغيل يساعد فعليًا على ضبطه وإدارته.",
+            "marks": []
+          }
+        ]
+      }
+    ]
+  },
+  "authorSlug": "team-codefy-hub",
+  "categorySlugs": [
+    "employee-transport-erp",
+    "enterprise-mobility"
+  ],
+  "tags": [
+    "Codefy Hub",
+    "transport ERP experience",
+    "employee transport operating system",
+    "buyer operator alignment",
+    "Tranzkit"
+  ],
+  "publishedAt": "2026-05-19T09:00:00.000Z",
+  "updatedAt": "2026-06-14T00:00:00.000Z",
+  "readingTime": 7,
+  "featured": true,
+  "status": "published",
+  "seo": {
+    "metaTitle": {
+      "en": "How Tranzkit Was Shaped by 20+ Years of Transport and ERP Delivery | Tranzkit",
+      "ar": "كيف تشكّل ترانزكيت بخبرة تتجاوز 20 عامًا في النقل وERP | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "See how real transport and ERP delivery experience shaped Tranzkit around execution, visibility, and finance-aware control.",
+      "ar": "اكتشف كيف شكلت خبرة التنفيذ الفعلية في النقل وERP منصة ترانزكيت حول التنفيذ والرؤية والتحكم الواعي بالمالية."
+    },
+    "keywords": [
+      "Codefy Hub Tranzkit",
+      "transport ERP expertise",
+      "employee transport operating system",
+      "transport execution platform",
+      "Tranzkit"
+    ],
+    "noIndex": false,
+    "noFollow": false
+  }
+}

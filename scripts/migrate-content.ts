@@ -150,11 +150,6 @@ async function migrateNavigation() {
             href: '/resources/faq',
           },
           {
-            _key: 'documentation',
-            label: loc(enMessages.nav.submenus.resources.documentation, arMessages.nav.submenus.resources.documentation),
-            href: '/resources/documentation',
-          },
-          {
             _key: 'careers',
             label: loc(enMessages.nav.submenus.resources.careers, arMessages.nav.submenus.resources.careers),
             href: '/resources/careers',
@@ -1232,4 +1227,3 @@ async function main() {
 }
 
 main().catch(console.error);
-

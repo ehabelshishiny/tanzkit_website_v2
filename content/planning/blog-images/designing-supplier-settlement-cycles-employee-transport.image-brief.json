@@ -1,0 +1,43 @@
+{
+  "documentType": "blogPostImageBrief",
+  "targetDocumentId": "blog-supplier-settlement-cycles",
+  "slug": "designing-supplier-settlement-cycles-employee-transport",
+  "title": {
+    "en": "Supplier settlement workflow dashboard",
+    "ar": "لوحة سير عمل تسوية الموردين"
+  },
+  "about": {
+    "en": "A finance operations visual centered on supplier payables, approvals, deductions, and settlement cycles.",
+    "ar": "مشهد للعمليات المالية يركز على مستحقات الموردين والموافقات والخصومات ودورات التسوية."
+  },
+  "recommendedVisual": {
+    "en": "A transport finance screen with supplier payment cycles, approval status, variance flags, and deductions summary.",
+    "ar": "شاشة مالية للنقل تعرض دورات سداد الموردين وحالة الموافقات وإشارات الانحراف وملخص الخصومات."
+  },
+  "mustInclude": [
+    "supplier payment cycle cues",
+    "approvals and deductions context",
+    "finance operations feel",
+    "clean enterprise design",
+    "transport workflow signals"
+  ],
+  "mustAvoid": [
+    "banking app consumer look",
+    "cash or coins literal imagery",
+    "real invoices with private data",
+    "legal conflict motifs",
+    "dark noisy backgrounds"
+  ],
+  "alt": {
+    "en": "Finance workflow visual showing supplier settlement cycles, approvals, and deductions in employee transport",
+    "ar": "مشهد مالي يوضح دورات تسوية الموردين والموافقات والخصومات في نقل الموظفين"
+  },
+  "dimensions": {
+    "width": 1200,
+    "height": 675,
+    "aspectRatio": "16:9",
+    "format": "JPG or WebP",
+    "maxFileSize": "250KB",
+    "safeZone": "Keep finance panels and labels centered"
+  }
+}

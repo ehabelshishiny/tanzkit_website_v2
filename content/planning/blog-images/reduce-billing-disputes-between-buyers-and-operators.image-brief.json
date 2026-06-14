@@ -1,0 +1,43 @@
+{
+  "documentType": "blogPostImageBrief",
+  "targetDocumentId": "blog-reduce-billing-disputes-enterprise-operator",
+  "slug": "reduce-billing-disputes-between-buyers-and-operators",
+  "title": {
+    "en": "Invoice and service reconciliation control",
+    "ar": "التحكم في مطابقة الخدمة والفوترة"
+  },
+  "about": {
+    "en": "An image that shows planned versus actual service review, approvals, and invoice reconciliation in one transport finance workflow.",
+    "ar": "صورة توضح مراجعة المخطط مقابل المنفذ والموافقات ومطابقة الفواتير ضمن مسار مالي واحد للنقل."
+  },
+  "recommendedVisual": {
+    "en": "A finance-aware transport dashboard with trip evidence, approval states, and invoice line matching panels.",
+    "ar": "لوحة تشغيل مالية للنقل تعرض أدلة الرحلات وحالات الموافقة ولوحات مطابقة بنود الفاتورة."
+  },
+  "mustInclude": [
+    "invoice review context",
+    "planned versus actual service cues",
+    "approval trail feel",
+    "buyer and operator workflow context",
+    "clean enterprise finance UI"
+  ],
+  "mustAvoid": [
+    "paper invoice closeups only",
+    "legal dispute courtroom themes",
+    "consumer accounting app aesthetics",
+    "real company or customer names",
+    "AI robot visuals"
+  ],
+  "alt": {
+    "en": "Finance dashboard style visual showing transport invoice reconciliation and planned versus actual service review",
+    "ar": "مشهد بأسلوب لوحة مالية يوضح مطابقة فواتير النقل ومراجعة المخطط مقابل المنفذ"
+  },
+  "dimensions": {
+    "width": 1200,
+    "height": 675,
+    "aspectRatio": "16:9",
+    "format": "JPG or WebP",
+    "maxFileSize": "250KB",
+    "safeZone": "Keep invoice and approval widgets centered"
+  }
+}

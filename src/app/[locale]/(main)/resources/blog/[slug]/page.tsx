@@ -67,7 +67,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <article className="min-h-screen">
         {/* Back Button */}
         <div className="w-full px-4 sm:px-6 md:px-8 py-6 border-b">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <Link
               href={`/${locale}/resources/blog`}
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
@@ -80,7 +80,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Hero Section */}
         <header className="w-full px-4 sm:px-6 md:px-8 py-12">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             {/* Categories */}
             {post.categories && post.categories.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-6">
@@ -160,7 +160,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Content */}
         <div className="w-full px-4 sm:px-6 md:px-8 pb-16">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <PortableText value={post.content} />
           </div>
         </div>

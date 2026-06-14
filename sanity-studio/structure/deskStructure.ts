@@ -167,11 +167,6 @@ export const deskStructure = (S: StructureBuilder) =>
                         .title('FAQ Page')
                         .icon(HelpCircleIcon)
                         .id('faqPage'),
-                      S.documentListItem()
-                        .schemaType('documentationPage')
-                        .title('Documentation Page')
-                        .icon(DocumentTextIcon)
-                        .id('documentationPage'),
                     ])
                 ),
 
@@ -226,4 +221,3 @@ export const deskStructure = (S: StructureBuilder) =>
     ])
 
 export default deskStructure
-

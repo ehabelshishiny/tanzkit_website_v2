@@ -1,0 +1,267 @@
+{
+  "documentType": "blogPost",
+  "action": "draft",
+  "_id": "blog-closing-ops-finance-loop",
+  "slug": {
+    "_type": "slug",
+    "current": "closing-operations-finance-loop-transport"
+  },
+  "title": {
+    "en": "Closing the Operations-Finance Loop in Transport",
+    "ar": "إغلاق حلقة التشغيل والمالية في النقل"
+  },
+  "excerpt": {
+    "en": "Why dispatch events, approvals, invoicing, and settlement must stay connected if transport teams want real financial control.",
+    "ar": "لماذا يجب أن تبقى أحداث التشغيل والموافقات والفوترة والتسوية مترابطة إذا أرادت فرق النقل تحكمًا ماليًا حقيقيًا."
+  },
+  "content": {
+    "en": [
+      {
+        "_key": "loop-en-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-en-01-span",
+            "_type": "span",
+            "text": "Transport margin is often lost in the handoff between operations and finance. A trip is changed in the field, but the invoice logic never sees it. A deduction is raised in finance, but operations never learns why the issue happened.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "loop-en-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-en-02-span",
+            "_type": "span",
+            "text": "That disconnect creates a slow leak. It shows up as invoice variance, settlement friction, repeated service errors, and weak accountability across suppliers, routes, and internal teams.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "loop-en-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-en-03-span",
+            "_type": "span",
+            "text": "What loop closure requires",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "loop-en-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-en-04-span",
+            "_type": "span",
+            "text": "Operational events that carry financial meaning, not just status updates.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "loop-en-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-en-05-span",
+            "_type": "span",
+            "text": "Approval chains that connect service exceptions to invoice outcomes.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "loop-en-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-en-06-span",
+            "_type": "span",
+            "text": "Variance review by route, supplier, and operating period.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "loop-en-07",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-en-07-span",
+            "_type": "span",
+            "text": "Closing the loop means finance stops being the last department to discover operational truth. It becomes part of the same operating model, with cleaner evidence and faster decisions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "loop-ar-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-ar-01-span",
+            "_type": "span",
+            "text": "يُفقد هامش الربح في النقل كثيرًا عند نقطة التسليم بين التشغيل والمالية. فتتغير رحلة في الميدان، لكن منطق الفوترة لا يلتقط ذلك. أو تُسجل خصومات في المالية، لكن التشغيل لا يعرف السبب الجذري وراءها.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "loop-ar-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-ar-02-span",
+            "_type": "span",
+            "text": "هذا الانفصال يخلق تسربًا بطيئًا يظهر في انحرافات الفواتير واحتكاك التسويات وتكرار الأخطاء التشغيلية وضعف المساءلة عبر الموردين والخطوط والفرق الداخلية.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "loop-ar-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-ar-03-span",
+            "_type": "span",
+            "text": "ما الذي يتطلبه إغلاق الحلقة",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "loop-ar-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-ar-04-span",
+            "_type": "span",
+            "text": "أحداث تشغيلية تحمل معنى ماليًا، لا مجرد تحديثات حالة.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "loop-ar-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-ar-05-span",
+            "_type": "span",
+            "text": "سلاسل موافقة تربط استثناءات الخدمة بنتائج الفوترة.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "loop-ar-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-ar-06-span",
+            "_type": "span",
+            "text": "مراجعة للانحرافات حسب الخط والمورد والفترة التشغيلية.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "loop-ar-07",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "loop-ar-07-span",
+            "_type": "span",
+            "text": "إغلاق الحلقة يعني أن المالية لا تبقى آخر من يكتشف الحقيقة التشغيلية، بل تصبح جزءًا من نفس نموذج التشغيل، مع أدلة أوضح وقرارات أسرع.",
+            "marks": []
+          }
+        ]
+      }
+    ]
+  },
+  "authorSlug": "team-codefy-hub",
+  "categorySlugs": [
+    "billing-settlement",
+    "analytics-kpis"
+  ],
+  "tags": [
+    "transport finance workflow",
+    "dispatch to billing",
+    "invoice variance control",
+    "settlement governance",
+    "Tranzkit"
+  ],
+  "publishedAt": "2026-05-17T09:00:00.000Z",
+  "updatedAt": "2026-06-14T00:00:00.000Z",
+  "readingTime": 7,
+  "featured": false,
+  "status": "published",
+  "seo": {
+    "metaTitle": {
+      "en": "Closing the Operations-Finance Loop in Transport | Tranzkit",
+      "ar": "إغلاق حلقة التشغيل والمالية في النقل | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "See how to connect dispatch events, approvals, invoicing, and settlement into one transport control model.",
+      "ar": "اكتشف كيف تربط بين أحداث التشغيل والموافقات والفوترة والتسوية ضمن نموذج تحكم واحد للنقل."
+    },
+    "keywords": [
+      "operations finance loop",
+      "transport invoice variance",
+      "dispatch billing integration",
+      "transport financial control",
+      "Tranzkit"
+    ],
+    "noIndex": false,
+    "noFollow": false
+  }
+}

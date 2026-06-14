@@ -1,0 +1,43 @@
+{
+  "documentType": "blogPostImageBrief",
+  "targetDocumentId": "blog-employee-transport-erp-system-guide",
+  "slug": "employee-transportation-erp-system-guide",
+  "title": {
+    "en": "Employee transportation ERP system overview",
+    "ar": "نظرة عامة على نظام ERP لنقل الموظفين"
+  },
+  "about": {
+    "en": "A visual that explains Tranzkit as one operating system connecting planning, routes, assignments, suppliers, live service, and finance.",
+    "ar": "مشهد بصري يشرح ترانزكيت كنظام تشغيل واحد يربط التخطيط والخطوط والتخصيصات والموردين والخدمة المباشرة والمالية."
+  },
+  "recommendedVisual": {
+    "en": "A premium enterprise dashboard composition with connected modules for planning, dispatch, live trips, suppliers, and invoicing arranged as one workflow.",
+    "ar": "تصميم احترافي يعرض لوحة تشغيل مؤسسية مع وحدات مترابطة للتخطيط والتشغيل والرحلات المباشرة والموردين والفوترة ضمن سير واحد."
+  },
+  "mustInclude": [
+    "enterprise transport dashboard feel",
+    "routes and schedules context",
+    "drivers and vehicles context",
+    "supplier and finance visibility cues",
+    "clean bilingual-ready UI composition"
+  ],
+  "mustAvoid": [
+    "public buses or city transit framing",
+    "consumer ride-hailing look",
+    "crowded generic stock-photo scenes",
+    "client logos or real customer data",
+    "unapproved AI robot imagery"
+  ],
+  "alt": {
+    "en": "Dashboard style visual showing connected planning, dispatch, supplier, and finance workflows for employee transportation",
+    "ar": "مشهد بأسلوب لوحة تحكم يوضح ترابط التخطيط والتشغيل والموردين والمالية في نقل الموظفين"
+  },
+  "dimensions": {
+    "width": 1200,
+    "height": 675,
+    "aspectRatio": "16:9",
+    "format": "JPG or WebP",
+    "maxFileSize": "250KB",
+    "safeZone": "Keep primary UI details centered for mobile crop safety"
+  }
+}

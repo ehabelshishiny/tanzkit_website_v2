@@ -1,0 +1,43 @@
+{
+  "documentType": "blogPostImageBrief",
+  "targetDocumentId": "blog-fixed-route-vs-demand-transport",
+  "slug": "fixed-routes-vs-demand-based-employee-transport",
+  "title": {
+    "en": "Fixed routes versus demand-based transport comparison",
+    "ar": "مقارنة بين المسارات الثابتة والنقل حسب الطلب"
+  },
+  "about": {
+    "en": "A side-by-side visual showing when fixed route service fits and when demand-based transport is more effective.",
+    "ar": "مشهد مقارن يوضح متى تناسب الخدمة ذات المسار الثابت ومتى يكون النقل حسب الطلب أكثر فاعلية."
+  },
+  "recommendedVisual": {
+    "en": "Split-screen dashboard style comparison with a fixed route map on one side and a flexible demand request workflow on the other.",
+    "ar": "تصميم مقسوم بأسلوب لوحة تشغيل يضع خريطة مسار ثابت في جانب ومسار طلبات مرن في الجانب الآخر."
+  },
+  "mustInclude": [
+    "clear operational comparison",
+    "route map cues",
+    "demand request or booking cues",
+    "enterprise transport context",
+    "professional dashboard aesthetic"
+  ],
+  "mustAvoid": [
+    "consumer taxi app styling",
+    "public transit station scenes",
+    "overly complex map clutter",
+    "real names or personal rider data",
+    "generic people shaking hands"
+  ],
+  "alt": {
+    "en": "Comparison visual between fixed route employee transport and flexible demand-based service",
+    "ar": "مشهد مقارن بين نقل الموظفين عبر المسارات الثابتة والخدمة المرنة حسب الطلب"
+  },
+  "dimensions": {
+    "width": 1200,
+    "height": 675,
+    "aspectRatio": "16:9",
+    "format": "JPG or WebP",
+    "maxFileSize": "250KB",
+    "safeZone": "Keep comparison labels and route visuals centered"
+  }
+}

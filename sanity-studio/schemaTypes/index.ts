@@ -44,7 +44,6 @@ import { caseStudyCategory } from './documents/caseStudyCategory';
 import { caseStudy } from './documents/caseStudy';
 import { faqCategory } from './documents/faqCategory';
 import { faqItem } from './documents/faqItem';
-import { documentationPage } from './documents/documentation';
 
 export const schemaTypes = [
   // Shared field types
@@ -92,7 +91,6 @@ export const schemaTypes = [
   blogPage,
   caseStudiesPage,
   faqPage,
-  documentationPage,
   author,
   blogCategory,
   blogPost,

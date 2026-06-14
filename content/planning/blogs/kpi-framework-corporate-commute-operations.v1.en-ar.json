@@ -1,0 +1,325 @@
+{
+  "documentType": "blogPost",
+  "action": "draft",
+  "_id": "blog-kpis-for-corporate-commute-operations",
+  "slug": {
+    "_type": "slug",
+    "current": "kpi-framework-corporate-commute-operations"
+  },
+  "title": {
+    "en": "KPI Framework for Corporate Commute Operations",
+    "ar": "إطار مؤشرات الأداء لعمليات تنقل الشركات"
+  },
+  "excerpt": {
+    "en": "A practical KPI structure for tracking service quality, occupancy, punctuality, and financial performance across employee transportation.",
+    "ar": "هيكل عملي لمؤشرات الأداء لمتابعة جودة الخدمة والإشغال والالتزام بالمواعيد والأداء المالي في نقل الموظفين."
+  },
+  "content": {
+    "en": [
+      {
+        "_key": "kpi-en-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-en-01-span",
+            "_type": "span",
+            "text": "Good transport KPIs do not exist to fill dashboards. They exist to help operating teams intervene earlier, explain performance clearly, and connect service quality to commercial decisions.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-en-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-en-02-span",
+            "_type": "span",
+            "text": "Many organizations track too many numbers and still miss the signals that matter. A strong KPI model should tell you whether service is reliable, whether assets are being used well, whether suppliers are meeting expectations, and whether the transport program is financially healthy.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-en-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-en-03-span",
+            "_type": "span",
+            "text": "Core KPI groups to track",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-en-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-en-04-span",
+            "_type": "span",
+            "text": "Service reliability metrics such as on-time pickup, trip completion, and SLA breaches.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-en-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-en-05-span",
+            "_type": "span",
+            "text": "Utilization metrics such as occupancy, route efficiency, and asset loading by shift.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-en-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-en-06-span",
+            "_type": "span",
+            "text": "Financial metrics such as cost per employee, invoice variance, deductions, and settlement accuracy.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-en-07",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-en-07-span",
+            "_type": "span",
+            "text": "How to keep KPI reporting useful",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-en-08",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-en-08-span",
+            "_type": "span",
+            "text": "Each KPI should have an owner, a refresh cycle, and a linked action. If a metric turns red, teams should know whether the next move is replanning, supplier follow-up, driver coaching, route review, or financial approval.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-en-09",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-en-09-span",
+            "_type": "span",
+            "text": "The most useful commute reporting stack is simple enough for leaders to understand quickly, but detailed enough for operations and finance teams to act on it without opening three more systems.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "kpi-ar-01",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-ar-01-span",
+            "_type": "span",
+            "text": "مؤشرات الأداء الجيدة في النقل لا تُبنى لملء لوحات العرض فقط، بل لتساعد فرق التشغيل على التدخل المبكر، وشرح الأداء بوضوح، وربط جودة الخدمة بالقرار التجاري والمالي.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-ar-02",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-ar-02-span",
+            "_type": "span",
+            "text": "كثير من الجهات تتابع أرقامًا كثيرة لكنها لا ترى الإشارات الأهم. الهيكل القوي للمؤشرات يجب أن يوضح ما إذا كانت الخدمة مستقرة، وما إذا كانت الأصول مستغلة جيدًا، وما إذا كان الموردون يحققون المتوقع، وما إذا كان البرنامج صحيًا من الناحية المالية.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-ar-03",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-ar-03-span",
+            "_type": "span",
+            "text": "المجموعات الأساسية التي يجب متابعتها",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-ar-04",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-ar-04-span",
+            "_type": "span",
+            "text": "مؤشرات الاعتمادية مثل الالتزام بوقت الالتقاط واستكمال الرحلات واختراقات SLA.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-ar-05",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-ar-05-span",
+            "_type": "span",
+            "text": "مؤشرات الاستغلال مثل نسب الإشغال وكفاءة الخطوط وتحميل الأصول حسب الوردية.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-ar-06",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-ar-06-span",
+            "_type": "span",
+            "text": "مؤشرات مالية مثل تكلفة الموظف وانحرافات الفواتير والخصومات ودقة التسوية.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-ar-07",
+        "_type": "block",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-ar-07-span",
+            "_type": "span",
+            "text": "كيف تبقى تقارير المؤشرات مفيدة",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-ar-08",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-ar-08-span",
+            "_type": "span",
+            "text": "كل مؤشر يجب أن يكون له مالك واضح، ودورية تحديث، وإجراء مرتبط به. فإذا انخفض الأداء، يجب أن تعرف الفرق فورًا هل المطلوب إعادة تخطيط، أم متابعة المورد، أم توجيه السائق، أم مراجعة الخط، أم قرار مالي.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "kpi-ar-09",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "kpi-ar-09-span",
+            "_type": "span",
+            "text": "أفضل هيكل تقارير هو الذي يفهمه المديرون بسرعة، ويمنح فرق التشغيل والمالية تفاصيل كافية للتصرف من دون الحاجة إلى التنقل بين عدة أنظمة إضافية.",
+            "marks": []
+          }
+        ]
+      }
+    ]
+  },
+  "authorSlug": "team-codefy-hub",
+  "categorySlugs": [
+    "analytics-kpis",
+    "enterprise-mobility"
+  ],
+  "tags": [
+    "transport KPI framework",
+    "employee commute analytics",
+    "SLA reporting",
+    "cost per employee",
+    "transport performance dashboard",
+    "Tranzkit"
+  ],
+  "publishedAt": "2026-05-13T09:00:00.000Z",
+  "updatedAt": "2026-06-14T00:00:00.000Z",
+  "readingTime": 7,
+  "featured": false,
+  "status": "published",
+  "seo": {
+    "metaTitle": {
+      "en": "KPI Framework for Corporate Commute Operations | Tranzkit",
+      "ar": "إطار مؤشرات الأداء لعمليات تنقل الشركات | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Build a practical KPI framework for employee transportation covering service reliability, utilization, and finance.",
+      "ar": "ابنِ إطارًا عمليًا لمؤشرات أداء نقل الموظفين يغطي اعتمادية الخدمة والاستغلال والمالية."
+    },
+    "keywords": [
+      "employee transport KPI",
+      "corporate commute analytics",
+      "transport SLA reporting",
+      "transport dashboard metrics",
+      "cost per employee transport",
+      "Tranzkit"
+    ],
+    "noIndex": false,
+    "noFollow": false
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "documentType": "blogPostImageBrief",
+  "targetDocumentId": "blog-kpis-for-corporate-commute-operations",
+  "slug": "kpi-framework-corporate-commute-operations",
+  "title": {
+    "en": "Transport KPI dashboard overview",
+    "ar": "نظرة على لوحة مؤشرات النقل"
+  },
+  "about": {
+    "en": "A visual focused on KPI tracking for service reliability, occupancy, punctuality, and financial performance.",
+    "ar": "صورة تركز على متابعة مؤشرات جودة الخدمة والإشغال والالتزام بالمواعيد والأداء المالي."
+  },
+  "recommendedVisual": {
+    "en": "A clean analytics dashboard with charts, KPI cards, route health, occupancy, SLA, and finance widgets.",
+    "ar": "لوحة تحليلات نظيفة تضم رسومًا بيانية وبطاقات مؤشرات وصحة الخطوط والإشغال وSLA ومؤشرات مالية."
+  },
+  "mustInclude": [
+    "KPI cards",
+    "charts or trend lines",
+    "service and finance signal balance",
+    "enterprise dashboard styling",
+    "clear performance monitoring theme"
+  ],
+  "mustAvoid": [
+    "generic bar chart only",
+    "sports or fitness metrics styling",
+    "public transit passenger crowds",
+    "real business data screenshots",
+    "neon cyberpunk treatment"
+  ],
+  "alt": {
+    "en": "Analytics dashboard visual for employee transport KPIs, service levels, occupancy, and finance",
+    "ar": "مشهد تحليلي للوحة مؤشرات نقل الموظفين ومستويات الخدمة والإشغال والمالية"
+  },
+  "dimensions": {
+    "width": 1200,
+    "height": 675,
+    "aspectRatio": "16:9",
+    "format": "JPG or WebP",
+    "maxFileSize": "250KB",
+    "safeZone": "Keep KPI cards and charts away from outer edges"
+  }
+}

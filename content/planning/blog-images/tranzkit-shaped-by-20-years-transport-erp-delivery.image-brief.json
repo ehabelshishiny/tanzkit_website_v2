@@ -1,0 +1,43 @@
+{
+  "documentType": "blogPostImageBrief",
+  "targetDocumentId": "blog-tranzkit-codefy-hub-experience",
+  "slug": "tranzkit-shaped-by-20-years-transport-erp-delivery",
+  "title": {
+    "en": "Tranzkit platform heritage and expertise",
+    "ar": "خبرة ترانزكيت وجذور المنصة"
+  },
+  "about": {
+    "en": "A brand-led visual that positions Tranzkit as a platform shaped by real transport and ERP delivery experience.",
+    "ar": "مشهد بصري موجه للهوية يبرز ترانزكيت كمنصة تشكلت من خبرة فعلية في النقل وتنفيذ أنظمة ERP."
+  },
+  "recommendedVisual": {
+    "en": "A premium branded platform composition with connected modules, transport workflow signals, and a polished enterprise product tone.",
+    "ar": "تكوين بصري احترافي يعكس هوية المنصة مع وحدات مترابطة وإشارات لمسارات النقل ونبرة مؤسسية راقية."
+  },
+  "mustInclude": [
+    "brand-forward platform feel",
+    "connected workflow cues",
+    "enterprise software tone",
+    "transport plus ERP context",
+    "clean, premium composition"
+  ],
+  "mustAvoid": [
+    "founder portrait concept",
+    "timeline collage look",
+    "generic office team stock",
+    "real client references",
+    "overstated AI imagery"
+  ],
+  "alt": {
+    "en": "Brand-led visual showing Tranzkit as a connected employee transport operating platform",
+    "ar": "مشهد بصري يعرض ترانزكيت كمنصة تشغيل مترابطة لنقل الموظفين"
+  },
+  "dimensions": {
+    "width": 1200,
+    "height": 675,
+    "aspectRatio": "16:9",
+    "format": "JPG or WebP",
+    "maxFileSize": "250KB",
+    "safeZone": "Keep central brand and platform details within the middle area"
+  }
+}
