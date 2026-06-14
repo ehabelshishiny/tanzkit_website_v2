@@ -199,7 +199,7 @@ function preserveKnownImageFields(
 
   const merged: Record<string, unknown> = { ...incoming }
 
-  for (const key of ['image', 'backgroundImage', 'ogImage']) {
+  for (const key of ['image', 'backgroundImage', 'ogImage', 'screenshots']) {
     if (!hasOwnProperty(merged, key) && hasOwnProperty(existing, key)) {
       merged[key] = existing[key]
     }
@@ -1025,8 +1025,7 @@ function mapSolutionsEnterprisesPassengersPatch(contentMap: ContentMap) {
 function mapAppDetailPatch(contentMap: ContentMap) {
   const cta = isRecord(contentMap.cta) ? contentMap.cta : {}
   const seo = isRecord(contentMap.seo) ? contentMap.seo : {}
-
-  return {
+  const patch: Record<string, unknown> = {
     name: localized(contentMap.name),
     slug: {
       _type: 'slug',
@@ -1037,11 +1036,6 @@ function mapAppDetailPatch(contentMap: ContentMap) {
     category: asString(contentMap.category),
     layoutType: asString(contentMap.layoutType),
     benefits: localizedArray(contentMap.benefits),
-    screenshots: Array.isArray(contentMap.screenshots) ? contentMap.screenshots : [],
-    features: Array.isArray(contentMap.features) ? contentMap.features : [],
-    steps: Array.isArray(contentMap.steps) ? contentMap.steps : [],
-    platforms: Array.isArray(contentMap.platforms) ? contentMap.platforms : [],
-    storeUrls: isRecord(contentMap.storeUrls) ? contentMap.storeUrls : {},
     cta: {
       heading: localized(cta.heading),
       subtitle: localized(cta.subtitle),
@@ -1062,6 +1056,28 @@ function mapAppDetailPatch(contentMap: ContentMap) {
       keywords: Array.isArray(seo.keywords) ? seo.keywords : [],
     },
   }
+
+  if (Array.isArray(contentMap.screenshots)) {
+    patch.screenshots = contentMap.screenshots
+  }
+
+  if (Array.isArray(contentMap.features)) {
+    patch.features = contentMap.features
+  }
+
+  if (Array.isArray(contentMap.steps)) {
+    patch.steps = contentMap.steps
+  }
+
+  if (isRecord(contentMap.platforms)) {
+    patch.platforms = contentMap.platforms
+  }
+
+  if (isRecord(contentMap.storeUrls)) {
+    patch.storeUrls = contentMap.storeUrls
+  }
+
+  return patch
 }
 
 function mapNavigationPatch(contentMap: ContentMap) {

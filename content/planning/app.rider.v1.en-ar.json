@@ -1,0 +1,227 @@
+{
+  "pageKey": "appDetail",
+  "action": "draft",
+  "slug": "rider",
+  "name": {
+    "en": "Rider App",
+    "ar": "تطبيق الراكب"
+  },
+  "tagline": {
+    "en": "Give employees clearer trip timing and visibility",
+    "ar": "امنح الموظفين وضوحًا أفضل في التوقيت والرؤية"
+  },
+  "description": {
+    "en": "Give riders a clearer daily trip experience with assigned ride details, live status, service updates, and a better view of what happens next.",
+    "ar": "امنح الركاب تجربة يومية أوضح عبر تفاصيل الرحلة المخصصة والحالة المباشرة وتحديثات الخدمة ورؤية أفضل لما سيحدث بعد ذلك."
+  },
+  "category": "enterprise",
+  "layoutType": "portrait",
+  "benefits": [
+    {
+      "en": "See trip timing and assignment more clearly",
+      "ar": "اعرض توقيت الرحلة والتخصيص بوضوح أكبر"
+    },
+    {
+      "en": "Follow live status during the commute",
+      "ar": "تابع الحالة المباشرة أثناء التنقل"
+    },
+    {
+      "en": "Get service updates without confusion",
+      "ar": "استقبل تحديثات الخدمة دون ارتباك"
+    },
+    {
+      "en": "Keep trip history and feedback in one place",
+      "ar": "احتفظ بسجل الرحلات والملاحظات في مكان واحد"
+    }
+  ],
+  "screenshots": [
+    {
+      "_key": "589a83b91665b07fc6bb61af0d4df075",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-09114d3e254f2d832101d26d337a232fe3554589-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "5aa75c7baae1bf6932ab44265a07aea6",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-c7043b60da2b09046affcef80b9f33a762a15c8a-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "99189dee4df82678cb56cb3dcda2db60",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-cb6b7805a7c2dfa5164a150d060fc5cb4ccaa5d3-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "7e3df675d2e11be918336416b31c8917",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-9dba78651520c144409a67dcbf3afbca124a0590-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "dab4b8ad1398f11b87bbabe63e859567",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-4369dd1f55c8913d5ae04a2f1909d84ccaba1726-1584x3267-png",
+        "_type": "reference"
+      }
+    }
+  ],
+  "features": [
+    {
+      "_key": "rid-feature-1",
+      "icon": "UserCircle",
+      "title": {
+        "en": "Assigned trip clarity",
+        "ar": "وضوح الرحلة المخصصة"
+      },
+      "description": {
+        "en": "Show riders the assigned trip, pickup context, and expected journey details more clearly.",
+        "ar": "اعرض للركاب الرحلة المخصصة وسياق الالتقاط وتفاصيل الرحلة المتوقعة بوضوح أكبر."
+      }
+    },
+    {
+      "_key": "rid-feature-2",
+      "icon": "MapPin",
+      "title": {
+        "en": "Live trip visibility",
+        "ar": "رؤية مباشرة للرحلة"
+      },
+      "description": {
+        "en": "Keep employees informed with live status and better visibility into what is happening next.",
+        "ar": "أبقِ الموظفين على اطلاع بالحالة المباشرة ورؤية أفضل لما سيحدث بعد ذلك."
+      }
+    },
+    {
+      "_key": "rid-feature-3",
+      "icon": "MessageSquare",
+      "title": {
+        "en": "Service updates and support",
+        "ar": "تحديثات الخدمة والدعم"
+      },
+      "description": {
+        "en": "Deliver clearer trip notices, service changes, and support communication in one place.",
+        "ar": "قدّم إشعارات أوضح للرحلة وتغييرات الخدمة ورسائل الدعم في مكان واحد."
+      }
+    },
+    {
+      "_key": "rid-feature-4",
+      "icon": "CheckCircle",
+      "title": {
+        "en": "Trip history and feedback",
+        "ar": "سجل الرحلات والملاحظات"
+      },
+      "description": {
+        "en": "Let riders review completed trips and submit structured feedback with less friction.",
+        "ar": "اسمح للركاب بمراجعة الرحلات المكتملة وإرسال ملاحظات منظمة بسهولة أكبر."
+      }
+    }
+  ],
+  "steps": [
+    {
+      "_key": "rid-step-1",
+      "title": {
+        "en": "Check your trip",
+        "ar": "راجع رحلتك"
+      },
+      "description": {
+        "en": "Open the app to see the assigned trip, timing, and service details for the day.",
+        "ar": "افتح التطبيق لرؤية الرحلة المخصصة والتوقيت وتفاصيل الخدمة لليوم."
+      }
+    },
+    {
+      "_key": "rid-step-2",
+      "title": {
+        "en": "Follow live status",
+        "ar": "تابع الحالة المباشرة"
+      },
+      "description": {
+        "en": "Track the ride status and stay informed about trip timing as service progresses.",
+        "ar": "تابع حالة الرحلة وابقَ على اطلاع بتوقيت الخدمة أثناء التقدم."
+      }
+    },
+    {
+      "_key": "rid-step-3",
+      "title": {
+        "en": "Receive updates",
+        "ar": "استقبل التحديثات"
+      },
+      "description": {
+        "en": "Get trip notices and service updates without switching to disconnected channels.",
+        "ar": "استقبل إشعارات الرحلة وتحديثات الخدمة دون التنقل بين قنوات متفرقة."
+      }
+    },
+    {
+      "_key": "rid-step-4",
+      "title": {
+        "en": "Review and rate",
+        "ar": "راجع وقيّم"
+      },
+      "description": {
+        "en": "Review completed trips and share feedback that supports service improvement.",
+        "ar": "راجع الرحلات المكتملة وشارك ملاحظات تدعم تحسين الخدمة."
+      }
+    }
+  ],
+  "platforms": {
+    "android": true,
+    "ios": true,
+    "web": false
+  },
+  "storeUrls": {
+    "appStore": "",
+    "playStore": "",
+    "webApp": ""
+  },
+  "cta": {
+    "heading": {
+      "en": "See how riders get a clearer trip experience",
+      "ar": "اكتشف كيف يحصل الركاب على تجربة رحلة أوضح"
+    },
+    "subtitle": {
+      "en": "Connect trip timing, live status, and rider updates through one mobile experience.",
+      "ar": "اربط توقيت الرحلة والحالة المباشرة وتحديثات الراكب عبر تجربة جوال واحدة."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Book a demo",
+        "ar": "احجز عرضًا"
+      },
+      "href": "/contact"
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Explore apps",
+        "ar": "استكشف التطبيقات"
+      },
+      "href": "/apps"
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "Rider app for employee trip visibility | Tranzkit",
+      "ar": "تطبيق الراكب لرؤية رحلات الموظفين | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Give riders clearer trip timing, live status, service updates, and feedback flows with the Tranzkit Rider App.",
+      "ar": "امنح الركاب وضوحًا أفضل في توقيت الرحلات والحالة المباشرة وتحديثات الخدمة ومسارات الملاحظات عبر تطبيق الراكب من ترانزكيت."
+    },
+    "keywords": [
+      "rider app",
+      "employee transport rider app",
+      "trip visibility app",
+      "live ride status",
+      "rider experience",
+      "Tranzkit"
+    ]
+  }
+}

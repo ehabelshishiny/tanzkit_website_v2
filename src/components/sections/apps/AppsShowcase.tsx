@@ -1,11 +1,11 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, type ComponentType } from 'react';
 import { useTheme } from 'next-themes';
 import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Building2, Route, Truck, Users } from 'lucide-react';
 import { Typography } from '@/components/ui/typography';
-import { urlFor } from '@/lib/sanity/image';
 
 interface SanityImage {
   _type: 'image';
@@ -52,11 +52,34 @@ interface AppsShowcaseProps {
   data: ShowcaseData;
 }
 
+function SegmentTabIcons({
+  active,
+  icons,
+}: {
+  active: boolean;
+  icons: Array<ComponentType<{ className?: string }>>;
+}) {
+  return (
+    <div className={`flex items-center gap-1.5 ${active ? 'text-white' : 'text-slate-500'}`}>
+      {icons.map((Icon, index) => (
+        <span
+          key={index}
+          className={`flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 ${
+            active ? 'bg-white/16' : 'bg-slate-200/70'
+          }`}
+        >
+          <Icon className="h-4 w-4" />
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export default function AppsShowcase({ data }: AppsShowcaseProps) {
   const { theme } = useTheme();
   const locale = useLocale();
-  const [mounted, setMounted] = useState(false);
   const [activeSegment, setActiveSegment] = useState<'operators' | 'enterprise'>('operators');
+  const mounted = theme !== undefined;
 
   // Localized labels
   const ctaLabel = locale === 'ar' ? 'اعرف المزيد' : 'Learn More';
@@ -70,10 +93,6 @@ export default function AppsShowcase({ data }: AppsShowcaseProps) {
   const operatorMobileApps = operatorApps.filter(app => app.layoutType === 'portrait');
   const enterpriseDashboard = enterpriseApps.find(app => app.layoutType === 'landscape');
   const enterpriseMobileApps = enterpriseApps.filter(app => app.layoutType === 'portrait');
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   if (!mounted) {
     return (
@@ -220,13 +239,10 @@ export default function AppsShowcase({ data }: AppsShowcaseProps) {
               }`}
             >
               <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                  activeSegment === 'operators'
-                    ? 'bg-white/20'
-                    : themeClasses.switcherIconBg
-                }`}>
-                  <i className="ri-truck-line text-xl"></i>
-                </div>
+                <SegmentTabIcons
+                  active={activeSegment === 'operators'}
+                  icons={[Truck, Route]}
+                />
                 <div className="text-left">
                   <Typography variant="caption" as="div" className="font-bold">{data.operatorsSegment.tabLabel}</Typography>
                   <Typography variant="caption" as="div" className={`${activeSegment === 'operators' ? 'text-[#7ED977]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'} ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
@@ -245,13 +261,10 @@ export default function AppsShowcase({ data }: AppsShowcaseProps) {
               }`}
             >
               <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                  activeSegment === 'enterprise'
-                    ? 'bg-white/20'
-                    : themeClasses.switcherIconBg
-                }`}>
-                  <i className="ri-building-2-line text-xl"></i>
-                </div>
+                <SegmentTabIcons
+                  active={activeSegment === 'enterprise'}
+                  icons={[Building2, Users]}
+                />
                 <div className="text-left">
                   <Typography variant="caption" as="div" className="font-bold">{data.enterpriseSegment.tabLabel}</Typography>
                   <Typography variant="caption" as="div" className={`${activeSegment === 'enterprise' ? 'text-[#0F2E63]' : isDarkTheme ? 'text-slate-500' : 'text-slate-400'} ${locale === 'ar' ? 'text-right' : 'text-left'}`}>

@@ -1,0 +1,235 @@
+{
+  "pageKey": "appDetail",
+  "action": "draft",
+  "slug": "driver",
+  "name": {
+    "en": "Driver App",
+    "ar": "تطبيق السائق"
+  },
+  "tagline": {
+    "en": "Run assigned trips with clearer route guidance",
+    "ar": "نفذ الرحلات المخصصة بوضوح أكبر في المسار"
+  },
+  "description": {
+    "en": "Help drivers manage assigned trips, stop sequence, trip actions, attendance steps, and service updates from one practical mobile workflow.",
+    "ar": "ساعد السائقين على إدارة الرحلات المخصصة وتسلسل التوقفات وإجراءات الرحلة وخطوات الحضور وتحديثات الخدمة عبر سير عمل عملي واحد على الجوال."
+  },
+  "category": "operators",
+  "layoutType": "portrait",
+  "benefits": [
+    {
+      "en": "See assigned trips and route sequence clearly",
+      "ar": "اعرض الرحلات المخصصة وتسلسل الخط بوضوح"
+    },
+    {
+      "en": "Handle trip actions from one mobile screen",
+      "ar": "نفذ إجراءات الرحلة من شاشة جوال واحدة"
+    },
+    {
+      "en": "Follow attendance and service steps consistently",
+      "ar": "اتبع خطوات الحضور والخدمة بشكل منظم"
+    },
+    {
+      "en": "Keep dispatch updated during live operation",
+      "ar": "أبقِ غرفة التشغيل محدثة أثناء الخدمة المباشرة"
+    }
+  ],
+  "screenshots": [
+    {
+      "_key": "4ba06849de3b",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-46dda18ba251614bc982f0ef7a9cf8fa5d4e6520-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "1fdbe39ace3b",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-c9c55689024c618b983e0c0d93446be7a1ac01a3-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "5b69d8928246",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-7a46d9061579a5d3926a092179ffb78a908008a9-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "0a3a71418adf",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-7bcb50b02289aa25da349ce9c53d531ef65d5d50-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "ccc71721cb81",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e0c05f10dfe6545c39414b5440b21ad04802ef81-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "db64e9e45e9f",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-7b80e8d5cbe8bb66a7f8d58603d33ee22c41ef3f-1584x3267-png",
+        "_type": "reference"
+      }
+    }
+  ],
+  "features": [
+    {
+      "_key": "drv-feature-1",
+      "icon": "Route",
+      "title": {
+        "en": "Assigned route clarity",
+        "ar": "وضوح الخط المخصص"
+      },
+      "description": {
+        "en": "Show each driver the assigned route, trip sequence, and stop flow with less confusion.",
+        "ar": "اعرض لكل سائق الخط المخصص وتسلسل الرحلة وحركة التوقفات بوضوح أكبر."
+      }
+    },
+    {
+      "_key": "drv-feature-2",
+      "icon": "Clock",
+      "title": {
+        "en": "Trip actions and timing",
+        "ar": "إجراءات الرحلة والتوقيت"
+      },
+      "description": {
+        "en": "Handle start, arrival, departure, and completion actions from one simple workflow.",
+        "ar": "نفذ إجراءات البدء والوصول والانطلاق والإنهاء من خلال سير عمل بسيط واحد."
+      }
+    },
+    {
+      "_key": "drv-feature-3",
+      "icon": "CheckCircle",
+      "title": {
+        "en": "Attendance and service checks",
+        "ar": "فحوصات الحضور والخدمة"
+      },
+      "description": {
+        "en": "Support attendance confirmation and service checks without switching between tools.",
+        "ar": "ادعم تأكيد الحضور وفحوصات الخدمة دون التنقل بين أدوات متعددة."
+      }
+    },
+    {
+      "_key": "drv-feature-4",
+      "icon": "MessageSquare",
+      "title": {
+        "en": "Live communication updates",
+        "ar": "تحديثات تواصل مباشرة"
+      },
+      "description": {
+        "en": "Keep dispatch informed with clearer trip status and field updates as service runs.",
+        "ar": "أبقِ غرفة التشغيل على اطلاع بحالة الرحلة والتحديثات الميدانية أثناء الخدمة."
+      }
+    }
+  ],
+  "steps": [
+    {
+      "_key": "drv-step-1",
+      "title": {
+        "en": "Open assigned trips",
+        "ar": "افتح الرحلات المخصصة"
+      },
+      "description": {
+        "en": "Review the day’s trips, route sequence, and expected service details before moving.",
+        "ar": "راجع رحلات اليوم وتسلسل الخط وتفاصيل الخدمة المتوقعة قبل التحرك."
+      }
+    },
+    {
+      "_key": "drv-step-2",
+      "title": {
+        "en": "Follow the route",
+        "ar": "اتبع المسار"
+      },
+      "description": {
+        "en": "Use the route flow and stop order to keep execution consistent on the road.",
+        "ar": "استخدم تسلسل المسار وترتيب التوقفات للحفاظ على تنفيذ منظم على الطريق."
+      }
+    },
+    {
+      "_key": "drv-step-3",
+      "title": {
+        "en": "Update trip status",
+        "ar": "حدّث حالة الرحلة"
+      },
+      "description": {
+        "en": "Record trip actions and service updates so dispatch and supervisors stay aligned.",
+        "ar": "سجل إجراءات الرحلة وتحديثات الخدمة حتى تبقى غرفة التشغيل والمشرفون على تنسيق واحد."
+      }
+    },
+    {
+      "_key": "drv-step-4",
+      "title": {
+        "en": "Close the trip",
+        "ar": "أغلق الرحلة"
+      },
+      "description": {
+        "en": "Finish the trip with clearer completion status and the right follow-up trail.",
+        "ar": "أنهِ الرحلة بحالة إنجاز أوضح ومسار متابعة صحيح."
+      }
+    }
+  ],
+  "platforms": {
+    "android": true,
+    "ios": true,
+    "web": false
+  },
+  "storeUrls": {
+    "appStore": "",
+    "playStore": "",
+    "webApp": ""
+  },
+  "cta": {
+    "heading": {
+      "en": "See how drivers execute trips with more clarity",
+      "ar": "اكتشف كيف ينفذ السائقون الرحلات بوضوح أكبر"
+    },
+    "subtitle": {
+      "en": "Give drivers one workflow for routes, stop actions, service updates, and trip completion.",
+      "ar": "امنح السائقين سير عمل واحدًا للخطوط وإجراءات التوقفات وتحديثات الخدمة وإنهاء الرحلات."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Book a demo",
+        "ar": "احجز عرضًا"
+      },
+      "href": "/contact"
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Explore apps",
+        "ar": "استكشف التطبيقات"
+      },
+      "href": "/apps"
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "Driver app for employee transport execution | Tranzkit",
+      "ar": "تطبيق السائق لتنفيذ نقل الموظفين | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Help drivers manage assigned trips, route flow, trip actions, and service updates with the Tranzkit Driver App.",
+      "ar": "ساعد السائقين على إدارة الرحلات المخصصة وحركة المسار وإجراءات الرحلة وتحديثات الخدمة عبر تطبيق السائق من ترانزكيت."
+    },
+    "keywords": [
+      "driver app",
+      "employee transport driver app",
+      "trip execution app",
+      "route guidance app",
+      "driver workflow",
+      "Tranzkit"
+    ]
+  }
+}

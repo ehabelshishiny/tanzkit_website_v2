@@ -1,0 +1,243 @@
+{
+  "pageKey": "appDetail",
+  "action": "draft",
+  "slug": "enterprise-dashboard",
+  "name": {
+    "en": "Enterprise Dashboard",
+    "ar": "لوحة الشركة"
+  },
+  "tagline": {
+    "en": "Plan demand, review service, and track finance",
+    "ar": "خطط الطلب وراجع الخدمة وتابع المالية"
+  },
+  "description": {
+    "en": "Use one enterprise workspace for employee transport demand, attendance review, operator follow-up, service quality, and financial visibility.",
+    "ar": "استخدم مساحة عمل واحدة للشركة لإدارة طلب نقل الموظفين ومراجعة الحضور ومتابعة المشغلين وجودة الخدمة والرؤية المالية."
+  },
+  "category": "enterprise",
+  "layoutType": "landscape",
+  "benefits": [
+    {
+      "en": "Plan employee transport demand by site and shift",
+      "ar": "خطط طلب نقل الموظفين حسب الموقع والوردية"
+    },
+    {
+      "en": "Review attendance, service, and operator delivery",
+      "ar": "راجع الحضور والخدمة وتنفيذ المشغلين"
+    },
+    {
+      "en": "Track pricing, invoices, and payment context",
+      "ar": "تابع التسعير والفواتير وسياق المدفوعات"
+    },
+    {
+      "en": "Keep finance and service review in one view",
+      "ar": "اجمع المالية ومراجعة الخدمة في شاشة واحدة"
+    }
+  ],
+  "screenshots": [
+    {
+      "_key": "944c7f2a49bf",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-d5a3d673262bec11c83035441a7e542f2ae8e216-2337x1452-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "ff88d6e653df",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-a525312b6e7dfd0b96f49e887334c783f92f816c-2337x1452-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "64fd2ea33355",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-55bc18ed7ceea2da8f93030db1b48db9c81400ee-2337x1452-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "6db0bf9c2a7b",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-99e3a9c442880252689e05ab15129e5d0d45f81b-2337x1452-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "b42a3e6c25fe",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-9e27bea8d2fd9fe4447e00c346707d3bf8ca51f8-2337x1452-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "83ca12c9cf1f",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-0ca8ecabc04c656ef0289db7b5cf70312546ce88-2337x1452-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "29c2a95cec13",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e15e11ecef21938783fd3420c25bda7a7f86da56-2337x1452-png",
+        "_type": "reference"
+      }
+    }
+  ],
+  "features": [
+    {
+      "_key": "ent-feature-1",
+      "icon": "Building2",
+      "title": {
+        "en": "Demand and service planning",
+        "ar": "تخطيط الطلب والخدمة"
+      },
+      "description": {
+        "en": "Plan routes, schedules, projects, and service demand from one enterprise view.",
+        "ar": "خطط الخطوط والجداول والمشاريع وطلب الخدمة من خلال شاشة واحدة للشركة."
+      }
+    },
+    {
+      "_key": "ent-feature-2",
+      "icon": "Users",
+      "title": {
+        "en": "Attendance and eligibility review",
+        "ar": "مراجعة الحضور والأهلية"
+      },
+      "description": {
+        "en": "Review attendance, rider eligibility, and service usage with clearer operational context.",
+        "ar": "راجع الحضور وأهلية الركاب واستخدام الخدمة بسياق تشغيلي أوضح."
+      }
+    },
+    {
+      "_key": "ent-feature-3",
+      "icon": "BarChart3",
+      "title": {
+        "en": "Operator and trip visibility",
+        "ar": "رؤية المشغلين والرحلات"
+      },
+      "description": {
+        "en": "Track service delivery, trip performance, and planned vs actual execution in one workspace.",
+        "ar": "تابع تنفيذ الخدمة وأداء الرحلات ومقارنة المخطط بالفعلي داخل مساحة عمل واحدة."
+      }
+    },
+    {
+      "_key": "ent-feature-4",
+      "icon": "CreditCard",
+      "title": {
+        "en": "Pricing and financial follow-up",
+        "ar": "التسعير والمتابعة المالية"
+      },
+      "description": {
+        "en": "Keep pricing, invoices, and payment follow-up connected to transport operations.",
+        "ar": "أبقِ التسعير والفواتير ومتابعة المدفوعات مرتبطة بعمليات النقل."
+      }
+    }
+  ],
+  "steps": [
+    {
+      "_key": "ent-step-1",
+      "title": {
+        "en": "Set transport demand",
+        "ar": "حدد طلب النقل"
+      },
+      "description": {
+        "en": "Define sites, shifts, routes, and service needs for the workforce.",
+        "ar": "حدد المواقع والورديات والخطوط واحتياجات الخدمة للقوى العاملة."
+      }
+    },
+    {
+      "_key": "ent-step-2",
+      "title": {
+        "en": "Review attendance and service",
+        "ar": "راجع الحضور والخدمة"
+      },
+      "description": {
+        "en": "Follow attendance records and operator delivery from one dashboard.",
+        "ar": "تابع سجلات الحضور وتنفيذ المشغلين من خلال لوحة واحدة."
+      }
+    },
+    {
+      "_key": "ent-step-3",
+      "title": {
+        "en": "Check trip performance",
+        "ar": "افحص أداء الرحلات"
+      },
+      "description": {
+        "en": "Compare planned service with actual trip delivery and service quality.",
+        "ar": "قارن الخدمة المخططة بتنفيذ الرحلات الفعلي وجودة الخدمة."
+      }
+    },
+    {
+      "_key": "ent-step-4",
+      "title": {
+        "en": "Close the financial view",
+        "ar": "أغلق المشهد المالي"
+      },
+      "description": {
+        "en": "Review pricing, invoices, and payment status with operational evidence.",
+        "ar": "راجع التسعير والفواتير وحالة المدفوعات مع الأدلة التشغيلية."
+      }
+    }
+  ],
+  "platforms": {
+    "android": false,
+    "ios": false,
+    "web": true
+  },
+  "storeUrls": {
+    "appStore": "",
+    "playStore": "",
+    "webApp": ""
+  },
+  "cta": {
+    "heading": {
+      "en": "See enterprise transport control in action",
+      "ar": "اكتشف تحكم الشركة في النقل عمليًا"
+    },
+    "subtitle": {
+      "en": "Review planning, service quality, attendance, and finance in one enterprise workflow.",
+      "ar": "راجع التخطيط وجودة الخدمة والحضور والمالية ضمن سير عمل مؤسسي واحد."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Book a demo",
+        "ar": "احجز عرضًا"
+      },
+      "href": "/contact"
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Explore apps",
+        "ar": "استكشف التطبيقات"
+      },
+      "href": "/apps"
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "Enterprise dashboard for employee transport control | Tranzkit",
+      "ar": "لوحة الشركة لتحكم نقل الموظفين | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Plan employee transport demand, review attendance, monitor operator delivery, and track financial visibility with the Tranzkit Enterprise Dashboard.",
+      "ar": "خطط طلب نقل الموظفين وراجع الحضور وراقب تنفيذ المشغلين وتابع الرؤية المالية عبر لوحة الشركة من ترانزكيت."
+    },
+    "keywords": [
+      "enterprise dashboard",
+      "employee transport planning",
+      "transport service review",
+      "attendance review",
+      "transport financial visibility",
+      "Tranzkit"
+    ]
+  }
+}

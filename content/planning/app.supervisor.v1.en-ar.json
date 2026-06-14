@@ -1,0 +1,235 @@
+{
+  "pageKey": "appDetail",
+  "action": "draft",
+  "slug": "supervisor",
+  "name": {
+    "en": "Supervisor App",
+    "ar": "تطبيق المشرف"
+  },
+  "tagline": {
+    "en": "Follow field execution and resolve issues faster",
+    "ar": "تابع التنفيذ الميداني وعالج المشكلات أسرع"
+  },
+  "description": {
+    "en": "Give supervisors a clearer view of live service, route progress, field checks, incidents, and team follow-up during the day.",
+    "ar": "امنح المشرفين رؤية أوضح للخدمة المباشرة وتقدم الخطوط وعمليات التحقق الميداني والحوادث ومتابعة الفرق خلال اليوم."
+  },
+  "category": "operators",
+  "layoutType": "portrait",
+  "benefits": [
+    {
+      "en": "Track trips and field status in real time",
+      "ar": "تابع الرحلات والحالة الميدانية لحظة بلحظة"
+    },
+    {
+      "en": "Capture issues and service checks quickly",
+      "ar": "سجل المشكلات وفحوصات الخدمة بسرعة"
+    },
+    {
+      "en": "Follow teams across routes and shifts",
+      "ar": "تابع الفرق عبر الخطوط والورديات"
+    },
+    {
+      "en": "Keep incident follow-up better documented",
+      "ar": "حافظ على توثيق أفضل لمتابعة الحوادث"
+    }
+  ],
+  "screenshots": [
+    {
+      "_key": "dc0cf7d8991a",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-84cddb965c054607e8a8ac3db05f1efd0bdaea0c-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "31442421093d",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-a45678f8f6aedea2b92631e990a9d31fef2f8a75-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "12a489ce1039",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-08fa81eceec28800c0b4243d1c6b665727c4a8c5-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "d4f0d2117337",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-2cdfee3e7cbad46d6ff9a2e4d802e1025d1d9336-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "d91d5b066198",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-93decf9616766f072faff4c9229e52d4a20a1236-1584x3267-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "660c40066df5",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-82ab3d4cfc9a4f8f9d3ffdd06907bc53c1bd9a91-1584x3267-png",
+        "_type": "reference"
+      }
+    }
+  ],
+  "features": [
+    {
+      "_key": "sup-feature-1",
+      "icon": "MapPin",
+      "title": {
+        "en": "Field trip visibility",
+        "ar": "رؤية ميدانية للرحلات"
+      },
+      "description": {
+        "en": "Track route progress, stop movement, and active service from the field.",
+        "ar": "تابع تقدم الخطوط وحركة التوقفات والخدمة النشطة من الميدان."
+      }
+    },
+    {
+      "_key": "sup-feature-2",
+      "icon": "Bell",
+      "title": {
+        "en": "Issue capture and escalation",
+        "ar": "تسجيل المشكلات وتصعيدها"
+      },
+      "description": {
+        "en": "Record delays, exceptions, and service issues before they spread across operations.",
+        "ar": "سجل التأخيرات والاستثناءات ومشكلات الخدمة قبل أن تتوسع داخل التشغيل."
+      }
+    },
+    {
+      "_key": "sup-feature-3",
+      "icon": "CheckCircle",
+      "title": {
+        "en": "Service checks and discipline",
+        "ar": "فحوصات الخدمة والانضباط"
+      },
+      "description": {
+        "en": "Confirm field checks, handoffs, and completion status with clearer accountability.",
+        "ar": "أكد الفحوصات الميدانية وعمليات التسليم وحالة الإنجاز بمساءلة أوضح."
+      }
+    },
+    {
+      "_key": "sup-feature-4",
+      "icon": "Users",
+      "title": {
+        "en": "Team follow-up",
+        "ar": "متابعة الفرق"
+      },
+      "description": {
+        "en": "Keep drivers and field teams aligned around the same daily priorities.",
+        "ar": "حافظ على تنسيق السائقين والفرق الميدانية حول نفس الأولويات اليومية."
+      }
+    }
+  ],
+  "steps": [
+    {
+      "_key": "sup-step-1",
+      "title": {
+        "en": "Start the shift",
+        "ar": "ابدأ الوردية"
+      },
+      "description": {
+        "en": "Open the field view and review active routes, teams, and service windows.",
+        "ar": "افتح المشهد الميداني وراجع الخطوط النشطة والفرق ونوافذ الخدمة."
+      }
+    },
+    {
+      "_key": "sup-step-2",
+      "title": {
+        "en": "Follow live execution",
+        "ar": "تابع التنفيذ المباشر"
+      },
+      "description": {
+        "en": "Monitor progress, update status, and keep trip movement visible during the day.",
+        "ar": "راقب التقدم وحدّث الحالة وأبقِ حركة الرحلات واضحة خلال اليوم."
+      }
+    },
+    {
+      "_key": "sup-step-3",
+      "title": {
+        "en": "Capture issues quickly",
+        "ar": "سجل المشكلات سريعًا"
+      },
+      "description": {
+        "en": "Log incidents, delays, and exceptions with enough detail for fast follow-up.",
+        "ar": "سجل الحوادث والتأخيرات والاستثناءات بتفاصيل كافية لمتابعة سريعة."
+      }
+    },
+    {
+      "_key": "sup-step-4",
+      "title": {
+        "en": "Close the field loop",
+        "ar": "أغلق حلقة المتابعة"
+      },
+      "description": {
+        "en": "Confirm completion, handoff notes, and unresolved items before the shift ends.",
+        "ar": "أكد الإنجاز وملاحظات التسليم والعناصر المفتوحة قبل نهاية الوردية."
+      }
+    }
+  ],
+  "platforms": {
+    "android": true,
+    "ios": true,
+    "web": false
+  },
+  "storeUrls": {
+    "appStore": "",
+    "playStore": "",
+    "webApp": ""
+  },
+  "cta": {
+    "heading": {
+      "en": "See how supervisors keep service disciplined",
+      "ar": "اكتشف كيف يحافظ المشرفون على انضباط الخدمة"
+    },
+    "subtitle": {
+      "en": "Monitor routes, field issues, and execution quality from one mobile workflow.",
+      "ar": "تابع الخطوط والمشكلات الميدانية وجودة التنفيذ من خلال سير عمل واحد على الجوال."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Book a demo",
+        "ar": "احجز عرضًا"
+      },
+      "href": "/contact"
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Explore apps",
+        "ar": "استكشف التطبيقات"
+      },
+      "href": "/apps"
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "Supervisor app for field transport follow-up | Tranzkit",
+      "ar": "تطبيق المشرف لمتابعة النقل الميداني | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Track live service, route progress, field checks, and incidents with the Tranzkit Supervisor App.",
+      "ar": "تابع الخدمة المباشرة وتقدم الخطوط والفحوصات الميدانية والحوادث عبر تطبيق المشرف من ترانزكيت."
+    },
+    "keywords": [
+      "supervisor app",
+      "field operations app",
+      "transport supervisor workflow",
+      "live route follow-up",
+      "transport incident tracking",
+      "Tranzkit"
+    ]
+  }
+}

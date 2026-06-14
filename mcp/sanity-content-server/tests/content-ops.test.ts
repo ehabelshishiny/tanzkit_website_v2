@@ -280,3 +280,78 @@ test('buildDraftPlan preserves keyed array item images and seo ogImage when omit
     })
   }
 })
+
+test('buildDraftPlan preserves existing app screenshots when omitted and maps app platforms as an object', async () => {
+  const mod = await loadContentOps()
+
+  assert.ok(mod, 'expected content-ops module to exist')
+  assert.equal(typeof mod.buildDraftPlan, 'function', 'expected buildDraftPlan export')
+
+  const result = mod.buildDraftPlan({
+    pageKey: 'appDetail',
+    action: 'draft',
+    document: {
+      _id: 'app-driver',
+      _type: 'app'
+    },
+    existingDocumentContent: {
+      screenshots: [
+        {
+          _key: 'driver-screen-1',
+          _type: 'image',
+          asset: { _ref: 'image-existing-driver-1', _type: 'reference' }
+        }
+      ],
+      platforms: {
+        ios: true,
+        android: true,
+        web: false
+      }
+    },
+    contentMap: {
+      pageKey: 'appDetail',
+      action: 'draft',
+      slug: 'driver',
+      name: { en: 'Driver App', ar: 'تطبيق السائق' },
+      tagline: { en: 'Run trips with clarity', ar: 'نفذ الرحلات بوضوح' },
+      description: { en: 'Manage assigned trips.', ar: 'أدر الرحلات المخصصة.' },
+      category: 'operators',
+      layoutType: 'portrait',
+      benefits: [
+        { en: 'Assigned trips', ar: 'رحلات مخصصة' },
+        { en: 'Live updates', ar: 'تحديثات مباشرة' }
+      ],
+      platforms: {
+        ios: true,
+        android: true,
+        web: false
+      },
+      cta: {
+        heading: { en: 'See the driver workflow', ar: 'اكتشف سير عمل السائق' },
+        subtitle: { en: 'Follow routes and actions.', ar: 'تابع الخطوط والإجراءات.' },
+        primaryCta: { text: { en: 'Book a demo', ar: 'احجز عرضاً' }, href: '/contact' },
+        secondaryCta: { text: { en: 'Talk to the team', ar: 'تحدث مع الفريق' }, href: '/contact' }
+      },
+      seo: {
+        metaTitle: { en: 'Driver app | Tranzkit', ar: 'تطبيق السائق | ترانزكيت' },
+        metaDescription: { en: 'Manage assigned trips.', ar: 'أدر الرحلات المخصصة.' }
+      }
+    }
+  })
+
+  assert.equal(result.ok, true)
+  if (result.ok) {
+    assert.deepEqual(result.patch.platforms, {
+      ios: true,
+      android: true,
+      web: false
+    })
+    assert.deepEqual(result.patch.screenshots, [
+      {
+        _key: 'driver-screen-1',
+        _type: 'image',
+        asset: { _ref: 'image-existing-driver-1', _type: 'reference' }
+      }
+    ])
+  }
+})

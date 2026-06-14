@@ -1,0 +1,219 @@
+{
+  "pageKey": "appDetail",
+  "action": "draft",
+  "slug": "operator-dashboard",
+  "name": {
+    "en": "Operator Dashboard",
+    "ar": "لوحة المشغل"
+  },
+  "tagline": {
+    "en": "Control routes, assignments, and live execution",
+    "ar": "تحكم في الخطوط والتخصيصات والتنفيذ المباشر"
+  },
+  "description": {
+    "en": "Run daily transport execution with clearer control over routes, schedules, drivers, vehicles, suppliers, and service status.",
+    "ar": "أدر التشغيل اليومي للنقل بتحكم أوضح في الخطوط والجداول والسائقين والمركبات والموردين وحالة الخدمة."
+  },
+  "category": "operators",
+  "layoutType": "landscape",
+  "benefits": [
+    {
+      "en": "Run routes and schedules from one dashboard",
+      "ar": "أدر الخطوط والجداول من لوحة واحدة"
+    },
+    {
+      "en": "Assign drivers, vehicles, and suppliers faster",
+      "ar": "خصص السائقين والمركبات والموردين بسرعة أكبر"
+    },
+    {
+      "en": "Track live service and issue follow-up",
+      "ar": "تابع الخدمة المباشرة ومعالجة المشكلات"
+    },
+    {
+      "en": "Review trip results with financial context",
+      "ar": "راجع نتائج الرحلات مع السياق المالي"
+    }
+  ],
+  "screenshots": [
+    {
+      "_key": "9106c3ae19d7",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-5e38be3163da8fe7d5459ec23cdb31adbc773cb9-2337x1452-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "d7618688346f",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-bbcd7e2507afe2d10ec2075872d6917688c296ba-2337x1452-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "d6bd0dcb9c82",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e5ec2c262a19babbd6e24b647f7fdbac88ef2095-2337x1452-png",
+        "_type": "reference"
+      }
+    },
+    {
+      "_key": "9b44071e0cca",
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e5233bd7297b1fd8984410be407f24d712f9bd73-2337x1452-png",
+        "_type": "reference"
+      }
+    }
+  ],
+  "features": [
+    {
+      "_key": "op-feature-1",
+      "icon": "LayoutDashboard",
+      "title": {
+        "en": "Routes and schedules",
+        "ar": "الخطوط والجداول"
+      },
+      "description": {
+        "en": "Manage route structure, service windows, and operating schedules from one control layer.",
+        "ar": "أدر هيكل الخطوط ونوافذ الخدمة والجداول التشغيلية من طبقة تحكم واحدة."
+      }
+    },
+    {
+      "_key": "op-feature-2",
+      "icon": "Users",
+      "title": {
+        "en": "Assignments and resources",
+        "ar": "التخصيصات والموارد"
+      },
+      "description": {
+        "en": "Assign drivers, vehicles, supervisors, and suppliers with clearer daily coverage.",
+        "ar": "خصص السائقين والمركبات والمشرفين والموردين بتغطية يومية أوضح."
+      }
+    },
+    {
+      "_key": "op-feature-3",
+      "icon": "Route",
+      "title": {
+        "en": "Live trip control",
+        "ar": "التحكم المباشر في الرحلات"
+      },
+      "description": {
+        "en": "Track trip status, execution quality, and field updates without leaving the dashboard.",
+        "ar": "تابع حالة الرحلات وجودة التنفيذ والتحديثات الميدانية دون مغادرة اللوحة."
+      }
+    },
+    {
+      "_key": "op-feature-4",
+      "icon": "TrendingUp",
+      "title": {
+        "en": "Performance and settlement review",
+        "ar": "مراجعة الأداء والتسوية"
+      },
+      "description": {
+        "en": "Review operator output, payable context, and service variance in one workflow.",
+        "ar": "راجع مخرجات التشغيل وسياق المستحقات وفروقات الخدمة في سير عمل واحد."
+      }
+    }
+  ],
+  "steps": [
+    {
+      "_key": "op-step-1",
+      "title": {
+        "en": "Prepare the day",
+        "ar": "جهز اليوم"
+      },
+      "description": {
+        "en": "Review demand, service windows, and route readiness before dispatch starts.",
+        "ar": "راجع الطلب ونوافذ الخدمة وجاهزية الخطوط قبل بدء التشغيل."
+      }
+    },
+    {
+      "_key": "op-step-2",
+      "title": {
+        "en": "Assign the operation",
+        "ar": "خصص العملية"
+      },
+      "description": {
+        "en": "Confirm drivers, vehicles, supervisors, and suppliers against the daily plan.",
+        "ar": "أكد السائقين والمركبات والمشرفين والموردين وفق الخطة اليومية."
+      }
+    },
+    {
+      "_key": "op-step-3",
+      "title": {
+        "en": "Track live service",
+        "ar": "تابع الخدمة المباشرة"
+      },
+      "description": {
+        "en": "Monitor trip progress, delays, and field updates during active execution.",
+        "ar": "راقب تقدم الرحلات والتأخيرات والتحديثات الميدانية أثناء التنفيذ."
+      }
+    },
+    {
+      "_key": "op-step-4",
+      "title": {
+        "en": "Review and settle",
+        "ar": "راجع وسوِّ"
+      },
+      "description": {
+        "en": "Close the day with performance follow-up, supplier context, and settlement review.",
+        "ar": "أغلق اليوم بمتابعة الأداء وسياق الموردين ومراجعة التسوية."
+      }
+    }
+  ],
+  "platforms": {
+    "android": false,
+    "ios": false,
+    "web": true
+  },
+  "storeUrls": {
+    "appStore": "",
+    "playStore": "",
+    "webApp": ""
+  },
+  "cta": {
+    "heading": {
+      "en": "See how operators run daily transport with Tranzkit",
+      "ar": "اكتشف كيف يدير المشغلون النقل اليومي عبر ترانزكيت"
+    },
+    "subtitle": {
+      "en": "Connect assignments, live service, trip follow-up, and supplier finance in one operator workflow.",
+      "ar": "اربط التخصيصات والخدمة المباشرة ومتابعة الرحلات ومالية الموردين داخل سير عمل واحد للمشغل."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Book a demo",
+        "ar": "احجز عرضًا"
+      },
+      "href": "/contact"
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Explore apps",
+        "ar": "استكشف التطبيقات"
+      },
+      "href": "/apps"
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "Operator dashboard for transport execution control | Tranzkit",
+      "ar": "لوحة المشغل للتحكم في تشغيل النقل | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Control routes, schedules, assignments, live trips, and supplier-linked transport execution with the Tranzkit Operator Dashboard.",
+      "ar": "تحكم في الخطوط والجداول والتخصيصات والرحلات المباشرة وتنفيذ النقل المرتبط بالموردين عبر لوحة المشغل من ترانزكيت."
+    },
+    "keywords": [
+      "operator dashboard",
+      "transport operations dashboard",
+      "route and schedule control",
+      "driver assignment dashboard",
+      "live trip visibility",
+      "Tranzkit"
+    ]
+  }
+}

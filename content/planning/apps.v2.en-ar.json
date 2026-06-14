@@ -1,0 +1,115 @@
+{
+  "pageKey": "apps",
+  "action": "draft",
+  "hero": {
+    "titlePart1": {
+      "en": "Connected",
+      "ar": "تطبيقات نقل"
+    },
+    "titlePart2": {
+      "en": "transport apps",
+      "ar": "مترابطة"
+    },
+    "titlePart3": {
+      "en": "for every team",
+      "ar": "لكل فريق"
+    },
+    "subtitle": {
+      "en": "Give each transport team the workflow it needs for planning, execution, trip visibility, and daily service in one bilingual platform.",
+      "ar": "امنح كل فريق في النقل سير العمل الذي يحتاجه للتخطيط والتنفيذ ورؤية الرحلات والخدمة اليومية داخل منصة واحدة بالإنجليزية والعربية."
+    }
+  },
+  "showcase": {
+    "title": {
+      "en": "Apps that work together across one operation",
+      "ar": "تطبيقات تعمل معًا داخل عملية نقل واحدة"
+    },
+    "subtitle": {
+      "en": "Choose the side you manage to see the dashboards and mobile workflows connected through the same operating layer.",
+      "ar": "اختر الجانب الذي تديره لتتعرف على اللوحات والتطبيقات الميدانية المرتبطة عبر نفس طبقة التشغيل."
+    },
+    "operatorsSegment": {
+      "title": {
+        "en": "Operator control and field execution",
+        "ar": "تحكم المشغل والتنفيذ الميداني"
+      },
+      "description": {
+        "en": "Run routes, schedules, assignments, drivers, vehicles, and live trip status from connected workflows.",
+        "ar": "أدر الخطوط والجداول والتخصيصات والسائقين والمركبات وحالة الرحلات المباشرة من خلال سير عمل مترابط."
+      },
+      "tabLabel": {
+        "en": "Operators",
+        "ar": "المشغلون"
+      }
+    },
+    "enterpriseSegment": {
+      "title": {
+        "en": "Enterprise control and rider visibility",
+        "ar": "تحكم الشركة ورؤية الراكب"
+      },
+      "description": {
+        "en": "Plan demand, review service delivery, and give riders clearer trip visibility through one service model.",
+        "ar": "خطط الطلب وراجع تنفيذ الخدمة وامنح الركاب رؤية أوضح للرحلات عبر نموذج خدمة واحد."
+      },
+      "tabLabel": {
+        "en": "Enterprise",
+        "ar": "الشركات"
+      }
+    },
+    "operatorAppSlugs": [
+      "operator-dashboard",
+      "supervisor",
+      "driver"
+    ],
+    "enterpriseAppSlugs": [
+      "enterprise-dashboard",
+      "rider"
+    ]
+  },
+  "cta": {
+    "heading": {
+      "en": "See which Tranzkit apps fit your operation",
+      "ar": "اكتشف تطبيقات ترانزكيت المناسبة لعمليتك"
+    },
+    "subtitle": {
+      "en": "Connect enterprise control, operator execution, field follow-up, driver workflows, and rider service in one rollout.",
+      "ar": "اربط تحكم الشركة وتشغيل المشغلين والمتابعة الميدانية وسير عمل السائقين وخدمة الركاب ضمن إطلاق واحد."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Book an apps walkthrough",
+        "ar": "احجز جولة على التطبيقات"
+      },
+      "href": "/contact",
+      "openInNewTab": false
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Explore solutions",
+        "ar": "استكشف الحلول"
+      },
+      "href": "/solutions",
+      "openInNewTab": false
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "Employee transport apps for every operating team | Tranzkit",
+      "ar": "تطبيقات نقل الموظفين لكل فريق تشغيل | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Explore Tranzkit apps for enterprise control, operator execution, supervisor follow-up, driver workflows, and rider trip visibility.",
+      "ar": "استكشف تطبيقات ترانزكيت لتحكم الشركات وتشغيل المشغلين ومتابعة المشرفين وسير عمل السائقين ورؤية الركاب للرحلات."
+    },
+    "keywords": [
+      "employee transport apps",
+      "transport apps",
+      "operator dashboard",
+      "enterprise dashboard",
+      "driver app",
+      "supervisor app",
+      "rider app",
+      "Tranzkit"
+    ]
+  }
+}
