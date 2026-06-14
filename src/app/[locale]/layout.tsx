@@ -11,6 +11,7 @@ import { PageTransitionLayout } from '@/components/providers/page-transition-lay
 import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
 import { Toaster } from 'sonner';
 import { VisualEditing } from 'next-sanity/visual-editing';
+import '../globals.css';
 
 // ============================================
 // Font Configuration - Starting Simple
