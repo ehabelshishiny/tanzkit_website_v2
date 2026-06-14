@@ -1,0 +1,472 @@
+{
+  "documentType": "caseStudy",
+  "action": "draft",
+  "_id": "case-multi-client-operations-standardization",
+  "slug": {
+    "_type": "slug",
+    "current": "standardizing-multi-client-employee-transport-operations"
+  },
+  "title": {
+    "en": "Standardizing Multi-Client Employee Transport Operations",
+    "ar": "توحيد عمليات نقل الموظفين متعددة العملاء"
+  },
+  "excerpt": {
+    "en": "How a regional operator unified planning, dispatch, SLA review, and billing control across 14 enterprise accounts.",
+    "ar": "كيف وحّد مشغّل إقليمي التخطيط والتشغيل ومراجعة SLA وضبط الفوترة عبر 14 حسابًا مؤسسيًا."
+  },
+  "clientName": {
+    "en": "Regional Corporate Mobility Operator",
+    "ar": "مشغّل إقليمي لتنقل الشركات"
+  },
+  "industry": {
+    "en": "Employee Transportation Services",
+    "ar": "خدمات نقل الموظفين"
+  },
+  "location": {
+    "en": "Cairo, Egypt",
+    "ar": "القاهرة، مصر"
+  },
+  "challenge": {
+    "en": [
+      {
+        "_key": "mc-ch-en-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-ch-en-1-span",
+            "_type": "span",
+            "text": "The operator was running transport for multiple enterprise contracts, but each account had its own planning habits, service review process, and billing rhythm. That made it hard to maintain one clear operating standard across the business.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "mc-ch-en-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-ch-en-2-span",
+            "_type": "span",
+            "text": "Dispatch teams were resolving service exceptions account by account, while finance teams were closing cycles with fragmented evidence. SLA drift and reconciliation delays became a recurring management issue.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "mc-ch-en-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-ch-en-3-span",
+            "_type": "span",
+            "text": "Different approval logic by account"
+          }
+        ]
+      },
+      {
+        "_key": "mc-ch-en-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-ch-en-4-span",
+            "_type": "span",
+            "text": "Limited visibility into planned vs actual delivery"
+          }
+        ]
+      },
+      {
+        "_key": "mc-ch-en-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-ch-en-5-span",
+            "_type": "span",
+            "text": "Monthly billing effort driven by manual exception tracking"
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "mc-ch-ar-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-ch-ar-1-span",
+            "_type": "span",
+            "text": "كان المشغّل يدير خدمات النقل لعدة عقود مؤسسية، لكن كل حساب كان يعمل بعاداته الخاصة في التخطيط ومراجعة الخدمة ودورات الفوترة. وهذا جعل الحفاظ على معيار تشغيلي موحد أمرًا صعبًا."
+          }
+        ]
+      },
+      {
+        "_key": "mc-ch-ar-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-ch-ar-2-span",
+            "_type": "span",
+            "text": "كانت فرق التشغيل تعالج الاستثناءات لكل حساب بشكل منفصل، بينما تُغلق فرق المالية الدورات بأدلة متفرقة. وبدأ انحراف مستوى الخدمة وتأخر المطابقات المالية يتحولان إلى مشكلة إدارية متكررة."
+          }
+        ]
+      },
+      {
+        "_key": "mc-ch-ar-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-ch-ar-3-span",
+            "_type": "span",
+            "text": "منطق موافقات مختلف من حساب إلى آخر"
+          }
+        ]
+      },
+      {
+        "_key": "mc-ch-ar-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-ch-ar-4-span",
+            "_type": "span",
+            "text": "رؤية محدودة لمقارنة المخطط بالتنفيذ الفعلي"
+          }
+        ]
+      },
+      {
+        "_key": "mc-ch-ar-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-ch-ar-5-span",
+            "_type": "span",
+            "text": "مطابقة شهرية مرهقة بسبب تتبع الاستثناءات يدويًا"
+          }
+        ]
+      }
+    ]
+  },
+  "solution": {
+    "en": [
+      {
+        "_key": "mc-so-en-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-so-en-1-span",
+            "_type": "span",
+            "text": "Tranzkit introduced one operating workspace across routes, schedules, trips, drivers, suppliers, and contract-level controls. The operator could keep each enterprise account distinct without running each one through a different management logic.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "mc-so-en-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-so-en-2-span",
+            "_type": "span",
+            "text": "Teams used shared service evidence for dispatch follow-up, SLA governance, and cycle-level billing review. That connected daily execution with the financial close instead of leaving finance to clean up after operations.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "mc-so-en-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-so-en-3-span",
+            "_type": "span",
+            "text": "Unified control across 14 enterprise accounts"
+          }
+        ]
+      },
+      {
+        "_key": "mc-so-en-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-so-en-4-span",
+            "_type": "span",
+            "text": "Shared operating and finance evidence"
+          }
+        ]
+      },
+      {
+        "_key": "mc-so-en-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-so-en-5-span",
+            "_type": "span",
+            "text": "Faster exception handling with clear ownership"
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "mc-so-ar-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-so-ar-1-span",
+            "_type": "span",
+            "text": "قدّم ترانزكيت مساحة تشغيل واحدة تجمع الخطوط والجداول والرحلات والسائقين والموردين وضوابط العقود. وأصبح بإمكان المشغّل إدارة كل حساب مؤسسي بخصوصيته دون أن يخلق لكل حساب منطق إدارة منفصلًا."
+          }
+        ]
+      },
+      {
+        "_key": "mc-so-ar-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-so-ar-2-span",
+            "_type": "span",
+            "text": "استخدمت الفرق نفس أدلة الخدمة في متابعة التشغيل وحوكمة SLA ومراجعة الفوترة على مستوى الدورة. وهكذا ارتبط التنفيذ اليومي بالإغلاق المالي بدل أن تبقى المالية في موقع معالجة آثار التشغيل بعد وقوعها."
+          }
+        ]
+      },
+      {
+        "_key": "mc-so-ar-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-so-ar-3-span",
+            "_type": "span",
+            "text": "تحكم موحد عبر 14 حسابًا مؤسسيًا"
+          }
+        ]
+      },
+      {
+        "_key": "mc-so-ar-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-so-ar-4-span",
+            "_type": "span",
+            "text": "أدلة مشتركة بين التشغيل والمالية"
+          }
+        ]
+      },
+      {
+        "_key": "mc-so-ar-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-so-ar-5-span",
+            "_type": "span",
+            "text": "معالجة أسرع للاستثناءات مع وضوح المسؤولية"
+          }
+        ]
+      }
+    ]
+  },
+  "results": {
+    "en": [
+      {
+        "_key": "mc-re-en-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-re-en-1-span",
+            "_type": "span",
+            "text": "The operator reduced reconciliation effort, improved SLA visibility, and gave management one consistent view across multi-client operations. Monthly reviews became more disciplined because service and finance were finally speaking the same language.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "mc-re-en-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-re-en-2-span",
+            "_type": "span",
+            "text": "Just as importantly, the business moved away from spreadsheet-driven firefighting toward a repeatable operating model that could scale with additional accounts.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "mc-re-ar-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-re-ar-1-span",
+            "_type": "span",
+            "text": "تمكن المشغّل من تقليل جهد المطابقة وتحسين رؤية SLA ومنح الإدارة صورة متسقة عبر العمليات متعددة العملاء. وأصبحت المراجعات الشهرية أكثر انضباطًا لأن الخدمة والمالية بدأتا أخيرًا تتحدثان اللغة نفسها."
+          }
+        ]
+      },
+      {
+        "_key": "mc-re-ar-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "mc-re-ar-2-span",
+            "_type": "span",
+            "text": "والأهم من ذلك أن العمل ابتعد عن إدارة الأزمات عبر الجداول، واتجه إلى نموذج تشغيل قابل للتكرار وقادر على التوسع مع حسابات جديدة."
+          }
+        ]
+      }
+    ]
+  },
+  "metrics": [
+    {
+      "value": {
+        "en": "34%",
+        "ar": "34%"
+      },
+      "label": {
+        "en": "Faster billing reconciliation",
+        "ar": "تسريع مطابقة الفوترة"
+      },
+      "icon": "Calculator"
+    },
+    {
+      "value": {
+        "en": "22%",
+        "ar": "22%"
+      },
+      "label": {
+        "en": "Lower SLA variance",
+        "ar": "خفض انحراف SLA"
+      },
+      "icon": "TrendingUp"
+    },
+    {
+      "value": {
+        "en": "14",
+        "ar": "14"
+      },
+      "label": {
+        "en": "Enterprise accounts unified",
+        "ar": "حسابات مؤسسية موحدة"
+      },
+      "icon": "Building2"
+    }
+  ],
+  "testimonial": {
+    "quote": {
+      "en": "We finally run one operational truth across contracts instead of managing exceptions through spreadsheets.",
+      "ar": "أصبح لدينا أخيرًا مصدر تشغيلي موحّد عبر العقود بدلًا من إدارة الاستثناءات عبر الجداول."
+    },
+    "author": {
+      "en": "Operations Director",
+      "ar": "مدير العمليات"
+    },
+    "role": {
+      "en": "Corporate Mobility Operator",
+      "ar": "مشغّل تنقل مؤسسي"
+    }
+  },
+  "categorySlugs": [
+    "operations-transformation",
+    "finance-control"
+  ],
+  "publishedAt": "2026-05-01T09:00:00.000Z",
+  "featured": true,
+  "seo": {
+    "metaTitle": {
+      "en": "Multi-client employee transport standardization | Tranzkit",
+      "ar": "توحيد نقل الموظفين متعدد العملاء | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "How a regional operator standardized planning, SLA control, and billing workflows across 14 enterprise transport accounts.",
+      "ar": "كيف وحّد مشغّل إقليمي التخطيط وضبط SLA ومسارات الفوترة عبر 14 حساب نقل مؤسسي."
+    },
+    "keywords": {
+      "en": [
+        "multi-client transport operations",
+        "employee transport standardization",
+        "transport billing control",
+        "operator SLA management",
+        "Tranzkit case study"
+      ],
+      "ar": [
+        "عمليات نقل متعددة العملاء",
+        "توحيد نقل الموظفين",
+        "ضبط فوترة النقل",
+        "إدارة SLA للمشغل",
+        "دراسة حالة ترانزكيت"
+      ]
+    },
+    "noIndex": false,
+    "noFollow": false
+  }
+}

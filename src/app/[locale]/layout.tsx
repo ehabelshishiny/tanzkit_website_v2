@@ -11,7 +11,6 @@ import { PageTransitionLayout } from '@/components/providers/page-transition-lay
 import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
 import { Toaster } from 'sonner';
 import { VisualEditing } from 'next-sanity/visual-editing';
-import '../globals.css';
 
 // ============================================
 // Font Configuration - Starting Simple
@@ -199,16 +198,16 @@ export default async function LocaleLayout({
         </ThemeProvider>
         <ScrollToTopButton />
         {(await draftMode()).isEnabled && <VisualEditing />}
-        <Script id="codefy-widget" strategy="lazyOnload">
-          {`
-            (function() {
-              var script = document.createElement('script');
-              script.src = 'https://codefy-os.vercel.app/api/widget-loader.js';
-              script.setAttribute('data-embed-key', 'cfy_08df4792586441e79921e48842a16cf9');
-              script.setAttribute('data-position', 'bottom-right');
-              document.head.appendChild(script);
-            })();
-          `}
+      <Script id="codefy-widget" strategy="lazyOnload">
+        {`
+          (function() {
+            var script = document.createElement('script');
+            script.src = 'https://www.codefyhub.com/api/widget-loader.js';
+            script.setAttribute('data-embed-key', 'widget_5be6d0527d374f7aba06595df38a909e2eb843bcccf58a7e');
+            script.setAttribute('data-position', 'bottom-right');
+            document.head.appendChild(script);
+          })();
+        `}
         </Script>
       </body>
     </html>

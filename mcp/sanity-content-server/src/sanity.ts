@@ -1,5 +1,7 @@
 import { createClient, type SanityClient } from '@sanity/client'
 import {
+  normalizeContentMap,
+  type ResolvedCaseStudyCategoryReference,
   validateContentMap,
   type ContentMap,
   type ResolvedAppsPageReferences,
@@ -78,6 +80,14 @@ function appDetailQuery(includeDraft: boolean) {
   return `*[_type == "app" && slug.current == $slug && !(_id in path("drafts.**"))][0]`
 }
 
+function slugDocumentQuery(documentType: string, includeDraft: boolean) {
+  if (includeDraft) {
+    return `coalesce(*[_id == $draftId][0], *[_type == $documentType && slug.current == $slug && !(_id in path("drafts.**"))][0])`
+  }
+
+  return `*[_type == $documentType && slug.current == $slug && !(_id in path("drafts.**"))][0]`
+}
+
 export async function resolveTargetDocument({
   pageKey,
   slug,
@@ -86,10 +96,10 @@ export async function resolveTargetDocument({
   const definition = QUERY_INSPECTION_MAP[pageKey]
   const documentType = definition.documentType
 
-  if (pageKey === 'appDetail' && slug) {
+  if ((pageKey === 'appDetail' || pageKey === 'caseStudy') && slug) {
     const doc = await client.fetch<{ _id: string; _type: string } | null>(
-      `*[_type == "app" && slug.current == $slug && !(_id in path("drafts.**"))][0]{_id,_type}`,
-      { slug },
+      `*[_type == $documentType && slug.current == $slug && !(_id in path("drafts.**"))][0]{_id,_type}`,
+      { slug, documentType },
     )
     const publishedDocumentId = doc?._id ?? null
     const baseId = publishedDocumentId ?? getDefaultDocumentId(pageKey, slug)
@@ -144,6 +154,17 @@ export async function readCurrentPageContent({
       slug,
       draftId,
     })
+  }
+
+  if (pageKey === 'caseStudy') {
+    return client.fetch<Record<string, unknown> | null>(
+      slugDocumentQuery(definition.documentType, includeDraft),
+      {
+        slug,
+        draftId,
+        documentType: definition.documentType,
+      },
+    )
   }
 
   return client.fetch<Record<string, unknown> | null>(
@@ -218,6 +239,18 @@ function formatMissingAppSlugErrors(
     .map((slug) => `Requested app slug "${slug}" did not resolve to an existing Sanity app document.`)
 }
 
+function formatMissingCaseStudyCategorySlugErrors(
+  requestedSlugs: string[],
+  resolvedCategoriesBySlug: Map<string, ResolvedCaseStudyCategoryReference>,
+) {
+  return requestedSlugs
+    .filter((slug) => !resolvedCategoriesBySlug.has(slug))
+    .map(
+      (slug) =>
+        `Requested case study category slug "${slug}" did not resolve to an existing Sanity caseStudyCategory document.`,
+    )
+}
+
 export async function resolveAppsPageReferenceSlugs(
   contentMap: ContentMap,
 ): Promise<ResolvedAppsPageReferences> {
@@ -275,25 +308,110 @@ export async function resolveAppsPageReferenceSlugs(
   }
 }
 
-export async function validateContentMapWithSanity(
+export async function resolveCaseStudyCategorySlugs(
   contentMap: ContentMap,
-): Promise<ValidationResult & { resolvedAppsPageReferences?: ResolvedAppsPageReferences }> {
-  const result = validateContentMap(contentMap)
+): Promise<ResolvedCaseStudyCategoryReference[]> {
+  const categorySlugs = Array.isArray(contentMap.categorySlugs)
+    ? contentMap.categorySlugs.filter((value: unknown): value is string => typeof value === 'string')
+    : []
 
-  if (!result.valid || result.pageKey !== 'apps') {
-    return result
+  if (categorySlugs.length === 0) {
+    return []
   }
 
-  const { operatorAppSlugs, enterpriseAppSlugs } = getAppsPageReferenceSlugs(contentMap)
-  if (operatorAppSlugs.length === 0 && enterpriseAppSlugs.length === 0) {
-    return result
+  const requestedSlugs = [...new Set(categorySlugs)]
+  const client = createReadClient()
+  const resolvedCategories = await client.fetch<
+    Array<{
+      _id: string
+      _type: string
+      slug: { current?: string }
+      name?: { en?: string; ar?: string }
+    }>
+  >(
+    `*[_type == "caseStudyCategory" && slug.current in $slugs]{
+      _id,
+      _type,
+      slug,
+      name
+    }`,
+    { slugs: requestedSlugs },
+  )
+
+  const resolvedCategoriesBySlug = new Map<string, ResolvedCaseStudyCategoryReference>()
+  for (const category of resolvedCategories) {
+    const slug = typeof category.slug?.current === 'string' ? category.slug.current : ''
+    if (!slug) {
+      continue
+    }
+
+    resolvedCategoriesBySlug.set(slug, {
+      slug,
+      _id: category._id,
+      _type: category._type,
+      name: category.name,
+    })
+  }
+
+  const missingErrors = formatMissingCaseStudyCategorySlugErrors(
+    requestedSlugs,
+    resolvedCategoriesBySlug,
+  )
+  if (missingErrors.length > 0) {
+    throw new Error(missingErrors.join('\n'))
+  }
+
+  return categorySlugs.map((slug) => resolvedCategoriesBySlug.get(slug)!)
+}
+
+export async function validateContentMapWithSanity(
+  contentMap: ContentMap,
+): Promise<
+  ValidationResult & {
+    resolvedAppsPageReferences?: ResolvedAppsPageReferences
+    resolvedCaseStudyCategoryReferences?: ResolvedCaseStudyCategoryReference[]
+  }
+> {
+  const normalizedContentMap = normalizeContentMap(contentMap)
+  const result = validateContentMap(normalizedContentMap)
+
+  if (!result.valid || result.pageKey !== 'apps') {
+    if (!result.valid || result.pageKey !== 'caseStudy') {
+      return result
+    }
+  }
+
+  if (result.pageKey === 'apps') {
+    const { operatorAppSlugs, enterpriseAppSlugs } = getAppsPageReferenceSlugs(normalizedContentMap)
+    if (operatorAppSlugs.length === 0 && enterpriseAppSlugs.length === 0) {
+      return result
+    }
+
+    try {
+      const resolvedAppsPageReferences = await resolveAppsPageReferenceSlugs(normalizedContentMap)
+      return {
+        ...result,
+        resolvedAppsPageReferences,
+      }
+    } catch (error) {
+      return {
+        ...result,
+        valid: false,
+        errors: [
+          ...result.errors,
+          error instanceof Error ? error.message : 'Failed to resolve apps page references.',
+        ],
+      }
+    }
   }
 
   try {
-    const resolvedAppsPageReferences = await resolveAppsPageReferenceSlugs(contentMap)
+    const resolvedCaseStudyCategoryReferences = await resolveCaseStudyCategorySlugs(
+      normalizedContentMap,
+    )
     return {
       ...result,
-      resolvedAppsPageReferences,
+      resolvedCaseStudyCategoryReferences,
     }
   } catch (error) {
     return {
@@ -301,7 +419,9 @@ export async function validateContentMapWithSanity(
       valid: false,
       errors: [
         ...result.errors,
-        error instanceof Error ? error.message : 'Failed to resolve apps page references.',
+        error instanceof Error
+          ? error.message
+          : 'Failed to resolve case study category references.',
       ],
     }
   }

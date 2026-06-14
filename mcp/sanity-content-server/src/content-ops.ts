@@ -1,6 +1,8 @@
 import {
   PHASE_ONE_PUBLISH_BLOCK_MESSAGE,
+  QUERY_INSPECTION_MAP,
   getDefaultDocumentId,
+  inferPageKeyFromDocumentType,
   isSupportedAppSlug,
   isSupportedPageKey,
   type SupportedPageKey,
@@ -13,6 +15,7 @@ export type LocalizedString = {
 
 export type ContentMap = {
   pageKey: string
+  documentType?: string
   action?: string
   slug?: string
   [key: string]: unknown
@@ -45,6 +48,7 @@ export type BuildDraftPlanArgs = {
   }
   contentMap: ContentMap
   resolvedAppsPageReferences?: ResolvedAppsPageReferences
+  resolvedCaseStudyCategoryReferences?: ResolvedCaseStudyCategoryReference[]
   existingDocumentContent?: Record<string, unknown> | null
 }
 
@@ -61,6 +65,16 @@ export type ResolvedAppsPageReference = {
 export type ResolvedAppsPageReferences = {
   operatorApps: ResolvedAppsPageReference[]
   enterpriseApps: ResolvedAppsPageReference[]
+}
+
+export type ResolvedCaseStudyCategoryReference = {
+  slug: string
+  _id: string
+  _type: string
+  name?: {
+    en?: string
+    ar?: string
+  }
 }
 
 export type BuildDraftPlanResult =
@@ -86,6 +100,18 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function asString(value: unknown) {
   return typeof value === 'string' ? value.trim() : ''
+}
+
+function getSlugCurrent(value: unknown) {
+  if (typeof value === 'string') {
+    return value.trim()
+  }
+
+  if (isRecord(value) && typeof value.current === 'string') {
+    return value.current.trim()
+  }
+
+  return ''
 }
 
 function getLocalizedString(value: unknown): LocalizedString | null {
@@ -120,8 +146,33 @@ function requireLocalizedField(
   }
 }
 
+function requireLocalizedRichTextField(
+  value: unknown,
+  path: string,
+  errors: string[],
+) {
+  if (!isRecord(value)) {
+    errors.push(`${path} must be a localized object with en/ar values.`)
+    return
+  }
+
+  if (!Array.isArray(value.en) || value.en.length === 0) {
+    errors.push(`${path}.en is required.`)
+  }
+
+  if (!Array.isArray(value.ar) || value.ar.length === 0) {
+    errors.push(`${path}.ar is required.`)
+  }
+}
+
 function requireNonEmptyString(value: unknown, path: string, errors: string[]) {
   if (!asString(value)) {
+    errors.push(`${path} is required.`)
+  }
+}
+
+function requireNonEmptySlug(value: unknown, path: string, errors: string[]) {
+  if (!getSlugCurrent(value)) {
     errors.push(`${path} is required.`)
   }
 }
@@ -141,6 +192,28 @@ function localizedArray(values: unknown): LocalizedString[] {
   }
 
   return values.map((value) => localized(value))
+}
+
+function localizedRichText(value: unknown) {
+  const localizedValue = isRecord(value) ? value : {}
+
+  return {
+    en: Array.isArray(localizedValue.en) ? localizedValue.en : [],
+    ar: Array.isArray(localizedValue.ar) ? localizedValue.ar : [],
+  }
+}
+
+function localizedKeywordObject(value: unknown) {
+  const localizedValue = isRecord(value) ? value : {}
+
+  return {
+    en: Array.isArray(localizedValue.en)
+      ? localizedValue.en.filter((entry): entry is string => typeof entry === 'string')
+      : [],
+    ar: Array.isArray(localizedValue.ar)
+      ? localizedValue.ar.filter((entry): entry is string => typeof entry === 'string')
+      : [],
+  }
 }
 
 function mapNotesWarnings(sectionPath: string, value: unknown, warnings: string[]) {
@@ -199,7 +272,15 @@ function preserveKnownImageFields(
 
   const merged: Record<string, unknown> = { ...incoming }
 
-  for (const key of ['image', 'backgroundImage', 'ogImage', 'screenshots']) {
+  for (const key of [
+    'image',
+    'backgroundImage',
+    'ogImage',
+    'screenshots',
+    'featuredImage',
+    'clientLogo',
+    'avatar',
+  ]) {
     if (!hasOwnProperty(merged, key) && hasOwnProperty(existing, key)) {
       merged[key] = existing[key]
     }
@@ -214,6 +295,24 @@ function preserveKnownImageFields(
   }
 
   return merged
+}
+
+export function normalizeContentMap(contentMap: ContentMap): ContentMap {
+  if (isSupportedPageKey(contentMap.pageKey)) {
+    return contentMap
+  }
+
+  const documentType = asString(contentMap.documentType)
+  const inferredPageKey = documentType ? inferPageKeyFromDocumentType(documentType) : undefined
+
+  if (!inferredPageKey) {
+    return contentMap
+  }
+
+  return {
+    ...contentMap,
+    pageKey: inferredPageKey,
+  }
 }
 
 function validateHomepage(contentMap: ContentMap, errors: string[], warnings: string[]) {
@@ -377,6 +476,158 @@ function validateAppsPage(contentMap: ContentMap, errors: string[]) {
   )
   requireLocalizedField(seo.metaTitle, 'seo.metaTitle', errors)
   requireLocalizedField(seo.metaDescription, 'seo.metaDescription', errors)
+}
+
+function validateAboutPage(contentMap: ContentMap, errors: string[]) {
+  const hero = isRecord(contentMap.hero) ? contentMap.hero : {}
+  const stats = isRecord(hero.stats) ? hero.stats : {}
+  const enterprises = isRecord(stats.enterprises) ? stats.enterprises : {}
+  const drivers = isRecord(stats.drivers) ? stats.drivers : {}
+  const trips = isRecord(stats.trips) ? stats.trips : {}
+  const story = isRecord(contentMap.story) ? contentMap.story : {}
+  const mission = isRecord(story.mission) ? story.mission : {}
+  const vision = isRecord(story.vision) ? story.vision : {}
+  const values = isRecord(story.values) ? story.values : {}
+  const innovation = isRecord(values.innovation) ? values.innovation : {}
+  const reliability = isRecord(values.reliability) ? values.reliability : {}
+  const sustainability = isRecord(values.sustainability) ? values.sustainability : {}
+  const timeline = isRecord(contentMap.timeline) ? contentMap.timeline : {}
+  const team = isRecord(contentMap.team) ? contentMap.team : {}
+  const careers = isRecord(contentMap.careers) ? contentMap.careers : {}
+  const cta = isRecord(contentMap.cta) ? contentMap.cta : {}
+  const seo = isRecord(contentMap.seo) ? contentMap.seo : {}
+
+  requireLocalizedField(hero.title, 'hero.title', errors)
+  requireLocalizedField(hero.subtitle, 'hero.subtitle', errors)
+  requireLocalizedField(enterprises.value, 'hero.stats.enterprises.value', errors)
+  requireLocalizedField(enterprises.label, 'hero.stats.enterprises.label', errors)
+  requireLocalizedField(drivers.value, 'hero.stats.drivers.value', errors)
+  requireLocalizedField(drivers.label, 'hero.stats.drivers.label', errors)
+  requireLocalizedField(trips.value, 'hero.stats.trips.value', errors)
+  requireLocalizedField(trips.label, 'hero.stats.trips.label', errors)
+  requireLocalizedField(story.heading, 'story.heading', errors)
+  requireLocalizedField(story.subtitle, 'story.subtitle', errors)
+  requireLocalizedField(mission.title, 'story.mission.title', errors)
+  requireLocalizedField(mission.text, 'story.mission.text', errors)
+  requireLocalizedField(vision.title, 'story.vision.title', errors)
+  requireLocalizedField(vision.text, 'story.vision.text', errors)
+  requireLocalizedField(values.title, 'story.values.title', errors)
+  requireLocalizedField(innovation.title, 'story.values.innovation.title', errors)
+  requireLocalizedField(
+    innovation.description,
+    'story.values.innovation.description',
+    errors,
+  )
+  requireLocalizedField(reliability.title, 'story.values.reliability.title', errors)
+  requireLocalizedField(
+    reliability.description,
+    'story.values.reliability.description',
+    errors,
+  )
+  requireLocalizedField(sustainability.title, 'story.values.sustainability.title', errors)
+  requireLocalizedField(
+    sustainability.description,
+    'story.values.sustainability.description',
+    errors,
+  )
+  requireLocalizedField(timeline.heading, 'timeline.heading', errors)
+  requireLocalizedField(timeline.subtitle, 'timeline.subtitle', errors)
+  requireLocalizedField(team.heading, 'team.heading', errors)
+  requireLocalizedField(team.subtitle, 'team.subtitle', errors)
+  requireLocalizedField(careers.heading, 'careers.heading', errors)
+  requireLocalizedField(careers.subtitle, 'careers.subtitle', errors)
+  requireLocalizedField(cta.heading, 'cta.heading', errors)
+  requireLocalizedField(cta.subtitle, 'cta.subtitle', errors)
+  requireLocalizedField(
+    isRecord(cta.primaryCta) ? cta.primaryCta.text : undefined,
+    'cta.primaryCta.text',
+    errors,
+  )
+  requireLocalizedField(
+    isRecord(cta.secondaryCta) ? cta.secondaryCta.text : undefined,
+    'cta.secondaryCta.text',
+    errors,
+  )
+  requireLocalizedField(seo.metaTitle, 'seo.metaTitle', errors)
+  requireLocalizedField(seo.metaDescription, 'seo.metaDescription', errors)
+}
+
+function validateContactPage(contentMap: ContentMap, errors: string[]) {
+  const hero = isRecord(contentMap.hero) ? contentMap.hero : {}
+  const form = isRecord(contentMap.form) ? contentMap.form : {}
+  const socialLinks = isRecord(contentMap.socialLinks) ? contentMap.socialLinks : {}
+  const seo = isRecord(contentMap.seo) ? contentMap.seo : {}
+
+  requireLocalizedField(hero.title, 'hero.title', errors)
+  requireLocalizedField(hero.subtitle, 'hero.subtitle', errors)
+  requireLocalizedField(hero.emailLabel, 'hero.emailLabel', errors)
+  requireLocalizedField(hero.phoneLabel, 'hero.phoneLabel', errors)
+  requireLocalizedField(hero.locationLabel, 'hero.locationLabel', errors)
+  requireNonEmptyString(hero.email, 'hero.email', errors)
+  requireNonEmptyString(hero.phone, 'hero.phone', errors)
+  requireLocalizedField(hero.location, 'hero.location', errors)
+  requireLocalizedField(form.title, 'form.title', errors)
+  requireLocalizedField(form.subtitle, 'form.subtitle', errors)
+  requireLocalizedField(form.name, 'form.name', errors)
+  requireLocalizedField(form.namePlaceholder, 'form.namePlaceholder', errors)
+  requireLocalizedField(form.email, 'form.email', errors)
+  requireLocalizedField(form.emailPlaceholder, 'form.emailPlaceholder', errors)
+  requireLocalizedField(form.company, 'form.company', errors)
+  requireLocalizedField(form.companyPlaceholder, 'form.companyPlaceholder', errors)
+  requireLocalizedField(form.phone, 'form.phone', errors)
+  requireLocalizedField(form.phonePlaceholder, 'form.phonePlaceholder', errors)
+  requireLocalizedField(form.userType, 'form.userType', errors)
+  requireLocalizedField(form.userTypePlaceholder, 'form.userTypePlaceholder', errors)
+  requireLocalizedField(form.userTypeEnterprise, 'form.userTypeEnterprise', errors)
+  requireLocalizedField(form.userTypeOperator, 'form.userTypeOperator', errors)
+  requireLocalizedField(form.message, 'form.message', errors)
+  requireLocalizedField(form.messagePlaceholder, 'form.messagePlaceholder', errors)
+  requireLocalizedField(form.notRobot, 'form.notRobot', errors)
+  requireLocalizedField(form.submit, 'form.submit', errors)
+  requireLocalizedField(form.submitting, 'form.submitting', errors)
+  requireLocalizedField(form.successTitle, 'form.successTitle', errors)
+  requireLocalizedField(form.successMessage, 'form.successMessage', errors)
+  requireLocalizedField(form.successButton, 'form.successButton', errors)
+  requireLocalizedField(socialLinks.heading, 'socialLinks.heading', errors)
+  requireLocalizedField(socialLinks.subtitle, 'socialLinks.subtitle', errors)
+  requireLocalizedField(seo.metaTitle, 'seo.metaTitle', errors)
+  requireLocalizedField(seo.metaDescription, 'seo.metaDescription', errors)
+}
+
+function validateCaseStudiesPage(contentMap: ContentMap, errors: string[]) {
+  const hero = isRecord(contentMap.hero) ? contentMap.hero : {}
+  const seo = isRecord(contentMap.seo) ? contentMap.seo : {}
+
+  requireLocalizedField(hero.title, 'hero.title', errors)
+  requireLocalizedField(hero.subtitle, 'hero.subtitle', errors)
+  requireLocalizedField(hero.description, 'hero.description', errors)
+  requireLocalizedField(seo.metaTitle, 'seo.metaTitle', errors)
+  requireLocalizedField(seo.metaDescription, 'seo.metaDescription', errors)
+}
+
+function validateCaseStudy(contentMap: ContentMap, errors: string[]) {
+  const testimonial = isRecord(contentMap.testimonial) ? contentMap.testimonial : {}
+  const seo = isRecord(contentMap.seo) ? contentMap.seo : {}
+
+  requireNonEmptyString(contentMap._id, '_id', errors)
+  requireNonEmptySlug(contentMap.slug, 'slug', errors)
+  requireLocalizedField(contentMap.title, 'title', errors)
+  requireLocalizedField(contentMap.excerpt, 'excerpt', errors)
+  requireLocalizedField(contentMap.clientName, 'clientName', errors)
+  requireLocalizedField(contentMap.industry, 'industry', errors)
+  requireLocalizedRichTextField(contentMap.challenge, 'challenge', errors)
+  requireLocalizedRichTextField(contentMap.solution, 'solution', errors)
+  requireLocalizedRichTextField(contentMap.results, 'results', errors)
+  requireLocalizedField(testimonial.quote, 'testimonial.quote', errors)
+  requireLocalizedField(testimonial.author, 'testimonial.author', errors)
+  requireLocalizedField(testimonial.role, 'testimonial.role', errors)
+  requireNonEmptyString(contentMap.publishedAt, 'publishedAt', errors)
+  requireLocalizedField(seo.metaTitle, 'seo.metaTitle', errors)
+  requireLocalizedField(seo.metaDescription, 'seo.metaDescription', errors)
+
+  if (!Array.isArray(contentMap.categorySlugs) || contentMap.categorySlugs.length === 0) {
+    errors.push('categorySlugs must contain at least one category slug.')
+  }
 }
 
 function validateSolutionsOperatorsDriversPage(contentMap: ContentMap, errors: string[]) {
@@ -550,12 +801,13 @@ function validateNavigation(contentMap: ContentMap, errors: string[]) {
 }
 
 export function validateContentMap(contentMap: ContentMap): ValidationResult {
+  const normalized = normalizeContentMap(contentMap)
   const errors: string[] = []
   const warnings: string[] = []
 
-  if (!isSupportedPageKey(contentMap.pageKey)) {
+  if (!isSupportedPageKey(normalized.pageKey)) {
     errors.push(
-      `Unsupported page key "${contentMap.pageKey}". Supported keys: homepage, solutions, solutionsEnterprisesPassengers, solutionsOperatorsDrivers, apps, appDetail, navigation.`,
+      `Unsupported page key "${normalized.pageKey}". Supported keys: homepage, solutions, solutionsEnterprisesPassengers, solutionsOperatorsDrivers, apps, appDetail, about, contact, caseStudies, caseStudy, navigation.`,
     )
 
     return {
@@ -565,37 +817,49 @@ export function validateContentMap(contentMap: ContentMap): ValidationResult {
     }
   }
 
-  if (contentMap.action === 'publish') {
+  if (normalized.action === 'publish') {
     errors.push(PHASE_ONE_PUBLISH_BLOCK_MESSAGE)
   }
 
-  switch (contentMap.pageKey) {
+  switch (normalized.pageKey) {
     case 'homepage':
-      validateHomepage(contentMap, errors, warnings)
+      validateHomepage(normalized, errors, warnings)
       break
     case 'solutions':
-      validateSolutions(contentMap, errors)
+      validateSolutions(normalized, errors)
       break
     case 'solutionsEnterprisesPassengers':
-      validateSolutionsEnterprisesPassengersPage(contentMap, errors)
+      validateSolutionsEnterprisesPassengersPage(normalized, errors)
       break
     case 'solutionsOperatorsDrivers':
-      validateSolutionsOperatorsDriversPage(contentMap, errors)
+      validateSolutionsOperatorsDriversPage(normalized, errors)
       break
     case 'apps':
-      validateAppsPage(contentMap, errors)
+      validateAppsPage(normalized, errors)
       break
     case 'appDetail':
-      validateAppDetail(contentMap, errors)
+      validateAppDetail(normalized, errors)
+      break
+    case 'about':
+      validateAboutPage(normalized, errors)
+      break
+    case 'contact':
+      validateContactPage(normalized, errors)
+      break
+    case 'caseStudies':
+      validateCaseStudiesPage(normalized, errors)
+      break
+    case 'caseStudy':
+      validateCaseStudy(normalized, errors)
       break
     case 'navigation':
-      validateNavigation(contentMap, errors)
+      validateNavigation(normalized, errors)
       break
   }
 
   return {
     valid: errors.length === 0,
-    pageKey: contentMap.pageKey,
+    pageKey: normalized.pageKey,
     errors,
     warnings,
   }
@@ -1080,6 +1344,237 @@ function mapAppDetailPatch(contentMap: ContentMap) {
   return patch
 }
 
+function mapAboutPagePatch(contentMap: ContentMap) {
+  const hero = isRecord(contentMap.hero) ? contentMap.hero : {}
+  const stats = isRecord(hero.stats) ? hero.stats : {}
+  const enterprises = isRecord(stats.enterprises) ? stats.enterprises : {}
+  const drivers = isRecord(stats.drivers) ? stats.drivers : {}
+  const trips = isRecord(stats.trips) ? stats.trips : {}
+  const story = isRecord(contentMap.story) ? contentMap.story : {}
+  const mission = isRecord(story.mission) ? story.mission : {}
+  const vision = isRecord(story.vision) ? story.vision : {}
+  const values = isRecord(story.values) ? story.values : {}
+  const innovation = isRecord(values.innovation) ? values.innovation : {}
+  const reliability = isRecord(values.reliability) ? values.reliability : {}
+  const sustainability = isRecord(values.sustainability) ? values.sustainability : {}
+  const timeline = isRecord(contentMap.timeline) ? contentMap.timeline : {}
+  const team = isRecord(contentMap.team) ? contentMap.team : {}
+  const careers = isRecord(contentMap.careers) ? contentMap.careers : {}
+  const cta = isRecord(contentMap.cta) ? contentMap.cta : {}
+  const seo = isRecord(contentMap.seo) ? contentMap.seo : {}
+
+  return {
+    hero: {
+      title: localized(hero.title),
+      subtitle: localized(hero.subtitle),
+      stats: {
+        enterprises: {
+          value: localized(enterprises.value),
+          label: localized(enterprises.label),
+        },
+        drivers: {
+          value: localized(drivers.value),
+          label: localized(drivers.label),
+        },
+        trips: {
+          value: localized(trips.value),
+          label: localized(trips.label),
+        },
+      },
+    },
+    story: {
+      heading: localized(story.heading),
+      subtitle: localized(story.subtitle),
+      mission: {
+        title: localized(mission.title),
+        text: localized(mission.text),
+      },
+      vision: {
+        title: localized(vision.title),
+        text: localized(vision.text),
+      },
+      values: {
+        title: localized(values.title),
+        innovation: {
+          title: localized(innovation.title),
+          description: localized(innovation.description),
+        },
+        reliability: {
+          title: localized(reliability.title),
+          description: localized(reliability.description),
+        },
+        sustainability: {
+          title: localized(sustainability.title),
+          description: localized(sustainability.description),
+        },
+      },
+    },
+    timeline: {
+      heading: localized(timeline.heading),
+      subtitle: localized(timeline.subtitle),
+      milestones: Array.isArray(timeline.milestones) ? timeline.milestones : [],
+    },
+    team: {
+      heading: localized(team.heading),
+      subtitle: localized(team.subtitle),
+      members: Array.isArray(team.members) ? team.members : [],
+    },
+    careers: {
+      heading: localized(careers.heading),
+      subtitle: localized(careers.subtitle),
+      openings: Array.isArray(careers.openings) ? careers.openings : [],
+    },
+    cta: {
+      heading: localized(cta.heading),
+      subtitle: localized(cta.subtitle),
+      primaryCta: {
+        text: localized(isRecord(cta.primaryCta) ? cta.primaryCta.text : undefined),
+        href: asString(isRecord(cta.primaryCta) ? cta.primaryCta.href : undefined),
+        openInNewTab: Boolean(isRecord(cta.primaryCta) ? cta.primaryCta.openInNewTab : false),
+      },
+      secondaryCta: {
+        text: localized(isRecord(cta.secondaryCta) ? cta.secondaryCta.text : undefined),
+        href: asString(isRecord(cta.secondaryCta) ? cta.secondaryCta.href : undefined),
+        openInNewTab: Boolean(
+          isRecord(cta.secondaryCta) ? cta.secondaryCta.openInNewTab : false,
+        ),
+      },
+      backgroundStyle: asString(cta.backgroundStyle) || 'gradient',
+    },
+    seo: {
+      metaTitle: localized(seo.metaTitle),
+      metaDescription: localized(seo.metaDescription),
+      keywords: localizedKeywordObject(seo.keywords),
+      canonicalUrl: asString(seo.canonicalUrl) || undefined,
+      noIndex: Boolean(seo.noIndex),
+      noFollow: Boolean(seo.noFollow),
+    },
+  }
+}
+
+function mapContactPagePatch(contentMap: ContentMap) {
+  const hero = isRecord(contentMap.hero) ? contentMap.hero : {}
+  const form = isRecord(contentMap.form) ? contentMap.form : {}
+  const socialLinks = isRecord(contentMap.socialLinks) ? contentMap.socialLinks : {}
+  const seo = isRecord(contentMap.seo) ? contentMap.seo : {}
+
+  return {
+    hero: {
+      title: localized(hero.title),
+      subtitle: localized(hero.subtitle),
+      emailLabel: localized(hero.emailLabel),
+      phoneLabel: localized(hero.phoneLabel),
+      locationLabel: localized(hero.locationLabel),
+      email: asString(hero.email),
+      phone: asString(hero.phone),
+      location: localized(hero.location),
+    },
+    form: {
+      title: localized(form.title),
+      subtitle: localized(form.subtitle),
+      name: localized(form.name),
+      namePlaceholder: localized(form.namePlaceholder),
+      email: localized(form.email),
+      emailPlaceholder: localized(form.emailPlaceholder),
+      company: localized(form.company),
+      companyPlaceholder: localized(form.companyPlaceholder),
+      phone: localized(form.phone),
+      phonePlaceholder: localized(form.phonePlaceholder),
+      userType: localized(form.userType),
+      userTypePlaceholder: localized(form.userTypePlaceholder),
+      userTypeEnterprise: localized(form.userTypeEnterprise),
+      userTypeOperator: localized(form.userTypeOperator),
+      message: localized(form.message),
+      messagePlaceholder: localized(form.messagePlaceholder),
+      notRobot: localized(form.notRobot),
+      submit: localized(form.submit),
+      submitting: localized(form.submitting),
+      successTitle: localized(form.successTitle),
+      successMessage: localized(form.successMessage),
+      successButton: localized(form.successButton),
+    },
+    socialLinks: {
+      heading: localized(socialLinks.heading),
+      subtitle: localized(socialLinks.subtitle),
+    },
+    seo: {
+      metaTitle: localized(seo.metaTitle),
+      metaDescription: localized(seo.metaDescription),
+      keywords: localizedKeywordObject(seo.keywords),
+      canonicalUrl: asString(seo.canonicalUrl) || undefined,
+      noIndex: Boolean(seo.noIndex),
+      noFollow: Boolean(seo.noFollow),
+    },
+  }
+}
+
+function mapCaseStudiesPagePatch(contentMap: ContentMap) {
+  const hero = isRecord(contentMap.hero) ? contentMap.hero : {}
+  const seo = isRecord(contentMap.seo) ? contentMap.seo : {}
+
+  return {
+    hero: {
+      title: localized(hero.title),
+      subtitle: localized(hero.subtitle),
+      description: localized(hero.description),
+    },
+    seo: {
+      metaTitle: localized(seo.metaTitle),
+      metaDescription: localized(seo.metaDescription),
+      keywords: localizedKeywordObject(seo.keywords),
+      canonicalUrl: asString(seo.canonicalUrl) || undefined,
+      noIndex: Boolean(seo.noIndex),
+      noFollow: Boolean(seo.noFollow),
+    },
+  }
+}
+
+function mapCaseStudyPatch(
+  contentMap: ContentMap,
+  resolvedCaseStudyCategoryReferences?: ResolvedCaseStudyCategoryReference[],
+) {
+  const testimonial = isRecord(contentMap.testimonial) ? contentMap.testimonial : {}
+  const seo = isRecord(contentMap.seo) ? contentMap.seo : {}
+
+  return {
+    title: localized(contentMap.title),
+    slug: {
+      _type: 'slug',
+      current: getSlugCurrent(contentMap.slug),
+    },
+    excerpt: localized(contentMap.excerpt),
+    clientName: localized(contentMap.clientName),
+    industry: localized(contentMap.industry),
+    location: localized(contentMap.location),
+    challenge: localizedRichText(contentMap.challenge),
+    solution: localizedRichText(contentMap.solution),
+    results: localizedRichText(contentMap.results),
+    metrics: Array.isArray(contentMap.metrics) ? contentMap.metrics : [],
+    testimonial: {
+      quote: localized(testimonial.quote),
+      author: localized(testimonial.author),
+      role: localized(testimonial.role),
+    },
+    categories: resolvedCaseStudyCategoryReferences
+      ? resolvedCaseStudyCategoryReferences.map((category) => ({
+          _key: `case-category-${category.slug}`,
+          _type: 'reference',
+          _ref: category._id,
+        }))
+      : undefined,
+    publishedAt: asString(contentMap.publishedAt),
+    featured: Boolean(contentMap.featured),
+    seo: {
+      metaTitle: localized(seo.metaTitle),
+      metaDescription: localized(seo.metaDescription),
+      keywords: localizedKeywordObject(seo.keywords),
+      canonicalUrl: asString(seo.canonicalUrl) || undefined,
+      noIndex: Boolean(seo.noIndex),
+      noFollow: Boolean(seo.noFollow),
+    },
+  }
+}
+
 function mapNavigationPatch(contentMap: ContentMap) {
   return {
     mainNav: Array.isArray(contentMap.mainNav) ? contentMap.mainNav : [],
@@ -1096,11 +1591,17 @@ export function buildDraftPlan({
   document,
   contentMap,
   resolvedAppsPageReferences,
+  resolvedCaseStudyCategoryReferences,
   existingDocumentContent,
 }: BuildDraftPlanArgs): BuildDraftPlanResult {
+  const normalizedContentMap = normalizeContentMap({
+    ...contentMap,
+    pageKey,
+    action,
+  })
   const warnings: string[] = []
 
-  if (action === 'publish' || contentMap.action === 'publish') {
+  if (action === 'publish' || normalizedContentMap.action === 'publish') {
     return {
       ok: false,
       message: PHASE_ONE_PUBLISH_BLOCK_MESSAGE,
@@ -1109,9 +1610,7 @@ export function buildDraftPlan({
   }
 
   const validation = validateContentMap({
-    ...contentMap,
-    pageKey,
-    action,
+    ...normalizedContentMap,
   })
 
   if (!validation.valid || !validation.pageKey) {
@@ -1123,24 +1622,11 @@ export function buildDraftPlan({
     }
   }
 
-  const slug = typeof contentMap.slug === 'string' ? contentMap.slug : undefined
+  const normalizedSlug = getSlugCurrent(normalizedContentMap.slug)
+  const slug = normalizedSlug || undefined
   const publishedId = document?._id?.replace(/^drafts\./, '') || getDefaultDocumentId(validation.pageKey, slug)
   const draftId = `drafts.${publishedId}`
-  const documentType =
-    document?._type ||
-    (validation.pageKey === 'homepage'
-      ? 'homePage'
-      : validation.pageKey === 'solutions'
-        ? 'solutionsPage'
-        : validation.pageKey === 'solutionsEnterprisesPassengers'
-          ? 'solutionsEnterprisesPassengersPage'
-        : validation.pageKey === 'solutionsOperatorsDrivers'
-          ? 'solutionsOperatorsDriversPage'
-        : validation.pageKey === 'apps'
-          ? 'appsPage'
-          : validation.pageKey === 'appDetail'
-            ? 'app'
-            : 'navigation')
+  const documentType = document?._type || QUERY_INSPECTION_MAP[validation.pageKey].documentType
 
   const showcase = isRecord(contentMap.showcase) ? contentMap.showcase : {}
   const hasAppsPageReferenceSlugs =
@@ -1158,28 +1644,52 @@ export function buildDraftPlan({
     }
   }
 
+  const hasCaseStudyCategorySlugs =
+    validation.pageKey === 'caseStudy' && Array.isArray(normalizedContentMap.categorySlugs)
+
+  if (hasCaseStudyCategorySlugs && !resolvedCaseStudyCategoryReferences) {
+    return {
+      ok: false,
+      message: 'Case study category references must be resolved before building a draft plan.',
+      errors: ['categorySlugs require resolved Sanity case study category documents before draft planning.'],
+      warnings: uniqueWarnings(validation.warnings),
+    }
+  }
+
   let patch: Record<string, unknown>
   switch (validation.pageKey) {
     case 'homepage':
-      patch = mapHomepagePatch(contentMap, warnings)
+      patch = mapHomepagePatch(normalizedContentMap, warnings)
       break
     case 'solutions':
-      patch = mapSolutionsPatch(contentMap)
+      patch = mapSolutionsPatch(normalizedContentMap)
       break
     case 'solutionsEnterprisesPassengers':
-      patch = mapSolutionsEnterprisesPassengersPatch(contentMap)
+      patch = mapSolutionsEnterprisesPassengersPatch(normalizedContentMap)
       break
     case 'solutionsOperatorsDrivers':
-      patch = mapSolutionsOperatorsDriversPatch(contentMap)
+      patch = mapSolutionsOperatorsDriversPatch(normalizedContentMap)
       break
     case 'apps':
-      patch = mapAppsPagePatch(contentMap, warnings, resolvedAppsPageReferences)
+      patch = mapAppsPagePatch(normalizedContentMap, warnings, resolvedAppsPageReferences)
       break
     case 'appDetail':
-      patch = mapAppDetailPatch(contentMap)
+      patch = mapAppDetailPatch(normalizedContentMap)
+      break
+    case 'about':
+      patch = mapAboutPagePatch(normalizedContentMap)
+      break
+    case 'contact':
+      patch = mapContactPagePatch(normalizedContentMap)
+      break
+    case 'caseStudies':
+      patch = mapCaseStudiesPagePatch(normalizedContentMap)
+      break
+    case 'caseStudy':
+      patch = mapCaseStudyPatch(normalizedContentMap, resolvedCaseStudyCategoryReferences)
       break
     case 'navigation':
-      patch = mapNavigationPatch(contentMap)
+      patch = mapNavigationPatch(normalizedContentMap)
       break
   }
 

@@ -1,0 +1,162 @@
+{
+  "documentType": "contactPage",
+  "action": "draft",
+  "_id": "contactPage",
+  "hero": {
+    "title": {
+      "en": "Talk to the Tranzkit team",
+      "ar": "تواصل مع فريق ترانزكيت"
+    },
+    "subtitle": {
+      "en": "Share your transport model, and we will map the right setup for planning, execution, supplier control, and financial follow-up.",
+      "ar": "شاركنا نموذج النقل لديكم، وسنساعدكم على تحديد الإعداد الأنسب للتخطيط والتنفيذ والتحكم في الموردين والمتابعة المالية."
+    },
+    "emailLabel": {
+      "en": "Email",
+      "ar": "البريد الإلكتروني"
+    },
+    "phoneLabel": {
+      "en": "Phone",
+      "ar": "الهاتف"
+    },
+    "locationLabel": {
+      "en": "Location",
+      "ar": "الموقع"
+    },
+    "email": "sales@tranzkit.com",
+    "phone": "+20 100 000 0000",
+    "location": {
+      "en": "Cairo, Egypt",
+      "ar": "القاهرة، مصر"
+    }
+  },
+  "form": {
+    "title": {
+      "en": "Book a focused walkthrough",
+      "ar": "احجز جولة مركزة"
+    },
+    "subtitle": {
+      "en": "Tell us about your operation so we can tailor the conversation around your real workflows.",
+      "ar": "عرّفنا على عملياتكم حتى نجهز النقاش حول سير العمل الفعلي لديكم."
+    },
+    "name": {
+      "en": "Full Name",
+      "ar": "الاسم الكامل"
+    },
+    "namePlaceholder": {
+      "en": "Enter your full name",
+      "ar": "اكتب اسمك الكامل"
+    },
+    "email": {
+      "en": "Work Email",
+      "ar": "البريد الإلكتروني للعمل"
+    },
+    "emailPlaceholder": {
+      "en": "you@company.com",
+      "ar": "you@company.com"
+    },
+    "company": {
+      "en": "Company",
+      "ar": "الشركة"
+    },
+    "companyPlaceholder": {
+      "en": "Enter your company name",
+      "ar": "اكتب اسم الشركة"
+    },
+    "phone": {
+      "en": "Phone Number",
+      "ar": "رقم الهاتف"
+    },
+    "phonePlaceholder": {
+      "en": "Enter your phone number",
+      "ar": "اكتب رقم الهاتف"
+    },
+    "userType": {
+      "en": "I am a",
+      "ar": "أنا"
+    },
+    "userTypePlaceholder": {
+      "en": "Select your role",
+      "ar": "اختر الدور"
+    },
+    "userTypeEnterprise": {
+      "en": "Enterprise buyer or admin",
+      "ar": "جهة مشترية أو إدارة شركة"
+    },
+    "userTypeOperator": {
+      "en": "Transport operator or supplier",
+      "ar": "مشغّل نقل أو مورّد"
+    },
+    "message": {
+      "en": "Message",
+      "ar": "الرسالة"
+    },
+    "messagePlaceholder": {
+      "en": "Describe your routes, branch setup, suppliers, service model, and main challenges.",
+      "ar": "صف الخطوط والفروع والموردين ونموذج الخدمة وأهم التحديات لديكم."
+    },
+    "notRobot": {
+      "en": "I am not a robot",
+      "ar": "أنا لست روبوتًا"
+    },
+    "submit": {
+      "en": "Send request",
+      "ar": "إرسال الطلب"
+    },
+    "submitting": {
+      "en": "Sending...",
+      "ar": "جاري الإرسال..."
+    },
+    "successTitle": {
+      "en": "Request received",
+      "ar": "تم استلام الطلب"
+    },
+    "successMessage": {
+      "en": "Thanks. Our team will contact you shortly.",
+      "ar": "شكرًا لك. سيتواصل معك فريقنا قريبًا."
+    },
+    "successButton": {
+      "en": "Send another request",
+      "ar": "إرسال طلب آخر"
+    }
+  },
+  "socialLinks": {
+    "heading": {
+      "en": "Follow Tranzkit",
+      "ar": "تابع ترانزكيت"
+    },
+    "subtitle": {
+      "en": "Stay close to product updates, transport operations thinking, and new rollout stories.",
+      "ar": "تابع تحديثات المنتج ورؤى تشغيل النقل وقصص الإطلاق الجديدة."
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "Contact Tranzkit | Employee transport platform",
+      "ar": "تواصل مع ترانزكيت | منصة نقل الموظفين"
+    },
+    "metaDescription": {
+      "en": "Talk to Tranzkit about employee transportation planning, operator control, supplier workflows, and transport finance visibility.",
+      "ar": "تواصل مع ترانزكيت بخصوص تخطيط نقل الموظفين وتحكم المشغلين وسير عمل الموردين والرؤية المالية."
+    },
+    "keywords": {
+      "en": [
+        "contact Tranzkit",
+        "employee transport demo",
+        "transport operations software contact",
+        "mobility platform sales",
+        "transport ERP consultation"
+      ],
+      "ar": [
+        "تواصل مع ترانزكيت",
+        "عرض نقل الموظفين",
+        "التواصل مع منصة تشغيل النقل",
+        "مبيعات منصة التنقل",
+        "استشارة ERP للنقل"
+      ]
+    },
+    "canonicalUrl": "https://www.tranzkit.com/contact",
+    "noIndex": false,
+    "noFollow": false
+  }
+}

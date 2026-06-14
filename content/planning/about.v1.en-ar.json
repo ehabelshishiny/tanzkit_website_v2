@@ -1,0 +1,255 @@
+{
+  "documentType": "aboutPage",
+  "action": "draft",
+  "_id": "aboutPage",
+  "hero": {
+    "title": {
+      "en": "Built for transport teams that need control, not theory",
+      "ar": "مبني لفرق النقل التي تحتاج إلى تحكم حقيقي لا كلام نظري"
+    },
+    "subtitle": {
+      "en": "Tranzkit is a product by Codefy Hub, shaped by more than 20 years across transport operations, mobility, ERP delivery, and finance-aware process design.",
+      "ar": "ترانزكيت هو منتج من Codefy Hub، تشكّل بخبرة تتجاوز 20 عامًا في تشغيل النقل والتنقل وتقديم أنظمة ERP وتصميم العمليات الواعية بالمالية."
+    },
+    "stats": {
+      "enterprises": {
+        "value": {
+          "en": "20+ Years",
+          "ar": "20+ سنة"
+        },
+        "label": {
+          "en": "Transport and ERP domain depth",
+          "ar": "عمق خبرة في النقل وERP"
+        }
+      },
+      "drivers": {
+        "value": {
+          "en": "Bilingual Product",
+          "ar": "منتج ثنائي اللغة"
+        },
+        "label": {
+          "en": "English and Arabic operations",
+          "ar": "تشغيل بالإنجليزية والعربية"
+        }
+      },
+      "trips": {
+        "value": {
+          "en": "ERP Discipline",
+          "ar": "انضباط ERP"
+        },
+        "label": {
+          "en": "Operations, finance, and governance",
+          "ar": "تشغيل ومالية وحوكمة"
+        }
+      }
+    }
+  },
+  "story": {
+    "heading": {
+      "en": "Why Tranzkit exists",
+      "ar": "لماذا وُجد ترانزكيت"
+    },
+    "subtitle": {
+      "en": "We built Tranzkit because employee transportation breaks down when planning, execution, supplier control, and finance are treated as separate problems.",
+      "ar": "بنينا ترانزكيت لأن نقل الموظفين يتعطل عندما يُعامل التخطيط والتنفيذ والتحكم في الموردين والمالية كملفات منفصلة."
+    },
+    "mission": {
+      "title": {
+        "en": "Our mission",
+        "ar": "مهمتنا"
+      },
+      "text": {
+        "en": "Help enterprises and transport operators run employee transportation with clearer service control, measurable accountability, and finance-aware workflows.",
+        "ar": "مساعدة الشركات ومشغلي النقل على إدارة نقل الموظفين بتحكم أوضح في الخدمة ومساءلة قابلة للقياس وسير عمل واعٍ بالمالية."
+      }
+    },
+    "vision": {
+      "title": {
+        "en": "Our vision",
+        "ar": "رؤيتنا"
+      },
+      "text": {
+        "en": "Set a stronger operating standard for employee transportation where planning, execution, and financial review stay connected every day.",
+        "ar": "ترسيخ معيار تشغيلي أقوى لنقل الموظفين يبقي التخطيط والتنفيذ والمراجعة المالية مترابطة كل يوم."
+      }
+    },
+    "values": {
+      "title": {
+        "en": "What we value",
+        "ar": "ما الذي نتمسك به"
+      },
+      "innovation": {
+        "title": {
+          "en": "Operational usefulness",
+          "ar": "فائدة تشغيلية حقيقية"
+        },
+        "description": {
+          "en": "We build around the real constraints of routes, schedules, suppliers, approvals, and service exceptions.",
+          "ar": "نبني حول القيود الفعلية للخطوط والجداول والموردين والموافقات واستثناءات الخدمة."
+        }
+      },
+      "reliability": {
+        "title": {
+          "en": "Execution reliability",
+          "ar": "موثوقية التنفيذ"
+        },
+        "description": {
+          "en": "We care about data clarity, daily control, and role-based accountability across the transport operation.",
+          "ar": "نهتم بوضوح البيانات والتحكم اليومي والمساءلة حسب الدور عبر عملية النقل."
+        }
+      },
+      "sustainability": {
+        "title": {
+          "en": "Long-term value",
+          "ar": "قيمة طويلة المدى"
+        },
+        "description": {
+          "en": "We help teams reduce operational waste, improve utilization, and make transport economics easier to govern.",
+          "ar": "نساعد الفرق على تقليل الهدر التشغيلي ورفع الاستغلال وجعل اقتصاديات النقل أسهل في الحوكمة."
+        }
+      }
+    }
+  },
+  "timeline": {
+    "heading": {
+      "en": "How the platform was shaped",
+      "ar": "كيف تشكلت المنصة"
+    },
+    "subtitle": {
+      "en": "Tranzkit grew from operational exposure, ERP discipline, and product execution in real transport environments.",
+      "ar": "تشكّل ترانزكيت من خبرة تشغيلية فعلية وانضباط ERP وتنفيذ منتجي داخل بيئات نقل حقيقية."
+    },
+    "milestones": [
+      {
+        "_key": "about-timeline-1",
+        "year": "2004+",
+        "title": {
+          "en": "Operational field foundation",
+          "ar": "بداية الخبرة الميدانية"
+        },
+        "description": {
+          "en": "Years of exposure to logistics, mobility, transport service delivery, and day-to-day operating pressure.",
+          "ar": "سنوات من الخبرة في اللوجستيات والتنقل وتشغيل خدمات النقل وضغط العمل اليومي."
+        },
+        "icon": "MapPinned"
+      },
+      {
+        "_key": "about-timeline-2",
+        "year": "2012+",
+        "title": {
+          "en": "ERP and finance process depth",
+          "ar": "تعمق في ERP والعمليات المالية"
+        },
+        "description": {
+          "en": "A stronger focus on workflow structure, approvals, controls, integration, and finance-aware system design.",
+          "ar": "تركيز أعمق على هيكلة سير العمل والموافقات والضوابط والتكاملات وتصميم الأنظمة الواعي بالمالية."
+        },
+        "icon": "Database"
+      },
+      {
+        "_key": "about-timeline-3",
+        "year": "2024",
+        "title": {
+          "en": "Tranzkit product launch",
+          "ar": "إطلاق ترانزكيت كمنتج"
+        },
+        "description": {
+          "en": "The product brought transport execution, supplier control, and financial visibility into one bilingual operating system.",
+          "ar": "جمع المنتج تنفيذ النقل والتحكم في الموردين والرؤية المالية داخل نظام تشغيل واحد ثنائي اللغة."
+        },
+        "icon": "Rocket"
+      }
+    ]
+  },
+  "team": {
+    "heading": {
+      "en": "The team behind Tranzkit",
+      "ar": "الفريق وراء ترانزكيت"
+    },
+    "subtitle": {
+      "en": "A cross-functional team with transport operations knowledge, ERP discipline, and product delivery experience.",
+      "ar": "فريق متعدد التخصصات يجمع بين فهم تشغيل النقل وانضباط ERP وخبرة بناء المنتجات."
+    },
+    "members": [
+      {
+        "_key": "about-team-1",
+        "name": "Codefy Hub Product Team",
+        "role": {
+          "en": "Transport ERP Product Specialists",
+          "ar": "متخصصو منتجات ERP للنقل"
+        },
+        "bio": {
+          "en": "We bring together transport operations thinking, workflow architecture, bilingual product design, and execution discipline to build software that works in the field.",
+          "ar": "نجمع بين فهم تشغيل النقل وهندسة سير العمل وتصميم المنتجات ثنائية اللغة وانضباط التنفيذ لبناء برمجيات تعمل فعلاً في الميدان."
+        }
+      }
+    ]
+  },
+  "careers": {
+    "heading": {
+      "en": "Join the team",
+      "ar": "انضم إلى الفريق"
+    },
+    "subtitle": {
+      "en": "We look for people who can translate operational complexity into better product decisions.",
+      "ar": "نبحث عن أشخاص قادرين على تحويل التعقيد التشغيلي إلى قرارات منتج أفضل."
+    },
+    "openings": []
+  },
+  "cta": {
+    "heading": {
+      "en": "See how Tranzkit fits your transport model",
+      "ar": "اكتشف كيف يتوافق ترانزكيت مع نموذج النقل لديكم"
+    },
+    "subtitle": {
+      "en": "Book a guided session to discuss planning, execution, supplier control, and finance workflows with our team.",
+      "ar": "احجز جلسة موجهة لمناقشة التخطيط والتنفيذ والتحكم في الموردين ومسارات العمل المالية مع فريقنا."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Book a demo",
+        "ar": "احجز عرضًا"
+      },
+      "href": "/contact",
+      "openInNewTab": false
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Talk to sales",
+        "ar": "تواصل مع المبيعات"
+      },
+      "href": "/contact",
+      "openInNewTab": false
+    },
+    "backgroundStyle": "gradient"
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "About Tranzkit | Transport ERP expertise",
+      "ar": "عن ترانزكيت | خبرة ERP للنقل"
+    },
+    "metaDescription": {
+      "en": "Learn how Tranzkit was shaped by real transport operations, ERP delivery, and finance-aware workflow design.",
+      "ar": "تعرّف كيف تشكّل ترانزكيت من واقع تشغيل النقل وخبرة ERP وتصميم سير العمل الواعي بالمالية."
+    },
+    "keywords": {
+      "en": [
+        "about Tranzkit",
+        "transport ERP company",
+        "employee transportation expertise",
+        "Codefy Hub",
+        "mobility operations software"
+      ],
+      "ar": [
+        "عن ترانزكيت",
+        "شركة ERP للنقل",
+        "خبرة نقل الموظفين",
+        "Codefy Hub",
+        "برمجيات تشغيل النقل"
+      ]
+    },
+    "canonicalUrl": "https://www.tranzkit.com/about",
+    "noIndex": false,
+    "noFollow": false
+  }
+}

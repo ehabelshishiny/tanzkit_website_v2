@@ -1,0 +1,472 @@
+{
+  "documentType": "caseStudy",
+  "action": "draft",
+  "_id": "case-supplier-settlement-discipline",
+  "slug": {
+    "_type": "slug",
+    "current": "building-supplier-settlement-discipline-across-branches"
+  },
+  "title": {
+    "en": "Building Supplier Settlement Discipline Across Branches",
+    "ar": "بناء انضباط تسوية الموردين عبر الفروع"
+  },
+  "excerpt": {
+    "en": "How a transport provider aligned settlement cycles, deduction logic, and branch-level payable control.",
+    "ar": "كيف وحّد مزوّد نقل دورات التسوية ومنطق الخصومات والتحكم في المستحقات على مستوى الفروع."
+  },
+  "clientName": {
+    "en": "Managed Shuttle Provider",
+    "ar": "مزوّد خدمات نقل مُدارة"
+  },
+  "industry": {
+    "en": "Mobility Services",
+    "ar": "خدمات التنقل"
+  },
+  "location": {
+    "en": "Alexandria, Egypt",
+    "ar": "الإسكندرية، مصر"
+  },
+  "challenge": {
+    "en": [
+      {
+        "_key": "ss-ch-en-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-ch-en-1-span",
+            "_type": "span",
+            "text": "The provider was operating across several branches, but supplier settlement logic was not equally disciplined everywhere. Payment cycles, deduction reasons, and approval timing varied too much from one branch to another.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "ss-ch-en-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-ch-en-2-span",
+            "_type": "span",
+            "text": "That inconsistency created settlement delays, supplier disputes, and poor forecasting for finance teams. The business needed a branch-ready model that could standardize control without slowing the operation down.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "ss-ch-en-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-ch-en-3-span",
+            "_type": "span",
+            "text": "Different cycle rules by branch"
+          }
+        ]
+      },
+      {
+        "_key": "ss-ch-en-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-ch-en-4-span",
+            "_type": "span",
+            "text": "Recurring disputes over deductions and approvals"
+          }
+        ]
+      },
+      {
+        "_key": "ss-ch-en-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-ch-en-5-span",
+            "_type": "span",
+            "text": "Weak payable visibility for finance planning"
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "ss-ch-ar-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-ch-ar-1-span",
+            "_type": "span",
+            "text": "كان مزوّد الخدمة يعمل عبر عدة فروع، لكن منطق تسوية الموردين لم يكن منضبطًا بالمستوى نفسه في كل مكان. اختلفت دورات الدفع وأسباب الخصومات وتوقيت الموافقات من فرع إلى آخر."
+          }
+        ]
+      },
+      {
+        "_key": "ss-ch-ar-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-ch-ar-2-span",
+            "_type": "span",
+            "text": "هذا التفاوت تسبب في تأخر التسويات ونزاعات مع الموردين وضعف في التنبؤ بالنسبة لفرق المالية. وكان المطلوب نموذجًا جاهزًا للفروع يحقق التوحيد دون أن يبطئ التشغيل."
+          }
+        ]
+      },
+      {
+        "_key": "ss-ch-ar-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-ch-ar-3-span",
+            "_type": "span",
+            "text": "قواعد دورات مختلفة من فرع لآخر"
+          }
+        ]
+      },
+      {
+        "_key": "ss-ch-ar-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-ch-ar-4-span",
+            "_type": "span",
+            "text": "نزاعات متكررة حول الخصومات والموافقات"
+          }
+        ]
+      },
+      {
+        "_key": "ss-ch-ar-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-ch-ar-5-span",
+            "_type": "span",
+            "text": "رؤية محدودة للمستحقات لدى فرق المالية"
+          }
+        ]
+      }
+    ]
+  },
+  "solution": {
+    "en": [
+      {
+        "_key": "ss-so-en-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-so-en-1-span",
+            "_type": "span",
+            "text": "Tranzkit standardized cycle calendars, deduction categories, approval checkpoints, and branch-level settlement views. Finance and operations teams could work from the same branch-ready workflow instead of maintaining local exceptions everywhere.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "ss-so-en-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-so-en-2-span",
+            "_type": "span",
+            "text": "That gave leadership clearer payable visibility while preserving the operating detail behind each supplier cycle. Reviews became easier to trace and defend.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "ss-so-en-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-so-en-3-span",
+            "_type": "span",
+            "text": "Standard calendars and deduction logic"
+          }
+        ]
+      },
+      {
+        "_key": "ss-so-en-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-so-en-4-span",
+            "_type": "span",
+            "text": "Branch-level settlement visibility"
+          }
+        ]
+      },
+      {
+        "_key": "ss-so-en-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-so-en-5-span",
+            "_type": "span",
+            "text": "Stronger auditability for supplier finance"
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "ss-so-ar-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-so-ar-1-span",
+            "_type": "span",
+            "text": "وحّد ترانزكيت تقاويم الدورات وفئات الخصومات ونقاط الموافقة وشاشات التسوية على مستوى الفروع. وأصبح بإمكان فرق المالية والتشغيل العمل من خلال سير عمل موحّد جاهز للفروع بدل المحافظة على استثناءات محلية في كل مكان."
+          }
+        ]
+      },
+      {
+        "_key": "ss-so-ar-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-so-ar-2-span",
+            "_type": "span",
+            "text": "ومنح ذلك الإدارة رؤية أوضح للمستحقات مع الحفاظ على التفاصيل التشغيلية وراء كل دورة مورد. وأصبحت المراجعات أسهل في التتبع والدفاع."
+          }
+        ]
+      },
+      {
+        "_key": "ss-so-ar-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-so-ar-3-span",
+            "_type": "span",
+            "text": "تقاويم موحدة ومنطق واضح للخصومات"
+          }
+        ]
+      },
+      {
+        "_key": "ss-so-ar-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-so-ar-4-span",
+            "_type": "span",
+            "text": "رؤية للتسوية على مستوى الفروع"
+          }
+        ]
+      },
+      {
+        "_key": "ss-so-ar-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-so-ar-5-span",
+            "_type": "span",
+            "text": "قابلية تدقيق أقوى للمالية المرتبطة بالموردين"
+          }
+        ]
+      }
+    ]
+  },
+  "results": {
+    "en": [
+      {
+        "_key": "ss-re-en-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-re-en-1-span",
+            "_type": "span",
+            "text": "The provider reduced settlement delays, cut dispute volume, and created a more predictable payable rhythm across branches. Finance reviews stopped depending on branch-by-branch interpretation.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "ss-re-en-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-re-en-2-span",
+            "_type": "span",
+            "text": "That gave the business a stronger balance between operational speed and financial discipline.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "ss-re-ar-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-re-ar-1-span",
+            "_type": "span",
+            "text": "قلل مزوّد الخدمة من تأخر التسويات وخفض حجم النزاعات وخلق إيقاعًا أكثر قابلية للتنبؤ للمستحقات عبر الفروع. وتوقفت المراجعات المالية عن الاعتماد على التفسير المختلف من فرع إلى آخر."
+          }
+        ]
+      },
+      {
+        "_key": "ss-re-ar-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ss-re-ar-2-span",
+            "_type": "span",
+            "text": "وبذلك حصلت الشركة على توازن أقوى بين سرعة التشغيل والانضباط المالي."
+          }
+        ]
+      }
+    ]
+  },
+  "metrics": [
+    {
+      "value": {
+        "en": "31%",
+        "ar": "31%"
+      },
+      "label": {
+        "en": "Reduction in settlement delays",
+        "ar": "خفض تأخر التسويات"
+      },
+      "icon": "Timer"
+    },
+    {
+      "value": {
+        "en": "38%",
+        "ar": "38%"
+      },
+      "label": {
+        "en": "Fewer supplier disputes",
+        "ar": "تقليل نزاعات الموردين"
+      },
+      "icon": "FileCheck2"
+    },
+    {
+      "value": {
+        "en": "6",
+        "ar": "6"
+      },
+      "label": {
+        "en": "Branches standardized",
+        "ar": "فروع تم توحيدها"
+      },
+      "icon": "GitBranch"
+    }
+  ],
+  "testimonial": {
+    "quote": {
+      "en": "Our payable cycles are now predictable and auditable across every branch.",
+      "ar": "أصبحت دورات المستحقات لدينا متوقعة وقابلة للتدقيق في كل فرع."
+    },
+    "author": {
+      "en": "Finance Controller",
+      "ar": "مراقب مالي"
+    },
+    "role": {
+      "en": "Transport Provider",
+      "ar": "مزوّد خدمة نقل"
+    }
+  },
+  "categorySlugs": [
+    "finance-control",
+    "supplier-management"
+  ],
+  "publishedAt": "2026-05-05T09:00:00.000Z",
+  "featured": false,
+  "seo": {
+    "metaTitle": {
+      "en": "Supplier settlement discipline in transport | Tranzkit",
+      "ar": "انضباط تسوية الموردين في النقل | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "How a transport provider aligned settlement cycles, deductions, and branch-level payable control with Tranzkit.",
+      "ar": "كيف وحّد مزوّد نقل دورات التسوية والخصومات والتحكم في المستحقات على مستوى الفروع مع ترانزكيت."
+    },
+    "keywords": {
+      "en": [
+        "supplier settlement transport",
+        "transport finance control",
+        "branch payable visibility",
+        "mobility provider case study",
+        "Tranzkit case study"
+      ],
+      "ar": [
+        "تسوية الموردين في النقل",
+        "التحكم المالي في النقل",
+        "رؤية المستحقات على مستوى الفروع",
+        "دراسة حالة مزود تنقل",
+        "دراسة حالة ترانزكيت"
+      ]
+    },
+    "noIndex": false,
+    "noFollow": false
+  }
+}

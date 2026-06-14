@@ -1,0 +1,472 @@
+{
+  "documentType": "caseStudy",
+  "action": "draft",
+  "_id": "case-shift-transport-visibility",
+  "slug": {
+    "_type": "slug",
+    "current": "shift-based-transport-visibility-workforce-reliability"
+  },
+  "title": {
+    "en": "Shift-Based Transport Visibility for Workforce Reliability",
+    "ar": "رؤية نقل الورديات لرفع موثوقية القوى العاملة"
+  },
+  "excerpt": {
+    "en": "How a services enterprise connected shift demand, live execution, and employee feedback in one operating model.",
+    "ar": "كيف ربطت شركة خدمات بين طلب الورديات والتنفيذ المباشر وملاحظات الموظفين داخل نموذج تشغيل واحد."
+  },
+  "clientName": {
+    "en": "Enterprise Services Network",
+    "ar": "شبكة خدمات مؤسسية"
+  },
+  "industry": {
+    "en": "Business Services",
+    "ar": "خدمات الأعمال"
+  },
+  "location": {
+    "en": "Riyadh, Saudi Arabia",
+    "ar": "الرياض، السعودية"
+  },
+  "challenge": {
+    "en": [
+      {
+        "_key": "sv-ch-en-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-ch-en-1-span",
+            "_type": "span",
+            "text": "The company needed more reliable commute execution across shift-based service windows, but teams were working with limited visibility into active trips, delays, and employee-reported issues.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "sv-ch-en-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-ch-en-2-span",
+            "_type": "span",
+            "text": "When problems happened, the response process was often reactive. Service proof, complaint handling, and shift-level follow-up were not connected tightly enough to protect workforce reliability.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "sv-ch-en-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-ch-en-3-span",
+            "_type": "span",
+            "text": "Late visibility into delays and field issues"
+          }
+        ]
+      },
+      {
+        "_key": "sv-ch-en-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-ch-en-4-span",
+            "_type": "span",
+            "text": "Weak link between employee feedback and operations review"
+          }
+        ]
+      },
+      {
+        "_key": "sv-ch-en-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-ch-en-5-span",
+            "_type": "span",
+            "text": "Harder shift-level accountability for service quality"
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "sv-ch-ar-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-ch-ar-1-span",
+            "_type": "span",
+            "text": "كانت الشركة بحاجة إلى تنفيذ أكثر موثوقية لرحلات التنقل عبر نوافذ خدمة مبنية على الورديات، لكن الفرق كانت تعمل برؤية محدودة للرحلات النشطة والتأخيرات ومشكلات الموظفين."
+          }
+        ]
+      },
+      {
+        "_key": "sv-ch-ar-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-ch-ar-2-span",
+            "_type": "span",
+            "text": "وعند حدوث المشكلات، كانت الاستجابة تميل إلى رد الفعل. كما أن أدلة الخدمة ومسار الشكاوى والمتابعة على مستوى الوردية لم تكن مترابطة بما يكفي لحماية موثوقية القوى العاملة."
+          }
+        ]
+      },
+      {
+        "_key": "sv-ch-ar-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-ch-ar-3-span",
+            "_type": "span",
+            "text": "تأخر في رؤية التأخيرات والمشكلات الميدانية"
+          }
+        ]
+      },
+      {
+        "_key": "sv-ch-ar-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-ch-ar-4-span",
+            "_type": "span",
+            "text": "رابط ضعيف بين ملاحظات الموظفين ومراجعة التشغيل"
+          }
+        ]
+      },
+      {
+        "_key": "sv-ch-ar-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-ch-ar-5-span",
+            "_type": "span",
+            "text": "صعوبة في فرض المساءلة على جودة الخدمة لكل وردية"
+          }
+        ]
+      }
+    ]
+  },
+  "solution": {
+    "en": [
+      {
+        "_key": "sv-so-en-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-so-en-1-span",
+            "_type": "span",
+            "text": "Tranzkit connected shift demand, live trip monitoring, employee feedback, and incident follow-up inside one operating model. Operations teams could see what was happening during service, while management gained clearer evidence for post-shift review.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "sv-so-en-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-so-en-2-span",
+            "_type": "span",
+            "text": "That made it easier to respond earlier, close issues faster, and turn employee experience signals into practical service action.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "sv-so-en-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-so-en-3-span",
+            "_type": "span",
+            "text": "One view across demand, live trips, and complaints"
+          }
+        ]
+      },
+      {
+        "_key": "sv-so-en-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-so-en-4-span",
+            "_type": "span",
+            "text": "Faster incident and exception follow-up"
+          }
+        ]
+      },
+      {
+        "_key": "sv-so-en-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-so-en-5-span",
+            "_type": "span",
+            "text": "Clearer service proof for shift-level review"
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "sv-so-ar-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-so-ar-1-span",
+            "_type": "span",
+            "text": "ربط ترانزكيت بين طلب الورديات ومتابعة الرحلات المباشرة وملاحظات الموظفين ومتابعة الحوادث داخل نموذج تشغيل واحد. وأصبح بإمكان فرق التشغيل رؤية ما يحدث أثناء الخدمة، بينما حصلت الإدارة على أدلة أوضح للمراجعة بعد انتهاء الوردية."
+          }
+        ]
+      },
+      {
+        "_key": "sv-so-ar-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-so-ar-2-span",
+            "_type": "span",
+            "text": "وهذا سهّل التدخل المبكر وإغلاق المشكلات بسرعة أكبر وتحويل إشارات تجربة الموظف إلى إجراءات خدمة عملية."
+          }
+        ]
+      },
+      {
+        "_key": "sv-so-ar-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-so-ar-3-span",
+            "_type": "span",
+            "text": "شاشة واحدة تجمع الطلب والرحلات المباشرة والشكاوى"
+          }
+        ]
+      },
+      {
+        "_key": "sv-so-ar-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-so-ar-4-span",
+            "_type": "span",
+            "text": "متابعة أسرع للحوادث والاستثناءات"
+          }
+        ]
+      },
+      {
+        "_key": "sv-so-ar-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-so-ar-5-span",
+            "_type": "span",
+            "text": "أدلة خدمة أوضح للمراجعة على مستوى الوردية"
+          }
+        ]
+      }
+    ]
+  },
+  "results": {
+    "en": [
+      {
+        "_key": "sv-re-en-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-re-en-1-span",
+            "_type": "span",
+            "text": "The company improved on-time shift arrivals, responded faster to issues, and increased employee confidence in daily transport service. Reliability improved because service review was no longer disconnected from what was happening on the ground.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "sv-re-en-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-re-en-2-span",
+            "_type": "span",
+            "text": "The result was a steadier commute experience and a better operating response when service performance slipped.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "sv-re-ar-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-re-ar-1-span",
+            "_type": "span",
+            "text": "حسّنت الشركة وصول الورديات في الوقت واستجابت أسرع للمشكلات ورفعت ثقة الموظفين في خدمة النقل اليومية. وتحسنت الموثوقية لأن مراجعة الخدمة لم تعد منفصلة عما يحدث فعليًا على الأرض."
+          }
+        ]
+      },
+      {
+        "_key": "sv-re-ar-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "sv-re-ar-2-span",
+            "_type": "span",
+            "text": "وكانت النتيجة تجربة تنقل أكثر استقرارًا واستجابة تشغيلية أفضل عندما يتراجع الأداء."
+          }
+        ]
+      }
+    ]
+  },
+  "metrics": [
+    {
+      "value": {
+        "en": "24%",
+        "ar": "24%"
+      },
+      "label": {
+        "en": "Improved on-time shift arrivals",
+        "ar": "تحسن وصول الورديات في الوقت"
+      },
+      "icon": "AlarmClockCheck"
+    },
+    {
+      "value": {
+        "en": "33%",
+        "ar": "33%"
+      },
+      "label": {
+        "en": "Faster incident closure",
+        "ar": "تسريع إغلاق الحوادث"
+      },
+      "icon": "Gauge"
+    },
+    {
+      "value": {
+        "en": "18%",
+        "ar": "18%"
+      },
+      "label": {
+        "en": "Higher employee service confidence",
+        "ar": "ارتفاع ثقة الموظفين في الخدمة"
+      },
+      "icon": "HeartHandshake"
+    }
+  ],
+  "testimonial": {
+    "quote": {
+      "en": "We can now prove service quality and respond faster when things go wrong.",
+      "ar": "أصبح بإمكاننا إثبات جودة الخدمة والاستجابة أسرع عند حدوث المشكلات."
+    },
+    "author": {
+      "en": "Mobility Program Manager",
+      "ar": "مدير برنامج التنقل"
+    },
+    "role": {
+      "en": "Enterprise Services",
+      "ar": "الخدمات المؤسسية"
+    }
+  },
+  "categorySlugs": [
+    "workforce-reliability",
+    "operations-transformation"
+  ],
+  "publishedAt": "2026-05-07T09:00:00.000Z",
+  "featured": false,
+  "seo": {
+    "metaTitle": {
+      "en": "Shift transport visibility for workforce reliability | Tranzkit",
+      "ar": "رؤية نقل الورديات لرفع الموثوقية | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "How a services enterprise improved shift transport reliability with live visibility, service proof, and faster issue response.",
+      "ar": "كيف حسّنت شركة خدمات موثوقية نقل الورديات عبر الرؤية المباشرة وإثبات الخدمة والاستجابة الأسرع للمشكلات."
+    },
+    "keywords": {
+      "en": [
+        "shift transport visibility",
+        "workforce reliability transport",
+        "employee commute case study",
+        "live service visibility",
+        "Tranzkit case study"
+      ],
+      "ar": [
+        "رؤية نقل الورديات",
+        "موثوقية القوى العاملة في النقل",
+        "دراسة حالة تنقل الموظفين",
+        "رؤية الخدمة المباشرة",
+        "دراسة حالة ترانزكيت"
+      ]
+    },
+    "noIndex": false,
+    "noFollow": false
+  }
+}

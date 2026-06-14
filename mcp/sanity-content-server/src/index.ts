@@ -2,7 +2,12 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import * as z from 'zod/v4'
-import { buildDraftPlan, validateContentMap, type ContentMap } from './content-ops.js'
+import {
+  buildDraftPlan,
+  normalizeContentMap,
+  validateContentMap,
+  type ContentMap,
+} from './content-ops.js'
 import {
   PHASE_ONE_PUBLISH_BLOCK_MESSAGE,
   isSupportedPageKey,
@@ -74,6 +79,10 @@ server.registerTool(
           'solutionsOperatorsDrivers',
           'apps',
           'appDetail',
+          'about',
+          'contact',
+          'caseStudies',
+          'caseStudy',
           'navigation',
         ])
         .optional(),
@@ -98,6 +107,10 @@ server.registerTool(
         'solutionsOperatorsDrivers',
         'apps',
         'appDetail',
+        'about',
+        'contact',
+        'caseStudies',
+        'caseStudy',
         'navigation',
       ]),
       slug: z.string().optional(),
@@ -129,7 +142,9 @@ server.registerTool(
     },
   },
   async ({ contentMap }) => {
-    const result = await validateContentMapWithSanity(contentMap as ContentMap)
+    const result = await validateContentMapWithSanity(
+      normalizeContentMap(contentMap as ContentMap),
+    )
     return toToolResult({
       ...result,
     })
@@ -146,7 +161,7 @@ server.registerTool(
     },
   },
   async ({ contentMap }) => {
-    const map = contentMap as ContentMap
+    const map = normalizeContentMap(contentMap as ContentMap)
 
     const validation = await validateContentMapWithSanity(map)
     if (!validation.valid || !isSupportedPageKey(map.pageKey)) {
@@ -171,6 +186,7 @@ server.registerTool(
       },
       contentMap: map,
       resolvedAppsPageReferences: validation.resolvedAppsPageReferences,
+      resolvedCaseStudyCategoryReferences: validation.resolvedCaseStudyCategoryReferences,
       existingDocumentContent,
     })
 
@@ -193,7 +209,7 @@ server.registerTool(
     },
   },
   async ({ contentMap, dryRun }) => {
-    const map = contentMap as ContentMap
+    const map = normalizeContentMap(contentMap as ContentMap)
 
     const validation = await validateContentMapWithSanity(map)
     if (!validation.valid || !isSupportedPageKey(map.pageKey)) {
@@ -218,6 +234,7 @@ server.registerTool(
       },
       contentMap: map,
       resolvedAppsPageReferences: validation.resolvedAppsPageReferences,
+      resolvedCaseStudyCategoryReferences: validation.resolvedCaseStudyCategoryReferences,
       existingDocumentContent,
     })
 

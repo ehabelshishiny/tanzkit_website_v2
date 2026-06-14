@@ -2,6 +2,7 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import type { ContentMap } from './content-ops.js'
+import { normalizeContentMap } from './content-ops.js'
 import { getWorkspaceRoot } from './env.js'
 import { validateContentMapWithSanity } from './sanity.js'
 
@@ -11,7 +12,9 @@ async function main() {
     ? inputPath
     : path.join(getWorkspaceRoot(), inputPath)
   const source = await readFile(filePath, 'utf8')
-  const result = await validateContentMapWithSanity(JSON.parse(source) as ContentMap)
+  const result = await validateContentMapWithSanity(
+    normalizeContentMap(JSON.parse(source) as ContentMap),
+  )
   console.log(JSON.stringify(result, null, 2))
 
   if (!result.valid) {

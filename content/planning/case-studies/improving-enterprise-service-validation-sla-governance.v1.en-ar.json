@@ -1,0 +1,472 @@
+{
+  "documentType": "caseStudy",
+  "action": "draft",
+  "_id": "case-enterprise-service-validation",
+  "slug": {
+    "_type": "slug",
+    "current": "improving-enterprise-service-validation-sla-governance"
+  },
+  "title": {
+    "en": "Improving Enterprise Service Validation and SLA Governance",
+    "ar": "تحسين التحقق من الخدمة وحوكمة SLA"
+  },
+  "excerpt": {
+    "en": "How a large enterprise created planned-vs-actual visibility across shifts, sites, and supplier-managed routes.",
+    "ar": "كيف أنشأت شركة كبيرة رؤية واضحة للمخطط مقابل الفعلي عبر الورديات والمواقع والخطوط التي يديرها الموردون."
+  },
+  "clientName": {
+    "en": "National Industrial Group",
+    "ar": "مجموعة صناعية وطنية"
+  },
+  "industry": {
+    "en": "Manufacturing and Industrial Operations",
+    "ar": "التصنيع والعمليات الصناعية"
+  },
+  "location": {
+    "en": "Giza, Egypt",
+    "ar": "الجيزة، مصر"
+  },
+  "challenge": {
+    "en": [
+      {
+        "_key": "ev-ch-en-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-ch-en-1-span",
+            "_type": "span",
+            "text": "The enterprise relied on multiple operators to serve different sites and shift patterns, but service validation was still built on fragmented updates, manual confirmations, and delayed review cycles.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "ev-ch-en-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-ch-en-2-span",
+            "_type": "span",
+            "text": "Facilities, HR, procurement, and transport stakeholders did not always have the same evidence when discussing operator performance, penalties, or service quality. That created governance friction and slower decision-making.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "ev-ch-en-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-ch-en-3-span",
+            "_type": "span",
+            "text": "Weak service-day evidence across sites"
+          }
+        ]
+      },
+      {
+        "_key": "ev-ch-en-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-ch-en-4-span",
+            "_type": "span",
+            "text": "Slow SLA review and escalation cycles"
+          }
+        ]
+      },
+      {
+        "_key": "ev-ch-en-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-ch-en-5-span",
+            "_type": "span",
+            "text": "Recurring disputes around planned vs actual delivery"
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "ev-ch-ar-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-ch-ar-1-span",
+            "_type": "span",
+            "text": "كانت الشركة تعتمد على عدة مشغلين لخدمة مواقع وأنماط ورديات مختلفة، لكن التحقق من الخدمة كان ما يزال مبنيًا على تحديثات متفرقة وتأكيدات يدوية ودورات مراجعة متأخرة."
+          }
+        ]
+      },
+      {
+        "_key": "ev-ch-ar-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-ch-ar-2-span",
+            "_type": "span",
+            "text": "لم تكن فرق المرافق والموارد البشرية والمشتريات والنقل تمتلك دائمًا الأدلة نفسها عند مناقشة أداء المشغلين أو الجزاءات أو جودة الخدمة. وهذا خلق احتكاكًا في الحوكمة وأبطأ القرار."
+          }
+        ]
+      },
+      {
+        "_key": "ev-ch-ar-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-ch-ar-3-span",
+            "_type": "span",
+            "text": "أدلة تشغيل غير كافية على مستوى المواقع"
+          }
+        ]
+      },
+      {
+        "_key": "ev-ch-ar-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-ch-ar-4-span",
+            "_type": "span",
+            "text": "بطء في مراجعة SLA ومسارات التصعيد"
+          }
+        ]
+      },
+      {
+        "_key": "ev-ch-ar-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-ch-ar-5-span",
+            "_type": "span",
+            "text": "نزاعات متكررة حول الفرق بين المخطط والتنفيذ الفعلي"
+          }
+        ]
+      }
+    ]
+  },
+  "solution": {
+    "en": [
+      {
+        "_key": "ev-so-en-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-so-en-1-span",
+            "_type": "span",
+            "text": "Tranzkit gave the enterprise one validation layer across shifts, sites, operators, and service periods. Stakeholders could review the same service evidence, the same incident trail, and the same planned-vs-actual context before escalating or approving outcomes.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "ev-so-en-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-so-en-2-span",
+            "_type": "span",
+            "text": "The platform also supported role-based access, so each team could focus on the parts of the workflow they owned without losing alignment with the broader service and finance picture.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "ev-so-en-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-so-en-3-span",
+            "_type": "span",
+            "text": "Shared enterprise evidence for validation and SLA review"
+          }
+        ]
+      },
+      {
+        "_key": "ev-so-en-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-so-en-4-span",
+            "_type": "span",
+            "text": "Clearer governance across departments and suppliers"
+          }
+        ]
+      },
+      {
+        "_key": "ev-so-en-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-so-en-5-span",
+            "_type": "span",
+            "text": "Faster review of service variance by project and period"
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "ev-so-ar-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-so-ar-1-span",
+            "_type": "span",
+            "text": "منح ترانزكيت الشركة طبقة تحقق واحدة عبر الورديات والمواقع والمشغلين وفترات الخدمة. وأصبح أصحاب المصلحة يراجعون الأدلة نفسها ومسار الحوادث نفسه وسياق المخطط مقابل الفعلي نفسه قبل التصعيد أو اعتماد النتائج."
+          }
+        ]
+      },
+      {
+        "_key": "ev-so-ar-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-so-ar-2-span",
+            "_type": "span",
+            "text": "كما دعم النظام الوصول بحسب الدور، بحيث يركز كل فريق على الجزء الذي يملكه من سير العمل من دون فقدان الارتباط بالصورة الأوسع للخدمة والمالية."
+          }
+        ]
+      },
+      {
+        "_key": "ev-so-ar-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-so-ar-3-span",
+            "_type": "span",
+            "text": "أدلة مؤسسية مشتركة للتحقق ومراجعة SLA"
+          }
+        ]
+      },
+      {
+        "_key": "ev-so-ar-4",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-so-ar-4-span",
+            "_type": "span",
+            "text": "حوكمة أوضح بين الإدارات والموردين"
+          }
+        ]
+      },
+      {
+        "_key": "ev-so-ar-5",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-so-ar-5-span",
+            "_type": "span",
+            "text": "مراجعة أسرع لفروقات الخدمة بحسب المشروع والفترة"
+          }
+        ]
+      }
+    ]
+  },
+  "results": {
+    "en": [
+      {
+        "_key": "ev-re-en-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-re-en-1-span",
+            "_type": "span",
+            "text": "The enterprise accelerated SLA review, reduced validation disputes, and created stronger confidence in operator-performance discussions. Management could move faster because review meetings were based on shared evidence rather than competing narratives.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_key": "ev-re-en-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-re-en-2-span",
+            "_type": "span",
+            "text": "The result was not only better governance, but a more practical way to connect service quality with supplier accountability.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "ar": [
+      {
+        "_key": "ev-re-ar-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-re-ar-1-span",
+            "_type": "span",
+            "text": "سرّعت الشركة دورات مراجعة SLA وقللت نزاعات التحقق ورفعت الثقة في مناقشات أداء المشغلين. وأصبح القرار أسرع لأن اجتماعات المراجعة باتت تعتمد على أدلة مشتركة بدل الروايات المتنافسة."
+          }
+        ]
+      },
+      {
+        "_key": "ev-re-ar-2",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "ev-re-ar-2-span",
+            "_type": "span",
+            "text": "ولم تكن النتيجة مجرد حوكمة أفضل، بل طريقة عملية تربط جودة الخدمة مباشرة بمساءلة الموردين."
+          }
+        ]
+      }
+    ]
+  },
+  "metrics": [
+    {
+      "value": {
+        "en": "27%",
+        "ar": "27%"
+      },
+      "label": {
+        "en": "Faster SLA review cycles",
+        "ar": "تسريع دورات مراجعة SLA"
+      },
+      "icon": "Clock3"
+    },
+    {
+      "value": {
+        "en": "41%",
+        "ar": "41%"
+      },
+      "label": {
+        "en": "Lower validation disputes",
+        "ar": "خفض نزاعات التحقق"
+      },
+      "icon": "ShieldCheck"
+    },
+    {
+      "value": {
+        "en": "9",
+        "ar": "9"
+      },
+      "label": {
+        "en": "Sites under unified governance",
+        "ar": "مواقع تحت حوكمة موحدة"
+      },
+      "icon": "MapPinned"
+    }
+  ],
+  "testimonial": {
+    "quote": {
+      "en": "We now validate transport performance with objective data instead of fragmented reports.",
+      "ar": "أصبحنا نتحقق من أداء النقل ببيانات موضوعية بدل التقارير المتفرقة."
+    },
+    "author": {
+      "en": "Head of Facilities",
+      "ar": "مدير المرافق"
+    },
+    "role": {
+      "en": "Enterprise Mobility Owner",
+      "ar": "مسؤول تنقل الموظفين"
+    }
+  },
+  "categorySlugs": [
+    "enterprise-governance",
+    "sla-performance"
+  ],
+  "publishedAt": "2026-05-03T09:00:00.000Z",
+  "featured": true,
+  "seo": {
+    "metaTitle": {
+      "en": "Enterprise SLA governance in employee transport | Tranzkit",
+      "ar": "حوكمة SLA في نقل الموظفين | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "How a large enterprise improved service validation, planned-vs-actual review, and supplier accountability across transport operations.",
+      "ar": "كيف حسّنت شركة كبيرة التحقق من الخدمة ومراجعة المخطط مقابل الفعلي ومساءلة الموردين في عمليات النقل."
+    },
+    "keywords": {
+      "en": [
+        "enterprise transport governance",
+        "employee transport SLA",
+        "service validation case study",
+        "supplier accountability",
+        "Tranzkit case study"
+      ],
+      "ar": [
+        "حوكمة النقل المؤسسي",
+        "SLA نقل الموظفين",
+        "دراسة حالة التحقق من الخدمة",
+        "مساءلة الموردين",
+        "دراسة حالة ترانزكيت"
+      ]
+    },
+    "noIndex": false,
+    "noFollow": false
+  }
+}

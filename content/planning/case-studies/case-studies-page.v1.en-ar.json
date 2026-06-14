@@ -1,0 +1,48 @@
+{
+  "documentType": "caseStudiesPage",
+  "action": "draft",
+  "_id": "caseStudiesPage",
+  "hero": {
+    "title": {
+      "en": "Employee transport case studies",
+      "ar": "دراسات حالة نقل الموظفين"
+    },
+    "subtitle": {
+      "en": "Operational and financial results",
+      "ar": "نتائج تشغيلية ومالية"
+    },
+    "description": {
+      "en": "See how enterprises and operators use Tranzkit to improve service control, workforce reliability, supplier accountability, and transport finance visibility.",
+      "ar": "شاهد كيف تستخدم الشركات والمشغلون ترانزكيت لتحسين التحكم في الخدمة وموثوقية القوى العاملة ومساءلة الموردين والرؤية المالية للنقل."
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "Employee transport case studies | Tranzkit",
+      "ar": "دراسات حالة نقل الموظفين | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Explore Tranzkit case studies covering workforce reliability, supplier control, SLA governance, and transport billing discipline.",
+      "ar": "استكشف دراسات حالة ترانزكيت حول موثوقية القوى العاملة والتحكم في الموردين وحوكمة SLA وانضباط الفوترة."
+    },
+    "keywords": {
+      "en": [
+        "employee transport case studies",
+        "transport operations results",
+        "supplier settlement case study",
+        "transport SLA governance",
+        "Tranzkit case studies"
+      ],
+      "ar": [
+        "دراسات حالة نقل الموظفين",
+        "نتائج تشغيل النقل",
+        "دراسة حالة تسوية الموردين",
+        "حوكمة SLA للنقل",
+        "دراسات حالة ترانزكيت"
+      ]
+    },
+    "canonicalUrl": "https://tranzkit.com/resources/case-studies",
+    "noIndex": false,
+    "noFollow": false
+  }
+}
