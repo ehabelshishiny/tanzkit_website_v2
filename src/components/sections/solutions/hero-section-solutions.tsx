@@ -666,13 +666,13 @@ export function HeroSectionSolutions({ data }: HeroSectionSolutionsProps) {
             transition={{ duration: 0.8 }}
           >
             <Typography
+              variant="display"
               as="h1"
               className={[
-                'mb-6 font-bold',
-                'text-[clamp(3.5rem,8vw,6.5rem)] leading-[0.9] tracking-[-0.05em]',
+                'mb-6 text-balance font-bold',
                 locale === 'ar'
-                  ? 'text-[clamp(3rem,7vw,5.75rem)] leading-[1] tracking-[-0.02em]'
-                  : '',
+                  ? 'text-5xl sm:text-6xl lg:text-[4.75rem] xl:text-[5.5rem] leading-[1.02] tracking-[-0.02em]'
+                  : 'text-6xl sm:text-7xl lg:text-[5.75rem] xl:text-[6.5rem] leading-[0.92] tracking-[-0.05em]',
               ].join(' ')}
             >
               <span className="block text-accent">{data.title.smart}</span>
