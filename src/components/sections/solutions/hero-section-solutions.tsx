@@ -671,8 +671,8 @@ export function HeroSectionSolutions({ data }: HeroSectionSolutionsProps) {
               className={[
                 'mb-6 text-balance font-bold',
                 locale === 'ar'
-                  ? 'text-5xl sm:text-6xl lg:text-[4.75rem] xl:text-[5.5rem] leading-[1.02] tracking-[-0.02em]'
-                  : 'text-6xl sm:text-7xl lg:text-[5.75rem] xl:text-[6.5rem] leading-[0.92] tracking-[-0.05em]',
+                  ? 'leading-[1.02] tracking-[-0.02em]'
+                  : 'leading-tight tracking-[-0.05em]',
               ].join(' ')}
             >
               <span className="block text-accent">{data.title.smart}</span>
