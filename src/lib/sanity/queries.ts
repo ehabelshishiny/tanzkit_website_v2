@@ -1374,7 +1374,7 @@ export const blogPostsQuery = (locale: string = 'en') => groq`
 export async function getBlogPosts(locale: string = 'en') {
   const client = await getClient();
   return client.fetch(blogPostsQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
+    next: { revalidate: 60 } // Cache for 1 minute
   });
 }
 
@@ -1432,7 +1432,7 @@ export const blogPostBySlugQuery = (locale: string = 'en') => groq`
 export async function getBlogPostBySlug(slug: string, locale: string = 'en') {
   const client = await getClient();
   return client.fetch(blogPostBySlugQuery(locale), { slug }, {
-    next: { revalidate: 300 } // Cache for 5 minutes
+    next: { revalidate: 60 } // Cache for 1 minute
   });
 }
 
@@ -1455,7 +1455,7 @@ export const featuredBlogPostsQuery = (locale: string = 'en') => groq`
 export async function getFeaturedBlogPosts(locale: string = 'en') {
   const client = await getClient();
   return client.fetch(featuredBlogPostsQuery(locale), {}, {
-    next: { revalidate: 300 }
+    next: { revalidate: 60 }
   });
 }
 
@@ -1629,5 +1629,4 @@ export async function getAllFAQs(locale: string = 'en') {
 /**
  * Career Queries (Resources Hub - standalone documents)
  */
-
 
