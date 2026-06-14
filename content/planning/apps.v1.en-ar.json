@@ -1,0 +1,115 @@
+{
+  "pageKey": "apps",
+  "action": "draft",
+  "hero": {
+    "titlePart1": {
+      "en": "Connected",
+      "ar": "تطبيقات نقل"
+    },
+    "titlePart2": {
+      "en": "transport apps",
+      "ar": "مترابطة"
+    },
+    "titlePart3": {
+      "en": "for every team",
+      "ar": "لكل فريق"
+    },
+    "subtitle": {
+      "en": "Give enterprises, operators, supervisors, drivers, and riders the right workflow for planning, assignments, attendance validation, daily execution, trip analytics, live service visibility, and trip experience in one bilingual AI integrated platform.",
+      "ar": "امنح فرق الشركات والمشغلين والمشرفين والسائقين والركاب تجربة مناسبة لكل طرف، من التخطيط والتخصيص والتحقق من الحضور إلى التشغيل اليومي وتحليلات الرحلات ومتابعة الخدمة وتجربة الرحلة، داخل منصة واحدة متكاملة بالذكاء الاصطناعي وبالإنجليزية والعربية."
+    }
+  },
+  "showcase": {
+    "title": {
+      "en": "Apps that work together across one transport operation",
+      "ar": "تطبيقات مترابطة داخل عملية نقل واحدة"
+    },
+    "subtitle": {
+      "en": "Choose the side of the operation you manage to see the dashboards and mobile workflows that keep planning, attendance validation, execution, trip analytics, and service visibility aligned through the same AI integrated operating layer.",
+      "ar": "اختر جانب التشغيل الذي تديره لتتعرف على اللوحات والتطبيقات الميدانية التي تربط التخطيط والتحقق من الحضور والتنفيذ وتحليلات الرحلات ومتابعة مستوى الخدمة عبر نفس طبقة التشغيل المتكاملة بالذكاء الاصطناعي."
+    },
+    "operatorsSegment": {
+      "title": {
+        "en": "Operator control and field execution",
+        "ar": "تحكم المشغل في التشغيل والتنفيذ الميداني"
+      },
+      "description": {
+        "en": "Run routes, schedules, assignments, drivers, vehicles, supervisors, and trip status from connected web and mobile workflows.",
+        "ar": "أدر الخطوط والجداول والتخصيصات والسائقين والمركبات والمشرفين وحالة الرحلات من خلال لوحات وتطبيقات مترابطة."
+      },
+      "tabLabel": {
+        "en": "Operators",
+        "ar": "المشغلون"
+      }
+    },
+    "enterpriseSegment": {
+      "title": {
+        "en": "Enterprise control and rider visibility",
+        "ar": "تحكم الشركة ورؤية الراكب"
+      },
+      "description": {
+        "en": "Plan employee transportation demand, review service delivery, and give riders clear trip visibility through one connected service model.",
+        "ar": "خطط طلب نقل الموظفين، وراجع تنفيذ الخدمة، وامنح الركاب وضوحًا أفضل حول رحلاتهم ضمن نموذج خدمة مترابط."
+      },
+      "tabLabel": {
+        "en": "Enterprise",
+        "ar": "الشركات"
+      }
+    },
+    "operatorAppSlugs": [
+      "operator-dashboard",
+      "supervisor",
+      "driver"
+    ],
+    "enterpriseAppSlugs": [
+      "enterprise-dashboard",
+      "rider"
+    ]
+  },
+  "cta": {
+    "heading": {
+      "en": "See which Tranzkit apps fit your transport operation",
+      "ar": "اكتشف تطبيقات ترانزكيت المناسبة لعملية النقل لديك"
+    },
+    "subtitle": {
+      "en": "Each app connects to the same AI integrated operating layer, giving every role better guidance, visibility, reporting, and workflow support.",
+      "ar": "كل تطبيق متصل بنفس طبقة التشغيل المتكاملة بالذكاء الاصطناعي، ليمنح كل دور إرشادًا أوضح، ورؤية أفضل، وتقارير أدق، ودعمًا لسير العمل."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Book an apps walkthrough",
+        "ar": "احجز جولة على التطبيقات"
+      },
+      "href": "/contact",
+      "openInNewTab": false
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Talk to the team",
+        "ar": "تحدث مع الفريق"
+      },
+      "href": "/contact",
+      "openInNewTab": false
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "AI integrated employee transport app ecosystem | Tranzkit",
+      "ar": "منظومة تطبيقات نقل الموظفين المتكاملة بالذكاء الاصطناعي | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Explore the connected Tranzkit app ecosystem where every app plugs into the same AI integrated operating layer for enterprise control, operator execution, attendance validation, trip analytics, and rider visibility.",
+      "ar": "استكشف منظومة تطبيقات ترانزكيت المترابطة حيث يتصل كل تطبيق بنفس طبقة التشغيل المتكاملة بالذكاء الاصطناعي لتحكم الشركات، وتشغيل المشغلين، والتحقق من الحضور، وتحليلات الرحلات، ورؤية الركاب."
+    },
+    "keywords": [
+      "ai integrated transport apps",
+      "employee transport apps",
+      "transport app ecosystem",
+      "attendance validation",
+      "trip analytics",
+      "operator dashboard",
+      "enterprise transport dashboard",
+      "Tranzkit"
+    ]
+  }
+}

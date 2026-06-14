@@ -5,6 +5,7 @@ import { TechnologySection } from '@/components/sections/solutions/technology-se
 import { WhyTranzkitSection } from '@/components/sections/solutions/why-tranzkit-section';
 import { CtaSection } from '@/components/sections/solutions/cta-section';
 import { getSolutionsPage } from '@/lib/sanity/queries';
+import { urlForImage } from '@/lib/sanity/image';
 import { generateResourceMetadata } from '@/lib/seo/metadata';
 import { Metadata } from 'next';
 
@@ -25,10 +26,15 @@ export async function generateMetadata({ params }: SolutionsPageProps): Promise<
     };
   }
 
+  const ogImage = solutionsPage.seo?.ogImage
+    ? urlForImage(solutionsPage.seo.ogImage).width(1200).height(630).fit('fill').url()
+    : undefined;
+
   return generateResourceMetadata(
     {
       metaTitle: solutionsPage.seo?.metaTitle,
       metaDescription: solutionsPage.seo?.metaDescription,
+      ogImage,
       keywords: solutionsPage.seo?.keywords?.[locale] || solutionsPage.seo?.keywords,
       canonicalUrl: 'solutions',
       noIndex: solutionsPage.seo?.noIndex,

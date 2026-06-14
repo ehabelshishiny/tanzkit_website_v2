@@ -1,0 +1,116 @@
+{
+  "pageKey": "solutions",
+  "sourceDocumentId": "solutionsPage",
+  "sourceContentMap": "content/planning/solutions.v1.en-ar.json",
+  "validationMode": "manual",
+  "schemaVersion": "1.1",
+  "safetyNote": "Draft seeding must preserve existing image refs unless an approved replacement asset ref is provided.",
+  "entryFieldExtensions": [
+    "assetStatus",
+    "sourceScreenshotPath",
+    "figmaFileUrl",
+    "figmaNodeId",
+    "exportPath",
+    "exportFormat",
+    "exportWidth",
+    "exportHeight",
+    "sanityAssetRef",
+    "alt.en",
+    "alt.ar",
+    "approvedBy",
+    "approvedAt",
+    "assetType",
+    "sourceTruth",
+    "requiresDemoData",
+    "requiresFigmaRebuild",
+    "approvedForMarketing",
+    "authenticityLabel",
+    "assetMethodNote",
+    "transferStatus",
+    "targetWebsiteRepoPath",
+    "requiresSanityUpload",
+    "sanityUploadOwner",
+    "mediaLanguageMode",
+    "localeVariants",
+    "requiresEmbeddedText",
+    "embeddedTextPolicy",
+    "rtlSensitivity",
+    "contentAlignmentStatus",
+    "approvedForCurrentContent"
+  ],
+  "transferSafetyRule": "Codefy OS never writes to Sanity. It only prepares media outputs.",
+  "imageFieldsFound": [
+    "seo.ogImage"
+  ],
+  "entries": [
+    {
+      "pageKey": "solutions",
+      "section": "seo",
+      "fieldPath": "seo.ogImage",
+      "currentAssetRef": null,
+      "currentAlt": null,
+      "recommendedVisual": "A branded Solutions social card showing enterprise control and operator execution as two connected sides of Tranzkit, sized for 1200x630 sharing.",
+      "recommendedPurpose": "Social sharing and link preview image for the Solutions page.",
+      "keepExisting": true,
+      "needsNewScreenshot": false,
+      "assetStatus": "planned",
+      "sourceScreenshotPath": "content/planning/source-captures/og/solutions-og-composite-source.raw.png",
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": "17:11",
+      "exportPath": "content/planning/exports/og/solutions-og-image.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 630,
+      "sanityAssetRef": null,
+      "alt": {
+        "en": "Tranzkit solutions social card showing enterprise control and operator execution.",
+        "ar": "بطاقة مشاركة لصفحة الحلول تعرض تحكم الشركة وتنفيذ المشغل."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "notes": "Current published solutionsPage document has no seo.ogImage. The repo query and MCP inspection indicate this is the only image-capable field in solutionsPage.",
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Composite card built from real Tranzkit enterprise-control and operator-execution workflows and the approved Solutions messaging scope.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "Design this as a Figma social card for launch. It should visually connect enterprise planning and operator execution without inventing a new product surface.",
+      "transferStatus": "not_ready",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/og/solutions-og-image.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "low",
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true
+    }
+  ],
+  "mediaQualityRule": {
+    "allowedAssetTypes": [
+      "real_screenshot",
+      "tuned_screenshot",
+      "figma_recreated_mockup"
+    ],
+    "allowedAuthenticityLabels": [
+      "Captured from product",
+      "Marketing composite"
+    ],
+    "forbiddenAuthenticityLabel": "Concept visual",
+    "guidance": "Tune app state before recreating in Figma. Recreated mockups must stay faithful to real Tranzkit capabilities and approved scope."
+  },
+  "mediaLanguagePolicy": {
+    "defaultMediaMode": "shared_language_neutral",
+    "currentRule": "One image asset in Sanity, bilingual CMS text around it, and bilingual alt text in the media plan.",
+    "rules": [
+      "Use a single shared media asset by default for English and Arabic pages.",
+      "Do not create separate English and Arabic images unless the asset contains large embedded text or truly needs RTL-specific layout treatment.",
+      "Avoid large English or Arabic text baked into images.",
+      "If a Figma frame needs text, keep it minimal and brand-neutral, such as the Tranzkit logo only.",
+      "If an asset ever becomes locale_specific_required, do not move it to ready_for_transfer until website-side localized image support or an approved workaround exists."
+    ]
+  }
+}

@@ -129,7 +129,7 @@ function Carousel({
     >
       <div
         onKeyDownCapture={handleKeyDown}
-        className={cn("relative", className)}
+        className={cn("relative overflow-x-clip", className)}
         role="region"
         aria-roledescription="carousel"
         data-slot="carousel"
@@ -195,7 +195,7 @@ function CarouselPrevious({
       className={cn(
         "absolute size-8 rounded-full",
         orientation === "horizontal"
-          ? "top-1/2 -start-12 -translate-y-1/2"
+          ? "top-1/2 start-2 -translate-y-1/2 sm:start-4"
           : "-top-12 start-1/2 -translate-x-1/2 rotate-90",
         className
       )}
@@ -225,7 +225,7 @@ function CarouselNext({
       className={cn(
         "absolute size-8 rounded-full",
         orientation === "horizontal"
-          ? "top-1/2 -end-12 -translate-y-1/2"
+          ? "top-1/2 end-2 -translate-y-1/2 sm:end-4"
           : "-bottom-12 start-1/2 -translate-x-1/2 rotate-90",
         className
       )}

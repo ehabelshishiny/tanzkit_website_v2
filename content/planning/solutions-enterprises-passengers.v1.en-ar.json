@@ -1,0 +1,746 @@
+{
+  "pageKey": "solutionsEnterprisesPassengers",
+  "action": "draft",
+  "hero": {
+    "title": {
+      "en": "Control employee transportation with AI integrated attendance, service validation, and rider visibility",
+      "ar": "تحكم في نقل الموظفين عبر حضور ذكي ورؤية أوضح للخدمة والراكب"
+    },
+    "subtitle": {
+      "en": "Tranzkit helps enterprises plan employee transport demand, validate attendance with geofence and biometric checks, monitor operator delivery, review service quality, and give riders clear trip visibility from one bilingual operating system.",
+      "ar": "يساعد ترانزكيت الشركات على تخطيط طلب نقل الموظفين، والتحقق من الحضور عبر النطاق الجغرافي والتحقق البيومتري، ومتابعة تنفيذ المشغلين، ومراجعة جودة الخدمة، ومنح الركاب رؤية أوضح لرحلاتهم من نظام تشغيل واحد بالإنجليزية والعربية."
+    },
+    "cta": {
+      "en": "Start enterprise control demo",
+      "ar": "ابدأ عرض تحكم الشركات"
+    }
+  },
+  "audienceSwitcher": {
+    "tabs": {
+      "enterprise": {
+        "en": "Enterprise",
+        "ar": "الشركة"
+      },
+      "passenger": {
+        "en": "Passenger",
+        "ar": "الراكب"
+      }
+    },
+    "enterprise": {
+      "title": {
+        "en": "Enterprise control with attendance, service, and financial accountability",
+        "ar": "تحكم مؤسسي يربط الحضور والخدمة والمساءلة المالية"
+      },
+      "description": {
+        "en": "Give HR, transport, operations, and finance teams one place to define employee transport demand, validate attendance, review operator delivery, compare planned vs actual service, and follow invoice and payment context with clearer evidence.",
+        "ar": "امنح فرق الموارد البشرية والنقل والعمليات والمالية مكانًا واحدًا لتعريف طلب نقل الموظفين، والتحقق من الحضور، ومراجعة تنفيذ المشغلين، ومقارنة الخدمة المخططة بالفعلي، ومتابعة سياق الفواتير والمدفوعات بأدلة أوضح."
+      },
+      "features": [
+        {
+          "_key": "ep-audience-enterprise-1",
+          "icon": "map-pinned",
+          "title": {
+            "en": "Smart employee attendance validation",
+            "ar": "تحقق ذكي من حضور الموظفين"
+          },
+          "description": {
+            "en": "Validate employee attendance through work location rules, user location checks, geofence validation, and biometric validation in one workflow.",
+            "ar": "تحقق من حضور الموظفين عبر قواعد موقع العمل، والتحقق من موقع المستخدم، والتحقق عبر النطاق الجغرافي، والتحقق البيومتري ضمن سير عمل واحد."
+          }
+        },
+        {
+          "_key": "ep-audience-enterprise-2",
+          "icon": "shield-check",
+          "title": {
+            "en": "Service validation with clearer evidence",
+            "ar": "تحقق من الخدمة بأدلة أوضح"
+          },
+          "description": {
+            "en": "Review operator delivery, live service status, and planned vs actual execution with enterprise-ready validation context.",
+            "ar": "راجع تنفيذ المشغلين، وحالة الخدمة المباشرة، ومقارنة المخطط بالفعلي ضمن سياق تحقق جاهز للاستخدام المؤسسي."
+          }
+        },
+        {
+          "_key": "ep-audience-enterprise-3",
+          "icon": "chart-column",
+          "title": {
+            "en": "Operator performance and financial review",
+            "ar": "رؤية أداء المشغلين والمراجعة المالية"
+          },
+          "description": {
+            "en": "Follow operator performance, invoice context, payment status, and service variance without losing the operational trail behind each result.",
+            "ar": "تابع أداء المشغلين، وسياق الفواتير، وحالة المدفوعات، وفروقات الخدمة دون فقدان المسار التشغيلي وراء كل نتيجة."
+          }
+        },
+        {
+          "_key": "ep-audience-enterprise-4",
+          "icon": "bot",
+          "title": {
+            "en": "AI-guided enterprise workflow",
+            "ar": "سير عمل مؤسسي موجه بالذكاء الاصطناعي"
+          },
+          "description": {
+            "en": "Use integrated AI agents for navigation, insights, executive reporting, financial reporting, and controlled data updates inside the same operating layer.",
+            "ar": "استخدم وكلاء الذكاء الاصطناعي المدمجين للتنقل، واستخراج الرؤى، والتقارير التنفيذية، والتقارير المالية، وتحديثات البيانات المنظمة داخل نفس طبقة التشغيل."
+          }
+        }
+      ]
+    },
+    "passenger": {
+      "title": {
+        "en": "Clearer trip visibility and service confidence for riders",
+        "ar": "رؤية أوضح للرحلة وثقة أعلى في الخدمة للركاب"
+      },
+      "description": {
+        "en": "Keep employees informed with trip timing, route context, live status, service updates, and structured feedback so the daily commute feels more reliable.",
+        "ar": "أبقِ الموظفين على اطلاع بتوقيت الرحلة، وسياق المسار، والحالة المباشرة، وتحديثات الخدمة، ومسارات الملاحظات المنظمة حتى تصبح رحلة التنقل اليومية أكثر موثوقية."
+      },
+      "features": [
+        {
+          "_key": "ep-audience-passenger-1",
+          "icon": "calendar-clock",
+          "title": {
+            "en": "Upcoming trip clarity",
+            "ar": "وضوح الرحلات القادمة"
+          },
+          "description": {
+            "en": "Show riders assigned trips, expected timing, and service context before the journey starts.",
+            "ar": "اعرض للركاب الرحلات المخصصة، والتوقيت المتوقع، وسياق الخدمة قبل بدء الرحلة."
+          }
+        },
+        {
+          "_key": "ep-audience-passenger-2",
+          "icon": "radar",
+          "title": {
+            "en": "Live trip visibility",
+            "ar": "رؤية مباشرة للرحلة"
+          },
+          "description": {
+            "en": "Give riders clearer trip status updates so they know what is happening during daily transport service.",
+            "ar": "امنح الركاب تحديثات أوضح عن حالة الرحلة حتى يعرفوا ما يحدث أثناء خدمة النقل اليومية."
+          }
+        },
+        {
+          "_key": "ep-audience-passenger-3",
+          "icon": "history",
+          "title": {
+            "en": "Trip history and service proof",
+            "ar": "سجل الرحلات وإثبات الخدمة"
+          },
+          "description": {
+            "en": "Let employees review completed trips and keep a clearer record of commute activity when questions come up.",
+            "ar": "اسمح للموظفين بمراجعة الرحلات المكتملة والاحتفاظ بسجل أوضح لنشاط التنقل عند ظهور أي استفسارات."
+          }
+        },
+        {
+          "_key": "ep-audience-passenger-4",
+          "icon": "message-square-warning",
+          "title": {
+            "en": "Structured complaints and reviews",
+            "ar": "شكاوى وتقييمات منظمة"
+          },
+          "description": {
+            "en": "Capture rider issues and service reviews in a structured way that supports enterprise follow-up and operator accountability.",
+            "ar": "التقط مشكلات الركاب وتقييمات الخدمة بطريقة منظمة تدعم متابعة الشركة ومساءلة المشغلين."
+          }
+        }
+      ]
+    }
+  },
+  "overview": {
+    "text": {
+      "en": "Enterprise employee transportation performs better when demand planning, attendance validation, operator delivery, rider visibility, and financial review stay connected. Tranzkit keeps those layers aligned inside one AI integrated bilingual operating system.",
+      "ar": "يعمل نقل الموظفين المؤسسي بشكل أفضل عندما تبقى طبقات تخطيط الطلب، والتحقق من الحضور، وتنفيذ المشغلين، ورؤية الركاب، والمراجعة المالية مترابطة. يحافظ ترانزكيت على اتساق هذه الطبقات داخل نظام تشغيل واحد متكامل بالذكاء الاصطناعي وبالإنجليزية والعربية."
+    }
+  },
+  "featureShowcase": {
+    "title": {
+      "en": "Enterprise and rider proof points in one operating layer",
+      "ar": "إثباتات قيمة الشركة والراكب داخل طبقة تشغيل واحدة"
+    },
+    "subtitle": {
+      "en": "Use the enterprise side to validate attendance, delivery, and finance. Use the rider side to reduce uncertainty across the daily commute experience.",
+      "ar": "استخدم جانب الشركة للتحقق من الحضور والتنفيذ والمالية، واستخدم جانب الراكب لتقليل عدم اليقين عبر تجربة التنقل اليومية."
+    },
+    "features": [
+      {
+        "_key": "ep-showcase-1",
+        "title": {
+          "en": "Attendance governance linked to work reality",
+          "ar": "حوكمة للحضور مرتبطة بواقع العمل"
+        },
+        "description": {
+          "en": "Connect work location validation, user location validation, geofence validation, and biometric validation to enterprise transport eligibility and accountability.",
+          "ar": "اربط التحقق من موقع العمل، والتحقق من موقع المستخدم، والتحقق عبر النطاق الجغرافي، والتحقق البيومتري بأهلية النقل المؤسسي والمساءلة."
+        }
+      },
+      {
+        "_key": "ep-showcase-2",
+        "title": {
+          "en": "Operator performance with planned vs actual review",
+          "ar": "رؤية أداء المشغلين مع مراجعة المخطط بالفعلي"
+        },
+        "description": {
+          "en": "Review delivery quality, operator adherence, and planned vs actual execution with clearer service evidence by project and period.",
+          "ar": "راجع جودة التنفيذ، والتزام المشغلين، ومقارنة المخطط بالفعلي بأدلة خدمة أوضح بحسب المشروع والفترة."
+        }
+      },
+      {
+        "_key": "ep-showcase-3",
+        "title": {
+          "en": "Rider trip clarity without fragmented follow-up",
+          "ar": "وضوح رحلة الراكب دون متابعة متفرقة"
+        },
+        "description": {
+          "en": "Give employees trip timing, route context, status visibility, history, and feedback channels without splitting the experience across disconnected tools.",
+          "ar": "امنح الموظفين توقيت الرحلة، وسياق المسار، ورؤية الحالة، والسجل، وقنوات الملاحظات دون توزيع التجربة على أدوات متفرقة."
+        }
+      },
+      {
+        "_key": "ep-showcase-4",
+        "title": {
+          "en": "Finance review with operational context",
+          "ar": "مراجعة مالية بسياق تشغيلي"
+        },
+        "description": {
+          "en": "Follow invoice and payment context with the service records, attendance evidence, and operator delivery signals behind them.",
+          "ar": "تابع سياق الفواتير والمدفوعات مع سجلات الخدمة، وأدلة الحضور، وإشارات تنفيذ المشغلين المرتبطة بها."
+        }
+      },
+      {
+        "_key": "ep-showcase-5",
+        "title": {
+          "en": "AI agents inside the enterprise workflow",
+          "ar": "وكلاء ذكاء اصطناعي داخل سير العمل المؤسسي"
+        },
+        "description": {
+          "en": "Use AI agents for platform navigation, service and attendance validation support, operator insights, financial reports, executive reports, and controlled data updates.",
+          "ar": "استخدم وكلاء الذكاء الاصطناعي للتنقل داخل المنصة، ودعم التحقق من الخدمة والحضور، ورؤى أداء المشغلين، والتقارير المالية، والتقارير التنفيذية، وتحديثات البيانات المنظمة."
+        }
+      },
+      {
+        "_key": "ep-showcase-6",
+        "title": {
+          "en": "Enterprise readiness for scale and accountability",
+          "ar": "جاهزية مؤسسية للتوسع والمساءلة"
+        },
+        "description": {
+          "en": "Keep enterprise stakeholders aligned around the same attendance rules, service validation logic, rider visibility, and financial review standards.",
+          "ar": "حافظ على اتساق أصحاب المصلحة في الشركة حول نفس قواعد الحضور، ومنطق التحقق من الخدمة، ورؤية الركاب، ومعايير المراجعة المالية."
+        }
+      }
+    ]
+  },
+  "workflow": {
+    "enterprise": {
+      "title": {
+        "en": "Enterprise workflow",
+        "ar": "المسار المؤسسي"
+      },
+      "subtitle": {
+        "en": "From demand planning and attendance rules to service validation and financial review.",
+        "ar": "من تخطيط الطلب وقواعد الحضور إلى التحقق من الخدمة والمراجعة المالية."
+      },
+      "steps": [
+        {
+          "_key": "ep-workflow-enterprise-1",
+          "step": 1,
+          "icon": "users-round",
+          "title": {
+            "en": "Define demand",
+            "ar": "عرّف الطلب"
+          },
+          "description": {
+            "en": "Set employee transportation demand by site, team, shift, and eligibility rules.",
+            "ar": "حدد طلب نقل الموظفين بحسب الموقع والفريق والوردية وقواعد الأهلية."
+          }
+        },
+        {
+          "_key": "ep-workflow-enterprise-2",
+          "step": 2,
+          "icon": "map-pinned",
+          "title": {
+            "en": "Validate attendance",
+            "ar": "تحقق من الحضور"
+          },
+          "description": {
+            "en": "Apply work location, user location, geofence, and biometric validation to confirm attendance with clearer control.",
+            "ar": "طبّق التحقق من موقع العمل، وموقع المستخدم، والنطاق الجغرافي، والتحقق البيومتري لتأكيد الحضور بتحكم أوضح."
+          }
+        },
+        {
+          "_key": "ep-workflow-enterprise-3",
+          "step": 3,
+          "icon": "radar",
+          "title": {
+            "en": "Monitor delivery",
+            "ar": "تابع التنفيذ"
+          },
+          "description": {
+            "en": "Track operator delivery, service quality, and rider-facing service status during daily transport execution.",
+            "ar": "تابع تنفيذ المشغلين، وجودة الخدمة، والحالة الظاهرة للراكب أثناء تشغيل النقل اليومي."
+          }
+        },
+        {
+          "_key": "ep-workflow-enterprise-4",
+          "step": 4,
+          "icon": "chart-column",
+          "title": {
+            "en": "Review planned vs actual",
+            "ar": "راجع المخطط بالفعلي"
+          },
+          "description": {
+            "en": "Compare planned and actual service outcomes with operator performance evidence and attendance context.",
+            "ar": "قارن نتائج الخدمة المخططة بالفعلي مع أدلة أداء المشغلين وسياق الحضور."
+          }
+        },
+        {
+          "_key": "ep-workflow-enterprise-5",
+          "step": 5,
+          "icon": "receipt-text",
+          "title": {
+            "en": "Review finance and improve",
+            "ar": "راجع المالية وحسّن"
+          },
+          "description": {
+            "en": "Review invoice and payment context, generate executive reporting, and apply controlled updates with stronger operational evidence.",
+            "ar": "راجع سياق الفواتير والمدفوعات، وأنشئ التقارير التنفيذية، وطبّق تحديثات منظمة بأدلة تشغيلية أقوى."
+          }
+        }
+      ]
+    },
+    "passenger": {
+      "title": {
+        "en": "Passenger workflow",
+        "ar": "مسار الراكب"
+      },
+      "subtitle": {
+        "en": "From trip clarity and live status to service feedback and trust.",
+        "ar": "من وضوح الرحلة والحالة المباشرة إلى الملاحظات والثقة في الخدمة."
+      },
+      "steps": [
+        {
+          "_key": "ep-workflow-passenger-1",
+          "step": 1,
+          "icon": "calendar-clock",
+          "title": {
+            "en": "See assigned trips",
+            "ar": "اطلع على الرحلات المخصصة"
+          },
+          "description": {
+            "en": "Review trip timing, route context, and expected service before the commute starts.",
+            "ar": "راجع توقيت الرحلة، وسياق المسار، والخدمة المتوقعة قبل بدء التنقل."
+          }
+        },
+        {
+          "_key": "ep-workflow-passenger-2",
+          "step": 2,
+          "icon": "radar",
+          "title": {
+            "en": "Follow trip status",
+            "ar": "تابع حالة الرحلة"
+          },
+          "description": {
+            "en": "Track live trip updates so employees understand service status during the journey.",
+            "ar": "تابع تحديثات الرحلة المباشرة حتى يفهم الموظفون حالة الخدمة أثناء التنقل."
+          }
+        },
+        {
+          "_key": "ep-workflow-passenger-3",
+          "step": 3,
+          "icon": "history",
+          "title": {
+            "en": "Review trip history",
+            "ar": "راجع سجل الرحلات"
+          },
+          "description": {
+            "en": "Access completed trip records for clearer commute visibility and follow-up when needed.",
+            "ar": "اطلع على سجلات الرحلات المكتملة لرؤية أوضح للتنقل وإمكانية المتابعة عند الحاجة."
+          }
+        },
+        {
+          "_key": "ep-workflow-passenger-4",
+          "step": 4,
+          "icon": "message-square-warning",
+          "title": {
+            "en": "Send feedback",
+            "ar": "أرسل الملاحظات"
+          },
+          "description": {
+            "en": "Report issues or review service quality through structured feedback channels.",
+            "ar": "أبلغ عن المشكلات أو قيّم جودة الخدمة عبر قنوات ملاحظات منظمة."
+          }
+        }
+      ]
+    }
+  },
+  "appScreens": {
+    "title": {
+      "en": "Enterprise and rider screens that prove control",
+      "ar": "شاشات الشركة والراكب التي تثبت وضوح التحكم"
+    },
+    "subtitle": {
+      "en": "Use the page to show attendance validation, service review, rider visibility, and executive-ready reporting in product context.",
+      "ar": "استخدم الصفحة لإظهار التحقق من الحضور، ومراجعة الخدمة، ورؤية الراكب، والتقارير الجاهزة للإدارة داخل سياق المنتج."
+    },
+    "screenshots": [
+      {
+        "_key": "ep-screen-1",
+        "title": {
+          "en": "Attendance validation dashboard",
+          "ar": "لوحة التحقق من الحضور"
+        },
+        "description": {
+          "en": "Show attendance checks by work location, user location, geofence events, and biometric validation status.",
+          "ar": "اعرض فحوصات الحضور بحسب موقع العمل، وموقع المستخدم، وأحداث النطاق الجغرافي، وحالة التحقق البيومتري."
+        }
+      },
+      {
+        "_key": "ep-screen-2",
+        "title": {
+          "en": "Enterprise service validation view",
+          "ar": "شاشة التحقق المؤسسي من الخدمة"
+        },
+        "description": {
+          "en": "Review operator delivery, service quality, and planned vs actual execution in one enterprise control view.",
+          "ar": "راجع تنفيذ المشغلين، وجودة الخدمة، ومقارنة المخطط بالفعلي في شاشة تحكم مؤسسية واحدة."
+        }
+      },
+      {
+        "_key": "ep-screen-3",
+        "title": {
+          "en": "Rider upcoming trips screen",
+          "ar": "شاشة الرحلات القادمة للراكب"
+        },
+        "description": {
+          "en": "Show assigned trips, route timing, and clearer rider context before the commute starts.",
+          "ar": "اعرض الرحلات المخصصة، وتوقيت المسار، وسياقًا أوضح للراكب قبل بدء التنقل."
+        }
+      },
+      {
+        "_key": "ep-screen-4",
+        "title": {
+          "en": "Live trip status and updates",
+          "ar": "الحالة المباشرة للرحلة والتحديثات"
+        },
+        "description": {
+          "en": "Highlight rider trip visibility and live service progress during daily operations.",
+          "ar": "أبرز رؤية الراكب للرحلة وتقدم الخدمة المباشرة أثناء التشغيل اليومي."
+        }
+      },
+      {
+        "_key": "ep-screen-5",
+        "title": {
+          "en": "Trip history and complaint workflow",
+          "ar": "سجل الرحلات ومسار الشكاوى"
+        },
+        "description": {
+          "en": "Show searchable history, complaint capture, and service reviews with stronger passenger follow-up.",
+          "ar": "اعرض السجل القابل للبحث، وتسجيل الشكاوى، وتقييمات الخدمة مع متابعة أقوى للراكب."
+        }
+      },
+      {
+        "_key": "ep-screen-6",
+        "title": {
+          "en": "Executive and financial reporting view",
+          "ar": "شاشة التقارير التنفيذية والمالية"
+        },
+        "description": {
+          "en": "Show AI-assisted enterprise reporting across attendance, service delivery, operator performance, and finance review.",
+          "ar": "اعرض التقارير المؤسسية المدعومة بالذكاء الاصطناعي عبر الحضور، وتنفيذ الخدمة، وأداء المشغلين، والمراجعة المالية."
+        }
+      }
+    ]
+  },
+  "features": {
+    "overview": {
+      "en": "Enterprises need measurable transport control, and riders need confidence in the daily commute. Tranzkit connects both in one accountable operating system.",
+      "ar": "تحتاج الشركات إلى تحكم قابل للقياس في النقل، ويحتاج الركاب إلى الثقة في التنقل اليومي. يربط ترانزكيت الجانبين داخل نظام تشغيل واحد قائم على المساءلة."
+    },
+    "title": {
+      "en": "Enterprise and rider value framework",
+      "ar": "إطار قيمة الشركة والراكب"
+    },
+    "items": [
+      {
+        "_key": "ep-feature-1",
+        "title": {
+          "en": "Smart attendance governance",
+          "ar": "حوكمة ذكية للحضور"
+        },
+        "description": {
+          "en": "Turn attendance into a governed part of employee transportation instead of a disconnected manual check.",
+          "ar": "حوّل الحضور إلى جزء منضبط من نقل الموظفين بدلًا من أن يبقى فحصًا يدويًا منفصلًا."
+        },
+        "points": [
+          {
+            "en": "Work location validation",
+            "ar": "التحقق من موقع العمل"
+          },
+          {
+            "en": "User location validation",
+            "ar": "التحقق من موقع المستخدم"
+          },
+          {
+            "en": "Geofence and biometric validation",
+            "ar": "التحقق عبر النطاق الجغرافي والتحقق البيومتري"
+          }
+        ]
+      },
+      {
+        "_key": "ep-feature-2",
+        "title": {
+          "en": "Operator performance visibility",
+          "ar": "رؤية أداء المشغلين"
+        },
+        "description": {
+          "en": "Give enterprise teams clearer performance evidence across operator delivery, service quality, and exception handling.",
+          "ar": "امنح فرق الشركة أدلة أوضح على الأداء عبر تنفيذ المشغلين، وجودة الخدمة، ومعالجة الاستثناءات."
+        },
+        "points": [
+          {
+            "en": "Service validation",
+            "ar": "التحقق من الخدمة"
+          },
+          {
+            "en": "Planned vs actual review",
+            "ar": "مراجعة المخطط بالفعلي"
+          },
+          {
+            "en": "Operator accountability context",
+            "ar": "سياق مساءلة المشغلين"
+          }
+        ]
+      },
+      {
+        "_key": "ep-feature-3",
+        "title": {
+          "en": "Rider trip clarity",
+          "ar": "وضوح رحلة الراكب"
+        },
+        "description": {
+          "en": "Reduce uncertainty for employees through clearer trip status, route context, history, and service feedback paths.",
+          "ar": "قلل عدم اليقين لدى الموظفين عبر حالة رحلة أوضح، وسياق أفضل للمسار، وسجل للرحلات، ومسارات ملاحظات للخدمة."
+        },
+        "points": [
+          {
+            "en": "Upcoming trip visibility",
+            "ar": "رؤية الرحلات القادمة"
+          },
+          {
+            "en": "Live trip status updates",
+            "ar": "تحديثات مباشرة لحالة الرحلة"
+          },
+          {
+            "en": "Structured complaints and reviews",
+            "ar": "شكاوى وتقييمات منظمة"
+          }
+        ]
+      },
+      {
+        "_key": "ep-feature-4",
+        "title": {
+          "en": "AI-guided reporting and controlled updates",
+          "ar": "تقارير موجهة بالذكاء الاصطناعي وتحديثات منظمة"
+        },
+        "description": {
+          "en": "Use AI agents to help teams navigate Tranzkit, surface insights, generate financial and executive reports, and support controlled data updates with human review.",
+          "ar": "استخدم وكلاء الذكاء الاصطناعي لمساعدة الفرق على التنقل داخل ترانزكيت، واستخراج الرؤى، وإنشاء التقارير المالية والتنفيذية، ودعم تحديثات بيانات منظمة مع مراجعة بشرية."
+        },
+        "points": [
+          {
+            "en": "Navigation and insight support",
+            "ar": "دعم التنقل والرؤى"
+          },
+          {
+            "en": "Financial and executive reports",
+            "ar": "التقارير المالية والتنفيذية"
+          },
+          {
+            "en": "Controlled data updates",
+            "ar": "تحديثات بيانات منظمة"
+          }
+        ]
+      }
+    ]
+  },
+  "testimonials": {
+    "title": {
+      "en": "Enterprise and rider outcomes",
+      "ar": "نتائج الشركات وتجربة الركاب"
+    },
+    "subtitle": {
+      "en": "What enterprise stakeholders value when transport demand, service validation, and rider visibility stay connected.",
+      "ar": "ما يقدّره أصحاب المصلحة في الشركات عندما تبقى طبقات الطلب والتحقق من الخدمة ورؤية الراكب مترابطة."
+    },
+    "items": [
+      {
+        "_key": "ep-testimonial-1",
+        "name": "Mona A.",
+        "role": {
+          "en": "HR Operations Lead",
+          "ar": "قائدة عمليات الموارد البشرية"
+        },
+        "company": "Regional Services Enterprise",
+        "content": {
+          "en": "Attendance validation and operator visibility now sit in one workflow for our team. That changed how quickly we review service quality and follow up with operators.",
+          "ar": "أصبح التحقق من الحضور ورؤية أداء المشغلين ضمن سير عمل واحد لفريقنا، وهذا غيّر سرعة مراجعتنا لجودة الخدمة ومتابعتنا مع المشغلين."
+        },
+        "initials": "MA",
+        "rating": 5
+      },
+      {
+        "_key": "ep-testimonial-2",
+        "name": "Ahmed R.",
+        "role": {
+          "en": "Facilities Director",
+          "ar": "مدير المرافق"
+        },
+        "company": "Industrial Group",
+        "content": {
+          "en": "Planned vs actual review and invoice context give us a stronger basis for transport accountability across sites and shifts.",
+          "ar": "منحتنا مراجعة المخطط بالفعلي وسياق الفواتير أساسًا أقوى لمساءلة النقل عبر المواقع والورديات."
+        },
+        "initials": "AR",
+        "rating": 5
+      },
+      {
+        "_key": "ep-testimonial-3",
+        "name": "Sarah M.",
+        "role": {
+          "en": "Employee Experience Manager",
+          "ar": "مديرة تجربة الموظف"
+        },
+        "company": "Enterprise Shared Services",
+        "content": {
+          "en": "Rider trip visibility and structured feedback reduced daily commute uncertainty for our employees and gave us clearer service evidence.",
+          "ar": "خفّضت رؤية الراكب للرحلة ومسارات الملاحظات المنظمة من عدم اليقين اليومي لدى موظفينا، ومنحتنا أدلة أوضح على مستوى الخدمة."
+        },
+        "initials": "SM",
+        "rating": 5
+      }
+    ]
+  },
+  "aiImpact": {
+    "title": {
+      "en": "AI agents inside enterprise transport control",
+      "ar": "وكلاء ذكاء اصطناعي داخل تحكم النقل المؤسسي"
+    },
+    "subtitle": {
+      "en": "AI agents help enterprise teams navigate Tranzkit, validate attendance and service delivery, surface operator performance insights, generate financial and executive reports, and support controlled data updates.",
+      "ar": "يساعد وكلاء الذكاء الاصطناعي فرق الشركات على التنقل داخل ترانزكيت، والتحقق من الحضور وتنفيذ الخدمة، واستخراج رؤى أداء المشغلين، وإعداد التقارير المالية والتنفيذية، ودعم تحديثات بيانات منظمة."
+    },
+    "impactTitle": {
+      "en": "Guidance and reporting that stay under enterprise control",
+      "ar": "إرشاد وتقارير تبقى تحت تحكم الشركة"
+    },
+    "metrics": [
+      {
+        "_key": "ep-ai-1",
+        "value": {
+          "en": "Clearer",
+          "ar": "أوضح"
+        },
+        "label": {
+          "en": "Attendance validation",
+          "ar": "التحقق من الحضور"
+        },
+        "description": {
+          "en": "Help teams review attendance evidence across location, geofence, and biometric checks in one place.",
+          "ar": "ساعد الفرق على مراجعة أدلة الحضور عبر الموقع، والنطاق الجغرافي، والتحقق البيومتري من مكان واحد."
+        }
+      },
+      {
+        "_key": "ep-ai-2",
+        "value": {
+          "en": "Stronger",
+          "ar": "أقوى"
+        },
+        "label": {
+          "en": "Operator performance insights",
+          "ar": "رؤى أداء المشغلين"
+        },
+        "description": {
+          "en": "Surface service validation findings, planned vs actual insights, and delivery exceptions for enterprise review.",
+          "ar": "استخرج نتائج التحقق من الخدمة، ورؤى المخطط بالفعلي، واستثناءات التنفيذ لمراجعتها من قبل فرق الشركة."
+        }
+      },
+      {
+        "_key": "ep-ai-3",
+        "value": {
+          "en": "Faster",
+          "ar": "أسرع"
+        },
+        "label": {
+          "en": "Financial and executive reports",
+          "ar": "التقارير المالية والتنفيذية"
+        },
+        "description": {
+          "en": "Generate clearer financial and executive reporting grounded in transport activity, service validation, and rider outcomes.",
+          "ar": "أنشئ تقارير مالية وتنفيذية أوضح تستند إلى نشاط النقل، والتحقق من الخدمة، ونتائج تجربة الراكب."
+        }
+      },
+      {
+        "_key": "ep-ai-4",
+        "value": {
+          "en": "Safer",
+          "ar": "أكثر انضباطًا"
+        },
+        "label": {
+          "en": "Controlled data updates",
+          "ar": "تحديثات بيانات منظمة"
+        },
+        "description": {
+          "en": "Support guided, reviewable data updates without handing autonomous control to AI.",
+          "ar": "ادعم تحديثات بيانات موجهة وقابلة للمراجعة دون منح الذكاء الاصطناعي تحكمًا ذاتيًا."
+        }
+      }
+    ]
+  },
+  "cta": {
+    "heading": {
+      "en": "See how Tranzkit helps enterprises control transport and improve rider confidence",
+      "ar": "اكتشف كيف يساعد ترانزكيت الشركات على ضبط النقل ورفع ثقة الركاب"
+    },
+    "subtitle": {
+      "en": "Connect demand planning, smart attendance, operator validation, rider trip visibility, and financial review in one AI integrated bilingual operating system.",
+      "ar": "اربط تخطيط الطلب، والحضور الذكي، والتحقق من أداء المشغلين، ورؤية الراكب للرحلة، والمراجعة المالية داخل نظام تشغيل واحد متكامل بالذكاء الاصطناعي وبالإنجليزية والعربية."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Book an enterprise workflow demo",
+        "ar": "احجز عرضًا لمسار العمل المؤسسي"
+      },
+      "href": "/contact",
+      "openInNewTab": false
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Talk to a mobility expert",
+        "ar": "تحدث مع خبير تنقل"
+      },
+      "href": "/contact",
+      "openInNewTab": false
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "AI integrated enterprise transport control and rider visibility | Tranzkit",
+      "ar": "تحكم مؤسسي في نقل الموظفين ورؤية الراكب بالذكاء الاصطناعي | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Tranzkit helps enterprises control employee transportation with smart attendance, geofence and biometric validation, operator performance visibility, rider trip clarity, planned vs actual review, and financial reporting.",
+      "ar": "يساعد ترانزكيت الشركات على التحكم في نقل الموظفين عبر حضور ذكي، والتحقق بالنطاق الجغرافي والقياسات البيومترية، ورؤية أداء المشغلين، ووضوح رحلة الراكب، ومراجعة المخطط بالفعلي، والتقارير المالية."
+    },
+    "keywords": [
+      "ai integrated employee transportation",
+      "enterprise transport control",
+      "smart employee attendance",
+      "geofence attendance",
+      "biometric attendance validation",
+      "rider trip visibility",
+      "operator performance visibility",
+      "financial review"
+    ]
+  }
+}

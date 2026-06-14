@@ -30,6 +30,7 @@ export function EnterprisesAiImpactSection({ data }: EnterprisesAiImpactSectionP
         background="dark"
         padding="xl"
         maxWidth="2xl"
+        className="overflow-hidden overflow-x-clip"
       >
         <div className="relative">
           {/* Background Pattern */}
@@ -130,7 +131,7 @@ export function EnterprisesAiImpactSection({ data }: EnterprisesAiImpactSectionP
       </SectionContainer>
 
       {/* Impact Metrics Section - Advanced Framer Motion */}
-      <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50 dark:from-slate-950 dark:via-blue-950/50 dark:to-slate-950">
+      <section className="relative overflow-hidden overflow-x-clip bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50 py-20 md:py-28 dark:from-slate-950 dark:via-blue-950/50 dark:to-slate-950">
         {/* Animated grid with glow effect */}
         <div className="absolute inset-0 opacity-40 dark:opacity-30">
           <div 

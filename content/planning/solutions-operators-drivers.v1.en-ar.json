@@ -1,0 +1,685 @@
+{
+  "pageKey": "solutionsOperatorsDrivers",
+  "action": "draft",
+  "hero": {
+    "title": {
+      "en": "Run employee transport operations with tighter control from assignment to settlement",
+      "ar": "شغّل نقل الموظفين بتحكم أوضح من التخصيص حتى التسوية"
+    },
+    "subtitle": {
+      "en": "Manage routes, schedules, driver and vehicle assignments, live service, field execution, supplier-linked finance, and trip analytics through one AI integrated operating platform.",
+      "ar": "أدر الخطوط والجداول وتوزيع السائقين والمركبات والخدمة المباشرة والتنفيذ الميداني والمستحقات المرتبطة بالموردين وتحليلات الرحلات من خلال منصة تشغيل واحدة متكاملة بالذكاء الاصطناعي."
+    },
+    "cta": {
+      "en": "Start an operator control walkthrough",
+      "ar": "احجز جولة لإدارة تشغيل المشغل"
+    }
+  },
+  "overview": {
+    "text": {
+      "en": "Transport execution becomes harder when route planning, field control, and supplier-linked finance are handled in separate workflows. Tranzkit brings schedules, assignments, live operations, incident follow-up, and settlement visibility into one operating layer for transport operators.",
+      "ar": "تصبح إدارة التشغيل أكثر تعقيدًا عندما يتم التعامل مع تخطيط الخطوط والتحكم الميداني والمستحقات المرتبطة بالموردين عبر مسارات عمل منفصلة. يجمع ترانزكيت الجداول والتخصيصات والتشغيل المباشر ومتابعة الحوادث ورؤية التسوية داخل طبقة تشغيل واحدة لمشغلي النقل."
+    }
+  },
+  "roleSwitcher": {
+    "tabs": {
+      "operator": {
+        "en": "Operators",
+        "ar": "المشغلون"
+      },
+      "driver": {
+        "en": "Drivers",
+        "ar": "السائقون"
+      }
+    },
+    "operator": {
+      "title": {
+        "en": "Control routes, assignments, and operating accountability",
+        "ar": "تحكم في الخطوط والتخصيصات والانضباط التشغيلي"
+      },
+      "description": {
+        "en": "Give operations teams one place to manage routes, schedules, driver and vehicle assignments, approvals, supplier coordination, live trip status, and payable control without losing context between planning and execution.",
+        "ar": "امنح فرق التشغيل مكانًا واحدًا لإدارة الخطوط والجداول وتخصيص السائقين والمركبات والموافقات والتنسيق مع الموردين وحالة الرحلات المباشرة والتحكم في المستحقات دون فقدان الترابط بين التخطيط والتنفيذ."
+      },
+      "features": [
+        {
+          "_key": "rod-operator-1",
+          "icon": "route",
+          "title": {
+            "en": "Route and schedule control",
+            "ar": "التحكم في الخطوط والجداول"
+          },
+          "description": {
+            "en": "Organize service patterns, departure windows, stop structures, and daily operating calendars from one planning view.",
+            "ar": "نظّم أنماط الخدمة ونوافذ الانطلاق وبنية التوقفات والتقويم التشغيلي اليومي من خلال شاشة تخطيط واحدة."
+          }
+        },
+        {
+          "_key": "rod-operator-2",
+          "icon": "users-round",
+          "title": {
+            "en": "Assignments with operational discipline",
+            "ar": "تخصيصات منضبطة تشغيليًا"
+          },
+          "description": {
+            "en": "Assign drivers, vehicles, and supplier resources with clearer visibility into overlap risk, availability, and service readiness.",
+            "ar": "خصص السائقين والمركبات وموارد الموردين مع رؤية أوضح لمخاطر التعارض والتوافر وجاهزية الخدمة."
+          }
+        },
+        {
+          "_key": "rod-operator-3",
+          "icon": "radio-tower",
+          "title": {
+            "en": "Live trip and incident follow-up",
+            "ar": "متابعة الرحلات والحوادث لحظيًا"
+          },
+          "description": {
+            "en": "Track active trips, status changes, service delays, and field exceptions so teams can intervene earlier.",
+            "ar": "تابع الرحلات النشطة وتغيّر الحالات وتأخيرات الخدمة والاستثناءات الميدانية حتى تتمكن الفرق من التدخل بشكل أسرع."
+          }
+        },
+        {
+          "_key": "rod-operator-4",
+          "icon": "receipt-text",
+          "title": {
+            "en": "Supplier and payable control",
+            "ar": "التحكم في الموردين والمستحقات"
+          },
+          "description": {
+            "en": "Keep approvals, supplier billing cycles, settlement checks, and payable visibility connected to operating activity.",
+            "ar": "اربط الموافقات ودورات فوترة الموردين وفحوصات التسوية ورؤية المستحقات بالنشاط التشغيلي الفعلي."
+          }
+        }
+      ]
+    },
+    "driver": {
+      "title": {
+        "en": "Give drivers clearer trip execution in the field",
+        "ar": "امنح السائقين تنفيذًا أوضح للرحلات في الميدان"
+      },
+      "description": {
+        "en": "Support daily execution with assigned trip context, stop sequence clarity, automatic trip start and end, background tracking, battery-aware tracking, and controlled trip actions in one practical driver workflow.",
+        "ar": "ادعم التنفيذ اليومي بسياق واضح للرحلات المخصصة وتسلسل التوقفات وبدء الرحلة وإنهائها تلقائيًا، والتتبع في الخلفية، وتحسين استهلاك البطارية، وإجراءات الرحلة المضبوطة ضمن سير عمل عملي واحد للسائق."
+      },
+      "features": [
+        {
+          "_key": "rod-driver-1",
+          "icon": "list-checks",
+          "title": {
+            "en": "Assigned trip queue",
+            "ar": "قائمة الرحلات المخصصة"
+          },
+          "description": {
+            "en": "Show drivers what they need to run now, including route context, timing, and service order.",
+            "ar": "اعرض للسائق ما يحتاجه للتنفيذ الآن، بما يشمل سياق الخط والتوقيت وترتيب الخدمة."
+          }
+        },
+        {
+          "_key": "rod-driver-2",
+          "icon": "map-pinned",
+          "title": {
+            "en": "Stop sequence and route clarity",
+            "ar": "وضوح التوقفات وتسلسل المسار"
+          },
+          "description": {
+            "en": "Give drivers a clearer trip path with stop-by-stop guidance and destination context.",
+            "ar": "امنح السائق مسارًا أوضح للرحلة مع إرشاد بحسب التوقفات وسياق الوجهة."
+          }
+        },
+        {
+          "_key": "rod-driver-3",
+          "icon": "satellite-dish",
+          "title": {
+            "en": "Tracking and field status feedback",
+            "ar": "متابعة التتبع وحالة التنفيذ"
+          },
+          "description": {
+            "en": "Help drivers see GPS and connectivity status so field execution stays visible to the control team.",
+            "ar": "ساعد السائقين على رؤية حالة GPS والاتصال حتى يبقى التنفيذ الميداني واضحًا لفريق التحكم."
+          }
+        },
+        {
+          "_key": "rod-driver-4",
+          "icon": "play-square",
+          "title": {
+            "en": "Controlled trip actions",
+            "ar": "إجراءات رحلة مضبوطة"
+          },
+          "description": {
+            "en": "Use clear start, stop, and completion actions that improve service traceability and handoff quality.",
+            "ar": "استخدم إجراءات واضحة لبدء الرحلة والتوقف والإنهاء بما يحسن قابلية التتبع وجودة التسليم."
+          }
+        }
+      ]
+    }
+  },
+  "timeline": {
+    "title": {
+      "en": "A real daily control cycle for transport execution",
+      "ar": "دورة تحكم يومية واقعية لتشغيل النقل"
+    },
+    "subtitle": {
+      "en": "Run the day through clear control points from planning and assignment to issue handling and settlement follow-up.",
+      "ar": "أدر اليوم عبر نقاط تحكم واضحة تبدأ من التخطيط والتخصيص وتصل إلى معالجة المشكلات ومتابعة التسوية."
+    },
+    "items": [
+      {
+        "_key": "rod-timeline-plan",
+        "time": "05:30",
+        "icon": "clipboard-list",
+        "title": {
+          "en": "Plan",
+          "ar": "خطط"
+        },
+        "description": {
+          "en": "Review route demand, daily schedules, and service readiness before the first dispatch window starts.",
+          "ar": "راجع طلب الخطوط والجداول اليومية وجاهزية الخدمة قبل بدء أول نافذة تشغيل."
+        }
+      },
+      {
+        "_key": "rod-timeline-assign",
+        "time": "06:15",
+        "icon": "user-check",
+        "title": {
+          "en": "Assign",
+          "ar": "خصص"
+        },
+        "description": {
+          "en": "Confirm driver, vehicle, and supplier assignments with clearer visibility into conflicts and fallback coverage.",
+          "ar": "أكد تخصيصات السائقين والمركبات والموردين مع رؤية أوضح للتعارضات وخطط التغطية البديلة."
+        }
+      },
+      {
+        "_key": "rod-timeline-operate",
+        "time": "07:00",
+        "icon": "truck",
+        "title": {
+          "en": "Operate",
+          "ar": "شغّل"
+        },
+        "description": {
+          "en": "Launch service windows, monitor departure quality, and keep teams aligned during active trip execution.",
+          "ar": "ابدأ نوافذ الخدمة وتابع جودة الانطلاق وحافظ على تنسيق الفرق أثناء تنفيذ الرحلات."
+        }
+      },
+      {
+        "_key": "rod-timeline-track",
+        "time": "12:00",
+        "icon": "radar",
+        "title": {
+          "en": "Track",
+          "ar": "تابع"
+        },
+        "description": {
+          "en": "Watch live trip status, occupancy signals, delays, and field updates to keep operations visible.",
+          "ar": "راقب حالة الرحلات المباشرة وإشارات الإشغال والتأخيرات والتحديثات الميدانية للحفاظ على وضوح التشغيل."
+        }
+      },
+      {
+        "_key": "rod-timeline-resolve",
+        "time": "17:00",
+        "icon": "siren",
+        "title": {
+          "en": "Resolve",
+          "ar": "عالج"
+        },
+        "description": {
+          "en": "Handle exceptions, incidents, return-shift changes, and approval requests before they create wider disruption.",
+          "ar": "عالج الاستثناءات والحوادث وتغييرات وردية العودة وطلبات الموافقة قبل أن تتوسع آثارها على التشغيل."
+        }
+      },
+      {
+        "_key": "rod-timeline-settle",
+        "time": "21:00",
+        "icon": "wallet-cards",
+        "title": {
+          "en": "Settle",
+          "ar": "راجع التسوية"
+        },
+        "description": {
+          "en": "Prepare payable inputs, review supplier-linked finance, and close the day with clearer settlement context.",
+          "ar": "جهّز مدخلات المستحقات وراجع المالية المرتبطة بالموردين وأغلق اليوم بسياق أوضح للتسوية."
+        }
+      }
+    ]
+  },
+  "dashboards": {
+    "title": {
+      "en": "Operator control views that support action",
+      "ar": "شاشات تحكم للمشغل تدعم القرار والتنفيذ"
+    },
+    "subtitle": {
+      "en": "Use dashboards to run execution, review trip analytics, and generate clearer operational and financial follow-up. Each view should help teams assign, track, validate, report, or settle work.",
+      "ar": "استخدم اللوحات لإدارة التنفيذ، ومراجعة تحليلات الرحلات، وإخراج متابعة تشغيلية ومالية أوضح. كل شاشة يجب أن تساعد الفرق على التخصيص أو المتابعة أو التحقق أو التقارير أو التسوية."
+    },
+    "screenshots": [
+      {
+        "_key": "rod-dashboard-1",
+        "title": {
+          "en": "Live trips control view",
+          "ar": "شاشة التحكم في الرحلات المباشرة"
+        },
+        "description": {
+          "en": "Show active service windows, status changes, incidents, and trip playback context in one operational view.",
+          "ar": "اعرض نوافذ الخدمة النشطة وتغيّر الحالات والحوادث وسياق إعادة عرض الرحلة في شاشة تشغيلية واحدة."
+        }
+      },
+      {
+        "_key": "rod-dashboard-2",
+        "title": {
+          "en": "Schedule and route calendar",
+          "ar": "تقويم الجداول والخطوط"
+        },
+        "description": {
+          "en": "Review planned service by route, day, and supplier with clearer schedule validation and planned vs actual follow-up.",
+          "ar": "راجع الخدمة المخططة بحسب الخط واليوم والمورد مع تحقق أوضح من الجداول ومتابعة مقارنة المخطط بالفعلي."
+        }
+      },
+      {
+        "_key": "rod-dashboard-3",
+        "title": {
+          "en": "Assignment control board",
+          "ar": "لوحة التحكم في التخصيصات"
+        },
+        "description": {
+          "en": "Manage driver and vehicle deployment with visibility into readiness, conflict checks, and assignment gap review.",
+          "ar": "أدر توزيع السائقين والمركبات مع رؤية للجاهزية، وفحوصات التعارض، ومراجعة فجوات التخصيص."
+        }
+      },
+      {
+        "_key": "rod-dashboard-4",
+        "title": {
+          "en": "Supplier payables view",
+          "ar": "شاشة مستحقات الموردين"
+        },
+        "description": {
+          "en": "Track liabilities, cycle status, financial reports, and planned settlement steps by supplier.",
+          "ar": "تابع الالتزامات، وحالة الدورات، والتقارير المالية، وخطوات التسوية المخططة لكل مورد."
+        }
+      }
+    ]
+  },
+  "mobileApps": {
+    "title": {
+      "en": "Smart driver execution in the field",
+      "ar": "تنفيذ ذكي للسائق في الميدان"
+    },
+    "subtitle": {
+      "en": "The driver app should reduce field uncertainty with automatic trip start and end, background tracking, battery-aware tracking, and smart execution validation so drivers can stay focused on driving.",
+      "ar": "يجب أن يقلل تطبيق السائق من الغموض الميداني عبر بدء الرحلة وإنهائها تلقائيًا، والتتبع في الخلفية، وتحسين استهلاك البطارية، والتحقق الذكي من التنفيذ حتى يبقى تركيز السائق على القيادة."
+    },
+    "features": [
+      {
+        "_key": "rod-mobile-1",
+        "title": {
+          "en": "Automatic trip start and end",
+          "ar": "بدء الرحلة وإنهاؤها تلقائيًا"
+        },
+        "description": {
+          "en": "Reduce manual interaction by triggering trip execution events with clearer operational traceability.",
+          "ar": "قلل التفاعل اليدوي عبر تشغيل أحداث الرحلة مع قابلية أوضح للتتبع التشغيلي."
+        },
+        "badge": {
+          "en": "Automation",
+          "ar": "أتمتة"
+        }
+      },
+      {
+        "_key": "rod-mobile-2",
+        "title": {
+          "en": "Background tracking with battery awareness",
+          "ar": "تتبع في الخلفية مع مراعاة استهلاك البطارية"
+        },
+        "description": {
+          "en": "Keep field execution visible across devices while supporting more stable tracking and better battery optimization.",
+          "ar": "حافظ على وضوح التنفيذ الميداني عبر الأجهزة مع دعم تتبع أكثر استقرارًا وتحسين أفضل لاستهلاك البطارية."
+        },
+        "badge": {
+          "en": "Tracking",
+          "ar": "تتبع"
+        }
+      },
+      {
+        "_key": "rod-mobile-3",
+        "title": {
+          "en": "Smart driver attendance and execution validation",
+          "ar": "تحقق ذكي من حضور السائق وتنفيذ الرحلة"
+        },
+        "description": {
+          "en": "Support driver attendance and service execution checks through location-aware and workflow-linked validation.",
+          "ar": "ادعم التحقق من حضور السائق وتنفيذ الخدمة عبر تحقق مرتبط بالموقع وبسير العمل."
+        },
+        "badge": {
+          "en": "Validation",
+          "ar": "تحقق"
+        }
+      },
+      {
+        "_key": "rod-mobile-4",
+        "title": {
+          "en": "Driver focus with guided execution",
+          "ar": "تركيز السائق مع تنفيذ موجه"
+        },
+        "description": {
+          "en": "Give drivers clearer route context, stop sequence, and guided trip actions without forcing constant app interaction.",
+          "ar": "امنح السائقين سياقًا أوضح للمسار وتسلسل التوقفات وإجراءات رحلة موجهة دون فرض تفاعل مستمر مع التطبيق."
+        },
+        "badge": {
+          "en": "Driver focus",
+          "ar": "تركيز السائق"
+        }
+      }
+    ]
+  },
+  "features": {
+    "overview": {
+      "en": "Daily transport control needs more than visibility. It needs AI-assisted validation, smart driver execution, trip analytics, incident handling, and financial accountability.",
+      "ar": "التحكم اليومي في النقل يحتاج إلى أكثر من مجرد الرؤية. فهو يحتاج إلى تحقق مدعوم بالذكاء الاصطناعي، وتنفيذ ذكي للسائقين، وتحليلات للرحلات، ومعالجة للحوادث، ومساءلة مالية."
+    },
+    "title": {
+      "en": "Execution, validation, and analytics framework",
+      "ar": "إطار التنفيذ والتحقق والتحليلات"
+    },
+    "items": [
+      {
+        "_key": "rod-feature-1",
+        "title": {
+          "en": "Execution control",
+          "ar": "ضبط التنفيذ"
+        },
+        "description": {
+          "en": "Keep route delivery aligned with the planned operating model across shifts, windows, and trips while supporting smarter execution validation.",
+          "ar": "حافظ على توافق تنفيذ الخطوط مع النموذج التشغيلي المخطط عبر الورديات والنوافذ الزمنية والرحلات مع دعم تحقق أذكى من التنفيذ."
+        },
+        "points": [
+          {
+            "en": "Schedule-linked trip generation",
+            "ar": "توليد الرحلات بناءً على الجداول"
+          },
+          {
+            "en": "Live service status and smart attendance validation",
+            "ar": "متابعة حالة الخدمة المباشرة والتحقق الذكي من الحضور"
+          },
+          {
+            "en": "Shift-level operating continuity",
+            "ar": "استمرارية تشغيلية على مستوى الورديات"
+          }
+        ]
+      },
+      {
+        "_key": "rod-feature-2",
+        "title": {
+          "en": "Resource readiness",
+          "ar": "جاهزية الموارد"
+        },
+        "description": {
+          "en": "Deploy drivers and vehicles with fewer blind spots around readiness, overlap, and replacement planning.",
+          "ar": "شغّل السائقين والمركبات مع نقاط أقل من الغموض حول الجاهزية والتداخل وخطط الاستبدال."
+        },
+        "points": [
+          {
+            "en": "Assignment discipline with conflict checks",
+            "ar": "انضباط في التخصيصات مع فحوصات التعارض"
+          },
+          {
+            "en": "Driver and vehicle readiness follow-up",
+            "ar": "متابعة جاهزية السائقين والمركبات"
+          },
+          {
+            "en": "Fallback coverage planning",
+            "ar": "تخطيط للتغطية البديلة"
+          }
+        ]
+      },
+      {
+        "_key": "rod-feature-3",
+        "title": {
+          "en": "Incident and exception handling",
+          "ar": "إدارة الحوادث والاستثناءات"
+        },
+        "description": {
+          "en": "Respond to service delays, operating exceptions, and field issues with trip analytics that make behavior, route variance, and disruption easier to review.",
+          "ar": "استجب لتأخيرات الخدمة والاستثناءات التشغيلية والمشكلات الميدانية عبر تحليلات رحلات تجعل مراجعة السلوك والانحراف عن المسار والاضطرابات أوضح."
+        },
+        "points": [
+          {
+            "en": "Trip playback and planned vs actual comparison",
+            "ar": "إعادة عرض الرحلة ومقارنة المخطط بالفعلي"
+          },
+          {
+            "en": "Speed vs speed limit and phone usage analytics",
+            "ar": "مقارنة السرعة بحدود السرعة وتحليلات استخدام الهاتف"
+          },
+          {
+            "en": "Harsh braking and harsh acceleration review",
+            "ar": "مراجعة الفرملة المفاجئة والتسارع المفاجئ"
+          }
+        ]
+      },
+      {
+        "_key": "rod-feature-4",
+        "title": {
+          "en": "Financial accountability",
+          "ar": "المساءلة المالية"
+        },
+        "description": {
+          "en": "Connect supplier billing, approvals, and settlement visibility to the operating activity that drives them.",
+          "ar": "اربط فوترة الموردين والموافقات ورؤية التسوية بالنشاط التشغيلي الذي تنتج عنه."
+        },
+        "points": [
+          {
+            "en": "Supplier billing cycle control",
+            "ar": "التحكم في دورات فوترة الموردين"
+          },
+          {
+            "en": "Payable status visibility",
+            "ar": "رؤية أوضح لحالة المستحقات"
+          },
+          {
+            "en": "Settlement follow-up with audit context",
+            "ar": "متابعة التسوية بسياق تدقيقي"
+          }
+        ]
+      }
+    ]
+  },
+  "aiImpact": {
+    "title": {
+      "en": "AI agents built into daily transport operations",
+      "ar": "وكلاء ذكاء اصطناعي مدمجون في التشغيل اليومي للنقل"
+    },
+    "subtitle": {
+      "en": "Tranzkit AI agents help teams validate schedules, detect assignment gaps, review trip analytics, generate operational and financial reports, navigate the platform, and support controlled data updates inside the same workflow.",
+      "ar": "يساعد وكلاء الذكاء الاصطناعي في ترانزكيت الفرق على التحقق من الجداول، واكتشاف فجوات التخصيص، ومراجعة تحليلات الرحلات، وإعداد التقارير التشغيلية والمالية، والتنقل داخل المنصة، ودعم تحديثات البيانات المنظمة داخل نفس سير العمل."
+    },
+    "impactTitle": {
+      "en": "Guidance, reporting, and controlled updates that stay under operator control",
+      "ar": "إرشاد وتقارير وتحديثات منظمة تبقى تحت تحكم المشغل"
+    },
+    "metrics": [
+      {
+        "_key": "rod-ai-1",
+        "value": {
+          "en": "Faster",
+          "ar": "أسرع"
+        },
+        "label": {
+          "en": "Schedule validation",
+          "ar": "التحقق من الجداول"
+        },
+        "description": {
+          "en": "Help teams review schedules, service windows, and execution readiness with clearer validation support.",
+          "ar": "ساعد الفرق على مراجعة الجداول ونوافذ الخدمة وجاهزية التنفيذ عبر دعم أوضح لعمليات التحقق."
+        }
+      },
+      {
+        "_key": "rod-ai-2",
+        "value": {
+          "en": "Stronger",
+          "ar": "أقوى"
+        },
+        "label": {
+          "en": "Assignment gap review",
+          "ar": "مراجعة فجوات التخصيص"
+        },
+        "description": {
+          "en": "Surface assignment issues, readiness gaps, and operating conflicts earlier for control teams.",
+          "ar": "أظهر مشكلات التخصيص وفجوات الجاهزية والتعارضات التشغيلية مبكرًا لفرق التحكم."
+        }
+      },
+      {
+        "_key": "rod-ai-3",
+        "value": {
+          "en": "Deeper",
+          "ar": "أعمق"
+        },
+        "label": {
+          "en": "Trip analytics review",
+          "ar": "مراجعة تحليلات الرحلات"
+        },
+        "description": {
+          "en": "Make playback, planned vs actual comparison, speed behavior, and phone usage easier to review in context.",
+          "ar": "اجعل إعادة العرض، ومقارنة المخطط بالفعلي، وسلوك السرعة، واستخدام الهاتف أسهل في المراجعة ضمن سياق واحد."
+        }
+      },
+      {
+        "_key": "rod-ai-4",
+        "value": {
+          "en": "Cleaner",
+          "ar": "أوضح"
+        },
+        "label": {
+          "en": "Operational and financial reports",
+          "ar": "التقارير التشغيلية والمالية"
+        },
+        "description": {
+          "en": "Generate clearer operational, executive, and supplier-linked financial reporting while keeping updates reviewable.",
+          "ar": "أنشئ تقارير تشغيلية وتنفيذية ومالية مرتبطة بالموردين بشكل أوضح مع إبقاء التحديثات قابلة للمراجعة."
+        }
+      }
+    ]
+  },
+  "faq": {
+    "title": {
+      "en": "Common operator questions",
+      "ar": "أسئلة المشغلين المتكررة"
+    },
+    "subtitle": {
+      "en": "Clear answers for teams evaluating route control, field execution, and supplier-linked finance workflows.",
+      "ar": "إجابات واضحة للفرق التي تقيّم التحكم في الخطوط والتنفيذ الميداني وتدفقات المالية المرتبطة بالموردين."
+    },
+    "items": [
+      {
+        "_key": "rod-faq-1",
+        "question": {
+          "en": "Does Tranzkit support fixed routes and shift-based employee transport?",
+          "ar": "هل يدعم ترانزكيت الخطوط الثابتة وتشغيل نقل الموظفين بحسب الورديات؟"
+        },
+        "answer": {
+          "en": "Yes. Tranzkit is designed for recurring employee transportation, shift coverage, and contracted service operations.",
+          "ar": "نعم. صُمم ترانزكيت لدعم نقل الموظفين المتكرر وتغطية الورديات وعمليات الخدمة التعاقدية."
+        }
+      },
+      {
+        "_key": "rod-faq-2",
+        "question": {
+          "en": "Can we manage driver and vehicle assignments with conflict checks?",
+          "ar": "هل يمكن إدارة تخصيص السائقين والمركبات مع فحوصات التعارض؟"
+        },
+        "answer": {
+          "en": "Yes. Assignment workflows can support overlap checks, date controls, and clearer operating discipline around resource deployment.",
+          "ar": "نعم. يمكن أن تدعم مسارات التخصيص فحوصات التداخل والتحكم الزمني وانضباطًا تشغيليًا أوضح عند توزيع الموارد."
+        }
+      },
+      {
+        "_key": "rod-faq-3",
+        "question": {
+          "en": "Is live trip monitoring included for operations teams?",
+          "ar": "هل تتضمن المنصة متابعة الرحلات المباشرة لفرق التشغيل؟"
+        },
+        "answer": {
+          "en": "Yes. Operations teams can follow active trips, status changes, service delays, and incidents from connected control views.",
+          "ar": "نعم. يمكن لفرق التشغيل متابعة الرحلات النشطة وتغيّر الحالات وتأخيرات الخدمة والحوادث من خلال شاشات تحكم مترابطة."
+        }
+      },
+      {
+        "_key": "rod-faq-4",
+        "question": {
+          "en": "How does Tranzkit support supplier-linked finance?",
+          "ar": "كيف يدعم ترانزكيت المالية المرتبطة بالموردين؟"
+        },
+        "answer": {
+          "en": "By connecting supplier billing cycles, payable tracking, approval workflows, and settlement follow-up to daily operating activity.",
+          "ar": "من خلال ربط دورات فوترة الموردين وتتبع المستحقات ومسارات الموافقات ومتابعة التسوية بالنشاط التشغيلي اليومي."
+        }
+      },
+      {
+        "_key": "rod-faq-5",
+        "question": {
+          "en": "Does the driver app support daily execution workflows?",
+          "ar": "هل يدعم تطبيق السائق تدفقات التنفيذ اليومية؟"
+        },
+        "answer": {
+          "en": "Yes. Drivers can access assigned trips, stop context, tracking status, and controlled trip actions in one workflow.",
+          "ar": "نعم. يمكن للسائقين الوصول إلى الرحلات المخصصة وسياق التوقفات وحالة التتبع وإجراءات الرحلة المضبوطة من خلال سير عمل واحد."
+        }
+      },
+      {
+        "_key": "rod-faq-6",
+        "question": {
+          "en": "Is Tranzkit a public ride-hailing platform?",
+          "ar": "هل ترانزكيت منصة نقل عام شبيهة بتطبيقات طلب السيارات؟"
+        },
+        "answer": {
+          "en": "No. Tranzkit is built for enterprise employee transportation and contracted transport operations, not consumer ride hailing.",
+          "ar": "لا. ترانزكيت مخصص لنقل الموظفين للشركات وعمليات النقل التعاقدية، وليس لخدمات النقل الاستهلاكية عند الطلب."
+        }
+      }
+    ]
+  },
+  "cta": {
+    "heading": {
+      "en": "See how Tranzkit helps operators run daily transport with control",
+      "ar": "اكتشف كيف يساعد ترانزكيت المشغلين على إدارة التشغيل اليومي بتحكم أوضح"
+    },
+    "subtitle": {
+      "en": "Connect routes, assignments, live service, driver workflows, smart attendance validation, trip analytics, and supplier-linked finance in one bilingual AI integrated operating platform.",
+      "ar": "اربط الخطوط والتخصيصات والخدمة المباشرة وسير عمل السائقين، والتحقق الذكي من الحضور، وتحليلات الرحلات، والمستحقات المرتبطة بالموردين داخل منصة تشغيل واحدة متكاملة بالذكاء الاصطناعي وبالإنجليزية والعربية."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Book an operator control walkthrough",
+        "ar": "احجز جولة على تحكم المشغل"
+      },
+      "href": "/contact",
+      "openInNewTab": false
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Talk to the operations team",
+        "ar": "تحدث مع فريق التشغيل"
+      },
+      "href": "/contact",
+      "openInNewTab": false
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "AI integrated fleet operations and driver workflow platform | Tranzkit",
+      "ar": "منصة تشغيل الأسطول وسير عمل السائقين المتكاملة بالذكاء الاصطناعي | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Tranzkit helps transport operators manage routes, schedules, assignments, smart driver execution, trip analytics, incidents, fleet readiness, AI-guided validation, and supplier-linked finance.",
+      "ar": "يساعد ترانزكيت مشغلي النقل على إدارة الخطوط والجداول والتخصيصات والتنفيذ الذكي للسائقين وتحليلات الرحلات والحوادث وجاهزية الأسطول والتحقق الموجّه بالذكاء الاصطناعي والمستحقات المرتبطة بالموردين."
+    },
+    "keywords": [
+      "ai integrated fleet operations",
+      "driver workflow platform",
+      "smart driver attendance",
+      "trip analytics",
+      "live trip visibility",
+      "supplier finance control",
+      "Tranzkit"
+    ]
+  }
+}

@@ -30,6 +30,7 @@ export function OperatorsAiImpactSection({ data }: OperatorsAiImpactSectionProps
         background="dark"
         padding="xl"
         maxWidth="2xl"
+        className="overflow-hidden overflow-x-clip"
       >
         <div className="relative">
           {/* Background Pattern */}
@@ -131,7 +132,7 @@ export function OperatorsAiImpactSection({ data }: OperatorsAiImpactSectionProps
 
       {/* Impact Metrics Section - Advanced Framer Motion */}
       <section 
-        className="relative py-20 md:py-28 overflow-hidden"
+        className="relative overflow-hidden overflow-x-clip py-20 md:py-28"
         style={{
           background: `
             linear-gradient(135deg, 
@@ -165,7 +166,7 @@ export function OperatorsAiImpactSection({ data }: OperatorsAiImpactSectionProps
         </div>
 
         {/* Brand color orbs - navy, ocean, emerald, lime */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Navy orb - top left */}
           <div 
             className="absolute -top-20 -left-20 w-96 h-96 rounded-full blur-3xl opacity-20 dark:opacity-15 animate-float-slow"

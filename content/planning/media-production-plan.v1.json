@@ -1,0 +1,2245 @@
+{
+  "planVersion": "1.0",
+  "createdAt": "2026-06-14",
+  "scope": "Home page and Solutions page media planning before Sanity draft seeding.",
+  "status": "planning-only",
+  "sourceRepo": "Codefy OS",
+  "targetRepo": "tanzkit_website_v2",
+  "sourceExportFolder": "marketing-media/tranzkit/",
+  "targetPlanningFolder": "content/planning/",
+  "targetAssetStagingFolder": "content/media/staging/tranzkit/",
+  "captureFolders": {
+    "sourceCaptures": "marketing-media/tranzkit/source-captures/",
+    "figmaExports": "marketing-media/tranzkit/figma-exports/",
+    "review": "marketing-media/tranzkit/review/",
+    "archive": "marketing-media/tranzkit/archive/"
+  },
+  "doNotDo": [
+    "Do not write to Sanity.",
+    "Do not seed drafts.",
+    "Do not publish.",
+    "Do not edit approved content maps.",
+    "Do not remove or replace existing Sanity image refs.",
+    "Do not use real client or personal data."
+  ],
+  "sourceContentMaps": [
+    "content/planning/homepage.v1.en-ar.json",
+    "content/planning/solutions.v1.en-ar.json",
+    "content/planning/apps.v1.en-ar.json",
+    "content/planning/solutions-operators-drivers.v1.en-ar.json",
+    "content/planning/solutions-enterprises-passengers.v1.en-ar.json"
+  ],
+  "sourceMediaPlans": [
+    "content/planning/homepage-media.v1.json",
+    "content/planning/solutions-media.v1.json",
+    "content/planning/solutions-operators-drivers-media.v1.json",
+    "content/planning/solutions-enterprises-passengers-media.v1.json"
+  ],
+  "requiredAssets": [
+    "home-feature-tab-enterprise-image",
+    "home-feature-tab-operator-image",
+    "home-carousel-enterprise-planning-image",
+    "home-carousel-operator-control-image",
+    "home-carousel-finance-visibility-image",
+    "home-carousel-driver-field-workflows-image",
+    "home-og-image",
+    "solutions-og-image"
+  ],
+  "optionalAssets": [
+    "home-optional-fleet-readiness-image",
+    "home-optional-live-tracking-image"
+  ],
+  "transferWorkflow": {
+    "sourceRepo": "Codefy OS",
+    "targetRepo": "tanzkit_website_v2",
+    "sourceExportFolder": "marketing-media/tranzkit/",
+    "targetPlanningFolder": "content/planning/",
+    "targetAssetStagingFolder": "content/media/staging/tranzkit/",
+    "safetyRule": "Codefy OS never writes to Sanity. It only prepares media outputs.",
+    "steps": [
+      "Capture screens, tune demo states, or recreate faithful mockups inside Codefy OS using demo-safe data only.",
+      "Export approved image files from Codefy OS into marketing-media/tranzkit/.",
+      "Transfer exported files into tanzkit_website_v2/content/media/staging/tranzkit/.",
+      "Keep content/planning/ in the website repo as the mapping and staging-plan source of truth.",
+      "Let tanzkit_website_v2 own Sanity upload, image ref mapping, draft seeding, and publishing."
+    ],
+    "statusDefinitions": {
+      "not_ready": "Asset is still being prepared in Codefy OS.",
+      "ready_for_transfer": "Asset export is approved and ready to move into the website repo.",
+      "transferred_to_website_repo": "Asset file has been copied into the website repo staging folder.",
+      "uploaded_to_sanity": "Website repo owners uploaded the staged asset into Sanity.",
+      "mapped_to_content": "Website repo owners mapped the resulting Sanity asset ref into website content structures.",
+      "approved": "Asset is fully approved after upload and content mapping."
+    }
+  },
+  "frontendFindings": {
+    "homepageFeatureTabs": {
+      "component": "src/components/sections/homepage/feature-tabs.tsx",
+      "renderingBehavior": "Uses next/image with width 1200, height 800, object-contain, no forced crop.",
+      "recommendedExport": {
+        "width": 1200,
+        "height": 800,
+        "format": "png"
+      }
+    },
+    "homepageScreenshotCarousel": {
+      "component": "src/components/sections/homepage/screenshot-carousel.tsx",
+      "renderingBehavior": "Uses next/image with width 1200, height 800, object-contain inside cards.",
+      "recommendedExport": {
+        "width": 1200,
+        "height": 800,
+        "format": "png"
+      }
+    },
+    "homepageSeoOg": {
+      "component": "src/app/[locale]/(main)/page.tsx",
+      "renderingBehavior": "Home metadata explicitly transforms ogImage to 1200x630.",
+      "recommendedExport": {
+        "width": 1200,
+        "height": 630,
+        "format": "png"
+      }
+    },
+    "solutionsSeoOg": {
+      "component": "src/app/[locale]/(main)/solutions/page.tsx",
+      "renderingBehavior": "Solutions metadata currently does not pass ogImage into generateResourceMetadata.",
+      "recommendedExport": {
+        "width": 1200,
+        "height": 630,
+        "format": "png"
+      },
+      "implementationRisk": "The asset can be prepared now, but it will not render in metadata until the page passes solutionsPage.seo?.ogImage."
+    }
+  },
+  "recommendedDimensions": {
+    "featureAndCarouselImages": {
+      "width": 1200,
+      "height": 800,
+      "format": "png",
+      "basis": "Exact dimensions are inferred from homepage feature tab and screenshot carousel components."
+    },
+    "ogImages": {
+      "width": 1200,
+      "height": 630,
+      "format": "png",
+      "basis": "Exact OG dimensions are enforced by Home metadata and are standard for social preview images."
+    },
+    "safeDefaultsIfFallbackNeeded": {
+      "featureAndCarouselImages": "1600x1000 PNG",
+      "ogImages": "1200x630 PNG"
+    }
+  },
+  "figmaProductionRecommendation": {
+    "status": "verified-structure-ready",
+    "figmaFileName": "Tranzkit Website Media Production v1",
+    "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+    "pages": [
+      "00_Cover",
+      "01_Home_Required",
+      "02_Home_Optional",
+      "03_Solutions_OG",
+      "04_Export_Ready",
+      "05_Archive_Source_Captures",
+      "06_Animated_Sequences",
+      "07_Solutions_Operators_Drivers",
+      "08_Solutions_Enterprises_Passengers"
+    ],
+    "frameNamingConvention": "PAGE__SECTION__ASSETKEY__LANG-neutral__SIZE",
+    "componentNamingConvention": "media/<page>/<asset-key>/<variant>",
+    "exportNamingConvention": "tranzkit-<page>-<asset-key>-v1.<ext>",
+    "notes": [
+      "Figma file structure is created and verified. Use this file as the single production planning source for website media.",
+      "Use a single neutral design system layer for labels, browser chrome, AI insight cards, and soft callout chips.",
+      "Keep screen data demo-safe and remove any tenant, user, GPS token, or billing identifiers.",
+      "For recreated mockups, use real Tranzkit screen structure as source truth and simplify only for clarity, not invention."
+    ],
+    "aiIntegratedVisualLanguage": [
+      "Use embedded AI insight cards inside the operating workflow, not disconnected chatbot bubbles.",
+      "Prefer blue and green Tranzkit styling with clean neutral surfaces and restrained accent states.",
+      "Use dashboards, mobile frames, analytics cards, attendance validation cards, and finance report cards as the repeating language.",
+      "Keep labels minimal, neutral, and product-like rather than promotional.",
+      "Do not imply unsupported autonomy or unsupported AI approvals."
+    ],
+    "animatedSequenceGuidance": [
+      "Build animated sequences as ordered Figma frame sets first, not as plugin-first exports.",
+      "Prefer PNG sequence export from Figma and later GIF assembly by script as the primary automated path.",
+      "Keep motion restrained and functional: state changes, panel reveals, timeline progression, and controlled review actions.",
+      "Do not animate unsupported product behavior or imply autonomous approvals."
+    ]
+  },
+  "aiIntegratedOsVisualStrategy": {
+    "strategyStatement": "Every media asset should make Tranzkit feel like a fully AI integrated operating system for employee transportation, where AI appears as embedded workflow intelligence across planning, operations, attendance, analytics, and finance.",
+    "primaryVisualNarrative": "Show Tranzkit as one connected operating layer spanning enterprise control, operator execution, field tracking, attendance validation, safety analytics, and executive reporting, with AI insight cards embedded in the exact workflow where decisions are made.",
+    "proofPointVisuals": [
+      "AI agent panel or assistant card inside operations workflow",
+      "AI assisted app navigation or command panel",
+      "Operations validation and exception insights",
+      "Financial and executive report generation",
+      "Smart employee attendance with geofence and biometric validation",
+      "Smart driver attendance and automatic trip execution",
+      "Background tracking and battery aware tracking",
+      "Trip playback and planned vs actual comparison",
+      "Speed versus speed limit analysis",
+      "Phone usage analytics",
+      "Harsh braking and harsh acceleration",
+      "Comprehensive trip analytics dashboard"
+    ],
+    "screensOrMockupsNeeded": [
+      "Enterprise planning with AI insight card",
+      "Operator execution with AI validation card",
+      "Finance visibility with AI-generated executive report card",
+      "Driver mobile workflow with automatic trip lifecycle and tracking cues",
+      "Trip analysis with playback, safety analytics, and planned-vs-actual comparison",
+      "Attendance validation surfaces for employees and drivers",
+      "Enterprise service validation and rider trip visibility surfaces",
+      "Fleet readiness and exception insight surfaces"
+    ],
+    "whereEachVisualShouldAppear": {
+      "homeFeatureEnterprise": "Enterprise control and AI-assisted planning story",
+      "homeFeatureOperator": "Operator execution and AI-assisted validation story",
+      "homeCarouselPlanning": "Real product proof of planning depth with light AI framing",
+      "homeCarouselOperator": "Real product proof of operator control with light AI framing",
+      "homeCarouselFinance": "AI-assisted finance and executive reporting story",
+      "homeCarouselDriverField": "Driver workflow, automatic trip execution, and tracking story",
+      "homeOptionalFleetReadiness": "Readiness, maintenance, and exception monitoring story",
+      "homeOptionalLiveTracking": "Trip playback and comprehensive trip analytics story",
+      "homeOg": "Language-neutral summary of the AI integrated transport OS",
+      "solutionsOg": "Language-neutral enterprise-to-operator AI connection story",
+      "solutionsEnterprisesPassengersAttendanceValidation": "Smart employee attendance, work-location validation, and biometric proof story",
+      "solutionsEnterprisesPassengersServiceValidation": "Enterprise service validation and planned-vs-actual control story",
+      "solutionsEnterprisesPassengersRiderVisibility": "Passenger trip clarity, live status, and service-confidence story",
+      "solutionsEnterprisesPassengersEnterpriseAiReport": "Enterprise AI-assisted executive, financial, and controlled-update reporting story"
+    },
+    "risks": [
+      "A generic dashboard look weakens the new AI integrated OS positioning.",
+      "Overstating AI autonomy can create misleading product claims.",
+      "Sparse tenant data can make real screenshots look less credible than faithful rebuilds.",
+      "Too much embedded copy inside visuals can break the shared-language-neutral media policy.",
+      "Trip analytics or map-heavy captures can expose sensitive locations, ids, or query strings if not carefully cropped."
+    ],
+    "doNotShowRules": [
+      "Do not show AI as a detached floating chatbot with no workflow context.",
+      "Do not show unsupported feature claims or invented product modules.",
+      "Do not imply that AI replaces human approval.",
+      "Do not imply that AI autonomously dispatches trips or approves financial changes.",
+      "Do not use unsafe driving judgement language or punitive framing."
+    ],
+    "contentAlignmentStatus": "approved_current_maps",
+    "approvedForCurrentContent": true,
+    "approvedContentMaps": [
+      "content/planning/homepage.v1.en-ar.json",
+      "content/planning/solutions.v1.en-ar.json",
+      "content/planning/apps.v1.en-ar.json",
+      "content/planning/solutions-operators-drivers.v1.en-ar.json",
+      "content/planning/solutions-enterprises-passengers.v1.en-ar.json"
+    ]
+  },
+  "doNotShowRules": [
+    "No real tenant names except approved Zamalek demo context if visually safe.",
+    "No phone numbers.",
+    "No emails.",
+    "No exact private addresses.",
+    "No sensitive finance values.",
+    "No tokens or query strings.",
+    "No raw trip ID in visible crop.",
+    "No claim that AI replaces human approval.",
+    "No claim that AI autonomously dispatches or approves financial changes.",
+    "No unsafe driving judgement language."
+  ],
+  "animatedSequencePlan": {
+    "enabled": true,
+    "defaultMethod": "figma_frames_to_png_sequence_then_gif",
+    "fallbackMethod": "manual_figma_gif_plugin",
+    "preferredPerformanceFormat": "gif_for_now_mp4_later",
+    "languagePolicy": "shared_language_neutral_by_default",
+    "localeSpecificRule": "Create EN and AR variants only if embedded text is required.",
+    "maxRecommendedDurationSeconds": 8,
+    "recommendedFrameDelayMs": 800,
+    "maxFileSizeTargetMb": 8,
+    "needsWebsiteRendererCheck": true,
+    "blockers": [
+      "Confirm tanzkit_website_v2 can render animated GIF from Sanity image fields without freezing animation.",
+      "Approve static media assets first before any animated derivative export starts.",
+      "Keep GIF production blocked until target page content maps are seeded and reviewed in the website repo."
+    ],
+    "figmaSetup": {
+      "pageName": "06_Animated_Sequences",
+      "placeholderFrameGroups": [
+        "AI OS Flow",
+        "Trip Analytics Flow",
+        "Smart Attendance Flow",
+        "Driver Automatic Trip Flow"
+      ],
+      "frameNamingPattern": "GIF__<sequence-key>__STEP_<number>__LANG-neutral",
+      "exportNamingPattern": "tranzkit-<sequence-key>-v1.gif"
+    },
+    "manualPluginFallbackSteps": [
+      "Select frames in order.",
+      "Open TinyImage Compressor or GIF Export plugin.",
+      "Set delay.",
+      "Export GIF.",
+      "Save to marketing-media/tranzkit/review/."
+    ],
+    "scriptBasedAlternative": {
+      "status": "planned_only",
+      "approach": "Export ordered PNG frames from Figma, then assemble the GIF locally with a script when requested.",
+      "implementationNote": "Do not implement the script yet unless asked."
+    },
+    "sequences": [
+      {
+        "assetKey": "ai-integrated-os-flow",
+        "sequenceType": "workflow_ai_overlay_sequence",
+        "targetPages": [
+          "homepage",
+          "solutions"
+        ],
+        "sourceFramesNeeded": [
+          "operations dashboard",
+          "AI agent panel opens inside workflow",
+          "AI validates schedules or assignments",
+          "AI surfaces an exception or insight",
+          "AI prepares operational or financial report card",
+          "user reviews controlled update"
+        ],
+        "figmaPage": "06_Animated_Sequences",
+        "frameNamingPattern": "GIF__ai-integrated-os-flow__STEP_<number>__LANG-neutral",
+        "exportNamingPattern": "tranzkit-ai-integrated-os-flow-v1.gif",
+        "languageMode": "shared_language_neutral",
+        "requiresEmbeddedText": false,
+        "localeVariants": null,
+        "recommendedDurationMs": 4800,
+        "recommendedFrameDelayMs": 800,
+        "exportStatus": "planned_not_exported",
+        "approvalStatus": "planning_only",
+        "notes": "High-value hero sequence for later Home or Solutions use if website rendering supports GIF cleanly. Keep AI embedded in the operational workflow rather than as a detached assistant."
+      },
+      {
+        "assetKey": "trip-analytics-flow",
+        "sequenceType": "trip_analytics_progression_sequence",
+        "targetPages": [
+          "solutions-operators-drivers",
+          "app-operator-dashboard-detail"
+        ],
+        "sourceFramesNeeded": [
+          "trip analysis overview",
+          "playback timeline",
+          "planned vs actual comparison",
+          "speed vs speed limit insight",
+          "phone usage analytics",
+          "harsh braking and harsh acceleration events"
+        ],
+        "figmaPage": "06_Animated_Sequences",
+        "frameNamingPattern": "GIF__trip-analytics-flow__STEP_<number>__LANG-neutral",
+        "exportNamingPattern": "tranzkit-trip-analytics-flow-v1.gif",
+        "languageMode": "shared_language_neutral",
+        "requiresEmbeddedText": false,
+        "localeVariants": null,
+        "recommendedDurationMs": 4800,
+        "recommendedFrameDelayMs": 800,
+        "exportStatus": "planned_not_exported",
+        "approvalStatus": "planning_only",
+        "notes": "Use Trip Analysis as the truth source. Keep map detail safe, avoid raw query strings, and make the sequence about analytics rather than generic tracking."
+      },
+      {
+        "assetKey": "smart-attendance-flow",
+        "sequenceType": "attendance_validation_sequence",
+        "targetPages": [
+          "solutions-enterprises-passengers",
+          "app-enterprise-dashboard-detail"
+        ],
+        "sourceFramesNeeded": [
+          "work location geofence",
+          "employee location matched",
+          "biometric validation",
+          "attendance confirmed",
+          "attendance report updated"
+        ],
+        "figmaPage": "06_Animated_Sequences",
+        "frameNamingPattern": "GIF__smart-attendance-flow__STEP_<number>__LANG-neutral",
+        "exportNamingPattern": "tranzkit-smart-attendance-flow-v1.gif",
+        "languageMode": "shared_language_neutral",
+        "requiresEmbeddedText": false,
+        "localeVariants": null,
+        "recommendedDurationMs": 4000,
+        "recommendedFrameDelayMs": 800,
+        "exportStatus": "planned_not_exported",
+        "approvalStatus": "planning_only",
+        "notes": "Attendance proof sequence for future page scope. Use neutral UI cards, geofence indicators, and validation states without large embedded copy."
+      },
+      {
+        "assetKey": "driver-automatic-trip-flow",
+        "sequenceType": "driver_trip_automation_sequence",
+        "targetPages": [
+          "app-driver-detail",
+          "solutions-operators-drivers"
+        ],
+        "sourceFramesNeeded": [
+          "assigned trip",
+          "automatic trip start",
+          "background tracking and battery aware tracking",
+          "automatic trip end",
+          "completed trip analysis"
+        ],
+        "figmaPage": "06_Animated_Sequences",
+        "frameNamingPattern": "GIF__driver-automatic-trip-flow__STEP_<number>__LANG-neutral",
+        "exportNamingPattern": "tranzkit-driver-automatic-trip-flow-v1.gif",
+        "languageMode": "shared_language_neutral",
+        "requiresEmbeddedText": false,
+        "localeVariants": null,
+        "recommendedDurationMs": 4000,
+        "recommendedFrameDelayMs": 800,
+        "exportStatus": "planned_not_exported",
+        "approvalStatus": "planning_only",
+        "notes": "Show driver execution without distracting the driver. Emphasize automatic lifecycle transitions and background-safe tracking behavior, not manual interaction density."
+      }
+    ]
+  },
+  "approvalChecklistTemplate": [
+    "Demo-safe data only; no real client, employee, driver, vehicle plate, phone, invoice, payment, or GPS data.",
+    "No browser URL bar, query token, dev toolbar, debug panel, or transient toast is visible unless intentionally mocked.",
+    "English and Arabic text remains legible if shown inside the capture.",
+    "Primary KPI, chart, or table focal area remains readable at target export size.",
+    "No existing Sanity asset ref is changed until a separate approved upload and seeding step.",
+    "Authenticity label must be either Captured from product or Marketing composite; never Concept visual.",
+    "If the asset is recreated in Figma, every visible module, entity, and workflow must map back to a real Tranzkit capability."
+  ],
+  "assets": [
+    {
+      "assetKey": "home-feature-tab-enterprise-image",
+      "pageKey": "homepage",
+      "section": "featureTabs",
+      "fieldPath": "featureTabs.tabs[_key=feature-tab-enterprise-control].image",
+      "required": true,
+      "assetStatus": "planned",
+      "recommendedAppScreen": {
+        "screenId": "schedule_calendar_screen",
+        "screenName": "Schedule Calendar",
+        "screenPath": "src/views/schedule_calendar_screen",
+        "suggestedRouteOrViewName": "schedule_calendar_screen"
+      },
+      "alternateScreens": [
+        "client_booking_dashboard"
+      ],
+      "sourceScreenshotPath": "content/planning/source-captures/homepage/home-feature-tab-enterprise-control.raw.png",
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": "15:7",
+      "exportPath": "content/planning/exports/homepage/home-feature-tab-enterprise-control.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/homepage/home-feature-tab-enterprise-control.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Capture a planning-heavy calendar or schedule view with visible filters, planned-vs-actual context, and route density. Keep the right or top region clean enough for a short overlay label if Figma framing is added later.",
+      "aiStoryRole": "Enterprise AI operating-system proof: planning, attendance validation, operator performance, finance, and embedded AI insight in one control surface.",
+      "aiVisualDirection": "Enterprise control mockup with planning, attendance validation, operator performance, finance, and an embedded AI agent insight card placed inside the workflow rather than as a detached chat bubble.",
+      "figmaFrameStyle": "Single desktop product frame with subtle browser chrome, soft shadow, and one planning KPI strip.",
+      "alt": {
+        "en": "Enterprise planning dashboard showing schedules, demand, and service control.",
+        "ar": "لوحة تخطيط للشركة تعرض الجداول والطلب والتحكم في الخدمة."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "Use demo schedule, route, and supplier names only.",
+        "Keep calendar counts and validation indicators readable.",
+        "Avoid exposing employee names or exact trip identifiers."
+      ],
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Faithful marketing recreation of real Tranzkit enterprise planning workflows based on schedule_calendar_screen and client_booking_dashboard patterns already present in the product.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "Use a recreated mockup because the feature image slot must support the AI integrated OS story. Keep routes, schedules, bookings, attendance validation, performance, pricing visibility, service control, and the embedded AI insight card aligned with real product capabilities.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      },
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true
+    },
+    {
+      "assetKey": "home-feature-tab-operator-image",
+      "pageKey": "homepage",
+      "section": "featureTabs",
+      "fieldPath": "featureTabs.tabs[_key=feature-tab-operator-operations].image",
+      "required": true,
+      "assetStatus": "planned",
+      "recommendedAppScreen": {
+        "screenId": "driver_assignments_screen",
+        "screenName": "Fleet & Schedule Management",
+        "screenPath": "src/views/driver_assignments_screen",
+        "suggestedRouteOrViewName": "driver_assignments_screen"
+      },
+      "alternateScreens": [
+        "live_trips_screen"
+      ],
+      "sourceScreenshotPath": "content/planning/source-captures/homepage/home-feature-tab-operator-operations.raw.png",
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": "15:12",
+      "exportPath": "content/planning/exports/homepage/home-feature-tab-operator-operations.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/homepage/home-feature-tab-operator-operations.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Prefer the Schedule Assignments tab with visible driver, vehicle, supplier, working-day, and validation context. If QR context is stronger, use a clean operator-focused composite from the same screen family.",
+      "aiStoryRole": "Operator AI operating-system proof: assignments, live exceptions, trip analytics, readiness, and AI-assisted validation inside execution flow.",
+      "aiVisualDirection": "Operator execution mockup with assignments, live exceptions, trip analytics, driver readiness, and an embedded AI agent validation card tied to the operating workflow.",
+      "figmaFrameStyle": "Desktop product frame with crisp table density, a highlighted assignment row, and restrained callout tags.",
+      "alt": {
+        "en": "Operator execution workspace showing schedule assignments, drivers, vehicles, and field status.",
+        "ar": "مساحة تشغيل للمشغل تعرض التعيينات والسائقين والمركبات وحالة التنفيذ الميداني."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "Show operator-side execution evidence, not generic admin tables.",
+        "Keep assignment validation or status signals visible.",
+        "Remove any real driver names, phone numbers, or vehicle plates."
+      ],
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Faithful marketing recreation of real Tranzkit operator execution workflows based on driver_assignments_screen, live_trips_screen, and related assignment flows in the repo.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "Use a recreated mockup because the feature slot needs a clean operator story with assignments, trips, drivers, vehicles, exceptions, analytics, and an embedded AI validation layer inside the workflow.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      },
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true
+    },
+    {
+      "assetKey": "home-carousel-enterprise-planning-image",
+      "pageKey": "homepage",
+      "section": "screenshotCarousel",
+      "fieldPath": "screenshotCarousel.items[_key=carousel-enterprise-planning].image",
+      "required": true,
+      "assetStatus": "review_ready",
+      "approvedSourceScreen": "routes_screen_v3",
+      "targetAppRoute": "http://localhost:3000/tranzkit?workspace=6488937e-d4a3-409e-b379-012c0374b877&routes_entity=schedules&routes_tab=schedules",
+      "navigationPath": "My Workspaces -> Sales Management -> Routes & Schedules -> Schedules",
+      "captureMethod": "tuned_browser_capture",
+      "browserViewport": "1600x1100 desktop",
+      "recommendedAppScreen": {
+        "screenId": "routes_screen_v3",
+        "screenName": "Routes & Schedules (Schedules tab)",
+        "screenPath": "src/views/routes_screen_v3",
+        "suggestedRouteOrViewName": "workspace=6488937e-d4a3-409e-b379-012c0374b877&routes_entity=schedules&routes_tab=schedules"
+      },
+      "alternateScreens": [
+        "schedule_calendar_screen",
+        "client_booking_dashboard"
+      ],
+      "sourceScreenshotPath": "marketing-media/tranzkit/source-captures/home-carousel-enterprise-planning.raw.png",
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": "15:17",
+      "exportPath": "content/planning/exports/homepage/home-carousel-enterprise-planning.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "reviewPath": "marketing-media/tranzkit/review/home-carousel-enterprise-planning.v1.review.png",
+      "approvalStatus": "pending_user_review",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/homepage/home-carousel-enterprise-planning.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Use the Schedules view with pricing columns and assigned resource columns visible so planning, pricing, and readiness read in one frame. Keep the schedule table dominant and crop out weak surrounding chrome.",
+      "aiStoryRole": "Real proof of planning depth inside the AI integrated OS narrative.",
+      "aiVisualDirection": "Capture planning or schedules view, then optionally frame it later with a small AI insight overlay in Figma. Keep the overlay lightweight and subordinate to the real product screenshot.",
+      "figmaFrameStyle": "Full-width desktop dashboard frame with clean edge crop and no extra annotations.",
+      "alt": {
+        "en": "Enterprise planning dashboard with bookings, utilization, and service setup.",
+        "ar": "لوحة تخطيط للشركة تعرض الحجوزات والاستغلال وتجهيز الخدمة."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "Pricing, route, client, and assigned resource columns must be visible at first glance.",
+        "Do not expose unsafe personal names or sensitive destination details.",
+        "Keep the Schedules state readable without over-cropping the table."
+      ],
+      "assetType": "tuned_screenshot",
+      "sourceTruth": "Real Tranzkit routes_screen_v3 Schedules view in the Sales Management workspace, using demo-safe schedule, pricing, and assignment data with tuned table state.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": false,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Captured from product",
+      "assetMethodNote": "Use a real screenshot and tune the Schedules table state first. If later framing is needed, add only a lightweight AI insight overlay without turning the asset into a synthetic dashboard.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "productionNotes": "Wave 1 review asset generated as a 1200x800 PNG from the approved Schedules raw capture. The crop is left-weighted to keep schedule, route, client, and timing context while reducing the personal-resource columns.",
+      "privacyNotes": "The review crop removes browser/query chrome and minimizes visible resource-link columns. Remaining labels are from the user-approved demo session; if stricter anonymization is needed later, this asset should move to Figma rebuild.",
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      },
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true,
+      "captureTimestamp": "2026-06-13T23:09:30Z",
+      "captureNotes": "Raw cropped schedules capture saved from Sales Management -> Routes & Schedules -> Schedules. Crop removes top account chrome and empty lower area; suitable as tuned screenshot source."
+    },
+    {
+      "assetKey": "home-carousel-operator-control-image",
+      "pageKey": "homepage",
+      "section": "screenshotCarousel",
+      "fieldPath": "screenshotCarousel.items[_key=carousel-operator-control].image",
+      "required": true,
+      "assetStatus": "review_ready",
+      "approvedSourceScreen": "driver_assignments_screen",
+      "targetAppRoute": "http://localhost:3000/tranzkit?workspace=2d24830b-8eaf-4afe-bb0f-e6d35342d969",
+      "navigationPath": "My Workspaces -> Daily Operations -> Links and Assignments",
+      "captureMethod": "figma_recreated_mockup",
+      "browserViewport": "1600x1100 desktop",
+      "recommendedAppScreen": {
+        "screenId": "driver_assignments_screen",
+        "screenName": "Links and Assignments",
+        "screenPath": "src/views/driver_assignments_screen",
+        "suggestedRouteOrViewName": "workspace=2d24830b-8eaf-4afe-bb0f-e6d35342d969 -> Links and Assignments"
+      },
+      "alternateScreens": [
+        "live_trips_screen",
+        "tranzkit_operations_dashboard_screen"
+      ],
+      "sourceScreenshotPath": null,
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": "15:22",
+      "exportPath": "content/planning/exports/homepage/home-carousel-operator-control.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "reviewPath": "marketing-media/tranzkit/review/home-carousel-operator-control.v1.review.png",
+      "approvalStatus": "pending_user_review",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/homepage/home-carousel-operator-control.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Capture the operator control state through links, assignments, and execution-readiness context. Keep the primary assignment area visible and avoid empty or ambiguous sub-states.",
+      "aiStoryRole": "Real proof of operator control with AI-assisted validation and exception awareness.",
+      "aiVisualDirection": "Capture assignments or operations control view. Later Figma framing may add a lightweight AI validation or exception summary card without overpowering the real screen.",
+      "figmaFrameStyle": "Desktop operations frame with visible assignment rows, status chips, and restrained surrounding chrome.",
+      "alt": {
+        "en": "Operator control view showing assignments, linked resources, and execution readiness.",
+        "ar": "واجهة تحكم للمشغل تعرض التعيينات والموارد المرتبطة وجاهزية التنفيذ."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "Assignment rows or resource-link state must be readable at first glance.",
+        "Use demo-safe operator, driver, vehicle, and supplier labels only.",
+        "Avoid empty states, stale zero-state widgets, or debug-only surfaces."
+      ],
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Faithful marketing recreation grounded in the verified Daily Operations Links and Assignments workflow, using demo-safe operator execution concepts without exposing raw operator PII.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "This asset moved to Figma rebuild because the verified Daily Operations route exposed phone numbers and PII-heavy rows. Rebuild it from the verified workflow with embedded AI validation cues and no raw personal data.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "productionNotes": "Wave 1 review asset generated in Figma as a shared-language-neutral marketing composite. It shows assignments, linked resources, readiness, service state, and a small embedded AI validation card without any raw personal rows.",
+      "privacyNotes": "This mockup intentionally avoids phone numbers, personal names, and PII-heavy assignment rows that were present in the rejected raw route state.",
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      },
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true,
+      "captureTimestamp": "2026-06-13T23:09:30Z",
+      "captureNotes": "Daily Operations -> Links and Assignments reached successfully, but the Associations state exposed phone numbers and PII-heavy rows. The attempted tuned screenshot was rejected and this asset now moves to Figma rebuild."
+    },
+    {
+      "assetKey": "home-carousel-finance-visibility-image",
+      "pageKey": "homepage",
+      "section": "screenshotCarousel",
+      "fieldPath": "screenshotCarousel.items[_key=carousel-finance-visibility].image",
+      "required": true,
+      "assetStatus": "review_ready",
+      "approvedSourceScreen": "supplier_balance_screen",
+      "targetAppRoute": "http://localhost:3000/tranzkit?workspace=6129ecbb-2887-4510-aa15-a73d8036a049",
+      "navigationPath": "My Workspaces -> Supplier Management -> Supplier Balance",
+      "captureMethod": "figma_recreated_mockup",
+      "browserViewport": "1600x1100 desktop",
+      "recommendedAppScreen": {
+        "screenId": "supplier_balance_screen",
+        "screenName": "Supplier Balance",
+        "screenPath": "src/views/supplier_balance_screen",
+        "suggestedRouteOrViewName": "workspace=6129ecbb-2887-4510-aa15-a73d8036a049 -> Supplier Balance"
+      },
+      "alternateScreens": [
+        "invoice_list_screen",
+        "supplier_payments_screen",
+        "tranzkit_finance_dashboard_screen"
+      ],
+      "sourceScreenshotPath": "content/planning/source-captures/homepage/home-carousel-finance-visibility.raw.png",
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": "15:27",
+      "exportPath": "content/planning/exports/homepage/home-carousel-finance-visibility.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "reviewPath": "marketing-media/tranzkit/review/home-carousel-finance-visibility.v1.review.png",
+      "approvalStatus": "pending_user_review",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/homepage/home-carousel-finance-visibility.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Use Supplier Balance or Invoices as the truth source, but rebuild the final visual around payable status, balances, statement status, and payment timing because the current tenant data is too sparse for a launch-ready raw screenshot.",
+      "aiStoryRole": "AI-integrated finance proof: supplier balance, invoices, settlements, and AI-generated executive report visibility.",
+      "aiVisualDirection": "Finance visibility mockup showing supplier balance, invoices, payables, settlement context, and an AI-generated financial or executive report card using safe demo values only.",
+      "figmaFrameStyle": "Desktop finance frame with clear payable summary cards, statement status chips, and one curated finance table segment.",
+      "alt": {
+        "en": "Finance dashboard showing receivables, payables, cash flow, and profitability visibility.",
+        "ar": "لوحة مالية تعرض الذمم المدينة والدائنة والتدفق النقدي ورؤية الربحية."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "No real invoice numbers, balances, bank data, payment references, or supplier private details.",
+        "Financial metric labels must remain legible at 1200x800.",
+        "Use only verified product concepts: payables, balances, statements, payments, and visibility status."
+      ],
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Faithful marketing recreation grounded in the verified Supplier Management finance views, especially supplier_balance_screen and supplier payment flows, because the current tenant routes are accessible but visually too sparse for a website-ready tuned screenshot.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "Change this to a Figma recreated mockup for the first release. The verified tenant finance routes are real and useful as truth sources, but the current Supplier Balance, Supplier Payments, and Sales Invoices states are too empty to carry a strong tuned screenshot.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "productionNotes": "Wave 1 review asset generated in Figma as a finance-visibility marketing composite. It shows supplier balances, invoices, payables, settlement timing, and an AI executive report card using safe rounded demo values only.",
+      "privacyNotes": "This mockup uses generic supplier names and demo-safe rounded values. It does not expose real invoice references, payment details, bank data, or sensitive finance records.",
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      },
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true
+    },
+    {
+      "assetKey": "home-carousel-driver-field-workflows-image",
+      "pageKey": "homepage",
+      "section": "screenshotCarousel",
+      "fieldPath": "screenshotCarousel.items[_key=carousel-field-workflows].image",
+      "required": true,
+      "assetStatus": "planned",
+      "recommendedAppScreen": {
+        "screenId": "live_trips_screen",
+        "screenName": "Live Trips",
+        "screenPath": "src/views/live_trips_screen",
+        "suggestedRouteOrViewName": "live_trips_screen"
+      },
+      "alternateScreens": [
+        "/tranzkit/live-tracking",
+        "driver_assignments_screen"
+      ],
+      "sourceScreenshotPath": "content/planning/source-captures/homepage/home-carousel-field-workflows.raw.png",
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": "15:32",
+      "exportPath": "content/planning/exports/homepage/home-carousel-field-workflows.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/homepage/home-carousel-field-workflows.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Show a live operations table or tracking-focused state with obvious trip status, route context, and field action affordances. If a Figma montage is used, keep desktop as the base and add one mobile-sized inset only.",
+      "aiStoryRole": "Driver workflow and intelligent automation proof inside the AI integrated OS story.",
+      "aiVisualDirection": "Driver mobile workflow mockup showing automatic trip start and end, background tracking, battery-aware tracking, and trip status without driver distraction.",
+      "figmaFrameStyle": "Desktop-first product frame with optional mobile inset and compact route-status chips.",
+      "alt": {
+        "en": "Field operations view showing live trips, driver activity, and QR-supported workflows.",
+        "ar": "واجهة عمليات ميدانية تعرض الرحلات الحية ونشاط السائقين وسير العمل المدعوم برموز QR."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "No live device token, trip share token, or exact public URL can appear in the capture.",
+        "Trip status and field action context should be visible in the first glance.",
+        "If a mobile inset is added, it must stay readable without overpowering the base frame."
+      ],
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Faithful marketing recreation grounded in real Tranzkit live_trips_screen, live-tracking flows, QR-supported attendance concepts, and driver workflow capabilities in the codebase.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "Prefer a recreated mockup for the first release. The visual should emphasize automatic trip execution, background tracking, and intelligent field workflow cues while staying faithful to real capabilities.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      },
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true
+    },
+    {
+      "assetKey": "home-og-image",
+      "pageKey": "homepage",
+      "section": "seo",
+      "fieldPath": "seo.ogImage",
+      "required": true,
+      "assetStatus": "planned",
+      "recommendedAppScreen": {
+        "screenId": "composite",
+        "screenName": "Composite from enterprise, operations, and finance captures",
+        "screenPath": "content/planning/source-captures/og",
+        "suggestedRouteOrViewName": "Composite build; no single app route"
+      },
+      "compositionSourceScreens": [
+        "client_booking_dashboard",
+        "tranzkit_operations_dashboard_screen",
+        "tranzkit_finance_dashboard_screen"
+      ],
+      "sourceScreenshotPath": "content/planning/source-captures/og/homepage-og-composite-source.raw.png",
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": "17:7",
+      "exportPath": "content/planning/exports/og/homepage-og-image.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 630,
+      "transferStatus": "not_ready",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/og/homepage-og-image.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Build a wide social card with one dominant product shot and two secondary cropped panels representing planning and finance. Leave safe text space for brand, promise, and subtle gradient treatment.",
+      "aiStoryRole": "Top-level AI integrated OS positioning card for the homepage.",
+      "aiVisualDirection": "Language-neutral branded OG card showing enterprise control, operator execution, trip analytics, and finance visibility as one AI integrated transport OS. Avoid large embedded English or Arabic text.",
+      "figmaFrameStyle": "Wide OG card with layered screenshot crops, restrained branding, and no tiny unreadable UI fragments.",
+      "alt": {
+        "en": "Tranzkit home social card showing planning, operations, and finance visibility.",
+        "ar": "بطاقة مشاركة للصفحة الرئيسية تعرض التخطيط والتشغيل والرؤية المالية في ترانزكيت."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "Home OG must read clearly at thumbnail size.",
+        "Use only demo-safe screenshot fragments.",
+        "Keep messaging aligned with the approved homepage promise."
+      ],
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Composite card built from real Tranzkit planning, operations, and finance workflows and the approved homepage messaging scope.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "Design this as a Figma social card for launch. It should summarize the AI integrated operating system narrative without introducing unsupported features or oversized text.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "low",
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      },
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true
+    },
+    {
+      "assetKey": "solutions-og-image",
+      "pageKey": "solutions",
+      "section": "seo",
+      "fieldPath": "seo.ogImage",
+      "required": true,
+      "assetStatus": "planned",
+      "recommendedAppScreen": {
+        "screenId": "composite",
+        "screenName": "Composite from enterprise-control and operator-execution captures",
+        "screenPath": "content/planning/source-captures/og",
+        "suggestedRouteOrViewName": "Composite build; no single app route"
+      },
+      "compositionSourceScreens": [
+        "schedule_calendar_screen",
+        "driver_assignments_screen",
+        "live_trips_screen"
+      ],
+      "sourceScreenshotPath": "content/planning/source-captures/og/solutions-og-composite-source.raw.png",
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": "17:11",
+      "exportPath": "content/planning/exports/og/solutions-og-image.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 630,
+      "transferStatus": "not_ready",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/og/solutions-og-image.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Use a split-composition card: enterprise planning on one side, operator execution on the other, with brand lockup centered or offset. Keep both sides visually balanced.",
+      "aiStoryRole": "Top-level enterprise-to-operator AI connection card for Solutions.",
+      "aiVisualDirection": "Language-neutral branded OG card showing enterprise control and operator execution connected by AI agents.",
+      "figmaFrameStyle": "Wide split-screen OG frame with two screenshot panels and restrained connector accents.",
+      "alt": {
+        "en": "Tranzkit solutions social card showing enterprise control and operator execution.",
+        "ar": "بطاقة مشاركة لصفحة الحلول تعرض تحكم الشركة وتنفيذ المشغل."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "The visual must communicate two connected solution sides at thumbnail size.",
+        "Do not include route tokens, share tokens, or real trip identifiers.",
+        "Remember the current Solutions metadata code still needs ogImage wiring before use."
+      ],
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Composite card built from real Tranzkit enterprise-control and operator-execution workflows and the approved Solutions messaging scope.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "Design this as a Figma social card for launch. It should visually connect enterprise control and operator execution through embedded AI assistance without inventing a new product surface.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "low",
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      },
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true
+    },
+    {
+      "assetKey": "home-optional-fleet-readiness-image",
+      "pageKey": "homepage",
+      "section": "screenshotCarousel.optional",
+      "fieldPath": "screenshotCarousel.optional[fleetReadiness].image",
+      "required": false,
+      "assetStatus": "optional-planned",
+      "approvedSourceScreen": "owned_fleet_screen",
+      "targetAppRoute": "http://localhost:3000/tranzkit?workspace=27910f5a-f2ad-40ab-8005-c98e29632b38",
+      "navigationPath": "My Workspaces -> test -> Owned Fleet -> Fleet / Maintenance / Accident Reports",
+      "captureMethod": "figma_recreated_mockup",
+      "browserViewport": "1600x1100 desktop",
+      "recommendedAppScreen": {
+        "screenId": "owned_fleet_screen",
+        "screenName": "Owned Fleet",
+        "screenPath": "src/views/owned_fleet_screen",
+        "suggestedRouteOrViewName": "workspace=27910f5a-f2ad-40ab-8005-c98e29632b38 -> Owned Fleet"
+      },
+      "alternateScreens": [
+        "vehicles_screen"
+      ],
+      "sourceScreenshotPath": "content/planning/source-captures/homepage/home-optional-fleet-readiness.raw.png",
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": "16:7",
+      "exportPath": "content/planning/exports/homepage/home-optional-fleet-readiness.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/homepage/home-optional-fleet-readiness.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Use Owned Fleet as the truth source and rebuild a cleaner readiness composition around vehicle status, maintenance, and incidents because the current tenant view only exposes a very small fleet state.",
+      "aiStoryRole": "Fleet readiness and exception-intelligence proof for the AI integrated OS narrative.",
+      "aiVisualDirection": "Fleet readiness mockup showing vehicle readiness, maintenance, accident follow-up, driver readiness, and AI exception insight.",
+      "figmaFrameStyle": "Desktop fleet-readiness frame with a focused vehicle summary, readiness statuses, and maintenance/incident callouts.",
+      "alt": {
+        "en": "Fleet readiness view showing maintenance tasks, vehicle status, and accident follow-up.",
+        "ar": "واجهة جاهزية الأسطول تعرض مهام الصيانة وحالة المركبات ومتابعة الحوادث."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "This remains optional until the homepage content map adds an approved slot.",
+        "Do not expose real vehicle plates, driver names, phone numbers, or compliance identifiers.",
+        "Keep readiness, maintenance, and incident cues immediately visible."
+      ],
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Faithful marketing recreation grounded in the verified Owned Fleet workspace route and its Fleet, Maintenance, and Accident Reports tabs, because the current tenant demo state is too thin for a strong tuned screenshot.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "Change this to a Figma recreated mockup for the first release. The route is verified and truthful, but the current tenant fleet state is too small and sparse to produce a high-quality AI-assisted readiness visual.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      },
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true
+    },
+    {
+      "assetKey": "home-optional-live-tracking-image",
+      "pageKey": "homepage",
+      "section": "screenshotCarousel.optional",
+      "fieldPath": "screenshotCarousel.optional[liveTracking].image",
+      "required": false,
+      "assetStatus": "review_ready",
+      "approvedSourceScreen": "trip_analysis_screen",
+      "targetAppRoute": "http://localhost:3000/tranzkit/trip-analysis?trip_id=db5312b9-ebe6-4c90-bc92-135b65a44bc2",
+      "navigationPath": "Daily Operations -> Trips or Trips Live Attendance -> Trip Analysis",
+      "captureMethod": "tuned_browser_capture",
+      "browserViewport": "1600x1100 desktop",
+      "recommendedAppScreen": {
+        "screenId": "trip_analysis_screen",
+        "screenName": "Trip Analysis",
+        "screenPath": "app/(authenticated)/tranzkit/trip-analysis/page.tsx",
+        "suggestedRouteOrViewName": "/tranzkit/trip-analysis?trip_id=db5312b9-ebe6-4c90-bc92-135b65a44bc2"
+      },
+      "alternateScreens": [
+        "live_trip_attendance_screen",
+        "live_trips_screen"
+      ],
+      "sourceScreenshotPath": "marketing-media/tranzkit/source-captures/home-optional-live-tracking.raw.png",
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": "16:11",
+      "exportPath": "content/planning/exports/homepage/home-optional-live-tracking.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "reviewPath": "marketing-media/tranzkit/review/home-optional-live-tracking.v1.review.png",
+      "approvalStatus": "pending_user_review",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/homepage/home-optional-live-tracking.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Use Trip Analysis as the approved live-tracking-like surface and capture the map, trip timeline, and telemetry-rich context while cropping out query strings and any sensitive exact location details if they appear.",
+      "aiStoryRole": "Trip playback and comprehensive trip analytics proof inside the AI integrated OS narrative.",
+      "aiVisualDirection": "Trip analysis screen showing playback and trip analytics, with emphasis on planned vs actual, speed behavior, phone usage, harsh braking, and harsh acceleration when visible and safe.",
+      "figmaFrameStyle": "Tracking-focused desktop analytics frame with map, trip timeline, and compact telemetry panels.",
+      "alt": {
+        "en": "Live tracking view showing trip status, route context, and current vehicle tracking.",
+        "ar": "واجهة تتبع حي تعرض حالة الرحلة وسياق المسار وتتبع المركبة الحالي."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "This remains optional until the homepage content map adds an approved slot.",
+        "No device token, share URL, query string, or exact private location data may be visible in the final crop.",
+        "Use the approved trip-analysis trip only, or another explicitly approved demo-safe trip-analysis URL later."
+      ],
+      "assetType": "tuned_screenshot",
+      "sourceTruth": "Real Tranzkit trip_analysis_screen route used as the best available live-tracking-style surface for this tenant, grounded in completed trip telemetry and trip analysis data.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": false,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Captured from product",
+      "assetMethodNote": "Keep this as a tuned screenshot, but use trip analysis as the approved live-tracking-like proof surface. The final crop must avoid query strings, raw trip ids, and exact sensitive map details.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "productionNotes": "Wave 1 review asset generated as a 1200x800 PNG from the approved Trip Analysis capture. The review crop keeps the map and analytics together with no browser chrome or query state.",
+      "privacyNotes": "The crop removes the identifying trip header, query string, and raw trip ID. The map remains generalized at website size and does not expose exact private addresses, though it still reflects a broad real route area.",
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      },
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true,
+      "captureTimestamp": "2026-06-13T23:24:00Z",
+      "captureNotes": "Replaced the earlier crop with a new capture taken from the current live Trip Analysis view. This version keeps the map and analytics together, removes the identifying trip header, and trims the right and bottom whitespace."
+    },
+    {
+      "assetKey": "solutions-operators-drivers-trip-analytics-image",
+      "pageKey": "solutionsOperatorsDrivers",
+      "sourceContentMap": "content/planning/solutions-operators-drivers.v1.en-ar.json",
+      "section": "dashboards.screenshots",
+      "fieldPath": "dashboards.screenshots[_key=rod-dashboard-1]",
+      "required": true,
+      "assetStatus": "review_ready",
+      "approvedSourceScreen": "trip_analysis_screen",
+      "targetAppRoute": "http://localhost:3000/tranzkit/trip-analysis?trip_id=db5312b9-ebe6-4c90-bc92-135b65a44bc2",
+      "navigationPath": "Daily Operations -> Trips or Trips Live Attendance -> Trip Analysis",
+      "captureMethod": "tuned_browser_capture",
+      "browserViewport": "1600x1100 desktop",
+      "recommendedAppScreen": {
+        "screenId": "trip_analysis_screen",
+        "screenName": "Trip Analysis",
+        "screenPath": "app/(authenticated)/tranzkit/trip-analysis/page.tsx",
+        "suggestedRouteOrViewName": "/tranzkit/trip-analysis?trip_id=db5312b9-ebe6-4c90-bc92-135b65a44bc2"
+      },
+      "sourceScreenshotPath": "marketing-media/tranzkit/source-captures/solutions-operators-drivers-trip-analytics.raw.png",
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": null,
+      "exportPath": "content/planning/exports/solutions-operators-drivers/solutions-operators-drivers-trip-analytics.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "reviewPath": "marketing-media/tranzkit/review/solutions-operators-drivers-trip-analytics.v1.review.png",
+      "approvalStatus": "pending_user_review",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/solutions-operators-drivers/solutions-operators-drivers-trip-analytics.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Use a safe below-header crop from Trip Analysis that keeps the map and analytics together while emphasizing trip health, planned vs actual, and driver-behavior metrics without exposing identifying header data or precise route details.",
+      "recommendedVisual": "Trip analytics panel showing playback-oriented review, planned vs actual variance, speed behavior, phone usage, and harsh-event analysis.",
+      "recommendedPurpose": "Support the Operators and Drivers page with concrete proof of comprehensive trip analytics rather than generic live tracking.",
+      "aiStoryRole": "Trip analytics and operational review proof for the Operators and Drivers narrative.",
+      "aiVisualDirection": "Use the analytics panel as product-authentic proof of playback, planned vs actual comparison, speed behavior, phone usage, harsh braking, and harsh acceleration.",
+      "figmaFrameStyle": "Analytics-focused crop that can later be framed inside a wider neutral product card if needed.",
+      "alt": {
+        "en": "Trip analytics view showing safety score, planned versus actual comparison, and driver behavior insights.",
+        "ar": "واجهة تحليلات رحلة تعرض درجة السلامة ومقارنة المخطط بالفعلي ومؤشرات سلوك السائق."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "Do not show trip ids, query strings, driver names, vehicle plates, or exact route map details.",
+        "Keep planned versus actual, speed, and phone-usage proof points readable.",
+        "Move to Figma rebuild only if a wider and cleaner marketing composition is later required."
+      ],
+      "assetType": "tuned_screenshot",
+      "sourceTruth": "Real Tranzkit trip_analysis_screen capture from the approved trip analysis route, cropped to a safe below-header frame that keeps the map and analytics together while avoiding identifying header data and exact route details.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": false,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Captured from product",
+      "assetMethodNote": "Start with a tuned screenshot from Trip Analysis. Rebuild in Figma only if a broader marketing composition is needed after review.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "productionNotes": "Wave 1 review asset generated as a 1200x800 PNG from the approved Trip Analysis raw capture. The crop preserves the map plus analytics story and stays product-authentic.",
+      "privacyNotes": "The review crop removes the identifying trip header and query state. It avoids exact address-level exposure, though broad route geography remains visually inferable from the map at low detail.",
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true,
+      "captureTimestamp": "2026-06-13T23:24:00Z",
+      "captureNotes": "Replaced the earlier crop with a new capture taken from the current live Trip Analysis view. This version keeps the map and analytics together, removes the identifying trip header, and trims the right and bottom whitespace.",
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      }
+    },
+    {
+      "assetKey": "solutions-operators-drivers-ai-agent-image",
+      "pageKey": "solutionsOperatorsDrivers",
+      "sourceContentMap": "content/planning/solutions-operators-drivers.v1.en-ar.json",
+      "section": "aiImpact",
+      "fieldPath": "aiImpact",
+      "required": true,
+      "assetStatus": "planned",
+      "targetAppRoute": "Reference composition from Daily Operations workflows, trip analysis, and finance-safe report states",
+      "captureMethod": "figma_recreated_mockup",
+      "browserViewport": "1600x1100 desktop reference capture",
+      "recommendedAppScreen": {
+        "screenId": "daily_operations_ai_composite",
+        "screenName": "Daily Operations AI composite",
+        "screenPath": "Daily Operations + Trip Analysis reference states",
+        "suggestedRouteOrViewName": "Composite build; no single app route"
+      },
+      "sourceScreenshotPath": null,
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": null,
+      "exportPath": "content/planning/exports/solutions-operators-drivers/solutions-operators-drivers-ai-agent.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/solutions-operators-drivers/solutions-operators-drivers-ai-agent.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Build a composed control view where AI is embedded inside assignment validation, trip analytics review, and operational or financial follow-up rather than floating separately.",
+      "recommendedVisual": "AI agents inside the operations workflow with schedule validation, assignment gap review, trip analytics review, report generation, and controlled update review.",
+      "recommendedPurpose": "Support the Operators and Drivers page AI Impact section with a concrete embedded-AI workflow visual.",
+      "aiStoryRole": "Embedded AI workflow proof for Operators and Drivers.",
+      "aiVisualDirection": "Show AI agents inside the operating workflow, not as a detached chatbot. Include schedule validation, assignment gap review, trip analytics review, operational and financial reports, and controlled update review.",
+      "figmaFrameStyle": "Desktop operations control frame with one or two embedded AI insight cards and clear review-state emphasis.",
+      "alt": {
+        "en": "Operations workspace showing AI-assisted validation, trip review, and controlled reporting inside the workflow.",
+        "ar": "مساحة تشغيل تعرض التحقق المدعوم بالذكاء الاصطناعي ومراجعة الرحلات والتقارير المنظمة داخل سير العمل."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "Keep AI embedded inside real workflow surfaces, not as a detached chatbot bubble.",
+        "Do not claim autonomous dispatch or autonomous financial approval.",
+        "Use safe demo labels and product-authentic operational entities only."
+      ],
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Faithful marketing recreation grounded in real Daily Operations workflows, trip analysis review, and supplier-linked reporting concepts already present in Tranzkit.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "Use a Figma recreated mockup because the Operators and Drivers AI story needs a polished embedded-AI workflow visual without exposing raw operational PII.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true,
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      }
+    },
+    {
+      "assetKey": "solutions-enterprises-passengers-attendance-validation-image",
+      "pageKey": "solutionsEnterprisesPassengers",
+      "sourceContentMap": "content/planning/solutions-enterprises-passengers.v1.en-ar.json",
+      "section": "appScreens.screenshots",
+      "fieldPath": "appScreens.screenshots[_key=ep-screen-1]",
+      "required": true,
+      "assetStatus": "review_ready",
+      "approvedSourceScreen": "attendance_validation_dashboard",
+      "targetAppRoute": "Reference composition from enterprise attendance validation, work location, user location, geofence, and biometric validation states",
+      "captureMethod": "figma_recreated_mockup",
+      "browserViewport": "1600x1100 desktop reference capture",
+      "recommendedAppScreen": {
+        "screenId": "attendance_validation_dashboard",
+        "screenName": "Attendance Validation Dashboard",
+        "screenPath": "Enterprise attendance validation workflows",
+        "suggestedRouteOrViewName": "Attendance validation / eligibility / geofence / biometric review"
+      },
+      "sourceScreenshotPath": null,
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": null,
+      "exportPath": "content/planning/exports/solutions-enterprises-passengers/solutions-enterprises-passengers-attendance-validation.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "reviewPath": "marketing-media/tranzkit/review/solutions-enterprises-passengers-attendance-validation.v1.review.png",
+      "approvalStatus": "pending_user_review",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/solutions-enterprises-passengers/solutions-enterprises-passengers-attendance-validation.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Show an enterprise attendance control surface with work location rules, user location match, geofence validation, biometric proof, and service eligibility context in one readable frame.",
+      "recommendedVisual": "Attendance validation dashboard showing employee transport eligibility, work location validation, geofence status, biometric confirmation, and enterprise-ready audit context.",
+      "recommendedPurpose": "Support the Enterprises and Passengers page with clear proof of smart employee attendance governance tied to transport operations.",
+      "aiStoryRole": "Enterprise attendance intelligence proof inside the AI integrated OS story.",
+      "aiVisualDirection": "Show smart employee attendance validation inside a real enterprise workflow, with any AI insight card embedded as a secondary review aid rather than a detached assistant.",
+      "figmaFrameStyle": "Desktop enterprise-control frame with clear validation states, compact rule cards, and one embedded insight card.",
+      "alt": {
+        "en": "Enterprise attendance validation dashboard showing work location, geofence, and biometric checks.",
+        "ar": "لوحة تحقق من حضور الموظفين تعرض التحقق من موقع العمل والنطاق الجغرافي والتحقق البيومتري."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "Keep attendance, work-location, geofence, and biometric proof readable at 1200x800.",
+        "Do not expose personal names, phone numbers, emails, exact addresses, or raw employee identifiers.",
+        "Keep AI cues embedded in the validation workflow and avoid autonomy claims."
+      ],
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Faithful marketing recreation grounded in approved Tranzkit attendance validation, transport eligibility, geofence, and biometric workflows described in the approved Enterprises and Passengers content map.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "Use a Figma recreated mockup by default because this page needs a clear, polished attendance-governance visual and no verified safe product capture has been approved as launch-quality yet.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "productionNotes": "Wave 1 review asset generated in Figma as a shared-language-neutral marketing composite. It shows work location validation, user match, geofence validation, biometric confirmation, and transport eligibility in one enterprise control frame.",
+      "privacyNotes": "This mockup uses safe demo group labels only. No personal names, phone numbers, emails, exact addresses, or raw employee identifiers are visible.",
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true,
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      }
+    },
+    {
+      "assetKey": "solutions-enterprises-passengers-enterprise-ai-report-image",
+      "pageKey": "solutionsEnterprisesPassengers",
+      "sourceContentMap": "content/planning/solutions-enterprises-passengers.v1.en-ar.json",
+      "section": "appScreens.screenshots",
+      "fieldPath": "appScreens.screenshots[_key=ep-screen-6]",
+      "required": true,
+      "assetStatus": "planned",
+      "approvedSourceScreen": "enterprise_ai_reporting_view",
+      "targetAppRoute": "Reference composition from enterprise reporting, operator performance, finance review, and controlled update states",
+      "captureMethod": "figma_recreated_mockup",
+      "browserViewport": "1600x1100 desktop reference capture",
+      "recommendedAppScreen": {
+        "screenId": "enterprise_ai_reporting_view",
+        "screenName": "Enterprise AI Reporting View",
+        "screenPath": "Executive and financial reporting workflows",
+        "suggestedRouteOrViewName": "Executive reporting / finance review / controlled update review"
+      },
+      "sourceScreenshotPath": null,
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": null,
+      "exportPath": "content/planning/exports/solutions-enterprises-passengers/solutions-enterprises-passengers-enterprise-ai-report.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/solutions-enterprises-passengers/solutions-enterprises-passengers-enterprise-ai-report.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Show one enterprise reporting surface that connects attendance evidence, service validation, operator performance, finance review, and a controlled AI-assisted update panel.",
+      "recommendedVisual": "Executive and financial reporting view with AI-assisted summaries, operator performance proof, planned-vs-actual review, and controlled update review.",
+      "recommendedPurpose": "Support the Enterprises and Passengers page with credible AI-assisted executive and financial visibility inside the operating workflow.",
+      "aiStoryRole": "Enterprise executive intelligence and controlled-update proof.",
+      "aiVisualDirection": "Show AI reporting inside a real enterprise workflow with reporting cards, finance visibility, attendance evidence, and controlled update review rather than a detached chatbot.",
+      "figmaFrameStyle": "Desktop executive-reporting frame with summary cards, one curated report table segment, and embedded review cards.",
+      "alt": {
+        "en": "Enterprise reporting dashboard showing attendance, service, finance, and AI-assisted executive summaries.",
+        "ar": "لوحة تقارير مؤسسية تعرض الحضور والخدمة والمالية وملخصات تنفيذية مدعومة بالذكاء الاصطناعي."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "Keep reporting, service, and finance proof points legible at 1200x800.",
+        "Do not expose sensitive finance values, bank details, private invoice references, or personal contact data.",
+        "Do not imply AI approves financial changes autonomously."
+      ],
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Faithful marketing recreation grounded in approved Tranzkit executive reporting, operator performance review, finance visibility, and controlled-update concepts already represented in the approved page story.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "Use a Figma recreated mockup by default because the page needs a high-signal enterprise reporting composition that stays safe, language-neutral, and visually stronger than a sparse raw finance capture.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true,
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      }
+    },
+    {
+      "assetKey": "solutions-enterprises-passengers-rider-visibility-image",
+      "pageKey": "solutionsEnterprisesPassengers",
+      "sourceContentMap": "content/planning/solutions-enterprises-passengers.v1.en-ar.json",
+      "section": "appScreens.screenshots",
+      "fieldPath": "appScreens.screenshots[_key=ep-screen-4]",
+      "required": true,
+      "assetStatus": "planned",
+      "approvedSourceScreen": "rider_trip_visibility_screen",
+      "targetAppRoute": "Reference composition from rider trip visibility, assigned trip timing, live status, and structured feedback states",
+      "captureMethod": "figma_recreated_mockup",
+      "browserViewport": "1440x1100 desktop reference capture and optional mobile reference",
+      "recommendedAppScreen": {
+        "screenId": "rider_trip_visibility_screen",
+        "screenName": "Rider Trip Visibility Screen",
+        "screenPath": "Passenger trip visibility workflows",
+        "suggestedRouteOrViewName": "Upcoming trips / live trip status / trip history"
+      },
+      "sourceScreenshotPath": null,
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": null,
+      "exportPath": "content/planning/exports/solutions-enterprises-passengers/solutions-enterprises-passengers-rider-visibility.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/solutions-enterprises-passengers/solutions-enterprises-passengers-rider-visibility.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Show rider trip clarity with assigned trip timing, route context, live service status, and a clean feedback or support path without overloading the frame.",
+      "recommendedVisual": "Rider-facing visibility view showing upcoming trips, live status, route context, trip history, and structured feedback readiness.",
+      "recommendedPurpose": "Support the page with a passenger-side proof point that makes commute visibility and service confidence tangible.",
+      "aiStoryRole": "Passenger trip clarity and service-confidence proof within the same operating system.",
+      "aiVisualDirection": "Keep the rider visual clean, mobile-aware, and operational. If AI appears at all, it should be a light insight or service-status aid embedded in the workflow, not a chatbot layer.",
+      "figmaFrameStyle": "Mobile-first or compact dashboard composition with strong status hierarchy and restrained supporting cards.",
+      "alt": {
+        "en": "Rider trip visibility screen showing assigned trips, live status, and service updates.",
+        "ar": "شاشة رؤية الراكب للرحلة تعرض الرحلات المخصصة والحالة المباشرة وتحديثات الخدمة."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "Keep timing, status, and trip context readable without large embedded text.",
+        "Do not expose exact private addresses, phone numbers, emails, query strings, or raw trip identifiers.",
+        "Keep the passenger story connected to real Tranzkit rider visibility and feedback capabilities."
+      ],
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Faithful marketing recreation grounded in approved Tranzkit rider visibility, live status, trip history, and structured feedback concepts described in the approved Enterprises and Passengers content map.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "Use a Figma recreated mockup by default because the passenger-side story needs a clean visibility composition and no verified safe rider-facing product capture has been approved yet.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true,
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      }
+    },
+    {
+      "assetKey": "solutions-enterprises-passengers-service-validation-image",
+      "pageKey": "solutionsEnterprisesPassengers",
+      "sourceContentMap": "content/planning/solutions-enterprises-passengers.v1.en-ar.json",
+      "section": "appScreens.screenshots",
+      "fieldPath": "appScreens.screenshots[_key=ep-screen-2]",
+      "required": true,
+      "assetStatus": "review_ready",
+      "approvedSourceScreen": "enterprise_service_validation_view",
+      "targetAppRoute": "Reference composition from operator delivery review, service validation, planned-vs-actual review, and enterprise control states",
+      "captureMethod": "figma_recreated_mockup",
+      "browserViewport": "1600x1100 desktop reference capture",
+      "recommendedAppScreen": {
+        "screenId": "enterprise_service_validation_view",
+        "screenName": "Enterprise Service Validation View",
+        "screenPath": "Enterprise service validation workflows",
+        "suggestedRouteOrViewName": "Service validation / operator delivery / planned vs actual review"
+      },
+      "sourceScreenshotPath": null,
+      "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+      "figmaNodeId": null,
+      "exportPath": "content/planning/exports/solutions-enterprises-passengers/solutions-enterprises-passengers-service-validation.v1.png",
+      "exportFormat": "png",
+      "exportWidth": 1200,
+      "exportHeight": 800,
+      "transferStatus": "not_ready",
+      "reviewPath": "marketing-media/tranzkit/review/solutions-enterprises-passengers-service-validation.v1.review.png",
+      "approvalStatus": "pending_user_review",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/solutions-enterprises-passengers/solutions-enterprises-passengers-service-validation.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "sanityAssetRef": null,
+      "screenshotComposition": "Show one enterprise service validation frame that connects operator delivery, service status, planned-vs-actual review, rider impact, and evidence-backed follow-up.",
+      "recommendedVisual": "Enterprise service validation view with operator performance evidence, planned-vs-actual review, service status, and follow-up context.",
+      "recommendedPurpose": "Support the page with concrete proof of service accountability and enterprise control.",
+      "aiStoryRole": "Service-validation and operator-accountability proof for the AI integrated OS story.",
+      "aiVisualDirection": "Keep the service-validation visual operational and evidence-based. Any AI insight card should sit inside the review workflow as a supporting layer, not as a detached assistant.",
+      "figmaFrameStyle": "Desktop enterprise-review frame with service status cards, planned-vs-actual evidence, and compact operator-performance signals.",
+      "alt": {
+        "en": "Enterprise service validation view showing operator performance, live service status, and planned versus actual review.",
+        "ar": "شاشة تحقق مؤسسي من الخدمة تعرض أداء المشغلين وحالة الخدمة المباشرة ومراجعة المخطط بالفعلي."
+      },
+      "approvedBy": null,
+      "approvedAt": null,
+      "approvalChecklist": [
+        "Keep service validation, planned-vs-actual comparison, and operator accountability visible at first glance.",
+        "Do not expose phone numbers, emails, exact addresses, raw trip ids, query strings, or sensitive map details.",
+        "Stay faithful to supported Tranzkit delivery, review, and follow-up workflows."
+      ],
+      "assetType": "figma_recreated_mockup",
+      "sourceTruth": "Faithful marketing recreation grounded in approved Tranzkit service validation, operator delivery review, rider visibility, and planned-vs-actual workflows described in the approved Enterprises and Passengers page.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "authenticityLabel": "Marketing composite",
+      "assetMethodNote": "Use a Figma recreated mockup by default because the page needs a high-signal validation visual and no verified safe service-review capture has been approved as strong enough yet.",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "medium",
+      "productionNotes": "Wave 1 review asset generated in Figma as a shared-language-neutral marketing composite. It shows operator delivery, live status, planned-versus-actual review, rider impact, and evidence-backed follow-up in one review surface.",
+      "privacyNotes": "This mockup uses service-line labels and aggregate rider counts only. It does not expose personal rows, phone numbers, exact addresses, query strings, or raw trip identifiers.",
+      "contentAlignmentStatus": "approved_current_maps",
+      "approvedForCurrentContent": true,
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      }
+    }
+  ],
+  "screensToCapture": [
+    "schedule_calendar_screen",
+    "client_booking_dashboard",
+    "driver_assignments_screen",
+    "tranzkit_operations_dashboard_screen",
+    "supplier_balance_screen",
+    "live_trips_screen",
+    "owned_fleet_screen",
+    "trip_analysis_screen",
+    "attendance_validation_dashboard",
+    "enterprise_service_validation_view",
+    "rider_trip_visibility_screen",
+    "enterprise_ai_reporting_view"
+  ],
+  "safetyRisks": [
+    "App captures can leak real tenant, client, employee, driver, supplier, and vehicle data if screenshots are taken from a live environment.",
+    "Live trips and live tracking surfaces can leak device tokens, share tokens, trip IDs, and exact location data if the URL or tracking UI is left visible.",
+    "Finance surfaces can leak real invoice numbers, balances, payment references, or bank-related details if demo data is not used.",
+    "Solutions page OG support is not fully wired in the current frontend metadata path, so asset creation is safe but usage is blocked by implementation.",
+    "The Figma planning file is ready, and any raw capture should stay limited to the already approved Zamalek browser states or later user-approved replacements."
+  ],
+  "inputsNeededFromUser": [
+    "The approval owner name for approvedBy when assets move beyond planned status.",
+    "Confirmation of the final local export destination if it should differ from content/planning/exports/.",
+    "Any replacement approved trip-analysis URL if the current demo-safe trip becomes unavailable later."
+  ],
+  "assetCreationReadiness": {
+    "capturePlanReady": true,
+    "figmaReady": true,
+    "sanityReady": false,
+    "readyForCreation": false,
+    "reason": "Planning is ready, but final asset production remains intentionally paused until the user starts the next approved capture or Figma production wave."
+  },
+  "approvedCapturePlan": [
+    {
+      "assetKey": "home-feature-tab-enterprise-image",
+      "approvedSourceScreen": "schedule_calendar_screen",
+      "targetAppRoute": "Tranzkit workspace -> schedule_calendar_screen",
+      "captureMethod": "figma_recreated_mockup",
+      "aiRole": "Enterprise control with embedded AI insight",
+      "figmaPage": "01_Home_Required",
+      "figmaPlaceholderNodeId": "15:7",
+      "outputFrameName": "01_Home_Required__home-feature-tab-enterprise-image__shared-neutral__1200x800",
+      "outputFileName": "home-feature-tab-enterprise-control.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop reference capture",
+      "captureStateInstructions": [
+        "Open Schedule Calendar with a dense but readable planning state showing routes, schedules, service requirements, and demand context.",
+        "Use approved Zamalek tenant data only after the user visually approves the browser state.",
+        "Capture the raw screen as a design reference only; do not export the raw capture as the final asset."
+      ],
+      "figmaDesignInstructions": [
+        "Build a polished enterprise planning composition faithful to real Tranzkit planning workflows.",
+        "Show planning, attendance validation, operator performance, finance, and an embedded AI agent insight card inside the operating workflow.",
+        "Avoid embedded marketing text and keep any visible text product-UI related only."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "home-feature-tab-operator-image",
+      "approvedSourceScreen": "driver_assignments_screen",
+      "targetAppRoute": "Tranzkit workspace -> driver_assignments_screen -> Schedule Assignments / QR context",
+      "captureMethod": "figma_recreated_mockup",
+      "aiRole": "Operator execution with embedded AI validation",
+      "figmaPage": "01_Home_Required",
+      "figmaPlaceholderNodeId": "15:12",
+      "outputFrameName": "01_Home_Required__home-feature-tab-operator-image__shared-neutral__1200x800",
+      "outputFileName": "home-feature-tab-operator-operations.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop reference capture",
+      "captureStateInstructions": [
+        "Open Fleet & Schedule Management with operator-relevant assignments, readiness, and execution context visible.",
+        "Prefer the Schedule Assignments tab and capture QR or field execution references only if the user approves that state.",
+        "Capture raw reference screens only; the final asset will be rebuilt in Figma."
+      ],
+      "figmaDesignInstructions": [
+        "Create a marketing-clean operator execution composition using assignments, trips, drivers, vehicles, statuses, and QR-aware field context.",
+        "Include live exceptions, trip analytics, driver readiness, and an embedded AI agent validation card inside the workflow.",
+        "Stay faithful to real Tranzkit operator capabilities and do not invent unsupported mobile or control features.",
+        "Keep table density readable and highlight one strong operator workflow."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "home-carousel-enterprise-planning-image",
+      "approvedSourceScreen": "routes_screen_v3",
+      "targetAppRoute": "http://localhost:3000/tranzkit?workspace=6488937e-d4a3-409e-b379-012c0374b877&routes_entity=schedules&routes_tab=schedules",
+      "navigationPath": "My Workspaces -> Sales Management -> Routes & Schedules -> Schedules",
+      "captureMethod": "tuned_browser_capture",
+      "aiRole": "Real planning proof with lightweight AI framing",
+      "figmaPage": "01_Home_Required",
+      "figmaPlaceholderNodeId": "15:17",
+      "outputFrameName": "01_Home_Required__home-carousel-enterprise-planning-image__shared-neutral__1200x800",
+      "outputFileName": "home-carousel-enterprise-planning.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop",
+      "captureStateInstructions": [
+        "Open Sales Management from My Workspaces, then open Routes & Schedules and switch the inner tab to Schedules.",
+        "Use the resulting workspace URL with workspace=6488937e-d4a3-409e-b379-012c0374b877 and routes_entity=schedules plus routes_tab=schedules if the state needs to be restored.",
+        "Tune visible columns and row density so route, client, pricing, and assigned resource context all read well at website size.",
+        "Capture the planning or schedules view, then later frame it with a small AI insight overlay in Figma if appropriate without overdoing the overlay.",
+        "If the state is weak or sparse after tuning, mark the asset as needsFigmaRebuild instead of forcing a bad screenshot."
+      ],
+      "figmaDesignInstructions": [
+        "Use only light framing cleanup if the screenshot needs browser chrome or crop polish.",
+        "Do not materially reconstruct the screen unless the tuned screenshot fails review.",
+        "Keep the final asset visually product-authentic."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "home-carousel-operator-control-image",
+      "approvedSourceScreen": "driver_assignments_screen",
+      "targetAppRoute": "http://localhost:3000/tranzkit?workspace=2d24830b-8eaf-4afe-bb0f-e6d35342d969",
+      "navigationPath": "My Workspaces -> Daily Operations -> Links and Assignments",
+      "captureMethod": "figma_recreated_mockup",
+      "aiRole": "Real operator control proof with lightweight AI validation framing",
+      "figmaPage": "01_Home_Required",
+      "figmaPlaceholderNodeId": "15:22",
+      "outputFrameName": "01_Home_Required__home-carousel-operator-control-image__shared-neutral__1200x800",
+      "outputFileName": "home-carousel-operator-control.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop",
+      "captureStateInstructions": [
+        "Daily Operations -> Links and Assignments was verified, but the reachable Associations state exposed phone numbers and PII-heavy rows.",
+        "Do not force a screenshot from that state.",
+        "Use the verified route and any safe reference captures later only as truth sources for a factual Figma rebuild."
+      ],
+      "figmaDesignInstructions": [
+        "Rebuild the operator-control visual from the verified Daily Operations route using assignment readiness, resource linkage, and execution context without exposing phone numbers or other raw PII.",
+        "If a light AI validation or exception card is added later, keep it embedded and secondary to the core operational workflow.",
+        "Do not add unsupported operational widgets."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "home-carousel-finance-visibility-image",
+      "approvedSourceScreen": "supplier_balance_screen",
+      "targetAppRoute": "http://localhost:3000/tranzkit?workspace=6129ecbb-2887-4510-aa15-a73d8036a049",
+      "navigationPath": "My Workspaces -> Supplier Management -> Supplier Balance",
+      "captureMethod": "figma_recreated_mockup",
+      "aiRole": "AI-assisted finance and executive reporting proof",
+      "figmaPage": "01_Home_Required",
+      "figmaPlaceholderNodeId": "15:27",
+      "outputFrameName": "01_Home_Required__home-carousel-finance-visibility-image__shared-neutral__1200x800",
+      "outputFileName": "home-carousel-finance-visibility.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop",
+      "captureStateInstructions": [
+        "Open Supplier Management from My Workspaces, then open Supplier Balance from the workspace header.",
+        "Use workspace=6129ecbb-2887-4510-aa15-a73d8036a049 to restore the tenant-approved finance workspace before switching the visible finance tab.",
+        "Treat Supplier Balance, Supplier Payments, and Sales Invoices as truth sources only; the currently verified tenant states are too sparse for a strong tuned screenshot.",
+        "Use approved finance screens as reference inputs for a faithful Figma rebuild instead of forcing a weak raw capture."
+      ],
+      "figmaDesignInstructions": [
+        "Build a finance-visibility composition faithful to real payables, statements, payment timing, invoice visibility, and status capabilities.",
+        "Show supplier balance, invoices, payables, settlement context, and an AI-generated financial or executive report card using safe demo values only.",
+        "Use only verified product concepts from Supplier Balance, Supplier Payments, and Invoices; do not invent unsupported finance modules.",
+        "Avoid any large embedded text or invented finance modules."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "home-carousel-driver-field-workflows-image",
+      "approvedSourceScreen": "live_trips_screen",
+      "targetAppRoute": "Tranzkit workspace -> live_trips_screen and driver_assignments_screen -> QR context",
+      "captureMethod": "figma_recreated_mockup",
+      "aiRole": "Driver automation and analytics proof",
+      "figmaPage": "01_Home_Required",
+      "figmaPlaceholderNodeId": "15:32",
+      "outputFrameName": "01_Home_Required__home-carousel-driver-field-workflows-image__shared-neutral__1200x800",
+      "outputFileName": "home-carousel-field-workflows.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop reference capture and 430x932 mobile reference if available",
+      "captureStateInstructions": [
+        "Capture approved raw references from Live Trips and any driver or QR-related workflow the user approves.",
+        "Use captures to understand trip follow-up, field readiness, and mobile-style status cues.",
+        "Do not force a final screenshot from desktop if the workflow needs a clearer Figma mobile composition."
+      ],
+      "figmaDesignInstructions": [
+        "Compose a polished field-workflow visual with mobile or compact status framing, QR context, trip follow-up, readiness signals, automatic trip lifecycle cues, background tracking, and battery-aware tracking.",
+        "Keep the composition faithful to real Tranzkit driver and field workflows.",
+        "Use demo-safe names and values only, with minimal text and strong status readability."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "home-og-image",
+      "approvedSourceScreen": "schedule_calendar_screen + tranzkit_operations_dashboard_screen + tranzkit_finance_dashboard_screen",
+      "targetAppRoute": "Reference captures from approved Tranzkit workspace screens only",
+      "captureMethod": "figma_recreated_mockup",
+      "aiRole": "Homepage AI integrated OS summary card",
+      "figmaPage": "03_Solutions_OG",
+      "figmaPlaceholderNodeId": "17:7",
+      "outputFrameName": "03_Solutions_OG__home-og-image__shared-neutral__1200x630",
+      "outputFileName": "homepage-og-image.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 630,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop reference capture",
+      "captureStateInstructions": [
+        "Collect only approved raw reference captures from enterprise planning, operations, and finance screens.",
+        "Do not attempt to use a raw browser screenshot as the final OG output.",
+        "Keep all reference captures language neutral and visually clean."
+      ],
+      "figmaDesignInstructions": [
+        "Design a branded language-neutral social card using real Tranzkit UI fragments or abstract framing derived from approved captures.",
+        "Show enterprise control, operator execution, trip analytics, and finance visibility as one AI integrated transport OS.",
+        "Avoid large embedded English or Arabic text; logo-level brand presence only if needed.",
+        "Keep the card readable at 1200x630 and faithful to the approved homepage scope."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "solutions-og-image",
+      "approvedSourceScreen": "schedule_calendar_screen + driver_assignments_screen + tranzkit_operations_dashboard_screen",
+      "targetAppRoute": "Reference captures from approved Tranzkit workspace screens only",
+      "captureMethod": "figma_recreated_mockup",
+      "aiRole": "Solutions AI connection card",
+      "figmaPage": "03_Solutions_OG",
+      "figmaPlaceholderNodeId": "17:11",
+      "outputFrameName": "03_Solutions_OG__solutions-og-image__shared-neutral__1200x630",
+      "outputFileName": "solutions-og-image.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 630,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop reference capture",
+      "captureStateInstructions": [
+        "Capture only approved reference screens that show enterprise control and operator execution clearly.",
+        "Use references from planning and operations views instead of inventing a new surface.",
+        "Do not export any raw capture directly as the OG image."
+      ],
+      "figmaDesignInstructions": [
+        "Design a connected two-sided social card showing enterprise control and operator execution in one visual system.",
+        "Show the two sides connected by embedded AI agents or AI insight layers.",
+        "Keep the composition language neutral, with no large embedded copy.",
+        "Use only approved Tranzkit capabilities and approved demo-safe references."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "home-optional-fleet-readiness-image",
+      "approvedSourceScreen": "owned_fleet_screen",
+      "targetAppRoute": "http://localhost:3000/tranzkit?workspace=27910f5a-f2ad-40ab-8005-c98e29632b38",
+      "navigationPath": "My Workspaces -> test -> Owned Fleet -> Fleet / Maintenance / Accident Reports",
+      "captureMethod": "figma_recreated_mockup",
+      "aiRole": "Fleet readiness and AI exception insights",
+      "figmaPage": "02_Home_Optional",
+      "figmaPlaceholderNodeId": "16:7",
+      "outputFrameName": "02_Home_Optional__home-optional-fleet-readiness-image__shared-neutral__1200x800",
+      "outputFileName": "home-optional-fleet-readiness.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop",
+      "captureStateInstructions": [
+        "Open the test workspace from My Workspaces, then open Owned Fleet and use Fleet, Maintenance, or Accident Reports as truth-source tabs.",
+        "Use workspace=27910f5a-f2ad-40ab-8005-c98e29632b38 to restore the tenant-approved fleet workspace before switching the visible fleet tab.",
+        "Do not force a screenshot from the currently sparse fleet state; use it as a truthful reference for a cleaner readiness rebuild.",
+        "Keep the rebuild grounded in real vehicle status, maintenance, and incident concepts only."
+      ],
+      "figmaDesignInstructions": [
+        "Create a factual fleet-readiness composition with visible vehicle status, maintenance readiness, accident follow-up, driver readiness, and AI exception insight.",
+        "Keep the visual faithful to Owned Fleet, Maintenance, and Accident Reports without inventing unsupported compliance modules.",
+        "Keep the asset factual and operational."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "home-optional-live-tracking-image",
+      "approvedSourceScreen": "trip_analysis_screen",
+      "targetAppRoute": "http://localhost:3000/tranzkit/trip-analysis?trip_id=db5312b9-ebe6-4c90-bc92-135b65a44bc2",
+      "navigationPath": "Daily Operations -> Trips or Trips Live Attendance -> Trip Analysis",
+      "captureMethod": "tuned_browser_capture",
+      "aiRole": "Trip playback and comprehensive analytics proof",
+      "figmaPage": "02_Home_Optional",
+      "figmaPlaceholderNodeId": "16:11",
+      "outputFrameName": "02_Home_Optional__home-optional-live-tracking-image__shared-neutral__1200x800",
+      "outputFileName": "home-optional-live-tracking.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop",
+      "captureStateInstructions": [
+        "Use the approved current Trip Analysis view.",
+        "Keep a wide below-header frame with the map and analytics panel together.",
+        "Avoid the identifying trip header and trim right and bottom whitespace from the raw source frame.",
+        "Do a final map-sensitivity review before export."
+      ],
+      "figmaDesignInstructions": [
+        "Prefer a true tuned screenshot from trip analysis and avoid rebuilding unless this approved route becomes unusable after review.",
+        "If rebuild becomes necessary later, keep it faithful to real trip analysis, live trip context, and tracking behavior.",
+        "Do not invent map layers, devices, or unsupported live-tracking controls."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "solutions-operators-drivers-trip-analytics-image",
+      "approvedSourceScreen": "trip_analysis_screen",
+      "targetAppRoute": "http://localhost:3000/tranzkit/trip-analysis?trip_id=db5312b9-ebe6-4c90-bc92-135b65a44bc2",
+      "navigationPath": "Daily Operations -> Trips or Trips Live Attendance -> Trip Analysis",
+      "captureMethod": "tuned_browser_capture",
+      "aiRole": "Trip analytics proof for Operators and Drivers",
+      "figmaPage": "07_Solutions_Operators_Drivers",
+      "figmaPlaceholderNodeId": null,
+      "outputFrameName": "07_Solutions_Operators_Drivers__solutions-operators-drivers-trip-analytics-image__shared-neutral__1200x800",
+      "outputFileName": "solutions-operators-drivers-trip-analytics.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop",
+      "captureStateInstructions": [
+        "Use the approved current Trip Analysis view.",
+        "Keep a wide below-header frame with the map and analytics panel together.",
+        "Avoid the identifying trip header and trim right and bottom whitespace from the raw source frame.",
+        "Do a final map-sensitivity review before export."
+      ],
+      "figmaDesignInstructions": [
+        "Use the tuned screenshot as the first-choice asset.",
+        "Only rebuild in Figma if later review requires a wider, safer, or clearer marketing composition."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "solutions-operators-drivers-ai-agent-image",
+      "approvedSourceScreen": "Daily Operations composite + Trip Analysis reference",
+      "targetAppRoute": "Reference captures from Daily Operations, Trip Analysis, and finance-safe report states",
+      "captureMethod": "figma_recreated_mockup",
+      "aiRole": "Embedded AI operating-workflow proof for Operators and Drivers",
+      "figmaPage": "07_Solutions_Operators_Drivers",
+      "figmaPlaceholderNodeId": null,
+      "outputFrameName": "07_Solutions_Operators_Drivers__solutions-operators-drivers-ai-agent-image__shared-neutral__1200x800",
+      "outputFileName": "solutions-operators-drivers-ai-agent.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop reference capture",
+      "captureStateInstructions": [
+        "Collect reference screens from Daily Operations and Trip Analysis only as needed.",
+        "Do not expose raw phone numbers, driver identities, or query strings in any final visible reference."
+      ],
+      "figmaDesignInstructions": [
+        "Show AI agents inside the operations workflow, not as a detached chatbot.",
+        "Include schedule validation, assignment gap review, trip analytics review, operational and financial reports, and controlled update review.",
+        "Do not imply unsupported autonomous decisions."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "solutions-enterprises-passengers-attendance-validation-image",
+      "approvedSourceScreen": "attendance_validation_dashboard",
+      "targetAppRoute": "Reference captures from attendance validation, work-location rules, user-location checks, geofence review, and biometric validation states",
+      "captureMethod": "figma_recreated_mockup",
+      "aiRole": "Smart employee attendance proof with embedded AI review support",
+      "figmaPage": "08_Solutions_Enterprises_Passengers",
+      "figmaPlaceholderNodeId": null,
+      "outputFrameName": "08_Solutions_Enterprises_Passengers__solutions-enterprises-passengers-attendance-validation-image__shared-neutral__1200x800",
+      "outputFileName": "solutions-enterprises-passengers-attendance-validation.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop reference capture",
+      "captureStateInstructions": [
+        "Use enterprise attendance, eligibility, location, geofence, and biometric workflows as truth sources only.",
+        "Do not force a raw screenshot if the current product state is sparse, empty, or unsafe.",
+        "Keep any eventual design language-neutral and operational."
+      ],
+      "figmaDesignInstructions": [
+        "Build a clear enterprise attendance-governance composition grounded in supported Tranzkit attendance validation workflows.",
+        "Show work location validation, user location matching, geofence validation, biometric confirmation, and transport eligibility in one control surface.",
+        "If an AI insight card is used, embed it as a secondary review layer inside the workflow."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "solutions-enterprises-passengers-enterprise-ai-report-image",
+      "approvedSourceScreen": "enterprise_ai_reporting_view",
+      "targetAppRoute": "Reference captures from enterprise reporting, operator performance review, finance review, and controlled update states",
+      "captureMethod": "figma_recreated_mockup",
+      "aiRole": "Enterprise AI reporting and controlled-update proof",
+      "figmaPage": "08_Solutions_Enterprises_Passengers",
+      "figmaPlaceholderNodeId": null,
+      "outputFrameName": "08_Solutions_Enterprises_Passengers__solutions-enterprises-passengers-enterprise-ai-report-image__shared-neutral__1200x800",
+      "outputFileName": "solutions-enterprises-passengers-enterprise-ai-report.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop reference capture",
+      "captureStateInstructions": [
+        "Use reporting, finance, and operator-performance workflows as truth sources only.",
+        "Do not use raw sensitive finance tables or private reporting data directly in the final asset.",
+        "Keep controlled review states explicit if any update or recommendation surface is shown."
+      ],
+      "figmaDesignInstructions": [
+        "Create an enterprise reporting composition that ties attendance, service, operator performance, finance, and executive summaries together.",
+        "Embed AI reporting or insight cards inside the workflow and avoid detached assistant treatments.",
+        "Do not imply autonomous financial approval or unsupported AI actions."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "solutions-enterprises-passengers-rider-visibility-image",
+      "approvedSourceScreen": "rider_trip_visibility_screen",
+      "targetAppRoute": "Reference captures from assigned trips, live trip status, trip history, and rider feedback states",
+      "captureMethod": "figma_recreated_mockup",
+      "aiRole": "Passenger trip clarity and service-confidence proof",
+      "figmaPage": "08_Solutions_Enterprises_Passengers",
+      "figmaPlaceholderNodeId": null,
+      "outputFrameName": "08_Solutions_Enterprises_Passengers__solutions-enterprises-passengers-rider-visibility-image__shared-neutral__1200x800",
+      "outputFileName": "solutions-enterprises-passengers-rider-visibility.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1440x1100 desktop reference capture and optional mobile reference",
+      "captureStateInstructions": [
+        "Use rider-facing visibility workflows as truth sources only.",
+        "Avoid exact private addresses, query strings, raw trip ids, or any direct rider identifiers.",
+        "If the composition needs mobile treatment, keep it clean and readable rather than dense."
+      ],
+      "figmaDesignInstructions": [
+        "Build a rider-visibility composition that shows assigned trips, timing, route context, live status, and structured feedback or history cues.",
+        "Keep text minimal and product-like, with no large localized messaging baked into the image.",
+        "Do not turn this into a generic map card with no service context."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    },
+    {
+      "assetKey": "solutions-enterprises-passengers-service-validation-image",
+      "approvedSourceScreen": "enterprise_service_validation_view",
+      "targetAppRoute": "Reference captures from service validation, operator delivery review, rider impact, and planned-vs-actual states",
+      "captureMethod": "figma_recreated_mockup",
+      "aiRole": "Service-validation and operator-accountability proof",
+      "figmaPage": "08_Solutions_Enterprises_Passengers",
+      "figmaPlaceholderNodeId": null,
+      "outputFrameName": "08_Solutions_Enterprises_Passengers__solutions-enterprises-passengers-service-validation-image__shared-neutral__1200x800",
+      "outputFileName": "solutions-enterprises-passengers-service-validation.v1.png",
+      "finalWidth": 1200,
+      "finalHeight": 800,
+      "exportFormat": "png",
+      "browserViewport": "1600x1100 desktop reference capture",
+      "captureStateInstructions": [
+        "Use service-validation and planned-vs-actual review workflows as truth sources only.",
+        "Do not force a screenshot from sparse or PII-heavy states.",
+        "Keep the review context enterprise-led and evidence-based."
+      ],
+      "figmaDesignInstructions": [
+        "Show service validation, operator performance evidence, planned-vs-actual review, and follow-up context in one enterprise control surface.",
+        "If AI appears, use it as an embedded review aid rather than a detached chatbot.",
+        "Keep the design faithful to supported Tranzkit service and accountability workflows."
+      ],
+      "approvalRequiredBeforeExport": true,
+      "transferStatus": "not_ready"
+    }
+  ],
+  "mediaQualityRule": {
+    "classifications": {
+      "real_screenshot": "Direct product capture with safe demo data and no material visual reconstruction.",
+      "tuned_screenshot": "Real product capture with tuned filters, columns, tabs, crop, and demo data to make the screen marketing-ready.",
+      "figma_recreated_mockup": "Faithful Figma rebuild or composite based on real Tranzkit workflows when the raw capture is not launch-quality."
+    },
+    "authenticityLabels": [
+      "Captured from product",
+      "Marketing composite"
+    ],
+    "forbiddenLabel": "Concept visual",
+    "rules": [
+      "Use real screenshots when the real app screen already looks good with demo-safe data.",
+      "Tune app state before choosing a Figma rebuild.",
+      "Use Figma recreated mockups only when the raw product visual is not marketing-ready.",
+      "Do not invent unsupported Tranzkit features, workflows, entities, or data relationships.",
+      "Use only demo-safe data and remove any personal, client, location, financial, or token-level sensitive information.",
+      "Codefy OS never writes to Sanity. It only prepares media outputs.",
+      "Default to shared_language_neutral assets and rely on surrounding CMS copy for language-specific messaging."
+    ]
+  },
+  "releaseMethodRecommendation": [
+    {
+      "asset": "Home hero visual",
+      "bestMethod": "figma_recreated_mockup",
+      "note": "Recommended for launch, but there is no current approved hero image slot in the content maps."
+    },
+    {
+      "asset": "Home enterprise feature image",
+      "bestMethod": "figma_recreated_mockup",
+      "note": "Use a tuned screenshot only if the planning screen becomes visually clean enough after demo-data tuning."
+    },
+    {
+      "asset": "Home operator feature image",
+      "bestMethod": "figma_recreated_mockup",
+      "note": "Use a tuned screenshot only if the operator view becomes visually clean enough after demo-data tuning."
+    },
+    {
+      "asset": "Carousel enterprise planning",
+      "bestMethod": "tuned_screenshot",
+      "note": "Prefer a real product capture with tuned state."
+    },
+    {
+      "asset": "Carousel operator control",
+      "bestMethod": "figma_recreated_mockup",
+      "note": "Use a faithful rebuild for the current release because the verified Daily Operations state exposed phone numbers and other PII-heavy rows."
+    },
+    {
+      "asset": "Carousel finance visibility",
+      "bestMethod": "figma_recreated_mockup",
+      "note": "Prefer a faithful finance mockup for this release because the verified tenant finance routes are currently too sparse for a strong tuned screenshot."
+    },
+    {
+      "asset": "Carousel driver mobile",
+      "bestMethod": "figma_recreated_mockup",
+      "note": "Switch to a real screenshot if a polished driver-mobile capture becomes available."
+    },
+    {
+      "asset": "Home OG image",
+      "bestMethod": "figma_recreated_mockup",
+      "note": "Design as a Figma social card."
+    },
+    {
+      "asset": "Solutions OG image",
+      "bestMethod": "figma_recreated_mockup",
+      "note": "Design as a Figma social card."
+    },
+    {
+      "asset": "Enterprises and Passengers attendance validation image",
+      "bestMethod": "figma_recreated_mockup",
+      "note": "Use a faithful attendance-governance mockup unless a later verified safe product state becomes visually strong enough."
+    },
+    {
+      "asset": "Enterprises and Passengers enterprise AI report image",
+      "bestMethod": "figma_recreated_mockup",
+      "note": "Use a faithful reporting mockup to connect enterprise control, finance, and AI-assisted summaries."
+    },
+    {
+      "asset": "Enterprises and Passengers rider visibility image",
+      "bestMethod": "figma_recreated_mockup",
+      "note": "Use a faithful rider-visibility mockup unless a later verified safe passenger screen becomes clearly launch-ready."
+    },
+    {
+      "asset": "Enterprises and Passengers service validation image",
+      "bestMethod": "figma_recreated_mockup",
+      "note": "Use a faithful service-validation mockup to keep enterprise evidence and operator accountability readable."
+    }
+  ],
+  "futureAssetsNotInCurrentContentMap": [
+    {
+      "assetKey": "home-hero-visual",
+      "status": "recommended-but-out-of-scope",
+      "reason": "Recommended for the first website release, but the current approved homepage content map does not expose a dedicated hero image field.",
+      "bestMethod": "figma_recreated_mockup",
+      "authenticityLabel": "Marketing composite",
+      "sourceTruth": "Should remain faithful to real Tranzkit planning, operator control, and finance workflows already represented in product screens.",
+      "requiresDemoData": true,
+      "requiresFigmaRebuild": true,
+      "approvedForMarketing": true,
+      "assetMethodNote": "Keep this as a future or parallel design recommendation until a content-map-approved hero asset field exists.",
+      "transferStatus": "not_ready",
+      "targetWebsiteRepoPath": "content/media/staging/tranzkit/homepage/home-hero-visual.v1.png",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "mediaLanguageMode": "shared_language_neutral",
+      "localeVariants": null,
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "rtlSensitivity": "low",
+      "captureReadiness": {
+        "needsDemoEnvironment": true,
+        "needsFigma": true,
+        "needsManualApproval": true,
+        "canStartNow": false
+      }
+    },
+    {
+      "assetKey": "app-driver-automatic-trip-image",
+      "assetStatus": "planned",
+      "transferStatus": "not_ready",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "mediaLanguageMode": "shared_language_neutral",
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "notes": "Planning only. Production waits until the corresponding content map is approved."
+    },
+    {
+      "assetKey": "app-operator-dashboard-ai-validation-image",
+      "assetStatus": "planned",
+      "transferStatus": "not_ready",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "mediaLanguageMode": "shared_language_neutral",
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "notes": "Planning only. Production waits until the corresponding content map is approved."
+    },
+    {
+      "assetKey": "app-enterprise-dashboard-executive-report-image",
+      "assetStatus": "planned",
+      "transferStatus": "not_ready",
+      "requiresSanityUpload": true,
+      "sanityUploadOwner": "tanzkit_website_v2",
+      "mediaLanguageMode": "shared_language_neutral",
+      "requiresEmbeddedText": false,
+      "embeddedTextPolicy": "none",
+      "notes": "Planning only. Production waits until the corresponding content map is approved."
+    }
+  ],
+  "mediaLanguagePolicy": {
+    "defaultMediaMode": "shared_language_neutral",
+    "currentRule": "One image asset in Sanity, bilingual CMS text around it, and bilingual alt text in the media plan.",
+    "defaultDecisionsForThisRelease": [
+      "Product screenshots and dashboard mockups should be shared language neutral.",
+      "Home carousel images should be shared language neutral.",
+      "Home feature tab images should be shared language neutral.",
+      "Home OG image should be shared language neutral unless a headline is placed inside the image.",
+      "Solutions OG image should be shared language neutral unless a headline is placed inside the image.",
+      "Avoid large English or Arabic text baked into images.",
+      "Use surrounding CMS copy for language-specific messaging.",
+      "If a Figma frame needs text, keep it minimal and brand-neutral, such as the Tranzkit logo only."
+    ],
+    "escalationRule": "If an asset becomes locale_specific_required, do not move it to ready_for_transfer until website-side localized image support or an approved workaround exists.",
+    "allowedModes": [
+      "shared_language_neutral",
+      "locale_specific_required",
+      "locale_specific_optional"
+    ],
+    "embeddedTextPolicies": [
+      "none",
+      "minimal_brand_text",
+      "locale_specific_text_required"
+    ],
+    "rtlSensitivityScale": [
+      "low",
+      "medium",
+      "high"
+    ]
+  },
+  "productionReadiness": {
+    "figmaFileUrl": "https://www.figma.com/design/6H9oj63cFk8e5zSi9Oe5D2",
+    "figmaFileStatus": "verified",
+    "demoEnvironmentUrl": "http://localhost:3000/tranzkit",
+    "demoEnvironmentStatus": "verified_safe",
+    "captureAuthStatus": "verified",
+    "dataSafetyStatus": "demo_safe",
+    "readyForCapture": true,
+    "blockers": []
+  },
+  "figmaSetupChecklist": [
+    "Verified Figma file: Tranzkit Website Media Production v1",
+    "Verified page: 00_Cover",
+    "Verified page: 01_Home_Required",
+    "Verified page: 02_Home_Optional",
+    "Verified page: 03_Solutions_OG",
+    "Verified page: 04_Export_Ready",
+    "Verified page: 05_Archive_Source_Captures",
+    "Prepare page: 06_Animated_Sequences",
+    "Prepare placeholder group: AI OS Flow",
+    "Prepare placeholder group: Trip Analytics Flow",
+    "Prepare placeholder group: Smart Attendance Flow",
+    "Prepare placeholder group: Driver Automatic Trip Flow",
+    "Use shared language neutral media by default",
+    "Avoid embedded English or Arabic marketing text",
+    "Use bilingual alt text in JSON, not baked into the image",
+    "Prepare page: 07_Solutions_Operators_Drivers"
+  ],
+  "captureSafetyChecklist": [
+    "No real client names",
+    "No personal names unless demo data",
+    "No phone numbers",
+    "No emails",
+    "No tokens or URLs with secrets",
+    "No exact private locations",
+    "No sensitive finance values",
+    "No production tenant data"
+  ],
+  "batch2FigmaMockupList": {
+    "status": "prepared_not_executed",
+    "guidance": [
+      "Embed AI insight cards inside real workflows, not detached chatbot visuals.",
+      "Keep media shared-language-neutral with no large embedded English or Arabic text.",
+      "Use safe demo values only and avoid unsupported AI autonomy claims.",
+      "Do not imply AI dispatches service or approves financial changes on its own."
+    ],
+    "assets": [
+      "home-feature-tab-enterprise-image",
+      "home-feature-tab-operator-image",
+      "home-carousel-finance-visibility-image",
+      "home-carousel-driver-field-workflows-image",
+      "home-og-image",
+      "solutions-og-image",
+      "home-optional-fleet-readiness-image",
+      "solutions-operators-drivers-ai-agent-image"
+    ]
+  }
+}

@@ -63,3 +63,6 @@ next-env.d.ts
 tmp/
 temp/
 *.tmp
+
+# MCP local build output
+mcp/sanity-content-server/dist/

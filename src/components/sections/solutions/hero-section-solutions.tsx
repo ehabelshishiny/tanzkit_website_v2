@@ -659,18 +659,30 @@ export function HeroSectionSolutions({ data }: HeroSectionSolutionsProps) {
       {/* Content */}
       <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-12 py-20">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-2xl">
+          <div className="max-w-[min(92vw,46rem)] xl:max-w-[44rem]">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Typography variant="display" as="h1" className="mb-6 leading-tight">
-              <span className="text-accent">{data.title.smart}</span>{' '}
-              <span className="text-primary">{data.title.mobility}</span>
-              <span className="text-foreground">{data.title.practicalResults}</span>
+            <Typography
+              as="h1"
+              className={[
+                'mb-6 font-bold',
+                'text-[clamp(3.5rem,8vw,6.5rem)] leading-[0.9] tracking-[-0.05em]',
+                locale === 'ar'
+                  ? 'text-[clamp(3rem,7vw,5.75rem)] leading-[1] tracking-[-0.02em]'
+                  : '',
+              ].join(' ')}
+            >
+              <span className="block text-accent">{data.title.smart}</span>
+              <span className="block text-primary">{data.title.mobility}</span>
+              <span className="block text-foreground">{data.title.practicalResults}</span>
             </Typography>
-            <Typography variant="subtitle" className="text-muted-foreground mb-8 leading-relaxed">
+            <Typography
+              variant="subtitle"
+              className="max-w-[42rem] text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed"
+            >
               {data.subtitle}
             </Typography>
             <GradientButton

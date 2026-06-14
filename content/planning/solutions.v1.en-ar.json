@@ -1,0 +1,247 @@
+{
+  "pageKey": "solutions",
+  "action": "draft",
+  "hero": {
+    "title": {
+      "smart": {
+        "en": "Employee transport control",
+        "ar": "تحكم في نقل الموظفين"
+      },
+      "mobility": {
+        "en": "organized daily operations",
+        "ar": "تشغيل يومي منظم"
+      },
+      "practicalResults": {
+        "en": "clear financial visibility",
+        "ar": "رؤية مالية واضحة"
+      }
+    },
+    "subtitle": {
+      "en": "Tranzkit is a fully AI integrated operating system for employee transportation, connecting enterprise control, operator execution, driver workflows, rider visibility, finance, attendance validation, and trip analytics in one bilingual platform.",
+      "ar": "ترانزكيت هو نظام تشغيل متكامل بالذكاء الاصطناعي لإدارة نقل الموظفين، يربط تحكم الشركات، وتشغيل المشغلين، وسير عمل السائقين، ورؤية الركاب، والمالية، والتحقق من الحضور، وتحليلات الرحلات داخل منصة واحدة بالإنجليزية والعربية."
+    },
+    "cta": {
+      "en": "Explore how Tranzkit works",
+      "ar": "استكشف كيف يعمل ترانزكيت"
+    },
+    "nodes": {
+      "operator": {
+        "en": "Operators",
+        "ar": "المشغلون"
+      },
+      "enterprise": {
+        "en": "Enterprises",
+        "ar": "الشركات"
+      },
+      "supervisor": {
+        "en": "Supervisors",
+        "ar": "المشرفون"
+      },
+      "driver": {
+        "en": "Drivers",
+        "ar": "السائقون"
+      },
+      "rider": {
+        "en": "Passengers",
+        "ar": "الركاب"
+      }
+    }
+  },
+  "intro": {
+    "text": {
+      "en": "Employee transportation is more than moving people from one place to another. It is planning demand, validating attendance, coordinating operators, assigning resources, tracking live service, reviewing financials, analyzing trip behavior, and keeping every route, schedule, driver, vehicle, and trip under control.",
+      "ar": "نقل الموظفين ليس مجرد نقل أشخاص من مكان إلى آخر. بل يشمل تخطيط الطلب، والتحقق من الحضور، والتنسيق مع المشغلين، وتوزيع الموارد، ومتابعة الخدمة بشكل مباشر، والمراجعة المالية، وتحليل سلوك الرحلات، وضمان أن كل خط وجدول وسائق ومركبة ورحلة تحت السيطرة."
+    },
+    "howWeHelp": {
+      "title": {
+        "en": "Tranzkit connects the full AI integrated transport workflow",
+        "ar": "ترانزكيت يربط دورة النقل الكاملة داخل نظام تشغيل متكامل بالذكاء الاصطناعي"
+      },
+      "benefits": [
+        {
+          "en": "Plan employee transportation, service requirements, and attendance validation",
+          "ar": "تخطيط نقل الموظفين ومتطلبات الخدمة والتحقق من الحضور"
+        },
+        {
+          "en": "Manage operators, suppliers, drivers, vehicles, routes, schedules, and smart driver execution",
+          "ar": "إدارة المشغلين والموردين والسائقين والمركبات والخطوط والجداول والتنفيذ الذكي للسائقين"
+        },
+        {
+          "en": "Use AI agents, live service visibility, trip analytics, operational reporting, and financial reporting in one workflow",
+          "ar": "استخدام وكلاء الذكاء الاصطناعي، ومتابعة الخدمة المباشرة، وتحليلات الرحلات، والتقارير التشغيلية، والتقارير المالية ضمن سير عمل واحد"
+        }
+      ]
+    }
+  },
+  "audienceCards": {
+    "operators": {
+      "headline": {
+        "en": "For operators running daily transport service",
+        "ar": "لمشغلي النقل الذين يديرون التشغيل اليومي"
+      },
+      "description": {
+        "en": "Run daily transport operations across routes, schedules, assignments, drivers, vehicles, suppliers, trips, maintenance, incidents, and finance from one connected workflow.",
+        "ar": "شغّل عمليات النقل اليومية عبر الخطوط والجداول والتعيينات والسائقين والمركبات والموردين والرحلات والصيانة والحوادث والمالية من سير عمل واحد مترابط."
+      },
+      "benefits": [
+        {
+          "en": "Manage routes, schedules, stops, and trips",
+          "ar": "إدارة الخطوط والجداول والوقفات والرحلات"
+        },
+        {
+          "en": "Assign drivers, vehicles, and suppliers",
+          "ar": "تسكين السائقين والمركبات والموردين"
+        },
+        {
+          "en": "Track live service and field execution",
+          "ar": "متابعة الخدمة المباشرة والتنفيذ الميداني"
+        },
+        {
+          "en": "Follow fleet readiness, accidents, driver follow up, and finance",
+          "ar": "متابعة جاهزية الأسطول والحوادث والسائقين والمالية"
+        }
+      ],
+      "cta": {
+        "en": "See operator execution",
+        "ar": "شاهد إدارة التشغيل اليومي"
+      }
+    },
+    "enterprises": {
+      "headline": {
+        "en": "For enterprises managing employee transportation",
+        "ar": "للشركات التي تدير نقل الموظفين"
+      },
+      "description": {
+        "en": "Give transport, HR, operations, and finance teams one clear place to plan employee mobility, manage operators, monitor service quality, track live status, and review invoices without losing visibility after outsourcing daily execution.",
+        "ar": "امنح فرق النقل والموارد البشرية والعمليات والمالية مكانًا واضحًا لتخطيط نقل الموظفين، وإدارة المشغلين، ومتابعة جودة الخدمة، ومراقبة الحالة المباشرة، ومراجعة الفواتير دون فقدان الرؤية بعد إسناد التنفيذ اليومي للمشغلين."
+      },
+      "benefits": [
+        {
+          "en": "Plan routes, schedules, bookings, and employee demand",
+          "ar": "تخطيط الخطوط والجداول والحجوزات وطلب الموظفين"
+        },
+        {
+          "en": "Manage transport operators and service requirements",
+          "ar": "إدارة مشغلي النقل ومتطلبات الخدمة"
+        },
+        {
+          "en": "Monitor operator performance and live service status",
+          "ar": "متابعة أداء المشغلين وحالة الخدمة المباشرة"
+        },
+        {
+          "en": "Review invoices, payment status, utilization, and pricing visibility",
+          "ar": "مراجعة الفواتير وحالة الدفع والاستخدام ورؤية التسعير"
+        }
+      ],
+      "cta": {
+        "en": "See enterprise control",
+        "ar": "شاهد تحكم الشركة في النقل"
+      }
+    }
+  },
+  "technology": {
+    "title": {
+      "en": "Built as an AI integrated transport operating system",
+      "ar": "مصمم كنظام تشغيل نقل متكامل بالذكاء الاصطناعي"
+    },
+    "highlights": [
+      {
+        "_key": "solutions-tech-1",
+        "icon": "network",
+        "text": {
+          "en": "A connected workspace for clients, projects, routes, schedules, trips, drivers, vehicles, suppliers, and finance",
+          "ar": "مساحة عمل مترابطة للعملاء والمشاريع والخطوط والجداول والرحلات والسائقين والمركبات والموردين والمالية"
+        }
+      },
+      {
+        "_key": "solutions-tech-2",
+        "icon": "languages",
+        "text": {
+          "en": "A bilingual English and Arabic experience for mixed operations teams",
+          "ar": "تجربة ثنائية اللغة بالإنجليزية والعربية تناسب فرق التشغيل المختلطة"
+        }
+      },
+      {
+        "_key": "solutions-tech-3",
+        "icon": "smartphone",
+        "text": {
+          "en": "AI agents embedded into the workflow for app navigation, operational validation, financial reporting, executive insights, and controlled data updates",
+          "ar": "وكلاء ذكاء اصطناعي مدمجون داخل سير العمل للتنقل داخل المنصة، والتحقق التشغيلي، والتقارير المالية، ورؤى الإدارة، وتحديث البيانات بشكل منظم"
+        }
+      },
+      {
+        "_key": "solutions-tech-4",
+        "icon": "qr-code",
+        "text": {
+          "en": "Smart attendance validation for employees and drivers through geofence, biometric validation, and service-linked execution checks",
+          "ar": "تحقق ذكي من حضور الموظفين والسائقين عبر النطاق الجغرافي، والتحقق البيومتري، وربط التحقق بسياق التنفيذ التشغيلي"
+        }
+      },
+      {
+        "_key": "solutions-tech-5",
+        "icon": "receipt-text",
+        "text": {
+          "en": "Comprehensive trip analytics with playback, planned vs actual comparison, speed behavior, phone usage, harsh braking, and harsh acceleration",
+          "ar": "تحليلات شاملة للرحلات تشمل إعادة عرض الرحلة، ومقارنة المخطط بالفعلي، وسلوك السرعة، واستخدام الهاتف، والفرملة المفاجئة، والتسارع المفاجئ"
+        }
+      }
+    ]
+  },
+  "whyTranzkit": {
+    "title": {
+      "en": "Why teams choose Tranzkit",
+      "ar": "لماذا تختار الفرق ترانزكيت"
+    },
+    "reasons": [
+      {
+        "en": "It gives enterprises visibility and control after outsourcing transport operations",
+        "ar": "لأنه يمنح الشركات رؤية وتحكمًا بعد إسناد عمليات النقل للمشغلين"
+      },
+      {
+        "en": "It gives operators the workflow control needed to run daily service",
+        "ar": "لأنه يمنح المشغلين تحكمًا عمليًا في تشغيل الخدمة اليومية"
+      },
+      {
+        "en": "It embeds AI agents into navigation, validation, reporting, and controlled updates instead of treating AI as a side feature",
+        "ar": "لأنه يدمج وكلاء الذكاء الاصطناعي داخل التنقل والتحقق والتقارير والتحديثات المنظمة بدلًا من التعامل معه كميزة جانبية"
+      },
+      {
+        "en": "It connects smart attendance and trip analytics to daily execution, financial review, and accountability",
+        "ar": "لأنه يربط التحقق الذكي من الحضور وتحليلات الرحلات بالتنفيذ اليومي والمراجعة المالية والمساءلة"
+      },
+      {
+        "en": "It is built for teams that work in English and Arabic",
+        "ar": "لأنه مصمم لفرق تعمل بالإنجليزية والعربية"
+      }
+    ]
+  },
+  "cta": {
+    "title": {
+      "en": "Ready to connect enterprise control with daily transport operation?",
+      "ar": "هل أنت جاهز لربط تحكم الشركة بتشغيل النقل اليومي؟"
+    },
+    "subtitle": {
+      "en": "See how Tranzkit helps you manage employee transportation, operators, attendance validation, trip analytics, live service, assignments, and financial visibility from one AI integrated bilingual platform.",
+      "ar": "شاهد كيف يساعدك ترانزكيت على إدارة نقل الموظفين، والمشغلين، والتحقق من الحضور، وتحليلات الرحلات، والخدمة المباشرة، والتخصيصات، والرؤية المالية من منصة واحدة متكاملة بالذكاء الاصطناعي وبالإنجليزية والعربية."
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "AI integrated employee transport platform for enterprises and operators | Tranzkit",
+      "ar": "منصة نقل موظفين متكاملة بالذكاء الاصطناعي للشركات والمشغلين | ترانزكيت"
+    },
+    "metaDescription": {
+      "en": "Tranzkit connects enterprise control, operator execution, AI agents, attendance validation, trip analytics, live service, and financial visibility in one bilingual employee transportation platform.",
+      "ar": "يربط ترانزكيت تحكم الشركات، وتشغيل المشغلين، ووكلاء الذكاء الاصطناعي، والتحقق من الحضور، وتحليلات الرحلات، والخدمة المباشرة، والرؤية المالية داخل منصة واحدة ثنائية اللغة لنقل الموظفين."
+    },
+    "keywords": [
+      "ai integrated employee transport",
+      "enterprise transport management",
+      "attendance validation",
+      "trip analytics",
+      "live transport tracking",
+      "transport finance visibility",
+      "Tranzkit"
+    ]
+  }
+}

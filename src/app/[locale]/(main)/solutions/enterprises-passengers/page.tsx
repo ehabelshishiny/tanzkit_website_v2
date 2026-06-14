@@ -8,6 +8,7 @@ import { EnterprisesFeaturesSection } from '@/components/sections/solutions/ente
 import { EnterprisesAiImpactSection } from '@/components/sections/solutions/enterprises/ai-impact-section';
 import { EnterprisesCtaSection } from '@/components/sections/solutions/enterprises/cta-section';
 import { getSolutionsEnterprisesPassengersPage } from '@/lib/sanity/queries';
+import { urlForImage } from '@/lib/sanity/image';
 import { generateResourceMetadata } from '@/lib/seo/metadata';
 import { Metadata } from 'next';
 
@@ -28,10 +29,15 @@ export async function generateMetadata({ params }: EnterprisesPassengersPageProp
     };
   }
 
+  const ogImage = page.seo?.ogImage
+    ? urlForImage(page.seo.ogImage).width(1200).height(630).fit('fill').url()
+    : undefined;
+
   return generateResourceMetadata(
     {
       metaTitle: page.seo?.metaTitle,
       metaDescription: page.seo?.metaDescription,
+      ogImage,
       keywords: page.seo?.keywords?.[locale] || page.seo?.keywords,
       canonicalUrl: 'solutions/enterprises-passengers',
       noIndex: page.seo?.noIndex,

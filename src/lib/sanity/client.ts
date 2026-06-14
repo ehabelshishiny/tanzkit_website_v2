@@ -5,7 +5,7 @@ import { sanityConfig } from './config'
 // Base client configuration
 const clientConfig = {
   ...sanityConfig,
-  useCdn: true,
+  useCdn: false,
   token: process.env.SANITY_API_READ_TOKEN,
 }
 

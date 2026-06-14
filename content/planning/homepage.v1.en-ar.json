@@ -1,0 +1,379 @@
+{
+  "pageKey": "homepage",
+  "action": "draft",
+  "hero": {
+    "title": {
+      "en": "Control employee transport from ",
+      "ar": "تحكم في نقل الموظفين من التخطيط حتى "
+    },
+    "titleHighlight": {
+      "en": "planning to financial visibility",
+      "ar": "التشغيل والرؤية المالية"
+    },
+    "subtitle": {
+      "en": "Tranzkit is the AI integrated operating system for employee transportation, helping enterprises and operators plan service, validate attendance, track live trips, and control financial visibility in one bilingual platform.",
+      "ar": "ترانزكيت هو نظام التشغيل المتكامل بالذكاء الاصطناعي لنقل الموظفين، ويجمع تخطيط الخدمة، والتحقق من الحضور، ومتابعة الرحلات المباشرة، والرؤية المالية في منصة واحدة بالإنجليزية والعربية."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Book a platform demo",
+        "ar": "احجز عرضاً للمنصة"
+      },
+      "href": "/contact",
+      "openInNewTab": false
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Explore solutions",
+        "ar": "استكشف الحلول"
+      },
+      "href": "/solutions",
+      "openInNewTab": false
+    }
+  },
+  "overview": {
+    "heading": {
+      "en": "Manage planning, service control, attendance, and finance in one operating layer",
+      "ar": "أدر التخطيط والتحكم في الخدمة والحضور والمالية من طبقة تشغيل واحدة"
+    },
+    "subtitle": {
+      "en": "Tranzkit gives enterprise teams and operators one AI-integrated workflow for planning, execution, attendance, trip review, and follow-up.",
+      "ar": "يوفر ترانزكيت للشركات والمشغلين سير عمل واحدًا للتخطيط والتنفيذ والتحقق من الحضور ومراجعة الرحلات والمتابعة."
+    },
+    "features": [
+      {
+        "_key": "overview-planning-control",
+        "icon": "calendar-range",
+        "title": {
+          "en": "AI guided operating layer",
+          "ar": "طبقة تشغيل موجهة بالذكاء الاصطناعي"
+        },
+        "description": {
+          "en": "AI agents help teams navigate workflows, validate activity, surface exceptions, and prepare reports.",
+          "ar": "يساعد وكلاء الذكاء الاصطناعي الفرق على التنقل داخل سير العمل والتحقق من الأنشطة وإظهار الاستثناءات وإعداد التقارير."
+        }
+      },
+      {
+        "_key": "overview-operator-execution",
+        "icon": "waypoints",
+        "title": {
+          "en": "Attendance and live service control",
+          "ar": "الحضور والتحكم المباشر في الخدمة"
+        },
+        "description": {
+          "en": "Follow attendance, operators, assignments, trips, drivers, vehicles, and live service status from one view.",
+          "ar": "تابع الحضور والمشغلين والتخصيصات والرحلات والسائقين والمركبات وحالة الخدمة المباشرة من شاشة واحدة."
+        }
+      },
+      {
+        "_key": "overview-trip-review",
+        "icon": "chart-column",
+        "title": {
+          "en": "Trip and performance review",
+          "ar": "مراجعة الرحلات والأداء"
+        },
+        "description": {
+          "en": "Review playback, planned vs actual service, speed behavior, and operator follow-up in one workflow.",
+          "ar": "راجع إعادة عرض الرحلات ومقارنة المخطط بالفعلي وسلوك السرعة ومتابعة أداء المشغل في سير عمل واحد."
+        }
+      },
+      {
+        "_key": "overview-finance-readiness",
+        "icon": "receipt-text",
+        "title": {
+          "en": "Finance and fleet visibility",
+          "ar": "الرؤية المالية وجاهزية الأسطول"
+        },
+        "description": {
+          "en": "Track pricing, invoices, payments, maintenance, and fleet readiness without switching systems.",
+          "ar": "تابع التسعير والفواتير والمدفوعات والصيانة وجاهزية الأسطول دون التنقل بين أنظمة متعددة."
+        }
+      }
+    ]
+  },
+  "featureTabs": {
+    "heading": {
+      "en": "One platform across planning, execution, tracking, and finance",
+      "ar": "منصة واحدة للتخطيط والتنفيذ والتتبع والمالية"
+    },
+    "subtitle": {
+      "en": "Tranzkit connects enterprise control and operator execution through shared workflows, live visibility, and financial follow-up.",
+      "ar": "يربط ترانزكيت بين تحكم الشركة وتنفيذ المشغل عبر سير عمل مشتركة ورؤية مباشرة ومتابعة مالية."
+    },
+    "tabs": [
+      {
+        "_key": "feature-tab-enterprise-control",
+        "label": {
+          "en": "Enterprise control",
+          "ar": "تحكم الشركة"
+        },
+        "title": {
+          "en": "Plan demand, routes, schedules, and supplier service",
+          "ar": "خطط الطلب والخطوط والجداول وخدمة الموردين"
+        },
+        "description": {
+          "en": "Manage bookings, schedules, suppliers, pricing, and service follow-up from one enterprise view.",
+          "ar": "أدر الحجوزات والجداول والموردين والتسعير ومتابعة الخدمة من شاشة واحدة للشركة."
+        },
+        "features": [
+          {
+            "_key": "feature-tab-enterprise-control-1",
+            "text": {
+              "en": "Plan routes, schedules, bookings, and service demand",
+              "ar": "خطط الخطوط والجداول والحجوزات وطلب الخدمة"
+            }
+          },
+          {
+            "_key": "feature-tab-enterprise-control-2",
+            "text": {
+              "en": "Manage suppliers, pricing, and service requirements",
+              "ar": "أدر الموردين والتسعير ومتطلبات الخدمة"
+            }
+          },
+          {
+            "_key": "feature-tab-enterprise-control-3",
+            "text": {
+              "en": "Review attendance, invoices, and payment context",
+              "ar": "راجع الحضور والفواتير وسياق المدفوعات"
+            }
+          }
+        ]
+      },
+      {
+        "_key": "feature-tab-operator-operations",
+        "label": {
+          "en": "Operator execution",
+          "ar": "تشغيل المشغل"
+        },
+        "title": {
+          "en": "Run trips, assignments, and daily field operations",
+          "ar": "أدر الرحلات والتخصيصات والتشغيل الميداني اليومي"
+        },
+        "description": {
+          "en": "Manage drivers, vehicles, trips, QR workflows, and live status from one operator view.",
+          "ar": "أدر السائقين والمركبات والرحلات وسير عمل QR والحالة المباشرة من شاشة واحدة للمشغل."
+        },
+        "features": [
+          {
+            "_key": "feature-tab-operator-operations-1",
+            "text": {
+              "en": "Assign drivers, vehicles, and suppliers",
+              "ar": "وزّع السائقين والمركبات والموردين"
+            }
+          },
+          {
+            "_key": "feature-tab-operator-operations-2",
+            "text": {
+              "en": "Run trips, schedules, and live service control",
+              "ar": "أدر الرحلات والجداول والتحكم المباشر في الخدمة"
+            }
+          },
+          {
+            "_key": "feature-tab-operator-operations-3",
+            "text": {
+              "en": "Follow readiness, incidents, and operator performance",
+              "ar": "تابع الجاهزية والحوادث وأداء المشغل"
+            }
+          }
+        ]
+      },
+      {
+        "_key": "feature-tab-live-tracking",
+        "label": {
+          "en": "Live tracking",
+          "ar": "التتبع المباشر"
+        },
+        "title": {
+          "en": "Validate attendance and track service as it happens",
+          "ar": "تحقق من الحضور وتابع الخدمة لحظة بلحظة"
+        },
+        "description": {
+          "en": "Use geofence, biometric, and live trip tracking to keep daily service visible and accountable.",
+          "ar": "استخدم النطاق الجغرافي والتحقق البيومتري وتتبع الرحلات المباشر لإبقاء الخدمة اليومية واضحة وقابلة للمساءلة."
+        },
+        "features": [
+          {
+            "_key": "feature-tab-live-tracking-1",
+            "text": {
+              "en": "Validate employee and driver attendance",
+              "ar": "تحقق من حضور الموظفين والسائقين"
+            }
+          },
+          {
+            "_key": "feature-tab-live-tracking-2",
+            "text": {
+              "en": "Follow live trip status and route execution",
+              "ar": "تابع حالة الرحلات وتنفيذ الخطوط مباشرة"
+            }
+          },
+          {
+            "_key": "feature-tab-live-tracking-3",
+            "text": {
+              "en": "Connect field checks to service accountability",
+              "ar": "اربط التحقق الميداني بمساءلة الخدمة"
+            }
+          }
+        ]
+      },
+      {
+        "_key": "feature-tab-finance-review",
+        "label": {
+          "en": "Finance review",
+          "ar": "المراجعة المالية"
+        },
+        "title": {
+          "en": "Review pricing, invoices, payments, and performance",
+          "ar": "راجع التسعير والفواتير والمدفوعات والأداء"
+        },
+        "description": {
+          "en": "Connect operational output with supplier finance, utilization, and service review.",
+          "ar": "اربط مخرجات التشغيل بالمالية الخاصة بالموردين ومؤشرات الاستغلال ومراجعة الخدمة."
+        },
+        "features": [
+          {
+            "_key": "feature-tab-finance-review-1",
+            "text": {
+              "en": "Track pricing, invoices, and payment status",
+              "ar": "تابع التسعير والفواتير وحالة المدفوعات"
+            }
+          },
+          {
+            "_key": "feature-tab-finance-review-2",
+            "text": {
+              "en": "Review utilization and planned vs actual service",
+              "ar": "راجع الاستغلال ومقارنة المخطط بالفعلي"
+            }
+          },
+          {
+            "_key": "feature-tab-finance-review-3",
+            "text": {
+              "en": "Keep financial follow-up inside the transport workflow",
+              "ar": "أبقِ المتابعة المالية داخل سير عمل النقل"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "screenshotCarousel": {
+    "heading": {
+      "en": "Screens that prove operational control",
+      "ar": "شاشات تثبت التحكم التشغيلي"
+    },
+    "subtitle": {
+      "en": "Show the planning, execution, and finance views that make the platform claim tangible.",
+      "ar": "اعرض شاشات التخطيط والتنفيذ والمالية التي تجعل قيمة المنصة واضحة وملموسة."
+    },
+    "notes": [
+      "Keep one screen for enterprise planning, bookings, and schedule control.",
+      "Keep one screen for operator assignments, trips, and live status tracking.",
+      "Keep one screen for finance visibility, invoices, payment status, or pricing.",
+      "Keep one screen for driver mobile app, QR route support, or field execution."
+    ],
+    "items": [
+      {
+        "_key": "carousel-enterprise-planning",
+        "title": {
+          "en": "Enterprise planning dashboard",
+          "ar": "لوحة تخطيط الشركة"
+        },
+        "description": {
+          "en": "Show demand, schedules, bookings, suppliers, and service control in one enterprise view.",
+          "ar": "اعرض الطلب والجداول والحجوزات والموردين والتحكم في الخدمة من شاشة واحدة للشركة."
+        },
+        "category": {
+          "en": "Planning and control",
+          "ar": "التخطيط والتحكم"
+        }
+      },
+      {
+        "_key": "carousel-operator-control",
+        "title": {
+          "en": "Operator control dashboard",
+          "ar": "لوحة تحكم المشغل"
+        },
+        "description": {
+          "en": "Show assignments, drivers, vehicles, trips, suppliers, and live service status.",
+          "ar": "اعرض التخصيصات والسائقين والمركبات والرحلات والموردين وحالة الخدمة المباشرة."
+        },
+        "category": {
+          "en": "Execution visibility",
+          "ar": "رؤية التنفيذ"
+        }
+      },
+      {
+        "_key": "carousel-finance-visibility",
+        "title": {
+          "en": "Finance and pricing visibility",
+          "ar": "الرؤية المالية والتسعير"
+        },
+        "description": {
+          "en": "Show pricing, invoices, payment status, and utilization in the same workflow.",
+          "ar": "اعرض التسعير والفواتير وحالة المدفوعات ومؤشرات الاستغلال داخل نفس سير العمل."
+        },
+        "category": {
+          "en": "Financial visibility",
+          "ar": "الرؤية المالية"
+        }
+      },
+      {
+        "_key": "carousel-field-workflows",
+        "title": {
+          "en": "Driver and field workflows",
+          "ar": "سير العمل الميداني والسائقين"
+        },
+        "description": {
+          "en": "Show driver app tasks, QR route support, live trip actions, and readiness follow-up.",
+          "ar": "اعرض مهام تطبيق السائق ودعم QR للخطوط وإجراءات الرحلة المباشرة ومتابعة الجاهزية."
+        },
+        "category": {
+          "en": "Field operations",
+          "ar": "العمليات الميدانية"
+        }
+      }
+    ]
+  },
+  "cta": {
+    "heading": {
+      "en": "Bring planning, operator control, and finance into one transport operation",
+      "ar": "اجمع التخطيط وتحكم المشغلين والرؤية المالية في عملية نقل واحدة"
+    },
+    "subtitle": {
+      "en": "Talk to Tranzkit about planning employee transportation, validating attendance, tracking service, and reviewing financial visibility from one AI integrated bilingual platform.",
+      "ar": "تحدث مع ترانزكيت حول تخطيط نقل الموظفين والتحقق من الحضور ومتابعة الخدمة ومراجعة الرؤية المالية من منصة واحدة متكاملة بالذكاء الاصطناعي وبالإنجليزية والعربية."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Book a strategy demo",
+        "ar": "احجز عرضاً استراتيجياً"
+      },
+      "href": "/contact",
+      "openInNewTab": false
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Talk to the team",
+        "ar": "تواصل مع الفريق"
+      },
+      "href": "/contact",
+      "openInNewTab": false
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "Tranzkit | AI integrated operating system for employee transportation",
+      "ar": "ترانزكيت | نظام تشغيل متكامل بالذكاء الاصطناعي لنقل الموظفين"
+    },
+    "metaDescription": {
+      "en": "Tranzkit is a fully AI integrated operating system for employee transportation with attendance validation, live service control, trip analytics, operator management, and financial visibility.",
+      "ar": "ترانزكيت هو نظام تشغيل متكامل بالذكاء الاصطناعي لنقل الموظفين مع التحقق من الحضور، والتحكم في الخدمة المباشرة، وتحليلات الرحلات، وإدارة المشغلين، والرؤية المالية."
+    },
+    "keywords": [
+      "ai integrated employee transportation",
+      "attendance validation platform",
+      "operator management",
+      "trip analytics",
+      "transport finance visibility"
+    ]
+  }
+}

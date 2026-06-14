@@ -1,0 +1,247 @@
+{
+  "pageKey": "homepage",
+  "action": "draft",
+  "hero": {
+    "title": {
+      "en": "The transport operating platform for enterprises and operators",
+      "ar": "منصة تشغيل النقل للمؤسسات والمشغلين"
+    },
+    "titleHighlight": {
+      "en": "Plan, assign, track, and optimize in one system",
+      "ar": "خطط ووزع وتابع وحسن الأداء في نظام واحد"
+    },
+    "subtitle": {
+      "en": "Tranzkit connects enterprise transport planning, operator execution, live tracking, finance visibility, and driver mobile workflows in one operating layer.",
+      "ar": "يربط ترانزكيت بين تخطيط نقل الموظفين وتنفيذ المشغلين والتتبع الحي والرؤية المالية وسير عمل تطبيق السائق ضمن طبقة تشغيل واحدة."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Book a platform demo",
+        "ar": "احجز عرضاً للمنصة"
+      },
+      "href": "/trial",
+      "openInNewTab": false
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Explore solutions",
+        "ar": "استكشف الحلول"
+      },
+      "href": "/solutions",
+      "openInNewTab": false
+    }
+  },
+  "overview": {
+    "heading": {
+      "en": "One operating layer across enterprise and operator workflows",
+      "ar": "طبقة تشغيل واحدة عبر سير عمل المؤسسات والمشغلين"
+    },
+    "subtitle": {
+      "en": "Position Tranzkit as the full transport operating platform, not a single-point app.",
+      "ar": "ضع ترانزكيت كمنصة تشغيل نقل متكاملة وليس كتطبيق منفرد."
+    },
+    "features": [
+      {
+        "_key": "overview-enterprise-management",
+        "icon": "building-2",
+        "title": {
+          "en": "Enterprise management visibility",
+          "ar": "رؤية لإدارة المؤسسات"
+        },
+        "description": {
+          "en": "Manage employee transport planning, approvals, pricing controls, and performance visibility across sites and shifts.",
+          "ar": "أدر تخطيط نقل الموظفين والموافقات وضوابط التسعير ورؤية الأداء عبر المواقع والورديات."
+        }
+      },
+      {
+        "_key": "overview-operator-management",
+        "icon": "route",
+        "title": {
+          "en": "Operator execution visibility",
+          "ar": "رؤية لتنفيذ المشغلين"
+        },
+        "description": {
+          "en": "Coordinate resource assignments, fleet maintenance, driver operations, QR flows, and real-time execution dashboards.",
+          "ar": "نسق تعيين الموارد وصيانة الأسطول وعمليات السائقين وتدفقات QR ولوحات التنفيذ اللحظية."
+        }
+      },
+      {
+        "_key": "overview-financial-visibility",
+        "icon": "chart-column",
+        "title": {
+          "en": "Financial and AI-assisted visibility",
+          "ar": "رؤية مالية ومدعومة بالذكاء الاصطناعي"
+        },
+        "description": {
+          "en": "Track pricing, utilization, operator performance, and exception signals with finance and operator dashboards.",
+          "ar": "تابع التسعير والاستغلال وأداء المشغلين وإشارات الاستثناء عبر لوحات المالية والمشغلين."
+        }
+      }
+    ]
+  },
+  "featureTabs": {
+    "heading": {
+      "en": "Built for the full transport operating model",
+      "ar": "مصمم لنموذج تشغيل النقل الكامل"
+    },
+    "subtitle": {
+      "en": "Each tab should reinforce Tranzkit as the system of record across transport operations.",
+      "ar": "يجب أن يعزز كل تبويب ترانزكيت كنظام السجل الأساسي عبر عمليات النقل."
+    },
+    "tabs": [
+      {
+        "_key": "feature-tab-enterprise",
+        "label": {
+          "en": "Enterprise control",
+          "ar": "تحكم المؤسسة"
+        },
+        "title": {
+          "en": "Plan employee transport with finance and SLA visibility",
+          "ar": "خطط نقل الموظفين مع رؤية مالية ورؤية لاتفاقيات الخدمة"
+        },
+        "description": {
+          "en": "Show route planning, policy controls, operator accountability, and enterprise dashboard visibility in one workflow.",
+          "ar": "اعرض تخطيط المسارات وضوابط السياسات ومساءلة المشغلين ورؤية لوحة المؤسسة ضمن سير عمل واحد."
+        },
+        "features": [
+          {
+            "_key": "feature-tab-enterprise-1",
+            "text": {
+              "en": "Employee transport planning and white-label program controls",
+              "ar": "تخطيط نقل الموظفين وضوابط برامج العلامة البيضاء"
+            }
+          },
+          {
+            "_key": "feature-tab-enterprise-2",
+            "text": {
+              "en": "Finance dashboard visibility across spend, utilization, and pricing",
+              "ar": "رؤية لوحة المالية عبر الإنفاق والاستغلال والتسعير"
+            }
+          }
+        ]
+      },
+      {
+        "_key": "feature-tab-operator",
+        "label": {
+          "en": "Operator execution",
+          "ar": "تنفيذ المشغل"
+        },
+        "title": {
+          "en": "Run operator performance, resources, and maintenance from one command layer",
+          "ar": "أدر أداء المشغلين والموارد والصيانة من طبقة قيادة واحدة"
+        },
+        "description": {
+          "en": "Position Tranzkit as the control center for dispatch, assignments, live tracking, fleet maintenance, and operator dashboards.",
+          "ar": "ضع ترانزكيت كمركز تحكم للتشغيل والتعيينات والتتبع الحي وصيانة الأسطول ولوحات المشغلين."
+        },
+        "features": [
+          {
+            "_key": "feature-tab-operator-1",
+            "text": {
+              "en": "Driver app, QR workflows, and supervisor monitoring",
+              "ar": "تطبيق السائق وتدفقات QR ومتابعة المشرف"
+            }
+          },
+          {
+            "_key": "feature-tab-operator-2",
+            "text": {
+              "en": "Operator performance visibility with live exception handling",
+              "ar": "رؤية أداء المشغلين مع معالجة الاستثناءات الحية"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "screenshotCarousel": {
+    "heading": {
+      "en": "Screens that prove platform breadth",
+      "ar": "شاشات تثبت اتساع المنصة"
+    },
+    "subtitle": {
+      "en": "Use the carousel to show enterprise, operator, finance, and mobile workflows as one connected system.",
+      "ar": "استخدم المعرض لإظهار سير عمل المؤسسة والمشغل والمالية والجوال كنظام مترابط واحد."
+    },
+    "notes": [
+      "Keep one frame for enterprise planning and approvals.",
+      "Keep one frame for operator performance and live tracking.",
+      "Keep one frame for finance or pricing visibility.",
+      "Keep one frame for driver mobile app or QR flow."
+    ],
+    "items": [
+      {
+        "_key": "carousel-enterprise-dashboard",
+        "title": {
+          "en": "Enterprise dashboard",
+          "ar": "لوحة المؤسسة"
+        },
+        "description": {
+          "en": "Highlight shift demand, service levels, spend controls, and operator accountability.",
+          "ar": "أبرز طلب الورديات ومستويات الخدمة وضوابط الإنفاق ومساءلة المشغلين."
+        },
+        "category": {
+          "en": "Enterprise visibility",
+          "ar": "رؤية المؤسسة"
+        }
+      },
+      {
+        "_key": "carousel-operator-dashboard",
+        "title": {
+          "en": "Operator command dashboard",
+          "ar": "لوحة قيادة المشغل"
+        },
+        "description": {
+          "en": "Show assignments, live fleet status, driver activity, and resource bottlenecks.",
+          "ar": "اعرض التعيينات وحالة الأسطول الحية ونشاط السائقين واختناقات الموارد."
+        },
+        "category": {
+          "en": "Operator visibility",
+          "ar": "رؤية المشغل"
+        }
+      }
+    ]
+  },
+  "cta": {
+    "heading": {
+      "en": "Replace fragmented transport tools with one operating platform",
+      "ar": "استبدل أدوات النقل المجزأة بمنصة تشغيل واحدة"
+    },
+    "subtitle": {
+      "en": "Invite enterprises and operators to evaluate Tranzkit as the control layer for planning, execution, and financial visibility.",
+      "ar": "ادعُ المؤسسات والمشغلين لتقييم ترانزكيت كطبقة التحكم للتخطيط والتنفيذ والرؤية المالية."
+    },
+    "primaryCta": {
+      "text": {
+        "en": "Request a Tranzkit walkthrough",
+        "ar": "اطلب جولة في ترانزكيت"
+      },
+      "href": "/trial",
+      "openInNewTab": false
+    },
+    "secondaryCta": {
+      "text": {
+        "en": "Talk to sales",
+        "ar": "تحدث مع المبيعات"
+      },
+      "href": "/contact",
+      "openInNewTab": false
+    }
+  },
+  "seo": {
+    "metaTitle": {
+      "en": "Tranzkit | Transport operating platform for enterprises and operators",
+      "ar": "ترانزكيت | منصة تشغيل النقل للمؤسسات والمشغلين"
+    },
+    "metaDescription": {
+      "en": "Plan employee transport, monitor operator performance, track fleets live, manage pricing, and unify finance visibility with Tranzkit.",
+      "ar": "خطط نقل الموظفين وراقب أداء المشغلين وتابع الأساطيل لحظياً وأدر التسعير ووحد الرؤية المالية مع ترانزكيت."
+    },
+    "keywords": [
+      "transport operating platform",
+      "employee transport planning",
+      "operator performance visibility",
+      "fleet tracking",
+      "finance dashboard"
+    ]
+  }
+}

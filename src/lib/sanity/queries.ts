@@ -1044,7 +1044,7 @@ export async function getTeamMembers(locale: string = 'en') {
 export async function getSolutionsPage(locale: string = 'en') {
   const client = await getClient()
   return client.fetch(solutionsPageQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
+    next: { revalidate: 60 } // Cache for 1 minute
   })
 }
 

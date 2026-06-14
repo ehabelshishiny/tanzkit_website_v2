@@ -21,7 +21,7 @@ export function OperatorsHeroSection({ data }: OperatorsHeroSectionProps) {
 
   return (
     <section
-      className="relative min-h-[60vh] flex items-center overflow-hidden"
+      className="relative flex min-h-[60vh] items-center overflow-hidden overflow-x-clip"
       style={{
         background: `
           linear-gradient(135deg, 
@@ -55,7 +55,7 @@ export function OperatorsHeroSection({ data }: OperatorsHeroSectionProps) {
       </div>
 
       {/* Brand color orbs - navy, ocean, emerald, lime */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Navy orb - top left */}
         <div 
           className="absolute -top-20 -left-20 w-96 h-96 rounded-full blur-3xl opacity-20 dark:opacity-15 animate-float-slow"

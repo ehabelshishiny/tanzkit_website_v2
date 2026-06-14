@@ -2,6 +2,7 @@ import { AppsHeroSection } from '@/components/sections/apps/apps-hero-section';
 import AppsShowcase from '@/components/sections/apps/AppsShowcase';
 import { CTASection } from '@/components/sections/homepage/cta-section';
 import { getAppsPage } from '@/lib/sanity/queries';
+import { urlForImage } from '@/lib/sanity/image';
 import { generateResourceMetadata } from '@/lib/seo/metadata';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -23,10 +24,15 @@ export async function generateMetadata({ params }: AppsPageProps): Promise<Metad
     };
   }
 
+  const ogImage = appsPage.seo?.ogImage
+    ? urlForImage(appsPage.seo.ogImage).width(1200).height(630).fit('fill').url()
+    : undefined;
+
   return generateResourceMetadata(
     {
       metaTitle: appsPage.seo?.metaTitle,
       metaDescription: appsPage.seo?.metaDescription,
+      ogImage,
       keywords: appsPage.seo?.keywords?.[locale] || appsPage.seo?.keywords,
       canonicalUrl: 'apps',
       noIndex: appsPage.seo?.noIndex,

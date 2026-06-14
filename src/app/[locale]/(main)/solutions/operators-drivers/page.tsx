@@ -8,6 +8,7 @@ import { OperatorsFeaturesSection } from '@/components/sections/solutions/operat
 import { OperatorsAiImpactSection } from '@/components/sections/solutions/operators/ai-impact-section';
 import { OperatorsCtaSection } from '@/components/sections/solutions/operators/cta-section';
 import { getSolutionsOperatorsDriversPage } from '@/lib/sanity/queries';
+import { urlForImage } from '@/lib/sanity/image';
 import { generateResourceMetadata } from '@/lib/seo/metadata';
 import { Metadata } from 'next';
 
@@ -28,10 +29,15 @@ export async function generateMetadata({ params }: OperatorsDriversPageProps): P
     };
   }
 
+  const ogImage = page.seo?.ogImage
+    ? urlForImage(page.seo.ogImage).width(1200).height(630).fit('fill').url()
+    : undefined;
+
   return generateResourceMetadata(
     {
       metaTitle: page.seo?.metaTitle,
       metaDescription: page.seo?.metaDescription,
+      ogImage,
       keywords: page.seo?.keywords?.[locale] || page.seo?.keywords,
       canonicalUrl: 'solutions/operators-drivers',
       noIndex: page.seo?.noIndex,
