@@ -1,12 +1,27 @@
 import { notFound } from 'next/navigation';
-import { getCareerBySlug, getJobApplicationFormLabels } from '@/lib/sanity/queries';
+import {
+  getCareerBySlug,
+  getJobApplicationFormLabels,
+} from '@/lib/sanity/queries';
 import { JobApplicationForm } from '@/components/forms/job-application-form';
 import { PortableText } from '@/components/sanity/portable-text';
 import { Typography } from '@/components/ui/typography';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
-import { CalendarIcon, MapPinIcon, BriefcaseIcon, BuildingIcon } from 'lucide-react';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import {
+  CalendarIcon,
+  MapPinIcon,
+  BriefcaseIcon,
+  BuildingIcon,
+} from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 
 interface JobDetailPageProps {
@@ -18,7 +33,7 @@ interface JobDetailPageProps {
 
 export default async function JobDetailPage({ params }: JobDetailPageProps) {
   const { locale, slug } = await params;
-  
+
   // Fetch job data and form labels in parallel
   const [job, formLabels, t] = await Promise.all([
     getCareerBySlug(slug, locale),
@@ -32,21 +47,27 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
   }
 
   // Format posted date
-  const postedDate = job.postedDate 
-    ? new Date(job.postedDate).toLocaleDateString(locale === 'ar' ? 'ar-SA' : 'en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      })
+  const postedDate = job.postedDate
+    ? new Date(job.postedDate).toLocaleDateString(
+        locale === 'ar' ? 'ar-SA' : 'en-US',
+        {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        },
+      )
     : null;
 
   // Format closing date
   const closingDate = job.closingDate
-    ? new Date(job.closingDate).toLocaleDateString(locale === 'ar' ? 'ar-SA' : 'en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      })
+    ? new Date(job.closingDate).toLocaleDateString(
+        locale === 'ar' ? 'ar-SA' : 'en-US',
+        {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        },
+      )
     : null;
 
   return (
@@ -104,7 +125,8 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
                   <div className="flex items-center gap-2">
                     <CalendarIcon className="w-4 h-4" />
                     <span>
-                      {locale === 'ar' ? 'تاريخ النشر:' : 'Posted:'} {postedDate}
+                      {locale === 'ar' ? 'تاريخ النشر:' : 'Posted:'}{' '}
+                      {postedDate}
                     </span>
                   </div>
                 )}
@@ -112,7 +134,8 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
                   <div className="flex items-center gap-2">
                     <CalendarIcon className="w-4 h-4" />
                     <span className="text-destructive font-medium">
-                      {locale === 'ar' ? 'آخر موعد للتقديم:' : 'Closing:'} {closingDate}
+                      {locale === 'ar' ? 'آخر موعد للتقديم:' : 'Closing:'}{' '}
+                      {closingDate}
                     </span>
                   </div>
                 )}
@@ -121,7 +144,10 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
 
             {/* Short Description */}
             {job.description && (
-              <Typography variant="body" className="text-lg text-muted-foreground">
+              <Typography
+                variant="body"
+                className="text-lg text-muted-foreground"
+              >
                 {job.description}
               </Typography>
             )}
@@ -136,7 +162,7 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
             <Typography variant="h2" className="mb-6">
               {locale === 'ar' ? 'تفاصيل الوظيفة' : 'Job Description'}
             </Typography>
-            <PortableText value={job.fullDescription} />
+            <PortableText value={job.fullDescription} locale={locale} />
           </Card>
         </section>
       )}
@@ -158,4 +184,3 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
     </main>
   );
 }
-

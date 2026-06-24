@@ -7,6 +7,7 @@ import { ReactNode } from 'react';
 import { useLocale } from 'next-intl';
 import { RTLAwareArrow } from '@/components/ui/rtl-aware-arrow';
 import { Typography } from '@/components/ui/typography';
+import { localizeInternalHref } from '@/lib/localize-internal-href';
 
 interface AudienceCardProps {
   title: string;
@@ -41,7 +42,7 @@ export function AudienceCard({
   className,
 }: AudienceCardProps) {
   const locale = useLocale();
-  const isRTL = locale === 'ar';
+  const localizedCtaLink = localizeInternalHref(ctaLink, locale);
 
   return (
     <motion.div
@@ -53,13 +54,13 @@ export function AudienceCard({
       className={cn('h-full', className)}
     >
       <Link
-        href={ctaLink}
+        href={localizedCtaLink}
         className={cn(
           'block h-full bg-gradient-to-br rounded-3xl p-8 md:p-10',
           'border border-border',
           'shadow-lg hover:shadow-2xl transition-all duration-300',
           'group',
-          gradient
+          gradient,
         )}
       >
         {icon && (
@@ -67,15 +68,18 @@ export function AudienceCard({
             {icon}
           </div>
         )}
-        
+
         <Typography variant="h3" className="mb-4">
           {title}
         </Typography>
-        
-        <Typography variant="body" className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
+
+        <Typography
+          variant="body"
+          className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed"
+        >
           {description}
         </Typography>
-        
+
         <ul className="space-y-3 mb-8">
           {benefits.map((benefit, index) => (
             <li key={index} className="flex items-start gap-3">
@@ -94,13 +98,16 @@ export function AudienceCard({
                   />
                 </svg>
               </span>
-              <Typography variant="body" className="text-slate-700 dark:text-slate-300">
+              <Typography
+                variant="body"
+                className="text-slate-700 dark:text-slate-300"
+              >
                 {benefit}
               </Typography>
             </li>
           ))}
         </ul>
-        
+
         <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-4 transition-all">
           <Typography variant="button">{ctaText}</Typography>
           <RTLAwareArrow className="w-5 h-5" />

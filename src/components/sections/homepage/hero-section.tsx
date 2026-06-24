@@ -7,6 +7,7 @@ import { TrialCTAButton } from '@/components/ui/trial-cta-button';
 import { SectionContainer } from '@/components/layout/SectionContainer';
 import { Typography } from '@/components/ui/typography';
 import Link from 'next/link';
+import { localizeInternalHref } from '@/lib/localize-internal-href';
 
 interface Vehicle {
   id: number;
@@ -52,6 +53,9 @@ export function HeroSection({ data }: HeroSectionProps) {
   const { theme } = useTheme();
   const locale = useLocale();
   const isRTL = locale === 'ar';
+  const secondaryHref = data.secondaryCta?.href
+    ? localizeInternalHref(data.secondaryCta.href, locale)
+    : undefined;
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -82,7 +86,7 @@ export function HeroSection({ data }: HeroSectionProps) {
     const checkScreenSize = () => {
       setIsDesktop(window.innerWidth >= 1280); // xl breakpoint
     };
-    
+
     checkScreenSize();
     window.addEventListener('resize', checkScreenSize);
     return () => window.removeEventListener('resize', checkScreenSize);
@@ -122,28 +126,38 @@ export function HeroSection({ data }: HeroSectionProps) {
   }, [isDesktop]);
 
   // Generate smooth worm/snake-like undulating path with RTL support
-  const generateSPath = (sx: number, sy: number, ex: number, ey: number, samples = 500, flipHorizontal = false) => {
+  const generateSPath = (
+    sx: number,
+    sy: number,
+    ex: number,
+    ey: number,
+    samples = 500,
+    flipHorizontal = false,
+  ) => {
     const path: { x: number; y: number }[] = [];
     const spanX = ex - sx;
     const spanY = ey - sy;
-    
+
     const waveCount = 3;
     const waveAmplitude = Math.min(Math.abs(spanX), Math.abs(spanY)) * 0.15;
-    
+
     for (let i = 0; i <= samples; i++) {
       const t = i / samples;
-      
+
       const baseX = sx + spanX * t;
       const baseY = sy + spanY * t;
-      
+
       const angle = Math.atan2(spanY, spanX);
       const perpAngle = angle + Math.PI / 2;
-      
-      const waveOffset = Math.sin(t * Math.PI * waveCount) * waveAmplitude * (flipHorizontal ? -1 : 1);
-      
+
+      const waveOffset =
+        Math.sin(t * Math.PI * waveCount) *
+        waveAmplitude *
+        (flipHorizontal ? -1 : 1);
+
       const x = baseX + Math.cos(perpAngle) * waveOffset;
       const y = baseY + Math.sin(perpAngle) * waveOffset;
-      
+
       path.push({ x, y });
     }
 
@@ -159,8 +173,11 @@ export function HeroSection({ data }: HeroSectionProps) {
         const newHeight = Math.max(800, rect.height);
 
         // Only update if size changed significantly (more than 10px difference)
-        setCanvasSize(prev => {
-          if (Math.abs(prev.width - newWidth) > 10 || Math.abs(prev.height - newHeight) > 10) {
+        setCanvasSize((prev) => {
+          if (
+            Math.abs(prev.width - newWidth) > 10 ||
+            Math.abs(prev.height - newHeight) > 10
+          ) {
             return { width: newWidth, height: newHeight };
           }
           return prev;
@@ -185,16 +202,18 @@ export function HeroSection({ data }: HeroSectionProps) {
         isRTL ? width - Math.min(width * 0.08, 60) : Math.min(width * 0.08, 60),
         Math.min(height * 0.94, height - 100) + 30,
         420,
-        isRTL
+        isRTL,
       );
 
       const route2 = generateSPath(
         isRTL ? 0 : width - 0,
         Math.max(40, height * 0.18) + 30,
-        isRTL ? width - Math.min(width * 0.12, 100) : Math.min(width * 0.12, 100),
+        isRTL
+          ? width - Math.min(width * 0.12, 100)
+          : Math.min(width * 0.12, 100),
         Math.min(height * 0.9, height - 40) + 60,
         420,
-        isRTL
+        isRTL,
       );
 
       const newVehicles: Vehicle[] = [];
@@ -207,7 +226,7 @@ export function HeroSection({ data }: HeroSectionProps) {
         path: route1,
         speed: 0.00015,
         color: '#3B82F6',
-        size: 14
+        size: 14,
       });
 
       newVehicles.push({
@@ -219,21 +238,32 @@ export function HeroSection({ data }: HeroSectionProps) {
         path: route2,
         speed: -0.00015,
         color: '#EF4444',
-        size: 16
+        size: 16,
       });
 
       const newNodes: NetworkNode[] = [];
       const marginLeft = Math.max(width * 0.58, 300);
-      
-      const nodePositions = isRTL ? [
-        { x: width - (marginLeft + (width - marginLeft) * 0.35), y: height * 0.2 },
-        { x: width - (marginLeft + (width - marginLeft) * 0.75), y: height * 0.5 },
-        { x: width - (marginLeft + (width - marginLeft) * 0.45), y: height * 0.78 }
-      ] : [
-        { x: marginLeft + (width - marginLeft) * 0.35, y: height * 0.2 },
-        { x: marginLeft + (width - marginLeft) * 0.75, y: height * 0.5 },
-        { x: marginLeft + (width - marginLeft) * 0.45, y: height * 0.78 }
-      ];
+
+      const nodePositions = isRTL
+        ? [
+            {
+              x: width - (marginLeft + (width - marginLeft) * 0.35),
+              y: height * 0.2,
+            },
+            {
+              x: width - (marginLeft + (width - marginLeft) * 0.75),
+              y: height * 0.5,
+            },
+            {
+              x: width - (marginLeft + (width - marginLeft) * 0.45),
+              y: height * 0.78,
+            },
+          ]
+        : [
+            { x: marginLeft + (width - marginLeft) * 0.35, y: height * 0.2 },
+            { x: marginLeft + (width - marginLeft) * 0.75, y: height * 0.5 },
+            { x: marginLeft + (width - marginLeft) * 0.45, y: height * 0.78 },
+          ];
 
       nodePositions.forEach((pos, i) => {
         newNodes.push({
@@ -243,15 +273,19 @@ export function HeroSection({ data }: HeroSectionProps) {
           baseX: pos.x,
           baseY: pos.y,
           pulsePhase: Math.random() * Math.PI * 2,
-          connections: []
+          connections: [],
         });
       });
 
       newNodes.forEach((node, i) => {
         newNodes.forEach((otherNode, j) => {
           if (i !== j && node.connections.length < 2) {
-            const distance = Math.hypot(node.x - otherNode.x, node.y - otherNode.y);
-            if (distance < Math.max(width, height) * 0.6) node.connections.push(j);
+            const distance = Math.hypot(
+              node.x - otherNode.x,
+              node.y - otherNode.y,
+            );
+            if (distance < Math.max(width, height) * 0.6)
+              node.connections.push(j);
           }
         });
       });
@@ -294,12 +328,16 @@ export function HeroSection({ data }: HeroSectionProps) {
           drawn.add(pathId);
 
           ctx.save();
-          ctx.strokeStyle = isDark ? 'rgba(100, 116, 139, 0.4)' : 'rgba(148, 163, 184, 0.25)';
+          ctx.strokeStyle = isDark
+            ? 'rgba(100, 116, 139, 0.4)'
+            : 'rgba(148, 163, 184, 0.25)';
           ctx.lineWidth = 4;
           ctx.lineCap = 'round';
           ctx.setLineDash([16, 12]);
           ctx.lineWidth = 3;
-          ctx.strokeStyle = isDark ? 'rgba(100, 116, 139, 0.5)' : 'rgba(148,163,184,0.3)';
+          ctx.strokeStyle = isDark
+            ? 'rgba(100, 116, 139, 0.5)'
+            : 'rgba(148,163,184,0.3)';
           ctx.beginPath();
           ctx.moveTo(path[0].x, path[0].y);
           for (let i = 1; i < path.length; i++) {
@@ -309,36 +347,47 @@ export function HeroSection({ data }: HeroSectionProps) {
           ctx.restore();
         });
 
-        vehicles.forEach(vehicle => {
+        vehicles.forEach((vehicle) => {
           vehicle.progress += vehicle.speed;
           if (vehicle.progress >= 1) vehicle.progress = 0;
           if (vehicle.progress < 0) vehicle.progress = 1;
 
-          const pathIndex = Math.floor(vehicle.progress * (vehicle.path.length - 1));
+          const pathIndex = Math.floor(
+            vehicle.progress * (vehicle.path.length - 1),
+          );
           const nextIndex = Math.min(pathIndex + 1, vehicle.path.length - 1);
-          const localProgress = (vehicle.progress * (vehicle.path.length - 1)) - pathIndex;
+          const localProgress =
+            vehicle.progress * (vehicle.path.length - 1) - pathIndex;
 
           const currentPos = vehicle.path[pathIndex];
           const nextPos = vehicle.path[nextIndex];
 
           if (currentPos && nextPos) {
-            vehicle.x = currentPos.x + (nextPos.x - currentPos.x) * localProgress;
-            vehicle.y = currentPos.y + (nextPos.y - currentPos.y) * localProgress;
+            vehicle.x =
+              currentPos.x + (nextPos.x - currentPos.x) * localProgress;
+            vehicle.y =
+              currentPos.y + (nextPos.y - currentPos.y) * localProgress;
 
-            let angle = Math.atan2(nextPos.y - currentPos.y, nextPos.x - currentPos.x);
+            let angle = Math.atan2(
+              nextPos.y - currentPos.y,
+              nextPos.x - currentPos.x,
+            );
 
             if (vehicle.speed < 0) angle += Math.PI;
 
             ctx.save();
 
-            const carImage = vehicle.color === '#3B82F6' ? carImageRef.current : carImageRedRef.current;
+            const carImage =
+              vehicle.color === '#3B82F6'
+                ? carImageRef.current
+                : carImageRedRef.current;
 
             if (carImage) {
               ctx.translate(vehicle.x, vehicle.y);
               ctx.rotate(angle + Math.PI);
 
               const isTealCar = vehicle.color === '#EF4444';
-              
+
               if (isRTL) {
                 ctx.scale(1, -1);
                 if (isTealCar) {
@@ -355,7 +404,7 @@ export function HeroSection({ data }: HeroSectionProps) {
                 -vehicle.size * 1.5,
                 -vehicle.size * 1.5,
                 vehicle.size * 2,
-                vehicle.size * 2
+                vehicle.size * 2,
               );
             } else {
               ctx.fillStyle = vehicle.color;
@@ -409,7 +458,7 @@ export function HeroSection({ data }: HeroSectionProps) {
     const rect = e.currentTarget.getBoundingClientRect();
     mousePositionRef.current = {
       x: e.clientX - rect.left,
-      y: e.clientY - rect.top
+      y: e.clientY - rect.top,
     };
   };
 
@@ -420,7 +469,7 @@ export function HeroSection({ data }: HeroSectionProps) {
       onMouseMove={handleMouseMove}
       suppressHydrationWarning
     >
-            {/* ✅ LAYER 1: Animated Gradient Background with Brand Colors - LIGHTER LIGHT THEME */}
+      {/* ✅ LAYER 1: Animated Gradient Background with Brand Colors - LIGHTER LIGHT THEME */}
       <div
         className="absolute inset-0 bg-gradient-to-br from-[oklch(0.98_0.01_250)] via-[oklch(0.97_0.015_240)] to-[oklch(0.96_0.015_165)] dark:from-[oklch(0.15_0.04_250)] dark:via-[oklch(0.20_0.06_240)] dark:to-[oklch(0.18_0.04_165)] animate-gradient-shift"
         style={{ backgroundSize: '200% 200%' }}
@@ -434,13 +483,9 @@ export function HeroSection({ data }: HeroSectionProps) {
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[oklch(0.75_0.08_165)]/30 dark:bg-[oklch(0.70_0.14_165)]/50 rounded-full blur-3xl animate-float-slower" />
       </div>
 
-
       {/* ✅ LAYER 3: Animated Background Canvas (Now Transparent) */}
       <div ref={canvasElementRef} className="absolute inset-0 w-full h-full">
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 w-full h-full"
-        />
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
       </div>
 
       {/* ✅ LAYER 4: Hero Content */}
@@ -450,80 +495,88 @@ export function HeroSection({ data }: HeroSectionProps) {
       >
         <div className="max-w-7xl w-full mx-auto">
           <div className="max-w-4xl w-full mx-auto lg:mx-0">
-          {/* Animated Headline - MIGRATED TO TYPOGRAPHY COMPONENT */}
-          <div className="mb-8 xl:mb-12">
-            <Typography
-              variant="display"
-              as="h1"
-              className="font-bold leading-tight"
-            >
-              <span
-                className={`inline-block transition-all duration-1000 ease-out text-foreground ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-                style={{ transitionDelay: '0.3s' }}
-              >
-                {data.title}
-              </span>
-              <br />
-              <span
-                className={`inline-block transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-                style={{ transitionDelay: '0.6s' }}
+            {/* Animated Headline - MIGRATED TO TYPOGRAPHY COMPONENT */}
+            <div className="mb-8 xl:mb-12">
+              <Typography
+                variant="display"
+                as="h1"
+                className="font-bold leading-tight"
               >
                 <span
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary drop-shadow-2xl"
-                  style={{ lineHeight: 1.1 }}
+                  className={`inline-block transition-all duration-1000 ease-out text-foreground ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                  style={{ transitionDelay: '0.3s' }}
                 >
-                  {data.titleHighlight}
+                  {data.title}
                 </span>
-              </span>
-            </Typography>
+                <br />
+                <span
+                  className={`inline-block transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                  style={{ transitionDelay: '0.6s' }}
+                >
+                  <span
+                    className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary drop-shadow-2xl"
+                    style={{ lineHeight: 1.1 }}
+                  >
+                    {data.titleHighlight}
+                  </span>
+                </span>
+              </Typography>
 
-            <Typography
-              variant="subtitle"
-              as="h2"
-              className={`text-muted-foreground mt-4 xl:mt-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-              style={{ transitionDelay: '1.2s' }}
-            >
-              {data.subtitle}
-            </Typography>
-          </div>
-
-          {/* CTA Buttons */}
-          <div
-            className={`flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 xl:mt-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-            style={{ transitionDelay: '1.8s' }}
-          >
-            {data.primaryCta && (
-              <div className="animate-pulse hover:animate-none">
-                <TrialCTAButton
-                  variant="primary"
-                  size="lg"
-                  className="shadow-2xl shadow-accent/50 !h-[48px] sm:!h-[60px] w-full sm:w-auto"
-                  customText={data.primaryCta.text}
-                />
-              </div>
-            )}
-
-            {data.secondaryCta && (
-              <Link
-                href={data.secondaryCta.href}
-                target={data.secondaryCta.openInNewTab ? '_blank' : undefined}
-                rel={data.secondaryCta.openInNewTab ? 'noopener noreferrer' : undefined}
-                className="group relative px-6 sm:px-8 py-3 sm:py-4 border-2 border-accent text-accent font-semibold rounded-lg transition-all duration-500 hover:bg-gradient-to-r hover:from-accent hover:to-primary hover:text-primary-foreground hover:scale-105 hover:shadow-lg hover:shadow-accent/30 whitespace-nowrap overflow-hidden cursor-pointer w-full sm:w-auto"
+              <Typography
+                variant="subtitle"
+                as="h2"
+                className={`text-muted-foreground mt-4 xl:mt-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                style={{ transitionDelay: '1.2s' }}
               >
-                <Typography variant="button" className="flex items-center justify-center gap-2 relative z-10 transition-all duration-300">
-                  {data.secondaryCta.text}
-                </Typography>
-              </Link>
-            )}
-          </div>
+                {data.subtitle}
+              </Typography>
+            </div>
 
-          {/* Stats - Desktop only to avoid extra vertical space on mobile/tablet */}
-          <div
-            className={`hidden xl:grid grid-cols-3 gap-8 xl:mt-12 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-            style={{ transitionDelay: '2.1s' }}
-          >
+            {/* CTA Buttons */}
+            <div
+              className={`flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 xl:mt-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+              style={{ transitionDelay: '1.8s' }}
+            >
+              {data.primaryCta && (
+                <div className="animate-pulse hover:animate-none">
+                  <TrialCTAButton
+                    variant="primary"
+                    size="lg"
+                    className="shadow-2xl shadow-accent/50 !h-[48px] sm:!h-[60px] w-full sm:w-auto"
+                    customText={data.primaryCta.text}
+                    href={data.primaryCta.href}
+                    openInNewTab={data.primaryCta.openInNewTab}
+                  />
+                </div>
+              )}
+
+              {data.secondaryCta && secondaryHref && (
+                <Link
+                  href={secondaryHref}
+                  target={data.secondaryCta.openInNewTab ? '_blank' : undefined}
+                  rel={
+                    data.secondaryCta.openInNewTab
+                      ? 'noopener noreferrer'
+                      : undefined
+                  }
+                  className="group relative px-6 sm:px-8 py-3 sm:py-4 border-2 border-accent text-accent font-semibold rounded-lg transition-all duration-500 hover:bg-gradient-to-r hover:from-accent hover:to-primary hover:text-primary-foreground hover:scale-105 hover:shadow-lg hover:shadow-accent/30 whitespace-nowrap overflow-hidden cursor-pointer w-full sm:w-auto"
+                >
+                  <Typography
+                    variant="button"
+                    className="flex items-center justify-center gap-2 relative z-10 transition-all duration-300"
+                  >
+                    {data.secondaryCta.text}
+                  </Typography>
+                </Link>
+              )}
+            </div>
+
+            {/* Stats - Desktop only to avoid extra vertical space on mobile/tablet */}
+            <div
+              className={`hidden xl:grid grid-cols-3 gap-8 xl:mt-12 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+              style={{ transitionDelay: '2.1s' }}
+            ></div>
           </div>
-        </div>
         </div>
       </div>
 

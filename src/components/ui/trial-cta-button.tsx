@@ -6,6 +6,7 @@ import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
+import { localizeInternalHref } from '@/lib/localize-internal-href';
 
 interface TrialCTAButtonProps {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -17,6 +18,8 @@ interface TrialCTAButtonProps {
   iconPosition?: 'left' | 'right';
   disabled?: boolean;
   fullWidth?: boolean;
+  href?: string;
+  openInNewTab?: boolean;
 }
 
 const sizeVariants = {
@@ -26,9 +29,12 @@ const sizeVariants = {
 };
 
 const variantStyles = {
-  primary: 'bg-gradient-to-r from-accent to-primary text-primary-foreground font-semibold shadow-lg hover:shadow-2xl hover:shadow-accent/50',
-  secondary: 'bg-primary text-primary-foreground font-semibold shadow-md hover:shadow-lg',
-  tertiary: 'border bg-background text-foreground font-medium shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
+  primary:
+    'bg-gradient-to-r from-accent to-primary text-primary-foreground font-semibold shadow-lg hover:shadow-2xl hover:shadow-accent/50',
+  secondary:
+    'bg-primary text-primary-foreground font-semibold shadow-md hover:shadow-lg',
+  tertiary:
+    'border bg-background text-foreground font-medium shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
 };
 
 export function TrialCTAButton({
@@ -41,6 +47,8 @@ export function TrialCTAButton({
   iconPosition = 'right',
   disabled = false,
   fullWidth = false,
+  href,
+  openInNewTab = false,
 }: TrialCTAButtonProps) {
   const router = useRouter();
   const locale = useLocale();
@@ -50,6 +58,23 @@ export function TrialCTAButton({
 
   const handleClick = () => {
     if (!disabled && typeof window !== 'undefined') {
+      if (href) {
+        const localizedHref = localizeInternalHref(href, locale);
+
+        if (openInNewTab) {
+          window.open(localizedHref, '_blank', 'noopener,noreferrer');
+          return;
+        }
+
+        if (localizedHref.startsWith('/')) {
+          router.push(localizedHref);
+          return;
+        }
+
+        window.location.href = localizedHref;
+        return;
+      }
+
       // Get current theme, default to 'light' if not set
       const currentTheme = theme || 'light';
 
@@ -68,7 +93,9 @@ export function TrialCTAButton({
       {icon && iconPosition === 'left' && (
         <span className={isRTL ? 'ml-2' : 'mr-2'}>{icon}</span>
       )}
-      <span className="relative z-10 transition-all duration-300">{buttonText}</span>
+      <span className="relative z-10 transition-all duration-300">
+        {buttonText}
+      </span>
       {icon && iconPosition === 'right' && (
         <span className={isRTL ? 'mr-2' : 'ml-2'}>{icon}</span>
       )}
@@ -85,7 +112,7 @@ export function TrialCTAButton({
     variantStyles[variant],
     disabled && 'opacity-50 cursor-not-allowed',
     fullWidth && 'w-full',
-    className
+    className,
   );
 
   return (
@@ -100,7 +127,7 @@ export function TrialCTAButton({
       {variant === 'primary' && (
         <div className="absolute inset-0 bg-gradient-to-r from-accent/80 to-primary/80 opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
       )}
-      
+
       {/* Button content */}
       <span className="relative z-10 flex items-center gap-2">
         {buttonContent}

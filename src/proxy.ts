@@ -10,10 +10,12 @@ export default createMiddleware({
 
   // Always use locale prefix
   localePrefix: 'always',
+
+  // Bare routes should fall back to the default locale instead of a previous locale cookie.
+  localeDetection: false,
 });
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ['/', '/(ar|en)/:path*'],
+  // Match localized and bare app routes, excluding API, Sanity Studio, Next internals, and static assets.
+  matcher: ['/((?!api|studio|_next|_vercel|.*\\..*).*)'],
 };
-

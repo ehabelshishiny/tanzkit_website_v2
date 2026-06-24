@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 import { useLocale } from 'next-intl';
+import { localizeInternalHref } from '@/lib/localize-internal-href';
 
 interface GradientButtonProps {
   children: React.ReactNode;
@@ -27,8 +28,10 @@ const sizeVariants = {
 };
 
 const variantStyles = {
-  primary: 'bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg hover:shadow-xl',
-  secondary: 'bg-gradient-to-r from-secondary to-muted text-secondary-foreground shadow-md hover:shadow-lg',
+  primary:
+    'bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg hover:shadow-xl',
+  secondary:
+    'bg-gradient-to-r from-secondary to-muted text-secondary-foreground shadow-md hover:shadow-lg',
   outline: 'border-2 border-primary text-primary hover:bg-primary/10',
 };
 
@@ -47,6 +50,7 @@ export function GradientButton({
 }: GradientButtonProps) {
   const locale = useLocale();
   const isRTL = locale === 'ar';
+  const localizedHref = href ? localizeInternalHref(href, locale) : undefined;
 
   const buttonContent = (
     <>
@@ -68,14 +72,14 @@ export function GradientButton({
     sizeVariants[size],
     variantStyles[variant],
     disabled && 'opacity-50 cursor-not-allowed',
-    className
+    className,
   );
 
   const buttonStyle = gradient
     ? { backgroundImage: `linear-gradient(to right, ${gradient})` }
     : {};
 
-  if (href && !disabled) {
+  if (localizedHref && !disabled) {
     return (
       <motion.div
         whileHover={{ scale: 1.05 }}
@@ -83,17 +87,21 @@ export function GradientButton({
         className="inline-block"
       >
         <Link
-          href={href}
+          href={localizedHref}
           className={buttonClasses}
           style={buttonStyle}
         >
           {hoverGradient && (
             <motion.span
               className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
-              style={{ backgroundImage: `linear-gradient(to right, ${hoverGradient})` }}
+              style={{
+                backgroundImage: `linear-gradient(to right, ${hoverGradient})`,
+              }}
             />
           )}
-          <span className="relative z-10 flex items-center">{buttonContent}</span>
+          <span className="relative z-10 flex items-center">
+            {buttonContent}
+          </span>
         </Link>
       </motion.div>
     );
@@ -111,7 +119,9 @@ export function GradientButton({
       {hoverGradient && (
         <motion.span
           className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
-          style={{ backgroundImage: `linear-gradient(to right, ${hoverGradient})` }}
+          style={{
+            backgroundImage: `linear-gradient(to right, ${hoverGradient})`,
+          }}
         />
       )}
       <span className="relative z-10 flex items-center">{buttonContent}</span>
