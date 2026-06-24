@@ -1,15 +1,15 @@
-import { groq } from 'next-sanity'
-import { getClient } from './client'
+import { groq } from 'next-sanity';
+import { getClient } from './client';
 
 // Helper to get localized field based on locale
 export const localizedField = (field: string, locale: string = 'en') => {
-  return `"${field}": coalesce(${field}.${locale}, ${field}.en)`
-}
+  return `"${field}": coalesce(${field}.${locale}, ${field}.en)`;
+};
 
 // Get multiple localized fields
 export const localizedFields = (fields: string[], locale: string = 'en') => {
-  return fields.map((field) => localizedField(field, locale)).join(',\n  ')
-}
+  return fields.map((field) => localizedField(field, locale)).join(',\n  ');
+};
 
 // Image projection
 export const imageProjection = groq`{
@@ -18,7 +18,7 @@ export const imageProjection = groq`{
   "alt": coalesce(alt.en, alt.ar),
   hotspot,
   crop
-}`
+}`;
 
 // Hero Section query
 export const heroSectionQuery = (locale: string = 'en') => groq`
@@ -44,7 +44,7 @@ export const heroSectionQuery = (locale: string = 'en') => groq`
       ${localizedField('label', locale)}
     }
   }
-`
+`;
 
 // All Services query
 export const servicesQuery = (locale: string = 'en') => groq`
@@ -64,7 +64,7 @@ export const servicesQuery = (locale: string = 'en') => groq`
     category->,
     order
   }
-`
+`;
 
 // Single Service query
 export const serviceBySlugQuery = (slug: string, locale: string = 'en') => groq`
@@ -84,7 +84,7 @@ export const serviceBySlugQuery = (slug: string, locale: string = 'en') => groq`
     category->,
     order
   }
-`
+`;
 
 // Testimonials query
 export const testimonialsQuery = (locale: string = 'en') => groq`
@@ -100,7 +100,7 @@ export const testimonialsQuery = (locale: string = 'en') => groq`
     companyLogo ${imageProjection},
     featured
   }
-`
+`;
 
 // Featured Testimonials query
 export const featuredTestimonialsQuery = (locale: string = 'en') => groq`
@@ -115,7 +115,7 @@ export const featuredTestimonialsQuery = (locale: string = 'en') => groq`
     image ${imageProjection},
     companyLogo ${imageProjection}
   }
-`
+`;
 
 // Team Members query
 export const teamMembersQuery = (locale: string = 'en') => groq`
@@ -135,11 +135,7 @@ export const teamMembersQuery = (locale: string = 'en') => groq`
     },
     order
   }
-`
-
-
-
-
+`;
 
 // Site Settings query
 export const siteSettingsQuery = (locale: string = 'en') => groq`
@@ -160,7 +156,7 @@ export const siteSettingsQuery = (locale: string = 'en') => groq`
       variant
     }
   }
-`
+`;
 
 // Navigation query
 export const navigationQuery = (locale: string = 'en') => groq`
@@ -180,7 +176,7 @@ export const navigationQuery = (locale: string = 'en') => groq`
     },
     footerNavColumns[] {
       _key,
-      ${localizedField('title', locale)},
+      ${localizedField('heading', locale)},
       links[] {
         _key,
         ${localizedField('label', locale)},
@@ -189,7 +185,7 @@ export const navigationQuery = (locale: string = 'en') => groq`
     },
     ${localizedField('footerText', locale)}
   }
-`
+`;
 
 // Home Page query
 export const homePageQuery = (locale: string = 'en') => groq`
@@ -286,7 +282,7 @@ export const homePageQuery = (locale: string = 'en') => groq`
       keywords
     }
   }
-`
+`;
 
 // Apps query
 export const appsQuery = (locale: string = 'en') => groq`
@@ -312,7 +308,7 @@ export const appsQuery = (locale: string = 'en') => groq`
     storeUrls,
     order
   }
-`
+`;
 
 // Single App query
 export const appBySlugQuery = (slug: string, locale: string = 'en') => groq`
@@ -363,7 +359,7 @@ export const appBySlugQuery = (slug: string, locale: string = 'en') => groq`
       keywords
     }
   }
-`
+`;
 
 // Solutions Page query
 export const solutionsPageQuery = (locale: string = 'en') => groq`
@@ -429,10 +425,12 @@ export const solutionsPageQuery = (locale: string = 'en') => groq`
       keywords
     }
   }
-`
+`;
 
 // Solutions: Enterprises & Passengers Page query
-export const solutionsEnterprisesPassengersPageQuery = (locale: string = 'en') => groq`
+export const solutionsEnterprisesPassengersPageQuery = (
+  locale: string = 'en',
+) => groq`
   *[_type == "solutionsEnterprisesPassengersPage" && !(_id in path("drafts.**"))][0] {
     _id,
     hero {
@@ -561,10 +559,12 @@ export const solutionsEnterprisesPassengersPageQuery = (locale: string = 'en') =
       keywords
     }
   }
-`
+`;
 
 // Solutions: Operators & Drivers Page query
-export const solutionsOperatorsDriversPageQuery = (locale: string = 'en') => groq`
+export const solutionsOperatorsDriversPageQuery = (
+  locale: string = 'en',
+) => groq`
   *[_type == "solutionsOperatorsDriversPage" && !(_id in path("drafts.**"))][0] {
     _id,
     hero {
@@ -680,7 +680,7 @@ export const solutionsOperatorsDriversPageQuery = (locale: string = 'en') => gro
       keywords
     }
   }
-`
+`;
 
 // Apps Page query
 export const appsPageQuery = (locale: string = 'en') => groq`
@@ -757,7 +757,7 @@ export const appsPageQuery = (locale: string = 'en') => groq`
       keywords
     }
   }
-`
+`;
 
 // About Page query
 export const aboutPageQuery = (locale: string = 'en') => groq`
@@ -867,7 +867,7 @@ export const aboutPageQuery = (locale: string = 'en') => groq`
       keywords
     }
   }
-`
+`;
 
 // Contact Page query
 export const contactPageQuery = (locale: string = 'en') => groq`
@@ -914,7 +914,7 @@ export const contactPageQuery = (locale: string = 'en') => groq`
       keywords
     }
   }
-`
+`;
 
 // Pricing Page query
 export const pricingPageQuery = (locale: string = 'en') => groq`
@@ -985,109 +985,172 @@ export const pricingPageQuery = (locale: string = 'en') => groq`
       keywords
     }
   }
-`
+`;
 
 // ============================================
 // Fetch Functions (with caching)
 // ============================================
 
 export async function getSiteSettings(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(siteSettingsQuery(locale), {}, {
-    next: { revalidate: 3600 } // Cache for 1 hour
-  })
+  const client = await getClient();
+  return client.fetch(
+    siteSettingsQuery(locale),
+    {},
+    {
+      next: { revalidate: 3600 }, // Cache for 1 hour
+    },
+  );
 }
 
 export async function getNavigation(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(navigationQuery(locale), {}, {
-    next: { revalidate: 3600 } // Cache for 1 hour
-  })
+  const client = await getClient();
+  return client.fetch(
+    navigationQuery(locale),
+    {},
+    {
+      next: { revalidate: 3600 }, // Cache for 1 hour
+    },
+  );
 }
 
 export async function getHomePage(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(homePageQuery(locale), {}, {
-    next: { revalidate: 60 } // Cache for 1 minute
-  })
+  const client = await getClient();
+  return client.fetch(
+    homePageQuery(locale),
+    {},
+    {
+      next: { revalidate: 60 }, // Cache for 1 minute
+    },
+  );
 }
 
 export async function getApps(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(appsQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  })
+  const client = await getClient();
+  return client.fetch(
+    appsQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    },
+  );
 }
 
 export async function getAppBySlug(slug: string, locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(appBySlugQuery(slug, locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  })
+  const client = await getClient();
+  return client.fetch(
+    appBySlugQuery(slug, locale),
+    {},
+    {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    },
+  );
 }
 
-export async function getTestimonials(locale: string = 'en', featured: boolean = false) {
-  const client = await getClient()
-  const query = featured ? featuredTestimonialsQuery(locale) : testimonialsQuery(locale)
-  return client.fetch(query, {}, {
-    next: { revalidate: 3600 } // Cache for 1 hour
-  })
+export async function getTestimonials(
+  locale: string = 'en',
+  featured: boolean = false,
+) {
+  const client = await getClient();
+  const query = featured
+    ? featuredTestimonialsQuery(locale)
+    : testimonialsQuery(locale);
+  return client.fetch(
+    query,
+    {},
+    {
+      next: { revalidate: 3600 }, // Cache for 1 hour
+    },
+  );
 }
 
 export async function getTeamMembers(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(teamMembersQuery(locale), {}, {
-    next: { revalidate: 3600 } // Cache for 1 hour
-  })
+  const client = await getClient();
+  return client.fetch(
+    teamMembersQuery(locale),
+    {},
+    {
+      next: { revalidate: 3600 }, // Cache for 1 hour
+    },
+  );
 }
 
 export async function getSolutionsPage(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(solutionsPageQuery(locale), {}, {
-    next: { revalidate: 60 } // Cache for 1 minute
-  })
+  const client = await getClient();
+  return client.fetch(
+    solutionsPageQuery(locale),
+    {},
+    {
+      next: { revalidate: 60 }, // Cache for 1 minute
+    },
+  );
 }
 
-export async function getSolutionsEnterprisesPassengersPage(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(solutionsEnterprisesPassengersPageQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  })
+export async function getSolutionsEnterprisesPassengersPage(
+  locale: string = 'en',
+) {
+  const client = await getClient();
+  return client.fetch(
+    solutionsEnterprisesPassengersPageQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    },
+  );
 }
 
 export async function getSolutionsOperatorsDriversPage(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(solutionsOperatorsDriversPageQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  })
+  const client = await getClient();
+  return client.fetch(
+    solutionsOperatorsDriversPageQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    },
+  );
 }
 
 export async function getAppsPage(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(appsPageQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  })
+  const client = await getClient();
+  return client.fetch(
+    appsPageQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    },
+  );
 }
 
 export async function getAboutPage(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(aboutPageQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  })
+  const client = await getClient();
+  return client.fetch(
+    aboutPageQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    },
+  );
 }
 
 export async function getContactPage(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(contactPageQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  })
+  const client = await getClient();
+  return client.fetch(
+    contactPageQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    },
+  );
 }
 
 export async function getPricingPage(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(pricingPageQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  })
+  const client = await getClient();
+  return client.fetch(
+    pricingPageQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    },
+  );
 }
 
 // ============================================
@@ -1127,10 +1190,14 @@ export const jobApplicationFormLabelsQuery = (locale: string = 'en') => groq`
 `;
 
 export async function getJobApplicationFormLabels(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(jobApplicationFormLabelsQuery(locale), {}, {
-    next: { revalidate: 3600 } // Cache for 1 hour
-  })
+  const client = await getClient();
+  return client.fetch(
+    jobApplicationFormLabelsQuery(locale),
+    {},
+    {
+      next: { revalidate: 3600 }, // Cache for 1 hour
+    },
+  );
 }
 
 /**
@@ -1159,10 +1226,14 @@ export const careerBySlugQuery = (locale: string = 'en') => groq`
 `;
 
 export async function getCareerBySlug(slug: string, locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(careerBySlugQuery(locale), { slug }, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  })
+  const client = await getClient();
+  return client.fetch(
+    careerBySlugQuery(locale),
+    { slug },
+    {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    },
+  );
 }
 
 /**
@@ -1187,12 +1258,15 @@ export const activeCareersQuery = (locale: string = 'en') => groq`
 `;
 
 export async function getActiveCareers(locale: string = 'en') {
-  const client = await getClient()
-  return client.fetch(activeCareersQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  })
+  const client = await getClient();
+  return client.fetch(
+    activeCareersQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    },
+  );
 }
-
 
 // ============================================================================
 // RESOURCES HUB QUERIES
@@ -1243,9 +1317,13 @@ export const resourcesHubPageQuery = (locale: string = 'en') => groq`
 
 export async function getResourcesHubPage(locale: string = 'en') {
   const client = await getClient();
-  return client.fetch(resourcesHubPageQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  });
+  return client.fetch(
+    resourcesHubPageQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    },
+  );
 }
 
 // Blog Page
@@ -1273,9 +1351,13 @@ export const blogPageQuery = (locale: string = 'en') => groq`
 
 export async function getBlogPage(locale: string = 'en') {
   const client = await getClient();
-  return client.fetch(blogPageQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  });
+  return client.fetch(
+    blogPageQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    },
+  );
 }
 
 // Case Studies Page
@@ -1303,9 +1385,13 @@ export const caseStudiesPageQuery = (locale: string = 'en') => groq`
 
 export async function getCaseStudiesPage(locale: string = 'en') {
   const client = await getClient();
-  return client.fetch(caseStudiesPageQuery(locale), {}, {
-    next: { revalidate: 300 } // Cache for 5 minutes
-  });
+  return client.fetch(
+    caseStudiesPageQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    },
+  );
 }
 
 // FAQ Page
@@ -1333,9 +1419,13 @@ export const faqPageQuery = (locale: string = 'en') => groq`
 
 export async function getFAQPage(locale: string = 'en') {
   const client = await getClient();
-  return client.fetch(faqPageQuery(locale), {}, {
-    next: { revalidate: 60 } // Cache for 1 minute
-  });
+  return client.fetch(
+    faqPageQuery(locale),
+    {},
+    {
+      next: { revalidate: 60 }, // Cache for 1 minute
+    },
+  );
 }
 
 /**
@@ -1373,9 +1463,13 @@ export const blogPostsQuery = (locale: string = 'en') => groq`
 
 export async function getBlogPosts(locale: string = 'en') {
   const client = await getClient();
-  return client.fetch(blogPostsQuery(locale), {}, {
-    next: { revalidate: 60 } // Cache for 1 minute
-  });
+  return client.fetch(
+    blogPostsQuery(locale),
+    {},
+    {
+      next: { revalidate: 60 }, // Cache for 1 minute
+    },
+  );
 }
 
 // Single blog post by slug
@@ -1431,9 +1525,13 @@ export const blogPostBySlugQuery = (locale: string = 'en') => groq`
 
 export async function getBlogPostBySlug(slug: string, locale: string = 'en') {
   const client = await getClient();
-  return client.fetch(blogPostBySlugQuery(locale), { slug }, {
-    next: { revalidate: 60 } // Cache for 1 minute
-  });
+  return client.fetch(
+    blogPostBySlugQuery(locale),
+    { slug },
+    {
+      next: { revalidate: 60 }, // Cache for 1 minute
+    },
+  );
 }
 
 // Featured blog posts
@@ -1454,9 +1552,13 @@ export const featuredBlogPostsQuery = (locale: string = 'en') => groq`
 
 export async function getFeaturedBlogPosts(locale: string = 'en') {
   const client = await getClient();
-  return client.fetch(featuredBlogPostsQuery(locale), {}, {
-    next: { revalidate: 60 }
-  });
+  return client.fetch(
+    featuredBlogPostsQuery(locale),
+    {},
+    {
+      next: { revalidate: 60 },
+    },
+  );
 }
 
 /**
@@ -1496,11 +1598,14 @@ export const caseStudiesQuery = (locale: string = 'en') => groq`
 
 export async function getCaseStudies(locale: string = 'en') {
   const client = await getClient();
-  return client.fetch(caseStudiesQuery(locale), {}, {
-    next: { revalidate: 300 }
-  });
+  return client.fetch(
+    caseStudiesQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 },
+    },
+  );
 }
-
 
 // Single case study by slug
 export const caseStudyBySlugQuery = (locale: string = 'en') => groq`
@@ -1550,9 +1655,13 @@ export const caseStudyBySlugQuery = (locale: string = 'en') => groq`
 
 export async function getCaseStudyBySlug(slug: string, locale: string = 'en') {
   const client = await getClient();
-  return client.fetch(caseStudyBySlugQuery(locale), { slug }, {
-    next: { revalidate: 300 }
-  });
+  return client.fetch(
+    caseStudyBySlugQuery(locale),
+    { slug },
+    {
+      next: { revalidate: 300 },
+    },
+  );
 }
 
 // Featured case studies
@@ -1572,9 +1681,13 @@ export const featuredCaseStudiesQuery = (locale: string = 'en') => groq`
 
 export async function getFeaturedCaseStudies(locale: string = 'en') {
   const client = await getClient();
-  return client.fetch(featuredCaseStudiesQuery(locale), {}, {
-    next: { revalidate: 300 }
-  });
+  return client.fetch(
+    featuredCaseStudiesQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 },
+    },
+  );
 }
 
 /**
@@ -1600,9 +1713,13 @@ export const faqsQuery = (locale: string = 'en') => groq`
 
 export async function getFAQs(locale: string = 'en') {
   const client = await getClient();
-  return client.fetch(faqsQuery(locale), {}, {
-    next: { revalidate: 300 }
-  });
+  return client.fetch(
+    faqsQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 },
+    },
+  );
 }
 
 // All FAQs (flat list for search)
@@ -1621,12 +1738,15 @@ export const allFaqsQuery = (locale: string = 'en') => groq`
 
 export async function getAllFAQs(locale: string = 'en') {
   const client = await getClient();
-  return client.fetch(allFaqsQuery(locale), {}, {
-    next: { revalidate: 300 }
-  });
+  return client.fetch(
+    allFaqsQuery(locale),
+    {},
+    {
+      next: { revalidate: 300 },
+    },
+  );
 }
 
 /**
  * Career Queries (Resources Hub - standalone documents)
  */
-

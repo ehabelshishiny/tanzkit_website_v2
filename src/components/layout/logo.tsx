@@ -2,11 +2,31 @@ import Image from 'next/image';
 
 interface LogoProps {
   className?: string;
+  src?: string;
+  alt?: string;
 }
 
-export function Logo({ className = '' }: LogoProps) {
+export function Logo({ className = '', src, alt = 'Tranzkit' }: LogoProps) {
+  if (src) {
+    return (
+      <div className={`flex items-center justify-start ${className}`}>
+        <Image
+          src={src}
+          alt={alt}
+          width={160}
+          height={40}
+          className="h-10 w-auto max-w-[160px] object-contain"
+          unoptimized
+          priority
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className={`flex flex-row items-center justify-start gap-1 ${className}`}>
+    <div
+      className={`flex flex-row items-center justify-start gap-1 ${className}`}
+    >
       {/* Tranzkit Icon - Theme-aware with CSS filter for dark mode */}
       <div className="relative flex items-center justify-center w-8 h-8 shrink-0">
         {/* Light Mode Icon - Colored version */}
@@ -57,4 +77,3 @@ export function Logo({ className = '' }: LogoProps) {
     </div>
   );
 }
-

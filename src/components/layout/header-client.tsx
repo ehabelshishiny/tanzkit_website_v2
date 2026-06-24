@@ -23,9 +23,19 @@ interface NavigationItem {
 interface HeaderClientProps {
   locale: string;
   navigation: NavigationItem[];
+  logo?: {
+    src?: string;
+    alt?: string;
+  };
+  headerCtaHref?: string;
 }
 
-export function HeaderClient({ locale, navigation }: HeaderClientProps) {
+export function HeaderClient({
+  locale,
+  navigation,
+  logo,
+  headerCtaHref,
+}: HeaderClientProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -35,14 +45,16 @@ export function HeaderClient({ locale, navigation }: HeaderClientProps) {
           {/* Left: Logo */}
           <div className="flex items-center justify-start">
             <Link href={`/${locale}`} className="flex items-center">
-              <Logo />
+              <Logo src={logo?.src} alt={logo?.alt} />
             </Link>
           </div>
 
           {/* Center: Desktop Navigation - Only show at xl (1280px) and above */}
           <div className="hidden xl:flex items-center justify-center">
-            <div className={`flex gap-6 ${locale === 'ar' ? 'flex-row-reverse' : ''}`}>
-              {navigation.map((item) => (
+            <div
+              className={`flex gap-6 ${locale === 'ar' ? 'flex-row-reverse' : ''}`}
+            >
+              {navigation.map((item) =>
                 item.subPages.length > 0 ? (
                   <NavDropdown
                     key={item.name}
@@ -58,8 +70,8 @@ export function HeaderClient({ locale, navigation }: HeaderClientProps) {
                   >
                     {item.name}
                   </Link>
-                )
-              ))}
+                ),
+              )}
             </div>
           </div>
 
@@ -72,7 +84,12 @@ export function HeaderClient({ locale, navigation }: HeaderClientProps) {
                 <LanguageSwitcher />
               </div>
               <div className="w-px h-6 bg-border mx-2" />
-              <TrialCTAButton variant="primary" size="lg" className="relative z-10 pointer-events-auto" />
+              <TrialCTAButton
+                variant="primary"
+                size="lg"
+                className="relative z-10 pointer-events-auto"
+                href={headerCtaHref}
+              />
             </div>
 
             {/* Mobile/Tablet (below xl): Theme Toggle, Language Switcher, Menu Button */}
@@ -86,7 +103,11 @@ export function HeaderClient({ locale, navigation }: HeaderClientProps) {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
               >
-                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {mobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </button>
             </div>
           </div>
@@ -96,7 +117,10 @@ export function HeaderClient({ locale, navigation }: HeaderClientProps) {
       {/* Mobile Navigation Menu - Show below xl breakpoint */}
       {mobileMenuOpen && (
         <div className="xl:hidden border-t fixed left-0 right-0 bg-background z-40 max-h-[calc(100vh-4rem)] overflow-y-auto overflow-x-hidden">
-          <div className={`w-full py-4 px-6 space-y-3`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+          <div
+            className={`w-full py-4 px-6 space-y-3`}
+            dir={locale === 'ar' ? 'rtl' : 'ltr'}
+          >
             {navigation.map((item) => (
               <div key={item.name}>
                 <Link
@@ -108,7 +132,9 @@ export function HeaderClient({ locale, navigation }: HeaderClientProps) {
                 </Link>
                 {/* Mobile Subpages */}
                 {item.subPages.length > 0 && (
-                  <div className={`mt-2 space-y-2 ${locale === 'ar' ? 'mr-4' : 'ml-4'}`}>
+                  <div
+                    className={`mt-2 space-y-2 ${locale === 'ar' ? 'mr-4' : 'ml-4'}`}
+                  >
                     {item.subPages.map((subPage) => (
                       <Link
                         key={subPage.href}
@@ -126,7 +152,12 @@ export function HeaderClient({ locale, navigation }: HeaderClientProps) {
 
             {/* Mobile: Trial Button */}
             <div className="pt-4 border-t">
-              <TrialCTAButton variant="primary" size="lg" className="w-full" />
+              <TrialCTAButton
+                variant="primary"
+                size="lg"
+                className="w-full"
+                href={headerCtaHref}
+              />
             </div>
           </div>
         </div>

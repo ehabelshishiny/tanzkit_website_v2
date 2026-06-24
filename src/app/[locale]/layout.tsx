@@ -11,6 +11,9 @@ import { PageTransitionLayout } from '@/components/providers/page-transition-lay
 import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
 import { Toaster } from 'sonner';
 import { VisualEditing } from 'next-sanity/visual-editing';
+import type { Metadata } from 'next';
+import { getSiteSettings } from '@/lib/sanity/queries';
+import { urlFor } from '@/lib/sanity/image';
 import '../globals.css';
 
 // ============================================
@@ -50,7 +53,6 @@ const geistSans = localFont({
   display: 'swap',
 });
 
-
 // Geist Mono - Monospace Font (Start with just Regular)
 const geistMono = localFont({
   src: [
@@ -64,7 +66,7 @@ const geistMono = localFont({
       weight: '500',
       style: 'normal',
     },
-        {
+    {
       path: '../../../public/fonts/geist-mono/GeistMono-SemiBold.ttf',
       weight: '600',
       style: 'normal',
@@ -78,7 +80,6 @@ const geistMono = localFont({
   variable: '--font-geist-mono',
   display: 'swap',
 });
-
 
 // IBM Plex Sans Arabic - Arabic Body Text Font (Keep what works)
 const ibmPlexSansArabic = localFont({
@@ -156,6 +157,24 @@ const dinFont = localFont({
   display: 'swap',
 });
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const siteSettings = await getSiteSettings(locale);
+  const faviconUrl = siteSettings?.favicon?.asset
+    ? urlFor(siteSettings.favicon).width(32).height(32).fit('max').url()
+    : undefined;
+
+  return {
+    title: siteSettings?.siteTitle,
+    description: siteSettings?.siteDescription,
+    icons: faviconUrl ? { icon: faviconUrl } : undefined,
+  };
+}
+
 export default async function LocaleLayout({
   children,
   params,
@@ -190,17 +209,15 @@ export default async function LocaleLayout({
         >
           <LenisProvider>
             <NextIntlClientProvider messages={messages}>
-              <PageTransitionLayout>
-                {children}
-              </PageTransitionLayout>
+              <PageTransitionLayout>{children}</PageTransitionLayout>
             </NextIntlClientProvider>
           </LenisProvider>
           <Toaster position="top-right" richColors />
         </ThemeProvider>
         <ScrollToTopButton />
         {(await draftMode()).isEnabled && <VisualEditing />}
-      <Script id="codefy-widget" strategy="lazyOnload">
-        {`
+        <Script id="codefy-widget" strategy="lazyOnload">
+          {`
           (function() {
             var script = document.createElement('script');
             script.src = 'https://www.codefyhub.com/api/widget-loader.js';
