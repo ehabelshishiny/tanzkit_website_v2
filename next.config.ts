@@ -1,8 +1,12 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 import createMDX from '@next/mdx';
+import { createRequire } from 'node:module';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
+const require = createRequire(import.meta.url);
+const resolveFromRoot = (specifier: string) =>
+  require.resolve(specifier, { paths: [process.cwd()] });
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,
@@ -14,7 +18,7 @@ const withMDX = createMDX({
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-images: {
+  images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
@@ -41,6 +45,22 @@ images: {
   transpilePackages: ['@sanity/vision'],
 
   webpack: (config, { isServer }) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@sanity/ui$': resolveFromRoot('@sanity/ui'),
+      '@sanity/ui/_visual-editing': resolveFromRoot(
+        '@sanity/ui/_visual-editing',
+      ),
+      '@sanity/ui/theme': resolveFromRoot('@sanity/ui/theme'),
+      '@sanity/icons': resolveFromRoot('@sanity/icons'),
+      '@sanity/vision': resolveFromRoot('@sanity/vision'),
+      'sanity$': resolveFromRoot('sanity'),
+      'sanity/structure': resolveFromRoot('sanity/structure'),
+      'sanity/presentation': resolveFromRoot('sanity/presentation'),
+      'sanity/desk': resolveFromRoot('sanity/desk'),
+      'styled-components': resolveFromRoot('styled-components'),
+    };
+
     if (!isServer) {
       // Don't resolve 'jsdom' on the client
       config.resolve.fallback = {

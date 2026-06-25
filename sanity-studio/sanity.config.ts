@@ -25,7 +25,7 @@ export default defineConfig({
           enable: '/api/draft',
         },
       },
-      locate: (params, context) => {
+      locate: (params) => {
         // Map document types to their preview URLs
         if (params.type === 'homePage') {
           return { locations: [{ title: 'Home Page', href: '/' }] }
@@ -75,9 +75,4 @@ export default defineConfig({
   // __internal: {
   //   skipVersionCheck: true,
   // },
-
-  // Theme customization (Tranzkit brand colors)
-  theme: {
-    // You can customize colors here later
-  },
 })

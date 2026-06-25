@@ -1,7 +1,27 @@
-import React, { useState, useMemo } from 'react';
-import { StringInputProps, set, unset } from 'sanity';
-import { TextInput, Autocomplete, Card, Stack, Text, Box } from '@sanity/ui';
+'use client';
+
+import { createElement, useMemo, useState } from 'react';
+import type { ComponentType } from 'react';
+import { type StringInputProps, set, unset } from 'sanity';
+import { Autocomplete, Card, Stack, Text, Box } from '@sanity/ui';
 import * as LucideIcons from 'lucide-react';
+import type { LucideProps } from 'lucide-react';
+
+type IconComponent = ComponentType<LucideProps>;
+
+function getIconComponent(iconName: string | undefined): IconComponent | null {
+  if (!iconName) {
+    return null;
+  }
+
+  const icon = LucideIcons[iconName as keyof typeof LucideIcons];
+  return typeof icon === 'function' ? (icon as IconComponent) : null;
+}
+
+function renderIcon(iconName: string | undefined, size: number) {
+  const Icon = getIconComponent(iconName);
+  return Icon ? createElement(Icon, { size }) : null;
+}
 
 // Get all available Lucide icon names
 const AVAILABLE_ICONS = Object.keys(LucideIcons).filter(
@@ -39,11 +59,6 @@ export function IconPicker(props: StringInputProps) {
     ).slice(0, 50); // Limit to 50 results for performance
   }, [searchQuery]);
 
-  // Get the icon component for preview
-  const IconComponent = value
-    ? (LucideIcons[value as keyof typeof LucideIcons] as React.ComponentType<any>)
-    : null;
-
   const handleChange = (newValue: string) => {
     onChange(newValue ? set(newValue) : unset());
   };
@@ -52,15 +67,17 @@ export function IconPicker(props: StringInputProps) {
     setSearchQuery(query || '');
   };
 
+  const hasSelectedIcon = Boolean(getIconComponent(value));
+
   return (
     <Stack space={3}>
       {/* Icon Preview */}
-      {IconComponent && (
+      {hasSelectedIcon && (
         <Card padding={3} radius={2} shadow={1} tone="primary">
           <Stack space={2}>
             <Text size={1} weight="semibold">Preview:</Text>
             <Box style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <IconComponent size={24} />
+              {renderIcon(value, 24)}
               <Text size={2} weight="medium">{value}</Text>
             </Box>
           </Stack>
@@ -70,7 +87,7 @@ export function IconPicker(props: StringInputProps) {
       {/* Autocomplete Input */}
       <Autocomplete
         fontSize={2}
-        icon={() => IconComponent ? <IconComponent size={16} /> : null}
+        icon={() => renderIcon(value, 16)}
         id={elementProps.id}
         options={filteredIcons.map((icon) => ({ value: icon }))}
         placeholder="Search for an icon (e.g., Zap, Shield, Users)..."
@@ -78,11 +95,10 @@ export function IconPicker(props: StringInputProps) {
         onChange={handleChange}
         onQueryChange={handleQueryChange}
         renderOption={(option) => {
-          const Icon = LucideIcons[option.value as keyof typeof LucideIcons] as React.ComponentType<any>;
           return (
             <Card as="button" padding={2}>
               <Box style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                {Icon && <Icon size={18} />}
+                {renderIcon(option.value, 18)}
                 <Text size={2}>{option.value}</Text>
               </Box>
             </Card>
@@ -112,7 +128,6 @@ export function IconPicker(props: StringInputProps) {
               }}
             >
               {POPULAR_ICONS.slice(0, 24).map((iconName) => {
-                const Icon = LucideIcons[iconName as keyof typeof LucideIcons] as React.ComponentType<any>;
                 return (
                   <Card
                     key={iconName}
@@ -124,7 +139,7 @@ export function IconPicker(props: StringInputProps) {
                     onClick={() => handleChange(iconName)}
                   >
                     <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
-                      {Icon && <Icon size={20} />}
+                      {renderIcon(iconName, 20)}
                       <Text size={0}>{iconName}</Text>
                     </Box>
                   </Card>
@@ -137,4 +152,3 @@ export function IconPicker(props: StringInputProps) {
     </Stack>
   );
 }
-

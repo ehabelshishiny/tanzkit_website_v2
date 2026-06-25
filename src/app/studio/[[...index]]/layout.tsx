@@ -1,12 +1,18 @@
+import type { ReactNode } from 'react';
+import { NextStudioLayout } from 'next-sanity/studio';
+
+export { metadata, viewport } from 'next-sanity/studio';
+
 export default function StudioLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <NextStudioLayout>{children}</NextStudioLayout>
+      </body>
     </html>
   );
 }
-
